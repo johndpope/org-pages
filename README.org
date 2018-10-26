@@ -1,0 +1,54 @@
+* org-pages
+
+- emacs文档备份路径
+
+- org转html 快捷键
+
+  M-x org-publish-project
+
+- emacs 自动生成html文件配置
+
+  #+BEGIN_SRC lisp
+  (setq org-publish-project-alist
+  '(
+  
+  ("org-html"
+  :base-directory "~/github/org-pages"
+  :base-extension "org"
+  :publishing-directory "~/github/html-pages"
+  :section-numbers nil
+  :recursive t
+  :publishing-function org-html-publish-to-html
+  :headline-levels 4
+  :auto-sitemap t
+  :sitemap-filename "sitemap.org"
+  :sitemap-title "Sitemap"
+  :auto-preamble t
+  :author nil
+  :creator-info nil
+  :auto-postamble nil)
+  ("org-static"
+  :base-directory "~/github/org-pages"
+  :base-extension "html\\|css\\|js\\|ico\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf\\|java\\|py\\|zip\\|arff\\|dat\\|cpp\\|xls\\|otf\\|woff"
+  :publishing-directory "~/github/html-pages"
+  :recursive t
+  :publishing-function org-publish-attachment)
+  ("org-pages" :components ("org-html" "org-static"))
+  ))
+  
+  (setq org-export-copy-to-kill-ring nil)
+  (setq org-export-with-sub-superscripts nil)
+  
+  (setq org-html-postamble nil)
+  (setq org-html-preamble "<a href=\"index.html\">Home</a>")
+  
+  ;; 等宽: Source Code Pro 13 + STkaiti 16
+  (setq face-font-rescale-alist `(("STkaiti" . ,(/ 16.0 13))))
+  
+  (set-face-attribute 'default nil :font "Source Code Pro-13")
+  
+  (set-fontset-font t 'han      (font-spec :family "STkaiti"))
+  (set-fontset-font t 'cjk-misc (font-spec :family "STkaiti"))
+  
+  #+END_SRC
+
