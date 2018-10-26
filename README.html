@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-10-26 Fri 15:57 -->
+<!-- 2018-10-26 Fri 16:34 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>org-pages 项目说明</title>
@@ -237,13 +237,14 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org1875648">org-pages</a></li>
+<li><a href="#org6570331">org-pages</a></li>
+<li><a href="#org6d6192f">html-pages</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org1875648" class="outline-2">
-<h2 id="org1875648"><a href="http://www.manue1.site/">org-pages</a></h2>
-<div class="outline-text-2" id="text-org1875648">
+<div id="outline-container-org6570331" class="outline-2">
+<h2 id="org6570331"><a href="http://www.manue1.site/">org-pages</a></h2>
+<div class="outline-text-2" id="text-org6570331">
 <ul class="org-ul">
 <li><p>
 <a href="https://github.com/Nanue1/org-pages">emacs文档备份路径</a>
@@ -354,6 +355,57 @@ emacs 任务添加配置
 
 </pre>
 </div></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org6d6192f" class="outline-2">
+<h2 id="org6d6192f">html-pages</h2>
+<div class="outline-text-2" id="text-org6d6192f">
+<ul class="org-ul">
+<li><p>
+拉取分支：
+</p>
+
+<p>
+git clone -b html-pages  git@github.com:Nanue1/org-pages.git html-pages
+</p></li>
+
+<li><p>
+vps 每分钟同步拉取
+</p>
+
+<p>
+*/1 * * * * cd /home/manue1/html-pages &amp;&amp; git pull &gt; /tmp/x.txt
+</p></li>
+
+<li><p>
+nginx同步目录 
+</p>
+
+<p>
+/etc/nginx/conf.d/nginx_www.conf
+</p>
+
+<pre class="example">
+server {
+        listen       80;
+        server_name  www.manue1.site;
+
+
+        location / {
+            root   /home/manue1/html-pages;
+            index  index.html index.htm;
+        }
+
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+
+    }
+</pre></li>
 </ul>
 </div>
 </div>
