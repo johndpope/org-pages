@@ -1,0 +1,8 @@
+* html-pages 
+
+  分支每分钟同步 vps
+  
+- 使用分支：
+
+  git clone -b html-pages  git@github.com:Nanue1/org-pages.git html-pages
+  
