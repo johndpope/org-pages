@@ -1,0 +1,88 @@
+#+SETUPFILE: setup.org
+#+TITLE: 199. Binary Tree Right Side View
+
+Given a binary tree, imagine yourself standing on the right side of it, 
+
+return the values of the nodes you can see ordered from top to bottom.
+
+Example:
+
+#+BEGIN_EXAMPLE
+
+Input: [1,2,3,null,5,null,4]
+Output: [1, 3, 4]
+Explanation:
+
+   1            <---
+ /   \
+2     3         <---
+ \     \
+  5     4       <---
+#+END_EXAMPLE
+
+* Depth-First Search
+#+CAPTION: depth-first
+#+ATTR_HTML: :width 40% :height 40%    
+[[./images/199_depth_first.png]]
+
+java
+
+#+BEGIN_SRC java
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public List<Integer> rightSideView(TreeNode root) {
+        HashMap<Integer, Integer> rightSideViewMap = new HashMap<Integer, Integer>();
+        int max_depth = -1;
+
+        Stack<TreeNode> nodeStack = new Stack<TreeNode>();
+        Stack<Integer> depthStack = new Stack<Integer>();
+
+        nodeStack.push(root);
+        depthStack.push(0);
+
+        while (!nodeStack.isEmpty()) {
+            TreeNode node = nodeStack.pop();
+            int depth = depthStack.pop();
+            if (node != null) {
+                max_depth = Math.max(max_depth, depth);
+                if (!rightSideViewMap.containsKey(depth)) {
+                    rightSideViewMap.put(depth, node.val);
+                }
+                nodeStack.push(node.left);
+                nodeStack.push(node.right);
+                depthStack.push(depth + 1);
+                depthStack.push(depth + 1);
+            }
+        }
+
+        ArrayList<Integer> rightSideViewList = new ArrayList<Integer>();
+        for (int i = 0; i <= max_depth; i++) {
+            rightSideViewList.add(rightSideViewMap.get(i));
+        }
+        return rightSideViewList;
+
+    }
+}
+
+#+END_SRC
+
+python 
+
+#+BEGIN_SRC 
+
+#+END_SRC
+* Traversal
+
+python
+
+#+BEGIN_SRC 
+
+#+END_SRC
