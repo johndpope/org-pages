@@ -1,6 +1,6 @@
 * html-pages 
 
-- 使用分支：
+- 拉取分支：
 
   git clone -b html-pages  git@github.com:Nanue1/org-pages.git html-pages
 
