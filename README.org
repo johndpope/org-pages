@@ -1,11 +1,11 @@
 #+SETUPFILE: setup.org
 #+TITLE: org-pages 项目说明
-* org-pages
+* [[http://www.manue1.site/][org-pages]]
 
 - [[https://github.com/Nanue1/org-pages][emacs文档备份路径]]
 
   备份一些平时，脑子记不住的内容
-
+  
 - org转html 快捷键
 
   M-x org-publish-project
@@ -56,3 +56,44 @@
   
   #+END_SRC
 
+- emacs 任务添加配置
+
+  用来管理主页任务清单
+
+  #+BEGIN_SRC lisp
+  
+  ;Org basic configure
+  (defun manue1/open-gtd-file()
+      (interactive)
+      (find-file "~/github/org-pages/index.org")
+  )
+  (global-set-key (kbd "<f1>") 'manue1/open-gtd-file)
+  (global-set-key (kbd "C-c a") 'org-agenda)
+  
+  (setq org-agenda-files (quote ("~/github/org-pages/index.org")))
+  (define-key global-map (kbd "<f2>") 'org-capture)
+  
+  (setq org-capture-templates
+        '(
+          ("r" "Read" entry (file+headline "~/github/org-pages/index.org" "Reading List")
+           "* TODO  %?\n  %i\n"
+           :empty-lines 1)
+          ("w" "Write" entry (file+headline "~/github/org-pages/index.org" "Writing List")
+           "* TODO  %?\n  %i\n"
+           :empty-lines 1)
+          ("c" "Common" entry (file+headline "~/github/org-pages/index.org" "Coding List")
+           "* TODO  %?\n  %i\n"
+           :empty-lines 1)
+          ("b" "Body" entry (file+headline "~/github/org-pages/index.org" "Body Building")
+           "* TODO  %?\n  %i\n"
+           :empty-lines 1)
+          )
+  )
+  ; Task state settings
+  (setq org-todo-keywords
+       '((sequence "TODO(t!)" "SOMEDAY(s)" "|" "DONE(d@/!)" "UNDO(u@/!)" "ABORT(a@/!)"))
+  )
+  
+  #+END_SRC
+
+  
