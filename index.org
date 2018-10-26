@@ -1,11 +1,12 @@
 #+SETUPFILE: setup.org
 #+TITLE: 生活啊，不就是这样吗
 
-嘈杂的生活....
+嘈杂的生活....                                                                        
 
 * Coding List
 ** TODO  [[./199-Binary Tree Right Side View.org][199. Binary Tree Right Side View]]
    DEADLINE: <2018-10-27 Sat>
+
 * Reading List
 ** DONE 历史是个什么玩意
    CLOSED: [2017-02-19 Sun 04:17]
@@ -13,11 +14,19 @@
    CLOSED: [2017-02-20 Mon 04:47]
 ** DONE Spring Boot实战（图灵程序设计丛书）
    CLOSED: [2017-07-04 Tue 19:34]
-** TODO 算法<2018-10-27 Sat ++1d>  
+** TODO 算法
+   SCHEDULED:<2018-10-28 Sun ++1d>  
    :PROPERTIES:
-   :LAST_REPEAT: [2018-10-26 Fri 18:38]
+   :LAST_REPEAT: [2018-10-26 Fri 18:46]
    :END:
-   - State "DONE"       from "TODO"       [2018-10-26 Fri 18:38]
+   - State "DONE"       from "TODO"       [2018-10-26 Fri 18:46]
+
+** TODO  [[https://book.douban.com/subject/26979890/][算法图解]] 
+
+   #+ATTR_HTML: :width 30% :height 30% 
+   [[./images/book-sftj.jpg]]
+
+
 * Writing List
 ** TODO  算法图解 
    DEADLINE: <2018-10-27 Sat>
@@ -25,18 +34,18 @@
 * Body Building
 ** TODO Weekly fitness
    SCHEDULED: <2017-07-01 Sat +1w>
-   - State "ABORT"      from "TODO"       [2017-07-18 Tue 11:10] \\
-   - State "UNDO"       from "TODO"       [2017-06-30 Fri 10:30]
-   - State "UNDO"       from "TODO"       [2017-06-11 Sun 23:56] \\
    :PROPERTIES:
    :LAST_REPEAT: [2017-07-18 Tue 11:10]
    :END:
+   - State "ABORT"      from "TODO"       [2017-07-18 Tue 11:10] \\
+   - State "UNDO"       from "TODO"       [2017-06-30 Fri 10:30]
+   - State "UNDO"       from "TODO"       [2017-06-11 Sun 23:56] \\
    每周六健身
    
 ** SOMEDAY Early hours
    SCHEDULED: <2017-06-17 Sat +1d>
    :PROPERTIES:
-   :LAST_REPEAT: [2018-10-26 Fri 18:15]
+   :LAST_REPEAT: [2017-07-05 Wed 11:50]
    :END:
    - State "ABORT"      from "SOMEDAY"    [2018-10-26 Fri 18:15] \\
      我觉得我现在还年轻，趁着年轻多熬几年，没毛病!
@@ -51,11 +60,6 @@
    - State "DONE"       from "TODO"       [2017-06-07 Wed 09:59]
    - State "DONE"       from "TODO"       [2017-06-06 Tue 06:53] 
    - State "DONE"       from "TODO"       [2017-06-05 Mon 19:22]
-     早睡早起身体好
-   :PROPERTIES:
-   :LAST_REPEAT: [2017-07-05 Wed 11:50]
-   :END:
    每天晚上12点之前睡，早上6点起床
 
-
- [[file:sitemap.org][站点地图]]
+[[file:sitemap.org][站点地图]]
