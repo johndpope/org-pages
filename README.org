@@ -1,6 +1,10 @@
+#+SETUPFILE: setup.org
+#+TITLE: org-pages 项目说明
 * org-pages
 
-- emacs文档备份路径
+- [[https://github.com/Nanue1/org-pages][emacs文档备份路径]]
+
+  备份一些平时，脑子记不住的内容
 
 - org转html 快捷键
 
