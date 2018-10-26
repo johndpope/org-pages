@@ -81,7 +81,7 @@
           ("w" "Write" entry (file+headline "~/github/org-pages/index.org" "Writing List")
            "* TODO  %?\n  %i\n"
            :empty-lines 1)
-          ("c" "Common" entry (file+headline "~/github/org-pages/index.org" "Coding List")
+          ("c" "Code" entry (file+headline "~/github/org-pages/index.org" "Coding List")
            "* TODO  %?\n  %i\n"
            :empty-lines 1)
           ("b" "Body" entry (file+headline "~/github/org-pages/index.org" "Body Building")
