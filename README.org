@@ -97,3 +97,35 @@
   #+END_SRC
 
   
+* html-pages 
+
+- 拉取分支：
+
+  git clone -b html-pages  git@github.com:Nanue1/org-pages.git html-pages
+
+- vps 每分钟同步拉取
+
+  */1 * * * * cd /home/manue1/html-pages && git pull > /tmp/x.txt
+
+- nginx同步目录 
+
+  /etc/nginx/conf.d/nginx_www.conf
+
+ #+BEGIN_SRC 
+server {
+        listen       80;
+        server_name  www.manue1.site;
+
+
+        location / {
+            root   /home/manue1/html-pages;
+            index  index.html index.htm;
+        }
+
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+
+    }
+ #+END_SRC
