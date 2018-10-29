@@ -1,35 +1,37 @@
 #+SETUPFILE: setup.org
 #+TITLE: 生活啊，不就是这样吗
 
-嘈杂的生活....                                                                        
-
 * Coding List
 ** TODO  [[./199-Binary Tree Right Side View.org][199. Binary Tree Right Side View]]
    DEADLINE: <2018-10-27 Sat>
 
+* Writing List
+
+** DONE [[./org-to-html.org][emacs 发布org-mode文件到html]]
+   CLOSED: [2018-10-27 Sat 17:42]
+   - State "DONE"       from "TODO"       [2018-10-27 Sat 17:42]
+
 * Reading List
-** DONE 历史是个什么玩意
-   CLOSED: [2017-02-19 Sun 04:17]
-** DONE 番茄工作法
+** DONE [[https://book.douban.com/subject/5916234/][番茄工作法]] 
    CLOSED: [2017-02-20 Mon 04:47]
-** DONE Spring Boot实战（图灵程序设计丛书）
-   CLOSED: [2017-07-04 Tue 19:34]
-** TODO 算法
-   SCHEDULED:<2018-10-28 Sun ++1d>  
-   :PROPERTIES:
-   :LAST_REPEAT: [2018-10-26 Fri 18:46]
-   :END:
-   - State "DONE"       from "TODO"       [2018-10-26 Fri 18:46]
+   #+ATTR_HTML: :width 30% :height 30% 
+   [[./images/book-fqgzf.jpg]]
+** DONE [[https://book.douban.com/subject/26979890/][算法图解]] 
+   CLOSED: [2018-10-27 Sat 14:35]
 
-** TODO  [[https://book.douban.com/subject/26979890/][算法图解]] 
-
+   - State "DONE"       from "TODO"       [2018-10-27 Sat 14:35]
    #+ATTR_HTML: :width 30% :height 30% 
    [[./images/book-sftj.jpg]]
-
-
-* Writing List
-** TODO  算法图解 
-   DEADLINE: <2018-10-27 Sat>
+** TODO [[https://book.douban.com/subject/10432347/][算法]]  
+   SCHEDULED:<2018-10-29 Mon ++1d>
+   :PROPERTIES:
+   :LAST_REPEAT: [2018-10-27 Sat 14:50]
+   :END:
+   - State "DONE"       from "TODO"       [2018-10-27 Sat 14:50]
+   - State "DONE"       from "TODO"       [2018-10-26 Fri 18:46]
+     
+   #+ATTR_HTML: :width 30% :height 30% 
+   [[./images/book-sf.jpg]]
 
 * Body Building
 ** TODO Weekly fitness
@@ -62,4 +64,4 @@
    - State "DONE"       from "TODO"       [2017-06-05 Mon 19:22]
    每天晚上12点之前睡，早上6点起床
 
-[[file:sitemap.org][站点地图]]
+* [[file:sitemap.org][站点地图]]
