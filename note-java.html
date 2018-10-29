@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-10-26 Fri 16:33 -->
+<!-- 2018-10-27 Sat 17:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -258,51 +258,51 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orga378b06">java 基础碎片</a>
+<li><a href="#org0b78231">java 基础碎片</a>
 <ul>
-<li><a href="#orgedf56bf">base</a></li>
-<li><a href="#orgc315a85">collection</a></li>
-<li><a href="#org32d71e0">concurrent</a></li>
-<li><a href="#org65abe8e">Q&amp;A</a></li>
+<li><a href="#org8bfcc45">base</a></li>
+<li><a href="#org7890b79">collection</a></li>
+<li><a href="#orgf1b67d5">concurrent</a></li>
+<li><a href="#org679367e">Q&amp;A</a></li>
 </ul>
 </li>
-<li><a href="#org6874746">java Q&amp;A</a>
+<li><a href="#orgbe7f8f9">java Q&amp;A</a>
 <ul>
-<li><a href="#org4f37242">基础知识：</a></li>
-<li><a href="#org5685bee">IO:</a></li>
-<li><a href="#org5af43f3">算法：</a></li>
-<li><a href="#orga72f4f0">多线程相关：</a></li>
-<li><a href="#org1d417a7">数据库相关（mysql）：</a></li>
-<li><a href="#orgf346a19">mq：</a></li>
-<li><a href="#org93fe54e">nosql相关（主要是redis）:</a></li>
-<li><a href="#org2961e7d">zookeeper:</a></li>
-<li><a href="#org0e17832">linux相关：</a></li>
-<li><a href="#orgebe94dc">设计与思想：</a></li>
+<li><a href="#org9ad7e97">基础知识：</a></li>
+<li><a href="#orgf035269">IO:</a></li>
+<li><a href="#org0731150">算法：</a></li>
+<li><a href="#org6df6d45">多线程相关：</a></li>
+<li><a href="#orgd059c30">数据库相关（mysql）：</a></li>
+<li><a href="#org9e26242">mq：</a></li>
+<li><a href="#orgaa09ee2">nosql相关（主要是redis）:</a></li>
+<li><a href="#orgdebacfa">zookeeper:</a></li>
+<li><a href="#org7f4eb8d">linux相关：</a></li>
+<li><a href="#orga291838">设计与思想：</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orga378b06" class="outline-2">
-<h2 id="orga378b06">java 基础碎片</h2>
-<div class="outline-text-2" id="text-orga378b06">
+<div id="outline-container-org0b78231" class="outline-2">
+<h2 id="org0b78231">java 基础碎片</h2>
+<div class="outline-text-2" id="text-org0b78231">
 </div>
-<div id="outline-container-orgedf56bf" class="outline-3">
-<h3 id="orgedf56bf">base</h3>
-<div class="outline-text-3" id="text-orgedf56bf">
+<div id="outline-container-org8bfcc45" class="outline-3">
+<h3 id="org8bfcc45">base</h3>
+<div class="outline-text-3" id="text-org8bfcc45">
 <p>
 overload  重载  类
 overriding  super hidden 重写 继承
 </p>
 </div>
 </div>
-<div id="outline-container-orgc315a85" class="outline-3">
-<h3 id="orgc315a85">collection</h3>
-<div class="outline-text-3" id="text-orgc315a85">
+<div id="outline-container-org7890b79" class="outline-3">
+<h3 id="org7890b79">collection</h3>
+<div class="outline-text-3" id="text-org7890b79">
 </div>
-<div id="outline-container-org69e014c" class="outline-4">
-<h4 id="org69e014c">ArrayList</h4>
-<div class="outline-text-4" id="text-org69e014c">
+<div id="outline-container-orgd126c74" class="outline-4">
+<h4 id="orgd126c74">ArrayList</h4>
+<div class="outline-text-4" id="text-orgd126c74">
 <p>
 <a href="http://wangkuiwu.github.io/2012/02/03/collection-03-arraylist/">http://wangkuiwu.github.io/2012/02/03/collection-03-arraylist/</a>
 </p>
@@ -320,9 +320,9 @@ ArrayList 继承了AbstractList，实现了List。它是一个数组队列，提
 </p>
 </div>
 </div>
-<div id="outline-container-org996373a" class="outline-4">
-<h4 id="org996373a">LinkedList</h4>
-<div class="outline-text-4" id="text-org996373a">
+<div id="outline-container-orgddcb875" class="outline-4">
+<h4 id="orgddcb875">LinkedList</h4>
+<div class="outline-text-4" id="text-orgddcb875">
 <p>
 <a href="http://wangkuiwu.github.io/2012/02/05/collection-05-linkedlist/">http://wangkuiwu.github.io/2012/02/05/collection-05-linkedlist/</a>
 双向链表
@@ -332,20 +332,20 @@ ArrayList 继承了AbstractList，实现了List。它是一个数组队列，提
 </div>
 </div>
 
-<div id="outline-container-orgba71221" class="outline-4">
-<h4 id="orgba71221">HashMap</h4>
+<div id="outline-container-org4b50d22" class="outline-4">
+<h4 id="org4b50d22">HashMap</h4>
 </div>
 </div>
-<div id="outline-container-org32d71e0" class="outline-3">
-<h3 id="org32d71e0">concurrent</h3>
-<div class="outline-text-3" id="text-org32d71e0">
+<div id="outline-container-orgf1b67d5" class="outline-3">
+<h3 id="orgf1b67d5">concurrent</h3>
+<div class="outline-text-3" id="text-orgf1b67d5">
 <p>
 <a href="http://wangkuiwu.github.io/2012/08/01/threads-index/">http://wangkuiwu.github.io/2012/08/01/threads-index/</a>
 </p>
 </div>
-<div id="outline-container-org588a15e" class="outline-4">
-<h4 id="org588a15e">基础概念</h4>
-<div class="outline-text-4" id="text-org588a15e">
+<div id="outline-container-orgff67c83" class="outline-4">
+<h4 id="orgff67c83">基础概念</h4>
+<div class="outline-text-4" id="text-orgff67c83">
 <ul class="org-ul">
 <li>线程五种状态
 <ol class="org-ol">
@@ -392,9 +392,9 @@ notifyAll()
 </p>
 </div>
 </div>
-<div id="outline-container-org905e84c" class="outline-4">
-<h4 id="org905e84c">常用的实现多线程的两种方式</h4>
-<div class="outline-text-4" id="text-org905e84c">
+<div id="outline-container-orgb64508b" class="outline-4">
+<h4 id="orgb64508b">常用的实现多线程的两种方式</h4>
+<div class="outline-text-4" id="text-orgb64508b">
 <p>
 Thread 和 Runnable 的相同点：都是“多线程的实现方式”。
 Thread 和 Runnable 的不同点：
@@ -404,9 +404,9 @@ Thread 是类，而Runnable是接口；Thread本身是实现了Runnable接口的
 </p>
 </div>
 </div>
-<div id="outline-container-orgab3538f" class="outline-4">
-<h4 id="orgab3538f">等待唤醒让步</h4>
-<div class="outline-text-4" id="text-orgab3538f">
+<div id="outline-container-orgf5fac55" class="outline-4">
+<h4 id="orgf5fac55">等待唤醒让步</h4>
+<div class="outline-text-4" id="text-orgf5fac55">
 <p>
 watit() 运行状态-&gt;阻塞状态
 sleep()
@@ -416,17 +416,17 @@ join() 的作用：让“主线程”等待“子线程”结束之后才能继�
 </p>
 </div>
 </div>
-<div id="outline-container-org579b369" class="outline-4">
-<h4 id="org579b369">生产消费模式</h4>
-<div class="outline-text-4" id="text-org579b369">
+<div id="outline-container-orge7a2044" class="outline-4">
+<h4 id="orge7a2044">生产消费模式</h4>
+<div class="outline-text-4" id="text-orge7a2044">
 <p>
 <a href="http://wangkuiwu.github.io/2012/08/11/threads-basic/">http://wangkuiwu.github.io/2012/08/11/threads-basic/</a>
 </p>
 </div>
 </div>
-<div id="outline-container-org14f9c88" class="outline-4">
-<h4 id="org14f9c88">原子类</h4>
-<div class="outline-text-4" id="text-org14f9c88">
+<div id="outline-container-org3c07085" class="outline-4">
+<h4 id="org3c07085">原子类</h4>
+<div class="outline-text-4" id="text-org3c07085">
 <p>
 基本类型: AtomicInteger, AtomicLong, AtomicBoolean ;
 数组类型: AtomicIntegerArray, AtomicLongArray, AtomicReferenceArray ;
@@ -436,9 +436,9 @@ join() 的作用：让“主线程”等待“子线程”结束之后才能继�
 </p>
 </div>
 </div>
-<div id="outline-container-org7bbedf8" class="outline-4">
-<h4 id="org7bbedf8">锁</h4>
-<div class="outline-text-4" id="text-org7bbedf8">
+<div id="outline-container-orgc0f1df0" class="outline-4">
+<h4 id="orgc0f1df0">锁</h4>
+<div class="outline-text-4" id="text-orgc0f1df0">
 <p>
 根据锁的添加到Java中的时间，Java中的锁，可以分为"同步锁"和"JUC包中的锁"
 </p>
@@ -454,9 +454,9 @@ join() 的作用：让“主线程”等待“子线程”结束之后才能继�
 </div>
 </div>
 
-<div id="outline-container-org8c16d41" class="outline-4">
-<h4 id="org8c16d41">线程池</h4>
-<div class="outline-text-4" id="text-org8c16d41">
+<div id="outline-container-org60b618a" class="outline-4">
+<h4 id="org60b618a">线程池</h4>
+<div class="outline-text-4" id="text-org60b618a">
 <p>
 Executor &#x2013;&gt; ExecutorService &#x2013;&gt; AbstractExecutorService &#x2013;&gt; ThreadPoolExecutor
 </p>
@@ -468,30 +468,30 @@ Executors是个静态工厂类。它通过静态工厂方法返回ExecutorServic
 </div>
 </div>
 
-<div id="outline-container-org65abe8e" class="outline-3">
-<h3 id="org65abe8e">Q&amp;A</h3>
-<div class="outline-text-3" id="text-org65abe8e">
+<div id="outline-container-org679367e" class="outline-3">
+<h3 id="org679367e">Q&amp;A</h3>
+<div class="outline-text-3" id="text-org679367e">
 </div>
-<div id="outline-container-org9ad90cf" class="outline-4">
-<h4 id="org9ad90cf">什么是序列化</h4>
+<div id="outline-container-org7897646" class="outline-4">
+<h4 id="org7897646">什么是序列化</h4>
 </div>
-<div id="outline-container-org91b9d9c" class="outline-4">
-<h4 id="org91b9d9c">装饰器</h4>
-<div class="outline-text-4" id="text-org91b9d9c">
+<div id="outline-container-org7a16676" class="outline-4">
+<h4 id="org7a16676">装饰器</h4>
+<div class="outline-text-4" id="text-org7a16676">
 <p>
 java pyhon
 </p>
 </div>
 </div>
-<div id="outline-container-org28a204d" class="outline-4">
-<h4 id="org28a204d">爬楼梯算法</h4>
+<div id="outline-container-org1f595a1" class="outline-4">
+<h4 id="org1f595a1">爬楼梯算法</h4>
 </div>
-<div id="outline-container-org4609216" class="outline-4">
-<h4 id="org4609216">arraylist linkedlist currentArraylist</h4>
+<div id="outline-container-org3dbe7fd" class="outline-4">
+<h4 id="org3dbe7fd">arraylist linkedlist currentArraylist</h4>
 </div>
-<div id="outline-container-org468a55f" class="outline-4">
-<h4 id="org468a55f">shell</h4>
-<div class="outline-text-4" id="text-org468a55f">
+<div id="outline-container-org3542476" class="outline-4">
+<h4 id="org3542476">shell</h4>
+<div class="outline-text-4" id="text-org3542476">
 <p>
 14.某个目录下有两个文件a.txt和b.txt,文件格式为（ip，username）,
 </p>
@@ -524,21 +524,21 @@ b.txt
 3）每个user出现的次数以及每个user对应的ip数
 </p>
 </div>
-<div id="outline-container-orgd99c3fc" class="outline-5">
-<h5 id="orgd99c3fc">ps aux</h5>
+<div id="outline-container-orgef02bdf" class="outline-5">
+<h5 id="orgef02bdf">ps aux</h5>
 </div>
-<div id="outline-container-orgdafca4d" class="outline-5">
-<h5 id="orgdafca4d">grep awk</h5>
-<div class="outline-text-5" id="text-orgdafca4d">
+<div id="outline-container-org6de7384" class="outline-5">
+<h5 id="org6de7384">grep awk</h5>
+<div class="outline-text-5" id="text-org6de7384">
 <p>
 grep '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}' 111.txt  IP
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgf16d88f" class="outline-5">
-<h5 id="orgf16d88f">netstat</h5>
-<div class="outline-text-5" id="text-orgf16d88f">
+<div id="outline-container-org3da9bfc" class="outline-5">
+<h5 id="org3da9bfc">netstat</h5>
+<div class="outline-text-5" id="text-org3da9bfc">
 <p>
 a 所有 n 不逆向确认 t/u tcp udp 
 p 端口 -c 持续监听
@@ -546,9 +546,9 @@ p 端口 -c 持续监听
 </div>
 </div>
 
-<div id="outline-container-orgc036b91" class="outline-5">
-<h5 id="orgc036b91">tcpdump</h5>
-<div class="outline-text-5" id="text-orgc036b91">
+<div id="outline-container-orgf36ce65" class="outline-5">
+<h5 id="orgf36ce65">tcpdump</h5>
+<div class="outline-text-5" id="text-orgf36ce65">
 <p>
 root下
 -i eth0
@@ -598,12 +598,12 @@ tcpdump tcp and not port 80
 </div>
 </div>
 
-<div id="outline-container-org45ba1f0" class="outline-5">
-<h5 id="org45ba1f0">nc  scp  rsync</h5>
+<div id="outline-container-orgcb05a72" class="outline-5">
+<h5 id="orgcb05a72">nc  scp  rsync</h5>
 </div>
-<div id="outline-container-org28a9ec4" class="outline-5">
-<h5 id="org28a9ec4">iptables</h5>
-<div class="outline-text-5" id="text-org28a9ec4">
+<div id="outline-container-org83f9d0d" class="outline-5">
+<h5 id="org83f9d0d">iptables</h5>
+<div class="outline-text-5" id="text-org83f9d0d">
 <p>
 linux 内核 通过netfilter模块 实现网络访问控制功能
 iptables &#x2013;&gt; netfilter模块
@@ -626,36 +626,36 @@ mangle 用以对数据包的高级修改
 </p>
 </div>
 </div>
-<div id="outline-container-orgc64b393" class="outline-5">
-<h5 id="orgc64b393">namp</h5>
+<div id="outline-container-org509a1b1" class="outline-5">
+<h5 id="org509a1b1">namp</h5>
 </div>
 </div>
 
-<div id="outline-container-orgea945b5" class="outline-4">
-<h4 id="orgea945b5">linux env bash 执行顺序</h4>
+<div id="outline-container-org1beda9c" class="outline-4">
+<h4 id="org1beda9c">linux env bash 执行顺序</h4>
 </div>
-<div id="outline-container-orgb666ae8" class="outline-4">
-<h4 id="orgb666ae8">socket</h4>
+<div id="outline-container-org50fae10" class="outline-4">
+<h4 id="org50fae10">socket</h4>
 </div>
-<div id="outline-container-orgd4887f4" class="outline-4">
-<h4 id="orgd4887f4">spark/hadoop</h4>
-<div class="outline-text-4" id="text-orgd4887f4">
+<div id="outline-container-orgdef41f9" class="outline-4">
+<h4 id="orgdef41f9">spark/hadoop</h4>
+<div class="outline-text-4" id="text-orgdef41f9">
 </div>
-<div id="outline-container-org199ddd3" class="outline-5">
-<h5 id="org199ddd3">yarn 管理</h5>
-<div class="outline-text-5" id="text-org199ddd3">
+<div id="outline-container-org66760ed" class="outline-5">
+<h5 id="org66760ed">yarn 管理</h5>
+<div class="outline-text-5" id="text-org66760ed">
 <p>
 <a href="http://blog.csdn.net/suifeng3051/article/details/49486927">http://blog.csdn.net/suifeng3051/article/details/49486927</a>
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org0ee1ec1" class="outline-4">
-<h4 id="org0ee1ec1">JVM内存不要超过32G</h4>
+<div id="outline-container-org0ddd3f5" class="outline-4">
+<h4 id="org0ddd3f5">JVM内存不要超过32G</h4>
 </div>
-<div id="outline-container-orgf5ac01b" class="outline-4">
-<h4 id="orgf5ac01b">系统诊断</h4>
-<div class="outline-text-4" id="text-orgf5ac01b">
+<div id="outline-container-orgc901be9" class="outline-4">
+<h4 id="orgc901be9">系统诊断</h4>
+<div class="outline-text-4" id="text-orgc901be9">
 <p>
 <a href="https://www.ibm.com/developerworks/cn/java/j-lo-performance-tuning-practice/index.html">https://www.ibm.com/developerworks/cn/java/j-lo-performance-tuning-practice/index.html</a>
 oS 的诊断主要关注的是 CPU、Memory、I/O 三个方面。
@@ -683,9 +683,9 @@ free -m
 </div>
 </div>
 
-<div id="outline-container-orgf4aea66" class="outline-4">
-<h4 id="orgf4aea66">https 和 http区别</h4>
-<div class="outline-text-4" id="text-orgf4aea66">
+<div id="outline-container-org1e24150" class="outline-4">
+<h4 id="org1e24150">https 和 http区别</h4>
+<div class="outline-text-4" id="text-org1e24150">
 <p>
 https 443 tls加密 加密传输身份认证的网络协议
 </p>
@@ -695,9 +695,9 @@ http  80  明文  无状态连接
 </p>
 </div>
 </div>
-<div id="outline-container-org8d04a13" class="outline-4">
-<h4 id="org8d04a13">nginx autoindex 403</h4>
-<div class="outline-text-4" id="text-org8d04a13">
+<div id="outline-container-org919c4c3" class="outline-4">
+<h4 id="org919c4c3">nginx autoindex 403</h4>
+<div class="outline-text-4" id="text-org919c4c3">
 <p>
 cat /var/log/nginx/error.log
 </p>
@@ -755,26 +755,26 @@ fixed!
 </p>
 </div>
 </div>
-<div id="outline-container-org7e2890e" class="outline-4">
-<h4 id="org7e2890e">nginx 多端口绑定子域名</h4>
+<div id="outline-container-org6e0fa67" class="outline-4">
+<h4 id="org6e0fa67">nginx 多端口绑定子域名</h4>
 </div>
 </div>
 </div>
-<div id="outline-container-org6874746" class="outline-2">
-<h2 id="org6874746">java Q&amp;A</h2>
-<div class="outline-text-2" id="text-org6874746">
+<div id="outline-container-orgbe7f8f9" class="outline-2">
+<h2 id="orgbe7f8f9">java Q&amp;A</h2>
+<div class="outline-text-2" id="text-orgbe7f8f9">
 </div>
-<div id="outline-container-org4f37242" class="outline-3">
-<h3 id="org4f37242">基础知识：</h3>
-<div class="outline-text-3" id="text-org4f37242">
+<div id="outline-container-org9ad7e97" class="outline-3">
+<h3 id="org9ad7e97">基础知识：</h3>
+<div class="outline-text-3" id="text-org9ad7e97">
 </div>
-<div id="outline-container-orgfffd44e" class="outline-4">
-<h4 id="orgfffd44e">集合类：List和Set比较，各自的子类比较（ArrayList，Vector，LinkedList；HashSet，TreeSet）</h4>
-<div class="outline-text-4" id="text-orgfffd44e">
+<div id="outline-container-org9566baf" class="outline-4">
+<h4 id="org9566baf">集合类：List和Set比较，各自的子类比较（ArrayList，Vector，LinkedList；HashSet，TreeSet）</h4>
+<div class="outline-text-4" id="text-org9566baf">
 </div>
-<div id="outline-container-orge7f4539" class="outline-5">
-<h5 id="orge7f4539">arraylist with linkedlist compare</h5>
-<div class="outline-text-5" id="text-orge7f4539">
+<div id="outline-container-orgb1713a7" class="outline-5">
+<h5 id="orgb1713a7">arraylist with linkedlist compare</h5>
+<div class="outline-text-5" id="text-orgb1713a7">
 <ol class="org-ol">
 <li>arraylist是实现了基于动态数据的数据结构，因为地址连续，一旦数据存储好了，查询操作效率会比较高(在内存里是连着放的)</li>
 <li>因为地址连续，arraylist要移动数据，所以插入和删除操作效率比较低</li>
@@ -784,9 +784,9 @@ fixed!
 </div>
 </div>
 </div>
-<div id="outline-container-orgd26b2af" class="outline-4">
-<h4 id="orgd26b2af">bak</h4>
-<div class="outline-text-4" id="text-orgd26b2af">
+<div id="outline-container-org8e02eb6" class="outline-4">
+<h4 id="org8e02eb6">bak</h4>
+<div class="outline-text-4" id="text-org8e02eb6">
 <p>
 2）HashMap的底层实现，之后会问ConcurrentHashMap的底层实现；
 </p>
@@ -892,9 +892,9 @@ fixed!
 
 
 
-<div id="outline-container-org5685bee" class="outline-3">
-<h3 id="org5685bee">IO:</h3>
-<div class="outline-text-3" id="text-org5685bee">
+<div id="outline-container-orgf035269" class="outline-3">
+<h3 id="orgf035269">IO:</h3>
+<div class="outline-text-3" id="text-orgf035269">
 <p>
 1）bio，nio，aio的区别；
 </p>
@@ -912,9 +912,9 @@ fixed!
 
 
 
-<div id="outline-container-org5af43f3" class="outline-3">
-<h3 id="org5af43f3">算法：</h3>
-<div class="outline-text-3" id="text-org5af43f3">
+<div id="outline-container-org0731150" class="outline-3">
+<h3 id="org0731150">算法：</h3>
+<div class="outline-text-3" id="text-org0731150">
 <p>
 1）java中常说的堆和栈，分别是什么数据结构；另外，为什么要分为堆和栈来存储数据。
 </p>
@@ -944,9 +944,9 @@ fixed!
 
 
 
-<div id="outline-container-orga72f4f0" class="outline-3">
-<h3 id="orga72f4f0">多线程相关：</h3>
-<div class="outline-text-3" id="text-orga72f4f0">
+<div id="outline-container-org6df6d45" class="outline-3">
+<h3 id="org6df6d45">多线程相关：</h3>
+<div class="outline-text-3" id="text-org6df6d45">
 <p>
 1）说说阻塞队列的实现：可以参考ArrayBlockingQueue的底层实现（锁和同步都行）；
 </p>
@@ -979,9 +979,9 @@ fixed!
 
 
 
-<div id="outline-container-org1d417a7" class="outline-3">
-<h3 id="org1d417a7">数据库相关（mysql）：</h3>
-<div class="outline-text-3" id="text-org1d417a7">
+<div id="outline-container-orgd059c30" class="outline-3">
+<h3 id="orgd059c30">数据库相关（mysql）：</h3>
+<div class="outline-text-3" id="text-orgd059c30">
 <p>
 1）msyql优化经验：
 </p>
@@ -1012,9 +1012,9 @@ fixed!
 
 
 
-<div id="outline-container-orgf346a19" class="outline-3">
-<h3 id="orgf346a19">mq：</h3>
-<div class="outline-text-3" id="text-orgf346a19">
+<div id="outline-container-org9e26242" class="outline-3">
+<h3 id="org9e26242">mq：</h3>
+<div class="outline-text-3" id="text-org9e26242">
 <p>
 1）mq的原理是什么：有点大。。都可以说；
 </p>
@@ -1031,9 +1031,9 @@ fixed!
 
 
 
-<div id="outline-container-org93fe54e" class="outline-3">
-<h3 id="org93fe54e">nosql相关（主要是redis）:</h3>
-<div class="outline-text-3" id="text-org93fe54e">
+<div id="outline-container-orgaa09ee2" class="outline-3">
+<h3 id="orgaa09ee2">nosql相关（主要是redis）:</h3>
+<div class="outline-text-3" id="text-orgaa09ee2">
 <p>
 1）redis和memcache的区别；
 </p>
@@ -1066,9 +1066,9 @@ fixed!
 
 
 
-<div id="outline-container-org2961e7d" class="outline-3">
-<h3 id="org2961e7d">zookeeper:</h3>
-<div class="outline-text-3" id="text-org2961e7d">
+<div id="outline-container-orgdebacfa" class="outline-3">
+<h3 id="orgdebacfa">zookeeper:</h3>
+<div class="outline-text-3" id="text-orgdebacfa">
 <p>
 1）zookeeper是什么；
 </p>
@@ -1099,9 +1099,9 @@ fixed!
 
 
 
-<div id="outline-container-org0e17832" class="outline-3">
-<h3 id="org0e17832">linux相关：</h3>
-<div class="outline-text-3" id="text-org0e17832">
+<div id="outline-container-org7f4eb8d" class="outline-3">
+<h3 id="org7f4eb8d">linux相关：</h3>
+<div class="outline-text-3" id="text-org7f4eb8d">
 <p>
 1）linux常用的命令有哪些；
 </p>
@@ -1128,9 +1128,9 @@ fixed!
 
 
 
-<div id="outline-container-orgebe94dc" class="outline-3">
-<h3 id="orgebe94dc">设计与思想：</h3>
-<div class="outline-text-3" id="text-orgebe94dc">
+<div id="outline-container-orga291838" class="outline-3">
+<h3 id="orga291838">设计与思想：</h3>
+<div class="outline-text-3" id="text-orga291838">
 <p>
 1）重构过代码没有？说说经验；
 </p>
