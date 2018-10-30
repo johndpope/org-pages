@@ -26,7 +26,6 @@
    #+ATTR_HTML: :width 30% :height 30% 
    [[./images/book-sftj.jpg]]
 
-
 * Writing List
 ** TODO  算法图解 
    DEADLINE: <2018-10-27 Sat>
