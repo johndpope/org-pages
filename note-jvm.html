@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-10-26 Fri 16:33 -->
+<!-- 2018-10-27 Sat 17:37 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>jvm 虚拟机学习</title>
@@ -237,22 +237,22 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgc705f88">jvm</a>
+<li><a href="#orgc13175e">jvm</a>
 <ul>
-<li><a href="#orga1460ab">Q &amp; A</a></li>
-<li><a href="#orgcb88a17">深入理解Java虚拟机</a></li>
+<li><a href="#orgad90319">Q &amp; A</a></li>
+<li><a href="#org1b51998">深入理解Java虚拟机</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc705f88" class="outline-2">
-<h2 id="orgc705f88">jvm</h2>
-<div class="outline-text-2" id="text-orgc705f88">
+<div id="outline-container-orgc13175e" class="outline-2">
+<h2 id="orgc13175e">jvm</h2>
+<div class="outline-text-2" id="text-orgc13175e">
 </div>
-<div id="outline-container-orga1460ab" class="outline-3">
-<h3 id="orga1460ab">Q &amp; A</h3>
-<div class="outline-text-3" id="text-orga1460ab">
+<div id="outline-container-orgad90319" class="outline-3">
+<h3 id="orgad90319">Q &amp; A</h3>
+<div class="outline-text-3" id="text-orgad90319">
 <ul class="org-ul">
 <li>垃圾回收器需要关注的内容：
 <ol class="org-ol">
@@ -275,24 +275,24 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgcb88a17" class="outline-3">
-<h3 id="orgcb88a17">深入理解Java虚拟机</h3>
-<div class="outline-text-3" id="text-orgcb88a17">
+<div id="outline-container-org1b51998" class="outline-3">
+<h3 id="org1b51998">深入理解Java虚拟机</h3>
+<div class="outline-text-3" id="text-org1b51998">
 <p>
 周志明. 深入理解Java虚拟机
 </p>
 </div>
-<div id="outline-container-orgdf10303" class="outline-4">
-<h4 id="orgdf10303">自动内存管理机制</h4>
-<div class="outline-text-4" id="text-orgdf10303">
+<div id="outline-container-org4066eb5" class="outline-4">
+<h4 id="org4066eb5">自动内存管理机制</h4>
+<div class="outline-text-4" id="text-org4066eb5">
 </div>
-<div id="outline-container-orgb3ffb76" class="outline-5">
-<h5 id="orgb3ffb76">java内存区域与内存溢出异常</h5>
-<div class="outline-text-5" id="text-orgb3ffb76">
+<div id="outline-container-org40af21b" class="outline-5">
+<h5 id="org40af21b">java内存区域与内存溢出异常</h5>
+<div class="outline-text-5" id="text-org40af21b">
 </div>
 <ul class="org-ul">
-<li><a id="org04a3adb"></a>运行时数据区域<br />
-<div class="outline-text-6" id="text-org04a3adb">
+<li><a id="org09c1760"></a>运行时数据区域<br />
+<div class="outline-text-6" id="text-org09c1760">
 <pre class="example">
   线程共享数据区     线程隔离数据区
 | Method Area |   | VM Stack | Native Method Stack |
@@ -397,8 +397,8 @@ OutOfMemoryError
 </div>
 </li>
 
-<li><a id="orgb9ec4ed"></a>对象访问<br />
-<div class="outline-text-6" id="text-orgb9ec4ed">
+<li><a id="orgd64d890"></a>对象访问<br />
+<div class="outline-text-6" id="text-orgd64d890">
 <p>
 最简单的访问,也会涉及java stack, java heap , method area 这三个最重要的内存区域
 </p>
@@ -483,8 +483,8 @@ reference变量中直接存储的就是对象的地址
 </pre>
 </div>
 </li>
-<li><a id="org40ab66e"></a>OutOfMemoryError异常<br />
-<div class="outline-text-6" id="text-org40ab66e">
+<li><a id="org0805438"></a>OutOfMemoryError异常<br />
+<div class="outline-text-6" id="text-org0805438">
 <p>
 内存 泄漏（ Memory Leak） 
 </p>
@@ -557,13 +557,13 @@ PermGen space 永久代 常量池溢出
 </ul>
 </div>
 
-<div id="outline-container-org422e70c" class="outline-5">
-<h5 id="org422e70c">垃圾回收器与内存分配策略</h5>
-<div class="outline-text-5" id="text-org422e70c">
+<div id="outline-container-orgac31bf1" class="outline-5">
+<h5 id="orgac31bf1">垃圾回收器与内存分配策略</h5>
+<div class="outline-text-5" id="text-orgac31bf1">
 </div>
 <ul class="org-ul">
-<li><a id="org1b205fb"></a>为什么要回收和分配<br />
-<div class="outline-text-6" id="text-org1b205fb">
+<li><a id="orgcc34fec"></a>为什么要回收和分配<br />
+<div class="outline-text-6" id="text-orgcc34fec">
 <ol class="org-ol">
 <li><p>
 哪些内存需要回收？ 
@@ -621,8 +621,8 @@ java采用根搜索算法来判断对象是否存活,以GC root的对象作为�
 </div>
 </li>
 
-<li><a id="orge1acb44"></a>垃圾收集算法<br />
-<div class="outline-text-6" id="text-orge1acb44">
+<li><a id="orge6b4300"></a>垃圾收集算法<br />
+<div class="outline-text-6" id="text-orge6b4300">
 <ol class="org-ol">
 <li>标记-清除算法
 清除之后产生大量不连续内存碎片</li>
@@ -646,9 +646,9 @@ java采用根搜索算法来判断对象是否存活,以GC root的对象作为�
 </ul>
 </div>
 
-<div id="outline-container-orga7b0364" class="outline-5">
-<h5 id="orga7b0364">jvm监控与故障处理工具</h5>
-<div class="outline-text-5" id="text-orga7b0364">
+<div id="outline-container-orgfdd0df0" class="outline-5">
+<h5 id="orgfdd0df0">jvm监控与故障处理工具</h5>
+<div class="outline-text-5" id="text-orgfdd0df0">
 <ol class="org-ol">
 <li>jps jinfo
 运行的使用jvm的进程</li>
@@ -679,9 +679,9 @@ jconsole
 </div>
 </div>
 
-<div id="outline-container-org9c85fb8" class="outline-4">
-<h4 id="org9c85fb8">高效并发</h4>
-<div class="outline-text-4" id="text-org9c85fb8">
+<div id="outline-container-org600c6be" class="outline-4">
+<h4 id="org600c6be">高效并发</h4>
+<div class="outline-text-4" id="text-org600c6be">
 <ol class="org-ol">
 <li><p>
 java内存模型
