@@ -6,7 +6,7 @@
    CLOSED: [2018-10-31 Wed 15:13] DEADLINE: <2018-10-27 Sat>
 
    - State "DONE"       from "TODO"       [2018-10-31 Wed 15:13]
-** TODO 31.Next Permutation   
+** TODO [[./31-Next Permutation.org][31.Next Permutation]]   
    : https://www.jianshu.com/p/db90675cb82b
 
 ** TODO 46.Permutations

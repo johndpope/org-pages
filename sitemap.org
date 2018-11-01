@@ -2,6 +2,7 @@
 
 - [[file:122-Best Time to Buy and Sell Stock II.org][122.Best Time to Buy and Sell Stock II]]
 - [[file:199-Binary Tree Right Side View.org][199. Binary Tree Right Side View]]
+- [[file:31-Next Permutation.org][31.Next-Permutation]]
 - [[file:815-Bus Routes.org][815. Bus Routes]]
 - [[file:org-to-html.org][Publishing Org-mode files to HTML]]
 - [[file:note-threat_intelligence-开源情报整理.org][Threat Intelligence 情报收集爬虫]]
