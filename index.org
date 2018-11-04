@@ -12,6 +12,10 @@
 ** TODO 46.Permutations
 ** TODO 47.Permutations II
 ** TODO 60.Permutation Sequence
+** TODO sort
+   SCHEDULED: <2018-11-04 Sun>
+   1. 选择排序 2. 插入排序 3. 希尔排序
+
 * Writing List
 ** DONE [[./org-to-html.org][emacs 发布org-mode文件到html]]
    CLOSED: [2018-10-27 Sat 17:42]
