@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-11-07 Wed 19:37 -->
+<!-- 2018-11-07 Wed 19:36 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>生活啊，不就是这样吗</title>
+<title>31.Next-Permutation</title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -232,182 +232,91 @@ for the JavaScript code in this tag.
 <a href="index.html">Home</a>
 </div>
 <div id="content">
-<h1 class="title">生活啊，不就是这样吗</h1>
+<h1 class="title">31.Next-Permutation</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org73d6fa7">Coding List</a>
-<ul>
-<li><a href="#org7bf480b"><span class="done DONE">DONE</span> 199. Binary Tree Right Side View</a></li>
-<li><a href="#org689797e"><span class="todo TODO">TODO</span> 31.Next Permutation</a></li>
-<li><a href="#orga4fac7a"><span class="todo TODO">TODO</span> 46.Permutations</a></li>
-<li><a href="#orgce8b8a6"><span class="todo TODO">TODO</span> 47.Permutations II</a></li>
-<li><a href="#orgab0ebf9"><span class="todo TODO">TODO</span> 60.Permutation Sequence</a></li>
-<li><a href="#org584af4f"><span class="todo TODO">TODO</span> sort</a></li>
-</ul>
-</li>
-<li><a href="#org0487383">Writing List</a>
-<ul>
-<li><a href="#org6645b27"><span class="done DONE">DONE</span> emacs 发布org-mode文件到html</a></li>
-</ul>
-</li>
-<li><a href="#org07edba2">Reading List</a>
-<ul>
-<li><a href="#org57962f0"><span class="done DONE">DONE</span> 番茄工作法</a></li>
-<li><a href="#org02ed58b"><span class="done DONE">DONE</span> 算法图解</a></li>
-<li><a href="#org8f43429"><span class="todo TODO">TODO</span> 算法</a></li>
-</ul>
-</li>
-<li><a href="#org3cffbf9">Body Building</a>
-<ul>
-<li><a href="#orge574633"><span class="todo TODO">TODO</span> Weekly fitness</a></li>
-<li><a href="#orge56924f"><span class="todo SOMEDAY">SOMEDAY</span> Early hours</a></li>
-</ul>
-</li>
+<li><a href="#orge8cca8e">题意分析</a></li>
+<li><a href="#orgd51c4d2">java</a></li>
 </ul>
 </div>
 </div>
+<p>
+Implement next permutation, which rearranges numbers into the lexicographically 
+</p>
 
-<div id="outline-container-org73d6fa7" class="outline-2">
-<h2 id="org73d6fa7">Coding List</h2>
-<div class="outline-text-2" id="text-org73d6fa7">
-</div>
-<div id="outline-container-org7bf480b" class="outline-3">
-<h3 id="org7bf480b"><span class="done DONE">DONE</span> <a href="./199-Binary Tree Right Side View.html">199. Binary Tree Right Side View</a></h3>
-<div class="outline-text-3" id="text-org7bf480b">
-<ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-10-31 Wed 15:13]</span></span></li>
-</ul>
-</div>
-</div>
-<div id="outline-container-org689797e" class="outline-3">
-<h3 id="org689797e"><span class="todo TODO">TODO</span> <a href="./31-Next Permutation.html">31.Next Permutation</a></h3>
-<div class="outline-text-3" id="text-org689797e">
+<p>
+next greater permutation of numbers.
+</p>
+
+<p>
+If such arrangement is not possible, it must rearrange it as the lowest possible order 
+</p>
+
+<p>
+(ie, sorted in ascending order).
+</p>
+
+<p>
+The replacement must be in-place and use only constant extra memory.
+</p>
+
+<p>
+Here are some examples. Inputs are in the left-hand column and its corresponding outputs 
+</p>
+
+<p>
+are in the right-hand column.
+</p>
+
 <pre class="example">
-https://www.jianshu.com/p/db90675cb82b
+1,2,3 → 1,3,2
+3,2,1 → 1,2,3
+1,1,5 → 1,5,1
 
 </pre>
-</div>
-</div>
 
-<div id="outline-container-orga4fac7a" class="outline-3">
-<h3 id="orga4fac7a"><span class="todo TODO">TODO</span> 46.Permutations</h3>
-</div>
-<div id="outline-container-orgce8b8a6" class="outline-3">
-<h3 id="orgce8b8a6"><span class="todo TODO">TODO</span> 47.Permutations II</h3>
-</div>
-<div id="outline-container-orgab0ebf9" class="outline-3">
-<h3 id="orgab0ebf9"><span class="todo TODO">TODO</span> 60.Permutation Sequence</h3>
-</div>
-<div id="outline-container-org584af4f" class="outline-3">
-<h3 id="org584af4f"><span class="todo TODO">TODO</span> sort</h3>
-<div class="outline-text-3" id="text-org584af4f">
+
+<div id="outline-container-orge8cca8e" class="outline-2">
+<h2 id="orge8cca8e">题意分析</h2>
+<div class="outline-text-2" id="text-orge8cca8e">
+<p>
+求下一个较大序列
+</p>
+
+<p>
+52316-&gt; 523 <del>61</del> -&gt; 52613 -&gt;52 <del>631</del> -&gt; 53126
+</p>
+
+
+<p>
+推演几次增大序列后，观察出方法:
+</p>
+
+<p>
+如 52 <del>631</del> -&gt; 53612
+</p>
+
 <ol class="org-ol">
-<li>选择排序 2. 插入排序 3. 希尔排序</li>
+<li><p>
+从右往左找到非递增数列(631),在非递增数列（631）中找出比非递增数列前一位(2)大一点点的数，
+</p>
+
+<p>
+与之替换位置(53621)
+</p></li>
+
+<li>把新的非递增数列(621)反转得53126</li>
+
+<li>限制条件: in-place 就地替换 且 使用恒定的内存</li>
 </ol>
 </div>
 </div>
-</div>
 
-<div id="outline-container-org0487383" class="outline-2">
-<h2 id="org0487383">Writing List</h2>
-<div class="outline-text-2" id="text-org0487383">
-</div>
-<div id="outline-container-org6645b27" class="outline-3">
-<h3 id="org6645b27"><span class="done DONE">DONE</span> <a href="./org-to-html.html">emacs 发布org-mode文件到html</a></h3>
-<div class="outline-text-3" id="text-org6645b27">
-<ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-10-27 Sat 17:42]</span></span></li>
-</ul>
-</div>
-</div>
-</div>
 
-<div id="outline-container-org07edba2" class="outline-2">
-<h2 id="org07edba2">Reading List</h2>
-<div class="outline-text-2" id="text-org07edba2">
-</div>
-<div id="outline-container-org57962f0" class="outline-3">
-<h3 id="org57962f0"><span class="done DONE">DONE</span> <a href="https://book.douban.com/subject/5916234/">番茄工作法</a></h3>
-<div class="outline-text-3" id="text-org57962f0">
-
-<div class="figure">
-<p><img src="./images/book-fqgzf.jpg" alt="book-fqgzf.jpg" width="30%" height="30%" />
-</p>
-</div>
-</div>
-</div>
-<div id="outline-container-org02ed58b" class="outline-3">
-<h3 id="org02ed58b"><span class="done DONE">DONE</span> <a href="https://book.douban.com/subject/26979890/">算法图解</a></h3>
-<div class="outline-text-3" id="text-org02ed58b">
-<ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-10-27 Sat 14:35]</span></span></li>
-</ul>
-
-<div class="figure">
-<p><img src="./images/book-sftj.jpg" alt="book-sftj.jpg" width="30%" height="30%" />
-</p>
-</div>
-</div>
-</div>
-<div id="outline-container-org8f43429" class="outline-3">
-<h3 id="org8f43429"><span class="todo TODO">TODO</span> <a href="https://book.douban.com/subject/10432347/">算法</a></h3>
-<div class="outline-text-3" id="text-org8f43429">
-<ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-10-27 Sat 14:50]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-10-26 Fri 18:46]</span></span></li>
-</ul>
-
-<p width="30%" height="30%">
-&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-   <img src="./images/book-sftj.jpg" alt="book-sftj.jpg" width="30%" height="30%" />
-</p>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org3cffbf9" class="outline-2">
-<h2 id="org3cffbf9">Body Building</h2>
-<div class="outline-text-2" id="text-org3cffbf9">
-</div>
-<div id="outline-container-orge574633" class="outline-3">
-<h3 id="orge574633"><span class="todo TODO">TODO</span> Weekly fitness</h3>
-<div class="outline-text-3" id="text-orge574633">
-<ul class="org-ul">
-<li>State "ABORT"      from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2017-07-18 Tue 11:10] </span></span> <br /></li>
-<li>State "UNDO"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2017-06-30 Fri 10:30]</span></span></li>
-<li>State "UNDO"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2017-06-11 Sun 23:56] </span></span> <br /></li>
-</ul>
-<p>
-每周六健身
-</p>
-</div>
-</div>
-
-<div id="outline-container-orge56924f" class="outline-3">
-<h3 id="orge56924f"><span class="todo SOMEDAY">SOMEDAY</span> Early hours</h3>
-<div class="outline-text-3" id="text-orge56924f">
-<ul class="org-ul">
-<li>State "ABORT"      from "SOMEDAY"    <span class="timestamp-wrapper"><span class="timestamp">[2018-10-26 Fri 18:15] </span></span> <br />
-我觉得我现在还年轻，趁着年轻多熬几年，没毛病!</li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2017-07-05 Wed 11:50]</span></span></li>
-<li>State "UNDO"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2017-07-04 Tue 19:29]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2017-06-30 Fri 10:30]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2017-06-22 Thu 20:21]</span></span></li>
-<li>State "UNDO"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2017-06-19 Mon 10:41] </span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2017-06-11 Sun 23:58]</span></span></li>
-<li>State "UNDO"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2017-06-09 Fri 23:26]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2017-06-08 Thu 23:43]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2017-06-07 Wed 09:59]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2017-06-06 Tue 06:53] </span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2017-06-05 Mon 19:22]</span></span></li>
-</ul>
-<p>
-每天晚上12点之前睡，早上6点起床
-</p>
-</div>
-</div>
+<div id="outline-container-orgd51c4d2" class="outline-2">
+<h2 id="orgd51c4d2">java</h2>
 </div>
 </div>
 </body>
