@@ -38,8 +38,6 @@
   : [[file:remember.org][remember]]
   : [[file:img/test.jpg]]
 
-
-
 * 发布org工程文件
   
 emacs配置如下：
@@ -84,8 +82,6 @@ emacs配置如下：
 
 发布快捷键：
 ： M-x org-publish-project RET org-pages RET
-
-
 
 * 重写导出模版有两种方式
 
@@ -134,7 +130,6 @@ emacs配置如下：
   3. 子目录下的index.org 配置
      : #+LINK_UP: ../index.html
 
-  
 * 特殊符号表
 
   org-mode 支持的 LaTeX 特殊符号

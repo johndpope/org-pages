@@ -51,47 +51,6 @@
    c-h a     search for command g
 
    M-x linum-mode   show line number
-** common shortcuts
-#+BEGIN_VERSE
-   ,bb  next buffer
-
-   ,xf  search file
-
-   ,xb  search buffer
-   ,kb  kill buffer
-
-   ,ov  my overview current buffer 
-   ,c>  org do demote
-   ,c<  org do promote 
-
-   <s+Tab  add source
-   <v+Tab  ignore blank line
-   <q+Tab  add indentation
-
-   F1  org agenda 
-
-   F2  add TODO 
-   c-c c-s add start time
-   c-c c-d add end time
-   c-c .   add time period
-   ++1d    every day do
-   c-x a   org agenda list
-
-   c-c | / |-  auto generate form
-   c-c -       add  horizontal line
-
-   ,x0  close the current window
-   ,x1  close othe windows
-   ,x3   ||
-   ,x2   =
-   , (12345)  switch window
-
-   spc ss create workspace
-   spc ll search workspace
-   
-
-#+END_VERSE
-   
 ** emacs lisp
 *** blog
     http://www.woola.net/detail/2016-08-18-elisp.html
@@ -202,12 +161,4 @@ Then the command second trims out the second item in that list, which is the des
 (message foo)
     
     #+END_SRC
-** orgmode
-- alt键失灵问题,主要是因为xshell的配置问题
-  文件-->属性-->终端-->键盘-->元(meta)键仿真 
-- [[http://www.github.com/nanue1][nanue1's github]]
-    - c-c c-l 
-      创建url
-    - c-c c-o
-      打开url
-      
+    
