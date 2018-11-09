@@ -2,10 +2,11 @@
 #+TITLE: 生活啊，不就是这样吗
 
 * Writing List
-** DONE [[file:note-threat_intelligence_scrapy.org][Threat Intelligence 情报收集爬虫]] 
 ** DONE [[file:note-q&a.org][question & answer]] 
-** DONE [[file:note-shortcutes.org][一些常用快捷键和系统命令]]
 ** DONE [[./org-to-html.org][emacs 发布org-mode文件到html]]
+** DONE [[file:note-shortcutes.org][一些常用快捷键和系统命令]]
+** DONE [[file:note-kc&kt.org][Kytoto Cabinet & Tycoon k-v型离线数据库]] 
+** DONE [[file:note-threat_intelligence_scrapy.org][Threat Intelligence 情报收集爬虫]] 
 * Coding List
 ** DONE [[./199-Binary Tree Right Side View.org][199. Binary Tree Right Side View]]
 ** TODO [[./31-Next Permutation.org][31.Next Permutation]]   
@@ -17,6 +18,12 @@
 ** TODO sort
    SCHEDULED: <2018-11-04 Sun>
    1. 选择排序 2. 插入排序 3. 希尔排序
+
+** TODO  
+
+** TODO [[file:122-Best%20Time%20to%20Buy%20and%20Sell%20Stock%20II.org][122.Best Time to Buy and Sell Stock II]] 
+
+** TODO [[file:815-Bus%20Routes.org][815. Bus Routes]] 
 
 * Reading List
 ** DONE [[https://book.douban.com/subject/5916234/][番茄工作法]] 
