@@ -1,0 +1,33 @@
+#+SETUPFILE: setup.org
+#+TITLE: 47.Permutations II
+
+
+Given a collection of numbers that might contain duplicates, return all possible unique
+permutations.
+
+Example:
+
+#+begin_example
+Input: [1,1,2]
+Output:
+[
+  [1,1,2],
+  [1,2,1],
+  [2,1,1]
+]
+#+end_example
+
+* 题意分析
+
+  给一个有重复整数集，输出所有可能组合
+
+* java
+#+BEGIN_SRC java
+class Solution {
+    public List<List<Integer>> permuteUnique(int[] nums) {
+        
+    }
+}
+#+END_SRC
+
+* python

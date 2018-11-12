@@ -1,14 +1,20 @@
 #+SETUPFILE: setup.org
 #+TITLE: 使用Docker自动部署Cisco IOU实验环境
 
-准备ccie lab的过程中难免用到Cisco IOU环境，这里找提供一个自己使用的docker
-大家环境，方便实验环境迁移部署。
+准备ccie lab的过程中难免用到Cisco IOU环境，这里提供一个自己使用的docker
+环境，方便实验环境迁移部署。
+
 
 [[https://github.com/dainok/iou-web][web-iou]] 作者项目地址
 
 [[https://ccie.lol/blog/2016/07/03/cisco-ios-image-download/][iou镜像下载]] 这里可以找到
 
 dockerfile自动部署可以到 [[https://github.com/Nanue1/web-iou-docker][github仓库]]去查询，有详细的使用说明记录
+
+
+#+ATTR_HTML: :width 100% :height 80%
+[[./images/web-iou.jpg]]
+
 
 dockerfile内容 如下
 #+BEGIN_SRC 
