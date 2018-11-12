@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-11-12 Mon 17:18 -->
+<!-- 2018-11-09 Fri 17:31 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Sitemap</title>
+<title>question &amp; answer</title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -179,6 +179,7 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
+<link rel="stylesheet" href="css/worg.css" type="text/css" media="screen" />
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -231,44 +232,65 @@ for the JavaScript code in this tag.
 <a href="index.html">Home</a>
 </div>
 <div id="content">
-<h1 class="title">Sitemap</h1>
-<ul class="org-ul">
-<li><a href="122-Best Time to Buy and Sell Stock II.html">122.Best Time to Buy and Sell Stock II</a></li>
-<li><a href="199-Binary Tree Right Side View.html">199. Binary Tree Right Side View</a></li>
-<li><a href="31-Next Permutation.html">31.Next-Permutation</a></li>
-<li><a href="815-Bus Routes.html">815. Bus Routes</a></li>
-<li><a href="note-linux-awk.html">AWK 程序设计语言</a></li>
-<li><a href="org-to-html.html">Publishing Org-mode files to HTML</a></li>
-<li><a href="note-threat_intelligence_scrapy.html">Threat Intelligence 情报收集爬虫</a></li>
-<li><a href="note-data-structure.html">data structure</a></li>
-<li><a href="note-docker-Docker使用.html">docker 碎片记录</a></li>
-<li><a href="note-elasticsearch.html">elasticsearch 相关知识整理</a></li>
-<li><a href="note-emacs.html">emacs note</a></li>
-<li><a href="note-git.html">git note</a></li>
-<li><a href="note-jvm.html">jvm 虚拟机学习</a></li>
-<li><a href="note-kc&amp;kt.html">kyoto Cabinet &amp; Tycoon kv 离线数据库</a></li>
-<li><a href="note-maven.html">maven 管理</a></li>
-<li><a href="note-Mongo.html">mongo 使用笔记</a></li>
-<li><a href="note-Mysql.html">mysql note</a></li>
-<li><a href="note-java.html">note-java</a></li>
-<li><a href="note-linux-centos.html">note-linux-centos</a></li>
-<li><a href="README.html">org-pages 项目说明</a></li>
-<li><a href="note-q&amp;a.html">question &amp; answer</a></li>
-<li><a href="note-redis.html">redis 使用</a></li>
-<li><a href="setup.html">setup</a></li>
-<li><a href="note-spark_use.html">spark 学习</a></li>
-<li><a href="note-spring-framework.html">spring boot 初体验</a></li>
-<li><a href="note-swagger.html">swagger 在线api文档</a></li>
-<li><a href="note-tmux.html">tmux + ssh 管理远程会话</a></li>
-<li><a href="note-linux-Ubuntu开发环境的配置记录.html">ubuntu  note</a></li>
-<li><a href="note-shortcutes.html">一些快捷键 系统命令</a></li>
-<li><a href="auto-stack.html">中国股市行情分析笔记</a></li>
-<li><a href="note-docker-cisco_iou.html">使用Docker自动部署Cisco IOU实验环境</a></li>
-<li><a href="note-robot-微信机器人demo.html">微信机器人</a></li>
-<li><a href="note-options.html">期货 期权 及其衍生产品</a></li>
-<li><a href="index.html">生活啊，不就是这样吗</a></li>
-<li><a href="note-scrapy-用scrapy爬取FTP列表文件.html">用scrapy爬取FTP列表文件</a></li>
+<h1 class="title">question &amp; answer</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org2acee12"><span class="done DONE">DONE</span> org-mode table中英文对齐问题</a></li>
+<li><a href="#orgcb277f3"><span class="done DONE">DONE</span> 连接远程主机emacs alt键失灵问题</a></li>
+<li><a href="#org494f256"><span class="todo TODO">TODO</span> emacs数据恢复问题</a></li>
 </ul>
+</div>
+</div>
+<div id="outline-container-org2acee12" class="outline-2">
+<h2 id="org2acee12"><span class="done DONE">DONE</span> org-mode table中英文对齐问题</h2>
+<div class="outline-text-2" id="text-org2acee12">
+<ul class="org-ul">
+<li>State "DONE"       from              <span class="timestamp-wrapper"><span class="timestamp">[2018-11-09 Fri 12:35]</span></span></li>
+</ul>
+<p>
+只需要设置org-table的字体为等宽字体
+</p>
+<pre class="example">
+;; Org table font
+(custom-set-faces
+'(org-table ((t (:family "Ubuntu Mono derivative Powerline")))))
+</pre>
+<p>
+安装Ubuntu Mono derivative Powerline
+</p>
+<pre class="example">
+git clone https://aur.archlinux.org/ttf-ubuntu-mono-derivative-powerline-git.git
+makepkg -Acs
+sudo pacman -U *.tar.xz
+
+</pre>
+</div>
+</div>
+<div id="outline-container-orgcb277f3" class="outline-2">
+<h2 id="orgcb277f3"><span class="done DONE">DONE</span> 连接远程主机emacs alt键失灵问题</h2>
+<div class="outline-text-2" id="text-orgcb277f3">
+<ul class="org-ul">
+<li>State "DONE"       from              <span class="timestamp-wrapper"><span class="timestamp">[2018-11-09 Fri 12:35]</span></span></li>
+</ul>
+<p>
+主要是因为xshell的配置问题
+</p>
+
+<p>
+文件&#x2013;&gt;属性&#x2013;&gt;终端&#x2013;&gt;键盘&#x2013;&gt;元(meta)键仿真 
+</p>
+</div>
+</div>
+<div id="outline-container-org494f256" class="outline-2">
+<h2 id="org494f256"><span class="todo TODO">TODO</span> emacs数据恢复问题</h2>
+<div class="outline-text-2" id="text-org494f256">
+<ul class="org-ul">
+<li>State "TODO"       from              <span class="timestamp-wrapper"><span class="timestamp">[2018-11-09 Fri 12:35]</span></span></li>
+</ul>
+</div>
+</div>
 </div>
 </body>
 </html>

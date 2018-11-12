@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-10-27 Sat 17:37 -->
+<!-- 2018-11-12 Mon 17:18 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>一些快捷键 系统命令</title>
+<title>一些常用快捷键与系统命令</title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -232,95 +232,289 @@ for the JavaScript code in this tag.
 <a href="index.html">Home</a>
 </div>
 <div id="content">
-<h1 class="title">一些快捷键 系统命令</h1>
+<h1 class="title">一些常用快捷键与系统命令</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org40aa3cb">win10 shortcuts</a></li>
-<li><a href="#org6964df9">vim</a></li>
-<li><a href="#org3423fca">commands</a></li>
-<li><a href="#org422ea24">grep</a></li>
+<li><a href="#orgfb0ae72">commands</a></li>
+<li><a href="#orgea25de5">shortcuts</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org40aa3cb" class="outline-2">
-<h2 id="org40aa3cb">win10 shortcuts</h2>
-<div class="outline-text-2" id="text-org40aa3cb">
-<p>
-win+ctrl+left/right 切换工作区
-</p>
-</div>
-</div>
-<div id="outline-container-org6964df9" class="outline-2">
-<h2 id="org6964df9">vim</h2>
-<div class="outline-text-2" id="text-org6964df9">
+<div id="outline-container-orgfb0ae72" class="outline-2">
+<h2 id="orgfb0ae72">commands</h2>
+<div class="outline-text-2" id="text-orgfb0ae72">
 <ol class="org-ol">
 <li><p>
-常用组合
-不按 Esc 而是按^[或者^c，速度快很多
-学会几个定位键的区别: C-^ 0, $, {, }, g, G, w, e, b&#x2026;
-o, O 分别是当前位置下面/上面插入一个新行并进入插入状态
-Shift+V 选定几行，然后用 一起移动
-Ctrl+V 选定行首或行尾的字符，然后用 shift+i 做插入，或者 shift+x 做删除
-学会用 y,d 和 p, P 做粘贴剪切
-学会用^W 的窗口操作。打开文件用 sp 或者 vs
-学会记录宏的命令。用 q 加任意键开始录制，再按 q 保存。然后可用@加这个任意键回放，在@前加数字可定义回放次数。
-"."重复上一个命令，"u"取消上一个命令,"^r"反取消
-^n, ^p 用 buf 里的关键词补全。
-学会搜索替换":%s/要搜的东西/要换成的东西/g"
-任何时候移到一个单词上按#的话可以高亮这个文档里所有一样的单词
-用“/”做搜索, 按 n 或 N 上一个/下一个
-":!命令 &amp;"可直接运行这个命令，用":!命令 %&amp;"如果你想让这个命令对当前所编辑文件做操作。
-任何时候可用":cd %:p:h"来切换目录到当前编辑文件所在目录。
-ddp 呼唤行位置
-r/R  # [N]这两个是替换字符的命令
+查找文件比较大的
 </p>
-
-<p>
-:reg     "0p  寄存器使用
+<div class="org-src-container">
+<pre class="src src-bash">find ~ -type f -exec du {} + &gt; /tmp/size_report.txt
+sort -rn /tmp/size_report.txt | head -n20
+</pre>
+</div></li>
+<li><p>
+目录下查找代码
 </p>
+<pre class="example">
+grep -r "y_T" /home/manue1/work/ 
 
-<p>
-行内跳转:
- fc 第一个 c   /str 查找定位到一个
- 80 l 向左移动 80 格子
- 80 | 直接移动到第 80 列
+</pre></li>
+<li><p>
+查看进出流量
 </p>
-
-<p>
-       创建折叠:
-zf zc zo
-</p></li>
-<li>每行行首行尾插入
-每行的行首都添加一个字符串：%s/^/要插入的字符串
-每行的行尾都添加一个字符串：%s/$/要插入的字符串</li>
+<pre class="example">
+iftop -n
+nload  
+</pre></li>
 </ol>
 </div>
 </div>
-<div id="outline-container-org3423fca" class="outline-2">
-<h2 id="org3423fca">commands</h2>
-<div class="outline-text-2" id="text-org3423fca">
-<p>
-查找文件比较大的
-find ~ -type f -exec du {} + &gt; /tmp/size_report.txt
-sort -rn /tmp/size_report.txt | head -n20
-</p>
+<div id="outline-container-orgea25de5" class="outline-2">
+<h2 id="orgea25de5">shortcuts</h2>
+<div class="outline-text-2" id="text-orgea25de5">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 1:</span> shortcuts</caption>
 
-<p>
-2042  curl 10.6.109.60:9200/_cat/indices
-2043  curl 10.6.109.60:9200/_cat/indices/vul*
-2044  sudo iftop -n
- nload  查看进出流量
-</p>
-</div>
-</div>
-<div id="outline-container-org422ea24" class="outline-2">
-<h2 id="org422ea24">grep</h2>
-<div class="outline-text-2" id="text-org422ea24">
-<p>
-grep -r "y_T" <i>home/manue1/work</i>  查找代码
-</p>
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">快捷键</th>
+<th scope="col" class="org-left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><b>window</b></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">win+ctrl+left/right</td>
+<td class="org-left">切换工作区</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><b>emacs</b></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">c-c l</td>
+<td class="org-left">生成表格</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">c-c -</td>
+<td class="org-left">表格添加下横线</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">c-x b</td>
+<td class="org-left">查找buffer</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">c-x f</td>
+<td class="org-left">查找文件</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">&lt;s +Tab</td>
+<td class="org-left">添加源码</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">&lt;v+TAB</td>
+<td class="org-left">忽略空白行</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">&lt;q +Tab</td>
+<td class="org-left">添加缩进块</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">c-c c-s</td>
+<td class="org-left">添加任务开始时间</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">c-c c-d</td>
+<td class="org-left">添加任务结束时间</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">c-c .</td>
+<td class="org-left">添加时间段</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">++1d</td>
+<td class="org-left">添加每天任务</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">c-x 0</td>
+<td class="org-left">关闭当前窗口</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">c-x 1</td>
+<td class="org-left">关闭其他窗口</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">c-x 3</td>
+<td class="org-left">左右分割</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">c-x 2</td>
+<td class="org-left">垂直分割 =</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">c-x o</td>
+<td class="org-left">移动到其他窗口</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">spc ss</td>
+<td class="org-left">创建一个工作区</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">spc ll</td>
+<td class="org-left">搜索工作区</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">c-c c-l</td>
+<td class="org-left">创建链接</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">c-c c-o</td>
+<td class="org-left">打开链接</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">c-x u</td>
+<td class="org-left">撤销</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">c-n ,p ,f ,b</td>
+<td class="org-left">下，上,前，后</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">c-w</td>
+<td class="org-left">剪切</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">a-w</td>
+<td class="org-left">复制</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">c-y</td>
+<td class="org-left">粘贴</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><b>vim</b></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">X  x</td>
+<td class="org-left">左删除、右删除</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">c-w</td>
+<td class="org-left">切换窗口</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">%s/$/要插入的字符串</td>
+<td class="org-left">每行首添加</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">%s/^/要插入的字符串</td>
+<td class="org-left">每行尾添加</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">:reg</td>
+<td class="org-left"><a href="https://harttle.land/2016/07/25/vim-registers.html">寄存器使用</a></td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">"{register}p</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">"{register}y</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
