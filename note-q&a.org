@@ -1,6 +1,6 @@
 #+SETUPFILE: setup.org
 #+TITLE: question & answer
-** DONE org-mode table中英文对齐问题
+* DONE org-mode table中英文对齐问题
    CLOSED: [2018-11-09 Fri 12:35]
    - State "DONE"       from              [2018-11-09 Fri 12:35]
    只需要设置org-table的字体为等宽字体
@@ -13,11 +13,13 @@
    : git clone https://aur.archlinux.org/ttf-ubuntu-mono-derivative-powerline-git.git
    : makepkg -Acs
    : sudo pacman -U *.tar.xz
-** DONE 连接远程主机emacs alt键失灵问题
+* DONE 连接远程主机emacs alt键失灵问题
    CLOSED: [2018-11-09 Fri 12:35]
    - State "DONE"       from              [2018-11-09 Fri 12:35]
    主要是因为xshell的配置问题
 
    文件-->属性-->终端-->键盘-->元(meta)键仿真 
-** TODO emacs数据恢复问题
-   - State "TODO"       from              [2018-11-09 Fri 12:35]
+* TODO emacs数据恢复问题
+  =c-x u= 解决问题
+* TODO SSH登录session常驻与github冲突问题 
+  - State "TODO"       from              [2018-11-13 Tue 19:40]

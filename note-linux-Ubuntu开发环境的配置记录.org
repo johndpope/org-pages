@@ -1,107 +1,25 @@
 
 #+SETUPFILE: setup.org
-#+TITLE: ubuntu  note
- the new os should do this for update 
-  - config software sources
-  - sudo apt-get update
-  - sudo apt-get upgrate
-** develop env conf
-   目前想要实现的开发环境是win7环境下使用idea开发java，python
+#+TITLE: ubuntu作为远程开发主机
 
-   但是我想将代码，python的依赖包 安装在我的vmware ubuntu上面
+记录下曾经win下办公使用的远程开发策略,简单说,win7环境下使用idea开发java，
+python,但是我想将代码自动同步到ubuntu上做备份;python的运行环境使用
+vmware的ubuntu上的多版本python环境,实现本地使用idea开发，代码运行在
+远端linux上,当然java还是使用的物理机安装的环境
 
-   实现本地使用ide开发，代码运行在远端linux上，环境使用远端环境
 
-   查看了下资料，idea官方说明有 [[http://www.jetbrains.com/help/idea/2017.1/remote-host-tool-window.html][sftp ]]这个功能
+查看了下资料，idea官方说明有 [[http://www.jetbrains.com/help/idea/2017.1/remote-host-tool-window.html][sftp ]]这个功能,创建sftp服务连接 
+=tool -> deployment -> +=
 
-   创建sftp服务连接 tool -> deployment -> + 
+1. 本地开发的java项目备份到远端linux目录
 
-   实现的功能：
-   1. 本地开发的java项目备份到远端linux目录
-
-      RemoteHost内配置好mappings，本地项目备份到ubuntu的路径
+   RemoteHost内配置好mappings，本地项目备份到ubuntu的路径
       
-      右键项目Upload to 服务器
-   2. 使用linux python环境 写python项目
+   右键项目Upload to 服务器
 
-      F4 -> project -> +  -> add remote
+2. 使用linux python环境 写python项目
+
+   =F4 -> project -> +  -> add remote=
       
-      只需要本地开发编码不报错，运行可以同步到服务器运行
+   只需要本地开发编码不报错，运行可以同步到服务器运行
       
-** 挂载磁盘
-   在文件中添加要挂载的分区和文件目录可以修改文件
-
-   /etc/fstab
-
-   /dev/sda5/    media/win    ntfs    defaults   02
-
-   然后 mount -a
-
-   1. 查看几块硬盘
-   
-      sudo fdisk -l |grep sd
-   
-   2. 创建分区
-   
-      虚拟机现有20g的硬盘,使用fdisk划分磁盘
-       
-      sudo fdisk /dev/sda
-   
-      #+BEGIN_VERSE
-         m  帮助信息  
-         n 创建分区
-         e 扩展分区    +5G  pppp/pppe
-         p 打印分区
-         t 分区类型 L  (lvm)
-         w 写入保存分区
-      #+END_VERSE
-
-   3. 格式化 分区
-
-   - LVM
-     pv --> vg --> lv
-     参考: http://blog.sina.com.cn/s/blog_b77735d20101e5cn.html
-     http://aurthurxlc.github.io/Aurthur-2017/Centos-7-extend-lvm-volume.html
-
-#+BEGIN_SRC 
-  fdisk -l | grep sd
-  fdisk /dev/sda
-  partprobe
-  pvdisplay
-  pvcreate /dev/sda3
-  vgdisplay
-  vgextend centos /dev/sda3
-  lvdisplay
-  lvcreate -L 3.31G -n manue1 centos
-  mkfs.xfs /dev/centos/manue1
-  lvremove -f /dev/centos/manue1
-  lvextend -l +100%FREE /dev/centos/root
-  df -Th
-  xfs_growfs /dev/centos/root
-** ubuntu15.04 wifi 热点共享
-  + 1.下载
-
-    在 ubuntu 软件中心搜索 kde nm connection
-
-  + 2.配置
-#+BEGIN_VERSE
-    kde5-nm-connection-editor
-    跳出连接编辑器的图形界面 在图形界面点击
-    添加-->Wireless(shared)
-    弹出 New Connection (New 802-11-wireless connection)图形界面
-    Connection name:更改为 mywifi(默认为 New 802-11-wireless connection)
-    SSID:更改为 mywifi(默认为 my_shared_connection)
-    模式:选择 Access Point
-    Restrict to device:选择你的无线网卡
-    点击无线安全选项卡
-    安全:选择 WPA & WPA2 Personal
-    密码:填入你要设置的密码(至少 8 位)
-#+END_VERSE
-  + 3.连接
-#+BEGIN_VERSE
-    我们点击最上方网络管理的图标，选择 连接到隐藏的 Wi-Fi 网络
-    Wifi 适配器:选择我们设置了的无线网络
-    连接:选择我们刚刚建立的连接名称(mywifi)
-    之后网络名称(SSID)，Wi-Fi 安全性,密码会自动填写并变成灰色
-    点击确定
-#+END_VERSE
