@@ -6,6 +6,7 @@ import java.util.List;
 public class Code_46 {
     /**
      * @param nums
+     * 给一个不重复整数集，输出所有可能组合
      * @return
      */
     public List<List<Integer>> permute(int[] nums) {

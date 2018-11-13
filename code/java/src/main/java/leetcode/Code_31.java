@@ -8,20 +8,20 @@ public class Code_31 {
         while (index > 0 && !change) {
             if (nums[index] > nums[index - 1]) {
                 change = true;
+                break;
             }
             index--;
         }
         if (change) {
             int bigger_index = findBigger(nums, index);
-            swap(nums, index - 1, bigger_index);
-            reverseArray(nums, index, nums.length - 1);
+            swap(nums, index-1, bigger_index);
         }
-        reverseArray(nums, 0, nums.length - 1);
+        reverseArray(nums, index, nums.length - 1);
     }
 
     private void reverseArray(int[] nums, int start, int end) {
-        if (start < end) {
-            swap(nums, start, end);
+        while (start < end) {
+            swap(nums,start, end);
             start++;
             end--;
         }
@@ -34,11 +34,11 @@ public class Code_31 {
     }
 
     private int findBigger(int[] nums, int index) {
-        int t = nums[index - 1];
-        while (index < nums.length) {
-            if (t > nums[index]) {
+        int t = nums[index-1];
+        while (index < nums.length-1) {
+            if (t >= nums[index+1]) {
 
-                return index - 1;
+                return index;
             }
             index++;
         }
