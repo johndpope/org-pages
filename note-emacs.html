@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-11-13 Tue 11:50 -->
+<!-- 2018-11-14 Wed 11:00 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>emacs note</title>
@@ -237,24 +237,37 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgd35ffad">note-emacs</a>
+<li><a href="#org352d83e">note-emacs</a>
 <ul>
-<li><a href="#org965b136">emacs tutorial</a></li>
+<li><a href="#org7873b58">emacs tutorial</a></li>
+<li><a href="#orgc07c203">emacs lisp</a>
+<ul>
+<li><a href="#org457696a">blog</a></li>
+<li><a href="#org3082537">casting spels emacs</a>
+<ul>
+<li><a href="#org4ad79d0">Syntax and Semantic</a></li>
+<li><a href="#org820a79a">Defining the data for our Game World</a></li>
+<li><a href="#org452d9e8">Looking around in our game world</a></li>
+</ul>
+</li>
+<li><a href="#orga28f314">code</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd35ffad" class="outline-2">
-<h2 id="orgd35ffad">note-emacs</h2>
-<div class="outline-text-2" id="text-orgd35ffad">
+<div id="outline-container-org352d83e" class="outline-2">
+<h2 id="org352d83e">note-emacs</h2>
+<div class="outline-text-2" id="text-org352d83e">
 <p>
 the learning environment is mac 
 </p>
 </div>
-<div id="outline-container-org965b136" class="outline-3">
-<h3 id="org965b136">emacs tutorial</h3>
-<div class="outline-text-3" id="text-org965b136">
+<div id="outline-container-org7873b58" class="outline-3">
+<h3 id="org7873b58">emacs tutorial</h3>
+<div class="outline-text-3" id="text-org7873b58">
 <p>
 use c-h t open tutorial 
 </p>
@@ -270,6 +283,244 @@ c-x c-c  quit emacs
 <p>
 c-g      quit current command
 </p>
+
+<pre class="example">
+
+
+                                上一行 C-p
+                                     :
+                                     :
+               向左移 C-b .... 目前光标位置 .... 向右移 C-f
+                                     :
+                                     :
+                                下一行 C-n
+
+</pre>
+
+
+
+<p>
+c-/ | c-x u     undo 
+</p>
+
+<p>
+c-_      undo step by step
+</p>
+
+<p>
+c-k      delete
+</p>
+
+<p>
+c-x c-f  search file
+</p>
+
+<p>
+c-x c-s  save file
+</p>
+
+<p>
+c-x s    save more buffer
+</p>
+
+<p>
+c-x c-b | c-x b  search buffer
+</p>
+
+<p>
+c-s     search forwards
+</p>
+
+<p>
+c-r     search backwards
+</p>
+
+<p>
+c-h k ()  query shortcut description
+</p>
+
+<p>
+c-h f ()  describe function
+</p>
+
+<p>
+c-h a     search for command g
+</p>
+
+<p>
+M-x linum-mode   show line number
+</p>
+</div>
+</div>
+<div id="outline-container-orgc07c203" class="outline-3">
+<h3 id="orgc07c203">emacs lisp</h3>
+<div class="outline-text-3" id="text-orgc07c203">
+</div>
+<div id="outline-container-org457696a" class="outline-4">
+<h4 id="org457696a">blog</h4>
+<div class="outline-text-4" id="text-org457696a">
+<p>
+<a href="http://www.woola.net/detail/2016-08-18-elisp.html">http://www.woola.net/detail/2016-08-18-elisp.html</a>
+</p>
+</div>
+</div>
+<div id="outline-container-org3082537" class="outline-4">
+<h4 id="org3082537">casting spels emacs</h4>
+<div class="outline-text-4" id="text-org3082537">
+<p>
+a comic book : Emacs Lisp version 
+<a href="http://www.lisperati.com/casting-spels-emacs/html/casting-spels-emacs-1.html">http://www.lisperati.com/casting-spels-emacs/html/casting-spels-emacs-1.html</a>
+</p>
+
+<p>
+Emacs <b>scratch</b> buffer is Lisp interacion : c-x b <b>scratch</b>
+</p>
+
+
+<p>
+Emacs tutorial <a href="https://www.gnu.org/software/emacs/tour/">https://www.gnu.org/software/emacs/tour/</a>
+</p>
+
+
+<p>
+Emacs manual : <a href="https://www.gnu.org/software/emacs/manual/index.html">https://www.gnu.org/software/emacs/manual/index.html</a>
+</p>
+
+<p>
+c-x c-e  : evaluable each expression (move the cursor to the end of each expression )
+</p>
+
+<p>
+M-x top-level : clears out errors
+</p>
+
+<p>
+M-x ielm  : ELISP&gt;
+</p>
+
+<p>
+(setq eval-expression-print-length nil) : prevent emacs truncate messages
+</p>
+
+<p>
+(require 'cl) : the library to make elisp run Common lisp command 
+</p>
+</div>
+
+
+<div id="outline-container-org4ad79d0" class="outline-5">
+<h5 id="org4ad79d0">Syntax and Semantic</h5>
+<div class="outline-text-5" id="text-org4ad79d0">
+<p>
+any text you give elisp interprater has to be arranged into list ,can be nested into lists of
+lists,a list in elisp (bla bla bla (abc abc))
+</p>
+
+<p>
+elis: interprater uses two modes to read code:  Code mode / Data mode. 
+in data mode,you can put anything into your list ;
+in Code mode, your list need to be special type of list called a form :
+</p>
+
+<pre class="example">
+
+(foo bla bla bla)
+  ^          ^
+  |          |
+command     a form
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org820a79a" class="outline-5">
+<h5 id="org820a79a">Defining the data for our Game World</h5>
+<div class="outline-text-5" id="text-org820a79a">
+<p>
+in order to learn some more about forms,examples:
+</p>
+<pre class="example">
+(setq objects '(whiskey-bottle bucket frog chain))
+
+| code mode    | The single quote to 'flip' the compiler into Date mode |                                     |   |   |
+|--------------+--------------------------------------------------------+-------------------------------------+---+---|
+| setq objects | '                                                      | (whiskey-bottle bucket frog chain)) |   |   |
+|--------------+--------------------------------------------------------+-------------------------------------+---+---|
+
+</pre>
+<p>
+the command sets a variable to a value : the variable is objects and the value is a list 
+</p>
+</div>
+</div>
+
+<div id="outline-container-org452d9e8" class="outline-5">
+<h5 id="org452d9e8">Looking around in our game world</h5>
+<div class="outline-text-5" id="text-org452d9e8">
+<p>
+The word defun means, as you might expect, that we're defining a function
+</p>
+<pre class="example">
+(defun describe-location (location map)
+    (second (assoc location map)))
+</pre>
+<p>
+The assoc command does this and then returns the data describing the living-room
+</p>
+
+<p>
+Then the command second trims out the second item in that list, which is the description of the living-room
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga28f314" class="outline-4">
+<h4 id="orga28f314">code</h4>
+<div class="outline-text-4" id="text-orga28f314">
+<div class="org-src-container">
+<pre class="src src-elisp">
+(<span style="color: #66D9EF;">setq</span> objects '(whiskey-bottle bucket frog chain))
+
+(<span style="color: #66D9EF;">setq</span> object-locations '((whiskey-bottle living-room)
+                           (bucket living-room)
+                           (chain garden)
+                           (frog garden)))
+
+(<span style="color: #66D9EF;">setq</span> location 'living-room)
+
+(<span style="color: #66D9EF;">setq</span> map '((living-room (you are in the living room
+                of a wizards house - there is a wizard
+                snoring loudly on the couch -)
+                (west door garden)
+                (upstairs stairway attic))
+              (garden (you are in a beautiful garden -
+                there is a well in front of you -)
+                (east door living-room))
+              (attic (you are in the attic of the
+                wizards house - there is a giant
+                welding torch in the corner -)
+                (downstairs stairway living-room))))
+
+(<span style="color: #66D9EF;">defun</span> <span style="color: #F92672; font-style: italic;">describe-location</span> (location map)
+    (second (assoc location map)))
+
+
+(describe-location 'living-room map)
+
+(message <span style="color: #E6DB74;">"hello world"</span>)
+
+(<span style="color: #66D9EF;">defun</span> <span style="color: #F92672; font-style: italic;">hello-world</span> (name)
+ <span style="color: #E6DB74; font-style: italic;">"say hello to user whose name is XX"</span>
+   (message <span style="color: #E6DB74;">"hello , %s"</span> name))
+
+(hello-world <span style="color: #E6DB74;">"manue1"</span>)
+
+(<span style="color: #66D9EF;">setq</span> foo <span style="color: #E6DB74;">"i'm manue1"</span>)
+(message foo)
+
+</pre>
+</div>
+</div>
 </div>
 </div>
 </div>

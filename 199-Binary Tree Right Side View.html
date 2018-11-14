@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-11-13 Tue 11:47 -->
+<!-- 2018-11-14 Wed 10:59 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>199. Binary Tree Right Side View</title>
@@ -237,21 +237,21 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org6467bd2">题意分析</a></li>
-<li><a href="#orgf565a28">一、Depth-First Search</a>
+<li><a href="#org60ac515">题意分析</a></li>
+<li><a href="#org9a80fb1">一、Depth-First Search</a>
 <ul>
-<li><a href="#orgb6ca76d">1.1 java 实现DFS</a></li>
-<li><a href="#org125991d">1.2 python 实现DFS</a></li>
+<li><a href="#org1ab6143">1.1 java 实现DFS</a></li>
+<li><a href="#orgcb10ec3">1.2 python 实现DFS</a></li>
 </ul>
 </li>
-<li><a href="#org656d063">二、Breadth-First-Search</a>
+<li><a href="#orgb58cadd">二、Breadth-First-Search</a>
 <ul>
-<li><a href="#org6ed8c6a">2.1 java</a></li>
+<li><a href="#org981b964">2.1 java</a></li>
 </ul>
 </li>
-<li><a href="#org3d65832">三、Traversal</a>
+<li><a href="#org58c9ce7">三、Traversal</a>
 <ul>
-<li><a href="#orgd39a03e">3.1 java</a></li>
+<li><a href="#orgc7c33ba">3.1 java</a></li>
 </ul>
 </li>
 </ul>
@@ -282,18 +282,18 @@ Explanation:
   5     4       &lt;---
 </pre>
 
-<div id="outline-container-org6467bd2" class="outline-2">
-<h2 id="org6467bd2">题意分析</h2>
-<div class="outline-text-2" id="text-org6467bd2">
+<div id="outline-container-org60ac515" class="outline-2">
+<h2 id="org60ac515">题意分析</h2>
+<div class="outline-text-2" id="text-org60ac515">
 <p>
 站在树右边 视野能够看到的节点
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgf565a28" class="outline-2">
-<h2 id="orgf565a28">一、Depth-First Search</h2>
-<div class="outline-text-2" id="text-orgf565a28">
+<div id="outline-container-org9a80fb1" class="outline-2">
+<h2 id="org9a80fb1">一、Depth-First Search</h2>
+<div class="outline-text-2" id="text-org9a80fb1">
 <pre class="example">
 1.深度遍历：根结点 ---&gt; 左子树 ---&gt; 右子树,保证同一层最后一个录入栈内的数据为最右节点
 2. 时间复杂度O(n) 空间复杂度O(2n)
@@ -307,9 +307,9 @@ Explanation:
 </div>
 </div>
 
-<div id="outline-container-orgb6ca76d" class="outline-3">
-<h3 id="orgb6ca76d">1.1 java 实现DFS</h3>
-<div class="outline-text-3" id="text-orgb6ca76d">
+<div id="outline-container-org1ab6143" class="outline-3">
+<h3 id="org1ab6143">1.1 java 实现DFS</h3>
+<div class="outline-text-3" id="text-org1ab6143">
 <div class="org-src-container">
 <pre class="src src-java"><span style="color: #E6DB74; font-style: italic;">/**</span>
 <span style="color: #E6DB74; font-style: italic;"> * Definition for a binary tree node.</span>
@@ -360,9 +360,9 @@ Explanation:
 </div>
 </div>
 
-<div id="outline-container-org125991d" class="outline-3">
-<h3 id="org125991d">1.2 python 实现DFS</h3>
-<div class="outline-text-3" id="text-org125991d">
+<div id="outline-container-orgcb10ec3" class="outline-3">
+<h3 id="orgcb10ec3">1.2 python 实现DFS</h3>
+<div class="outline-text-3" id="text-orgcb10ec3">
 <pre class="example">
 list作为stack栈使用
 
@@ -396,18 +396,18 @@ list作为stack栈使用
 </div>
 </div>
 
-<div id="outline-container-org656d063" class="outline-2">
-<h2 id="org656d063">二、Breadth-First-Search</h2>
-<div class="outline-text-2" id="text-org656d063">
+<div id="outline-container-orgb58cadd" class="outline-2">
+<h2 id="orgb58cadd">二、Breadth-First-Search</h2>
+<div class="outline-text-2" id="text-orgb58cadd">
 <pre class="example">
 1. 广度优先遍历 根节点--&gt;右节点--&gt;左节点 需要将每层最右端数据第一个录入到队列
 2. 时间复杂度O(n) 空间复杂度 O(n)
 
 </pre>
 </div>
-<div id="outline-container-org6ed8c6a" class="outline-3">
-<h3 id="org6ed8c6a">2.1 java</h3>
-<div class="outline-text-3" id="text-org6ed8c6a">
+<div id="outline-container-org981b964" class="outline-3">
+<h3 id="org981b964">2.1 java</h3>
+<div class="outline-text-3" id="text-org981b964">
 <div class="org-src-container">
 <pre class="src src-java"><span style="color: #E6DB74; font-style: italic;">/**</span>
 <span style="color: #E6DB74; font-style: italic;"> * bfs &#38431;&#21015;&#23454;&#29616;</span>
@@ -453,13 +453,13 @@ list作为stack栈使用
 </div>
 </div>
 
-<div id="outline-container-org3d65832" class="outline-2">
-<h2 id="org3d65832">三、Traversal</h2>
-<div class="outline-text-2" id="text-org3d65832">
+<div id="outline-container-org58c9ce7" class="outline-2">
+<h2 id="org58c9ce7">三、Traversal</h2>
+<div class="outline-text-2" id="text-org58c9ce7">
 </div>
-<div id="outline-container-orgd39a03e" class="outline-3">
-<h3 id="orgd39a03e">3.1 java</h3>
-<div class="outline-text-3" id="text-orgd39a03e">
+<div id="outline-container-orgc7c33ba" class="outline-3">
+<h3 id="orgc7c33ba">3.1 java</h3>
+<div class="outline-text-3" id="text-orgc7c33ba">
 <div class="org-src-container">
 <pre class="src src-java">
 <span style="color: #E6DB74; font-style: italic;">/**</span>

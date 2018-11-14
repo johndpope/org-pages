@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-11-13 Tue 11:50 -->
+<!-- 2018-11-14 Wed 11:00 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>spark 学习</title>
@@ -237,38 +237,38 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgc96f61d">what is spark</a></li>
-<li><a href="#org08495ff">RDD</a>
+<li><a href="#org1a4d65a">what is spark</a></li>
+<li><a href="#org88e5cf4">RDD</a>
 <ul>
-<li><a href="#org64d1bc7">RDD基础</a></li>
+<li><a href="#orgd5f730f">RDD基础</a></li>
 </ul>
 </li>
-<li><a href="#orgf9a2aba">spark use</a>
+<li><a href="#org94682c5">spark use</a>
 <ul>
-<li><a href="#org8e535ad">spark base</a></li>
-<li><a href="#org96bce28">spark install</a></li>
-<li><a href="#orgda8b438">spark shell</a></li>
-<li><a href="#orgbc029d8">idea spark scala</a></li>
-<li><a href="#org89db446">idea spark java</a></li>
-<li><a href="#org14e79e4">rdd &amp; dataframe</a></li>
+<li><a href="#orgb4aefee">spark base</a></li>
+<li><a href="#orgcd79a87">spark install</a></li>
+<li><a href="#org14f3c6d">spark shell</a></li>
+<li><a href="#orgca7a634">idea spark scala</a></li>
+<li><a href="#org53baf03">idea spark java</a></li>
+<li><a href="#org7066cb8">rdd &amp; dataframe</a></li>
 </ul>
 </li>
-<li><a href="#org57a7d8c">docker spark</a>
+<li><a href="#org791ad88">docker spark</a>
 <ul>
-<li><a href="#org90c0f1f">docker for mac install spark 2.2.0 + hadoop 2.8.0</a></li>
-<li><a href="#org81aa019">docker search spark</a></li>
+<li><a href="#org0134fae">docker for mac install spark 2.2.0 + hadoop 2.8.0</a></li>
+<li><a href="#org1649931">docker search spark</a></li>
 </ul>
 </li>
-<li><a href="#org6eab556">docker hbase</a></li>
+<li><a href="#org28dc98c">docker hbase</a></li>
 </ul>
 </div>
 </div>
 <p>
 Spark快速大数据分析[美] 卡劳（Holden Karau）
 </p>
-<div id="outline-container-orgc96f61d" class="outline-2">
-<h2 id="orgc96f61d">what is spark</h2>
-<div class="outline-text-2" id="text-orgc96f61d">
+<div id="outline-container-org1a4d65a" class="outline-2">
+<h2 id="org1a4d65a">what is spark</h2>
+<div class="outline-text-2" id="text-org1a4d65a">
 <p>
 spark 是一个用来实现快速而通用的集群计算的平台
 </p>
@@ -297,16 +297,16 @@ python shell / scala shell</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org08495ff" class="outline-2">
-<h2 id="org08495ff">RDD</h2>
-<div class="outline-text-2" id="text-org08495ff">
+<div id="outline-container-org88e5cf4" class="outline-2">
+<h2 id="org88e5cf4">RDD</h2>
+<div class="outline-text-2" id="text-org88e5cf4">
 <p>
 RDD(resilient distributed dataset)
 </p>
 </div>
-<div id="outline-container-org64d1bc7" class="outline-3">
-<h3 id="org64d1bc7">RDD基础</h3>
-<div class="outline-text-3" id="text-org64d1bc7">
+<div id="outline-container-orgd5f730f" class="outline-3">
+<h3 id="orgd5f730f">RDD基础</h3>
+<div class="outline-text-3" id="text-orgd5f730f">
 <p>
 Spark中的RDD是一个不可变的分布式对象集合
 </p>
@@ -314,30 +314,30 @@ Spark中的RDD是一个不可变的分布式对象集合
 </div>
 </div>
 
-<div id="outline-container-orgf9a2aba" class="outline-2">
-<h2 id="orgf9a2aba">spark use</h2>
-<div class="outline-text-2" id="text-orgf9a2aba">
+<div id="outline-container-org94682c5" class="outline-2">
+<h2 id="org94682c5">spark use</h2>
+<div class="outline-text-2" id="text-org94682c5">
 </div>
-<div id="outline-container-org8e535ad" class="outline-3">
-<h3 id="org8e535ad">spark base</h3>
-<div class="outline-text-3" id="text-org8e535ad">
+<div id="outline-container-orgb4aefee" class="outline-3">
+<h3 id="orgb4aefee">spark base</h3>
+<div class="outline-text-3" id="text-orgb4aefee">
 <p>
 rdd(resilient distributed dataset)
 </p>
 </div>
 </div>
-<div id="outline-container-org96bce28" class="outline-3">
-<h3 id="org96bce28">spark install</h3>
-<div class="outline-text-3" id="text-org96bce28">
+<div id="outline-container-orgcd79a87" class="outline-3">
+<h3 id="orgcd79a87">spark install</h3>
+<div class="outline-text-3" id="text-orgcd79a87">
 <p>
 函数式编程
 shell下执行:paste
 </p>
 </div>
 </div>
-<div id="outline-container-orgda8b438" class="outline-3">
-<h3 id="orgda8b438">spark shell</h3>
-<div class="outline-text-3" id="text-orgda8b438">
+<div id="outline-container-org14f3c6d" class="outline-3">
+<h3 id="org14f3c6d">spark shell</h3>
+<div class="outline-text-3" id="text-org14f3c6d">
 <p>
 bin/spark-shell
 </p>
@@ -357,9 +357,9 @@ filter()</li>
 </div>
 </div>
 
-<div id="outline-container-orgbc029d8" class="outline-3">
-<h3 id="orgbc029d8">idea spark scala</h3>
-<div class="outline-text-3" id="text-orgbc029d8">
+<div id="outline-container-orgca7a634" class="outline-3">
+<h3 id="orgca7a634">idea spark scala</h3>
+<div class="outline-text-3" id="text-orgca7a634">
 <p>
 scala 项目手动打包
 删除scala 和spark的包
@@ -375,25 +375,25 @@ sbt 构建项目 需要等待sbt版本下载好才会生成src目录
 </div>
 </div>
 
-<div id="outline-container-org89db446" class="outline-3">
-<h3 id="org89db446">idea spark java</h3>
-<div class="outline-text-3" id="text-org89db446">
+<div id="outline-container-org53baf03" class="outline-3">
+<h3 id="org53baf03">idea spark java</h3>
+<div class="outline-text-3" id="text-org53baf03">
 <ol class="org-ol">
 <li>jre 1.5 换成1.8</li>
 </ol>
 </div>
 </div>
-<div id="outline-container-org14e79e4" class="outline-3">
-<h3 id="org14e79e4">rdd &amp; dataframe</h3>
+<div id="outline-container-org7066cb8" class="outline-3">
+<h3 id="org7066cb8">rdd &amp; dataframe</h3>
 </div>
 </div>
-<div id="outline-container-org57a7d8c" class="outline-2">
-<h2 id="org57a7d8c">docker spark</h2>
-<div class="outline-text-2" id="text-org57a7d8c">
+<div id="outline-container-org791ad88" class="outline-2">
+<h2 id="org791ad88">docker spark</h2>
+<div class="outline-text-2" id="text-org791ad88">
 </div>
-<div id="outline-container-org90c0f1f" class="outline-3">
-<h3 id="org90c0f1f">docker for mac install spark 2.2.0 + hadoop 2.8.0</h3>
-<div class="outline-text-3" id="text-org90c0f1f">
+<div id="outline-container-org0134fae" class="outline-3">
+<h3 id="org0134fae">docker for mac install spark 2.2.0 + hadoop 2.8.0</h3>
+<div class="outline-text-3" id="text-org0134fae">
 <p>
 refer : <a href="http://blog.csdn.net/gogo_yao/article/details/76863201">http://blog.csdn.net/gogo_yao/article/details/76863201</a>
 </p>
@@ -444,17 +444,17 @@ cd <i>root</i>.local/spark-2.2.0-bin-without-hadoop/sbin; sh start-all.sh
 </ol>
 </div>
 </div>
-<div id="outline-container-org81aa019" class="outline-3">
-<h3 id="org81aa019">docker search spark</h3>
-<div class="outline-text-3" id="text-org81aa019">
+<div id="outline-container-org1649931" class="outline-3">
+<h3 id="org1649931">docker search spark</h3>
+<div class="outline-text-3" id="text-org1649931">
 <p>
 docker pull sequenceiq/spark:1.6.0
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org6eab556" class="outline-2">
-<h2 id="org6eab556">docker hbase</h2>
+<div id="outline-container-org28dc98c" class="outline-2">
+<h2 id="org28dc98c">docker hbase</h2>
 </div>
 </div>
 </body>

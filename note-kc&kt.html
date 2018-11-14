@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-11-13 Tue 11:50 -->
+<!-- 2018-11-14 Wed 11:00 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>kyoto Cabinet &amp; Tycoon kv 型离线数据库</title>
@@ -237,10 +237,10 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org1f46e1d">install cabinet &amp; tycoon</a></li>
-<li><a href="#orgeb4e452">tycoon 服务端</a></li>
-<li><a href="#org6b499db">tycoon 客户端</a></li>
-<li><a href="#orgc9b42ff">hot backup</a></li>
+<li><a href="#orgc310311">install cabinet &amp; tycoon</a></li>
+<li><a href="#org362c9e9">tycoon 服务端</a></li>
+<li><a href="#org45d1f49">tycoon 客户端</a></li>
+<li><a href="#org573c737">hot backup</a></li>
 </ul>
 </div>
 </div>
@@ -286,9 +286,9 @@ cabinet数据落地的存储类型有两种:
 </blockquote></li>
 </ul>
 
-<div id="outline-container-org1f46e1d" class="outline-2">
-<h2 id="org1f46e1d">install cabinet &amp; tycoon</h2>
-<div class="outline-text-2" id="text-org1f46e1d">
+<div id="outline-container-orgc310311" class="outline-2">
+<h2 id="orgc310311">install cabinet &amp; tycoon</h2>
+<div class="outline-text-2" id="text-orgc310311">
 <blockquote>
 <ol class="org-ol">
 <li><p>
@@ -347,9 +347,9 @@ rm kyototycoon* -rf
 </div>
 </div>
 
-<div id="outline-container-orgeb4e452" class="outline-2">
-<h2 id="orgeb4e452">tycoon 服务端</h2>
-<div class="outline-text-2" id="text-orgeb4e452">
+<div id="outline-container-org362c9e9" class="outline-2">
+<h2 id="org362c9e9">tycoon 服务端</h2>
+<div class="outline-text-2" id="text-org362c9e9">
 <blockquote>
 <p>
 ktserver 作为服务端，提供数据库网络连接服务,其常用到的参数说明如下:
@@ -419,9 +419,9 @@ ktserver -port 2000 \
 </blockquote>
 </div>
 </div>
-<div id="outline-container-org6b499db" class="outline-2">
-<h2 id="org6b499db">tycoon 客户端</h2>
-<div class="outline-text-2" id="text-org6b499db">
+<div id="outline-container-org45d1f49" class="outline-2">
+<h2 id="org45d1f49">tycoon 客户端</h2>
+<div class="outline-text-2" id="text-org45d1f49">
 <blockquote>
 <p>
 ktremotemgr 作为一款连接kt server的客户端工具,下面给出简单示例:
@@ -462,9 +462,9 @@ ktremotemgr 作为一款连接kt server的客户端工具,下面给出简单示�
 </div>
 </div>
 
-<div id="outline-container-orgc9b42ff" class="outline-2">
-<h2 id="orgc9b42ff">hot backup</h2>
-<div class="outline-text-2" id="text-orgc9b42ff">
+<div id="outline-container-org573c737" class="outline-2">
+<h2 id="org573c737">hot backup</h2>
+<div class="outline-text-2" id="text-org573c737">
 <blockquote>
 <p>
 tycoon 以本地离线文件的信息存储到磁盘，迁移的时候可以直接使用快照或者库文件，
