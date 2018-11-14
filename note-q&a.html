@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-11-09 Fri 17:31 -->
+<!-- 2018-11-14 Wed 10:43 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>question &amp; answer</title>
@@ -239,7 +239,9 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#org2acee12"><span class="done DONE">DONE</span> org-mode table中英文对齐问题</a></li>
 <li><a href="#orgcb277f3"><span class="done DONE">DONE</span> 连接远程主机emacs alt键失灵问题</a></li>
-<li><a href="#org494f256"><span class="todo TODO">TODO</span> emacs数据恢复问题</a></li>
+<li><a href="#org82a1ddd"><span class="done DONE">DONE</span> 远程开发代码备份与调用远程开发环境</a></li>
+<li><a href="#org494f256"><span class="done DONE">DONE</span> emacs数据恢复问题</a></li>
+<li><a href="#org648e185"><span class="todo TODO">TODO</span> SSH登录session常驻与github冲突问题</a></li>
 </ul>
 </div>
 </div>
@@ -249,6 +251,7 @@ for the JavaScript code in this tag.
 <ul class="org-ul">
 <li>State "DONE"       from              <span class="timestamp-wrapper"><span class="timestamp">[2018-11-09 Fri 12:35]</span></span></li>
 </ul>
+<blockquote>
 <p>
 只需要设置org-table的字体为等宽字体
 </p>
@@ -266,14 +269,13 @@ makepkg -Acs
 sudo pacman -U *.tar.xz
 
 </pre>
+</blockquote>
 </div>
 </div>
 <div id="outline-container-orgcb277f3" class="outline-2">
 <h2 id="orgcb277f3"><span class="done DONE">DONE</span> 连接远程主机emacs alt键失灵问题</h2>
 <div class="outline-text-2" id="text-orgcb277f3">
-<ul class="org-ul">
-<li>State "DONE"       from              <span class="timestamp-wrapper"><span class="timestamp">[2018-11-09 Fri 12:35]</span></span></li>
-</ul>
+<blockquote>
 <p>
 主要是因为xshell的配置问题
 </p>
@@ -281,13 +283,71 @@ sudo pacman -U *.tar.xz
 <p>
 文件&#x2013;&gt;属性&#x2013;&gt;终端&#x2013;&gt;键盘&#x2013;&gt;元(meta)键仿真 
 </p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-org82a1ddd" class="outline-2">
+<h2 id="org82a1ddd"><span class="done DONE">DONE</span> 远程开发代码备份与调用远程开发环境</h2>
+<div class="outline-text-2" id="text-org82a1ddd">
+<ul class="org-ul">
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-11-14 Wed 10:07]</span></span></li>
+</ul>
+<blockquote>
+<p>
+简单说,win7环境下使用idea开发java，python,但是我想将代码自动同步到ubuntu上做备份;同时,python的运行环境使用vmware的ubuntu上的多版本python环境,实现本地使用idea开发，代码运行在远端linux上,当然java还是使用的物理机安装的环境
+</p>
+
+<p>
+查看了下资料，idea官方说明有 <a href="http://www.jetbrains.com/help/idea/2017.1/remote-host-tool-window.html">sftp </a>这个功能,创建sftp服务连接 
+<code>tool -&gt; deployment -&gt; +</code>
+</p>
+
+<ol class="org-ol">
+<li><p>
+本地开发的java项目备份到远端linux目录
+</p>
+
+<p>
+RemoteHost内配置好mappings，本地项目备份到ubuntu的路径
+</p>
+
+<p>
+右键项目Upload to 服务器
+</p></li>
+
+<li><p>
+使用linux python环境 写python项目
+</p>
+
+<p>
+<code>F4 -&gt; project -&gt; +  -&gt; add remote</code>
+</p>
+
+<p>
+只需要本地开发编码不报错，运行可以同步到服务器运行
+</p></li>
+</ol>
+</blockquote>
 </div>
 </div>
 <div id="outline-container-org494f256" class="outline-2">
-<h2 id="org494f256"><span class="todo TODO">TODO</span> emacs数据恢复问题</h2>
+<h2 id="org494f256"><span class="done DONE">DONE</span> emacs数据恢复问题</h2>
 <div class="outline-text-2" id="text-org494f256">
 <ul class="org-ul">
-<li>State "TODO"       from              <span class="timestamp-wrapper"><span class="timestamp">[2018-11-09 Fri 12:35]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-11-14 Wed 10:08]</span></span></li>
+</ul>
+<blockquote>
+<p>
+<code>c-x u</code> 解决问题
+</p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-org648e185" class="outline-2">
+<h2 id="org648e185"><span class="todo TODO">TODO</span> SSH登录session常驻与github冲突问题</h2>
+<div class="outline-text-2" id="text-org648e185">
+<ul class="org-ul">
+<li>State "TODO"       from              <span class="timestamp-wrapper"><span class="timestamp">[2018-11-13 Tue 19:40]</span></span></li>
 </ul>
 </div>
 </div>

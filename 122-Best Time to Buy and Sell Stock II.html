@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-10-27 Sat 17:38 -->
+<!-- 2018-11-13 Tue 11:47 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>122.Best Time to Buy and Sell Stock II</title>
@@ -233,6 +233,16 @@ for the JavaScript code in this tag.
 </div>
 <div id="content">
 <h1 class="title">122.Best Time to Buy and Sell Stock II</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgf2c30de">题意分析</a></li>
+<li><a href="#orgcb6f61d">java</a></li>
+<li><a href="#orgef86cef">python</a></li>
+</ul>
+</div>
+</div>
 <p>
 Say you have an array for which the ith element is the price of a given stock on day i.
 </p>
@@ -293,33 +303,22 @@ Explanation: In this case, no transaction is done, i.e. max profit = 0.
 </div>
 </div>
 
-
+<div id="outline-container-orgf2c30de" class="outline-2">
+<h2 id="orgf2c30de">题意分析</h2>
+<div class="outline-text-2" id="text-orgf2c30de">
 <p>
-<code>python</code> 
+给定一个数组，可以多次买入卖出，求最大利益
 </p>
 
-<div class="org-src-container">
-<pre class="src src-python"><span style="color: #66D9EF;">class</span> <span style="color: #66D9EF;">Solution</span>(<span style="color: #A6E22E;">object</span>):
-<span style="background-color: #232526;"> </span>   <span style="color: #66D9EF;">def</span> <span style="color: #F92672; font-style: italic;">maxProfit</span>(<span style="color: #66D9EF;">self</span>, prices):
-<span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="color: #E6DB74; font-style: italic;">"""</span>
-<span style="color: #E6DB74; background-color: #232526; font-style: italic;"> </span><span style="color: #E6DB74; font-style: italic;">   </span><span style="color: #E6DB74; background-color: #232526; font-style: italic;"> </span><span style="color: #E6DB74; font-style: italic;">   :param prices: List[int]</span>
-<span style="color: #E6DB74; background-color: #232526; font-style: italic;"> </span><span style="color: #E6DB74; font-style: italic;">   </span><span style="color: #E6DB74; background-color: #232526; font-style: italic;"> </span><span style="color: #E6DB74; font-style: italic;">   :return: int</span>
-<span style="color: #E6DB74; background-color: #232526; font-style: italic;"> </span><span style="color: #E6DB74; font-style: italic;">   </span><span style="color: #E6DB74; background-color: #232526; font-style: italic;"> </span><span style="color: #E6DB74; font-style: italic;">   """</span>
-<span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="color: #F92672;">res</span>, <span style="color: #F92672;">i</span> = 0, 0
-<span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="color: #66D9EF;">while</span> i &lt; <span style="color: #A6E22E;">len</span>(prices):
-<span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="color: #F92672;">j</span> = i
-<span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="color: #66D9EF;">while</span> j + 1 &lt; <span style="color: #A6E22E;">len</span>(prices) <span style="color: #66D9EF;">and</span> prices[j + 1] &gt; prices[j]:
-<span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="color: #F92672;">j</span> += 1
-<span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="color: #F92672;">res</span> += prices[j] - prices[i]
-<span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="color: #F92672;">i</span> = j + 1
-<span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="color: #66D9EF;">return</span> res
-</pre>
+<p>
+每次操作取极大值、极小值
+</p>
+</div>
 </div>
 
-<p>
-java
-</p>
-
+<div id="outline-container-orgcb6f61d" class="outline-2">
+<h2 id="orgcb6f61d">java</h2>
+<div class="outline-text-2" id="text-orgcb6f61d">
 <div class="org-src-container">
 <pre class="src src-java"><span style="color: #66D9EF;">class</span> <span style="color: #66D9EF;">Solution</span> {
     <span style="color: #66D9EF;">public</span> <span style="color: #66D9EF;">int</span> <span style="color: #F92672; font-style: italic;">maxProfit</span>(<span style="color: #66D9EF;">int</span>[] <span style="color: #F92672;">prices</span>) {
@@ -334,6 +333,30 @@ java
     }
 }
 </pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgef86cef" class="outline-2">
+<h2 id="orgef86cef">python</h2>
+<div class="outline-text-2" id="text-orgef86cef">
+<pre class="example">
+class Solution(object):
+    def maxProfit(self, prices):
+        """
+        :param prices: List[int]
+        :return: int
+        """
+        res, i = 0, 0
+        while i &lt; len(prices):
+            j = i
+            while j + 1 &lt; len(prices) and prices[j + 1] &gt; prices[j]:
+                j += 1
+            res += prices[j] - prices[i]
+            i = j + 1
+        return res
+</pre>
+</div>
 </div>
 </div>
 </body>

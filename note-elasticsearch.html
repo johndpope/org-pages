@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-10-27 Sat 17:37 -->
+<!-- 2018-11-13 Tue 11:49 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>elasticsearch 相关知识整理</title>
@@ -237,22 +237,22 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgae07311">note-elasticsearch-install&amp;config</a>
+<li><a href="#org5f0c6f7">note-elasticsearch-install&amp;config</a>
 <ul>
-<li><a href="#orgd924574">install</a></li>
-<li><a href="#org60a8b51">cat command</a></li>
-<li><a href="#org2ef50f1">Mapping</a></li>
-<li><a href="#org34ee4a3">CURD</a></li>
-<li><a href="#orge016f7b">Query</a></li>
-<li><a href="#orgf78e020">Alias</a></li>
-<li><a href="#org32eed30">questions</a>
+<li><a href="#orgf96e979">install</a></li>
+<li><a href="#orgb8ece94">cat command</a></li>
+<li><a href="#org2b58e73">Mapping</a></li>
+<li><a href="#org559b276">CURD</a></li>
+<li><a href="#orgf78a587">Query</a></li>
+<li><a href="#org3c36e38">Alias</a></li>
+<li><a href="#org3fc7153">questions</a>
 <ul>
-<li><a href="#org719ce55">from szie/scroll/search after</a></li>
-<li><a href="#org203e6fd">es shard 生命周期</a></li>
-<li><a href="#org9dde058">分词</a></li>
-<li><a href="#org21bdd95">es node</a></li>
-<li><a href="#org7a9b2f7">es pipeline</a></li>
-<li><a href="#org9ac8b7b">es</a></li>
+<li><a href="#org2d94d2d">from szie/scroll/search after</a></li>
+<li><a href="#org9acb04b">es shard 生命周期</a></li>
+<li><a href="#orgb38d260">分词</a></li>
+<li><a href="#org39ce43e">es node</a></li>
+<li><a href="#orga9697e0">es pipeline</a></li>
+<li><a href="#org00a1dfe">es</a></li>
 </ul>
 </li>
 </ul>
@@ -261,13 +261,13 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgae07311" class="outline-2">
-<h2 id="orgae07311">note-elasticsearch-install&amp;config</h2>
-<div class="outline-text-2" id="text-orgae07311">
+<div id="outline-container-org5f0c6f7" class="outline-2">
+<h2 id="org5f0c6f7">note-elasticsearch-install&amp;config</h2>
+<div class="outline-text-2" id="text-org5f0c6f7">
 </div>
-<div id="outline-container-orgd924574" class="outline-3">
-<h3 id="orgd924574">install</h3>
-<div class="outline-text-3" id="text-orgd924574">
+<div id="outline-container-orgf96e979" class="outline-3">
+<h3 id="orgf96e979">install</h3>
+<div class="outline-text-3" id="text-orgf96e979">
 <p>
 安装环境: VMware12: 三台 ubuntu 14.04 内存 1g
 </p>
@@ -291,9 +291,9 @@ sysctl -a|grep vm.max_map_count</li>
 </div>
 </div>
 
-<div id="outline-container-org60a8b51" class="outline-3">
-<h3 id="org60a8b51">cat command</h3>
-<div class="outline-text-3" id="text-org60a8b51">
+<div id="outline-container-orgb8ece94" class="outline-3">
+<h3 id="orgb8ece94">cat command</h3>
+<div class="outline-text-3" id="text-orgb8ece94">
 <p>
 vim  /etc/security/limits.conf
 vim   /etc/security/limits.d/def.conf
@@ -376,9 +376,9 @@ curl -XPOST '10.24.45.94:9200/_cluster/reroute' -d @reroute.mapping</li>
 </ol>
 </div>
 </div>
-<div id="outline-container-org2ef50f1" class="outline-3">
-<h3 id="org2ef50f1">Mapping</h3>
-<div class="outline-text-3" id="text-org2ef50f1">
+<div id="outline-container-org2b58e73" class="outline-3">
+<h3 id="org2b58e73">Mapping</h3>
+<div class="outline-text-3" id="text-org2b58e73">
 <ol class="org-ol">
 <li>建立索引
 curl -XPUT 'localhost:9200/threat_ip_history/?pretty' -d{"settings":{"number_of_shards":20}}
@@ -441,9 +441,9 @@ curl -XDELETE localhost:9200/index_name</li>
 </div>
 </div>
 
-<div id="outline-container-org34ee4a3" class="outline-3">
-<h3 id="org34ee4a3">CURD</h3>
-<div class="outline-text-3" id="text-org34ee4a3">
+<div id="outline-container-org559b276" class="outline-3">
+<h3 id="org559b276">CURD</h3>
+<div class="outline-text-3" id="text-org559b276">
 <ol class="org-ol">
 <li>添加一条记录
 curl -XPUT 'http://localhost:9200/twitter/tweet/1' -d  '{_source 内容}'</li>
@@ -452,9 +452,9 @@ curl -XDELETE 'http://localhost:9200/twitter/tweet/1'</li>
 </ol>
 </div>
 </div>
-<div id="outline-container-orge016f7b" class="outline-3">
-<h3 id="orge016f7b">Query</h3>
-<div class="outline-text-3" id="text-orge016f7b">
+<div id="outline-container-orgf78a587" class="outline-3">
+<h3 id="orgf78a587">Query</h3>
+<div class="outline-text-3" id="text-orgf78a587">
 <ol class="org-ol">
 <li><p>
 基本查询
@@ -515,9 +515,9 @@ DSL 查询
 </ol>
 </div>
 </div>
-<div id="outline-container-orgf78e020" class="outline-3">
-<h3 id="orgf78e020">Alias</h3>
-<div class="outline-text-3" id="text-orgf78e020">
+<div id="outline-container-org3c36e38" class="outline-3">
+<h3 id="org3c36e38">Alias</h3>
+<div class="outline-text-3" id="text-org3c36e38">
 <ol class="org-ol">
 <li>创建 alias
 curl -XPOST 'localhost:9200/_aliases' -d '{"actions":[{"add":{"index" : "vulnerability_data_v4","alias" : "formal_vulnerability_data"}}]}'</li>
@@ -538,13 +538,13 @@ curl -XPOST 'http://localhost:9200/_aliases'-d '
 </ol>
 </div>
 </div>
-<div id="outline-container-org32eed30" class="outline-3">
-<h3 id="org32eed30">questions</h3>
-<div class="outline-text-3" id="text-org32eed30">
+<div id="outline-container-org3fc7153" class="outline-3">
+<h3 id="org3fc7153">questions</h3>
+<div class="outline-text-3" id="text-org3fc7153">
 </div>
-<div id="outline-container-org719ce55" class="outline-4">
-<h4 id="org719ce55">from szie/scroll/search after</h4>
-<div class="outline-text-4" id="text-org719ce55">
+<div id="outline-container-org2d94d2d" class="outline-4">
+<h4 id="org2d94d2d">from szie/scroll/search after</h4>
+<div class="outline-text-4" id="text-org2d94d2d">
 <p>
 <a href="http://www.jianshu.com/p/91d03b16af77">http://www.jianshu.com/p/91d03b16af77</a>
 </p>
@@ -616,9 +616,9 @@ search after
 </ul>
 </div>
 </div>
-<div id="outline-container-org203e6fd" class="outline-4">
-<h4 id="org203e6fd">es shard 生命周期</h4>
-<div class="outline-text-4" id="text-org203e6fd">
+<div id="outline-container-org9acb04b" class="outline-4">
+<h4 id="org9acb04b">es shard 生命周期</h4>
+<div class="outline-text-4" id="text-org9acb04b">
 <p>
 <a href="http://lxwei.github.io/posts/Elasticsearch-Shard-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html">http://lxwei.github.io/posts/Elasticsearch-Shard-生命周期.html</a>
 </p>
@@ -688,12 +688,12 @@ _optimize?max_num_segments=1 一个segment情况下查询要快些，但是得�
 </div>
 </div>
 
-<div id="outline-container-org9dde058" class="outline-4">
-<h4 id="org9dde058">分词</h4>
+<div id="outline-container-orgb38d260" class="outline-4">
+<h4 id="orgb38d260">分词</h4>
 </div>
-<div id="outline-container-org21bdd95" class="outline-4">
-<h4 id="org21bdd95">es node</h4>
-<div class="outline-text-4" id="text-org21bdd95">
+<div id="outline-container-org39ce43e" class="outline-4">
+<h4 id="org39ce43e">es node</h4>
+<div class="outline-text-4" id="text-org39ce43e">
 <ul class="org-ul">
 <li>data node 上
 http.enabled: false，同时也不要安装head, bigdesk, marvel等监控 插件
@@ -720,17 +720,17 @@ discovery.zen.ping.timeout
 </ul>
 </div>
 </div>
-<div id="outline-container-org7a9b2f7" class="outline-4">
-<h4 id="org7a9b2f7">es pipeline</h4>
-<div class="outline-text-4" id="text-org7a9b2f7">
+<div id="outline-container-orga9697e0" class="outline-4">
+<h4 id="orga9697e0">es pipeline</h4>
+<div class="outline-text-4" id="text-orga9697e0">
 <p>
 <a href="https://www.felayman.com/articles/2017/11/24/1511527532643.html#b3_solo_h4_22">https://www.felayman.com/articles/2017/11/24/1511527532643.html#b3_solo_h4_22</a>
 </p>
 </div>
 </div>
-<div id="outline-container-org9ac8b7b" class="outline-4">
-<h4 id="org9ac8b7b">es</h4>
-<div class="outline-text-4" id="text-org9ac8b7b">
+<div id="outline-container-org00a1dfe" class="outline-4">
+<h4 id="org00a1dfe">es</h4>
+<div class="outline-text-4" id="text-org00a1dfe">
 <p>
 <a href="https://blog.csdn.net/donghaixiaolongwang/article/category/6747676">https://blog.csdn.net/donghaixiaolongwang/article/category/6747676</a>
 </p>
