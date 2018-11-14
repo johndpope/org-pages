@@ -1,12 +1,11 @@
 package leetcode;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.ArrayList;
 
 public class Code_46 {
     /**
-     * @param nums
-     * 给一个不重复整数集，输出所有可能组合
+     * @param nums 给一个不重复整数集，输出所有可能组合
      * @return
      */
     public List<List<Integer>> permute(int[] nums) {
@@ -16,7 +15,7 @@ public class Code_46 {
     }
 
     private void permutation(int[] nums, int index, int length) {
-        while (index < length-1){
+        while (index < length - 1) {
 
         }
 
