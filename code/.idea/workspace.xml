@@ -17,13 +17,36 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Code_46.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Code_46.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/java/src/main/java/leetcode/Code_46.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="3" column="26" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
+            <state relative-caret-position="418">
+              <caret line="47" column="3" selection-start-line="47" selection-start-column="3" selection-end-line="47" selection-end-column="3" />
               <folding>
-                <element signature="e#247#262#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#253#268#0" expanded="true" />
+                <element signature="e#921#930#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Code_815.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/java/src/main/java/leetcode/Code_815.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-198">
+              <caret line="15" column="88" selection-start-line="15" selection-start-column="88" selection-end-line="15" selection-end-column="88" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Code_46Test.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/java/src/main/test/leetcode/Code_46Test.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="132">
+              <caret line="6" selection-start-line="6" selection-end-line="6" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -66,7 +89,9 @@
         <option value="$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/internal/runners/model/ReflectiveCallable.class" />
         <option value="$PROJECT_DIR$/java/src/main/test/leetcode/Code_31Test.java" />
         <option value="$PROJECT_DIR$/java/src/main/java/leetcode/Code_31.java" />
+        <option value="$PROJECT_DIR$/java/src/main/test/leetcode/Code_46Test.java" />
         <option value="$PROJECT_DIR$/java/src/main/java/leetcode/Code_46.java" />
+        <option value="$PROJECT_DIR$/java/src/main/java/leetcode/Code_815.java" />
       </list>
     </option>
   </component>
@@ -102,11 +127,11 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="1920" />
-    <option name="y" value="227" />
-    <option name="width" value="1366" />
-    <option name="height" value="742" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="1919" />
+    <option name="y" value="850" />
+    <option name="width" value="1368" />
+    <option name="height" value="769" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -119,6 +144,49 @@
             <path>
               <item name="code" type="b2602c69:ProjectViewProjectNode" />
               <item name="code" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="code" type="b2602c69:ProjectViewProjectNode" />
+              <item name="code" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="code" type="b2602c69:ProjectViewProjectNode" />
+              <item name="code" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="code" type="b2602c69:ProjectViewProjectNode" />
+              <item name="code" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="code" type="b2602c69:ProjectViewProjectNode" />
+              <item name="code" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="code" type="b2602c69:ProjectViewProjectNode" />
+              <item name="code" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="leetcode" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="code" type="b2602c69:ProjectViewProjectNode" />
+              <item name="code" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="code" type="b2602c69:ProjectViewProjectNode" />
@@ -144,7 +212,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/java" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
@@ -166,7 +234,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.Code_31Test.testNextPermutation">
+  <component name="RunManager" selected="JUnit.Code_46Test">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     </configuration>
@@ -183,29 +251,6 @@
       <option name="PACKAGE_NAME" value="leetcode" />
       <option name="MAIN_CLASS_NAME" value="leetcode.Code_122Test" />
       <option name="METHOD_NAME" value="testMaxProfit" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$MODULE_DIR$" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-    </configuration>
-    <configuration name="Code_199Test.testRightSideView" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="java" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="leetcode.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="leetcode" />
-      <option name="MAIN_CLASS_NAME" value="leetcode.Code_199Test" />
-      <option name="METHOD_NAME" value="testRightSideView" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" value="" />
@@ -233,6 +278,52 @@
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$/java" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="Code_46Test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="java" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="leetcode.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="leetcode" />
+      <option name="MAIN_CLASS_NAME" value="leetcode.Code_46Test" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="Code_46Test.TestPermute" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="java" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="leetcode.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="leetcode" />
+      <option name="MAIN_CLASS_NAME" value="leetcode.Code_46Test" />
+      <option name="METHOD_NAME" value="TestPermute" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="TEST_SEARCH_SCOPE">
         <value defaultName="singleModule" />
@@ -274,25 +365,6 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="199-Binary Tree Right Side View" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="python" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python/199-Binary Tree Right Side View.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -316,19 +388,19 @@
       <listeners />
     </configuration>
     <list>
-      <item itemvalue="JUnit.Code_199Test.testRightSideView" />
       <item itemvalue="JUnit.Code_31Test.testNextPermutation" />
       <item itemvalue="JUnit.Code_122Test.testMaxProfit" />
-      <item itemvalue="Python.199-Binary Tree Right Side View" />
       <item itemvalue="Python.122-Best Time to Buy and Sell Stock II" />
+      <item itemvalue="JUnit.Code_46Test.TestPermute" />
+      <item itemvalue="JUnit.Code_46Test" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.Code_46Test" />
+        <item itemvalue="JUnit.Code_46Test.TestPermute" />
         <item itemvalue="JUnit.Code_31Test.testNextPermutation" />
         <item itemvalue="JUnit.Code_122Test.testMaxProfit" />
         <item itemvalue="Python.122-Best Time to Buy and Sell Stock II" />
-        <item itemvalue="Python.199-Binary Tree Right Side View" />
-        <item itemvalue="JUnit.Code_199Test.testRightSideView" />
       </list>
     </recent_temporary>
   </component>
@@ -355,44 +427,44 @@
       <workItem from="1541587162484" duration="819000" />
       <workItem from="1541588893562" duration="7931000" />
       <workItem from="1542120047159" duration="9018000" />
-      <workItem from="1542160610178" duration="710000" />
+      <workItem from="1542160610178" duration="21542000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Code_31Test_testNextPermutation - 2018.11.14 at 00h 48m 25s.xml">
-      <configuration name="Code_31Test.testNextPermutation" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="Code_31Test_testNextPermutation - 2018.11.14 at 00h 48m 40s.xml">
-      <configuration name="Code_31Test.testNextPermutation" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="Code_31Test_testNextPermutation - 2018.11.14 at 00h 50m 19s.xml">
-      <configuration name="Code_31Test.testNextPermutation" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="Code_31Test_testNextPermutation - 2018.11.14 at 00h 52m 03s.xml">
-      <configuration name="Code_31Test.testNextPermutation" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="Code_31Test_testNextPermutation - 2018.11.14 at 00h 55m 16s.xml">
-      <configuration name="Code_31Test.testNextPermutation" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="Code_31Test_testNextPermutation - 2018.11.14 at 00h 57m 24s.xml">
-      <configuration name="Code_31Test.testNextPermutation" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="Code_31Test_testNextPermutation - 2018.11.14 at 01h 04m 54s.xml">
-      <configuration name="Code_31Test.testNextPermutation" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="Code_31Test_testNextPermutation - 2018.11.14 at 01h 06m 23s.xml">
-      <configuration name="Code_31Test.testNextPermutation" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="Code_31Test_testNextPermutation - 2018.11.14 at 01h 06m 29s.xml">
-      <configuration name="Code_31Test.testNextPermutation" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="Code_31Test_testNextPermutation - 2018.11.14 at 01h 06m 34s.xml">
       <configuration name="Code_31Test.testNextPermutation" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="Code_31Test_testNextPermutation - 2018.11.14 at 14h 22m 00s.xml">
+      <configuration name="Code_31Test.testNextPermutation" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Code_46Test_TestPermute - 2018.11.14 at 17h 11m 31s.xml">
+      <configuration name="Code_46Test.TestPermute" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Code_46Test_TestPermute - 2018.11.14 at 17h 31m 28s.xml">
+      <configuration name="Code_46Test.TestPermute" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Code_46Test_TestPermute - 2018.11.14 at 17h 38m 16s.xml">
+      <configuration name="Code_46Test.TestPermute" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Code_46Test_TestPermute - 2018.11.14 at 18h 01m 22s.xml">
+      <configuration name="Code_46Test.TestPermute" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Code_46Test_TestPermute - 2018.11.14 at 18h 01m 35s.xml">
+      <configuration name="Code_46Test.TestPermute" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Code_46Test_TestPermute - 2018.11.14 at 18h 24m 59s.xml">
+      <configuration name="Code_46Test.TestPermute" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Code_46Test_TestPermute - 2018.11.15 at 10h 41m 01s.xml">
+      <configuration name="Code_46Test.TestPermute" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Code_46Test - 2018.11.15 at 12h 00m 27s.xml">
+      <configuration name="Code_46Test" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="115093000" />
+    <option name="totallyTimeSpent" value="135925000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -404,31 +476,31 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1920" y="227" width="1366" height="742" extended-state="0" />
-    <editor active="true" />
+    <frame x="1919" y="850" width="1368" height="743" extended-state="7" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.27377048" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5028612" side_tool="true" weight="0.32898173" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49713877" weight="0.24673629" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49713877" visible="true" weight="0.38032788" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32898173" />
       <window_info id="Capture Tool" order="2" />
       <window_info anchor="right" id="Remote Host" order="3" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2700454" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19637462" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="SciView" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3994778" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.79016393" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" id="Data View" order="3" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -437,8 +509,40 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.32898173" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Designer" order="2" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="Remote Host" order="5" />
+      <window_info id="Image Layers" order="3" />
+      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.49713877" weight="0.24673629" />
+      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32898173" />
+      <window_info id="Capture Tool" order="6" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Commander" order="1" weight="0.4" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5028612" side_tool="true" weight="0.32898173" />
+      <window_info active="true" anchor="bottom" id="Messages" order="10" visible="true" weight="0.32840723" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
+      <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
+      <window_info anchor="right" id="Data View" order="7" />
+      <window_info anchor="right" id="Maven Projects" order="8" />
+      <window_info anchor="bottom" id="Find" order="2" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1762481" />
+      <window_info anchor="right" id="SciView" order="0" />
+      <window_info anchor="right" id="Database" order="9" />
+      <window_info anchor="bottom" id="Message" order="1" />
+      <window_info anchor="bottom" id="TODO" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="10" />
+      <window_info anchor="right" id="Theme Preview" order="11" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" order="11" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.3994778" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -448,38 +552,10 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="9" />
+      <option name="time" value="17" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/java/src/main/test/leetcode/Code_199Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="704">
-          <caret line="32" selection-start-line="32" selection-end-line="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/python/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/python/199-Binary Tree Right Side View.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/java/src/main/java/leetcode/Code_122.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/java/src/main/test/leetcode/Code_199Test.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="704">
@@ -660,38 +736,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="457">
           <caret line="33" column="21" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
+          <folding>
+            <element signature="imports" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/runners/ParentRunner.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="205" selection-start-line="205" selection-end-line="205" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/internal/runners/model/ReflectiveCallable.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/internal/runners/statements/InvokeMethod.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/runners/model/FrameworkMethod.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/java/src/main/test/leetcode/Code_31Test.java" />
     <entry file="file://$PROJECT_DIR$/java/src/main/java/leetcode/Code_31.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
@@ -706,12 +756,87 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/java/src/main/test/leetcode/Code_31Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="14" column="34" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jrt:///usr/lib/jvm/default!/java.base/java/util/List.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="49">
+          <caret line="142" column="14" selection-start-line="142" selection-start-column="14" selection-end-line="142" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/runners/ParentRunner.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="205" selection-start-line="205" selection-end-line="205" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/internal/runners/statements/InvokeMethod.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/runners/model/FrameworkMethod.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
+          <folding>
+            <element signature="e#870#1063#0" expanded="true" />
+            <element signature="e#1062#1063#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/internal/runners/model/ReflectiveCallable.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jrt:///usr/lib/jvm/default!/java.base/java/util/ArrayList.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="104" selection-start-line="104" selection-end-line="104" />
+          <folding>
+            <element signature="e#3451#3452#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/java/src/main/java/leetcode/Code_46.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" column="26" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
+        <state relative-caret-position="418">
+          <caret line="47" column="3" selection-start-line="47" selection-start-column="3" selection-end-line="47" selection-end-column="3" />
           <folding>
-            <element signature="e#247#262#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#253#268#0" expanded="true" />
+            <element signature="e#921#930#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/java/src/main/java/leetcode/Code_815.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-198">
+          <caret line="15" column="88" selection-start-line="15" selection-start-column="88" selection-end-line="15" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/java/src/main/test/leetcode/Code_46Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -745,7 +870,7 @@
       </state>
       <state key="GlobalLibrariesConfigurable.UI">
         <settings>
-          <last-edited>Python 2.7.14 (/usr/local/opt/python/libexec/bin/python) interpreter library</last-edited>
+          <last-edited>Python 2.7 interpreter library</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -757,7 +882,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>1.8</last-edited>
+          <last-edited>default</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -769,7 +894,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>python</last-edited>
+          <last-edited>java</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

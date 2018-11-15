@@ -2,11 +2,12 @@
 #+TITLE: 磁盘挂载那些事
 * TODO 本地盘挂载
   - State "TODO"       from              [2018-11-13 Tue 19:38]
-   在文件中添加要挂载的分区和文件目录可以修改文件=/etc/fstab=
 
-   /dev/sda5/    media/win    ntfs    defaults   02
+   在文件中添加要挂载的分区和文件目录可以修改配置 =/etc/fstab=
+   然后手动 =mount -a= 挂载即可
 
-   然后 mount -a
+   : /dev/sda5/    media/win    ntfs    defaults   02
+
 
    1. 查看几块硬盘
    
@@ -34,7 +35,6 @@
      参考: http://blog.sina.com.cn/s/blog_b77735d20101e5cn.html
      http://aurthurxlc.github.io/Aurthur-2017/Centos-7-extend-lvm-volume.html
 
-#+BEGIN_SRC 
   fdisk -l | grep sd
   fdisk /dev/sda
   partprobe

@@ -12,12 +12,12 @@
 ** DONE [[file:note-docker-learn.org][Docker能替代Vbox吗?]] 
 * Coding List
 ** DONE [[./199-Binary Tree Right Side View.org][199. Binary Tree Right Side View]]
-** TODO [[./31-Next Permutation.org][31.Next Permutation]]   
-** TODO [[./46-Permutations.org][46.Permutations]]
+** DONE [[./31-Next Permutation.org][31.Next Permutation]]   
+** DONE [[./46-Permutations.org][46.Permutations]]
+** DONE [[file:122-Best%20Time%20to%20Buy%20and%20Sell%20Stock%20II.org][122.Best Time to Buy and Sell Stock II]] 
 ** TODO [[./47-PermutationsII.org][47.Permutations II]]
 ** TODO [[./60-Permutation-Sequence.org][60.Permutation Sequence]]
 ** TODO [[./sort.org][排序算法]]
-** DONE [[file:122-Best%20Time%20to%20Buy%20and%20Sell%20Stock%20II.org][122.Best Time to Buy and Sell Stock II]] 
 ** TODO [[file:815-Bus%20Routes.org][815. Bus Routes]] 
 ** TODO [[./atoi.org][8. String to Integer(atoi)]]
 * Reading List

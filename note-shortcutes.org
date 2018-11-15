@@ -1,5 +1,6 @@
 #+SETUPFILE: setup.org
 #+TITLE: 一些常用快捷键与系统命令
+
 * commands
 1. 查找文件比较大的
     #+BEGIN_SRC bash
