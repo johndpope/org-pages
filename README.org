@@ -75,19 +75,22 @@
   
   (setq org-capture-templates
         '(
-          ("r" "Read" entry (file+headline "~/github/org-pages/index.org" "Reading List")
-           "* TODO  %?\n  %i\n"
-           :empty-lines 1)
-          ("w" "Write" entry (file+headline "~/github/org-pages/index.org" "Writing List")
-           "* TODO  %?\n  %i\n"
-           :empty-lines 1)
-          ("c" "Code" entry (file+headline "~/github/org-pages/index.org" "Coding List")
-           "* TODO  %?\n  %i\n"
-           :empty-lines 1)
-          ("b" "Body" entry (file+headline "~/github/org-pages/index.org" "Body Building")
-           "* TODO  %?\n  %i\n"
-           :empty-lines 1)
-          )
+           ("r" "Read" entry (file+headline "~/github/org-pages/read.org" "Reading List")
+            "* TODO  %?\n  %i\n"
+            :empty-lines 1)
+           ("w" "Write" entry (file+headline "~/github/org-pages/write.org" "Writing List")
+            "* TODO  %?\n  %i\n"
+            :empty-lines 1)
+           ("c" "Code" entry (file+headline "~/github/org-pages/code.org" "Coding List")
+            "* TODO  %?\n  %i\n"
+            :empty-lines 1)
+           ("q" "Q&A" entry (file+headline "~/github/org-pages/q&a.org" "Question & Answer")
+            "* TODO  %?\n  %i\n"
+            :empty-lines 1)
+           ("b" "Body" entry (file+headline "~/github/org-pages/body.org" "Body Building")
+            "* TODO  %?\n  %i\n"
+            :empty-lines 1)
+           )
   )
   ; Task state settings
   (setq org-todo-keywords
