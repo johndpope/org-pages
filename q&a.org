@@ -1,6 +1,6 @@
-#+SETUPFILE: setup.org
-#+TITLE: question & answer
-* DONE org-mode table中英文对齐问题
+* Question & Answer
+
+** DONE org-mode table中英文对齐问题
   CLOSED: [2018-11-09 Fri 12:35]
    - State "DONE"       from              [2018-11-09 Fri 12:35]
    #+BEGIN_QUOTE
@@ -15,7 +15,7 @@
    : makepkg -Acs
    : sudo pacman -U *.tar.xz
    #+END_QUOTE
-* DONE 连接远程主机emacs alt键失灵问题
+** DONE 连接远程主机emacs alt键失灵问题
    CLOSED: [2018-11-09 Fri 12:35]
    #+BEGIN_QUOTE
    主要是因为xshell的配置问题
@@ -23,8 +23,8 @@
    文件-->属性-->终端-->键盘-->元(meta)键仿真 
    
    #+END_QUOTE
-* DONE 远程开发代码备份与调用远程开发环境
-  CLOSED: [2018-11-14 Wed 10:07]
+** DONE 远程开发代码备份与调用远程开发环境
+   CLOSED: [2018-11-14 Wed 10:07]
   - State "DONE"       from "TODO"       [2018-11-14 Wed 10:07]
   #+BEGIN_QUOTE
 简单说,win7环境下使用idea开发java，python,但是我想将代码自动同步到ubuntu上做备份;同时,python的运行环境使用vmware的ubuntu上的多版本python环境,实现本地使用idea开发，代码运行在远端linux上,当然java还是使用的物理机安装的环境
@@ -45,11 +45,11 @@
    只需要本地开发编码不报错，运行可以同步到服务器运行
   
   #+END_QUOTE
-* DONE emacs数据恢复问题
+** DONE emacs数据恢复问题
   CLOSED: [2018-11-14 Wed 10:08]
   - State "DONE"       from "TODO"       [2018-11-14 Wed 10:08]
   #+BEGIN_QUOTE
   =c-x u= 解决问题
   #+END_QUOTE
-* TODO SSH登录session常驻与github冲突问题 
+** TODO SSH登录session常驻与github冲突问题 
   - State "TODO"       from              [2018-11-13 Tue 19:40]
