@@ -1,23 +1,22 @@
 #+SETUPFILE: setup.org
 #+TITLE: redis 使用
 
-* redis use note
-** redis install
+* redis 
+** redis 安装使用
+redis开发使用的话，推荐docker直接部署，避免浪费时间，redis 配置文件 
+=/etc/redis/redis.conf= 参数简单配置满足日常开发需求
 
-   sudo apt-get install redis-server
-
-   sudo vi /etc/redis/redis.conf
-
-   #bind 127.0.0.1 远程访问
-
-   requirepass manue1sec  设置密码
+: bind 127.0.0.1 远程访问
+: requirepass manue1sec  设置密码
   
-   sudo service redis-server restart 
+使用 =redis-cli -h x.x.x.x -p 6379 -a manue1sec= 远程连接管理,
 
-   redis-cli -a manue1sec
-** docker build a cluster
-   - sudo docker search docker-redis-cluster
-   - sudo docker pull vishnunair/docker-redis-cluster:latest
-   - sudo docker run -d -p 5000:6379 -p 5001:6380 -p 5002:6381 -p 5003:6382 -p 5004:6383 -p 5005:6384 --name redis-cluster vishnunair/docker-redis-cluster
-   - redis-cli -h 127.0.0.1 -p 5000 cluster nodes
-   - sudo docker exec -it 5be /bin/sh #进入container
+redis 数据库里面的每个键值对(key-value pair)都是由对象(object)组成的,其中:
+数据库键总是一个字符串对象(string object);而数据库键的值则可以是字符串对象、
+列表对象(list object)、哈希对象(hashobject)、集合对象(set object)、
+有序集合对象(sorted set object)这五种对象中的其中一种
+   
+** 数据结构与对象
+*** SDS
+redis没有使用c语言内的以空字符结尾的字符数组作为字符串，而是自己定义了一种SDS，
+simple dynamic string，简单动态字符串

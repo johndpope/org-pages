@@ -79,3 +79,18 @@
       mysql -u manue1 -p qweO1\!k -h 8.8.8.8
    
    2. 
+
+* q & a
+** TODO 远程主机访问权限控制失效问题 
+   - State "TODO"       from              [2018-11-30 Fri 15:25]
+     在hive创建metastore表，需要远程节点访问的时候，创建hive@%远程访问无效
+     : grant all privileges on hive.* to hive@'%'identified by 'manue1';
+     最终只能手动添加一条hive@slave01
+
+     未找到原因
++---------+------+-------------------------------------------+
+| Host    | User | Password                                  |
++---------+------+-------------------------------------------+
+| %       | hive | *D6FE2F62553086F61F0C4AD1E8E096425CAB1B37 |
+| slave01 | hive | *D6FE2F62553086F61F0C4AD1E8E096425CAB1B37 |
++---------+------+-------------------------------------------+

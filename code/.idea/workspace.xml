@@ -127,11 +127,10 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="1919" />
-    <option name="y" value="850" />
-    <option name="width" value="1368" />
-    <option name="height" value="769" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-1" />
+    <option name="width" value="1922" />
+    <option name="height" value="1081" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -427,7 +426,7 @@
       <workItem from="1541587162484" duration="819000" />
       <workItem from="1541588893562" duration="7931000" />
       <workItem from="1542120047159" duration="9018000" />
-      <workItem from="1542160610178" duration="22142000" />
+      <workItem from="1542160610178" duration="23336000" />
     </task>
     <servers />
   </component>
@@ -464,7 +463,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="136525000" />
+    <option name="totallyTimeSpent" value="137719000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -476,7 +475,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1919" y="850" width="1368" height="743" extended-state="7" />
+    <frame x="-1" y="0" width="1922" height="1081" extended-state="6" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -487,13 +486,13 @@
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5028612" side_tool="true" weight="0.32898173" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49713877" visible="true" weight="0.38032788" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49713877" weight="0.24472573" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32898173" />
       <window_info id="Capture Tool" order="2" />
       <window_info anchor="right" id="Remote Host" order="3" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19637462" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13844515" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="SciView" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />

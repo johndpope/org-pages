@@ -13,7 +13,7 @@ dockerfile自动部署可以到 [[https://github.com/Nanue1/web-iou-docker][gith
 
 
 #+ATTR_HTML: :width 100% :height 80%
-[[./images/web-iou.jpg]]
+[[../images/web-iou.jpg]]
 
 
 dockerfile内容 如下

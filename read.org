@@ -1,3 +1,5 @@
+#+SETUPFILE: setup.org
+#+TITLE: Reading List
 * Reading List
 ** TODO [[https://book.douban.com/subject/10432347/][算法]]  
    SCHEDULED:<2018-11-13 Tue ++1d>
@@ -20,4 +22,8 @@
    CLOSED: [2017-02-20 Mon 04:47]
    #+ATTR_HTML: :width 30% :height 30% 
    [[./images/book-fqgzf.jpg]]
+
+** TODO  深入浅出以太坊
+以太坊是可编程的区块链。它并不是给用户一系列预先设定好的操作(例如比特币交易),而是允许用户按照
+自己的意愿创建复杂的操作
 

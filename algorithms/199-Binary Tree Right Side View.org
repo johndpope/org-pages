@@ -27,9 +27,6 @@ Explanation:
 * 一、Depth-First Search
 : 1.深度遍历：根结点 ---> 左子树 ---> 右子树,保证同一层最后一个录入栈内的数据为最右节点
 : 2. 时间复杂度O(n) 空间复杂度O(2n)
-#+CAPTION: depth-first
-#+ATTR_HTML: :width 300px :height 350px
-[[./images/199_depth_first.png]]
 
 ** 1.1 java 实现DFS
 

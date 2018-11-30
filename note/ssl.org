@@ -1,0 +1,73 @@
+#+SETUPFILE: setup.org
+#+TITLE: https站点证书配置
+
+个人https站点，首选免费开源证书,Let's Encrypt是国外一个公共的免费SSL项目，
+由 Linux 基金会托管，由Mozilla、思科、Akamai、IdenTrust和EFF等组织发起，
+目的就是向网站自动签发和管理免费证书，以便加速互联网由HTTP过渡到HTTPS。
+
+
+let's encrypt优点:
+
+1. 免费提供90天的电子证书
+2. 提供certbot工具自动更新证书系统
+
+
+
+* 证书配置安装
+
+let's encrypt 使用certbot这款软件管理电子证书，在安装certbot过程中，提示
+机器pyopenssl版本比较低，需要高版本，[[http://cbs.centos.org/kojifiles/packages/pyOpenSSL/0.15.1/1.el7/noarch/pyOpenSSL-0.15.1-1.el7.noarch.rpm][pyopenssl高版本下载]] 
+=sudo rpm -Uvh *.rpm= 安装 
+
+: yum install epel-release -y
+: yum install certbot -y
+: pip install certifi 
+
+使用certbot的standalone生成证书之前，需要保证80端口未占用, =-d= 证书支持
+的子域名， =-m= 通知邮箱
+
+: certbot certonly --standalone -d manue1.site -d www.manue1.site -m manue1@foxmail.com
+
+* 证书定期更新
+
+crontab 每两月更新证书信息，避免失效, =--pre-hook= 代表 执行前需要处理的任务，
+ =--post-hook= 代表执行后需要处理的任务
+
+: 15 2 * */2 * certbot renew --pre-hook "service nginx stop" --post-hook "service nginx start" 
+
+* nginx调用证书
+
+将所有80端口流量转发到443端口,443端口服务配上证书认证
+
+#+BEGIN_SRC 
+
+server {
+  listen 80;
+  server_name manue1.site www.manue1.site;
+  return 301 https://www.manue1.site$request_uri;
+}
+
+server {
+
+       listen  443 ssl;
+       server_name  manue1.site www.manue1.site;
+
+
+       ssl_certificate /etc/letsencrypt/live/manue1.site/fullchain.pem;
+       ssl_certificate_key /etc/letsencrypt/live/manue1.site/privkey.pem;
+
+       location / {
+           root   /home/manue1/html-pages;
+           index  index.html index.htm;
+       }
+
+       error_page   500 502 503 504  /50x.html;
+       location = /50x.html {
+           root   html;
+       }
+
+}
+
+#+END_SRC
+
+至此，个人站点免费配置https证书便搞定了

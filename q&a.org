@@ -1,3 +1,5 @@
+#+SETUPFILE: setup.org
+#+TITLE: Question & Answer
 * Question & Answer
 
 ** DONE org-mode table中英文对齐问题
@@ -51,5 +53,16 @@
   #+BEGIN_QUOTE
   =c-x u= 解决问题
   #+END_QUOTE
-** TODO SSH登录session常驻与github冲突问题 
+** TODO ssh登录session常驻与github冲突问题 
   - State "TODO"       from              [2018-11-13 Tue 19:40]
+
+** TODO emacs如何处理博文头部尾部嵌套跳转页问题
+
+** DONE ssh Permission denied (publickey)
+   CLOSED: [2018-11-28 Wed 11:44]
+   在目标主机的 =/.ssh/authorized_keys= 文件内，添加id_rsa.pub
+
+** DONE arch下载百度云大文件
+   CLOSED: [2018-11-29 Thu 14:47]
+   - State "DONE"       from "TODO"       [2018-11-29 Thu 14:47]
+   [[https://github.com/iikira/BaiduPCS-Go][go实现的百度云大文件下载]] 使用文档很详细

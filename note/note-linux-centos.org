@@ -6,6 +6,8 @@
 #+SETUPFILE: setup.org
 #+TITLE: note-linux-centos
 
+vbox自建centos集群环境，方便本地开发测试,
+
 * VboxManage
    
   - vms 基本信息
@@ -32,7 +34,7 @@
 VBoxManage modifyhd \{aea51811-5e79-46e9-b5ba-f66740e6f47b\}.vdi  --resize 10248
     
     #+END_SRC
-
+    
   - 创建快照
     
     VBoxManage snapshot ubuntu01 take ubuntu_basic_ssh
@@ -46,10 +48,7 @@ VBoxManage modifyhd \{aea51811-5e79-46e9-b5ba-f66740e6f47b\}.vdi  --resize 10248
   - clone vm
 
     VBoxManage clonevm  Centos701 --snapshot  centos7_basic  --name Centos_basic
-    
 
-
-    
 #+BEGIN_SRC 
 
 查看当前虚拟机  VBoxManage list vms  
@@ -252,8 +251,7 @@ VBoxManage convertdd        [-static] stdin <outputfile> <bytes> 将标准输入
 #+END_SRC
 
 * centos7 basic environment
-  centos7 download
-  http://isoredirect.centos.org/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1708.iso
+  centos7 镜像[[http://isoredirect.centos.org/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1708.iso][下载]]
 
 ** lvm 
    在文件中添加要挂载的分区和文件目录可以修改文件
@@ -739,8 +737,8 @@ export CATALINA_BASE=$HADOOP_HOME/share/hadoop/httpfs/tomcat #支持httpfs rest 
       5. slaves
          
          #+BEGIN_SRC 
-slave01
-slave02
+         slave01
+         slave02
          #+END_SRC
 
       6. hadoop-env.sh
@@ -750,15 +748,21 @@ slave02
          
     - slaves
       
-      tar -zcvf hadoop-2.7.5_conf_finshed.tar.gz hadoop-2.7.5/
+      复制master节点配置好的安装包到指定slaves目录
+      
+      : tar -zcvf hadoop-2.7.5_conf_finshed.tar.gz hadoop-2.7.5/
+      : scp hadoop-2.7.5_conf_finshed.tar.gz manue1@slave02:/home/manue1/opt/
 
-      scp hadoop-2.7.5_conf_finshed.tar.gz manue1@slave02:/home/manue1/opt/
 ** 启动hadoop
-   hdfs namenode -format #第一次启动要执行格式化，之后启动不用执行这个
-   start-dfs.sh
-   start-yarn.sh
-   mr-jobhistory-daemon.sh start historyserver  ??
-   httpfs.sh start
+
+   第一次启动要执行格式化，之后启动不用执行这条
+   : hdfs namenode -format 
+   
+   启动命令:
+   : start-dfs.sh
+   : start-yarn.sh
+   : mr-jobhistory-daemon.sh start historyserver  ??
+   : httpfs.sh start
 
 
    - master
@@ -782,15 +786,18 @@ manue1@master sbin]$ jps
        #+END_SRC
 
   hadoop cluster状态展示界面 webhdfs
-  http://master:50070/
-  curl "http://master:50070/webhdfs/v1/?op=liststatus&user.name=manue1"
+
+  : http://master:50070/
+  : curl "http://master:50070/webhdfs/v1/?op=liststatus&user.name=manue1"
   
   httpfs rest api 配置HA的时候找不到namenode可以采用httpfs
-  http://master:14000/
-  curl "http://master:14000/webhdfs/v1/?op=liststatus&user.name=manue1"
+
+  : http://master:14000/
+  : curl "http://master:14000/webhdfs/v1/?op=liststatus&user.name=manue1"
 
   yarn 管理界面
-  http://master:8088
+
+  : http://master:8088
 
 * elasticstk 集群
 ** elasticsearch-611
@@ -1193,181 +1200,160 @@ output.logstash:
        nohup /home/manue1/opt/packetbeat-6.1.1-linux-x86_64/packetbeat -e -c  /home/manue1/opt/packetbeat-6.1.1-linux-x86_64/packetbeat.yml -d "publish" &
        
 * hive 
+
+hive只需要安装在集群任意一个节点上即可,这里安装在slave01上
   
-  hadoop namenode上安装,datanode上无需安装
-  
-  1. download install
+** install mariadb
 
-     hive
+   安装hive前，需要mysql作为外置存储引擎，存放hive元数据(metastore)
 
-     http://mirrors.shuosc.org/apache/hive/stable-2/
+   [[http://blog.csdn.net/Nemo____/article/details/72897455][参考安装]] mysql准备环境
 
-     * mysql 
-       
-       refer: http://blog.csdn.net/Nemo____/article/details/72897455
-       - remove mariadb
-         rpm -qa|grep mariadb         //查询出已安装的mariadb
-         rpm -e --nodeps 文件名      //卸载 ， 文件名为使用rpm -qa|grep mariadb 命令查出的所有文件
-         sudo  rpm -e --nodeps mariadb-libscc
+   - remove mariadb
+     : rpm -qa|grep mariadb         //查询出已安装的mariadb
+     : rpm -e --nodeps 文件名        //卸载 ， 文件名为使用rpm -qa|grep mariadb 命令查出的所有文件
+     : sudo  rpm -e --nodeps mariadb-libscc
          
-       - install mariadb
+   - install mariadb
 
-         https://www.cnblogs.com/starof/p/4680083.html 
+    : yum install mariadb-server mariadb
+    : systemctl start mariadb  #启动MariaDB
+    : systemctl stop mariadb   #停止MariaDB
+    : systemctl restart mariadb  #重启MariaDB
+    : systemctl enable mariadb  #设置开机启动
+    : mysql -uroot -p #NO PASSWORD
+    : set password for 'root'@'localhost' =password('manue1');  # set new password
+    : grant all privileges on *.* to root@'%'identified by 'manue1';  #远程连接设置
 
-         yum install mariadb-server mariadb
+    vi /etc/my.cnf
+    #+BEGIN_SRC 
+    # set utf8
+    [mysql]
+    default-character-set=utf8  # NO SPACE
+   #+END_SRC
 
-         systemctl start mariadb  #启动MariaDB
+** config hive
 
-         systemctl stop mariadb  #停止MariaDB
+ 配置安装[[http://mirrors.shuosc.org/apache/hive/stable-2/][hive]] 参考： [[https://cwiki.apache.org/confluence/display/Hive/GettingStarted][1]]  [[http://blog.csdn.net/jssg_tzw/article/details/72354470][2]]
+
+- *.bashrc*
+
+ hive 环境变量配置
+
+ : export HIVE_HOME=/home/manue1/opt/apache-hive-2.3.2-bin
+ : export PATH=$PATH:$HIVE_HOME/bin
+
+- *metastore conf*
+
+ hive元数据存放mysql,为hive建立相应的mysql账户,并赋予足够的权限
+     
+ : mysql -h slave01 -uroot -p
+ : insert into mysql.user (Host,User,Password)values('localhost','hive',password('manue1'));
+ : create database hive;
+ : grant all privileges on hive.* to hive@'%'identified by 'manue1'; 
+ : flush privileges; 
+
+- *hive-site.xml*
+      
+ : mv hive-default.xml hive-site.xml
+      
+ 1. hdfs新建hive数据目录
+
+    因为在hive-site.xml配置了hive表的数据存放在hdfs上的/user/hive/warehouse内,
+   
+    : <name>hive.metastore.warehouse.dir</name>
+    : <value>/user/hive/warehouse</value>
+    : <name>hive.exec.scratchdir</name>
+    : <value>/tmp/hive</value>
+   
+    所以要在Hadoop集群新建目录，执行命令
+   
+    : [manue1@master conf]$ hadoop fs -mkdir -p /user/hive/warehouse
+    : [manue1@master conf]$ hadoop fs -chmod -R 777 /user/hive/warehouse
+    : [manue1@master conf]$ hadoop fs -mkdir -p /tmp/hive
+    : [manue1@master conf]$ hadoop fs -chmod -R 777 /tmp/hive
+
+ 2. hive-site.xml内mysql相关配置
+
+    需要java连接mysql的依赖包下载[[https://dev.mysql.com/downloads/connector/j/5.1.html][mysql-connector-java-5.1.45-bin.jar]] 
+   
+    : mv mysql-connector-java-5.1.45-bin.jar lib/
+   
+   #+BEGIN_SRC 
+    1. javax.jdo.option.ConnectionDriverName，将该name对应的value修改为MySQL驱动类路径：
+    <property
+      <name>javax.jdo.option.ConnectionDriverName</name>
+      <value>com.mysql.jdbc.Driver</value>
+    </property>  
+   
+    2. javax.jdo.option.ConnectionURL，将该name对应的value修改为MySQL的地址：
+     <name>javax.jdo.option.ConnectionURL</name>
+     <value>jdbc:mysql://192.168.56.11:3306/hive?createDatabaseIfNotExist=true</value>
+   
+    3.javax.jdo.option.ConnectionUserName，将对应的value修改为MySQL数据库登录名：
+    <name>javax.jdo.option.ConnectionUserName</name>
+    <value>hive</value>
+   
+    4.javax.jdo.option.ConnectionPassword，将对应的value修改为MySQL数据库的登录密码：
+    <name>javax.jdo.option.ConnectionPassword</name>
+    <value>*******</value>
+   
+   #+END_SRC
+
+ 3. 替换${system 等值
          
-         systemctl restart mariadb  #重启MariaDB
-         
-         systemctl enable mariadb  #设置开机启动
-
-         mysql -uroot -p #NO PASSWORD
-
-         set password for 'root'@'localhost' =password('manue1');  # set new password
-
-         grant all privileges on *.* to root@'%'identified by 'manue1';  #远程连接设置
-
-         vi /etc/my.cnf
-         #+BEGIN_SRC 
- # set utf8
-[mysql]
-default-character-set=utf8  # NO SPACE
-         #+END_SRC
-
-  2. config
-
-     https://cwiki.apache.org/confluence/display/Hive/GettingStarted
+    ${system:user.name}都替换为manue1
     
-     http://blog.csdn.net/jssg_tzw/article/details/72354470
+    ${system:java.io.tmpdir}替换为hive的临时目录 /home/manue1/opt/apache-hive-2.3.2-bin/iotmp,先创建，再替换
 
-    - vi .bashrc
-      #+BEGIN_SRC 
-# Hive Environment Variables
-export HIVE_HOME=/home/manue1/opt/apache-hive-2.3.2-bin
-PATH=$JAVA_HOME/bin:$HADOOP_HOME/bin:$HBASE_HOME/bin:$HIVE_HOME/bin:$PATH
-      #+END_SRC
+    : [manue1@master apache-hive-2.3.2-bin]$ mkdir iotmp
+    : [manue1@master apache-hive-2.3.2-bin]$ sudo chmod -R 777 iotmp
+    
+    : :%s/${system:java.io.tmpdir}/\/home\/manue1\/opt\/apache-hive-2.3.2-bin\/iotmp/gg
+    : :%s/${system:user.name}/manue1/gg
 
-    - metastore conf
+最后初始化metadata表数据
+
+: schematool -initSchema -dbType mysql
+
+- *配置hive-env.sh 文件*
+
+   mv hive-env.sh.template hive-env.sh
+  
+  : export HADOOP_HOME=/home/manue1/opt/hadoop-2.7.5
+  : export HIVE_CONF_DIR=/home/manue1/opt/apache-hive-2.3.2-bin/conf
+  : export HIVE_AUX_JARS_PATH=/home/manue1/opt/apache-hive-2.3.2-bin/lib
       
-      #+BEGIN_SRC 
-mysql -h slave01 -uroot -p
+** start hive
 
-insert into mysql.user (Host,User,Password)values('localhost','hive',password('manue1'));
+Hive的三种启动方式
 
-create database hive;
+1. hive  命令行模式
 
-grant all privileges on hive.* to hive@'%'identified by 'manue1'; 
+   进入hive安装目录，输入bin/hive的执行程序，或者输入 hive --service cli
 
-flush privileges; 
+   用于linux平台命令行查询，查询语句基本跟mysql查询语句类似
 
-      
-      #+END_SRC
+2. hive  web界面的启动方式
 
-    - hive-site.xml
-      
-      mv hive-default.xml hive-site.xml
-      
-      1. hdfs新建目录
-         #+BEGIN_SRC 
- <name>hive.metastore.warehouse.dir</name>
- <value>/user/hive/warehouse</value>
- <name>hive.exec.scratchdir</name>
-<value>/tmp/hive</value>
+   bin/hive --service hwi 
+
+   用于通过浏览器来访问hive，感觉没多大用途，浏览器访问地址是：127.0.0.1:9999/hwi
+
+3. hive  远程服务 (端口号10000) 启动方式
+
+   bin/hive --service hiveserver2 &
+
+   用java，python等程序实现通过jdbc等驱动的访问hive就用这种起动方式了，这个是程序员最需要的方式了
 
 
- 所以要在Hadoop集群新建/user/hive/warehouse目录，执行命令
+   此时可以使用beeline 测试jdbc连接
 
-[manue1@master conf]$ hadoop fs -mkdir -p /user/hive/warehouse
-[manue1@master conf]$ hadoop fs -chmod -R 777 /user/hive/warehouse
-[manue1@master conf]$ hadoop fs -mkdir -p /tmp/hive
-[manue1@master conf]$ hadoop fs -chmod -R 777 /tmp/hive
-      #+END_SRC
+   : beeline -u jdbc:hive2://slave01:10000 -n manue1 -p mmanue1
 
-      2. mysql相关配置
 
-         https://dev.mysql.com/downloads/connector/j/5.1.html download
-
-         mv mysql-connector-java-5.1.45-bin.jar lib/
-
-         #+BEGIN_SRC 
-
-1. javax.jdo.option.ConnectionDriverName，将该name对应的value修改为MySQL驱动类路径：
-<property
-  <name>javax.jdo.option.ConnectionDriverName</name>
-  <value>com.mysql.jdbc.Driver</value>
-</property>  
-
-2. javax.jdo.option.ConnectionURL，将该name对应的value修改为MySQL的地址：
- <name>javax.jdo.option.ConnectionURL</name>
- <value>jdbc:mysql://192.168.56.101:3306/hive?createDatabaseIfNotExist=true</value>
-
-3.javax.jdo.option.ConnectionUserName，将对应的value修改为MySQL数据库登录名：
-<name>javax.jdo.option.ConnectionUserName</name>
-<value>hive</value>
-
-4.javax.jdo.option.ConnectionPassword，将对应的value修改为MySQL数据库的登录密码：
-<name>javax.jdo.option.ConnectionPassword</name>
-<value>*******</value>
-      
-      #+END_SRC
-
-         对mysql初始化
-
-         schematool -initSchema -dbType mysql
-
-      3. 替换${system
-         
-         ${system:java.io.tmpdir}替换为hive的临时目录
-         /home/manue1/opt/apache-hive-2.3.2-bin/iotmp
-
-         ${system:user.name}都替换为manue1
-
-         #+BEGIN_SRC 
-[manue1@master apache-hive-2.3.2-bin]$ mkdir iotmp
-[manue1@master apache-hive-2.3.2-bin]$ sudo chmod -R 777 iotmp
-
-:%s/${system:java.io.tmpdir}/\/home\/manue1\/opt\/apache-hive-2.3.2-bin\/iotmp/gg
-
-:%s/${system:user.name}/manue1/gg
-         #+END_SRC
-
-    - hive-env.sh
-
-      mv hive-env.sh.template hive-env.sh
-
-      #+BEGIN_SRC 
-export HADOOP_HOME=/home/manue1/opt/hadoop-2.7.5
-
-export HIVE_CONF_DIR=/home/manue1/opt/apache-hive-2.3.2-bin/conf
-
-export HIVE_AUX_JARS_PATH=/home/manue1/opt/apache-hive-2.3.2-bin/lib
-      
-      #+END_SRC
-      
-  3. start hive
-
-     hive --service hiveserver2 &
-
-     netstat -anp | grep 10000
-     
-     beeline 测试jdbc连接
-
-     beeline -u jdbc:hive2://master:10000 -n manue1 -p mmanue1
-
-     #+BEGIN_SRC 
-
-     bin/beeline
-     !connect jdbc:hive2://master:10000
- hdfs支持的用户 
-Enter username for jdbc:hive2://master:10000: manue1
-Enter password for jdbc:hive2://master:10000: *****
-     
-     #+END_SRC
-
-     #+BEGIN_SRC 
+问题一:
+#+BEGIN_SRC 
 
 Connecting to jdbc:hive2://master:10000/default
 18/01/10 20:37:17 [main]: WARN jdbc.HiveConnection: Failed to connect to master:10000
@@ -1377,19 +1363,28 @@ beeline>
 
 分析 ： 访问权限问题
 
-解决 ：在hdfs 的配置文件core-site.xml中加入如下配置，root 为位置填入  User:*  ，etc   hadoop.proxyuser.eamon.hosts
+解决 ：在hdfs 的配置文件core-site.xml中加入如下配置，root为位置填入  User:*  ，etc   hadoop.proxyuser.eamon.hosts
 
-<property>
-  <name>hadoop.proxyuser.manue1.hosts</name>
-  <value>*</value>
+ <property>
+   <name>hadoop.proxyuser.manue1.hosts</name>
+   <value>*</value>
  </property>
  <property>
   <name>hadoop.proxyuser.manue1.groups</name>
   <value>*</value>
 </property>
-     
+#+END_SRC
 
-     #+END_SRC
+问题二:
+#+BEGIN_SRC 
+ERROR 1045 (28000): Access denied for user 'hive'@'slave01' (using password: YES)
+
+查看mysql.user表已经存在hive@%，但依然不能访问slave01,最终无解只能添加下面一条
+
+grant all privileges on hive.* to hive@'%'identified by 'manue1';
+flush privileges; 
+
+#+END_SRC
 * zookeeper
 ** Replicated ZooKeeper configural
    #+BEGIN_SRC 
