@@ -1253,6 +1253,14 @@ hive只需要安装在集群任意一个节点上即可,这里安装在slave01�
  : grant all privileges on hive.* to hive@'%'identified by 'manue1'; 
  : flush privileges; 
 
+- *配置hive-env.sh 文件*
+
+   mv hive-env.sh.template hive-env.sh
+  
+  : export HADOOP_HOME=/home/manue1/opt/hadoop-2.7.5
+  : export HIVE_CONF_DIR=/home/manue1/opt/apache-hive-2.3.2-bin/conf
+  : export HIVE_AUX_JARS_PATH=/home/manue1/opt/apache-hive-2.3.2-bin/lib
+
 - *hive-site.xml*
       
  : mv hive-default.xml hive-site.xml
@@ -1316,13 +1324,6 @@ hive只需要安装在集群任意一个节点上即可,这里安装在slave01�
 
 : schematool -initSchema -dbType mysql
 
-- *配置hive-env.sh 文件*
-
-   mv hive-env.sh.template hive-env.sh
-  
-  : export HADOOP_HOME=/home/manue1/opt/hadoop-2.7.5
-  : export HIVE_CONF_DIR=/home/manue1/opt/apache-hive-2.3.2-bin/conf
-  : export HIVE_AUX_JARS_PATH=/home/manue1/opt/apache-hive-2.3.2-bin/lib
       
 ** start hive
 
