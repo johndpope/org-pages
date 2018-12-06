@@ -90,3 +90,11 @@ Spark快速大数据分析[美] 卡劳（Holden Karau）
 ** docker search spark
    docker pull sequenceiq/spark:1.6.0
 * docker hbase
+
+* TODO 如何转表格
+格式	可分割	平均压缩速度	文本文件压缩效率	Hadoop压缩编解码器	纯Java实现	原生	备注
+gzip	否	快	高	org.apache.hadoop.io.compress.GzipCodec	是	是	
+lzo	是（取决于所使用的库）	非常快	中等	com.hadoop.compression.lzo.LzoCodec	是	是	需要在每个节点上安装LZO
+bzip2	是	慢	非常高	org.apache.hadoop.io.compress.Bzip2Codec	是	是	为可分割版本使用纯Java
+zlib	否	慢	中等	org.apache.hadoop.io.compress.DefaultCodec	是	是	Hadoop 的默认压缩编解码器
+Snappy	否	非常快	低	org.apache.hadoop.io.compress.SnappyCodec	否	是	Snappy 有纯Java的移植版，但是在Spark/Hadoop中不能用

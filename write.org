@@ -27,8 +27,10 @@
 
 ** TODO [[file:note/note-jvm.org][jvm理解]] 
 
-** TODO [[file:note/note-linux-centos.org][centos集群部署]] 
+** DONE [[file:note/note-linux-centos.org][centos集群部署]] 
+   CLOSED: [2018-12-06 Thu 12:50]
 
+   - State "DONE"       from "TODO"       [2018-12-06 Thu 12:50]
 ** TODO [[file:note/note-options.org][对冲基金]] 
 
 ** TODO [[file:note/note-redis.org][redis]] 
@@ -42,4 +44,16 @@
 ** TODO [[file:note/note-wx-bot.org][微信机器人]] 
 
 ** TODO [[file:note/nginx.org][nginx]] 
+** DONE [[file:note/hive.org][hive使用技巧]] 
+   CLOSED: [2018-12-06 Thu 12:50]
 
+   - State "DONE"       from "TODO"       [2018-12-06 Thu 12:50]
+** TODO [[file:note/org-mode.org][org-mode格式排版]] 
+** DONE [[file:note/rabbitmq.org][rabbit]] 
+   CLOSED: [2018-12-06 Thu 12:50]
+
+   - State "DONE"       from "TODO"       [2018-12-06 Thu 12:50]
+** DONE [[file:note/sqoop.org][sqoop]] 
+   CLOSED: [2018-12-06 Thu 12:50]
+
+   - State "DONE"       from "TODO"       [2018-12-06 Thu 12:50]

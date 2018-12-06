@@ -1324,7 +1324,6 @@ hive只需要安装在集群任意一个节点上即可,这里安装在slave01�
 
 : schematool -initSchema -dbType mysql
 
-      
 ** start hive
 
 Hive的三种启动方式
@@ -1386,6 +1385,29 @@ grant all privileges on hive.* to hive@'%'identified by 'manue1';
 flush privileges; 
 
 #+END_SRC
+* sqoop
+
+ 1. 环境配置
+
+    从[[https://sqoop.apache.org][官网下载]] 解压安装，配置SQOOP_HOME目录
+    #+BEGIN_SRC 
+export SQOOP_HOME=/home/manue1/opt/sqoop-1.4.7.bin__hadoop-2.6.0
+export PATH=$SQOOP_HOME/bin:$PATH
+    #+END_SRC
+    拷贝${SQOOP_HOME}/conf/sqoop-env-template.sh  
+    到${SQOOP_HOME}/conf/sqoop-env.sh，
+    然后修改sqoop-env.sh
+    #+BEGIN_SRC 
+export HADOOP_COMMON_HOME=/home/manue1/opt/hadoop-2.7.5
+export HADOOP_MAPRED_HOME=/home/manue1/opt/hadoop-2.7.5
+export HIVE_HOME=/home/manue1/opt/apache-hive-2.3.2-bin
+    #+END_SRC
+
+ 2. 测试连接mysql
+    
+    将连接mysql的jar导入sqoop/lib内
+    
+    : sqoop list-databases --connect jdbc:mysql://slave01:3306/hive --username root --password manue1
 * zookeeper
 ** Replicated ZooKeeper configural
    #+BEGIN_SRC 
@@ -1561,9 +1583,8 @@ export SPARK_HOME=/home/manue1/opt/spark-2.2.1-bin-hadoop2.7
 export PATH=$PATH:$SPARK_HOME/bin
     #+END_SRC
 
-
   - spark-env.sh
-
+    
     cp spark-env.sh.template spark-env.sh
 
     #+BEGIN_SRC 
@@ -1594,7 +1615,6 @@ SPARK_WORKER_CORES：每个worker节点所占有的CPU核数目
 SPARK_WORKER_INSTANCES：每台机器上开启的worker节点的数目
     
     #+END_SRC
-
 
   - slaves
     #+BEGIN_SRC 

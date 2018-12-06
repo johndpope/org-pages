@@ -12,18 +12,69 @@
      
    #+ATTR_HTML: :width 30% :height 30% 
    [[./images/book-sf.jpg]]
+** TODO [[file:note/note-options.org][期权、期货及其衍生产品]] 
+   SCHEDULED: <2018-12-04 Tue ++1d>
+   :PROPERTIES:
+   :LAST_REPEAT: [2018-12-03 Mon 16:30]
+   :END:
+   - State "DONE"       from "TODO"       [2018-12-03 Mon 16:30] \\
+     一本期货教科书
+   #+ATTR_HTML: :width 30% :height 30% 
+   [[./images/book-options.jpg]]
 ** DONE [[https://book.douban.com/subject/26979890/][算法图解]] 
    CLOSED: [2018-10-27 Sat 14:35]
 
    - State "DONE"       from "TODO"       [2018-10-27 Sat 14:35]
    #+ATTR_HTML: :width 30% :height 30% 
    [[./images/book-sftj.jpg]]
+
+   很适合入门的一本算法，图解，有趣
 ** DONE [[https://book.douban.com/subject/5916234/][番茄工作法]] 
    CLOSED: [2017-02-20 Mon 04:47]
    #+ATTR_HTML: :width 30% :height 30% 
    [[./images/book-fqgzf.jpg]]
+   
+   很有效的量化工作，和提高工作效率的工作法,一直强迫自己使用emacs的番茄钟细化工作
 
-** TODO  深入浅出以太坊
-以太坊是可编程的区块链。它并不是给用户一系列预先设定好的操作(例如比特币交易),而是允许用户按照
-自己的意愿创建复杂的操作
+** DONE [[https://book.douban.com/subject/2338699/][卡耐基人际交往心理学]]
+   CLOSED: [2018-12-03 Mon 16:18]
+   
+   - State "DONE"       from "TODO"       [2018-12-03 Mon 16:18]
+   #+ATTR_HTML: :width 30% :height 30% 
+   [[./images/book-knj.jpg]]
+
+   工作中遇到瓶颈的时候，准备找本心理学的书读读，结果读完，发现是本成功学!
+   
+   能出版的书，总有他的道理，即便我不怎么喜欢，但它说的道理都是对的.
+
+   *FTD* (Fool things i have done) 书中提到一个很不错的idea，记录生活中自己
+   犯过的一些认为学要改正的蠢事
+
+   能回想起来对自己有价值的内容，也记录下:
+   #+BEGIN_QUOTE
+   1. 勇于承认过错
+   2. 空杯心态，低调做自己
+   3. 事事无须追求完美，图曾烦恼
+   4. 人人都喜欢受别人称赞
+   5. 主动信任他人，才能最短时间内赢得信任
+   6. 倾听、少说、不插话
+   7. 争论中唯一获胜的方式就是避免争辩
+   #+END_QUOTE
+
+** DONE [[file:note/note-jvm.org][深入理解Java虚拟机]]
+   CLOSED: [2018-12-03 Mon 16:36]
+   - State "DONE"       from "TODO"       [2018-12-03 Mon 16:36]
+   #+ATTR_HTML: :width 30% :height 30% 
+   [[./images/book-jvm.jpg]]
+** TODO [[https://book.douban.com/subject/30155731/][算法之美]]
+   一本指导工作与生活的算法,将复杂的算法应用于决策生活
+
+   又是一本意料之外的书,不过还可以,休闲读物
+   #+ATTR_HTML: :width 30% :height 30% 
+   [[./images/book-sfzm.jpg]]   
+   #+BEGIN_QUOTE
+
+   1.在测试前37%样本前，不要轻易下结论
+   #+END_QUOTE
+
 

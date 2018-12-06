@@ -1,5 +1,60 @@
 #+SETUPFILE: setup.org
-#+TITLE: 生活啊，不就是这样吗
+#+TITLE:  manue1
 
-这里是一个主页呀
+-----
+#+BEGIN_CENTER
+你怎么过一天，就怎么过一生
+#+END_CENTER
+-----
+\\
 
+*札记*
+
+#+BEGIN_QUOTE
+#+BEGIN_EXAMPLE
+这是2018年最后一个月
+我们等待着，一年中最后的告别
+常听人说，有两个时候人最容易惆怅
+时之岁末，人之中年
+这是一个不畏将来的时节
+初雪微凉，守心自暖
+只有拥有过那些遗憾和不甘后
+我们才会慢慢知道
+什么样的人才值得相守
+什么样的生活才最适合我们自己
+就像十二月初雪
+我们翼望着它的洁白如初
+在这美好的的时刻
+可以快乐就不要难过
+#+END_EXAMPLE
+#+END_QUOTE
+
+
+*FTD*
+
+#+BEGIN_QUOTE
+#+BEGIN_EXAMPLE
+遇到强势的人或事,我觉得他们是傻逼 ...,我得试着接受这些
+#+END_EXAMPLE
+#+END_QUOTE
+
+
+
+*GTD*
+#+BEGIN_QUOTE
+- [[file:write.org][Writing List]]
+
+- [[file:code.org][Coding List]]
+
+- [[file:q&a.org][Question & Answer]]
+
+- [[file:body.org][Body Building]]
+
+- [[file:read.org][Reading List]]
+
+#+END_QUOTE
+
+
+#+BEGIN_CENTER
+[[file:sitemap.org][sitemap]]
+#+END_CENTER

@@ -1,0 +1,46 @@
+#+SETUPFILE: setup.org
+#+TITLE: sqoop使用
+
+Sqoop是一个用于Hadoop和关系型数据库或主机之间的数据传输工具。
+它可以将数据从关系型数据库import到HDFS，也可以从HDFS export到关系型数据库,
+Sqoop只是RDBMS与HDFS直接数据转换工具，导入数据和导出数据，
+都是通过Hadoop的MapReduce实现,充分利用分布式计算的功能。
+
+Sqoop是一款基于Hadoop系统的数据转移工具，因此在安装Sqoop之前需要先安装
+好Hadoop
+
+
+首先测试 sqoop与mysql的连通性
+
+: sqoop list-databases --connect jdbc:mysql://slave01:3306/ --username root --password manue1
+
+这里导入导出数据使用,hive库中的user表信息
+
+- *从hive/hdfs导出到mysql*
+
+从hive导出数据到mysql，本质上就是将hdfs上文件导出到本地mysql库，
+比如现在要导出hive中hdb.user_orc表的数据,此表在hdfs上存放的路径是
+ =/user/hive/warehouse/hdb.db/user_orc= ,也就是将此目录下文件
+内容导出到mysql
+
+导出前在mysql中创建表:
+
+: create database sqoopdb;
+: use sqoopdb;
+: create table my_user(uploader VARCHAR(64),videos int,friends int)
+
+sqoop导出命令:
+
+: sqoop export -m 1 --connect jdbc:mysql://slave01:3306/sqoopdb --username root --password manue1 --table my_user --export-dir  /user/hive/warehouse/hdb.db/user_text --input-fields-terminated-by '\t' --mysql-delimiters
+
+
+
+
+- *从mysql导入hdfs*
+
+: sqoop import --connect jdbc:mysql://slave01:3306/sqoopdb --username root --password manue1 --split-by friends --table my_user --hive-import --create-hive-table --hive-table hdb.mysql_to_hive --hive-overwrite --target-dir /user/hive/warehouse/hdb.db/mysql_to_hive
+
+
+- 结论
+
+  目前sqoop调研看，只是用来对于关系型数据库与hdfs直接数据传输，很难满足json等结构复杂的数据传输
