@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-12-06 Thu 12:53 -->
+<!-- 2018-12-06 Thu 13:52 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>199. Binary Tree Right Side View</title>
@@ -179,7 +179,7 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
-<link rel="stylesheet" href="css/worg.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/worg.css" type="text/css" media="screen" />
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -229,7 +229,7 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="preamble" class="status">
-<a href="index.html">Home</a>
+<a href="https://www.manue1.site/index.html">Home</a>
 </div>
 <div id="content">
 <h1 class="title">199. Binary Tree Right Side View</h1>
@@ -237,21 +237,21 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orge9e6ba0">题意分析</a></li>
-<li><a href="#orgec2baac">一、Depth-First Search</a>
+<li><a href="#orgd4cc3cf">题意分析</a></li>
+<li><a href="#orgbf6dac3">一、Depth-First Search</a>
 <ul>
-<li><a href="#org5671f2f">1.1 java 实现DFS</a></li>
-<li><a href="#orge039076">1.2 python 实现DFS</a></li>
+<li><a href="#orgb36c712">1.1 java 实现DFS</a></li>
+<li><a href="#org3c4926d">1.2 python 实现DFS</a></li>
 </ul>
 </li>
-<li><a href="#org9da5cc5">二、Breadth-First-Search</a>
+<li><a href="#orgffb38fb">二、Breadth-First-Search</a>
 <ul>
-<li><a href="#org04a2c7f">2.1 java</a></li>
+<li><a href="#org7b604bb">2.1 java</a></li>
 </ul>
 </li>
-<li><a href="#orgccaaccf">三、Traversal</a>
+<li><a href="#orgf850916">三、Traversal</a>
 <ul>
-<li><a href="#org3e6eb1e">3.1 java</a></li>
+<li><a href="#org14890b7">3.1 java</a></li>
 </ul>
 </li>
 </ul>
@@ -282,18 +282,18 @@ Explanation:
   5     4       &lt;---
 </pre>
 
-<div id="outline-container-orge9e6ba0" class="outline-2">
-<h2 id="orge9e6ba0">题意分析</h2>
-<div class="outline-text-2" id="text-orge9e6ba0">
+<div id="outline-container-orgd4cc3cf" class="outline-2">
+<h2 id="orgd4cc3cf">题意分析</h2>
+<div class="outline-text-2" id="text-orgd4cc3cf">
 <p>
 站在树右边 视野能够看到的节点
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgec2baac" class="outline-2">
-<h2 id="orgec2baac">一、Depth-First Search</h2>
-<div class="outline-text-2" id="text-orgec2baac">
+<div id="outline-container-orgbf6dac3" class="outline-2">
+<h2 id="orgbf6dac3">一、Depth-First Search</h2>
+<div class="outline-text-2" id="text-orgbf6dac3">
 <pre class="example">
 1.深度遍历：根结点 ---&gt; 左子树 ---&gt; 右子树,保证同一层最后一个录入栈内的数据为最右节点
 2. 时间复杂度O(n) 空间复杂度O(2n)
@@ -301,9 +301,9 @@ Explanation:
 </pre>
 </div>
 
-<div id="outline-container-org5671f2f" class="outline-3">
-<h3 id="org5671f2f">1.1 java 实现DFS</h3>
-<div class="outline-text-3" id="text-org5671f2f">
+<div id="outline-container-orgb36c712" class="outline-3">
+<h3 id="orgb36c712">1.1 java 实现DFS</h3>
+<div class="outline-text-3" id="text-orgb36c712">
 <div class="org-src-container">
 <pre class="src src-java"><span style="color: #E6DB74; font-style: italic;">/**</span>
 <span style="color: #E6DB74; font-style: italic;"> * Definition for a binary tree node.</span>
@@ -354,9 +354,9 @@ Explanation:
 </div>
 </div>
 
-<div id="outline-container-orge039076" class="outline-3">
-<h3 id="orge039076">1.2 python 实现DFS</h3>
-<div class="outline-text-3" id="text-orge039076">
+<div id="outline-container-org3c4926d" class="outline-3">
+<h3 id="org3c4926d">1.2 python 实现DFS</h3>
+<div class="outline-text-3" id="text-org3c4926d">
 <pre class="example">
 list作为stack栈使用
 
@@ -390,18 +390,18 @@ list作为stack栈使用
 </div>
 </div>
 
-<div id="outline-container-org9da5cc5" class="outline-2">
-<h2 id="org9da5cc5">二、Breadth-First-Search</h2>
-<div class="outline-text-2" id="text-org9da5cc5">
+<div id="outline-container-orgffb38fb" class="outline-2">
+<h2 id="orgffb38fb">二、Breadth-First-Search</h2>
+<div class="outline-text-2" id="text-orgffb38fb">
 <pre class="example">
 1. 广度优先遍历 根节点--&gt;右节点--&gt;左节点 需要将每层最右端数据第一个录入到队列
 2. 时间复杂度O(n) 空间复杂度 O(n)
 
 </pre>
 </div>
-<div id="outline-container-org04a2c7f" class="outline-3">
-<h3 id="org04a2c7f">2.1 java</h3>
-<div class="outline-text-3" id="text-org04a2c7f">
+<div id="outline-container-org7b604bb" class="outline-3">
+<h3 id="org7b604bb">2.1 java</h3>
+<div class="outline-text-3" id="text-org7b604bb">
 <div class="org-src-container">
 <pre class="src src-java"><span style="color: #E6DB74; font-style: italic;">/**</span>
 <span style="color: #E6DB74; font-style: italic;"> * bfs &#38431;&#21015;&#23454;&#29616;</span>
@@ -447,13 +447,13 @@ list作为stack栈使用
 </div>
 </div>
 
-<div id="outline-container-orgccaaccf" class="outline-2">
-<h2 id="orgccaaccf">三、Traversal</h2>
-<div class="outline-text-2" id="text-orgccaaccf">
+<div id="outline-container-orgf850916" class="outline-2">
+<h2 id="orgf850916">三、Traversal</h2>
+<div class="outline-text-2" id="text-orgf850916">
 </div>
-<div id="outline-container-org3e6eb1e" class="outline-3">
-<h3 id="org3e6eb1e">3.1 java</h3>
-<div class="outline-text-3" id="text-org3e6eb1e">
+<div id="outline-container-org14890b7" class="outline-3">
+<h3 id="org14890b7">3.1 java</h3>
+<div class="outline-text-3" id="text-org14890b7">
 <div class="org-src-container">
 <pre class="src src-java">
 <span style="color: #E6DB74; font-style: italic;">/**</span>

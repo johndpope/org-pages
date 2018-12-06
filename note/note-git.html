@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-12-06 Thu 12:52 -->
+<!-- 2018-12-06 Thu 13:51 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>git note</title>
@@ -229,7 +229,7 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="preamble" class="status">
-<a href="index.html">Home</a>
+<a href="https://www.manue1.site/index.html">Home</a>
 </div>
 <div id="content">
 <h1 class="title">git note</h1>
@@ -237,28 +237,28 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgd3b41b5">git 独奏</a>
+<li><a href="#org57f8aa7">git 独奏</a>
 <ul>
-<li><a href="#org54bf3f9">git 初始化</a></li>
-<li><a href="#org0ae38e1">git 暂存区</a></li>
-<li><a href="#orgfc2c021">git reset 重置</a></li>
-<li><a href="#org07f8f83">git 检出</a></li>
-<li><a href="#org5ac88fb">git 恢复进度</a></li>
-<li><a href="#org365ba65">git 基础操作</a></li>
-<li><a href="#orgcf21072">git tools</a></li>
-<li><a href="#org21802b3">改变历史</a></li>
-<li><a href="#org6a3cafa">git克隆</a></li>
+<li><a href="#org6ae44ad">git 初始化</a></li>
+<li><a href="#org013b811">git 暂存区</a></li>
+<li><a href="#org3d4d207">git reset 重置</a></li>
+<li><a href="#org2e04231">git 检出</a></li>
+<li><a href="#orgcba120a">git 恢复进度</a></li>
+<li><a href="#org4b1181d">git 基础操作</a></li>
+<li><a href="#org3cea3b0">git tools</a></li>
+<li><a href="#org5baa915">改变历史</a></li>
+<li><a href="#orgffdb3e8">git克隆</a></li>
 </ul>
 </li>
-<li><a href="#orgd065ae1">git 和声</a>
+<li><a href="#orgd0426a0">git 和声</a>
 <ul>
-<li><a href="#org872f891">git 工作协调</a></li>
-<li><a href="#orgad3e1a8">git 冲突解决</a></li>
+<li><a href="#org279ac14">git 工作协调</a></li>
+<li><a href="#orgec20cee">git 冲突解决</a></li>
 </ul>
 </li>
-<li><a href="#org378e976">common questions</a>
+<li><a href="#org09fc97e">common questions</a>
 <ul>
-<li><a href="#orgeb3beae">git ls-files 乱码问题</a></li>
+<li><a href="#org0cb74c8">git ls-files 乱码问题</a></li>
 </ul>
 </li>
 </ul>
@@ -267,13 +267,13 @@ for the JavaScript code in this tag.
 <p>
 蒋鑫. Git权威指南 机械工业出版社. Kindle 版本. 
 </p>
-<div id="outline-container-orgd3b41b5" class="outline-2">
-<h2 id="orgd3b41b5">git 独奏</h2>
-<div class="outline-text-2" id="text-orgd3b41b5">
+<div id="outline-container-org57f8aa7" class="outline-2">
+<h2 id="org57f8aa7">git 独奏</h2>
+<div class="outline-text-2" id="text-org57f8aa7">
 </div>
-<div id="outline-container-org54bf3f9" class="outline-3">
-<h3 id="org54bf3f9">git 初始化</h3>
-<div class="outline-text-3" id="text-org54bf3f9">
+<div id="outline-container-org6ae44ad" class="outline-3">
+<h3 id="org6ae44ad">git 初始化</h3>
+<div class="outline-text-3" id="text-org6ae44ad">
 <ul class="org-ul">
 <li><p>
 git init 
@@ -329,9 +329,9 @@ git config &lt;session&gt;.&lt;key&gt;
 </ul>
 </div>
 </div>
-<div id="outline-container-org0ae38e1" class="outline-3">
-<h3 id="org0ae38e1">git 暂存区</h3>
-<div class="outline-text-3" id="text-org0ae38e1">
+<div id="outline-container-org013b811" class="outline-3">
+<h3 id="org013b811">git 暂存区</h3>
+<div class="outline-text-3" id="text-org013b811">
 
 <div class="figure">
 <p><img src="http://7xpyfe.com1.z0.glb.clouddn.com/2017101515080826245091.png" alt="2017101515080826245091.png" />
@@ -401,9 +401,9 @@ git stash
 </ul>
 </div>
 </div>
-<div id="outline-container-orgfc2c021" class="outline-3">
-<h3 id="orgfc2c021">git reset 重置</h3>
-<div class="outline-text-3" id="text-orgfc2c021">
+<div id="outline-container-org3d4d207" class="outline-3">
+<h3 id="org3d4d207">git reset 重置</h3>
+<div class="outline-text-3" id="text-org3d4d207">
 <ol class="org-ol">
 <li>git reset HEAD&lt;path&gt;  相当于取消 git add &lt;paths&gt; 操作</li>
 
@@ -425,9 +425,9 @@ git reset &#x2013;hard master@{2}  重置master所有位置为两次改变之前
 </div>
 </div>
 
-<div id="outline-container-org07f8f83" class="outline-3">
-<h3 id="org07f8f83">git 检出</h3>
-<div class="outline-text-3" id="text-org07f8f83">
+<div id="outline-container-org2e04231" class="outline-3">
+<h3 id="org2e04231">git 检出</h3>
+<div class="outline-text-3" id="text-org2e04231">
 <ul class="org-ul">
 <li><p>
 git checkout branch_name
@@ -440,9 +440,9 @@ git branch -v
 </ul>
 </div>
 </div>
-<div id="outline-container-org5ac88fb" class="outline-3">
-<h3 id="org5ac88fb">git 恢复进度</h3>
-<div class="outline-text-3" id="text-org5ac88fb">
+<div id="outline-container-orgcba120a" class="outline-3">
+<h3 id="orgcba120a">git 恢复进度</h3>
+<div class="outline-text-3" id="text-orgcba120a">
 <ul class="org-ul">
 <li><p>
 git stash
@@ -471,9 +471,9 @@ git stash branch &lt;branchname&gt;  基于进度创建分支
 </div>
 </div>
 
-<div id="outline-container-org365ba65" class="outline-3">
-<h3 id="org365ba65">git 基础操作</h3>
-<div class="outline-text-3" id="text-org365ba65">
+<div id="outline-container-org4b1181d" class="outline-3">
+<h3 id="org4b1181d">git 基础操作</h3>
+<div class="outline-text-3" id="text-org4b1181d">
 <ul class="org-ul">
 <li><p>
 删除文件
@@ -557,9 +557,9 @@ git archive -o partial.tar HEAD src doc  只归档两个文件夹
 </div>
 </div>
 
-<div id="outline-container-orgcf21072" class="outline-3">
-<h3 id="orgcf21072">git tools</h3>
-<div class="outline-text-3" id="text-orgcf21072">
+<div id="outline-container-org3cea3b0" class="outline-3">
+<h3 id="org3cea3b0">git tools</h3>
+<div class="outline-text-3" id="text-org3cea3b0">
 <p>
 版本库浏览器能更好看提交关系图
 </p>
@@ -599,9 +599,9 @@ git bisect start
 </div>
 </div>
 
-<div id="outline-container-org21802b3" class="outline-3">
-<h3 id="org21802b3">改变历史</h3>
-<div class="outline-text-3" id="text-org21802b3">
+<div id="outline-container-org5baa915" class="outline-3">
+<h3 id="org5baa915">改变历史</h3>
+<div class="outline-text-3" id="text-org5baa915">
 <ul class="org-ul">
 <li><p>
 单步悔棋
@@ -626,9 +626,9 @@ git commit -m "new reason "
 </div>
 </div>
 
-<div id="outline-container-org6a3cafa" class="outline-3">
-<h3 id="org6a3cafa">git克隆</h3>
-<div class="outline-text-3" id="text-org6a3cafa">
+<div id="outline-container-orgffdb3e8" class="outline-3">
+<h3 id="orgffdb3e8">git克隆</h3>
+<div class="outline-text-3" id="text-orgffdb3e8">
 <ul class="org-ul">
 <li><p>
 git clone
@@ -652,13 +652,13 @@ git clone &#x2013;mirror &lt;rep&gt; dir
 </div>
 </div>
 
-<div id="outline-container-orgd065ae1" class="outline-2">
-<h2 id="orgd065ae1">git 和声</h2>
-<div class="outline-text-2" id="text-orgd065ae1">
+<div id="outline-container-orgd0426a0" class="outline-2">
+<h2 id="orgd0426a0">git 和声</h2>
+<div class="outline-text-2" id="text-orgd0426a0">
 </div>
-<div id="outline-container-org872f891" class="outline-3">
-<h3 id="org872f891">git 工作协调</h3>
-<div class="outline-text-3" id="text-org872f891">
+<div id="outline-container-org279ac14" class="outline-3">
+<h3 id="org279ac14">git 工作协调</h3>
+<div class="outline-text-3" id="text-org279ac14">
 <ul class="org-ul">
 <li>支持的协议
 智能协议: 数据传输过程中有清晰的进度显示,按需传输，传输量小，速度快 (ssh,git,file//)  
@@ -698,9 +698,9 @@ git push
 </div>
 
 
-<div id="outline-container-orgad3e1a8" class="outline-3">
-<h3 id="orgad3e1a8">git 冲突解决</h3>
-<div class="outline-text-3" id="text-orgad3e1a8">
+<div id="outline-container-orgec20cee" class="outline-3">
+<h3 id="orgec20cee">git 冲突解决</h3>
+<div class="outline-text-3" id="text-orgec20cee">
 <p>
 git merge
 </p>
@@ -764,13 +764,13 @@ git add / git reset
 </div>
 </div>
 
-<div id="outline-container-org378e976" class="outline-2">
-<h2 id="org378e976"><a href="http://mazhuang.org/wiki/git/">common questions</a></h2>
-<div class="outline-text-2" id="text-org378e976">
+<div id="outline-container-org09fc97e" class="outline-2">
+<h2 id="org09fc97e"><a href="http://mazhuang.org/wiki/git/">common questions</a></h2>
+<div class="outline-text-2" id="text-org09fc97e">
 </div>
-<div id="outline-container-orgeb3beae" class="outline-3">
-<h3 id="orgeb3beae">git ls-files 乱码问题</h3>
-<div class="outline-text-3" id="text-orgeb3beae">
+<div id="outline-container-org0cb74c8" class="outline-3">
+<h3 id="org0cb74c8">git ls-files 乱码问题</h3>
+<div class="outline-text-3" id="text-org0cb74c8">
 <p>
 在 <code>~/.gitconfig</code> 中添加如下内容
 </p>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-12-06 Thu 12:52 -->
+<!-- 2018-12-06 Thu 13:51 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>https站点证书配置</title>
@@ -229,7 +229,7 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="preamble" class="status">
-<a href="index.html">Home</a>
+<a href="https://www.manue1.site/index.html">Home</a>
 </div>
 <div id="content">
 <h1 class="title">https站点证书配置</h1>
@@ -237,9 +237,9 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgda61c4d">证书配置安装</a></li>
-<li><a href="#orgd9998d1">证书定期更新</a></li>
-<li><a href="#orgf9baaad">nginx调用证书</a></li>
+<li><a href="#org5902eb4">证书配置安装</a></li>
+<li><a href="#org6942a96">证书定期更新</a></li>
+<li><a href="#org443617a">nginx调用证书</a></li>
 </ul>
 </div>
 </div>
@@ -261,9 +261,9 @@ let's encrypt优点:
 
 
 
-<div id="outline-container-orgda61c4d" class="outline-2">
-<h2 id="orgda61c4d">证书配置安装</h2>
-<div class="outline-text-2" id="text-orgda61c4d">
+<div id="outline-container-org5902eb4" class="outline-2">
+<h2 id="org5902eb4">证书配置安装</h2>
+<div class="outline-text-2" id="text-org5902eb4">
 <p>
 let's encrypt 使用certbot这款软件管理电子证书，在安装certbot过程中，提示
 机器pyopenssl版本比较低，需要高版本，<a href="http://cbs.centos.org/kojifiles/packages/pyOpenSSL/0.15.1/1.el7/noarch/pyOpenSSL-0.15.1-1.el7.noarch.rpm">pyopenssl高版本下载</a> 
@@ -289,9 +289,9 @@ certbot certonly --standalone -d manue1.site -d www.manue1.site -m manue1@foxmai
 </div>
 </div>
 
-<div id="outline-container-orgd9998d1" class="outline-2">
-<h2 id="orgd9998d1">证书定期更新</h2>
-<div class="outline-text-2" id="text-orgd9998d1">
+<div id="outline-container-org6942a96" class="outline-2">
+<h2 id="org6942a96">证书定期更新</h2>
+<div class="outline-text-2" id="text-org6942a96">
 <p>
 crontab 每两月更新证书信息，避免失效, <code>--pre-hook</code> 代表 执行前需要处理的任务，
  <code>--post-hook</code> 代表执行后需要处理的任务
@@ -304,9 +304,9 @@ crontab 每两月更新证书信息，避免失效, <code>--pre-hook</code> 代�
 </div>
 </div>
 
-<div id="outline-container-orgf9baaad" class="outline-2">
-<h2 id="orgf9baaad">nginx调用证书</h2>
-<div class="outline-text-2" id="text-orgf9baaad">
+<div id="outline-container-org443617a" class="outline-2">
+<h2 id="org443617a">nginx调用证书</h2>
+<div class="outline-text-2" id="text-org443617a">
 <p>
 将所有80端口流量转发到443端口,443端口服务配上证书认证
 </p>
