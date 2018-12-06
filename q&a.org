@@ -69,4 +69,93 @@
 ** TODO  推荐系统引擎 apache mahout  
 ** TODO  org-mode 导出中文pdf文件
 ** TODO  emacs 快速调用chrome打开链接
+   emacs如何用w3m浏览网页?
 
+- w3m安装 
+
+  http://w3m.sourceforge.net/
+
+https://www.archlinux.org/packages/extra/x86_64/w3m/
+
+
+(add-to-list 'exec-path "/home/manue1/opt/w3m/bin")
+   
+
+然后：安装emacs-w3m
+
+autoconf
+
+./configure
+sudo make 
+sudo make install
+
+这些步骤下来不出现问题就表明emacs-w3m安装成功。
+
+最后，进入emacs，输入M-x w3m,即可看到w3m界面。
+
+
+二：编辑emacs-w3m的lisp代码
+
+
+
+要想使emacs中的w3m顺利的工作，相应的lisp代码是必不可少的，这有点像硬件的驱动程序。。。。
+
+下面是我的~/.emacs中关于emacs-w3m部分。
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;  设置emacs-w3m浏览器
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(add-to-list 'load-path "~/emacs-w3m/")
+(require 'w3m-load)
+(require 'mime-w3m)
+(autoload 'w3m "w3m" "interface for w3m on emacs" t) 
+
+;; 设置w3m主页
+(setq w3m-home-page "http://www.google.com")
+
+;; 默认显示图片
+(setq w3m-default-display-inline-images t)
+(setq w3m-default-toggle-inline-images t)
+
+;; 使用cookies
+(setq w3m-use-cookies t)
+
+;;设定w3m运行的参数，分别为使用cookie和使用框架  
+(setq w3m-command-arguments '("-cookie" "-F"))               
+
+;; 使用w3m作为默认浏览器
+(setq browse-url-browser-function 'w3m-browse-url)                
+(setq w3m-view-this-url-new-session-in-background t)
+
+
+;;显示图标                                                      
+(setq w3m-show-graphic-icons-in-header-line t)                  
+(setq w3m-show-graphic-icons-in-mode-line t) 
+
+;;C-c C-p 打开，这个好用                                        
+(setq w3m-view-this-url-new-session-in-background t)  
+
+          
+(add-hook 'w3m-fontify-after-hook 'remove-w3m-output-garbages)                                    
+(defun remove-w3m-output-garbages ()                            
+"去掉w3m输出的垃圾."                                            
+(interactive)                                                   
+(let ((buffer-read-only))                                       
+(setf (point) (point-min))                                      
+(while (re-search-forward "[\200-\240]" nil t)                  
+(replace-match " "))                                            
+(set-buffer-multibyte t))                                       
+(set-buffer-modified-p nil))
+
+
+- chrome
+
+
+(add-to-list 'exec-path "/opt/google/chrome")
+
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "chrome")

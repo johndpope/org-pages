@@ -3,15 +3,44 @@
 
 * Writing List
 ** DONE [[file:q&a.org][question & answer]]
+   CLOSED: [2018-12-06 Thu 14:47]
+   - State "DONE"       from "TODO"       [2018-12-06 Thu 14:47]
 ** DONE [[file:note/org-to-html.org][emacs 发布org-mode文件到html]]
-** DONE [[file:note/note-shortcutes.org][一些常用快捷键和系统命令]]
+   CLOSED: [2018-12-06 Thu 14:48]
+   - State "DONE"       from "TODO"       [2018-12-06 Thu 14:48]
+** DONE [[file:note/note-linux-centos.org][centos集群部署]] 
+   CLOSED: [2018-12-06 Thu 14:48]
+
+   - State "DONE"       from "TODO"       [2018-12-06 Thu 14:48]
+** DONE [[file:note/hive.org][hive的使用]] 
+   CLOSED: [2018-12-06 Thu 14:49]
+
+   - State "DONE"       from "TODO"       [2018-12-06 Thu 14:49]
+** DONE [[file:note/sqoop.org][sqoop同步关系型数据库]] 
+   CLOSED: [2018-12-06 Thu 12:50]
+
+   - State "DONE"       from "TODO"       [2018-12-06 Thu 12:50]
 ** DONE [[file:note/note-kc&kt.org][kytoto cabinet & tycoon k-v型离线数据库]]
-** DONE [[file:note/note-threat_intelligence_scrapy.org][threat intelligence情报收集爬虫]]
+   CLOSED: [2018-12-06 Thu 14:49]
+   - State "DONE"       from "TODO"       [2018-12-06 Thu 14:49]
 ** DONE [[file:note/note-linux-awk.org][awk程序设计语言]]
+   CLOSED: [2018-12-06 Thu 14:50]
+   - State "DONE"       from "TODO"       [2018-12-06 Thu 14:50]
 ** DONE [[file:note/note-docker-cisco_iou.org][使用docker自动部署cisco iou实验环境]]
+   CLOSED: [2018-12-06 Thu 14:50]
+   - State "DONE"       from "TODO"       [2018-12-06 Thu 14:50]
 ** DONE [[file:note/note-docker-learn.org][docker能替代vbox吗?]]
+   CLOSED: [2018-12-06 Thu 14:50]
+   - State "DONE"       from "TODO"       [2018-12-06 Thu 14:50]
 ** DONE [[file:note/ssl.org][https站点证书配置]]
+   CLOSED: [2018-12-06 Thu 14:50]
+   - State "DONE"       from "TODO"       [2018-12-06 Thu 14:50]
 ** DONE [[file:note/rabbitmq.org][rabbitmq使用中的一些记录]]
+   CLOSED: [2018-12-06 Thu 14:50]
+   - State "DONE"       from "TODO"       [2018-12-06 Thu 14:50]
+** DONE [[file:note/note-shortcutes.org][一些常用快捷键和系统命令]]
+   CLOSED: [2018-12-06 Thu 14:50]
+   - State "DONE"       from "TODO"       [2018-12-06 Thu 14:50]
 ** TODO [[file:note/auto-stack.org][量化交易]]
 ** TODO [[file:note/kafka.org][kafka]] 
 
@@ -27,33 +56,16 @@
 
 ** TODO [[file:note/note-jvm.org][jvm理解]] 
 
-** DONE [[file:note/note-linux-centos.org][centos集群部署]] 
-   CLOSED: [2018-12-06 Thu 12:50]
-
-   - State "DONE"       from "TODO"       [2018-12-06 Thu 12:50]
 ** TODO [[file:note/note-options.org][对冲基金]] 
 
 ** TODO [[file:note/note-redis.org][redis]] 
 
 ** TODO [[file:note/note-scrapy-ftp.org][scrapy对ftp站点遍历下载]]
-   
 ** TODO [[file:note/note-spark_use.org][spark]]
-
+   
 ** TODO [[file:note/note-tmux.org][tmux]] 
 
 ** TODO [[file:note/note-wx-bot.org][微信机器人]] 
 
 ** TODO [[file:note/nginx.org][nginx]] 
-** DONE [[file:note/hive.org][hive使用技巧]] 
-   CLOSED: [2018-12-06 Thu 12:50]
-
-   - State "DONE"       from "TODO"       [2018-12-06 Thu 12:50]
 ** TODO [[file:note/org-mode.org][org-mode格式排版]] 
-** DONE [[file:note/rabbitmq.org][rabbit]] 
-   CLOSED: [2018-12-06 Thu 12:50]
-
-   - State "DONE"       from "TODO"       [2018-12-06 Thu 12:50]
-** DONE [[file:note/sqoop.org][sqoop]] 
-   CLOSED: [2018-12-06 Thu 12:50]
-
-   - State "DONE"       from "TODO"       [2018-12-06 Thu 12:50]
