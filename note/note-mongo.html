@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-12-06 Thu 12:52 -->
+<!-- 2018-12-06 Thu 12:53 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>&lrm;</title>
+<title>mongo 使用笔记</title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -179,7 +179,7 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
-<link rel="stylesheet" href="css/worg.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/worg.css" type="text/css" media="screen" />
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -232,7 +232,65 @@ for the JavaScript code in this tag.
 <a href="index.html">Home</a>
 </div>
 <div id="content">
+<h1 class="title">mongo 使用笔记</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org49b12b3">Mongo 使用笔记</a>
+<ul>
+<li><a href="#org40be677">Mongo集群安装</a></li>
+<li><a href="#orgb4fa383">常用命令</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org49b12b3" class="outline-2">
+<h2 id="org49b12b3">Mongo 使用笔记</h2>
+<div class="outline-text-2" id="text-org49b12b3">
+</div>
+<div id="outline-container-org40be677" class="outline-3">
+<h3 id="org40be677">Mongo集群安装</h3>
+</div>
+<div id="outline-container-orgb4fa383" class="outline-3">
+<h3 id="orgb4fa383">常用命令</h3>
+<div class="outline-text-3" id="text-orgb4fa383">
+<ol class="org-ol">
+<li><p>
+创建索引
+</p>
 
+<p>
+db.smrt.ensureIndex({"ip":1})
+</p></li>
+</ol>
+
+<p>
+2.聚合出字段种类
+</p>
+
+<p>
+db.smrt.distinct("tags")
+</p>
+
+<p>
+db.all_iocs.find({"malicious_family":{$size:3}})
+</p>
+<ol class="org-ol">
+<li>db.ip_history_v1.find({"insert_time":{"$gte":1496357774,"$lte":1496357775}})
+db.ip_history_v1.find({"insert_time":{"$gte":1498037117,"$lte":1498037119}})
+db.ip_history_v1.find({"history":{"$elemMatch":{"source":"emergingthreats.net"}}})
+db.ip_history_v1.remove({"history":{"$elemMatch":{"attack_time":{'$gte':'2016-05-11T15:29:21','$lte':'2017-07-11T15:29:21'}}}})</li>
+</ol>
+
+
+<p>
+db.ip_history_v1.find({"history":{"$elemMatch":{"insertime":{"$gte":"1509840000","$lte":"1509926400"}}}})
+</p>
+</div>
+</div>
+</div>
 </div>
 </body>
 </html>

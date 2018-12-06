@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-12-06 Thu 12:52 -->
+<!-- 2018-12-06 Thu 12:53 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>&lrm;</title>
+<title>用scrapy爬取FTP列表文件</title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -179,7 +179,7 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
-<link rel="stylesheet" href="css/worg.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/worg.css" type="text/css" media="screen" />
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -232,7 +232,214 @@ for the JavaScript code in this tag.
 <a href="index.html">Home</a>
 </div>
 <div id="content">
+<h1 class="title">用scrapy爬取FTP列表文件</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgfe24f84">用scrapy爬取FTP列表文件</a>
+<ul>
+<li><a href="#org77108e7">scrapy crawl ftp server</a></li>
+<li><a href="#org9960dc3">error note</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgfe24f84" class="outline-2">
+<h2 id="orgfe24f84">用scrapy爬取FTP列表文件</h2>
+<div class="outline-text-2" id="text-orgfe24f84">
+</div>
+<div id="outline-container-org77108e7" class="outline-3">
+<h3 id="org77108e7">scrapy crawl ftp server</h3>
+<div class="outline-text-3" id="text-org77108e7">
+<p class="verse">
+最近遇到一个ftp数据源，每天需要定期到ftp服务器登录下载文件压缩列表,官方提供的<a href="https://github.com/scrapy/scrapy/blob/master/scrapy/core/downloader/handlers/ftp.py">FTPDownloadHandler</a> 只能下载单个文件,但这里我需要下载文件目录下所有文件,这里找到一篇好<a href="https://gearheart.io/blog/crawling-ftp-server-with-scrapy/">文章</a> ,详细的讲述了如何重写scrapy所支持的HTTP,HTTPS,FTP等下载Handler.由于作者从单个FTP文件下载，到文件夹内全部文件下载都做了详细的阐述，这里就贴出我的实现代码吧，做了些许修改<br />
+</p>
+<ol class="org-ol">
+<li><p>
+修改settings 文件
+</p>
+<pre class="example">
+DOWNLOAD_HANDLERS = {'ftp': 'opensource_threat_intel.ftp.FtpListingHandler'}
+</pre></li>
+<li><p>
+创建ftp.py文件
+</p>
 
+<p class="verse">
+简单说下处理流程,scrapy调度器捕捉到为ftp协议的request的时候,会根据settings内设置的FtpListingHandler处理ftp请求,该方法的父类是官方提供的FTPDownloadHandler.重写了gotClient客户端来创建一个ftp请求客户端,如果request为spider内FileFtpRequest方法传过来的请求下载单个文件的行为,则直接使用super调用父类官方提供的下载单文件方法,此时记得在重写的build_response内给下载器返回的response也是父类_build_response返回的单个文件的数据，而不是从重写后_build_response返回的文件夹内的文件名<br />
+</p>
+<pre class="example">
+import json
+from scrapy.core.downloader.handlers.ftp import FTPDownloadHandler
+from scrapy.http import Response
+from twisted.protocols.ftp import FTPFileListProtocol
+from spiders.cyren_intel import FileFtpRequest, ListFtpRequest
+
+class FtpListingHandler(FTPDownloadHandler):
+    # get files list or one file
+    def gotClient(self, client, request, filepath):
+        # check what class sent a request
+        if isinstance(request, FileFtpRequest):
+            return super(FtpListingHandler, self).gotClient(
+                client, request, filepath)
+
+        protocol = FTPFileListProtocol()
+        return client.list(filepath, protocol).addCallbacks(
+            callback=self._build_response,
+            callbackArgs=(request, protocol),
+            errback=self._failed,
+            errbackArgs=(request,))
+
+    def _build_response(self, result, request, protocol):
+        # get files list or one file
+        self.result = result
+        if isinstance(request, ListFtpRequest):
+            body = json.dumps(protocol.files)
+            return Response(url=request.url, status=200, body=body)
+        # signal file return super class _build_response result
+        else:
+            return super(FtpListingHandler, self)._build_response(
+                result, request, protocol)
+
+</pre></li>
+<li><p>
+编写spider爬虫文件 
+</p>
+
+<p>
+此处将登录操作写入到FtpMetaRequest中，每次需要登录下载文件的时候只需要继承该方法即可
+</p>
+
+<pre class="example">
+# -*- coding: utf-8 -*-
+import gzip
+import json
+import os
+import time
+from scrapy import Request
+from scrapy.conf import settings
+from scrapy.spiders import CrawlSpider
+
+from ..items import OpensourceThreatIntelItem
+
+
+class FtpMetaRequest(Request):
+    # add user with password to ftp meta request
+    user_meta = {'ftp_user': settings['CYREN_FTP_USER'], 'ftp_password': settings['CYREN_FTP_PASS']}
+
+    def __init__(self, args, **kwargs):
+        super(FtpMetaRequest, self).__init__(args, **kwargs)
+        self.meta.update(self.user_meta)
+
+
+class FileFtpRequest(FtpMetaRequest):
+    pass
+
+
+class ListFtpRequest(FtpMetaRequest):
+    pass
+
+
+class MedisumSpider(CrawlSpider):
+    name = 'cyren.com'
+
+    allowed_domains = [
+        "ftp.ctmail.com"
+    ]
+
+    def __init__(self):
+        self.bak_path = '../data_bak/cyren/'+ self.today_time()+'/'
+        if not os.path.exists(self.bak_path):
+            os.system('mkdir -p %s ' % self.bak_path)
+
+    def start_requests(self):
+        # start request to get all files
+        yield ListFtpRequest("ftp://ftp.ctmail.com/ZombieIntelligence/delta/")
+        # yield ListFtpRequest("ftp://ftp.ctmail.com/ZombieIntelligence/snapshot/")
+
+    def parse(self, response):
+        # get response with all files
+        files = json.loads(response.body)
+        # file filter not check md5
+        files = filter(lambda dic: dic['filename'].endswith('gz')
+                       and dic['filename'].find(self.today_time()) &gt;= 0,files)
+        for f in files:
+            path = os.path.join(response.url, f['filename'])
+            filename = self.bak_path + f['filename']
+            if os.path.exists(filename):
+                self.logger.info('file %s exist ..',f['filename'])
+                continue
+            self.logger.info('start download %s ..', f['filename'])
+            request = FileFtpRequest(path,callback=self.parse_item)
+            yield request
+
+    def today_time(self):
+        return time.strftime('%y%m%d', time.localtime(time.time()))
+
+    # 解压gz文件
+    def un_gz(self,file_name):
+        """ungz zip file"""
+        f_name = file_name.replace(".gz", "")
+        # 获取文件的名称，去掉
+        g_file = gzip.GzipFile(file_name)
+        # 创建gzip对象
+        open(f_name, "w+").write(g_file.read())
+        # gzip对象用read()打开后，写入open()建立的文件中。
+        g_file.close()
+        return f_name
+
+    def ip_format(self,ipstr):
+        ip_int = reduce(lambda x,y:(x&lt;&lt;8)+y,map(int,ipstr.split('.')))
+        tostr = lambda x: '.'.join([str(x/(256**i)%256) for i in range(3,-1,-1)])
+        return tostr(ip_int)
+
+    def parse_item(self, response):
+        filename = self.bak_path + response.url.split('/')[-1]
+        print filename
+        open(filename,'wb').write(response.body)
+        self.logger.info('download file  %s ', filename)
+        ungz_file = self.un_gz(filename)
+        with open(ungz_file, 'r') as ungz:
+            os.remove(ungz_file)
+            for line in ungz:
+                item = OpensourceThreatIntelItem()
+                indicator = self.ip_format(line.split(',')[1])
+                print indicator
+                now_time = time.strftime('%Y-%m-%dT%H:%M:%S', time.localtime(time.time()))
+                item['indicator'] = indicator
+                item['data_type'] = 0
+                item['tag'] = 6
+                item['alive'] = True
+                item['description'] = line.split(',')[6]
+                item['confidence'] = 9
+                item['source'] = 'cyren.com'
+                item['updated_time'] = line.split(',')[3].replace('-','T').replace('T','-',2)
+                item['created_time'] = now_time
+                yield item
+
+</pre>
+
+<p>
+代码托管位置:<a href="https://github.com/Nanue1/opensource_threat_intel/tree/master/opensource_threat_intel">github</a>
+</p></li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org9960dc3" class="outline-3">
+<h3 id="org9960dc3">error note</h3>
+<div class="outline-text-3" id="text-org9960dc3">
+<ol class="org-ol">
+<li>NotImplementedError
+parse()函数得存在</li>
+<li>FTP连接丢失
+调整下载速度可以解决</li>
+</ol>
+</div>
+</div>
+</div>
 </div>
 </body>
 </html>

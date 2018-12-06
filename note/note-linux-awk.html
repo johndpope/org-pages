@@ -6,7 +6,7 @@
 <!-- 2018-12-06 Thu 12:52 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>&lrm;</title>
+<title>AWK 程序设计语言</title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -179,7 +179,7 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
-<link rel="stylesheet" href="css/worg.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/worg.css" type="text/css" media="screen" />
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -226,13 +226,315 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="preamble" class="status">
 <a href="index.html">Home</a>
 </div>
 <div id="content">
+<h1 class="title">AWK 程序设计语言</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgf6f3cec">awk 基本语法</a>
+<ul>
+<li><a href="#orgc1c3475">pattern</a></li>
+<li><a href="#orge8c392f">action</a></li>
+</ul>
+</li>
+<li><a href="#org032ebdd">awk 常用命令</a></li>
+</ul>
+</div>
+</div>
+<p>
+使用awk的目的是为了方便解决: 计数、数据格式转换、计算、以及从报表中提取数据.
+这本<a href="https://github.com/wuzhouhui/awk">AWK 程序设计语言</a> 几百页的书，很好的诠释了这门工具语言的强大，书中最后附录
+A总结了很多awk的使用注意事项,有兴趣的可以关注一下.这里只是记录一下工作中用到
+的一些使用awk提高工作效率的场景
+</p>
 
+<div id="outline-container-orgf6f3cec" class="outline-2">
+<h2 id="orgf6f3cec">awk 基本语法</h2>
+<div class="outline-text-2" id="text-orgf6f3cec">
+<p>
+最简单的awk 程序是一个或多个模式–动作语句构成的序列:
+</p>
+
+<p>
+<code>pattern { action }</code>
+</p>
+
+<p>
+<code>pattern { action }</code>
+</p>
+
+<p>
+简单的单行awk语句可以直接执行
+</p>
+
+<p>
+<code>awk pattern {action} filename</code>
+</p>
+
+<p>
+如果复杂点的awk语句,可以写入文件内,
+</p>
+
+<p>
+<code>awk -f awk.sh awk_txt</code>
+</p>
+</div>
+<div id="outline-container-orgc1c3475" class="outline-3">
+<h3 id="orgc1c3475">pattern</h3>
+<div class="outline-text-3" id="text-orgc1c3475">
+<p>
+模式汇总
+</p>
+<ol class="org-ol">
+<li><p>
+BEGIN{ statements}
+</p>
+
+<p>
+在输入被读取之前, statements 执行一次.
+</p></li>
+<li><p>
+END{ statements}
+</p>
+
+<p>
+当所有输入被读取完毕之后, statements 执行一次.
+</p></li>
+<li><p>
+expression{ statements}
+</p>
+
+<p>
+每碰到一个使expression 为真的输入行, statements 就执行
+expression 为真指的是其值非零或非空.
+</p></li>
+<li><p>
+regular expression { statements}
+</p>
+
+<p>
+当碰到这样一个输入行时, statements 就执行: 输入行含有一段字符串,
+而该字符串可以被regular expression 匹配.
+</p></li>
+<li><p>
+compound pattern { statements}
+</p>
+
+<p>
+一个复合模式将表达式用&amp;&amp;(AND), ||(OR), !(NOT), 以及括号组合起来;
+当compound pattern为真时, statements 执行.
+</p></li>
+<li><p>
+pattern1, pattern2 { statements}
+</p>
+
+<p>
+一个范围模式匹配多个输入行, 这些输入行从匹配pattern1 的行开始, 
+到匹配pattern2 的行结束(包括这两行), 对这其中的每一行执行statements
+BEGIN 与END 不与其他模式组合. 一个范围模式不能是其他模式的一部分.
+BEGIN 与END 是唯一两个不能省略动作的模式.
+</p></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orge8c392f" class="outline-3">
+<h3 id="orge8c392f">action</h3>
+<div class="outline-text-3" id="text-orge8c392f">
+<p>
+动作中的语句可以包括:
+</p>
+<pre class="example">
+expression, 包括常量, 变量, 赋值, 函数调用等等.
+print expression-list
+printf(format, expression-list)
+if (expression) statements
+if (expression) statements else statements
+while (expression) statements
+for (expression; expression; expression) statements
+for (expression in array) statements
+do statements while (expression)
+break
+continue
+</pre>
+<p>
+awk作为一种编程语言,刚开始接触awk语句看得眼晕主要是不了解它的内置变量
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">变量</th>
+<th scope="col" class="org-left">意义</th>
+<th scope="col" class="org-left">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">ARGC</td>
+<td class="org-left">命令行参数的个数</td>
+<td class="org-left">-</td>
+</tr>
+
+<tr>
+<td class="org-left">ARGV</td>
+<td class="org-left">命令行参数数组</td>
+<td class="org-left">-</td>
+</tr>
+
+<tr>
+<td class="org-left">FILENAME</td>
+<td class="org-left">当前输入文件名</td>
+<td class="org-left">-</td>
+</tr>
+
+<tr>
+<td class="org-left">FNR</td>
+<td class="org-left">当前输入文件的记录个数</td>
+<td class="org-left">-</td>
+</tr>
+
+<tr>
+<td class="org-left">FS</td>
+<td class="org-left">控制着输入行的字段分割符</td>
+<td class="org-left">-</td>
+</tr>
+
+<tr>
+<td class="org-left">NF</td>
+<td class="org-left">当前记录的字段个数</td>
+<td class="org-left">-</td>
+</tr>
+
+<tr>
+<td class="org-left">NR</td>
+<td class="org-left">到目前为止读的记录数量</td>
+<td class="org-left">-</td>
+</tr>
+
+<tr>
+<td class="org-left">OFMT</td>
+<td class="org-left">数值的输出格式</td>
+<td class="org-left">%.6g</td>
+</tr>
+
+<tr>
+<td class="org-left">OFS</td>
+<td class="org-left">输出字段分割符</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">ORS</td>
+<td class="org-left">输出的记录的分割符</td>
+<td class="org-left">\n</td>
+</tr>
+
+<tr>
+<td class="org-left">RLENGTH</td>
+<td class="org-left">被函数match匹配的字符串的长度</td>
+<td class="org-left">-</td>
+</tr>
+
+<tr>
+<td class="org-left">RS</td>
+<td class="org-left">控制着输入行的记录分割符"\n"</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">RSTART</td>
+<td class="org-left">被函数match匹配的字符串的开始</td>
+<td class="org-left">-</td>
+</tr>
+
+<tr>
+<td class="org-left">SUBSEP</td>
+<td class="org-left">下标分割符</td>
+<td class="org-left">\034</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org032ebdd" class="outline-2">
+<h2 id="org032ebdd">awk 常用命令</h2>
+<div class="outline-text-2" id="text-org032ebdd">
+<ol class="org-ol">
+<li><p>
+kill 进程
+</p>
+
+<p>
+<code>ps aux|grep test.py|awk '{print $2}'|xargs kill -9</code>
+</p></li>
+
+<li><p>
+两文件比较 取相同部分
+</p>
+
+<p>
+<code>awk -F ':' 'NR==FNR{a[$1]++}NR!=FNR{if($1 in a){print $i}}' 1.txt 2.txt &gt;3.txt</code>
+</p>
+
+<p>
+输出2.txt在1.txt中第一列相同的所有值
+</p></li>
+
+<li><p>
+输出3文件内 大于10列
+</p>
+
+<p>
+awk 'NF&gt;10 {print $i}' 3.txt &gt; 4.txt
+</p></li>
+
+<li><p>
+删除重复行
+</p>
+
+<p>
+<code>awk '!($0 in array) { array[$0]; print}' temp</code></p></li>
+</ol>
+</div>
+</div>
 </div>
 </body>
 </html>

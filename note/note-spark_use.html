@@ -6,7 +6,7 @@
 <!-- 2018-12-06 Thu 12:52 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>&lrm;</title>
+<title>spark 学习</title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -179,7 +179,7 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
-<link rel="stylesheet" href="css/worg.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/worg.css" type="text/css" media="screen" />
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -232,7 +232,245 @@ for the JavaScript code in this tag.
 <a href="index.html">Home</a>
 </div>
 <div id="content">
+<h1 class="title">spark 学习</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org01b7f15">what is spark</a></li>
+<li><a href="#org74933f6">RDD</a>
+<ul>
+<li><a href="#org6614945">RDD基础</a></li>
+</ul>
+</li>
+<li><a href="#org2c79ead">spark use</a>
+<ul>
+<li><a href="#orgcd32cd5">spark base</a></li>
+<li><a href="#orgd439c5e">spark install</a></li>
+<li><a href="#org438cb7c">spark shell</a></li>
+<li><a href="#org8aa86b9">idea spark scala</a></li>
+<li><a href="#org3f387bb">idea spark java</a></li>
+<li><a href="#orge3f9be0">rdd &amp; dataframe</a></li>
+</ul>
+</li>
+<li><a href="#org8839241">docker spark</a>
+<ul>
+<li><a href="#org9364d4e">docker for mac install spark 2.2.0 + hadoop 2.8.0</a></li>
+<li><a href="#org40b5f56">docker search spark</a></li>
+</ul>
+</li>
+<li><a href="#org42af69d">docker hbase</a></li>
+<li><a href="#org62b5864"><span class="todo TODO">TODO</span> 如何转表格</a></li>
+</ul>
+</div>
+</div>
+<p>
+Spark快速大数据分析[美] 卡劳（Holden Karau）
+</p>
+<div id="outline-container-org01b7f15" class="outline-2">
+<h2 id="org01b7f15">what is spark</h2>
+<div class="outline-text-2" id="text-org01b7f15">
+<p>
+spark 是一个用来实现快速而通用的集群计算的平台
+</p>
+<ul class="org-ul">
+<li>spark core</li>
+<li>spark sql</li>
+<li>spark streaming</li>
+<li>MLlib</li>
+<li>GraphX</li>
+<li>集群管理器
+<ul class="org-ul">
+<li>自带简易调度器，独立调度器</li>
+<li>Hadoop YARN</li>
+<li>Apache Mesos</li>
+</ul></li>
+<li>Spark的存储层次
+<ul class="org-ul">
+<li>支持本地文件,HDFS,Hive,HBase</li>
+<li>文件格式:文本文件,SequenceFile,Avro,Parquet</li>
+</ul></li>
+<li>shell
+spark shell 可用来与分布式存储在许多机器的内存或者硬盘上的数据进行交互
+python shell / scala shell</li>
+<li>SparkContext
+每个Sparkyingy</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org74933f6" class="outline-2">
+<h2 id="org74933f6">RDD</h2>
+<div class="outline-text-2" id="text-org74933f6">
+<p>
+RDD(resilient distributed dataset)
+</p>
+</div>
+<div id="outline-container-org6614945" class="outline-3">
+<h3 id="org6614945">RDD基础</h3>
+<div class="outline-text-3" id="text-org6614945">
+<p>
+Spark中的RDD是一个不可变的分布式对象集合
+</p>
+</div>
+</div>
+</div>
 
+<div id="outline-container-org2c79ead" class="outline-2">
+<h2 id="org2c79ead">spark use</h2>
+<div class="outline-text-2" id="text-org2c79ead">
+</div>
+<div id="outline-container-orgcd32cd5" class="outline-3">
+<h3 id="orgcd32cd5">spark base</h3>
+<div class="outline-text-3" id="text-orgcd32cd5">
+<p>
+rdd(resilient distributed dataset)
+</p>
+</div>
+</div>
+<div id="outline-container-orgd439c5e" class="outline-3">
+<h3 id="orgd439c5e">spark install</h3>
+<div class="outline-text-3" id="text-orgd439c5e">
+<p>
+函数式编程
+shell下执行:paste
+</p>
+</div>
+</div>
+<div id="outline-container-org438cb7c" class="outline-3">
+<h3 id="org438cb7c">spark shell</h3>
+<div class="outline-text-3" id="text-org438cb7c">
+<p>
+bin/spark-shell
+</p>
+<ul class="org-ul">
+<li>创建RDD
+sc.parallelize()</li>
+<li>RDD操作
+<ul class="org-ul">
+<li>转化操作
+返回的是RDD
+map()
+filter()</li>
+<li>行动操作
+返回结果或把结果写入外部系统的操作,返回的是其他数据类型</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org8aa86b9" class="outline-3">
+<h3 id="org8aa86b9">idea spark scala</h3>
+<div class="outline-text-3" id="text-org8aa86b9">
+<p>
+scala 项目手动打包
+删除scala 和spark的包
+</p>
+
+<p>
+执行中 spark-submit &#x2013;class com.nti.spark.SparkTags spark_scala_jar.jar
+</p>
+
+<p>
+sbt 构建项目 需要等待sbt版本下载好才会生成src目录
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3f387bb" class="outline-3">
+<h3 id="org3f387bb">idea spark java</h3>
+<div class="outline-text-3" id="text-org3f387bb">
+<ol class="org-ol">
+<li>jre 1.5 换成1.8</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orge3f9be0" class="outline-3">
+<h3 id="orge3f9be0">rdd &amp; dataframe</h3>
+</div>
+</div>
+<div id="outline-container-org8839241" class="outline-2">
+<h2 id="org8839241">docker spark</h2>
+<div class="outline-text-2" id="text-org8839241">
+</div>
+<div id="outline-container-org9364d4e" class="outline-3">
+<h3 id="org9364d4e">docker for mac install spark 2.2.0 + hadoop 2.8.0</h3>
+<div class="outline-text-3" id="text-org9364d4e">
+<p>
+refer : <a href="http://blog.csdn.net/gogo_yao/article/details/76863201">http://blog.csdn.net/gogo_yao/article/details/76863201</a>
+</p>
+
+<ol class="org-ol">
+<li>启动容器
+docker run &#x2013;name centos-6 -tid centos:6 /bin/bash</li>
+<li>复制安装包到centos容器
+docker cp scala-2.12.3.tgz 23288ad95817:/
+docker cp jdk-8u144-linux-x64.rpm 23288ad95817:/
+docker cp spark-2.2.0-bin-without-hadoop.tgz 23288ad95817:/
+docker cp hadoop-2.8.0.tar.gz 23288ad95817:/root/.local</li>
+<li>进入容器
+docker exec -it 23288ad9581 /bin/bash
+hadoop spark install</li>
+<li><p>
+保存镜像
+docker commit -m "centos-6 with spark 2.2.0 and hadoop 2.8.0" 23288ad95817 centos:with-saprk-hadoop
+</p>
+
+<p>
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+centos              with-saprk-hadoop   30333b7011ce        20 seconds ago      3.84GB
+</p></li>
+<li><p>
+使用保存的镜像搭建集群
+</p>
+
+<p>
+#端口50070和8088，8080是用来在浏览器中访问hadoop、yarn、spark的WEB界面，这里分别映射到物理机的50070和8088，8080端口。
+docker run -itd -P -p 50070:50070 -p 8088:8088 -p 8080:8080 &#x2013;name master -h master &#x2013;add-host slave01:172.17.0.4 &#x2013;add-host slave02:172.17.0.5 centos:with-saprk-hadoop
+docker run -itd -P &#x2013;name slave01 -h slave01 &#x2013;add-host master:172.17.0.3 &#x2013;add-host slave02:172.17.0.5  centos:with-saprk-hadoop
+docker run -itd -P &#x2013;name slave02 -h slave02 &#x2013;add-host master:172.17.0.3 &#x2013;add-host slave01:172.17.0.4  centos:with-saprk-hadoop
+</p></li>
+<li><p>
+进入集群管理
+docker exec -it master /bin/bash
+</p>
+
+<p>
+service sshd restart
+</p>
+
+<p>
+cd <i>root</i>.local/hadoop-2.8.0/sbin;sh start-all.sh   
+cd <i>root</i>.local/spark-2.2.0-bin-without-hadoop/sbin; sh start-all.sh
+</p></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org40b5f56" class="outline-3">
+<h3 id="org40b5f56">docker search spark</h3>
+<div class="outline-text-3" id="text-org40b5f56">
+<p>
+docker pull sequenceiq/spark:1.6.0
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org42af69d" class="outline-2">
+<h2 id="org42af69d">docker hbase</h2>
+</div>
+
+<div id="outline-container-org62b5864" class="outline-2">
+<h2 id="org62b5864"><span class="todo TODO">TODO</span> 如何转表格</h2>
+<div class="outline-text-2" id="text-org62b5864">
+<p>
+格式	可分割	平均压缩速度	文本文件压缩效率	Hadoop压缩编解码器	纯Java实现	原生	备注
+gzip	否	快	高	org.apache.hadoop.io.compress.GzipCodec	是	是	
+lzo	是（取决于所使用的库）	非常快	中等	com.hadoop.compression.lzo.LzoCodec	是	是	需要在每个节点上安装LZO
+bzip2	是	慢	非常高	org.apache.hadoop.io.compress.Bzip2Codec	是	是	为可分割版本使用纯Java
+zlib	否	慢	中等	org.apache.hadoop.io.compress.DefaultCodec	是	是	Hadoop 的默认压缩编解码器
+Snappy	否	非常快	低	org.apache.hadoop.io.compress.SnappyCodec	否	是	Snappy 有纯Java的移植版，但是在Spark/Hadoop中不能用
+</p>
+</div>
+</div>
 </div>
 </body>
 </html>

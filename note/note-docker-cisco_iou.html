@@ -6,7 +6,7 @@
 <!-- 2018-12-06 Thu 12:52 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>&lrm;</title>
+<title>使用Docker自动部署Cisco IOU实验环境</title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -179,7 +179,7 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
-<link rel="stylesheet" href="css/worg.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/worg.css" type="text/css" media="screen" />
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -232,7 +232,82 @@ for the JavaScript code in this tag.
 <a href="index.html">Home</a>
 </div>
 <div id="content">
+<h1 class="title">使用Docker自动部署Cisco IOU实验环境</h1>
+<p>
+准备ccie lab的过程中难免用到Cisco IOU环境，这里提供一个自己使用的docker
+环境，方便实验环境迁移部署。
+</p>
 
+
+<p>
+<a href="https://github.com/dainok/iou-web">web-iou</a> 作者项目地址
+</p>
+
+<p>
+<a href="https://ccie.lol/blog/2016/07/03/cisco-ios-image-download/">iou镜像下载</a> 这里可以找到
+</p>
+
+<p>
+dockerfile自动部署可以到 <a href="https://github.com/Nanue1/web-iou-docker">github仓库</a>去查询，有详细的使用说明记录
+</p>
+
+
+
+<div class="figure">
+<p><img src="../images/web-iou.jpg" alt="web-iou.jpg" width="100%" height="80%" />
+</p>
+</div>
+
+
+<p>
+dockerfile内容 如下
+</p>
+<pre class="example">
+
+#  Author: manue1
+#  Date: 2018-04-10
+#  https://github.com/Nanue1/web-iou-docker.git
+
+FROM ubuntu:14.04
+
+LABEL Description="deploy web iou with docker"
+
+#1.iou deb install 
+
+COPY web-iou/iou-web_1.2.2-23_all.deb /
+
+WORKDIR /
+
+RUN apt-get update -y &amp;&amp; \
+    apt-get install -y gdebi &amp;&amp; \
+    yes|gdebi /iou-web_1.2.2-23_all.deb
+
+#2. apache
+
+RUN rm /etc/apache2/sites-enabled/000-default.conf &amp;&amp; \
+    mv /etc/apache2/sites-enabled/001-iou /etc/apache2/sites-enabled/001-iou.conf &amp;&amp; \
+    apt-get install -y  php5-cgi &amp;&amp; \
+    ln -s /etc/apache2/conf-available/php5-cgi.conf /etc/apache2/conf-enabled/php5-cgi.conf &amp;&amp;\
+    ln -s /etc/apache2/mods-available/cgi.load /etc/apache2/mods-enabled/cgi.load &amp;&amp; \
+    sed  -i 's/-FollowSymLinks/FollowSymLinks/g' /etc/apache2/sites-enabled/001-iou.conf &amp;&amp; \
+    sed -i '156s/denied/granted/g' /etc/apache2/apache2.conf &amp;&amp; \
+    service apache2 restart
+
+#3. env
+
+RUN apt-get install -y \
+    lib32z1 \
+    lib32ncurses5 \
+    lib32bz2-1.0 \
+    ibssl1.0.0 \
+    libtinfo5 &amp;&amp; \
+    ln -s /lib/i386-linux-gnu/libcrypto.so.1.0.0 /usr/lib/libcrypto.so.4
+
+EXPOSE 80 
+
+ENTRYPOINT ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+
+</pre>
 </div>
 </body>
 </html>

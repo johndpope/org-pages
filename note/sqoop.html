@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-12-06 Thu 12:52 -->
+<!-- 2018-12-06 Thu 12:53 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>&lrm;</title>
+<title>sqoop使用</title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -179,7 +179,7 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
-<link rel="stylesheet" href="css/worg.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/worg.css" type="text/css" media="screen" />
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -232,7 +232,85 @@ for the JavaScript code in this tag.
 <a href="index.html">Home</a>
 </div>
 <div id="content">
+<h1 class="title">sqoop使用</h1>
+<p>
+Sqoop是一个用于Hadoop和关系型数据库或主机之间的数据传输工具。
+它可以将数据从关系型数据库import到HDFS，也可以从HDFS export到关系型数据库,
+Sqoop只是RDBMS与HDFS直接数据转换工具，导入数据和导出数据，
+都是通过Hadoop的MapReduce实现,充分利用分布式计算的功能。
+</p>
 
+<p>
+Sqoop是一款基于Hadoop系统的数据转移工具，因此在安装Sqoop之前需要先安装
+好Hadoop
+</p>
+
+
+<p>
+首先测试 sqoop与mysql的连通性
+</p>
+
+<pre class="example">
+sqoop list-databases --connect jdbc:mysql://slave01:3306/ --username root --password manue1
+
+</pre>
+
+<p>
+这里导入导出数据使用,hive库中的user表信息
+</p>
+
+<ul class="org-ul">
+<li><b>从hive/hdfs导出到mysql</b></li>
+</ul>
+
+<p>
+从hive导出数据到mysql，本质上就是将hdfs上文件导出到本地mysql库，
+比如现在要导出hive中hdb.user_orc表的数据,此表在hdfs上存放的路径是
+ <code>/user/hive/warehouse/hdb.db/user_orc</code> ,也就是将此目录下文件
+内容导出到mysql
+</p>
+
+<p>
+导出前在mysql中创建表:
+</p>
+
+<pre class="example">
+create database sqoopdb;
+use sqoopdb;
+create table my_user(uploader VARCHAR(64),videos int,friends int)
+
+</pre>
+
+<p>
+sqoop导出命令:
+</p>
+
+<pre class="example">
+sqoop export -m 1 --connect jdbc:mysql://slave01:3306/sqoopdb --username root --password manue1 --table my_user --export-dir  /user/hive/warehouse/hdb.db/user_text --input-fields-terminated-by '\t' --mysql-delimiters
+
+</pre>
+
+
+
+
+<ul class="org-ul">
+<li><b>从mysql导入hdfs</b></li>
+</ul>
+
+<pre class="example">
+sqoop import --connect jdbc:mysql://slave01:3306/sqoopdb --username root --password manue1 --split-by friends --table my_user --hive-import --create-hive-table --hive-table hdb.mysql_to_hive --hive-overwrite --target-dir /user/hive/warehouse/hdb.db/mysql_to_hive
+
+</pre>
+
+
+<ul class="org-ul">
+<li><p>
+结论
+</p>
+
+<p>
+目前sqoop调研看，只是用来对于关系型数据库与hdfs直接数据传输，很难满足json等结构复杂的数据传输</p></li>
+</ul>
 </div>
 </body>
 </html>

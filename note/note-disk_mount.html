@@ -6,7 +6,7 @@
 <!-- 2018-12-06 Thu 12:52 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>&lrm;</title>
+<title>磁盘挂载那些事</title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -179,7 +179,7 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
-<link rel="stylesheet" href="css/worg.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/worg.css" type="text/css" media="screen" />
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -232,7 +232,100 @@ for the JavaScript code in this tag.
 <a href="index.html">Home</a>
 </div>
 <div id="content">
+<h1 class="title">磁盘挂载那些事</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgdd04dbe"><span class="todo TODO">TODO</span> 本地盘挂载</a></li>
+<li><a href="#org8ab8cde"><span class="todo TODO">TODO</span> 远程盘挂载</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgdd04dbe" class="outline-2">
+<h2 id="orgdd04dbe"><span class="todo TODO">TODO</span> 本地盘挂载</h2>
+<div class="outline-text-2" id="text-orgdd04dbe">
+<ul class="org-ul">
+<li><p>
+State "TODO"       from              <span class="timestamp-wrapper"><span class="timestamp">[2018-11-13 Tue 19:38]</span></span>
+</p>
 
+<p>
+在文件中添加要挂载的分区和文件目录可以修改配置 <code>/etc/fstab</code>
+然后手动 <code>mount -a</code> 挂载即可
+</p>
+
+<pre class="example">
+/dev/sda5/    media/win    ntfs    defaults   02
+
+</pre></li>
+</ul>
+
+
+<ol class="org-ol">
+<li><p>
+查看几块硬盘
+</p>
+
+<p>
+sudo fdisk -l |grep sd
+</p></li>
+
+<li><p>
+创建分区
+</p>
+
+<p>
+虚拟机现有20g的硬盘,使用fdisk划分磁盘
+</p>
+
+<p>
+sudo fdisk /dev/sda
+</p>
+
+<p class="verse">
+m  帮助信息<br />
+n 创建分区<br />
+e 扩展分区    +5G  pppp/pppe<br />
+p 打印分区<br />
+t 分区类型 L  (lvm)<br />
+w 写入保存分区<br />
+</p></li>
+
+<li>格式化 分区</li>
+
+<li>LVM
+pv &#x2013;&gt; vg &#x2013;&gt; lv
+参考: <a href="http://blog.sina.com.cn/s/blog_b77735d20101e5cn.html">http://blog.sina.com.cn/s/blog_b77735d20101e5cn.html</a>
+<a href="http://aurthurxlc.github.io/Aurthur-2017/Centos-7-extend-lvm-volume.html">http://aurthurxlc.github.io/Aurthur-2017/Centos-7-extend-lvm-volume.html</a></li>
+</ol>
+
+<p>
+fdisk -l | grep sd
+fdisk /dev/sda
+partprobe
+pvdisplay
+pvcreate /dev/sda3
+vgdisplay
+vgextend centos /dev/sda3
+lvdisplay
+lvcreate -L 3.31G -n manue1 centos
+mkfs.xfs /dev/centos/manue1
+lvremove -f /dev/centos/manue1
+lvextend -l +100%FREE /dev/centos/root
+df -Th
+xfs_growfs /dev/centos/root
+</p>
+</div>
+</div>
+<div id="outline-container-org8ab8cde" class="outline-2">
+<h2 id="org8ab8cde"><span class="todo TODO">TODO</span> 远程盘挂载</h2>
+<div class="outline-text-2" id="text-org8ab8cde">
+<ul class="org-ul">
+<li>State "TODO"       from              <span class="timestamp-wrapper"><span class="timestamp">[2018-11-13 Tue 19:37]</span></span></li>
+</ul>
+</div>
+</div>
 </div>
 </body>
 </html>

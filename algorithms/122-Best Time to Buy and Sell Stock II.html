@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-12-06 Thu 12:52 -->
+<!-- 2018-12-06 Thu 12:53 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>&lrm;</title>
+<title>122.Best Time to Buy and Sell Stock II</title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -232,7 +232,119 @@ for the JavaScript code in this tag.
 <a href="index.html">Home</a>
 </div>
 <div id="content">
+<h1 class="title">122.Best Time to Buy and Sell Stock II</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org536b62a">题意分析</a></li>
+<li><a href="#org371a545">java</a></li>
+<li><a href="#orgdcac2e2">python</a></li>
+</ul>
+</div>
+</div>
+<p>
+Say you have an array for which the ith element is the price of a given stock on day i.
+</p>
 
+<p>
+Design an algorithm to find the maximum profit. 
+</p>
+
+<p>
+You may complete as many transactions as you like (i.e., buy one and sell one share of the stock multiple times).
+</p>
+
+<p>
+Note: You may not engage in multiple transactions at the same time (i.e., you must sell the stock before you buy again).
+</p>
+
+<p>
+Example 1:
+</p>
+<pre class="example">
+Input: [7,1,5,3,6,4]
+Output: 7
+
+Explanation: Buy on day 2 (price = 1) and sell on day 3 (price = 5), profit = 5-1 = 4.
+             Then buy on day 4 (price = 3) and sell on day 5 (price = 6), profit = 6-3 = 3.
+</pre>
+<p>
+Example 2:
+</p>
+<pre class="example">
+Input: [1,2,3,4,5]
+Output: 4
+Explanation: Buy on day 1 (price = 1) and sell on day 5 (price = 5), profit = 5-1 = 4.
+             Note that you cannot buy on day 1, buy on day 2 and sell them later, 
+             as you are engaging multiple transactions at the same time. 
+             You must sell before buying again.
+</pre>
+<p>
+Example 3:
+</p>
+<pre class="example">
+Input: [7,6,4,3,1]
+Output: 0
+Explanation: In this case, no transaction is done, i.e. max profit = 0.
+</pre>
+
+
+<div id="outline-container-org536b62a" class="outline-2">
+<h2 id="org536b62a">题意分析</h2>
+<div class="outline-text-2" id="text-org536b62a">
+<p>
+给定一个数组，可以多次买入卖出，求最大利益
+</p>
+
+<p>
+每次操作取极大值、极小值
+</p>
+</div>
+</div>
+
+<div id="outline-container-org371a545" class="outline-2">
+<h2 id="org371a545">java</h2>
+<div class="outline-text-2" id="text-org371a545">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #66D9EF;">class</span> <span style="color: #66D9EF;">Solution</span> {
+    <span style="color: #66D9EF;">public</span> <span style="color: #66D9EF;">int</span> <span style="color: #F92672; font-style: italic;">maxProfit</span>(<span style="color: #66D9EF;">int</span>[] <span style="color: #F92672;">prices</span>) {
+            <span style="color: #66D9EF;">int</span> <span style="color: #F92672;">profit</span> = 0, <span style="color: #F92672;">i</span> = 0, <span style="color: #F92672;">j</span>;
+            <span style="color: #66D9EF;">while</span> (i &lt; prices.<span style="color: #66D9EF;">length</span>) {
+                j = i;
+                <span style="color: #66D9EF;">while</span> (j &lt; prices.<span style="color: #66D9EF;">length</span> - 1 &amp;&amp; prices[j] &lt; prices[j+1]) j=j+1;
+                profit += (prices[j] - prices[i]);
+                i = j + 1;
+            }
+            <span style="color: #66D9EF;">return</span> profit;
+    }
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdcac2e2" class="outline-2">
+<h2 id="orgdcac2e2">python</h2>
+<div class="outline-text-2" id="text-orgdcac2e2">
+<pre class="example">
+class Solution(object):
+    def maxProfit(self, prices):
+        """
+        :param prices: List[int]
+        :return: int
+        """
+        res, i = 0, 0
+        while i &lt; len(prices):
+            j = i
+            while j + 1 &lt; len(prices) and prices[j + 1] &gt; prices[j]:
+                j += 1
+            res += prices[j] - prices[i]
+            i = j + 1
+        return res
+</pre>
+</div>
+</div>
 </div>
 </body>
 </html>

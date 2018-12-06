@@ -6,7 +6,7 @@
 <!-- 2018-12-06 Thu 12:52 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>&lrm;</title>
+<title>tmux + ssh 管理远程会话</title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -179,7 +179,7 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
-<link rel="stylesheet" href="css/worg.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/worg.css" type="text/css" media="screen" />
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -232,7 +232,107 @@ for the JavaScript code in this tag.
 <a href="index.html">Home</a>
 </div>
 <div id="content">
+<h1 class="title">tmux + ssh 管理远程会话</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org063c4ef">tmux use</a>
+<ul>
+<li><a href="#org854a104">install</a></li>
+<li><a href="#orgdb9e62a"><span class="todo TODO">TODO</span> embellish terminal</a></li>
+<li><a href="#orga671012">use tmux</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
 
+<div id="outline-container-org063c4ef" class="outline-2">
+<h2 id="org063c4ef">tmux use</h2>
+<div class="outline-text-2" id="text-org063c4ef">
+<ul class="org-ul">
+<li>Server 服务器 tmux开启一个服务器,用来管理多个会话</li>
+
+<li>Session 会话,一组窗口的集合 session可以有自己的名字</li>
+
+<li>Window 单个可见窗口 window有自己的编号</li>
+
+<li>Pane 被划分成小块的窗格</li>
+</ul>
+</div>
+<div id="outline-container-org854a104" class="outline-3">
+<h3 id="org854a104">install</h3>
+<div class="outline-text-3" id="text-org854a104">
+<p>
+sudo apt-get install tmux
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgdb9e62a" class="outline-3">
+<h3 id="orgdb9e62a"><span class="todo TODO">TODO</span> embellish terminal</h3>
+<div class="outline-text-3" id="text-orgdb9e62a">
+<ul class="org-ul">
+<li>State "TODO"       from ""           <span class="timestamp-wrapper"><span class="timestamp">[2017-10-10 Tue 13:37]</span></span></li>
+</ul>
+<p>
+<a href="http://hit9.github.io/oldblog/blog/other/posts/11.html">powerline use:</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga671012" class="outline-3">
+<h3 id="orga671012">use tmux</h3>
+<div class="outline-text-3" id="text-orga671012">
+<p>
+[[<a href="http://kuanghy.github.io/2016/09/29/tmux">http://kuanghy.github.io/2016/09/29/tmux</a>][how to use tmux]
+</p>
+
+
+<p>
+<a href="https://tmuxcheatsheet.com/">https://tmuxcheatsheet.com/</a>
+</p>
+
+<p>
+prefix = c-b
+</p>
+
+<p>
+Session相关操作
+</p>
+
+<p>
+查看/切换session prefix s
+离开Session prefix d
+重命名当前Sessionprefix $
+</p>
+
+<p>
+Window相关操作
+</p>
+
+<p>
+新建窗口prefix c
+切换到上一个活动的窗口prefix space
+关闭一个窗口prefix &amp;
+使用窗口号切换prefix 窗口号
+</p>
+
+<p>
+Pane 相关操作
+</p>
+
+<p>
+切换到下一个窗格prefix o
+查看所有窗格的编号prefix q
+垂直拆分出一个新窗格prefix “
+水平拆分出一个新窗格prefix %
+暂时把一个窗体放到最大prefix z
+</p>
+</div>
+</div>
+</div>
 </div>
 </body>
 </html>

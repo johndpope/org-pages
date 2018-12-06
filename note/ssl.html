@@ -6,7 +6,7 @@
 <!-- 2018-12-06 Thu 12:52 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>&lrm;</title>
+<title>https站点证书配置</title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -179,7 +179,7 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
-<link rel="stylesheet" href="css/worg.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/worg.css" type="text/css" media="screen" />
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -232,7 +232,121 @@ for the JavaScript code in this tag.
 <a href="index.html">Home</a>
 </div>
 <div id="content">
+<h1 class="title">https站点证书配置</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgda61c4d">证书配置安装</a></li>
+<li><a href="#orgd9998d1">证书定期更新</a></li>
+<li><a href="#orgf9baaad">nginx调用证书</a></li>
+</ul>
+</div>
+</div>
+<p>
+个人https站点，首选免费开源证书,Let's Encrypt是国外一个公共的免费SSL项目，
+由 Linux 基金会托管，由Mozilla、思科、Akamai、IdenTrust和EFF等组织发起，
+目的就是向网站自动签发和管理免费证书，以便加速互联网由HTTP过渡到HTTPS。
+</p>
 
+
+<p>
+let's encrypt优点:
+</p>
+
+<ol class="org-ol">
+<li>免费提供90天的电子证书</li>
+<li>提供certbot工具自动更新证书系统</li>
+</ol>
+
+
+
+<div id="outline-container-orgda61c4d" class="outline-2">
+<h2 id="orgda61c4d">证书配置安装</h2>
+<div class="outline-text-2" id="text-orgda61c4d">
+<p>
+let's encrypt 使用certbot这款软件管理电子证书，在安装certbot过程中，提示
+机器pyopenssl版本比较低，需要高版本，<a href="http://cbs.centos.org/kojifiles/packages/pyOpenSSL/0.15.1/1.el7/noarch/pyOpenSSL-0.15.1-1.el7.noarch.rpm">pyopenssl高版本下载</a> 
+<code>sudo rpm -Uvh *.rpm</code> 安装 
+</p>
+
+<pre class="example">
+yum install epel-release -y
+yum install certbot -y
+pip install certifi 
+
+</pre>
+
+<p>
+使用certbot的standalone生成证书之前，需要保证80端口未占用, <code>-d</code> 证书支持
+的子域名， <code>-m</code> 通知邮箱
+</p>
+
+<pre class="example">
+certbot certonly --standalone -d manue1.site -d www.manue1.site -m manue1@foxmail.com
+
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgd9998d1" class="outline-2">
+<h2 id="orgd9998d1">证书定期更新</h2>
+<div class="outline-text-2" id="text-orgd9998d1">
+<p>
+crontab 每两月更新证书信息，避免失效, <code>--pre-hook</code> 代表 执行前需要处理的任务，
+ <code>--post-hook</code> 代表执行后需要处理的任务
+</p>
+
+<pre class="example">
+15 2 * */2 * certbot renew --pre-hook "service nginx stop" --post-hook "service nginx start" 
+
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgf9baaad" class="outline-2">
+<h2 id="orgf9baaad">nginx调用证书</h2>
+<div class="outline-text-2" id="text-orgf9baaad">
+<p>
+将所有80端口流量转发到443端口,443端口服务配上证书认证
+</p>
+
+<pre class="example">
+
+server {
+  listen 80;
+  server_name manue1.site www.manue1.site;
+  return 301 https://www.manue1.site$request_uri;
+}
+
+server {
+
+       listen  443 ssl;
+       server_name  manue1.site www.manue1.site;
+
+
+       ssl_certificate /etc/letsencrypt/live/manue1.site/fullchain.pem;
+       ssl_certificate_key /etc/letsencrypt/live/manue1.site/privkey.pem;
+
+       location / {
+           root   /home/manue1/html-pages;
+           index  index.html index.htm;
+       }
+
+       error_page   500 502 503 504  /50x.html;
+       location = /50x.html {
+           root   html;
+       }
+
+}
+
+</pre>
+
+<p>
+至此，个人站点免费配置https证书便搞定了
+</p>
+</div>
+</div>
 </div>
 </body>
 </html>

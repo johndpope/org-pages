@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-12-06 Thu 12:52 -->
+<!-- 2018-12-06 Thu 12:54 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>&lrm;</title>
+<title>Question &amp; Answer</title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -232,7 +232,174 @@ for the JavaScript code in this tag.
 <a href="index.html">Home</a>
 </div>
 <div id="content">
+<h1 class="title">Question &amp; Answer</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org61b3689">Question &amp; Answer</a>
+<ul>
+<li><a href="#org6d0276d"><span class="done DONE">DONE</span> org-mode table中英文对齐问题</a></li>
+<li><a href="#org4804321"><span class="done DONE">DONE</span> 连接远程主机emacs alt键失灵问题</a></li>
+<li><a href="#org869a14c"><span class="done DONE">DONE</span> 远程开发代码备份与调用远程开发环境</a></li>
+<li><a href="#org909eae8"><span class="done DONE">DONE</span> emacs数据恢复问题</a></li>
+<li><a href="#orgc1c035c"><span class="todo TODO">TODO</span> ssh登录session常驻与github冲突问题</a></li>
+<li><a href="#org3a5e196"><span class="todo TODO">TODO</span> emacs如何处理博文头部尾部嵌套跳转页问题</a></li>
+<li><a href="#orgd614517"><span class="done DONE">DONE</span> ssh Permission denied (publickey)</a></li>
+<li><a href="#orge2a70ca"><span class="done DONE">DONE</span> arch下载百度云大文件</a></li>
+<li><a href="#org7f8ddd1"><span class="todo TODO">TODO</span> 推荐系统引擎 apache mahout</a></li>
+<li><a href="#org050bbf9"><span class="todo TODO">TODO</span> org-mode 导出中文pdf文件</a></li>
+<li><a href="#org21f53b8"><span class="todo TODO">TODO</span> emacs 快速调用chrome打开链接</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org61b3689" class="outline-2">
+<h2 id="org61b3689">Question &amp; Answer</h2>
+<div class="outline-text-2" id="text-org61b3689">
+</div>
+<div id="outline-container-org6d0276d" class="outline-3">
+<h3 id="org6d0276d"><span class="done DONE">DONE</span> org-mode table中英文对齐问题</h3>
+<div class="outline-text-3" id="text-org6d0276d">
+<ul class="org-ul">
+<li>State "DONE"       from              <span class="timestamp-wrapper"><span class="timestamp">[2018-11-09 Fri 12:35]</span></span></li>
+</ul>
+<blockquote>
+<p>
+只需要设置org-table的字体为等宽字体
+</p>
+<pre class="example">
+;; Org table font
+(custom-set-faces
+'(org-table ((t (:family "Ubuntu Mono derivative Powerline")))))
+</pre>
+<p>
+安装Ubuntu Mono derivative Powerline
+</p>
+<pre class="example">
+git clone https://aur.archlinux.org/ttf-ubuntu-mono-derivative-powerline-git.git
+makepkg -Acs
+sudo pacman -U *.tar.xz
 
+</pre>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-org4804321" class="outline-3">
+<h3 id="org4804321"><span class="done DONE">DONE</span> 连接远程主机emacs alt键失灵问题</h3>
+<div class="outline-text-3" id="text-org4804321">
+<blockquote>
+<p>
+主要是因为xshell的配置问题
+</p>
+
+<p>
+文件&#x2013;&gt;属性&#x2013;&gt;终端&#x2013;&gt;键盘&#x2013;&gt;元(meta)键仿真 
+</p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-org869a14c" class="outline-3">
+<h3 id="org869a14c"><span class="done DONE">DONE</span> 远程开发代码备份与调用远程开发环境</h3>
+<div class="outline-text-3" id="text-org869a14c">
+<ul class="org-ul">
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-11-14 Wed 10:07]</span></span></li>
+</ul>
+<blockquote>
+<p>
+简单说,win7环境下使用idea开发java，python,但是我想将代码自动同步到ubuntu上做备份;同时,python的运行环境使用vmware的ubuntu上的多版本python环境,实现本地使用idea开发，代码运行在远端linux上,当然java还是使用的物理机安装的环境
+</p>
+
+<p>
+查看了下资料，idea官方说明有 <a href="http://www.jetbrains.com/help/idea/2017.1/remote-host-tool-window.html">sftp </a>这个功能,创建sftp服务连接 
+<code>tool -&gt; deployment -&gt; +</code>
+</p>
+
+<ol class="org-ol">
+<li><p>
+本地开发的java项目备份到远端linux目录
+</p>
+
+<p>
+RemoteHost内配置好mappings，本地项目备份到ubuntu的路径
+</p>
+
+<p>
+右键项目Upload to 服务器
+</p></li>
+
+<li><p>
+使用linux python环境 写python项目
+</p>
+
+<p>
+<code>F4 -&gt; project -&gt; +  -&gt; add remote</code>
+</p>
+
+<p>
+只需要本地开发编码不报错，运行可以同步到服务器运行
+</p></li>
+</ol>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-org909eae8" class="outline-3">
+<h3 id="org909eae8"><span class="done DONE">DONE</span> emacs数据恢复问题</h3>
+<div class="outline-text-3" id="text-org909eae8">
+<ul class="org-ul">
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-11-14 Wed 10:08]</span></span></li>
+</ul>
+<blockquote>
+<p>
+<code>c-x u</code> 解决问题
+</p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-orgc1c035c" class="outline-3">
+<h3 id="orgc1c035c"><span class="todo TODO">TODO</span> ssh登录session常驻与github冲突问题</h3>
+<div class="outline-text-3" id="text-orgc1c035c">
+<ul class="org-ul">
+<li>State "TODO"       from              <span class="timestamp-wrapper"><span class="timestamp">[2018-11-13 Tue 19:40]</span></span></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org3a5e196" class="outline-3">
+<h3 id="org3a5e196"><span class="todo TODO">TODO</span> emacs如何处理博文头部尾部嵌套跳转页问题</h3>
+</div>
+<div id="outline-container-orgd614517" class="outline-3">
+<h3 id="orgd614517"><span class="done DONE">DONE</span> ssh Permission denied (publickey)</h3>
+<div class="outline-text-3" id="text-orgd614517">
+<p>
+在目标主机的 <code>/.ssh/authorized_keys</code> 文件内，添加id_rsa.pub
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge2a70ca" class="outline-3">
+<h3 id="orge2a70ca"><span class="done DONE">DONE</span> arch下载百度云大文件</h3>
+<div class="outline-text-3" id="text-orge2a70ca">
+<ul class="org-ul">
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-11-29 Thu 14:47]</span></span></li>
+</ul>
+<p>
+<a href="https://github.com/iikira/BaiduPCS-Go">go实现的百度云大文件下载</a> 使用文档很详细
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7f8ddd1" class="outline-3">
+<h3 id="org7f8ddd1"><span class="todo TODO">TODO</span> 推荐系统引擎 apache mahout</h3>
+</div>
+<div id="outline-container-org050bbf9" class="outline-3">
+<h3 id="org050bbf9"><span class="todo TODO">TODO</span> org-mode 导出中文pdf文件</h3>
+</div>
+<div id="outline-container-org21f53b8" class="outline-3">
+<h3 id="org21f53b8"><span class="todo TODO">TODO</span> emacs 快速调用chrome打开链接</h3>
+</div>
+</div>
 </div>
 </body>
 </html>

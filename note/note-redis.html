@@ -6,7 +6,7 @@
 <!-- 2018-12-06 Thu 12:52 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>&lrm;</title>
+<title>redis 使用</title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -179,7 +179,7 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
-<link rel="stylesheet" href="css/worg.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/worg.css" type="text/css" media="screen" />
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -232,7 +232,70 @@ for the JavaScript code in this tag.
 <a href="index.html">Home</a>
 </div>
 <div id="content">
+<h1 class="title">redis 使用</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org0555a40">redis</a>
+<ul>
+<li><a href="#org0716cd3">redis 安装使用</a></li>
+<li><a href="#orgaeb01a6">数据结构与对象</a>
+<ul>
+<li><a href="#orgfa18b08">SDS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
 
+<div id="outline-container-org0555a40" class="outline-2">
+<h2 id="org0555a40">redis</h2>
+<div class="outline-text-2" id="text-org0555a40">
+</div>
+<div id="outline-container-org0716cd3" class="outline-3">
+<h3 id="org0716cd3">redis 安装使用</h3>
+<div class="outline-text-3" id="text-org0716cd3">
+<p>
+redis开发使用的话，推荐docker直接部署，避免浪费时间，redis 配置文件 
+<code>/etc/redis/redis.conf</code> 参数简单配置满足日常开发需求
+</p>
+
+<pre class="example">
+bind 127.0.0.1 远程访问
+requirepass manue1sec  设置密码
+
+</pre>
+
+<p>
+使用 <code>redis-cli -h x.x.x.x -p 6379 -a manue1sec</code> 远程连接管理,
+</p>
+
+<p>
+redis 数据库里面的每个键值对(key-value pair)都是由对象(object)组成的,其中:
+数据库键总是一个字符串对象(string object);而数据库键的值则可以是字符串对象、
+列表对象(list object)、哈希对象(hashobject)、集合对象(set object)、
+有序集合对象(sorted set object)这五种对象中的其中一种
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgaeb01a6" class="outline-3">
+<h3 id="orgaeb01a6">数据结构与对象</h3>
+<div class="outline-text-3" id="text-orgaeb01a6">
+</div>
+<div id="outline-container-orgfa18b08" class="outline-4">
+<h4 id="orgfa18b08">SDS</h4>
+<div class="outline-text-4" id="text-orgfa18b08">
+<p>
+redis没有使用c语言内的以空字符结尾的字符数组作为字符串，而是自己定义了一种SDS，
+simple dynamic string，简单动态字符串</p>
+</div>
+</div>
+</div>
+</div>
 </div>
 </body>
 </html>

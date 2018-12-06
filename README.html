@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-11-14 Wed 10:59 -->
+<!-- 2018-12-06 Thu 12:52 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>org-pages 项目说明</title>
@@ -237,14 +237,14 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgb49ca11">org-pages</a></li>
-<li><a href="#org47cf259">html-pages</a></li>
+<li><a href="#org037457b">org-pages</a></li>
+<li><a href="#orgfe80e04">html-pages</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb49ca11" class="outline-2">
-<h2 id="orgb49ca11"><a href="http://www.manue1.site/">org-pages</a></h2>
-<div class="outline-text-2" id="text-orgb49ca11">
+<div id="outline-container-org037457b" class="outline-2">
+<h2 id="org037457b"><a href="http://www.manue1.site/">org-pages</a></h2>
+<div class="outline-text-2" id="text-org037457b">
 <ul class="org-ul">
 <li><p>
 <a href="https://github.com/Nanue1/org-pages">emacs文档备份路径</a>
@@ -334,19 +334,22 @@ emacs 任务添加配置
 
 <span style="color: #C4BE89;">(</span>setq org-capture-templates
       '<span style="color: #FD971F;">(</span>
-        <span style="color: #EF5939;">(</span><span style="color: #E6DB74;">"r"</span> <span style="color: #E6DB74;">"Read"</span> entry <span style="color: #F92672;">(</span>file+headline <span style="color: #E6DB74;">"~/github/org-pages/index.org"</span> <span style="color: #E6DB74;">"Reading List"</span><span style="color: #F92672;">)</span>
-         <span style="color: #E6DB74;">"* TODO  %?\n  %i\n"</span>
-         <span style="color: #A6E22E;">:empty-lines</span> 1<span style="color: #EF5939;">)</span>
-        <span style="color: #EF5939;">(</span><span style="color: #E6DB74;">"w"</span> <span style="color: #E6DB74;">"Write"</span> entry <span style="color: #F92672;">(</span>file+headline <span style="color: #E6DB74;">"~/github/org-pages/index.org"</span> <span style="color: #E6DB74;">"Writing List"</span><span style="color: #F92672;">)</span>
-         <span style="color: #E6DB74;">"* TODO  %?\n  %i\n"</span>
-         <span style="color: #A6E22E;">:empty-lines</span> 1<span style="color: #EF5939;">)</span>
-        <span style="color: #EF5939;">(</span><span style="color: #E6DB74;">"c"</span> <span style="color: #E6DB74;">"Code"</span> entry <span style="color: #F92672;">(</span>file+headline <span style="color: #E6DB74;">"~/github/org-pages/index.org"</span> <span style="color: #E6DB74;">"Coding List"</span><span style="color: #F92672;">)</span>
-         <span style="color: #E6DB74;">"* TODO  %?\n  %i\n"</span>
-         <span style="color: #A6E22E;">:empty-lines</span> 1<span style="color: #EF5939;">)</span>
-        <span style="color: #EF5939;">(</span><span style="color: #E6DB74;">"b"</span> <span style="color: #E6DB74;">"Body"</span> entry <span style="color: #F92672;">(</span>file+headline <span style="color: #E6DB74;">"~/github/org-pages/index.org"</span> <span style="color: #E6DB74;">"Body Building"</span><span style="color: #F92672;">)</span>
-         <span style="color: #E6DB74;">"* TODO  %?\n  %i\n"</span>
-         <span style="color: #A6E22E;">:empty-lines</span> 1<span style="color: #EF5939;">)</span>
-        <span style="color: #FD971F;">)</span>
+         <span style="color: #EF5939;">(</span><span style="color: #E6DB74;">"r"</span> <span style="color: #E6DB74;">"Read"</span> entry <span style="color: #F92672;">(</span>file+headline <span style="color: #E6DB74;">"~/github/org-pages/read.org"</span> <span style="color: #E6DB74;">"Reading List"</span><span style="color: #F92672;">)</span>
+          <span style="color: #E6DB74;">"* TODO  %?\n  %i\n"</span>
+          <span style="color: #A6E22E;">:empty-lines</span> 1<span style="color: #EF5939;">)</span>
+         <span style="color: #EF5939;">(</span><span style="color: #E6DB74;">"w"</span> <span style="color: #E6DB74;">"Write"</span> entry <span style="color: #F92672;">(</span>file+headline <span style="color: #E6DB74;">"~/github/org-pages/write.org"</span> <span style="color: #E6DB74;">"Writing List"</span><span style="color: #F92672;">)</span>
+          <span style="color: #E6DB74;">"* TODO  %?\n  %i\n"</span>
+          <span style="color: #A6E22E;">:empty-lines</span> 1<span style="color: #EF5939;">)</span>
+         <span style="color: #EF5939;">(</span><span style="color: #E6DB74;">"c"</span> <span style="color: #E6DB74;">"Code"</span> entry <span style="color: #F92672;">(</span>file+headline <span style="color: #E6DB74;">"~/github/org-pages/code.org"</span> <span style="color: #E6DB74;">"Coding List"</span><span style="color: #F92672;">)</span>
+          <span style="color: #E6DB74;">"* TODO  %?\n  %i\n"</span>
+          <span style="color: #A6E22E;">:empty-lines</span> 1<span style="color: #EF5939;">)</span>
+         <span style="color: #EF5939;">(</span><span style="color: #E6DB74;">"q"</span> <span style="color: #E6DB74;">"Q&amp;A"</span> entry <span style="color: #F92672;">(</span>file+headline <span style="color: #E6DB74;">"~/github/org-pages/q&amp;a.org"</span> <span style="color: #E6DB74;">"Question &amp; Answer"</span><span style="color: #F92672;">)</span>
+          <span style="color: #E6DB74;">"* TODO  %?\n  %i\n"</span>
+          <span style="color: #A6E22E;">:empty-lines</span> 1<span style="color: #EF5939;">)</span>
+         <span style="color: #EF5939;">(</span><span style="color: #E6DB74;">"b"</span> <span style="color: #E6DB74;">"Body"</span> entry <span style="color: #F92672;">(</span>file+headline <span style="color: #E6DB74;">"~/github/org-pages/body.org"</span> <span style="color: #E6DB74;">"Body Building"</span><span style="color: #F92672;">)</span>
+          <span style="color: #E6DB74;">"* TODO  %?\n  %i\n"</span>
+          <span style="color: #A6E22E;">:empty-lines</span> 1<span style="color: #EF5939;">)</span>
+         <span style="color: #FD971F;">)</span>
 <span style="color: #C4BE89;">)</span>
 <span style="color: #465457; font-style: italic;">; </span><span style="color: #465457; font-style: italic;">Task state settings</span>
 <span style="color: #C4BE89;">(</span>setq org-todo-keywords
@@ -360,9 +363,9 @@ emacs 任务添加配置
 </div>
 
 
-<div id="outline-container-org47cf259" class="outline-2">
-<h2 id="org47cf259">html-pages</h2>
-<div class="outline-text-2" id="text-org47cf259">
+<div id="outline-container-orgfe80e04" class="outline-2">
+<h2 id="orgfe80e04">html-pages</h2>
+<div class="outline-text-2" id="text-orgfe80e04">
 <ul class="org-ul">
 <li><p>
 拉取分支：

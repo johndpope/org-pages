@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-12-06 Thu 12:52 -->
+<!-- 2018-12-06 Thu 12:53 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>&lrm;</title>
+<title>46.Permutations</title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -232,7 +232,117 @@ for the JavaScript code in this tag.
 <a href="index.html">Home</a>
 </div>
 <div id="content">
+<h1 class="title">46.Permutations</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org37b0b60">题意分析</a></li>
+<li><a href="#org7d2fa49">java</a></li>
+<li><a href="#org70c71e4">python</a></li>
+</ul>
+</div>
+</div>
+<p>
+Given a collection of distinct integers, return all possible permutations.
+</p>
 
+<p>
+Example:
+</p>
+
+<pre class="example">
+Input: [1,2,3]
+Output:
+[
+  [1,2,3],
+  [1,3,2],
+  [2,1,3],
+  [2,3,1],
+  [3,1,2],
+  [3,2,1]
+]
+</pre>
+
+
+<div id="outline-container-org37b0b60" class="outline-2">
+<h2 id="org37b0b60">题意分析</h2>
+<div class="outline-text-2" id="text-org37b0b60">
+<p>
+给一个不重复整数集，输出所有可能组合
+</p>
+
+<p>
+思路：
+</p>
+
+<p>
+回溯法处理遍历所有情况问题
+</p>
+
+<p>
+1(234)-&gt;12(34)-&gt;123(4)
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7d2fa49" class="outline-2">
+<h2 id="org7d2fa49">java</h2>
+<div class="outline-text-2" id="text-org7d2fa49">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #66D9EF;">class</span> <span style="color: #66D9EF;">Solution</span> {
+
+    <span style="color: #66D9EF;">public</span> <span style="color: #66D9EF;">List</span>&lt;<span style="color: #66D9EF;">List</span>&lt;<span style="color: #66D9EF;">Integer</span>&gt;&gt; <span style="color: #F92672; font-style: italic;">permute</span>(<span style="color: #66D9EF;">int</span>[] <span style="color: #F92672;">nums</span>) {
+
+        <span style="color: #66D9EF;">List</span>&lt;<span style="color: #66D9EF;">List</span>&lt;<span style="color: #66D9EF;">Integer</span>&gt;&gt; <span style="color: #F92672;">list</span> = <span style="color: #66D9EF;">new</span> <span style="color: #66D9EF;">ArrayList</span>&lt;<span style="color: #66D9EF;">List</span>&lt;<span style="color: #66D9EF;">Integer</span>&gt;&gt;();
+        backtrack(list,nums,0);
+        <span style="color: #66D9EF;">return</span> list;
+
+    }
+
+    <span style="color: #66D9EF;">public</span> <span style="color: #66D9EF;">List</span>&lt;<span style="color: #66D9EF;">List</span>&lt;<span style="color: #66D9EF;">Integer</span>&gt;&gt; <span style="color: #F92672; font-style: italic;">backtrack</span>(<span style="color: #66D9EF;">List</span>&lt;<span style="color: #66D9EF;">List</span>&lt;<span style="color: #66D9EF;">Integer</span>&gt;&gt; <span style="color: #F92672;">list</span>,<span style="color: #66D9EF;">int</span>[] <span style="color: #F92672;">nums</span>,<span style="color: #66D9EF;">int</span> <span style="color: #F92672;">start</span>){
+
+         <span style="color: #66D9EF;">if</span>(start &gt;= nums.length){
+             <span style="color: #66D9EF;">List</span>&lt;<span style="color: #66D9EF;">Integer</span>&gt; <span style="color: #F92672;">tempList</span> = convertArrayToList(nums);
+             list.add(tempList);
+         }
+
+        <span style="color: #66D9EF;">for</span>(<span style="color: #66D9EF;">int</span> <span style="color: #F92672;">i</span> = start ; i &lt; nums.<span style="color: #66D9EF;">length</span> ;i++){
+            swap(nums,start,i);
+            backtrack(list,nums,start+1);
+            swap(nums,start,i);
+        }
+
+        <span style="color: #66D9EF;">return</span> list;
+
+    }
+
+    <span style="color: #66D9EF;">private</span> <span style="color: #66D9EF;">List</span>&lt;<span style="color: #66D9EF;">Integer</span>&gt; <span style="color: #F92672; font-style: italic;">convertArrayToList</span>(<span style="color: #66D9EF;">int</span>[] <span style="color: #F92672;">nums</span>){
+
+        <span style="color: #66D9EF;">List</span>&lt;<span style="color: #66D9EF;">Integer</span>&gt; <span style="color: #F92672;">list</span> = <span style="color: #66D9EF;">new</span> <span style="color: #66D9EF;">ArrayList</span>&lt;<span style="color: #66D9EF;">Integer</span>&gt;();
+        <span style="color: #66D9EF;">for</span>(<span style="color: #66D9EF;">int</span> <span style="color: #F92672;">i</span> = 0 ; i &lt;nums.<span style="color: #66D9EF;">length</span>;i++){
+            list.add(nums[i]);
+        }
+
+        <span style="color: #66D9EF;">return</span> list;
+
+    }
+
+    <span style="color: #66D9EF;">private</span> <span style="color: #66D9EF;">void</span> <span style="color: #F92672; font-style: italic;">swap</span>(<span style="color: #66D9EF;">int</span>[] <span style="color: #F92672;">num</span>,<span style="color: #66D9EF;">int</span> <span style="color: #F92672;">i</span> ,<span style="color: #66D9EF;">int</span> <span style="color: #F92672;">j</span>){
+        <span style="color: #66D9EF;">int</span> <span style="color: #F92672;">temp</span> = num[i];
+        num[i] = num[j];
+        num[j] = temp;
+    }
+}
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org70c71e4" class="outline-2">
+<h2 id="org70c71e4">python</h2>
+</div>
 </div>
 </body>
 </html>
