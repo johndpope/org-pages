@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-12-07 Fri 15:27 -->
+<!-- 2018-12-07 Fri 21:19 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Question &amp; Answer</title>
+<title>如何在emacs中浏览网页?</title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -179,7 +179,7 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
-<link rel="stylesheet" href="css/worg.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/worg.css" type="text/css" media="screen" />
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -232,257 +232,150 @@ for the JavaScript code in this tag.
 <a href="https://www.manue1.site/index.html">Home</a>
 </div>
 <div id="content">
-<h1 class="title">Question &amp; Answer</h1>
+<h1 class="title">如何在emacs中浏览网页?</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgc96050d">1. Question &amp; Answer</a>
-<ul>
-<li><a href="#orgc0bc734">1.1. <span class="done DONE">DONE</span> org-mode table中英文对齐问题</a></li>
-<li><a href="#org52d4b5d">1.2. <span class="done DONE">DONE</span> 连接远程主机emacs alt键失灵问题</a></li>
-<li><a href="#org462e501">1.3. <span class="done DONE">DONE</span> 远程开发代码备份与调用远程开发环境</a></li>
-<li><a href="#org121f03e">1.4. <span class="done DONE">DONE</span> emacs数据恢复问题</a></li>
-<li><a href="#org412479f">1.5. <span class="done DONE">DONE</span> github git push 一直无响应</a></li>
-<li><a href="#org17b2d2b">1.6. <span class="done DONE">DONE</span> ssh Permission denied (publickey)</a></li>
-<li><a href="#orgc57817f">1.7. <span class="done DONE">DONE</span> arch下载百度云大文件</a></li>
-<li><a href="#orgf398577">1.8. <span class="done DONE">DONE</span> emacs快速调用chrome或者emacs-w3m打开链接</a></li>
-<li><a href="#org80b8375">1.9. <span class="done DONE">DONE</span> org-mode 自动显示图片</a></li>
-<li><a href="#orgb5991ef">1.10. <span class="done DONE">DONE</span> 不重启emacs如何重新加载配置</a></li>
-<li><a href="#org92b5b0e">1.11. <span class="todo TODO">TODO</span> emacs如何处理博文头部尾部嵌套跳转页问题</a></li>
-<li><a href="#org62b8f9d">1.12. <span class="todo TODO">TODO</span> 推荐系统引擎 apache mahout</a></li>
-<li><a href="#orgacb2293">1.13. <span class="todo TODO">TODO</span> org-mode 导出中文pdf文件</a></li>
-</ul>
-</li>
+<li><a href="#org27347e7"><span class="todo TODO">TODO</span> <b>3.w3m快捷键</b></a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc96050d" class="outline-2">
-<h2 id="orgc96050d"><span class="section-number-2">1</span> Question &amp; Answer</h2>
-<div class="outline-text-2" id="text-1">
-</div>
-<div id="outline-container-orgc0bc734" class="outline-3">
-<h3 id="orgc0bc734"><span class="section-number-3">1.1</span> <span class="done DONE">DONE</span> org-mode table中英文对齐问题</h3>
-<div class="outline-text-3" id="text-1-1">
-<ul class="org-ul">
-<li>State "DONE"       from              <span class="timestamp-wrapper"><span class="timestamp">[2018-11-09 Fri 12:35]</span></span></li>
-</ul>
+<p>
+<b>1.emacs-w3m安装配置</b> 
+</p>
+
 <blockquote>
 <p>
-只需要设置org-table的字体为等宽字体
+在emacs内浏览一些简单的页面可以用<a href="https://www.archlinux.org/packages/extra/x86_64/w3m/">emacs-w3m</a>，enacs-w3m运行需要依赖 <a href="http://w3m.sourceforge.net/">w3m</a>
 </p>
+
+<ul class="org-ul">
+<li>下载安装绿色版免编译w3m</li>
+</ul>
+
 <pre class="example">
-;; Org table font
-(custom-set-faces
-'(org-table ((t (:family "Ubuntu Mono derivative Powerline")))))
-</pre>
-<p>
-安装Ubuntu Mono derivative Powerline
-</p>
-<pre class="example">
-git clone https://aur.archlinux.org/ttf-ubuntu-mono-derivative-powerline-git.git
-makepkg -Acs
-sudo pacman -U *.tar.xz
+(add-to-list 'exec-path "/home/manue1/opt/w3m/bin")
 
 </pre>
-</blockquote>
-</div>
-</div>
-<div id="outline-container-org52d4b5d" class="outline-3">
-<h3 id="org52d4b5d"><span class="section-number-3">1.2</span> <span class="done DONE">DONE</span> 连接远程主机emacs alt键失灵问题</h3>
-<div class="outline-text-3" id="text-1-2">
-<blockquote>
-<p>
-主要是因为xshell的配置问题
-</p>
 
-<p>
-文件&#x2013;&gt;属性&#x2013;&gt;终端&#x2013;&gt;键盘&#x2013;&gt;元(meta)键仿真 
-</p>
-</blockquote>
-</div>
-</div>
-<div id="outline-container-org462e501" class="outline-3">
-<h3 id="org462e501"><span class="section-number-3">1.3</span> <span class="done DONE">DONE</span> 远程开发代码备份与调用远程开发环境</h3>
-<div class="outline-text-3" id="text-1-3">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-11-14 Wed 10:07]</span></span></li>
-</ul>
-<blockquote>
-<p>
-简单说,win7环境下使用idea开发java，python,但是我想将代码自动同步到ubuntu上做备份;同时,python的运行环境使用vmware的ubuntu上的多版本python环境,实现本地使用idea开发，代码运行在远端linux上,当然java还是使用的物理机安装的环境
-</p>
-
-<p>
-查看了下资料，idea官方说明有 <a href="http://www.jetbrains.com/help/idea/2017.1/remote-host-tool-window.html">sftp </a>这个功能,创建sftp服务连接 
-<code>tool -&gt; deployment -&gt; +</code>
-</p>
-
-<ol class="org-ol">
-<li><p>
-本地开发的java项目备份到远端linux目录
-</p>
-
-<p>
-RemoteHost内配置好mappings，本地项目备份到ubuntu的路径
-</p>
-
-<p>
-右键项目Upload to 服务器
-</p></li>
-
-<li><p>
-使用linux python环境 写python项目
-</p>
-
-<p>
-<code>F4 -&gt; project -&gt; +  -&gt; add remote</code>
-</p>
-
-<p>
-只需要本地开发编码不报错，运行可以同步到服务器运行
-</p></li>
-</ol>
-</blockquote>
-</div>
-</div>
-<div id="outline-container-org121f03e" class="outline-3">
-<h3 id="org121f03e"><span class="section-number-3">1.4</span> <span class="done DONE">DONE</span> emacs数据恢复问题</h3>
-<div class="outline-text-3" id="text-1-4">
-<ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-11-14 Wed 10:08]</span></span></li>
-</ul>
-<blockquote>
-<p>
-<code>c-x u</code> 解决问题
-</p>
-</blockquote>
-</div>
-</div>
-<div id="outline-container-org412479f" class="outline-3">
-<h3 id="org412479f"><span class="section-number-3">1.5</span> <span class="done DONE">DONE</span> github git push 一直无响应</h3>
-<div class="outline-text-3" id="text-1-5">
-<ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-07 Fri 13:18]</span></span></li>
+<li>安装emacs-w3m</li>
 </ul>
 
-<blockquote>
 <p>
-github dns解析地址有问题
+安装emacs-w3m前需要安装 <code>cvs</code> , <code>autoconf</code> 基础工具
 </p>
 
 <p>
-/etc/hosts 配置下github的主机地址
+下载emacs-w3m可以使用csv下载:
 </p>
 
 <p>
-<code>192.30.253.113 github.com</code>
+<code>cvs -d:pserver:anonymous@w3m.cvs.sourceforge.net:/cvsroot/w3m login</code>
 </p>
-</blockquote>
-</div>
-</div>
 
-
-<div id="outline-container-org17b2d2b" class="outline-3">
-<h3 id="org17b2d2b"><span class="section-number-3">1.6</span> <span class="done DONE">DONE</span> ssh Permission denied (publickey)</h3>
-<div class="outline-text-3" id="text-1-6">
-<blockquote>
 <p>
-在目标主机的 <code>/.ssh/authorized_keys</code> 文件内，添加id_rsa.pub
+它会要求你输入密码，直接回车即可。然后在输入下面的命令：
 </p>
-</blockquote>
-</div>
-</div>
 
-<div id="outline-container-orgc57817f" class="outline-3">
-<h3 id="orgc57817f"><span class="section-number-3">1.7</span> <span class="done DONE">DONE</span> arch下载百度云大文件</h3>
-<div class="outline-text-3" id="text-1-7">
+<p>
+<code>cvs -d:pserver:anonymous@w3m.cvs.sourceforge.net:/cvsroot/w3m checkout w3m</code>
+</p>
+
+<p>
+进去emacs-w3m目录,编译安装
+</p>
+
+<pre class="example">
+autoconf
+./configure
+sudo make 
+sudo make install
+
+</pre>
+
+
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-11-29 Thu 14:47]</span></span></li>
+<li>添加elisp配置</li>
 </ul>
 
-<blockquote>
+<pre class="example">
+(add-to-list 'exec-path "/home/manue1/opt/w3m/bin")
+
+;; 设置w3m主页
+(setq w3m-home-page "http://www.baidu.com")
+
+;; 默认显示图片
+(setq w3m-default-display-inline-images t)
+(setq w3m-default-toggle-inline-images t)
+
+
+;; 使用cookies
+(setq w3m-use-cookies t)
+
+;;设定w3m运行的参数，分别为使用cookie和使用框架
+(setq w3m-command-arguments '("-cookie" "-F"))
+
+;; 使用w3m作为默认浏览器
+(setq browse-url-browser-function 'w3m-browse-url)
+(setq w3m-view-this-url-new-session-in-background t)
+
+;;显示图标
+(setq w3m-show-graphic-icons-in-header-line t)
+(setq w3m-show-graphic-icons-in-mode-line t)
+
+;;C-c C-p 打开，这个好用
+(setq w3m-view-this-url-new-session-in-background t)
+
+(add-hook 'w3m-fontify-after-hook 'remove-w3m-output-garbages)
+(defun remove-w3m-output-garbages ()
+    "去掉w3m输出的垃圾."
+    (interactive)
+    (let ((buffer-read-only))
+    (setf (point) (point-min))
+    (while (re-search-forward "[\200-\240]" nil t)
+    (replace-match " "))
+    (set-buffer-multibyte t))
+    (set-buffer-modified-p nil))
+
+</pre>
+
+
 <p>
-<a href="https://github.com/iikira/BaiduPCS-Go">go实现的百度云大文件下载</a> 使用文档很详细
+最后，进入emacs，输入M-x w3m,即可看到w3m界面
+</p>
+
+<p>
+快速使用emacs-w3m访问一个页面 : <b>c-c c-o</b>
 </p>
 </blockquote>
-</div>
-</div>
 
-<div id="outline-container-orgf398577" class="outline-3">
-<h3 id="orgf398577"><span class="section-number-3">1.8</span> <span class="done DONE">DONE</span> <a href="note/emacs-w3m.html">emacs快速调用chrome或者emacs-w3m打开链接</a></h3>
-<div class="outline-text-3" id="text-1-8">
-<ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-07 Fri 11:57]</span></span></li>
-</ul>
-</div>
-</div>
+<p>
+<b>2.chrome访问url配置</b>
+</p>
 
-<div id="outline-container-org80b8375" class="outline-3">
-<h3 id="org80b8375"><span class="section-number-3">1.9</span> <span class="done DONE">DONE</span> org-mode 自动显示图片</h3>
-<div class="outline-text-3" id="text-1-9">
-<ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-07 Fri 13:10]</span></span></li>
-</ul>
 <blockquote>
 <p>
 
 </p>
 
-<p>
-M-x <code>org-toggle-inline-images</code> 参数用来控制org-mode图片显示
-</p>
+<pre class="example">
+(add-to-list 'exec-path "/opt/google/chrome")
+
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "chrome")
+</pre>
 
 <p>
-快捷键 c-c c-x c-v
-</p>
-
-<p>
-;配置图片默认显示大小
-</p>
-
-<p>
-<code>(setq org-image-actual-width 300)</code>
-</p>
-
-
-<div class="figure">
-<p><img src="images/index-0.jpg" alt="index-0.jpg" />
-</p>
-</div>
-
-<p>
-<code>c-c c-l</code> 修改url链接地址
+快速使用chrome访问一个页面 : <b>c-x c-o</b>
 </p>
 </blockquote>
-</div>
-</div>
 
 
-<div id="outline-container-orgb5991ef" class="outline-3">
-<h3 id="orgb5991ef"><span class="section-number-3">1.10</span> <span class="done DONE">DONE</span> 不重启emacs如何重新加载配置</h3>
-<div class="outline-text-3" id="text-1-10">
-<ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-07 Fri 13:09]</span></span></li>
-</ul>
-<blockquote>
-<p>
-M-x <code>eval-buffer</code>
-</p>
-</blockquote>
-</div>
-</div>
 
-
-<div id="outline-container-org92b5b0e" class="outline-3">
-<h3 id="org92b5b0e"><span class="section-number-3">1.11</span> <span class="todo TODO">TODO</span> emacs如何处理博文头部尾部嵌套跳转页问题</h3>
-</div>
-<div id="outline-container-org62b8f9d" class="outline-3">
-<h3 id="org62b8f9d"><span class="section-number-3">1.12</span> <span class="todo TODO">TODO</span> 推荐系统引擎 apache mahout</h3>
-</div>
-<div id="outline-container-orgacb2293" class="outline-3">
-<h3 id="orgacb2293"><span class="section-number-3">1.13</span> <span class="todo TODO">TODO</span> org-mode 导出中文pdf文件</h3>
-</div>
+<div id="outline-container-org27347e7" class="outline-2">
+<h2 id="org27347e7"><span class="todo TODO">TODO</span> <b>3.w3m快捷键</b></h2>
 </div>
 </div>
 </body>

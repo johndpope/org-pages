@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-12-06 Thu 13:50 -->
+<!-- 2018-12-07 Fri 21:19 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>elasticsearch 相关知识整理</title>
+<title>elasticsearch 常用知识梳理</title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -232,14 +232,11 @@ for the JavaScript code in this tag.
 <a href="https://www.manue1.site/index.html">Home</a>
 </div>
 <div id="content">
-<h1 class="title">elasticsearch 相关知识整理</h1>
+<h1 class="title">elasticsearch 常用知识梳理</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgeb55d80">note-elasticsearch-install&amp;config</a>
-<ul>
-<li><a href="#org8f44a19">install</a></li>
 <li><a href="#orged31909">cat command</a></li>
 <li><a href="#org80643c9">Mapping</a></li>
 <li><a href="#org192dbec">CURD</a></li>
@@ -249,136 +246,144 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#orgadee6d0">from szie/scroll/search after</a></li>
 <li><a href="#org961f842">es shard 生命周期</a></li>
-<li><a href="#org2514520">分词</a></li>
 <li><a href="#org96040ed">es node</a></li>
 <li><a href="#orgd8a3615">es pipeline</a></li>
-<li><a href="#org93349fd">es</a></li>
+<li><a href="#orga91f4a4">es 搜索原理</a></li>
 </ul>
 </li>
+<li><a href="#orgc84a0fa">alias_malware 统计</a></li>
 </ul>
-</li>
-</ul>
 </div>
 </div>
 
-<div id="outline-container-orgeb55d80" class="outline-2">
-<h2 id="orgeb55d80">note-elasticsearch-install&amp;config</h2>
-<div class="outline-text-2" id="text-orgeb55d80">
-</div>
-<div id="outline-container-org8f44a19" class="outline-3">
-<h3 id="org8f44a19">install</h3>
-<div class="outline-text-3" id="text-org8f44a19">
+<div id="outline-container-orged31909" class="outline-2">
+<h2 id="orged31909">cat command</h2>
+<div class="outline-text-2" id="text-orged31909">
 <p>
-安装环境: VMware12: 三台 ubuntu 14.04 内存 1g
-</p>
-<ol class="org-ol">
-<li>download es
-<a href="https://www.elastic.co/downloads/elasticsearch">https://www.elastic.co/downloads/elasticsearch</a></li>
-<li>install java 8</li>
-<li>vim elasticsearch.yml
-访问地址修改:
-network.host : 192.168.67.128
-http.port:9200</li>
-<li>sudo vi /etc/sysctl.conf
- kernel.pid_max=999999
- kernel.thread-max=999999
- vm.max_map_count=999999
- fs.file-max=999999
-sysctl -a|grep vm.max_map_count</li>
-<li>ulimit -Hn 
-/etc/security/limits.conf 配置修改为 65536  重启服务器</li>
-</ol>
-</div>
-</div>
-
-<div id="outline-container-orged31909" class="outline-3">
-<h3 id="orged31909">cat command</h3>
-<div class="outline-text-3" id="text-orged31909">
-<p>
-vim  /etc/security/limits.conf
-vim   /etc/security/limits.d/def.conf
-</p>
-
-<p>
-sudo netstat -anp |grep 9200
-htop
-show python
 curl localhost:9200/_cat/shards/?v |grep -v STARTED |less
+</p>
+
+<p>
 curl -XGET 'localhost:9200/_cat/recovery/webasset_scan?v'
 </p>
 
 <p>
 ES 常用操作命令总结：
 1.索引状态
-curl localhost:9200/_cat/indices?v
-2.文件描述符
-curl localhost:9200/_nodes/stats/process?pretty | less
-3.集群健康
-curl localhost:9200/_cluster/health?pretty | less
-curl 'localhost:9200/_cluster/health?level=indices&amp;pretty' | less
-curl localhost:9200/_cat/health?v| less
 </p>
 
 <p>
+curl localhost:9200/_cat/indices?v
+</p>
+
+<p>
+2.文件描述符
+</p>
+
+<p>
+curl localhost:9200/_nodes/stats/process?pretty | less
+</p>
+
+<p>
+3.集群健康
+</p>
+
+<p>
+curl localhost:9200/_cluster/health?pretty | less
+curl 'localhost:9200/_cluster/health?level=indices&amp;pretty' | less
+curl localhost:9200/_cat/health?v| less
 curl 'localhost:9200/_cat/allocation?v'
+</p>
+
+<p>
 4.分片状态
+</p>
+
+<p>
 curl localhost:9200/_cat/shards/formal_webasset_scan?v
+</p>
+
+<p>
 5.当前任务
+</p>
+
+<p>
 curl localhost:9200/_tasks?pretty | less
+</p>
+
+<p>
 6.查看别名
+</p>
+
+<p>
 curl localhost:9200/webasset*/_alias?pretty |less
+</p>
+
+<p>
 7.查看 relocate 进度
+</p>
+
+<p>
 curl -XGET 'localhost:9200/_cat/recovery/ipasset_seer4?v'
+</p>
+
+<p>
 8.优化（慎用，会消耗全部可用资源，尤其是磁盘 io）
+</p>
+
+<p>
 curl -XPOST 'localhost:9200/threat_ip2/_optimize?max_num_segments=3&amp;pretty'
+</p>
+
+<p>
 9.查看 segment
+</p>
+
+<p>
 curl localhost:9200/_cat/segments/ipasset_seer4?v
 </p>
 
 <p>
 新建索引
+</p>
+
+<p>
 curl -XPUT 'localhost:9200/index_name/?pretty' -d '{"settings":{"number_of_replicas":0}}'
 curl -XPOST localhost:9200/index_name/_mapping/type_name?pretty -d @mapping_file
+</p>
+
+<p>
 动态改副本数量
+</p>
+
+<p>
 curl -XPUT 'localhost:9200/index_name/_settings?pretty' -d '{"number_of_replicas":1}'
-设置别名
-curl -XPUT 'localhost:9200/index_name/_alias/alias_name?pretty'
-修改别名
-curl -XPOST 'localhost:9200/_aliases?pretty' -d '{"actions":[{"remove":{"index":"webasset_subdomain_v2","alias":"formal_webasset_subdomain"}},{"add":{"index":"webasset_subdomain_v1","alias":"formal_webasset_subdomain"}}]}'
 </p>
 
 <ol class="org-ol">
-<li>允许自动分配分片(alloctattion disable  关掉) 重启 es 前需要关掉
-curl -XPUT '10.24.45.94:9200/_settings' -d '{
-  "index.routing.allocation.disable_allocation": false
-}'</li>
-<li>curl -XPUT 10.24.45.94:9200/_cluster/settings -d '
-{
-    "transient" : {
-        "cluster.routing.allocation.enable": true
-    }
-}'</li>
-<li>最大恢复</li>
-</ol>
-<p>
-curl -XPUT localhost:9200/_cluster/settings -d '{
-     "transient" : {
-         "indices.recovery.max_bytes_per_sec" : 80000000
-     }
- }'
+<li><p>
+拉取数据后挂掉 先删除任务 (shard 重路由之前可以先尝试)
 </p>
-<ol class="org-ol">
-<li>拉取数据后挂掉 先删除任务 (shard 重路由之前可以先尝试)
-curl -XDELETE 10.24.45.94:9200/_search/scroll/_all</li>
-<li>reroute
-curl -XPOST '10.24.45.94:9200/_cluster/reroute' -d @reroute.mapping</li>
+
+<p>
+curl -XDELETE 10.24.45.94:9200/_search/scroll/_all
+</p></li>
+
+<li><p>
+reroute
+</p>
+
+<p>
+curl -XPOST '10.24.45.94:9200/_cluster/reroute' -d @reroute.mapping
+</p></li>
+
 <li></li>
 </ol>
 </div>
 </div>
-<div id="outline-container-org80643c9" class="outline-3">
-<h3 id="org80643c9">Mapping</h3>
-<div class="outline-text-3" id="text-org80643c9">
+<div id="outline-container-org80643c9" class="outline-2">
+<h2 id="org80643c9">Mapping</h2>
+<div class="outline-text-2" id="text-org80643c9">
 <ol class="org-ol">
 <li>建立索引
 curl -XPUT 'localhost:9200/threat_ip_history/?pretty' -d{"settings":{"number_of_shards":20}}
@@ -392,69 +397,86 @@ curl -XPOST 'localhost:9200/threat_ip_history/_mapping/ipv4?pretty' -d @mapping_
 mapping 存放到文件内
 </p>
 <div class="org-src-container">
-<pre class="src src-python">
+<pre class="src src-json">
 {
-<span style="background-color: #232526;"> </span> <span style="color: #E6DB74;">"ipv4"</span>: {
-<span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span> <span style="color: #E6DB74;">"dynamic_templates"</span>: [
-<span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span> {
-<span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span> <span style="color: #E6DB74;">"notanalyzed"</span>: {
-<span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span> <span style="color: #E6DB74;">"mapping"</span>: {
-<span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span> <span style="color: #E6DB74;">"index"</span>: <span style="color: #E6DB74;">"not_analyzed"</span>,
-<span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span> <span style="color: #E6DB74;">"type"</span>: <span style="color: #E6DB74;">"string"</span>
-<span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span> },
-<span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span> <span style="color: #E6DB74;">"match"</span>: <span style="color: #E6DB74;">"*"</span>,
-<span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span> <span style="color: #E6DB74;">"match_mapping_type"</span>: <span style="color: #E6DB74;">"string"</span>
-<span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span> }
-<span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span> }
-<span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span> ],
-<span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span> <span style="color: #E6DB74;">"properties"</span>: {
-<span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span> <span style="color: #E6DB74;">"activity"</span>: {
-<span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span> <span style="color: #E6DB74;">"include_in_parent"</span>: true,
-<span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span> <span style="color: #E6DB74;">"properties"</span>: {
-<span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span> <span style="color: #E6DB74;">"threat_type"</span>: {
-<span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span> <span style="color: #E6DB74;">"index"</span>: <span style="color: #E6DB74;">"not_analyzed"</span>,
-<span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span> <span style="color: #E6DB74;">"type"</span>: <span style="color: #E6DB74;">"string"</span>
-<span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span> },
-<span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span> <span style="color: #E6DB74;">"update_time"</span>: {
-<span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span> <span style="color: #E6DB74;">"format"</span>: <span style="color: #E6DB74;">"YYYY-MM-dd'T'HH:mm:ss"</span>,
-<span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span> <span style="color: #E6DB74;">"type"</span>: <span style="color: #E6DB74;">"date"</span>
-<span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span> }
-<span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span> },
-<span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span> <span style="color: #E6DB74;">"type"</span>: <span style="color: #E6DB74;">"nested"</span>
-<span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span> },
-<span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span> <span style="color: #E6DB74;">"ip"</span>: {
-<span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span> <span style="color: #E6DB74;">"fields"</span>: {
-<span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span> <span style="color: #E6DB74;">"raw"</span>: {
-<span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span> <span style="color: #E6DB74;">"type"</span>: <span style="color: #E6DB74;">"ip"</span>
-<span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span> }
-<span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span> },
-<span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span> <span style="color: #E6DB74;">"type"</span>: <span style="color: #E6DB74;">"string"</span>
-<span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span> }
-<span style="background-color: #232526;"> </span>   <span style="background-color: #232526;"> </span> }
-<span style="background-color: #232526;"> </span> }
+  "ipv4": {
+      "dynamic_templates": [
+          {
+              "notanalyzed": {
+                  "mapping": {
+                      "index": "not_analyzed",
+                      "type": "string"
+                  },
+                  "match": "*",
+                  "match_mapping_type": "string"
+              }
+          }
+      ],
+      "properties": {
+          "activity": {
+              "include_in_parent": true,
+              "properties": {
+                  "threat_type": {
+                      "index": "not_analyzed",
+                      "type": "string"
+                  },
+                  "update_time": {
+                      "format": "YYYY-MM-dd'T'HH:mm:ss",
+                      "type": "date"
+                  }
+              },
+              "type": "nested"
+          },
+          "ip": {
+              "fields": {
+                  "raw": {
+                      "type": "ip"
+                  }
+              },
+              "type": "string"
+          }
+      }
+  }
 }
 </pre>
 </div></li>
-<li>删除索引
-curl -XDELETE localhost:9200/index_name</li>
+<li><p>
+删除索引
+</p>
+
+<p>
+curl -XDELETE localhost:9200/index_name
+</p></li>
 </ol>
 </div>
 </div>
 
-<div id="outline-container-org192dbec" class="outline-3">
-<h3 id="org192dbec">CURD</h3>
-<div class="outline-text-3" id="text-org192dbec">
+<div id="outline-container-org192dbec" class="outline-2">
+<h2 id="org192dbec">CURD</h2>
+<div class="outline-text-2" id="text-org192dbec">
 <ol class="org-ol">
-<li>添加一条记录
-curl -XPUT 'http://localhost:9200/twitter/tweet/1' -d  '{_source 内容}'</li>
-<li>删除一条记录
-curl -XDELETE 'http://localhost:9200/twitter/tweet/1'</li>
+<li><p>
+添加一条记录
+</p>
+
+<p>
+curl -XPUT 'http://localhost:9200/twitter/tweet/1' -d  '{_source 内容}'
+</p></li>
+
+<li><p>
+删除一条记录
+</p>
+
+<p>
+curl -XDELETE 'http://localhost:9200/twitter/tweet/1'
+</p></li>
 </ol>
 </div>
 </div>
-<div id="outline-container-orgef49c89" class="outline-3">
-<h3 id="orgef49c89">Query</h3>
-<div class="outline-text-3" id="text-orgef49c89">
+
+<div id="outline-container-orgef49c89" class="outline-2">
+<h2 id="orgef49c89">Query</h2>
+<div class="outline-text-2" id="text-orgef49c89">
 <ol class="org-ol">
 <li><p>
 基本查询
@@ -469,8 +491,12 @@ curl -XGET  'localhost:9200/webasset_whois3/whois_info/_search?pretty&amp;q=_id:
 </p></li>
 <li><p>
 DSL 查询
+</p>
+
+<p>
 1.query bool must/filter match/term
 </p>
+
 <pre class="example">
 
 {
@@ -515,17 +541,30 @@ DSL 查询
 </ol>
 </div>
 </div>
-<div id="outline-container-orgdb2d44e" class="outline-3">
-<h3 id="orgdb2d44e">Alias</h3>
-<div class="outline-text-3" id="text-orgdb2d44e">
+<div id="outline-container-orgdb2d44e" class="outline-2">
+<h2 id="orgdb2d44e">Alias</h2>
+<div class="outline-text-2" id="text-orgdb2d44e">
 <ol class="org-ol">
-<li>创建 alias
-curl -XPOST 'localhost:9200/_aliases' -d '{"actions":[{"add":{"index" : "vulnerability_data_v4","alias" : "formal_vulnerability_data"}}]}'</li>
-<li>删除 alias
-curl -XPOST 'localhost:9200/_aliases' -d '{"actions":[{"remove":{"index" : "vulnerability_data_v4","alias" : "formal_vulnerability_data"}}]}'</li>
+<li><p>
+创建 alias
+</p>
+
+<p>
+curl -XPOST 'localhost:9200/_aliases' -d '{"actions":[{"add":{"index" : "vulnerability_data_v4","alias" : "formal_vulnerability_data"}}]}'
+</p></li>
+
+<li><p>
+删除 alias
+</p>
+
+<p>
+curl -XPOST 'localhost:9200/_aliases' -d '{"actions":[{"remove":{"index" : "vulnerability_data_v4","alias" : "formal_vulnerability_data"}}]}'
+</p></li>
+
 <li><p>
 创建映射多个索引:
 </p>
+
 <pre class="example">
 curl -XPOST 'http://localhost:9200/_aliases'-d '  
 {  
@@ -538,13 +577,13 @@ curl -XPOST 'http://localhost:9200/_aliases'-d '
 </ol>
 </div>
 </div>
-<div id="outline-container-org284d10b" class="outline-3">
-<h3 id="org284d10b">questions</h3>
-<div class="outline-text-3" id="text-org284d10b">
+<div id="outline-container-org284d10b" class="outline-2">
+<h2 id="org284d10b">questions</h2>
+<div class="outline-text-2" id="text-org284d10b">
 </div>
-<div id="outline-container-orgadee6d0" class="outline-4">
-<h4 id="orgadee6d0">from szie/scroll/search after</h4>
-<div class="outline-text-4" id="text-orgadee6d0">
+<div id="outline-container-orgadee6d0" class="outline-3">
+<h3 id="orgadee6d0">from szie/scroll/search after</h3>
+<div class="outline-text-3" id="text-orgadee6d0">
 <p>
 <a href="http://www.jianshu.com/p/91d03b16af77">http://www.jianshu.com/p/91d03b16af77</a>
 </p>
@@ -616,35 +655,60 @@ search after
 </ul>
 </div>
 </div>
-<div id="outline-container-org961f842" class="outline-4">
-<h4 id="org961f842">es shard 生命周期</h4>
-<div class="outline-text-4" id="text-org961f842">
+<div id="outline-container-org961f842" class="outline-3">
+<h3 id="org961f842">es shard 生命周期</h3>
+<div class="outline-text-3" id="text-org961f842">
 <p>
 <a href="http://lxwei.github.io/posts/Elasticsearch-Shard-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html">http://lxwei.github.io/posts/Elasticsearch-Shard-生命周期.html</a>
 </p>
+
 <ul class="org-ul">
 <li><p>
 动态索引 
+</p>
+
+<p>
 三个关键的索引结构：倒排列表、临时索引、已删除列表 
 </p>
 
 <ul class="org-ul">
-<li>临时索引
+<li><p>
+临时索引
+</p>
+
+<p>
 临时索引是在内存中实时建立的倒排索引，结果与倒排列表一样，
-只是存在于内存中，当有新文档时，实时解析文档并加到这个临时索引中</li>
-<li>已删除列表
+只是存在于内存中，当有新文档时，实时解析文档并加到这个临时索引中
+</p></li>
+
+<li><p>
+已删除列表
+</p>
+
+<p>
 已删除列表存储已被删除的文档的文档ID
 一个文档被修改，搜索引擎一般删除旧文档，新建新文档,间接实现更新,
-这么做的原因主要是索引文件存储在磁盘文件，写磁盘不方便</li>
-<li>倒排列表
-倒排索引是已经建好的索引结果，倒排列表存在磁盘文件中，单词词典在内存中</li>
-</ul>
+这么做的原因主要是索引文件存储在磁盘文件，写磁盘不方便
+</p></li>
+
+<li><p>
+倒排列表
+</p>
+
+<p>
+倒排索引是已经建好的索引结果，倒排列表存在磁盘文件中，单词词典在内存中
+</p>
 
 <p>
 搜索操作：同时到内存和磁盘中查找，合并，然后利用已删除列表过滤文档
 </p></li>
+</ul></li>
+
 <li><p>
 es动态更新
+</p>
+
+<p>
 segment是lucence定义的索引段，一个索引内包含多个，segment对外提供搜索服务
 </p>
 
@@ -688,17 +752,20 @@ _optimize?max_num_segments=1 一个segment情况下查询要快些，但是得�
 </div>
 </div>
 
-<div id="outline-container-org2514520" class="outline-4">
-<h4 id="org2514520">分词</h4>
-</div>
-<div id="outline-container-org96040ed" class="outline-4">
-<h4 id="org96040ed">es node</h4>
-<div class="outline-text-4" id="text-org96040ed">
+<div id="outline-container-org96040ed" class="outline-3">
+<h3 id="org96040ed">es node</h3>
+<div class="outline-text-3" id="text-org96040ed">
 <ul class="org-ul">
-<li>data node 上
+<li><p>
+data node 上
+</p>
+
+<p>
 http.enabled: false，同时也不要安装head, bigdesk, marvel等监控 插件
 http功能可以在非数据节点服务器上开启
-一台服务器上最好只部署一个Node</li>
+一台服务器上最好只部署一个Node
+</p></li>
+
 <li>避免脑裂现象
 <ol class="org-ol">
 <li><p>
@@ -720,25 +787,136 @@ discovery.zen.ping.timeout
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd8a3615" class="outline-4">
-<h4 id="orgd8a3615">es pipeline</h4>
-<div class="outline-text-4" id="text-orgd8a3615">
+<div id="outline-container-orgd8a3615" class="outline-3">
+<h3 id="orgd8a3615">es pipeline</h3>
+<div class="outline-text-3" id="text-orgd8a3615">
 <p>
 <a href="https://www.felayman.com/articles/2017/11/24/1511527532643.html#b3_solo_h4_22">https://www.felayman.com/articles/2017/11/24/1511527532643.html#b3_solo_h4_22</a>
 </p>
 </div>
 </div>
-<div id="outline-container-org93349fd" class="outline-4">
-<h4 id="org93349fd">es</h4>
-<div class="outline-text-4" id="text-org93349fd">
+
+<div id="outline-container-orga91f4a4" class="outline-3">
+<h3 id="orga91f4a4">es 搜索原理</h3>
+<div class="outline-text-3" id="text-orga91f4a4">
 <p>
 <a href="https://blog.csdn.net/donghaixiaolongwang/article/category/6747676">https://blog.csdn.net/donghaixiaolongwang/article/category/6747676</a>
 </p>
 
 <p>
-Elasticsearch之四种查询类型和搜索原理</p>
+Elasticsearch之四种查询类型和搜索原理
+</p>
 </div>
 </div>
+</div>
+
+
+<div id="outline-container-orgc84a0fa" class="outline-2">
+<h2 id="orgc84a0fa">alias_malware 统计</h2>
+<div class="outline-text-2" id="text-orgc84a0fa">
+<ol class="org-ol">
+<li><p>
+总数
+</p>
+
+<p>
+10.252.16.20:9200/_cat/count/alias_malware?v
+</p></li>
+</ol>
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-right">&#xa0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">/_cat/count/alias_malware?v</td>
+<td class="org-left">总数</td>
+<td class="org-right">2446733188</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">/malfile-00/doc/_count?pretty</td>
+<td class="org-left">单索引</td>
+<td class="org-right">27260935</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+<ol class="org-ol">
+<li>network 是否存在</li>
+</ol>
+
+<p>
+/alias_malware/doc/_count?pretty
+</p>
+
+<blockquote>
+<p>
+{
+    "query": {
+        "exists" : { "field" : "network" }
+    }
+}
+</p>
+</blockquote>
+
+<p>
+34081553
+</p>
+
+
+
+<blockquote>
+<p>
+{
+    "query": {
+    	"bool": {
+            "should": [
+               { "exists" : { "field" : "network.domain" }},
+               { "exists" : { "field" : "network.http" }},
+               { "exists" : { "field" : "network.url" }},
+               { "exists" : { "field" : "network.ip" }},
+               { "exists" : { "field" : "network.udp" }},
+               { "exists" : { "field" : "network.tcp" }},
+               { "exists" : { "field" : "network.dns" }}
+            ],
+            "minimum_should_match": 1
+    	}
+    }
+}
+</p>
+</blockquote>
+
+<p>
+34082654
+</p>
+
+
+<p>
+14534056</p>
 </div>
 </div>
 </div>
