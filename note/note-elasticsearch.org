@@ -1,76 +1,25 @@
 #+SETUPFILE: setup.org
 #+TITLE: elasticsearch 常用知识梳理
 
-** cat command
+* elastic 常用的一些命令
+** cat 
+- /_cat/indices?v :: 查看集群索引  
+     
+- /_cluster/health?pretty  :: 集群健康
 
-  curl localhost:9200/_cat/shards/?v |grep -v STARTED |less
+- /_cat/shards/index_name?v :: 分片状态
+  
+- /_cat/segments/index_name?v :: 查看 segment
 
-  curl -XGET 'localhost:9200/_cat/recovery/webasset_scan?v'
 
-  ES 常用操作命令总结：
-  1.索引状态
-
-  curl localhost:9200/_cat/indices?v
-
-  2.文件描述符
-
-  curl localhost:9200/_nodes/stats/process?pretty | less
-
-  3.集群健康
-
-  curl localhost:9200/_cluster/health?pretty | less
-  curl 'localhost:9200/_cluster/health?level=indices&pretty' | less
-  curl localhost:9200/_cat/health?v| less
-  curl 'localhost:9200/_cat/allocation?v'
-
-  4.分片状态
-
-  curl localhost:9200/_cat/shards/formal_webasset_scan?v
-
-  5.当前任务
-
-  curl localhost:9200/_tasks?pretty | less
-
-  6.查看别名
-
-  curl localhost:9200/webasset*/_alias?pretty |less
-
-  7.查看 relocate 进度
-
-  curl -XGET 'localhost:9200/_cat/recovery/ipasset_seer4?v'
-
-  8.优化（慎用，会消耗全部可用资源，尤其是磁盘 io）
-
-  curl -XPOST 'localhost:9200/threat_ip2/_optimize?max_num_segments=3&pretty'
-
-  9.查看 segment
-
-  curl localhost:9200/_cat/segments/ipasset_seer4?v
-
-  新建索引
-
-  curl -XPUT 'localhost:9200/index_name/?pretty' -d '{"settings":{"number_of_replicas":0}}'
-  curl -XPOST localhost:9200/index_name/_mapping/type_name?pretty -d @mapping_file
-
-  动态改副本数量
-
-  curl -XPUT 'localhost:9200/index_name/_settings?pretty' -d '{"number_of_replicas":1}'
-
- 1. 拉取数据后挂掉 先删除任务 (shard 重路由之前可以先尝试)
-
-    curl -XDELETE 10.24.45.94:9200/_search/scroll/_all
-
- 2. reroute
-
-    curl -XPOST '10.24.45.94:9200/_cluster/reroute' -d @reroute.mapping
-
- 3. 
 ** Mapping
-1. 建立索引
-   curl -XPUT 'localhost:9200/threat_ip_history/?pretty' -d{"settings":{"number_of_shards":20}}
-   curl -XPUT '10.200.1.72:9200/ipasset_seer_lower/_settings'  -d {"number_of_replicas":1}
-2. 设置 mapping 
-   curl -XPOST 'localhost:9200/threat_ip_history/_mapping/ipv4?pretty' -d @mapping_file 
+- 建立索引 ::
+   /index_name/?pretty' -d{"settings":{"number_of_shards":20}}
+
+   /index_name/_settings'  -d {"number_of_replicas":1}
+- 设置mapping  :: 
+
+   curl -XPOST 'localhost:9200/index_name`/_mapping/type?pretty' -d @mapping_file 
 
    mapping 存放到文件内
      #+BEGIN_SRC json
@@ -116,10 +65,14 @@
             }
           }
      #+END_SRC
-3. 删除索引
+- 删除索引 ::
 
   curl -XDELETE localhost:9200/index_name
   
+- 动态改副本数量 ::
+
+  curl -XPUT 'localhost:9200/index_name/_settings?pretty' -d '{"number_of_replicas":1}'
+
 ** CURD
 
  1. 添加一条记录
