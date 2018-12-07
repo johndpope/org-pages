@@ -1,90 +1,69 @@
 #+SETUPFILE: setup.org
-#+TITLE: elasticsearch 相关知识整理
-
-* note-elasticsearch-install&config
-** install
- 安装环境: VMware12: 三台 ubuntu 14.04 内存 1g
-1. download es
-   https://www.elastic.co/downloads/elasticsearch
-2. install java 8
-3. vim elasticsearch.yml
-    访问地址修改:
-    network.host : 192.168.67.128
-    http.port:9200
-4. sudo vi /etc/sysctl.conf
-    kernel.pid_max=999999
-    kernel.thread-max=999999
-    vm.max_map_count=999999
-    fs.file-max=999999
-   sysctl -a|grep vm.max_map_count
-5. ulimit -Hn 
-   /etc/security/limits.conf 配置修改为 65536  重启服务器 
+#+TITLE: elasticsearch 常用知识梳理
 
 ** cat command
-  vim  /etc/security/limits.conf
-  vim   /etc/security/limits.d/def.conf
 
-  sudo netstat -anp |grep 9200
-  htop
-  show python
   curl localhost:9200/_cat/shards/?v |grep -v STARTED |less
+
   curl -XGET 'localhost:9200/_cat/recovery/webasset_scan?v'
 
   ES 常用操作命令总结：
   1.索引状态
+
   curl localhost:9200/_cat/indices?v
+
   2.文件描述符
+
   curl localhost:9200/_nodes/stats/process?pretty | less
+
   3.集群健康
+
   curl localhost:9200/_cluster/health?pretty | less
   curl 'localhost:9200/_cluster/health?level=indices&pretty' | less
   curl localhost:9200/_cat/health?v| less
-
   curl 'localhost:9200/_cat/allocation?v'
+
   4.分片状态
+
   curl localhost:9200/_cat/shards/formal_webasset_scan?v
+
   5.当前任务
+
   curl localhost:9200/_tasks?pretty | less
+
   6.查看别名
+
   curl localhost:9200/webasset*/_alias?pretty |less
+
   7.查看 relocate 进度
+
   curl -XGET 'localhost:9200/_cat/recovery/ipasset_seer4?v'
+
   8.优化（慎用，会消耗全部可用资源，尤其是磁盘 io）
+
   curl -XPOST 'localhost:9200/threat_ip2/_optimize?max_num_segments=3&pretty'
+
   9.查看 segment
+
   curl localhost:9200/_cat/segments/ipasset_seer4?v
 
   新建索引
+
   curl -XPUT 'localhost:9200/index_name/?pretty' -d '{"settings":{"number_of_replicas":0}}'
   curl -XPOST localhost:9200/index_name/_mapping/type_name?pretty -d @mapping_file
-  动态改副本数量
-  curl -XPUT 'localhost:9200/index_name/_settings?pretty' -d '{"number_of_replicas":1}'
-  设置别名
-  curl -XPUT 'localhost:9200/index_name/_alias/alias_name?pretty'
-  修改别名
-  curl -XPOST 'localhost:9200/_aliases?pretty' -d '{"actions":[{"remove":{"index":"webasset_subdomain_v2","alias":"formal_webasset_subdomain"}},{"add":{"index":"webasset_subdomain_v1","alias":"formal_webasset_subdomain"}}]}'
 
- 1. 允许自动分配分片(alloctattion disable  关掉) 重启 es 前需要关掉
-  curl -XPUT '10.24.45.94:9200/_settings' -d '{
-    "index.routing.allocation.disable_allocation": false
-  }'
- 2. 
-    curl -XPUT 10.24.45.94:9200/_cluster/settings -d '
-      {
-          "transient" : {
-              "cluster.routing.allocation.enable": true
-          }
-      }'
- 3. 最大恢复
- curl -XPUT localhost:9200/_cluster/settings -d '{
-      "transient" : {
-          "indices.recovery.max_bytes_per_sec" : 80000000
-      }
-  }'
+  动态改副本数量
+
+  curl -XPUT 'localhost:9200/index_name/_settings?pretty' -d '{"number_of_replicas":1}'
+
  1. 拉取数据后挂掉 先删除任务 (shard 重路由之前可以先尝试)
+
     curl -XDELETE 10.24.45.94:9200/_search/scroll/_all
+
  2. reroute
+
     curl -XPOST '10.24.45.94:9200/_cluster/reroute' -d @reroute.mapping
+
  3. 
 ** Mapping
 1. 建立索引
@@ -94,7 +73,7 @@
    curl -XPOST 'localhost:9200/threat_ip_history/_mapping/ipv4?pretty' -d @mapping_file 
 
    mapping 存放到文件内
-     #+BEGIN_SRC python 
+     #+BEGIN_SRC json
      
           {
             "ipv4": {
@@ -138,13 +117,19 @@
           }
      #+END_SRC
 3. 删除索引
+
   curl -XDELETE localhost:9200/index_name
-   
+  
 ** CURD
+
  1. 添加一条记录
+
   curl -XPUT 'http://localhost:9200/twitter/tweet/1' -d  '{_source 内容}'
+
  2. 删除一条记录
+
     curl -XDELETE 'http://localhost:9200/twitter/tweet/1'
+
 ** Query
 1. 基本查询
    
@@ -152,7 +137,9 @@
 
   curl -XGET  'localhost:9200/webasset_whois3/whois_info/_search?pretty&q=_id:PERSONALLICENCECOURSES.COM'
 2. DSL 查询
+
    1.query bool must/filter match/term
+
      #+BEGIN_SRC 
   
        {
@@ -195,10 +182,15 @@
 ** Alias
 
 1. 创建 alias
+
  curl -XPOST 'localhost:9200/_aliases' -d '{"actions":[{"add":{"index" : "vulnerability_data_v4","alias" : "formal_vulnerability_data"}}]}'
+
 2. 删除 alias
+
   curl -XPOST 'localhost:9200/_aliases' -d '{"actions":[{"remove":{"index" : "vulnerability_data_v4","alias" : "formal_vulnerability_data"}}]}'
+
 3. 创建映射多个索引:
+
    #+BEGIN_SRC 
     curl -XPOST 'http://localhost:9200/_aliases'-d '  
     {  
@@ -246,21 +238,30 @@
       业务折衷一：禁止跳页查询 只提供下一页
 *** es shard 生命周期
     http://lxwei.github.io/posts/Elasticsearch-Shard-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html
+
     - 动态索引 
+
      三个关键的索引结构：倒排列表、临时索引、已删除列表 
 
      * 临时索引
+
        临时索引是在内存中实时建立的倒排索引，结果与倒排列表一样，
        只是存在于内存中，当有新文档时，实时解析文档并加到这个临时索引中
+
      * 已删除列表
+
        已删除列表存储已被删除的文档的文档ID
        一个文档被修改，搜索引擎一般删除旧文档，新建新文档,间接实现更新,
        这么做的原因主要是索引文件存储在磁盘文件，写磁盘不方便
+
      * 倒排列表
+
        倒排索引是已经建好的索引结果，倒排列表存在磁盘文件中，单词词典在内存中
 
-     搜索操作：同时到内存和磁盘中查找，合并，然后利用已删除列表过滤文档
+       搜索操作：同时到内存和磁盘中查找，合并，然后利用已删除列表过滤文档
+
     - es动态更新
+
       segment是lucence定义的索引段，一个索引内包含多个，segment对外提供搜索服务
 
       新文档-->内存的buffer内-->写到磁盘生成新的segment，对外服务 同时清空buffer
@@ -282,12 +283,14 @@
 
       _optimize?max_num_segments=1 一个segment情况下查询要快些，但是得控制大小，
 
-*** 分词
 *** es node
+
    -  data node 上
+
       http.enabled: false，同时也不要安装head, bigdesk, marvel等监控 插件
       http功能可以在非数据节点服务器上开启
       一台服务器上最好只部署一个Node
+
    -  避免脑裂现象
       1. discovery.zen.minimum_master_nodes N/2+1
 
@@ -297,8 +300,70 @@
 
          等待ping响应的超时时间，默认值是3秒。如果网络缓慢或拥塞，建议略微调大这个值
 *** es pipeline
+
     https://www.felayman.com/articles/2017/11/24/1511527532643.html#b3_solo_h4_22
-*** es
+
+*** es 搜索原理
+
     https://blog.csdn.net/donghaixiaolongwang/article/category/6747676
 
     Elasticsearch之四种查询类型和搜索原理
+
+
+** alias_malware 统计
+
+
+1. 总数
+
+   10.252.16.20:9200/_cat/count/alias_malware?v
+
+
+|                               |        |            |
+|-------------------------------+--------+------------|
+| /_cat/count/alias_malware?v   | 总数   | 2446733188 |
+|-------------------------------+--------+------------|
+| /malfile-00/doc/_count?pretty | 单索引 |   27260935 |
+|-------------------------------+--------+------------|
+|                               |        |            |
+
+2. network 是否存在
+
+/alias_malware/doc/_count?pretty
+
+#+BEGIN_QUOTE
+{
+    "query": {
+        "exists" : { "field" : "network" }
+    }
+}
+
+#+END_QUOTE
+
+34081553
+
+
+
+#+BEGIN_QUOTE
+{
+    "query": {
+    	"bool": {
+            "should": [
+               { "exists" : { "field" : "network.domain" }},
+               { "exists" : { "field" : "network.http" }},
+               { "exists" : { "field" : "network.url" }},
+               { "exists" : { "field" : "network.ip" }},
+               { "exists" : { "field" : "network.udp" }},
+               { "exists" : { "field" : "network.tcp" }},
+               { "exists" : { "field" : "network.dns" }}
+            ],
+            "minimum_should_match": 1
+    	}
+    }
+}
+
+#+END_QUOTE
+
+34082654
+
+
+14534056

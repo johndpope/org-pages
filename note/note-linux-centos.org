@@ -610,7 +610,7 @@ manue1@master sbin]$ jps
 
 * elasticstk 集群
 ** elasticsearch-611
-   
+   #+BEGIN_QUOTE
    1. 环境准备
         
      | hostname |            ip |            |
@@ -631,13 +631,12 @@ manue1@master sbin]$ jps
 
         4c + 8g + 1T * 10台 = 10T 
         4c + 16g + 2T * 5台 = 10T
-        
 
-    - java 环境配置，关闭firewalld,主机名配置,官网下载elasticsearch-6.1.1.tar.gz
+     - java 环境配置，关闭firewalld,主机名配置,官网下载elasticsearch-6.1.1.tar.gz
 
-    - 普通用户下安装es  username:manue1
-      
-    - 系统设置
+     - 普通用户下安装es  username:manue1
+       
+     - 系统设置
 
       sudo -s 切换到root下执行
 
@@ -675,6 +674,7 @@ sed -e '/root       soft    nproc     unlimited/a\*           soft   nofile     
    2. 配置elasticsearch
       
      - elasticsearch.yml          # els的配置文件
+       
        #+BEGIN_SRC 
 cluster.name: manue1-es-cluster  #集群名称
 
@@ -687,7 +687,7 @@ path.data: /Home/Manue1/Opt/Elasticsearch-6.1.1/Els/Data  #数据存储目录
 
 path.logs: /home/manue1/opt/elasticsearch-6.1.1/els/log   #日志存储目录
 
-network.bind_host: 0.0.0.0   #���master节点配置 ”0.0.0.0”，允许所有网络接口访问
+network.bind_host: 0.0.0.0   #master节点配置 ”0.0.0.0”，允许所有网络接口访问
 network.publish_host: master # 集群通信
 
 gateway.recover_after_nodes: 3  #值为n，网关控制在n个节点启动之后才恢复整个集群, 3节>点启动后1分钟
@@ -703,26 +703,25 @@ http.port: 9200                 # 对外提供服务的端口，9300为集群服
        #+END_SRC
        
      - jvm.options                # JVM相关的配置，内存大小等等
+
        #+BEGIN_SRC 
       -Xms128M
       -Xmx128M
-
-       -Xmx1g与-Xms1gJVM的最大最小内存。如果太小会导致Elasticsearch刚刚启动就立刻停止。太大会拖慢系统本身
+      -Xmx1g与-Xms1gJVM的最大最小内存。如果太小会导致Elasticsearch刚刚启动就立刻停止。太大会拖慢系统本身
        #+END_SRC
 
      - log4j2.properties          # 日志系统定义
 
      将配置好的elasticsearch 打包传到各个节点，需要注意的是，如果配置过程中运行产生的data/nodes/0 文件
      一定要删掉，再打包使用，否则各个节点启动成功了，无法加入到集群，节点id冲突
-      #+BEGIN_SRC 
-      with the same id but is a different node instance
-      #+END_SRC
+     报错信息: =with the same id but is a different node instance=
       
    3. 启动elasticsearch
       
-      su – manue1
+      su manue1
 
       vi  /home/manue1/opt/elasticsearch-6.1.1/bin/elasticsearch
+
       #+BEGIN_SRC 
 ES_HEAP_SIZE=128m
 MAX_OPEN_FILES=262144
@@ -733,10 +732,12 @@ MAX_OPEN_FILES=262144
      关闭 ps -ef |grep elasticsearch|awk '{print $2}'|xargs kill -9
 
    4. refer
-      https://blog.csdn.net/thomas0yang/article/details/55518105#%E5%86%85%E5%AD%98
-      https://www.elastic.co/guide/cn/elasticsearch/guide/cn/important-configuration-changes.html#_%E6%9C%80%E5%B0%8F%E4%B8%BB%E8%8A%82%E7%82%B9%E6%95%B0
-      https://zhuanlan.zhihu.com/p/35291900
 
+      [[https://blog.csdn.net/thomas0yang/article/details/55518105#%E5%86%85%E5%AD%98][1]] [[https://www.elastic.co/guide/cn/elasticsearch/guide/cn/important-configuration-changes.html#_%E6%9C%80%E5%B0%8F%E4%B8%BB%E8%8A%82%E7%82%B9%E6%95%B0][2]] [[https://zhuanlan.zhihu.com/p/35291900][3]]
+
+`
+   #+END_QUOTE
+   
 ** kibana
 
    配置在es的非数据节点上: 192.168.56.10

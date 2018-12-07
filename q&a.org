@@ -53,109 +53,70 @@
   #+BEGIN_QUOTE
   =c-x u= 解决问题
   #+END_QUOTE
-** TODO ssh登录session常驻与github冲突问题 
-  - State "TODO"       from              [2018-11-13 Tue 19:40]
+** DONE github git push 一直无响应
+   CLOSED: [2018-12-07 Fri 13:18]
+   - State "DONE"       from "TODO"       [2018-12-07 Fri 13:18]
+    
+  #+BEGIN_QUOTE
+  github dns解析地址有问题
 
-** TODO emacs如何处理博文头部尾部嵌套跳转页问题
+  /etc/hosts 配置下github的主机地址
+  
+  =192.30.253.113 github.com=
+
+  #+END_QUOTE
+    
+    
 ** DONE ssh Permission denied (publickey)
    CLOSED: [2018-11-28 Wed 11:44]
+
+   #+BEGIN_QUOTE
    在目标主机的 =/.ssh/authorized_keys= 文件内，添加id_rsa.pub
+   #+END_QUOTE
 
 ** DONE arch下载百度云大文件
    CLOSED: [2018-11-29 Thu 14:47]
    - State "DONE"       from "TODO"       [2018-11-29 Thu 14:47]
+     
+   #+BEGIN_QUOTE
    [[https://github.com/iikira/BaiduPCS-Go][go实现的百度云大文件下载]] 使用文档很详细
+   #+END_QUOTE
 
-** TODO  推荐系统引擎 apache mahout  
-** TODO  org-mode 导出中文pdf文件
-** TODO  emacs 快速调用chrome打开链接
-   emacs如何用w3m浏览网页?
+** DONE [[file:note/emacs-w3m.org][emacs快速调用chrome或者emacs-w3m打开链接]]
+   CLOSED: [2018-12-07 Fri 11:57]
 
-- w3m安装 
+   - State "DONE"       from "TODO"       [2018-12-07 Fri 11:57]
 
-  http://w3m.sourceforge.net/
+** DONE org-mode 自动显示图片
+   CLOSED: [2018-12-07 Fri 13:10]
 
-https://www.archlinux.org/packages/extra/x86_64/w3m/
+   - State "DONE"       from "TODO"       [2018-12-07 Fri 13:10]
+#+BEGIN_QUOTE
 
+   M-x =org-toggle-inline-images= 参数用来控制org-mode图片显示
 
-(add-to-list 'exec-path "/home/manue1/opt/w3m/bin")
+   快捷键 c-c c-x c-v
+
+   ;配置图片默认显示大小
+
+   =(setq org-image-actual-width 300)=
+
+   [[file:images/index-0.jpg]]
+
+   =c-c c-l= 修改url链接地址
+
+#+END_QUOTE
+
    
+** DONE 不重启emacs如何重新加载配置
+   CLOSED: [2018-12-07 Fri 13:09]
 
-然后：安装emacs-w3m
+   - State "DONE"       from "TODO"       [2018-12-07 Fri 13:09]
+#+BEGIN_QUOTE
+   M-x =eval-buffer=
+#+END_QUOTE
+  
 
-autoconf
-
-./configure
-sudo make 
-sudo make install
-
-这些步骤下来不出现问题就表明emacs-w3m安装成功。
-
-最后，进入emacs，输入M-x w3m,即可看到w3m界面。
-
-
-二：编辑emacs-w3m的lisp代码
-
-
-
-要想使emacs中的w3m顺利的工作，相应的lisp代码是必不可少的，这有点像硬件的驱动程序。。。。
-
-下面是我的~/.emacs中关于emacs-w3m部分。
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;  设置emacs-w3m浏览器
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(add-to-list 'load-path "~/emacs-w3m/")
-(require 'w3m-load)
-(require 'mime-w3m)
-(autoload 'w3m "w3m" "interface for w3m on emacs" t) 
-
-;; 设置w3m主页
-(setq w3m-home-page "http://www.google.com")
-
-;; 默认显示图片
-(setq w3m-default-display-inline-images t)
-(setq w3m-default-toggle-inline-images t)
-
-;; 使用cookies
-(setq w3m-use-cookies t)
-
-;;设定w3m运行的参数，分别为使用cookie和使用框架  
-(setq w3m-command-arguments '("-cookie" "-F"))               
-
-;; 使用w3m作为默认浏览器
-(setq browse-url-browser-function 'w3m-browse-url)                
-(setq w3m-view-this-url-new-session-in-background t)
-
-
-;;显示图标                                                      
-(setq w3m-show-graphic-icons-in-header-line t)                  
-(setq w3m-show-graphic-icons-in-mode-line t) 
-
-;;C-c C-p 打开，这个好用                                        
-(setq w3m-view-this-url-new-session-in-background t)  
-
-          
-(add-hook 'w3m-fontify-after-hook 'remove-w3m-output-garbages)                                    
-(defun remove-w3m-output-garbages ()                            
-"去掉w3m输出的垃圾."                                            
-(interactive)                                                   
-(let ((buffer-read-only))                                       
-(setf (point) (point-min))                                      
-(while (re-search-forward "[\200-\240]" nil t)                  
-(replace-match " "))                                            
-(set-buffer-multibyte t))                                       
-(set-buffer-modified-p nil))
-
-
-- chrome
-
-
-(add-to-list 'exec-path "/opt/google/chrome")
-
-(setq browse-url-browser-function 'browse-url-generic
-      browse-url-generic-program "chrome")
+** TODO emacs如何处理博文头部尾部嵌套跳转页问题
+** TODO 推荐系统引擎 apache mahout  
+** TODO org-mode 导出中文pdf文件

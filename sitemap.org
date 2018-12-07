@@ -45,6 +45,7 @@
   - [[file:note/note-shortcutes.org][一些常用快捷键与系统命令]]
   - [[file:note/auto-stack.org][中国股市行情分析笔记]]
   - [[file:note/note-docker-cisco_iou.org][使用Docker自动部署Cisco IOU实验环境]]
+  - [[file:note/emacs-w3m.org][如何在emacs中浏览网页?]]
   - [[file:note/nginx.org][工作中用到的nginx]]
   - [[file:note/note-wx-bot.org][微信机器人]]
   - [[file:note/note-options.org][期货 期权 及其衍生产品]]

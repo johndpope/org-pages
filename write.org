@@ -8,6 +8,10 @@
 ** DONE [[file:note/org-to-html.org][emacs 发布org-mode文件到html]]
    CLOSED: [2018-12-06 Thu 14:48]
    - State "DONE"       from "TODO"       [2018-12-06 Thu 14:48]
+** DONE [[file:note/emacs-w3m.org][emacs快速调用chrome或者emacs-w3m打开链接]] 
+   CLOSED: [2018-12-07 Fri 15:21]
+
+   - State "DONE"       from "TODO"       [2018-12-07 Fri 15:21]
 ** DONE [[file:note/note-linux-centos.org][centos集群部署]] 
    CLOSED: [2018-12-06 Thu 14:48]
 

@@ -1,0 +1,101 @@
+#+SETUPFILE: setup.org
+#+TITLE:  如何在emacs中浏览网页?
+
+*1.emacs-w3m安装配置* 
+
+#+BEGIN_QUOTE
+在emacs内浏览一些简单的页面可以用[[https://www.archlinux.org/packages/extra/x86_64/w3m/][emacs-w3m]]，enacs-w3m运行需要依赖 [[http://w3m.sourceforge.net/][w3m]]
+
+- 下载安装绿色版免编译w3m
+
+: (add-to-list 'exec-path "/home/manue1/opt/w3m/bin")
+
+- 安装emacs-w3m
+
+安装emacs-w3m前需要安装 =cvs= , =autoconf= 基础工具
+
+下载emacs-w3m可以使用csv下载:
+
+=cvs -d:pserver:anonymous@w3m.cvs.sourceforge.net:/cvsroot/w3m login=
+
+它会要求你输入密码，直接回车即可。然后在输入下面的命令：
+
+=cvs -d:pserver:anonymous@w3m.cvs.sourceforge.net:/cvsroot/w3m checkout w3m=
+
+进去emacs-w3m目录,编译安装
+
+: autoconf
+: ./configure
+: sudo make 
+: sudo make install
+
+
+- 添加elisp配置
+
+#+BEGIN_SRC 
+(add-to-list 'exec-path "/home/manue1/opt/w3m/bin")
+
+;; 设置w3m主页
+(setq w3m-home-page "http://www.baidu.com")
+
+;; 默认显示图片
+(setq w3m-default-display-inline-images t)
+(setq w3m-default-toggle-inline-images t)
+
+
+;; 使用cookies
+(setq w3m-use-cookies t)
+
+;;设定w3m运行的参数，分别为使用cookie和使用框架
+(setq w3m-command-arguments '("-cookie" "-F"))
+
+;; 使用w3m作为默认浏览器
+(setq browse-url-browser-function 'w3m-browse-url)
+(setq w3m-view-this-url-new-session-in-background t)
+
+;;显示图标
+(setq w3m-show-graphic-icons-in-header-line t)
+(setq w3m-show-graphic-icons-in-mode-line t)
+
+;;C-c C-p 打开，这个好用
+(setq w3m-view-this-url-new-session-in-background t)
+
+(add-hook 'w3m-fontify-after-hook 'remove-w3m-output-garbages)
+(defun remove-w3m-output-garbages ()
+    "去掉w3m输出的垃圾."
+    (interactive)
+    (let ((buffer-read-only))
+    (setf (point) (point-min))
+    (while (re-search-forward "[\200-\240]" nil t)
+    (replace-match " "))
+    (set-buffer-multibyte t))
+    (set-buffer-modified-p nil))
+
+#+END_SRC
+
+
+最后，进入emacs，输入M-x w3m,即可看到w3m界面
+
+快速使用emacs-w3m访问一个页面 : *c-c c-o*
+
+#+END_QUOTE
+
+*2.chrome访问url配置*
+
+#+BEGIN_QUOTE
+
+#+BEGIN_SRC 
+(add-to-list 'exec-path "/opt/google/chrome")
+
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "chrome")
+#+END_SRC
+
+快速使用chrome访问一个页面 : *c-x c-o*
+
+#+END_QUOTE
+
+
+
+* TODO *3.w3m快捷键*
+
