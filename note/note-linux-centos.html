@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-12-07 Fri 21:19 -->
+<!-- 2018-12-11 Tue 13:28 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>note-linux-centos</title>
@@ -510,8 +510,8 @@ xfs_growfs /dev/centos/root
 <ul class="org-ul">
 <li><p>
 联网方式: 配置三张网卡
-virtualBox 中 NAT 和 Host-only 两种模式不能同时并存，测试只能联网的时候关掉另一张网卡
 </p>
+
 <ol class="org-ol">
 <li>NAT 
 网卡1 用来连接外网</li>
@@ -538,14 +538,6 @@ vbox 自动配置IP，也很方便</li>
 
 <p>
 注意： 网卡二和网卡三的 gateway 字段要注释掉
-</p></li>
-
-<li><p>
-ip tool
-</p>
-
-<p>
-Ip  [选项]  操作对象{link|addr|route&#x2026;}
 </p>
 
 <p>
@@ -560,11 +552,15 @@ sudo service network restart
 <div class="outline-text-3" id="text-orgd540be2">
 <p>
 ssh 连接异常慢
+</p>
+
+<p>
 sudo vi /etc/ssh/sshd_config
 </p>
 
 <pre class="example">
 UseDNS no
+
 </pre>
 </div>
 </div>
@@ -574,6 +570,9 @@ UseDNS no
 <div class="outline-text-3" id="text-orga595932">
 <p>
 永久修改主机名字
+</p>
+
+<p>
 sudo hostnamectl &#x2013;static set-hostname master
 </p>
 
@@ -581,15 +580,17 @@ sudo hostnamectl &#x2013;static set-hostname master
 sudo vi /etc/hosts
 </p>
 
-<p>
+<pre class="example">
 [manue1@localhost ~]$ cat /etc/hostname
  master
 [manue1@localhost ~]$ cat /etc/hosts
  127.0.0.1 master
  ::1 master
-</p>
+</pre>
 </div>
 </div>
+
+
 <div id="outline-container-org2df0101" class="outline-3">
 <h3 id="org2df0101">yum source</h3>
 <div class="outline-text-3" id="text-org2df0101">
@@ -598,11 +599,21 @@ sudo yum -y install wget
 </p>
 
 <ul class="org-ul">
-<li>备份
-sudo mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup</li>
+<li><p>
+备份
+</p>
 
-<li>设置aliyun source
-sudo wget -O /etc/yum.repos.d/CentOS-Base.repo <a href="http://mirrors.aliyun.com/repo/Centos-7.repo">http://mirrors.aliyun.com/repo/Centos-7.repo</a></li>
+<p>
+sudo mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup
+</p></li>
+
+<li><p>
+设置aliyun source
+</p>
+
+<p>
+sudo wget -O /etc/yum.repos.d/CentOS-Base.repo <a href="http://mirrors.aliyun.com/repo/Centos-7.repo">http://mirrors.aliyun.com/repo/Centos-7.repo</a>
+</p></li>
 
 <li><p>
 设置EPLEPEL source
@@ -622,6 +633,9 @@ sudo wget -P <i>etc/yum.repos.d</i> <a href="http://mirrors.aliyun.com/repo/epel
 
 <p>
 sudo yum clean all  
+</p>
+
+<p>
 sudo yum makecache  
 </p></li>
 </ul>
@@ -733,14 +747,11 @@ netstat -anp | grep 123
 <div id="outline-container-org2f2eea7" class="outline-3">
 <h3 id="org2f2eea7">firewallds</h3>
 <div class="outline-text-3" id="text-org2f2eea7">
-<ul class="org-ul">
-<li>查看状态
-systemctl status firewalld</li>
-<li>关闭
-systemctl stop firewalld</li>
-<li>禁用
-systemctl disable firewalld</li>
-</ul>
+<dl class="org-dl">
+<dt>查看状态</dt><dd>systemctl status firewalld</dd>
+<dt>关闭</dt><dd>systemctl stop firewalld</dd>
+<dt>禁用</dt><dd>systemctl disable firewalld</dd>
+</dl>
 </div>
 </div>
 <div id="outline-container-org44022fd" class="outline-3">
@@ -753,8 +764,11 @@ systemctl disable firewalld</li>
 
 <p>
 sudo vi /etc/sysconfig/selinux
- selinux = disable
 </p>
+<pre class="example">
+selinux = disable
+
+</pre>
 </div>
 </div>
 <div id="outline-container-orgc40e951" class="outline-3">
@@ -762,28 +776,31 @@ sudo vi /etc/sysconfig/selinux
 <div class="outline-text-3" id="text-orgc40e951">
 <p>
 基础环境用root 配置在/etc/profile 自启动环境文件内
-refer : <a href="https://www.mtyun.com/library/how-to-setup-scala-on-centos7">https://www.mtyun.com/library/how-to-setup-scala-on-centos7</a>
 </p>
+
+<p>
+refer : <a href="https://www.mtyun.com/library/how-to-setup-scala-on-centos7">1</a>
+</p>
+
 <ul class="org-ul">
 <li>java rpm install
 
 <ol class="org-ol">
-<li>download
-<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a></li>
+<li><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download</a></li>
 <li><p>
 install
-sudo rpm -ivh jdk-8u144-linux-x64.rpm
-sudo rpm -aq | grep jdk
 </p>
-
-<p>
-sudo rpm -e jdk   无效
-sudo yum remove jdk  
+<p class="verse">
+sudo rpm -ivh jdk-8u144-linux-x64.rpm<br />
+sudo rpm -aq | grep jdk<br />
+sudo rpm -e jdk   无效<br />
+sudo yum remove jdk<br />
 </p>
 
 <p>
 sudo vi /etc/profile
 </p>
+
 <pre class="example">
 #JAVA_HOME
 export JAVA_HOME=/usr/java/jdk1.8.0_144
@@ -810,7 +827,13 @@ export JAVA_HOME PATH
 </pre></li>
 <li><p>
 scala 离线包安装
+</p>
+
+<p>
 当前最新版本
+</p>
+
+<p>
 tar zxvf scala-2.11.7.tgz
 </p>
 
@@ -985,9 +1008,13 @@ ls:all From slave01/127.0.0.1 to master:9000 failed on connection exception: jav
 
 <li><p>
 hostname &amp; host
-三台主机都要
-修改主机名
-修改/etc/hosts 互相添加hostname访问别名
+</p>
+
+<p>
+三台主机都要,修改主机名,修改/etc/hosts 互相添加hostname访问别名
+</p>
+
+<p>
 注意； #127.0.0.1 master 这样的映射一定要注释掉,master:8088无法访问最终定位到这里了
 </p>
 <pre class="example">
@@ -997,11 +1024,15 @@ hostname &amp; host
 19268.56.12 slave02
 </pre></li>
 
-<li>免登录验证
-ssh-keygen -t rsa
-ssh-copy-id -i ~/.ssh/id_rsa.pub manue1@slave01 
-ssh-copy-id -i ~/.ssh/id_rsa.pub manue1@slave02 
-ssh-copy-id -i ~/.ssh/id_rsa.pub manue1@master</li>
+<li><p>
+免登录验证
+</p>
+<p class="verse">
+ssh-keygen -t rsa<br />
+ssh-copy-id -i ~/.ssh/id_rsa.pub manue1@slave01<br />
+ssh-copy-id -i ~/.ssh/id_rsa.pub manue1@slave02<br />
+ssh-copy-id -i ~/.ssh/id_rsa.pub manue1@master<br />
+</p></li>
 
 <li>download hadoop
 tar -zxvf hadoop-2.7.5.tar.gz</li>
@@ -1015,6 +1046,9 @@ tar -zxvf hadoop-2.7.5.tar.gz</li>
 <li><p>
 hadoop_home
 三台节点都需要配置
+</p>
+
+<p>
 vi .bashrc
 </p>
 <pre class="example">
@@ -1039,6 +1073,7 @@ master
 <p>
 <i>home/manue1/opt/hadoop-2.7.5/etc/hadoop</i> 下6个配置文件
 </p>
+
 <ol class="org-ol">
 <li><p>
 core-site.xml
@@ -1347,6 +1382,9 @@ http://master:8088
 
 <p>
 4c + 8g + 1T * 10台 = 10T 
+</p>
+
+<p>
 4c + 16g + 2T * 5台 = 10T
 </p></li>
 
@@ -1391,6 +1429,7 @@ sed -i 's/4096/1048576/' /etc/security/limits.d/20-nproc.conf
 sed -e '/root       soft    nproc     unlimited/a\*           soft   nofile       1048576\n*           hard   nofile       1048576' -i /etc/security/limits.d/20-nproc.conf
 
 </pre>
+
 <p>
 修改系统配置文件后，重启系统生效
 </p></li>

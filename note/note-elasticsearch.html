@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-12-07 Fri 21:19 -->
+<!-- 2018-12-07 Fri 22:01 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>elasticsearch 常用知识梳理</title>
@@ -237,160 +237,61 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orged31909">cat command</a></li>
-<li><a href="#org80643c9">Mapping</a></li>
-<li><a href="#org192dbec">CURD</a></li>
-<li><a href="#orgef49c89">Query</a></li>
-<li><a href="#orgdb2d44e">Alias</a></li>
-<li><a href="#org284d10b">questions</a>
+<li><a href="#org0c6f5e9">1. elastic 常用的一些命令</a>
 <ul>
-<li><a href="#orgadee6d0">from szie/scroll/search after</a></li>
-<li><a href="#org961f842">es shard 生命周期</a></li>
-<li><a href="#org96040ed">es node</a></li>
-<li><a href="#orgd8a3615">es pipeline</a></li>
-<li><a href="#orga91f4a4">es 搜索原理</a></li>
+<li><a href="#orga4bfbdf">1.1. cat</a></li>
+<li><a href="#org60f991d">1.2. Mapping</a></li>
+<li><a href="#org1ee91c1">1.3. CURD</a></li>
+<li><a href="#org8a438e7">1.4. Query</a></li>
+<li><a href="#org7c289b3">1.5. Alias</a></li>
+<li><a href="#org26b5f6a">1.6. questions</a>
+<ul>
+<li><a href="#org17ec266">1.6.1. from szie/scroll/search after</a></li>
+<li><a href="#org207779e">1.6.2. es shard 生命周期</a></li>
+<li><a href="#org655ed02">1.6.3. es node</a></li>
+<li><a href="#org0144ec0">1.6.4. es pipeline</a></li>
+<li><a href="#orgd3aceb7">1.6.5. es 搜索原理</a></li>
 </ul>
 </li>
-<li><a href="#orgc84a0fa">alias_malware 统计</a></li>
+<li><a href="#org6cadb91">1.7. alias_malware 统计</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orged31909" class="outline-2">
-<h2 id="orged31909">cat command</h2>
-<div class="outline-text-2" id="text-orged31909">
-<p>
-curl localhost:9200/_cat/shards/?v |grep -v STARTED |less
-</p>
+<div id="outline-container-org0c6f5e9" class="outline-2">
+<h2 id="org0c6f5e9"><span class="section-number-2">1</span> elastic 常用的一些命令</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-orga4bfbdf" class="outline-3">
+<h3 id="orga4bfbdf"><span class="section-number-3">1.1</span> cat</h3>
+<div class="outline-text-3" id="text-1-1">
+<dl class="org-dl">
+<dt>/_cat/indices?v</dt><dd>查看集群索引</dd>
 
-<p>
-curl -XGET 'localhost:9200/_cat/recovery/webasset_scan?v'
-</p>
+<dt>/_cluster/health?pretty </dt><dd>集群健康</dd>
 
-<p>
-ES 常用操作命令总结：
-1.索引状态
-</p>
+<dt>/_cat/shards/index_name?v</dt><dd>分片状态</dd>
 
-<p>
-curl localhost:9200/_cat/indices?v
-</p>
-
-<p>
-2.文件描述符
-</p>
-
-<p>
-curl localhost:9200/_nodes/stats/process?pretty | less
-</p>
-
-<p>
-3.集群健康
-</p>
-
-<p>
-curl localhost:9200/_cluster/health?pretty | less
-curl 'localhost:9200/_cluster/health?level=indices&amp;pretty' | less
-curl localhost:9200/_cat/health?v| less
-curl 'localhost:9200/_cat/allocation?v'
-</p>
-
-<p>
-4.分片状态
-</p>
-
-<p>
-curl localhost:9200/_cat/shards/formal_webasset_scan?v
-</p>
-
-<p>
-5.当前任务
-</p>
-
-<p>
-curl localhost:9200/_tasks?pretty | less
-</p>
-
-<p>
-6.查看别名
-</p>
-
-<p>
-curl localhost:9200/webasset*/_alias?pretty |less
-</p>
-
-<p>
-7.查看 relocate 进度
-</p>
-
-<p>
-curl -XGET 'localhost:9200/_cat/recovery/ipasset_seer4?v'
-</p>
-
-<p>
-8.优化（慎用，会消耗全部可用资源，尤其是磁盘 io）
-</p>
-
-<p>
-curl -XPOST 'localhost:9200/threat_ip2/_optimize?max_num_segments=3&amp;pretty'
-</p>
-
-<p>
-9.查看 segment
-</p>
-
-<p>
-curl localhost:9200/_cat/segments/ipasset_seer4?v
-</p>
-
-<p>
-新建索引
-</p>
-
-<p>
-curl -XPUT 'localhost:9200/index_name/?pretty' -d '{"settings":{"number_of_replicas":0}}'
-curl -XPOST localhost:9200/index_name/_mapping/type_name?pretty -d @mapping_file
-</p>
-
-<p>
-动态改副本数量
-</p>
-
-<p>
-curl -XPUT 'localhost:9200/index_name/_settings?pretty' -d '{"number_of_replicas":1}'
-</p>
-
-<ol class="org-ol">
-<li><p>
-拉取数据后挂掉 先删除任务 (shard 重路由之前可以先尝试)
-</p>
-
-<p>
-curl -XDELETE 10.24.45.94:9200/_search/scroll/_all
-</p></li>
-
-<li><p>
-reroute
-</p>
-
-<p>
-curl -XPOST '10.24.45.94:9200/_cluster/reroute' -d @reroute.mapping
-</p></li>
-
-<li></li>
-</ol>
+<dt>/_cat/segments/index_name?v</dt><dd>查看 segment</dd>
+</dl>
 </div>
 </div>
-<div id="outline-container-org80643c9" class="outline-2">
-<h2 id="org80643c9">Mapping</h2>
-<div class="outline-text-2" id="text-org80643c9">
-<ol class="org-ol">
-<li>建立索引
-curl -XPUT 'localhost:9200/threat_ip_history/?pretty' -d{"settings":{"number_of_shards":20}}
-curl -XPUT '10.200.1.72:9200/ipasset_seer_lower/_settings'  -d {"number_of_replicas":1}</li>
-<li><p>
-设置 mapping 
-curl -XPOST 'localhost:9200/threat_ip_history/_mapping/ipv4?pretty' -d @mapping_file 
+
+<div id="outline-container-org60f991d" class="outline-3">
+<h3 id="org60f991d"><span class="section-number-3">1.2</span> Mapping</h3>
+<div class="outline-text-3" id="text-1-2">
+<dl class="org-dl">
+<dt>建立索引</dt><dd><p>
+   <i>index_name</i>?pretty' -d{"settings":{"number_of_shards":20}}
+</p>
+
+<p>
+/index_name/_settings'  -d {"number_of_replicas":1}
+</p></dd>
+<dt>设置mapping </dt><dd><p>
+   curl -XPOST 'localhost:9200/index_name`/_mapping/type?pretty' -d @mapping_file 
 </p>
 
 <p>
@@ -439,21 +340,16 @@ mapping 存放到文件内
   }
 }
 </pre>
-</div></li>
-<li><p>
-删除索引
-</p>
-
-<p>
-curl -XDELETE localhost:9200/index_name
-</p></li>
-</ol>
+</div></dd>
+<dt>删除索引</dt><dd>curl -XDELETE localhost:9200/index_name</dd>
+<dt>动态改副本数量</dt><dd>curl -XPUT 'localhost:9200/index_name/_settings?pretty' -d '{"number_of_replicas":1}'</dd>
+</dl>
 </div>
 </div>
 
-<div id="outline-container-org192dbec" class="outline-2">
-<h2 id="org192dbec">CURD</h2>
-<div class="outline-text-2" id="text-org192dbec">
+<div id="outline-container-org1ee91c1" class="outline-3">
+<h3 id="org1ee91c1"><span class="section-number-3">1.3</span> CURD</h3>
+<div class="outline-text-3" id="text-1-3">
 <ol class="org-ol">
 <li><p>
 添加一条记录
@@ -474,9 +370,9 @@ curl -XDELETE 'http://localhost:9200/twitter/tweet/1'
 </div>
 </div>
 
-<div id="outline-container-orgef49c89" class="outline-2">
-<h2 id="orgef49c89">Query</h2>
-<div class="outline-text-2" id="text-orgef49c89">
+<div id="outline-container-org8a438e7" class="outline-3">
+<h3 id="org8a438e7"><span class="section-number-3">1.4</span> Query</h3>
+<div class="outline-text-3" id="text-1-4">
 <ol class="org-ol">
 <li><p>
 基本查询
@@ -541,9 +437,9 @@ DSL 查询
 </ol>
 </div>
 </div>
-<div id="outline-container-orgdb2d44e" class="outline-2">
-<h2 id="orgdb2d44e">Alias</h2>
-<div class="outline-text-2" id="text-orgdb2d44e">
+<div id="outline-container-org7c289b3" class="outline-3">
+<h3 id="org7c289b3"><span class="section-number-3">1.5</span> Alias</h3>
+<div class="outline-text-3" id="text-1-5">
 <ol class="org-ol">
 <li><p>
 创建 alias
@@ -577,13 +473,13 @@ curl -XPOST 'http://localhost:9200/_aliases'-d '
 </ol>
 </div>
 </div>
-<div id="outline-container-org284d10b" class="outline-2">
-<h2 id="org284d10b">questions</h2>
-<div class="outline-text-2" id="text-org284d10b">
+<div id="outline-container-org26b5f6a" class="outline-3">
+<h3 id="org26b5f6a"><span class="section-number-3">1.6</span> questions</h3>
+<div class="outline-text-3" id="text-1-6">
 </div>
-<div id="outline-container-orgadee6d0" class="outline-3">
-<h3 id="orgadee6d0">from szie/scroll/search after</h3>
-<div class="outline-text-3" id="text-orgadee6d0">
+<div id="outline-container-org17ec266" class="outline-4">
+<h4 id="org17ec266"><span class="section-number-4">1.6.1</span> from szie/scroll/search after</h4>
+<div class="outline-text-4" id="text-1-6-1">
 <p>
 <a href="http://www.jianshu.com/p/91d03b16af77">http://www.jianshu.com/p/91d03b16af77</a>
 </p>
@@ -655,9 +551,9 @@ search after
 </ul>
 </div>
 </div>
-<div id="outline-container-org961f842" class="outline-3">
-<h3 id="org961f842">es shard 生命周期</h3>
-<div class="outline-text-3" id="text-org961f842">
+<div id="outline-container-org207779e" class="outline-4">
+<h4 id="org207779e"><span class="section-number-4">1.6.2</span> es shard 生命周期</h4>
+<div class="outline-text-4" id="text-1-6-2">
 <p>
 <a href="http://lxwei.github.io/posts/Elasticsearch-Shard-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html">http://lxwei.github.io/posts/Elasticsearch-Shard-生命周期.html</a>
 </p>
@@ -752,9 +648,9 @@ _optimize?max_num_segments=1 一个segment情况下查询要快些，但是得�
 </div>
 </div>
 
-<div id="outline-container-org96040ed" class="outline-3">
-<h3 id="org96040ed">es node</h3>
-<div class="outline-text-3" id="text-org96040ed">
+<div id="outline-container-org655ed02" class="outline-4">
+<h4 id="org655ed02"><span class="section-number-4">1.6.3</span> es node</h4>
+<div class="outline-text-4" id="text-1-6-3">
 <ul class="org-ul">
 <li><p>
 data node 上
@@ -787,18 +683,18 @@ discovery.zen.ping.timeout
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd8a3615" class="outline-3">
-<h3 id="orgd8a3615">es pipeline</h3>
-<div class="outline-text-3" id="text-orgd8a3615">
+<div id="outline-container-org0144ec0" class="outline-4">
+<h4 id="org0144ec0"><span class="section-number-4">1.6.4</span> es pipeline</h4>
+<div class="outline-text-4" id="text-1-6-4">
 <p>
 <a href="https://www.felayman.com/articles/2017/11/24/1511527532643.html#b3_solo_h4_22">https://www.felayman.com/articles/2017/11/24/1511527532643.html#b3_solo_h4_22</a>
 </p>
 </div>
 </div>
 
-<div id="outline-container-orga91f4a4" class="outline-3">
-<h3 id="orga91f4a4">es 搜索原理</h3>
-<div class="outline-text-3" id="text-orga91f4a4">
+<div id="outline-container-orgd3aceb7" class="outline-4">
+<h4 id="orgd3aceb7"><span class="section-number-4">1.6.5</span> es 搜索原理</h4>
+<div class="outline-text-4" id="text-1-6-5">
 <p>
 <a href="https://blog.csdn.net/donghaixiaolongwang/article/category/6747676">https://blog.csdn.net/donghaixiaolongwang/article/category/6747676</a>
 </p>
@@ -810,10 +706,9 @@ Elasticsearch之四种查询类型和搜索原理
 </div>
 </div>
 
-
-<div id="outline-container-orgc84a0fa" class="outline-2">
-<h2 id="orgc84a0fa">alias_malware 统计</h2>
-<div class="outline-text-2" id="text-orgc84a0fa">
+<div id="outline-container-org6cadb91" class="outline-3">
+<h3 id="org6cadb91"><span class="section-number-3">1.7</span> alias_malware 统计</h3>
+<div class="outline-text-3" id="text-1-7">
 <ol class="org-ol">
 <li><p>
 总数
@@ -917,6 +812,7 @@ Elasticsearch之四种查询类型和搜索原理
 
 <p>
 14534056</p>
+</div>
 </div>
 </div>
 </div>
