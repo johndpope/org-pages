@@ -116,6 +116,17 @@
    M-x =eval-buffer=
 #+END_QUOTE
   
+** DONE rabbitmq队列数据量堆积过多，服务不正常问题解决?
+   CLOSED: [2018-12-10 Mon 16:36]
+   - State "DONE"       from "TODO"       [2018-12-10 Mon 16:36]
+   #+BEGIN_QUOTE
+   rabbitmq 队列数据堆积过多，导致queue无法取,只能写入，队列无法删除等诡异问题
+   
+   这里直接删除堆积的大量数据
+   
+   mq数据的存储目录 =var/lib/rabbitmq/mnesia/node_name/msg_stores= 删除数据，重启节点
+   #+END_QUOTE
+   
 
 ** TODO emacs如何处理博文头部尾部嵌套跳转页问题
 ** TODO 推荐系统引擎 apache mahout  

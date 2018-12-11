@@ -11,7 +11,6 @@
   
 - /_cat/segments/index_name?v :: 查看 segment
 
-
 ** Mapping
 - 建立索引 ::
    /index_name/?pretty' -d{"settings":{"number_of_shards":20}}
@@ -68,7 +67,6 @@
 - 删除索引 ::
 
   curl -XDELETE localhost:9200/index_name
-  
 - 动态改副本数量 ::
 
   curl -XPUT 'localhost:9200/index_name/_settings?pretty' -d '{"number_of_replicas":1}'
@@ -103,7 +101,7 @@
                { "match": { "content": "Elasticsearch" }}  
              ],
              "filter": [ 
-               { "term":  { "status": "published" }}, 
+             { "term":  { "status": "published" }}, 
                { "range": { "publish_date": { "gte": "2015-01-01" }}} 
              ]
            }
@@ -261,7 +259,6 @@
     https://blog.csdn.net/donghaixiaolongwang/article/category/6747676
 
     Elasticsearch之四种查询类型和搜索原理
-
 
 ** alias_malware 统计
 
