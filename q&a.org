@@ -1,7 +1,34 @@
 #+SETUPFILE: setup.org
 #+TITLE: Question & Answer
 * Question & Answer
+** TODO  emacs配置做软链到工作目录
+** TODO  如何使用emms听音乐？
+   #+BEGIN_QUOTE
+   mplayer
+  
+   find /music/ -type f  | egrep '\.(mp3|ape)$' > /tmp/mylist.txt
 
+   mplayer -playlist  /tmp/mylist.txt
+   #+END_QUOTE
+
+** TODO emacs如何处理博文头部尾部嵌套跳转页问题
+** TODO 推荐系统引擎 apache mahout  
+** TODO org-mode 导出中文pdf文件
+** TODO 如何publish的时候直接push html到发布分支? 
+** DONE org-mode capture倒序添加新的task
+   CLOSED: [2018-12-11 Tue 21:41]
+   - State "DONE"       from "TODO"       [2018-12-11 Tue 21:41]
+   #+BEGIN_QUOTE
+   =prepend= 前置函数配置后即可,[[https://orgmode.org/manual/Template-elements.html#Template-elements][官方文档]]中提到14个参数
+   #+BEGIN_SRC 
+        ("r" "Read" entry (file+headline "~/github/org-pages/read.org" "Reading List")
+         "* TODO  %?\n  %i\n"
+         :prepend t)
+   #+END_SRC
+   #+END_QUOTE
+
+   [[http://www.zmonster.me/2018/02/28/org-mode-capture.html][org-mode capture 文章]]
+   
 ** DONE org-mode table中英文对齐问题
   CLOSED: [2018-11-09 Fri 12:35]
    - State "DONE"       from              [2018-11-09 Fri 12:35]
@@ -66,7 +93,6 @@
 
   #+END_QUOTE
     
-    
 ** DONE ssh Permission denied (publickey)
    CLOSED: [2018-11-28 Wed 11:44]
 
@@ -107,7 +133,6 @@
 
 #+END_QUOTE
 
-   
 ** DONE 不重启emacs如何重新加载配置
    CLOSED: [2018-12-07 Fri 13:09]
 
@@ -127,7 +152,34 @@
    mq数据的存储目录 =var/lib/rabbitmq/mnesia/node_name/msg_stores= 删除数据，重启节点
    #+END_QUOTE
    
+** DONE arch install yaourt
+   CLOSED: [2018-12-11 Tue 19:03]
 
-** TODO emacs如何处理博文头部尾部嵌套跳转页问题
-** TODO 推荐系统引擎 apache mahout  
-** TODO org-mode 导出中文pdf文件
+   
+   - State "DONE"       from "TODO"       [2018-12-11 Tue 19:03]
+   #+BEGIN_QUOTE
+git clone https://aur.archlinux.org/package-query.git
+
+git clone https://aur.archlinux.org/yaourt.git
+
+makepkg -si
+
+sudo pacman -U *.tar.xz
+
+
+清华镜像:
+
+使用方法：在 /etc/pacman.conf 文件末尾添加以下两行：
+
+#+BEGIN_SRC 
+[archlinuxcn]
+Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
+#+END_SRC
+
+之后安装 archlinuxcn-keyrin 包导入 GPG key。
+
+sudo pacman -Sy yaourt base-devel fakeroot
+
+yaourt -Syu --devel --aur
+   #+END_QUOTE
+

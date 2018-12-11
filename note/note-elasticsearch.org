@@ -2,25 +2,24 @@
 #+TITLE: elasticsearch 常用知识梳理
 
 * elastic 常用的一些命令
+
+  借用postman调用dsl还是很方便的
+
 ** cat 
 - /_cat/indices?v :: 查看集群索引  
-     
 - /_cluster/health?pretty  :: 集群健康
-
 - /_cat/shards/index_name?v :: 分片状态
-  
 - /_cat/segments/index_name?v :: 查看 segment
 
-** Mapping
+** mapping
 - 建立索引 ::
-   /index_name/?pretty' -d{"settings":{"number_of_shards":20}}
-
-   /index_name/_settings'  -d {"number_of_replicas":1}
+          /index_name/?pretty' -d{"settings":{"number_of_shards":20}}
+   
+          /index_name/_settings'  -d {"number_of_replicas":1}
 - 设置mapping  :: 
+                curl -XPOST 'localhost:9200/index_name/_mapping/type?pretty' -d @mapping_file 
 
-   curl -XPOST 'localhost:9200/index_name`/_mapping/type?pretty' -d @mapping_file 
-
-   mapping 存放到文件内
+                mapping 存放到文件内
      #+BEGIN_SRC json
      
           {
@@ -65,31 +64,61 @@
           }
      #+END_SRC
 - 删除索引 ::
-
-  curl -XDELETE localhost:9200/index_name
+          curl -XDELETE localhost:9200/index_name
 - 动态改副本数量 ::
+             curl -XPUT 'localhost:9200/index_name/_settings?pretty' -d '{"number_of_replicas":1}'
+** alias
 
-  curl -XPUT 'localhost:9200/index_name/_settings?pretty' -d '{"number_of_replicas":1}'
+- _aliases add :: 创建 alias
 
-** CURD
+                 : curl -XPOST 'localhost:9200/_aliases' -d '{"actions":[{"add":{"index" : "vulnerability_data_v4","alias" : "formal_vulnerability_data"}}]}'
 
- 1. 添加一条记录
+- _aliases remove :: 删除 alias
+     : curl -XPOST 'localhost:9200/_aliases' -d '{"actions":[{"remove":{"index" : "vulnerability_data_v4","alias" : "formal_vulnerability_data"}}]}'
+     
+- _aliases actions :: 创建映射多个索引
+   #+BEGIN_SRC 
+    curl -XPOST 'http://localhost:9200/_aliases'-d '  
+    {  
+        "actions" : [  
+            { "add" : { "index" : "test1","alias" : "alias1" } },  
+            { "add" : { "index" : "test2","alias" : "alias1" } }  
+        ]  
+    }'  
+   #+END_SRC
+** query
+*** base_query
 
-  curl -XPUT 'http://localhost:9200/twitter/tweet/1' -d  '{_source 内容}'
+- _search?pretty&q=字段 :: 基础查询字段   
 
- 2. 删除一条记录
+     : curl -XGET 'http://localhost:9200/ipasset_seer4/asset_from_seer/_search?pretty&q=ip:210.186.226.178'
 
-    curl -XDELETE 'http://localhost:9200/twitter/tweet/1'
+     _id 内置id查询
 
-** Query
-1. 基本查询
-   
-  curl -XGET 'http://localhost:9200/ipasset_seer4/asset_from_seer/_search?pretty&q=ip:210.186.226.178'
+     : curl -XGET  'localhost:9200/webasset_whois3/whois_info/_search?pretty&q=_id:PERSONALLICENCECOURSES.COM'
 
-  curl -XGET  'localhost:9200/webasset_whois3/whois_info/_search?pretty&q=_id:PERSONALLICENCECOURSES.COM'
-2. DSL 查询
-
-   1.query bool must/filter match/term
+*** bool_query
+- exists :: 字段是否存在
+            #+BEGIN_SRC 
+{
+    "query": {
+    	"bool": {
+            "should": [
+               { "exists" : { "field" : "network.domain" }},
+               { "exists" : { "field" : "network.http" }},
+               { "exists" : { "field" : "network.url" }},
+               { "exists" : { "field" : "network.ip" }},
+               { "exists" : { "field" : "network.udp" }},
+               { "exists" : { "field" : "network.tcp" }},
+               { "exists" : { "field" : "network.dns" }}
+            ],
+            "minimum_should_match": 1
+    	}
+    }
+}
+            
+            #+END_SRC
+- must/filter match/term :: 布尔过滤查询
 
      #+BEGIN_SRC 
   
@@ -109,7 +138,7 @@
        }
   
      #+END_SRC
-   2.query/sort
+- query/sort :: 查询排序
      #+BEGIN_SRC 
      {
             "query": {
@@ -130,190 +159,165 @@
             },
         }
      #+END_SRC
-** Alias
+*** range_query
+ - range :: 范围查询
+            #+BEGIN_SRC 
+ {
+     'query': {
+            'range': {
+                      'insert_time':{
+                                     'gte': start_time,
+                                     'lte': end_time
+                      }
+           }
+        }
+ }           
+            #+END_SRC
+** aggs
 
-1. 创建 alias
+10.252.16.20:9200/alias_malware/_search?size=0
 
- curl -XPOST 'localhost:9200/_aliases' -d '{"actions":[{"add":{"index" : "vulnerability_data_v4","alias" : "formal_vulnerability_data"}}]}'
-
-2. 删除 alias
-
-  curl -XPOST 'localhost:9200/_aliases' -d '{"actions":[{"remove":{"index" : "vulnerability_data_v4","alias" : "formal_vulnerability_data"}}]}'
-
-3. 创建映射多个索引:
-
-   #+BEGIN_SRC 
-    curl -XPOST 'http://localhost:9200/_aliases'-d '  
-    {  
-        "actions" : [  
-            { "add" : { "index" : "test1","alias" : "alias1" } },  
-            { "add" : { "index" : "test2","alias" : "alias1" } }  
-        ]  
-    }'  
-   #+END_SRC
-** questions
-*** from szie/scroll/search after
-
-    http://www.jianshu.com/p/91d03b16af77
-
-    在使用关系型数据库中，我们被告知要注意甚至被明确禁止使用深度分页，同理，在 Elasticsearch 中，也应该尽量避免使用深度分页
-
-    深度分页的问题:CUP、内存、IO、网络带宽问题  10个shard*一亿条数据的doc_id
-
-    - from size
-      
-      100+10、110+10.....10000+10 越往后请求的越多
-
-    - scroll:
-
-          query fetch merge
-
-          查询结果缓存,每次fetch size*shard文档 merge输出
+- terms :: 字段各类型count统计
+           
+           size = 0 表示返回全部
    
-          scroll不适合做实时查询: 1.初始化结果缓存成快照 2.fetch数据，操作数据
-
-          search_type。赋值为scan，表示采用 Scroll-Scan 的方式遍历，同时告诉 Elasticsearch 搜索结果不需要排序
-
-          size 控制的是每个分片的返回的数据量而不是整个请求返回的数据量。
-
-    - search after
-
-      1.必须先要指定排序,记住坐标
-
-      2.从任意一个位置 带上search_after=lastEmittedDocFieldValue 偏移量查数据
-
-      如果我要做非常多页的查询时，最起码search after是一个常量查询延迟和开销，并无什么副作用。
+  #+BEGIN_EXAMPLE
+{
+ "query": {
+    "match_all": {}
+  },
+  "aggs": {
+        "type": {
+          "terms": {
+            "field": "malicious_type",
+        	 "size": 200
+          }
+        }
+   }
       
-      无论去到多少页，请求始终就是请求了size个docs,是个常量 
+}
+  #+END_EXAMPLE
+  
+- cardinality :: 先去重再求和 
+                 #+BEGIN_SRC 
+{
+    "query" : {
+      "term" : { "malicious" : "UNKNOWN" }
+    },
+      "aggs": {
+        "count": {
+          "cardinality": {
+            "field": "sha1"
+          }
+        }
+      }
+}
+                 #+END_SRC
+* questions
+** from szie/scroll/search after
 
-      业务折衷一：禁止跳页查询 只提供下一页
-*** es shard 生命周期
-    http://lxwei.github.io/posts/Elasticsearch-Shard-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html
+   http://www.jianshu.com/p/91d03b16af77
 
-    - 动态索引 
+   在使用关系型数据库中，我们被告知要注意甚至被明确禁止使用深度分页，同理，在 Elasticsearch 中，也应该尽量避免使用深度分页
 
-     三个关键的索引结构：倒排列表、临时索引、已删除列表 
+   深度分页的问题:CUP、内存、IO、网络带宽问题  10个shard*一亿条数据的doc_id
 
-     * 临时索引
+   - from size
+     
+     100+10、110+10.....10000+10 越往后请求的越多
 
-       临时索引是在内存中实时建立的倒排索引，结果与倒排列表一样，
-       只是存在于内存中，当有新文档时，实时解析文档并加到这个临时索引中
+   - scroll:
 
-     * 已删除列表
+         query fetch merge
 
-       已删除列表存储已被删除的文档的文档ID
-       一个文档被修改，搜索引擎一般删除旧文档，新建新文档,间接实现更新,
-       这么做的原因主要是索引文件存储在磁盘文件，写磁盘不方便
+         查询结果缓存,每次fetch size*shard文档 merge输出
+  
+         scroll不适合做实时查询: 1.初始化结果缓存成快照 2.fetch数据，操作数据
 
-     * 倒排列表
+         search_type。赋值为scan，表示采用 Scroll-Scan 的方式遍历，同时告诉 Elasticsearch 搜索结果不需要排序
 
-       倒排索引是已经建好的索引结果，倒排列表存在磁盘文件中，单词词典在内存中
+         size 控制的是每个分片的返回的数据量而不是整个请求返回的数据量。
 
-       搜索操作：同时到内存和磁盘中查找，合并，然后利用已删除列表过滤文档
+   - search after
 
-    - es动态更新
+     1.必须先要指定排序,记住坐标
 
-      segment是lucence定义的索引段，一个索引内包含多个，segment对外提供搜索服务
+     2.从任意一个位置 带上search_after=lastEmittedDocFieldValue 偏移量查数据
 
-      新文档-->内存的buffer内-->写到磁盘生成新的segment，对外服务 同时清空buffer
+     如果我要做非常多页的查询时，最起码search after是一个常量查询延迟和开销，并无什么副作用。
+     
+     无论去到多少页，请求始终就是请求了size个docs,是个常量 
 
-      要频繁的写入磁盘十分消耗资源,es先将文档写到filesystem cache内，此时就能被搜索到了(linux下文件句柄要调整)
+     业务折衷一：禁止跳页查询 只提供下一页
+** es shard 生命周期
+   http://lxwei.github.io/posts/Elasticsearch-Shard-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html
 
-      必须调用fsync将segment刷到磁盘上，才能保证数据不丢失。
-         
-    - refresh/flush
+   - 动态索引 
 
-      refresh是轻量级的写和打开一个新segment的操作
+    三个关键的索引结构：倒排列表、临时索引、已删除列表 
 
-      Elasticsearch中，执行commit操作并删除translog的操作叫flush
+    * 临时索引
 
-    - segment merge
+      临时索引是在内存中实时建立的倒排索引，结果与倒排列表一样，
+      只是存在于内存中，当有新文档时，实时解析文档并加到这个临时索引中
 
-      如果不停的产生新的segment，Elasticsearch中很快就会段爆炸，
-      每个段都要消耗文件描述符、内存、CPU 周期，且每个search请求都需要遍历所有的segment，会造成搜索操作很慢。
+    * 已删除列表
 
-      _optimize?max_num_segments=1 一个segment情况下查询要快些，但是得控制大小，
+      已删除列表存储已被删除的文档的文档ID
+      一个文档被修改，搜索引擎一般删除旧文档，新建新文档,间接实现更新,
+      这么做的原因主要是索引文件存储在磁盘文件，写磁盘不方便
 
-*** es node
+    * 倒排列表
 
-   -  data node 上
+      倒排索引是已经建好的索引结果，倒排列表存在磁盘文件中，单词词典在内存中
 
-      http.enabled: false，同时也不要安装head, bigdesk, marvel等监控 插件
-      http功能可以在非数据节点服务器上开启
-      一台服务器上最好只部署一个Node
+      搜索操作：同时到内存和磁盘中查找，合并，然后利用已删除列表过滤文档
 
-   -  避免脑裂现象
-      1. discovery.zen.minimum_master_nodes N/2+1
+   - es动态更新
 
-         要选举一个Master需要多少了候选节点，默认为1
-         3节点的集群 3/2+1 = 2(向下取整)
-      2. discovery.zen.ping.timeout
+     segment是lucence定义的索引段，一个索引内包含多个，segment对外提供搜索服务
 
-         等待ping响应的超时时间，默认值是3秒。如果网络缓慢或拥塞，建议略微调大这个值
-*** es pipeline
+     新文档-->内存的buffer内-->写到磁盘生成新的segment，对外服务 同时清空buffer
 
-    https://www.felayman.com/articles/2017/11/24/1511527532643.html#b3_solo_h4_22
+     要频繁的写入磁盘十分消耗资源,es先将文档写到filesystem cache内，此时就能被搜索到了(linux下文件句柄要调整)
 
-*** es 搜索原理
+     必须调用fsync将segment刷到磁盘上，才能保证数据不丢失。
+        
+   - refresh/flush
+
+     refresh是轻量级的写和打开一个新segment的操作
+
+     Elasticsearch中，执行commit操作并删除translog的操作叫flush
+
+   - segment merge
+
+     如果不停的产生新的segment，Elasticsearch中很快就会段爆炸，
+     每个段都要消耗文件描述符、内存、CPU 周期，且每个search请求都需要遍历所有的segment，会造成搜索操作很慢。
+
+     _optimize?max_num_segments=1 一个segment情况下查询要快些，但是得控制大小，
+
+** es node
+
+  -  data node 上
+
+     http.enabled: false，同时也不要安装head, bigdesk, marvel等监控 插件
+     http功能可以在非数据节点服务器上开启
+     一台服务器上最好只部署一个Node
+
+  -  避免脑裂现象
+     1. discovery.zen.minimum_master_nodes N/2+1
+
+        要选举一个Master需要多少了候选节点，默认为1
+        3节点的集群 3/2+1 = 2(向下取整)
+     2. discovery.zen.ping.timeout
+
+        等待ping响应的超时时间，默认值是3秒。如果网络缓慢或拥塞，建议略微调大这个值
+** es pipeline
+
+   https://www.felayman.com/articles/2017/11/24/1511527532643.html#b3_solo_h4_22
+
+** es 搜索原理
 
     https://blog.csdn.net/donghaixiaolongwang/article/category/6747676
 
     Elasticsearch之四种查询类型和搜索原理
-
-** alias_malware 统计
-
-
-1. 总数
-
-   10.252.16.20:9200/_cat/count/alias_malware?v
-
-
-|                               |        |            |
-|-------------------------------+--------+------------|
-| /_cat/count/alias_malware?v   | 总数   | 2446733188 |
-|-------------------------------+--------+------------|
-| /malfile-00/doc/_count?pretty | 单索引 |   27260935 |
-|-------------------------------+--------+------------|
-|                               |        |            |
-
-2. network 是否存在
-
-/alias_malware/doc/_count?pretty
-
-#+BEGIN_QUOTE
-{
-    "query": {
-        "exists" : { "field" : "network" }
-    }
-}
-
-#+END_QUOTE
-
-34081553
-
-
-
-#+BEGIN_QUOTE
-{
-    "query": {
-    	"bool": {
-            "should": [
-               { "exists" : { "field" : "network.domain" }},
-               { "exists" : { "field" : "network.http" }},
-               { "exists" : { "field" : "network.url" }},
-               { "exists" : { "field" : "network.ip" }},
-               { "exists" : { "field" : "network.udp" }},
-               { "exists" : { "field" : "network.tcp" }},
-               { "exists" : { "field" : "network.dns" }}
-            ],
-            "minimum_should_match": 1
-    	}
-    }
-}
-
-#+END_QUOTE
-
-34082654
-
-
-14534056
