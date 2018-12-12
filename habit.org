@@ -1,0 +1,10 @@
+* NEXT                                                                          :xas:
+  SCHEDULED: <2018-12-13 Thu .+1d>
+:PROPERTIES:
+:CREATED: [2018-12-12 Wed 13:38]
+:STYLE: habit
+:REPEAT_TO_STATE: NEXT
+:LOGGING: DONE(!)
+:ARCHIVE: %%s_archive::* Habits
+:END:
+[2018-12-24 Wed 13:38]

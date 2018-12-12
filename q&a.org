@@ -1,6 +1,55 @@
 #+SETUPFILE: setup.org
 #+TITLE: Question & Answer
 * Question & Answer
+** DONE arch 安装teamviewer
+   CLOSED: [2018-12-12 Wed 15:57]
+   - State "DONE"       from "TODO"       [2018-12-12 Wed 15:57]
+#+BEGIN_QUOTE
+=sudo pacman -Sy teamviewer=
+
+版本14 无法运行
+
+版本12 安装[[https://linuxhint.com/install_teamviewer_arch_linux/][参考]] ,运行teamviewer需要启动下面deamon进程
+
+#+BEGIN_SRC 
+sudo systemctl status teamviewerd
+sudo systemctl enable teamviewerd
+
+#+END_SRC
+#+END_QUOTE
+** TODO emacs快速注释快捷键
+#+BEGIN_QUOTE
+   vim 的多行选择I失效
+   
+   =c-c c= 注释选中的行
+
+#+END_QUOTE
+   
+** TODO  emacs指定模板创建文件
+   #+BEGIN_QUOTE
+#+BEGIN_SRC lisp
+(defun capture-report-date-file (path)
+       (let ((name (read-string "Name: ")))
+       (expand-file-name (format "%s-%s.org"
+                              (format-time-string "%Y-%m-%d")
+                              name) path)))
+
+(add-to-list 'org-capture-templates
+             `("n" "note" plain (file ,(capture-report-data-file "~/github/org-pages/note/"))
+              ,(concat "#+startup: showall\n"
+                        "#+options: toc:nil\n"
+                        "#+begin_export html\n"
+                        "---\n"
+                        "layout     : post\n"
+                        "title      : %^{标题}\n"
+                        "categories : %^{类别}\n"
+                        "tags       : %^{标签}\n"
+                        "---\n"
+                        "#+end_export\n"
+                        "#+TOC: headlines 2\n")))
+#+END_SRC
+
+   #+END_QUOTE
 ** TODO  emacs配置做软链到工作目录
 ** TODO  如何使用emms听音乐？
    #+BEGIN_QUOTE
@@ -9,6 +58,15 @@
    find /music/ -type f  | egrep '\.(mp3|ape)$' > /tmp/mylist.txt
 
    mplayer -playlist  /tmp/mylist.txt
+
+   快捷键
+
+   静音	m
+   快进/后退10秒	右 和 左
+   快进/后退1分	上 和 下
+   快进/后退10分	PgUp 和 PgDown（音乐一般只有3分钟左右，快进相当于跳到下一首歌，后退相当于重新播放了）
+   暂停	Space
+   退出	q
    #+END_QUOTE
 
 ** TODO emacs如何处理博文头部尾部嵌套跳转页问题

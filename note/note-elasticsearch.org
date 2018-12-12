@@ -87,8 +87,6 @@
     }'  
    #+END_SRC
 ** query
-*** base_query
-
 - _search?pretty&q=字段 :: 基础查询字段   
 
      : curl -XGET 'http://localhost:9200/ipasset_seer4/asset_from_seer/_search?pretty&q=ip:210.186.226.178'
@@ -96,8 +94,6 @@
      _id 内置id查询
 
      : curl -XGET  'localhost:9200/webasset_whois3/whois_info/_search?pretty&q=_id:PERSONALLICENCECOURSES.COM'
-
-*** bool_query
 - exists :: 字段是否存在
             #+BEGIN_SRC 
 {
@@ -159,8 +155,7 @@
             },
         }
      #+END_SRC
-*** range_query
- - range :: 范围查询
+- range :: 范围查询
             #+BEGIN_SRC 
  {
      'query': {
@@ -173,6 +168,33 @@
         }
  }           
             #+END_SRC
+- _source :: 控制返回字段
+             #+BEGIN_SRC  
+{
+    "_source": ["sha1"],
+    "query": {
+        "bool": {
+            "should": [
+                {"exists": {"field": "network.domain"}},
+                {"exists": {"field": "network.http"}},
+                {"exists": {"field": "network.url"}},
+                {"exists": {"field": "network.ip"}},
+                {"exists": {"field": "network.udp"}},
+                {"exists": {"field": "network.tcp"}},
+                {"exists": {"field": "network.dns"}}
+            ],
+            "minimum_should_match": 1
+        }
+    },
+    "aggs": {
+        "count": {
+            "cardinality": {
+                "field": "sha1"
+            }
+        }
+    }
+}
+             #+END_SRC
 ** aggs
 
 10.252.16.20:9200/alias_malware/_search?size=0
