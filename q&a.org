@@ -17,11 +17,13 @@ sudo systemctl enable teamviewerd
 
 #+END_SRC
 #+END_QUOTE
-** TODO emacs快速注释快捷键
+** DONE emacs快速注释快捷键
+   CLOSED: [2018-12-12 Wed 17:20]
+   - State "DONE"       from "TODO"       [2018-12-12 Wed 17:20]
 #+BEGIN_QUOTE
    vim 的多行选择I失效
    
-   =c-c c= 注释选中的行
+   =M-;= 注释/反注释选中的行
 
 #+END_QUOTE
    
@@ -51,7 +53,9 @@ sudo systemctl enable teamviewerd
 
    #+END_QUOTE
 ** TODO  emacs配置做软链到工作目录
-** TODO  如何使用emms听音乐？
+** DONE 如何使用emms听音乐？
+   CLOSED: [2018-12-12 Wed 21:55]
+   - State "DONE"       from "TODO"       [2018-12-12 Wed 21:55]
    #+BEGIN_QUOTE
    mplayer
   
@@ -59,14 +63,18 @@ sudo systemctl enable teamviewerd
 
    mplayer -playlist  /tmp/mylist.txt
 
-   快捷键
-
-   静音	m
-   快进/后退10秒	右 和 左
-   快进/后退1分	上 和 下
-   快进/后退10分	PgUp 和 PgDown（音乐一般只有3分钟左右，快进相当于跳到下一首歌，后退相当于重新播放了）
-   暂停	Space
-   退出	q
+   emms 快捷键
+#+BEGIN_SRC 
+(global-set-key (kbd "C-c e l") 'emms-playlist-mode-go)
+(global-set-key (kbd "C-c e s") 'emms-start)
+(global-set-key (kbd "C-c e e") 'emms-stop)
+(global-set-key (kbd "C-c e n") 'emms-next)
+(global-set-key (kbd "C-c e p") 'emms-pause)
+(global-set-key (kbd "C-c e f") 'emms-play-playlist)
+(global-set-key (kbd "C-c e o") 'emms-play-file)
+(global-set-key (kbd "C-c e d") 'emms-play-directory-tree)
+(global-set-key (kbd "C-c e a") 'emms-add-directory-tree)
+#+END_SRC
    #+END_QUOTE
 
 ** TODO emacs如何处理博文头部尾部嵌套跳转页问题
