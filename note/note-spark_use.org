@@ -54,43 +54,6 @@ Spark快速大数据分析[美] 卡劳（Holden Karau）
 ** idea spark java 
    1. jre 1.5 换成1.8
 ** rdd & dataframe
-* docker spark
-** docker for mac install spark 2.2.0 + hadoop 2.8.0
-
-  refer : http://blog.csdn.net/gogo_yao/article/details/76863201
-  
-  1. 启动容器
-    docker run --name centos-6 -tid centos:6 /bin/bash
-  2. 复制安装包到centos容器
-    docker cp scala-2.12.3.tgz 23288ad95817:/
-    docker cp jdk-8u144-linux-x64.rpm 23288ad95817:/
-    docker cp spark-2.2.0-bin-without-hadoop.tgz 23288ad95817:/
-    docker cp hadoop-2.8.0.tar.gz 23288ad95817:/root/.local
-  3. 进入容器
-     docker exec -it 23288ad9581 /bin/bash
-     hadoop spark install
-  4. 保存镜像
-     docker commit -m "centos-6 with spark 2.2.0 and hadoop 2.8.0" 23288ad95817 centos:with-saprk-hadoop
-
-     REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
-     centos              with-saprk-hadoop   30333b7011ce        20 seconds ago      3.84GB
-  5. 使用保存的镜像搭建集群
-     
-     #端口50070和8088，8080是用来在浏览器中访问hadoop、yarn、spark的WEB界面，这里分别映射到物理机的50070和8088，8080端口。
-     docker run -itd -P -p 50070:50070 -p 8088:8088 -p 8080:8080 --name master -h master --add-host slave01:172.17.0.4 --add-host slave02:172.17.0.5 centos:with-saprk-hadoop
-     docker run -itd -P --name slave01 -h slave01 --add-host master:172.17.0.3 --add-host slave02:172.17.0.5  centos:with-saprk-hadoop
-     docker run -itd -P --name slave02 -h slave02 --add-host master:172.17.0.3 --add-host slave01:172.17.0.4  centos:with-saprk-hadoop
-  6. 进入集群管理
-     docker exec -it master /bin/bash
-     
-     service sshd restart
-
-     cd /root/.local/hadoop-2.8.0/sbin;sh start-all.sh   
-     cd /root/.local/spark-2.2.0-bin-without-hadoop/sbin; sh start-all.sh
-** docker search spark
-   docker pull sequenceiq/spark:1.6.0
-* docker hbase
-
 * TODO 如何转表格
 格式	可分割	平均压缩速度	文本文件压缩效率	Hadoop压缩编解码器	纯Java实现	原生	备注
 gzip	否	快	高	org.apache.hadoop.io.compress.GzipCodec	是	是	
@@ -98,3 +61,54 @@ lzo	是（取决于所使用的库）	非常快	中等	com.hadoop.compression.lz
 bzip2	是	慢	非常高	org.apache.hadoop.io.compress.Bzip2Codec	是	是	为可分割版本使用纯Java
 zlib	否	慢	中等	org.apache.hadoop.io.compress.DefaultCodec	是	是	Hadoop 的默认压缩编解码器
 Snappy	否	非常快	低	org.apache.hadoop.io.compress.SnappyCodec	否	是	Snappy 有纯Java的移植版，但是在Spark/Hadoop中不能用
+* Spark Executor在YARN上的内存分配
+  从Spark的角度看，Executor占用的内存分为两部分：ExecutorMemory和MemoryOverhead
+  一、ExecutorMemory
+  ExecutorMemory为JVM进程的Java堆区域。大小通过属性spark.executor.memory设置。也可以在spark-submit命令时用参数--executor-memory设置。
+
+  用于缓存RDD数据的memoryStore位于这一区域。
+  memoryStore占用空间的比例通过属性spark.storage.memoryFraction和spark.storage.safetyFraction控制
+
+二、MemoryOverhead
+
+MemoryOverhead是JVM进程中除Java堆以外占用的空间大小，包括方法区（永久代）、Java虚拟机栈、本地方法栈、JVM进程本身所用的内存、直接内存（Direct Memory）等。通过spark.yarn.executor.memoryOverhead设置，单位MB。
+
+三、相关问题
+
+
+如果用于存储RDD的空间不足，先存储的RDD的分区会被后存储的覆盖。当需要使用丢失分区的数据时，丢失的数据会被重新计算
+
+如果Java堆或者永久代的内存不足，则会产生各种OOM异常，executor会被结束。spark会重新申请一个container运行executor。失败executor上的任务和存储的数据会在其他executor上重新计算。
+
+如果实际运行过程中ExecutorMemory+MemoryOverhead之和（JVM进程总内存）超过container的容量。YARN会直接杀死container。executor日志中不会有异常记录。spark同样会重新申请container运行executor。
+
+
+
+
+
+在Java堆以外的JVM进程内存占用较多的情况下，应该将MemoryOverhead设置为一个足够大的值，应该将MemoryOverhead设置为一个足够大的值，以防JVM进程因实际占用的内存超标而被kill。如果默认值（math.max((MEMORY_OVERHEAD_FACTOR *executorMemory).toInt,MEMORY_OVERHEAD_MIN）不够大，可以通过spark.yarn.executor.memoryOverhead手动设置一个更大的值。
+* 如何对spark任务调优?
+
+http://www.cnblogs.com/xing901022/p/6445254.html
+
+调优的经验总结
+1 输出信息
+在Spark应用里面可以直接使用System.out.println把信息输出出来，系统会直接拦截out输出到spark的日志。像我们使用的yarn作为资源管理系统，在yarn的日志中就可以直接看到这些输出信息了。这在数据量很大的时候，做一些show()（默认显示20），count() 或者 take(10)的时候会很方便。
+
+2 内存不够
+当任务失败，收到sparkContext shutdown的信息时，基本都是执行者的内存不够。这个时候，一方面可以调大--excutor-memory参数，另一方面还是得回去看看程序。如果受限于系统的硬件条件，无法加大内存，可以采用局部调试法，检查是在哪里出现的内存问题。比如，你的程序分成几个步骤，一步一步的打包运行，最后检查出现问题的点就可以了。
+
+3 ThreadPool
+线程池不够，这个是因为--excutor-core给的太少了，出现线程池不够用的情况。这个时候就需要调整参数的配置了。
+
+4 physical memory不够
+
+
+这种问题一般是driver memory不够导致的，driver memory通常存储了以一些调度方面的信息，这种情况很有可能是你的调度过于复杂，或者是内部死循环导致。
+
+5 合理利用缓存
+在Spark的计算中，不太建议直接使用cache，万一cache的量很大，可能导致内存溢出。可以采用persist的方式，指定缓存的级别为MEMORY_AND_DISK,这样在内存不够的时候，可以把数据缓存到磁盘上。另外，要合理的设计代码，恰当地使用广播和缓存，广播的数据量太大会对传输带来压力，缓存过多未及时释放，也会导致内存占用。一般来说，你的代码在需要重复使用某一个rdd的时候，才需要考虑进行缓存，并且在不使用的时候，要及时unpersist释放。
+
+6 尽量避免shuffle
+这个点，在优化的过程中是很重要的。比如你需要把两个rdd按照某个key进行groupby，然后在进行leftouterjoin，这个时候一定要考虑大小表的问题。如果把大表关联到小表，那么性能很可能会很惨。而只需要简单的调换一下位置，性能就可能提升好几倍。
+

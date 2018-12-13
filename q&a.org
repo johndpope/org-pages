@@ -1,6 +1,11 @@
 #+SETUPFILE: setup.org
 #+TITLE: Question & Answer
 * Question & Answer
+** TODO arch 系统剪切板调用
+#+BEGIN_QUOTE
+=c-;= 方便调用
+#+END_QUOTE
+** TODO snap 下一代linux跨发行版的包管理
 ** DONE arch 安装teamviewer
    CLOSED: [2018-12-12 Wed 15:57]
    - State "DONE"       from "TODO"       [2018-12-12 Wed 15:57]
@@ -27,7 +32,7 @@ sudo systemctl enable teamviewerd
 
 #+END_QUOTE
    
-** TODO  emacs指定模板创建文件
+** TODO emacs指定模板创建文件
    #+BEGIN_QUOTE
 #+BEGIN_SRC lisp
 (defun capture-report-date-file (path)
@@ -52,9 +57,9 @@ sudo systemctl enable teamviewerd
 #+END_SRC
 
    #+END_QUOTE
-** TODO  emacs配置做软链到工作目录
-** DONE 如何使用emms听音乐？
-   CLOSED: [2018-12-12 Wed 21:55]
+** TODO emacs配置做软链到工作目录
+** TODO 如何使用emms听音乐看视频？
+   - State "TODO"       from "DONE"       [2018-12-13 Thu 14:56]
    - State "DONE"       from "TODO"       [2018-12-12 Wed 21:55]
    #+BEGIN_QUOTE
    mplayer
@@ -75,6 +80,8 @@ sudo systemctl enable teamviewerd
 (global-set-key (kbd "C-c e d") 'emms-play-directory-tree)
 (global-set-key (kbd "C-c e a") 'emms-add-directory-tree)
 #+END_SRC
+
+问题: 播放m4a格式音乐的时候mplayer会自动弹出窗口,所以用来看视频
    #+END_QUOTE
 
 ** TODO emacs如何处理博文头部尾部嵌套跳转页问题
