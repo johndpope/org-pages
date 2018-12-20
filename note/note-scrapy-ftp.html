@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-12-06 Thu 13:51 -->
+<!-- 2018-12-21 Fri 00:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>用scrapy爬取FTP列表文件</title>
@@ -237,22 +237,22 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org866c054">用scrapy爬取FTP列表文件</a>
+<li><a href="#org25fba74">用scrapy爬取FTP列表文件</a>
 <ul>
-<li><a href="#orgc097481">scrapy crawl ftp server</a></li>
-<li><a href="#org54452cd">error note</a></li>
+<li><a href="#org7b59cb0">scrapy crawl ftp server</a></li>
+<li><a href="#org7f7caef">error note</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org866c054" class="outline-2">
-<h2 id="org866c054">用scrapy爬取FTP列表文件</h2>
-<div class="outline-text-2" id="text-org866c054">
+<div id="outline-container-org25fba74" class="outline-2">
+<h2 id="org25fba74">用scrapy爬取FTP列表文件</h2>
+<div class="outline-text-2" id="text-org25fba74">
 </div>
-<div id="outline-container-orgc097481" class="outline-3">
-<h3 id="orgc097481">scrapy crawl ftp server</h3>
-<div class="outline-text-3" id="text-orgc097481">
+<div id="outline-container-org7b59cb0" class="outline-3">
+<h3 id="org7b59cb0">scrapy crawl ftp server</h3>
+<div class="outline-text-3" id="text-org7b59cb0">
 <p class="verse">
 最近遇到一个ftp数据源，每天需要定期到ftp服务器登录下载文件压缩列表,官方提供的<a href="https://github.com/scrapy/scrapy/blob/master/scrapy/core/downloader/handlers/ftp.py">FTPDownloadHandler</a> 只能下载单个文件,但这里我需要下载文件目录下所有文件,这里找到一篇好<a href="https://gearheart.io/blog/crawling-ftp-server-with-scrapy/">文章</a> ,详细的讲述了如何重写scrapy所支持的HTTP,HTTPS,FTP等下载Handler.由于作者从单个FTP文件下载，到文件夹内全部文件下载都做了详细的阐述，这里就贴出我的实现代码吧，做了些许修改<br />
 </p>
@@ -428,9 +428,9 @@ class MedisumSpider(CrawlSpider):
 </div>
 </div>
 
-<div id="outline-container-org54452cd" class="outline-3">
-<h3 id="org54452cd">error note</h3>
-<div class="outline-text-3" id="text-org54452cd">
+<div id="outline-container-org7f7caef" class="outline-3">
+<h3 id="org7f7caef">error note</h3>
+<div class="outline-text-3" id="text-org7f7caef">
 <ol class="org-ol">
 <li>NotImplementedError
 parse()函数得存在</li>

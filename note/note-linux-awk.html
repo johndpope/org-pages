@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-12-06 Thu 13:51 -->
+<!-- 2018-12-21 Fri 00:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>AWK 程序设计语言</title>
@@ -259,13 +259,13 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgba71e02">awk 基本语法</a>
+<li><a href="#orgdeee345">awk 基本语法</a>
 <ul>
-<li><a href="#org6c28cb3">pattern</a></li>
-<li><a href="#org8d5c876">action</a></li>
+<li><a href="#orgc2bf7fc">pattern</a></li>
+<li><a href="#org0073090">action</a></li>
 </ul>
 </li>
-<li><a href="#orgd9af5bd">awk 常用命令</a></li>
+<li><a href="#org7963e5a">awk 常用命令</a></li>
 </ul>
 </div>
 </div>
@@ -276,9 +276,9 @@ A总结了很多awk的使用注意事项,有兴趣的可以关注一下.这里�
 的一些使用awk提高工作效率的场景
 </p>
 
-<div id="outline-container-orgba71e02" class="outline-2">
-<h2 id="orgba71e02">awk 基本语法</h2>
-<div class="outline-text-2" id="text-orgba71e02">
+<div id="outline-container-orgdeee345" class="outline-2">
+<h2 id="orgdeee345">awk 基本语法</h2>
+<div class="outline-text-2" id="text-orgdeee345">
 <p>
 最简单的awk 程序是一个或多个模式–动作语句构成的序列:
 </p>
@@ -307,9 +307,9 @@ A总结了很多awk的使用注意事项,有兴趣的可以关注一下.这里�
 <code>awk -f awk.sh awk_txt</code>
 </p>
 </div>
-<div id="outline-container-org6c28cb3" class="outline-3">
-<h3 id="org6c28cb3">pattern</h3>
-<div class="outline-text-3" id="text-org6c28cb3">
+<div id="outline-container-orgc2bf7fc" class="outline-3">
+<h3 id="orgc2bf7fc">pattern</h3>
+<div class="outline-text-3" id="text-orgc2bf7fc">
 <p>
 模式汇总
 </p>
@@ -365,9 +365,9 @@ BEGIN 与END 是唯一两个不能省略动作的模式.
 </ol>
 </div>
 </div>
-<div id="outline-container-org8d5c876" class="outline-3">
-<h3 id="org8d5c876">action</h3>
-<div class="outline-text-3" id="text-org8d5c876">
+<div id="outline-container-org0073090" class="outline-3">
+<h3 id="org0073090">action</h3>
+<div class="outline-text-3" id="text-org0073090">
 <p>
 动作中的语句可以包括:
 </p>
@@ -473,7 +473,7 @@ awk作为一种编程语言,刚开始接触awk语句看得眼晕主要是不了�
 
 <tr>
 <td class="org-left">RS</td>
-<td class="org-left">控制着输入行的记录分割符"\n"</td>
+<td class="org-left">控制着输入行的记录分割符&ldquo;\n&rdquo;</td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
@@ -494,9 +494,9 @@ awk作为一种编程语言,刚开始接触awk语句看得眼晕主要是不了�
 </div>
 </div>
 
-<div id="outline-container-orgd9af5bd" class="outline-2">
-<h2 id="orgd9af5bd">awk 常用命令</h2>
-<div class="outline-text-2" id="text-orgd9af5bd">
+<div id="outline-container-org7963e5a" class="outline-2">
+<h2 id="org7963e5a">awk 常用命令</h2>
+<div class="outline-text-2" id="text-org7963e5a">
 <ol class="org-ol">
 <li><p>
 kill 进程
@@ -523,7 +523,7 @@ kill 进程
 </p>
 
 <p>
-awk 'NF&gt;10 {print $i}' 3.txt &gt; 4.txt
+awk &rsquo;NF&gt;10 {print $i}&rsquo; 3.txt &gt; 4.txt
 </p></li>
 
 <li><p>

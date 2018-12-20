@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-12-06 Thu 13:51 -->
+<!-- 2018-12-21 Fri 00:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>mongo 使用笔记</title>
@@ -237,32 +237,32 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgc087edf">Mongo 使用笔记</a>
+<li><a href="#orgc21c0b9">Mongo 使用笔记</a>
 <ul>
-<li><a href="#org42003d5">Mongo集群安装</a></li>
-<li><a href="#org79897e1">常用命令</a></li>
+<li><a href="#orge3eb922">Mongo集群安装</a></li>
+<li><a href="#org122d9ea">常用命令</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc087edf" class="outline-2">
-<h2 id="orgc087edf">Mongo 使用笔记</h2>
-<div class="outline-text-2" id="text-orgc087edf">
+<div id="outline-container-orgc21c0b9" class="outline-2">
+<h2 id="orgc21c0b9">Mongo 使用笔记</h2>
+<div class="outline-text-2" id="text-orgc21c0b9">
 </div>
-<div id="outline-container-org42003d5" class="outline-3">
-<h3 id="org42003d5">Mongo集群安装</h3>
+<div id="outline-container-orge3eb922" class="outline-3">
+<h3 id="orge3eb922">Mongo集群安装</h3>
 </div>
-<div id="outline-container-org79897e1" class="outline-3">
-<h3 id="org79897e1">常用命令</h3>
-<div class="outline-text-3" id="text-org79897e1">
+<div id="outline-container-org122d9ea" class="outline-3">
+<h3 id="org122d9ea">常用命令</h3>
+<div class="outline-text-3" id="text-org122d9ea">
 <ol class="org-ol">
 <li><p>
 创建索引
 </p>
 
 <p>
-db.smrt.ensureIndex({"ip":1})
+db.smrt.ensureIndex({&ldquo;ip&rdquo;:1})
 </p></li>
 </ol>
 
@@ -271,22 +271,22 @@ db.smrt.ensureIndex({"ip":1})
 </p>
 
 <p>
-db.smrt.distinct("tags")
+db.smrt.distinct(&ldquo;tags&rdquo;)
 </p>
 
 <p>
-db.all_iocs.find({"malicious_family":{$size:3}})
+db.all_iocs.find({&ldquo;malicious_family&rdquo;:{$size:3}})
 </p>
 <ol class="org-ol">
-<li>db.ip_history_v1.find({"insert_time":{"$gte":1496357774,"$lte":1496357775}})
-db.ip_history_v1.find({"insert_time":{"$gte":1498037117,"$lte":1498037119}})
-db.ip_history_v1.find({"history":{"$elemMatch":{"source":"emergingthreats.net"}}})
-db.ip_history_v1.remove({"history":{"$elemMatch":{"attack_time":{'$gte':'2016-05-11T15:29:21','$lte':'2017-07-11T15:29:21'}}}})</li>
+<li>db.ip_history_v1.find({&ldquo;insert_time&rdquo;:{&ldquo;$gte&rdquo;:1496357774,&ldquo;$lte&rdquo;:1496357775}})
+db.ip_history_v1.find({&ldquo;insert_time&rdquo;:{&ldquo;$gte&rdquo;:1498037117,&ldquo;$lte&rdquo;:1498037119}})
+db.ip_history_v1.find({&ldquo;history&rdquo;:{&ldquo;$elemMatch&rdquo;:{&ldquo;source&rdquo;:&ldquo;emergingthreats.net&rdquo;}}})
+db.ip_history_v1.remove({&ldquo;history&rdquo;:{&ldquo;$elemMatch&rdquo;:{&ldquo;attack_time&rdquo;:{&rsquo;$gte&rsquo;:&rsquo;2016-05-11T15:29:21&rsquo;,&rsquo;$lte&rsquo;:&rsquo;2017-07-11T15:29:21&rsquo;}}}})</li>
 </ol>
 
 
 <p>
-db.ip_history_v1.find({"history":{"$elemMatch":{"insertime":{"$gte":"1509840000","$lte":"1509926400"}}}})
+db.ip_history_v1.find({&ldquo;history&rdquo;:{&ldquo;$elemMatch&rdquo;:{&ldquo;insertime&rdquo;:{&ldquo;$gte&rdquo;:&ldquo;1509840000&rdquo;,&ldquo;$lte&rdquo;:&ldquo;1509926400&rdquo;}}}})
 </p>
 </div>
 </div>

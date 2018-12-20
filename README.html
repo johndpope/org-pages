@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-12-06 Thu 13:50 -->
+<!-- 2018-12-21 Fri 00:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>org-pages 项目说明</title>
@@ -237,14 +237,14 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org7769ad9">org-pages</a></li>
-<li><a href="#org6f4eb8b">html-pages</a></li>
+<li><a href="#org557d868">org-pages</a></li>
+<li><a href="#orga75d0ed">html-pages</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org7769ad9" class="outline-2">
-<h2 id="org7769ad9"><a href="http://www.manue1.site/">org-pages</a></h2>
-<div class="outline-text-2" id="text-org7769ad9">
+<div id="outline-container-org557d868" class="outline-2">
+<h2 id="org557d868"><a href="http://www.manue1.site/">org-pages</a></h2>
+<div class="outline-text-2" id="text-org557d868">
 <ul class="org-ul">
 <li><p>
 <a href="https://github.com/Nanue1/org-pages">emacs文档备份路径</a>
@@ -267,46 +267,46 @@ emacs 自动生成html文件配置
 </p>
 
 <div class="org-src-container">
-<pre class="src src-lisp"><span style="color: #C4BE89;">(</span>setq org-publish-project-alist
-'<span style="color: #FD971F;">(</span>
+<pre class="src src-lisp"><span style="color: #707183;">(</span>setq org-publish-project-alist
+'<span style="color: #7388d6;">(</span>
 
-<span style="color: #EF5939;">(</span><span style="color: #E6DB74;">"org-html"</span>
-<span style="color: #A6E22E;">:base-directory</span> <span style="color: #E6DB74;">"~/github/org-pages"</span>
-<span style="color: #A6E22E;">:base-extension</span> <span style="color: #E6DB74;">"org"</span>
-<span style="color: #A6E22E;">:publishing-directory</span> <span style="color: #E6DB74;">"~/github/html-pages"</span>
-<span style="color: #A6E22E;">:section-numbers</span> nil
-<span style="color: #A6E22E;">:recursive</span> t
-<span style="color: #A6E22E;">:publishing-function</span> org-html-publish-to-html
-<span style="color: #A6E22E;">:headline-levels</span> 4
-<span style="color: #A6E22E;">:auto-sitemap</span> t
-<span style="color: #A6E22E;">:sitemap-filename</span> <span style="color: #E6DB74;">"sitemap.org"</span>
-<span style="color: #A6E22E;">:sitemap-title</span> <span style="color: #E6DB74;">"Sitemap"</span>
-<span style="color: #A6E22E;">:auto-preamble</span> t
-<span style="color: #A6E22E;">:author</span> nil
-<span style="color: #A6E22E;">:creator-info</span> nil
-<span style="color: #A6E22E;">:auto-postamble</span> nil<span style="color: #EF5939;">)</span>
-<span style="color: #EF5939;">(</span><span style="color: #E6DB74;">"org-static"</span>
-<span style="color: #A6E22E;">:base-directory</span> <span style="color: #E6DB74;">"~/github/org-pages"</span>
-<span style="color: #A6E22E;">:base-extension</span> <span style="color: #E6DB74;">"html\\|css\\|js\\|ico\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf\\|java\\|py\\|zip\\|arff\\|dat\\|cpp\\|xls\\|otf\\|woff"</span>
-<span style="color: #A6E22E;">:publishing-directory</span> <span style="color: #E6DB74;">"~/github/html-pages"</span>
-<span style="color: #A6E22E;">:recursive</span> t
-<span style="color: #A6E22E;">:publishing-function</span> org-publish-attachment<span style="color: #EF5939;">)</span>
-<span style="color: #EF5939;">(</span><span style="color: #E6DB74;">"org-pages"</span> <span style="color: #A6E22E;">:components</span> <span style="color: #F92672;">(</span><span style="color: #E6DB74;">"org-html"</span> <span style="color: #E6DB74;">"org-static"</span><span style="color: #F92672;">)</span><span style="color: #EF5939;">)</span>
-<span style="color: #FD971F;">)</span><span style="color: #C4BE89;">)</span>
+<span style="color: #909183;">(</span><span style="color: #8b2252;">"org-html"</span>
+<span style="color: #483d8b;">:base-directory</span> <span style="color: #8b2252;">"~/github/org-pages"</span>
+<span style="color: #483d8b;">:base-extension</span> <span style="color: #8b2252;">"org"</span>
+<span style="color: #483d8b;">:publishing-directory</span> <span style="color: #8b2252;">"~/github/html-pages"</span>
+<span style="color: #483d8b;">:section-numbers</span> nil
+<span style="color: #483d8b;">:recursive</span> t
+<span style="color: #483d8b;">:publishing-function</span> org-html-publish-to-html
+<span style="color: #483d8b;">:headline-levels</span> 4
+<span style="color: #483d8b;">:auto-sitemap</span> t
+<span style="color: #483d8b;">:sitemap-filename</span> <span style="color: #8b2252;">"sitemap.org"</span>
+<span style="color: #483d8b;">:sitemap-title</span> <span style="color: #8b2252;">"Sitemap"</span>
+<span style="color: #483d8b;">:auto-preamble</span> t
+<span style="color: #483d8b;">:author</span> nil
+<span style="color: #483d8b;">:creator-info</span> nil
+<span style="color: #483d8b;">:auto-postamble</span> nil<span style="color: #909183;">)</span>
+<span style="color: #909183;">(</span><span style="color: #8b2252;">"org-static"</span>
+<span style="color: #483d8b;">:base-directory</span> <span style="color: #8b2252;">"~/github/org-pages"</span>
+<span style="color: #483d8b;">:base-extension</span> <span style="color: #8b2252;">"html\\|css\\|js\\|ico\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf\\|java\\|py\\|zip\\|arff\\|dat\\|cpp\\|xls\\|otf\\|woff"</span>
+<span style="color: #483d8b;">:publishing-directory</span> <span style="color: #8b2252;">"~/github/html-pages"</span>
+<span style="color: #483d8b;">:recursive</span> t
+<span style="color: #483d8b;">:publishing-function</span> org-publish-attachment<span style="color: #909183;">)</span>
+<span style="color: #909183;">(</span><span style="color: #8b2252;">"org-pages"</span> <span style="color: #483d8b;">:components</span> <span style="color: #709870;">(</span><span style="color: #8b2252;">"org-html"</span> <span style="color: #8b2252;">"org-static"</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span>
+<span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
 
-<span style="color: #C4BE89;">(</span>setq org-export-copy-to-kill-ring nil<span style="color: #C4BE89;">)</span>
-<span style="color: #C4BE89;">(</span>setq org-export-with-sub-superscripts nil<span style="color: #C4BE89;">)</span>
+<span style="color: #707183;">(</span>setq org-export-copy-to-kill-ring nil<span style="color: #707183;">)</span>
+<span style="color: #707183;">(</span>setq org-export-with-sub-superscripts nil<span style="color: #707183;">)</span>
 
-<span style="color: #C4BE89;">(</span>setq org-html-postamble nil<span style="color: #C4BE89;">)</span>
-<span style="color: #C4BE89;">(</span>setq org-html-preamble <span style="color: #E6DB74;">"&lt;a href=\"index.html\"&gt;Home&lt;/a&gt;"</span><span style="color: #C4BE89;">)</span>
+<span style="color: #707183;">(</span>setq org-html-postamble nil<span style="color: #707183;">)</span>
+<span style="color: #707183;">(</span>setq org-html-preamble <span style="color: #8b2252;">"&lt;a href=\"index.html\"&gt;Home&lt;/a&gt;"</span><span style="color: #707183;">)</span>
 
-<span style="color: #465457; font-style: italic;">;; </span><span style="color: #465457; font-style: italic;">&#31561;&#23485;: Source Code Pro 13 + STkaiti 16</span>
-<span style="color: #C4BE89;">(</span>setq face-font-rescale-alist `<span style="color: #FD971F;">(</span><span style="color: #EF5939;">(</span><span style="color: #E6DB74;">"STkaiti"</span> . ,<span style="color: #F92672;">(</span>/ 16.0 13<span style="color: #F92672;">)</span><span style="color: #EF5939;">)</span><span style="color: #FD971F;">)</span><span style="color: #C4BE89;">)</span>
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">&#31561;&#23485;: Source Code Pro 13 + STkaiti 16</span>
+<span style="color: #707183;">(</span>setq face-font-rescale-alist `<span style="color: #7388d6;">(</span><span style="color: #909183;">(</span><span style="color: #8b2252;">"STkaiti"</span> . ,<span style="color: #709870;">(</span>/ 16.0 13<span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
 
-<span style="color: #C4BE89;">(</span>set-face-attribute 'default nil <span style="color: #A6E22E;">:font</span> <span style="color: #E6DB74;">"Source Code Pro-13"</span><span style="color: #C4BE89;">)</span>
+<span style="color: #707183;">(</span>set-face-attribute 'default nil <span style="color: #483d8b;">:font</span> <span style="color: #8b2252;">"Source Code Pro-13"</span><span style="color: #707183;">)</span>
 
-<span style="color: #C4BE89;">(</span>set-fontset-font t 'han      <span style="color: #FD971F;">(</span>font-spec <span style="color: #A6E22E;">:family</span> <span style="color: #E6DB74;">"STkaiti"</span><span style="color: #FD971F;">)</span><span style="color: #C4BE89;">)</span>
-<span style="color: #C4BE89;">(</span>set-fontset-font t 'cjk-misc <span style="color: #FD971F;">(</span>font-spec <span style="color: #A6E22E;">:family</span> <span style="color: #E6DB74;">"STkaiti"</span><span style="color: #FD971F;">)</span><span style="color: #C4BE89;">)</span>
+<span style="color: #707183;">(</span>set-fontset-font t 'han      <span style="color: #7388d6;">(</span>font-spec <span style="color: #483d8b;">:family</span> <span style="color: #8b2252;">"STkaiti"</span><span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #707183;">(</span>set-fontset-font t 'cjk-misc <span style="color: #7388d6;">(</span>font-spec <span style="color: #483d8b;">:family</span> <span style="color: #8b2252;">"STkaiti"</span><span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
 
 </pre>
 </div></li>
@@ -321,40 +321,40 @@ emacs 任务添加配置
 
 <div class="org-src-container">
 <pre class="src src-lisp">
-<span style="color: #465457; font-style: italic;">;</span><span style="color: #465457; font-style: italic;">Org basic configure</span>
-<span style="color: #C4BE89;">(</span><span style="color: #66D9EF;">defun</span> <span style="color: #F92672; font-style: italic;">manue1/open-gtd-file</span><span style="color: #FD971F;">()</span>
-    <span style="color: #FD971F;">(</span>interactive<span style="color: #FD971F;">)</span>
-    <span style="color: #FD971F;">(</span>find-file <span style="color: #E6DB74;">"~/github/org-pages/index.org"</span><span style="color: #FD971F;">)</span>
-<span style="color: #C4BE89;">)</span>
-<span style="color: #C4BE89;">(</span>global-set-key <span style="color: #FD971F;">(</span>kbd <span style="color: #E6DB74;">"&lt;f1&gt;"</span><span style="color: #FD971F;">)</span> 'manue1/open-gtd-file<span style="color: #C4BE89;">)</span>
-<span style="color: #C4BE89;">(</span>global-set-key <span style="color: #FD971F;">(</span>kbd <span style="color: #E6DB74;">"C-c a"</span><span style="color: #FD971F;">)</span> 'org-agenda<span style="color: #C4BE89;">)</span>
+<span style="color: #b22222;">;</span><span style="color: #b22222;">Org basic configure</span>
+<span style="color: #707183;">(</span><span style="color: #a020f0;">defun</span> <span style="color: #0000ff;">manue1/open-gtd-file</span><span style="color: #7388d6;">()</span>
+    <span style="color: #7388d6;">(</span>interactive<span style="color: #7388d6;">)</span>
+    <span style="color: #7388d6;">(</span>find-file <span style="color: #8b2252;">"~/github/org-pages/index.org"</span><span style="color: #7388d6;">)</span>
+<span style="color: #707183;">)</span>
+<span style="color: #707183;">(</span>global-set-key <span style="color: #7388d6;">(</span>kbd <span style="color: #8b2252;">"&lt;f1&gt;"</span><span style="color: #7388d6;">)</span> 'manue1/open-gtd-file<span style="color: #707183;">)</span>
+<span style="color: #707183;">(</span>global-set-key <span style="color: #7388d6;">(</span>kbd <span style="color: #8b2252;">"C-c a"</span><span style="color: #7388d6;">)</span> 'org-agenda<span style="color: #707183;">)</span>
 
-<span style="color: #C4BE89;">(</span>setq org-agenda-files <span style="color: #FD971F;">(</span>quote <span style="color: #EF5939;">(</span><span style="color: #E6DB74;">"~/github/org-pages/index.org"</span><span style="color: #EF5939;">)</span><span style="color: #FD971F;">)</span><span style="color: #C4BE89;">)</span>
-<span style="color: #C4BE89;">(</span>define-key global-map <span style="color: #FD971F;">(</span>kbd <span style="color: #E6DB74;">"&lt;f2&gt;"</span><span style="color: #FD971F;">)</span> 'org-capture<span style="color: #C4BE89;">)</span>
+<span style="color: #707183;">(</span>setq org-agenda-files <span style="color: #7388d6;">(</span>quote <span style="color: #909183;">(</span><span style="color: #8b2252;">"~/github/org-pages/index.org"</span><span style="color: #909183;">)</span><span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #707183;">(</span>define-key global-map <span style="color: #7388d6;">(</span>kbd <span style="color: #8b2252;">"&lt;f2&gt;"</span><span style="color: #7388d6;">)</span> 'org-capture<span style="color: #707183;">)</span>
 
-<span style="color: #C4BE89;">(</span>setq org-capture-templates
-      '<span style="color: #FD971F;">(</span>
-         <span style="color: #EF5939;">(</span><span style="color: #E6DB74;">"r"</span> <span style="color: #E6DB74;">"Read"</span> entry <span style="color: #F92672;">(</span>file+headline <span style="color: #E6DB74;">"~/github/org-pages/read.org"</span> <span style="color: #E6DB74;">"Reading List"</span><span style="color: #F92672;">)</span>
-          <span style="color: #E6DB74;">"* TODO  %?\n  %i\n"</span>
-          <span style="color: #A6E22E;">:empty-lines</span> 1<span style="color: #EF5939;">)</span>
-         <span style="color: #EF5939;">(</span><span style="color: #E6DB74;">"w"</span> <span style="color: #E6DB74;">"Write"</span> entry <span style="color: #F92672;">(</span>file+headline <span style="color: #E6DB74;">"~/github/org-pages/write.org"</span> <span style="color: #E6DB74;">"Writing List"</span><span style="color: #F92672;">)</span>
-          <span style="color: #E6DB74;">"* TODO  %?\n  %i\n"</span>
-          <span style="color: #A6E22E;">:empty-lines</span> 1<span style="color: #EF5939;">)</span>
-         <span style="color: #EF5939;">(</span><span style="color: #E6DB74;">"c"</span> <span style="color: #E6DB74;">"Code"</span> entry <span style="color: #F92672;">(</span>file+headline <span style="color: #E6DB74;">"~/github/org-pages/code.org"</span> <span style="color: #E6DB74;">"Coding List"</span><span style="color: #F92672;">)</span>
-          <span style="color: #E6DB74;">"* TODO  %?\n  %i\n"</span>
-          <span style="color: #A6E22E;">:empty-lines</span> 1<span style="color: #EF5939;">)</span>
-         <span style="color: #EF5939;">(</span><span style="color: #E6DB74;">"q"</span> <span style="color: #E6DB74;">"Q&amp;A"</span> entry <span style="color: #F92672;">(</span>file+headline <span style="color: #E6DB74;">"~/github/org-pages/q&amp;a.org"</span> <span style="color: #E6DB74;">"Question &amp; Answer"</span><span style="color: #F92672;">)</span>
-          <span style="color: #E6DB74;">"* TODO  %?\n  %i\n"</span>
-          <span style="color: #A6E22E;">:empty-lines</span> 1<span style="color: #EF5939;">)</span>
-         <span style="color: #EF5939;">(</span><span style="color: #E6DB74;">"b"</span> <span style="color: #E6DB74;">"Body"</span> entry <span style="color: #F92672;">(</span>file+headline <span style="color: #E6DB74;">"~/github/org-pages/body.org"</span> <span style="color: #E6DB74;">"Body Building"</span><span style="color: #F92672;">)</span>
-          <span style="color: #E6DB74;">"* TODO  %?\n  %i\n"</span>
-          <span style="color: #A6E22E;">:empty-lines</span> 1<span style="color: #EF5939;">)</span>
-         <span style="color: #FD971F;">)</span>
-<span style="color: #C4BE89;">)</span>
-<span style="color: #465457; font-style: italic;">; </span><span style="color: #465457; font-style: italic;">Task state settings</span>
-<span style="color: #C4BE89;">(</span>setq org-todo-keywords
-     '<span style="color: #FD971F;">(</span><span style="color: #EF5939;">(</span>sequence <span style="color: #E6DB74;">"TODO(t!)"</span> <span style="color: #E6DB74;">"SOMEDAY(s)"</span> <span style="color: #E6DB74;">"|"</span> <span style="color: #E6DB74;">"DONE(d@/!)"</span> <span style="color: #E6DB74;">"UNDO(u@/!)"</span> <span style="color: #E6DB74;">"ABORT(a@/!)"</span><span style="color: #EF5939;">)</span><span style="color: #FD971F;">)</span>
-<span style="color: #C4BE89;">)</span>
+<span style="color: #707183;">(</span>setq org-capture-templates
+      '<span style="color: #7388d6;">(</span>
+         <span style="color: #909183;">(</span><span style="color: #8b2252;">"r"</span> <span style="color: #8b2252;">"Read"</span> entry <span style="color: #709870;">(</span>file+headline <span style="color: #8b2252;">"~/github/org-pages/read.org"</span> <span style="color: #8b2252;">"Reading List"</span><span style="color: #709870;">)</span>
+          <span style="color: #8b2252;">"* TODO  %?\n  %i\n"</span>
+          <span style="color: #483d8b;">:empty-lines</span> 1<span style="color: #909183;">)</span>
+         <span style="color: #909183;">(</span><span style="color: #8b2252;">"w"</span> <span style="color: #8b2252;">"Write"</span> entry <span style="color: #709870;">(</span>file+headline <span style="color: #8b2252;">"~/github/org-pages/write.org"</span> <span style="color: #8b2252;">"Writing List"</span><span style="color: #709870;">)</span>
+          <span style="color: #8b2252;">"* TODO  %?\n  %i\n"</span>
+          <span style="color: #483d8b;">:empty-lines</span> 1<span style="color: #909183;">)</span>
+         <span style="color: #909183;">(</span><span style="color: #8b2252;">"c"</span> <span style="color: #8b2252;">"Code"</span> entry <span style="color: #709870;">(</span>file+headline <span style="color: #8b2252;">"~/github/org-pages/code.org"</span> <span style="color: #8b2252;">"Coding List"</span><span style="color: #709870;">)</span>
+          <span style="color: #8b2252;">"* TODO  %?\n  %i\n"</span>
+          <span style="color: #483d8b;">:empty-lines</span> 1<span style="color: #909183;">)</span>
+         <span style="color: #909183;">(</span><span style="color: #8b2252;">"q"</span> <span style="color: #8b2252;">"Q&amp;A"</span> entry <span style="color: #709870;">(</span>file+headline <span style="color: #8b2252;">"~/github/org-pages/q&amp;a.org"</span> <span style="color: #8b2252;">"Question &amp; Answer"</span><span style="color: #709870;">)</span>
+          <span style="color: #8b2252;">"* TODO  %?\n  %i\n"</span>
+          <span style="color: #483d8b;">:empty-lines</span> 1<span style="color: #909183;">)</span>
+         <span style="color: #909183;">(</span><span style="color: #8b2252;">"b"</span> <span style="color: #8b2252;">"Body"</span> entry <span style="color: #709870;">(</span>file+headline <span style="color: #8b2252;">"~/github/org-pages/body.org"</span> <span style="color: #8b2252;">"Body Building"</span><span style="color: #709870;">)</span>
+          <span style="color: #8b2252;">"* TODO  %?\n  %i\n"</span>
+          <span style="color: #483d8b;">:empty-lines</span> 1<span style="color: #909183;">)</span>
+         <span style="color: #7388d6;">)</span>
+<span style="color: #707183;">)</span>
+<span style="color: #b22222;">; </span><span style="color: #b22222;">Task state settings</span>
+<span style="color: #707183;">(</span>setq org-todo-keywords
+     '<span style="color: #7388d6;">(</span><span style="color: #909183;">(</span>sequence <span style="color: #8b2252;">"TODO(t!)"</span> <span style="color: #8b2252;">"SOMEDAY(s)"</span> <span style="color: #8b2252;">"|"</span> <span style="color: #8b2252;">"DONE(d@/!)"</span> <span style="color: #8b2252;">"UNDO(u@/!)"</span> <span style="color: #8b2252;">"ABORT(a@/!)"</span><span style="color: #909183;">)</span><span style="color: #7388d6;">)</span>
+<span style="color: #707183;">)</span>
 
 </pre>
 </div></li>
@@ -363,9 +363,9 @@ emacs 任务添加配置
 </div>
 
 
-<div id="outline-container-org6f4eb8b" class="outline-2">
-<h2 id="org6f4eb8b">html-pages</h2>
-<div class="outline-text-2" id="text-org6f4eb8b">
+<div id="outline-container-orga75d0ed" class="outline-2">
+<h2 id="orga75d0ed">html-pages</h2>
+<div class="outline-text-2" id="text-orga75d0ed">
 <ul class="org-ul">
 <li><p>
 拉取分支：

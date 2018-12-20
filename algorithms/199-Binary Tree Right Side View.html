@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-12-06 Thu 13:52 -->
+<!-- 2018-12-21 Fri 00:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>199. Binary Tree Right Side View</title>
@@ -237,21 +237,21 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgd4cc3cf">题意分析</a></li>
-<li><a href="#orgbf6dac3">一、Depth-First Search</a>
+<li><a href="#org791d4d4">题意分析</a></li>
+<li><a href="#orgc396cfd">一、Depth-First Search</a>
 <ul>
-<li><a href="#orgb36c712">1.1 java 实现DFS</a></li>
-<li><a href="#org3c4926d">1.2 python 实现DFS</a></li>
+<li><a href="#orgc5620c2">1.1 java 实现DFS</a></li>
+<li><a href="#orgecfbd3a">1.2 python 实现DFS</a></li>
 </ul>
 </li>
-<li><a href="#orgffb38fb">二、Breadth-First-Search</a>
+<li><a href="#org7537298">二、Breadth-First-Search</a>
 <ul>
-<li><a href="#org7b604bb">2.1 java</a></li>
+<li><a href="#org3c8425b">2.1 java</a></li>
 </ul>
 </li>
-<li><a href="#orgf850916">三、Traversal</a>
+<li><a href="#orgfdc89b9">三、Traversal</a>
 <ul>
-<li><a href="#org14890b7">3.1 java</a></li>
+<li><a href="#orgd644aad">3.1 java</a></li>
 </ul>
 </li>
 </ul>
@@ -282,18 +282,18 @@ Explanation:
   5     4       &lt;---
 </pre>
 
-<div id="outline-container-orgd4cc3cf" class="outline-2">
-<h2 id="orgd4cc3cf">题意分析</h2>
-<div class="outline-text-2" id="text-orgd4cc3cf">
+<div id="outline-container-org791d4d4" class="outline-2">
+<h2 id="org791d4d4">题意分析</h2>
+<div class="outline-text-2" id="text-org791d4d4">
 <p>
 站在树右边 视野能够看到的节点
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgbf6dac3" class="outline-2">
-<h2 id="orgbf6dac3">一、Depth-First Search</h2>
-<div class="outline-text-2" id="text-orgbf6dac3">
+<div id="outline-container-orgc396cfd" class="outline-2">
+<h2 id="orgc396cfd">一、Depth-First Search</h2>
+<div class="outline-text-2" id="text-orgc396cfd">
 <pre class="example">
 1.深度遍历：根结点 ---&gt; 左子树 ---&gt; 右子树,保证同一层最后一个录入栈内的数据为最右节点
 2. 时间复杂度O(n) 空间复杂度O(2n)
@@ -301,36 +301,36 @@ Explanation:
 </pre>
 </div>
 
-<div id="outline-container-orgb36c712" class="outline-3">
-<h3 id="orgb36c712">1.1 java 实现DFS</h3>
-<div class="outline-text-3" id="text-orgb36c712">
+<div id="outline-container-orgc5620c2" class="outline-3">
+<h3 id="orgc5620c2">1.1 java 实现DFS</h3>
+<div class="outline-text-3" id="text-orgc5620c2">
 <div class="org-src-container">
-<pre class="src src-java"><span style="color: #E6DB74; font-style: italic;">/**</span>
-<span style="color: #E6DB74; font-style: italic;"> * Definition for a binary tree node.</span>
-<span style="color: #E6DB74; font-style: italic;"> * public class TreeNode {</span>
-<span style="color: #E6DB74; font-style: italic;"> *     int val;</span>
-<span style="color: #E6DB74; font-style: italic;"> *     TreeNode left;</span>
-<span style="color: #E6DB74; font-style: italic;"> *     TreeNode right;</span>
-<span style="color: #E6DB74; font-style: italic;"> *     TreeNode(int x) { val = x; }</span>
-<span style="color: #E6DB74; font-style: italic;"> * }</span>
-<span style="color: #E6DB74; font-style: italic;"> */</span>
-<span style="color: #66D9EF;">class</span> <span style="color: #66D9EF;">Solution</span> {
-    <span style="color: #66D9EF;">public</span> <span style="color: #66D9EF;">List</span>&lt;<span style="color: #66D9EF;">Integer</span>&gt; <span style="color: #F92672; font-style: italic;">rightSideView</span>(<span style="color: #66D9EF;">TreeNode</span> <span style="color: #F92672;">root</span>) {
-        <span style="color: #66D9EF;">HashMap</span>&lt;<span style="color: #66D9EF;">Integer</span>, <span style="color: #66D9EF;">Integer</span>&gt; <span style="color: #F92672;">rightSideViewMap</span> = <span style="color: #66D9EF;">new</span> <span style="color: #66D9EF;">HashMap</span>&lt;<span style="color: #66D9EF;">Integer</span>, <span style="color: #66D9EF;">Integer</span>&gt;();
-        <span style="color: #66D9EF;">int</span> <span style="color: #F92672;">max_depth</span> = -1;
+<pre class="src src-java"><span style="color: #8b2252;">/**</span>
+<span style="color: #8b2252;"> * Definition for a binary tree node.</span>
+<span style="color: #8b2252;"> * public class TreeNode {</span>
+<span style="color: #8b2252;"> *     int val;</span>
+<span style="color: #8b2252;"> *     TreeNode left;</span>
+<span style="color: #8b2252;"> *     TreeNode right;</span>
+<span style="color: #8b2252;"> *     TreeNode(int x) { val = x; }</span>
+<span style="color: #8b2252;"> * }</span>
+<span style="color: #8b2252;"> */</span>
+<span style="color: #a020f0;">class</span> <span style="color: #228b22;">Solution</span> {
+    <span style="color: #a020f0;">public</span> <span style="color: #228b22;">List</span>&lt;<span style="color: #228b22;">Integer</span>&gt; <span style="color: #0000ff;">rightSideView</span>(<span style="color: #228b22;">TreeNode</span> <span style="color: #a0522d;">root</span>) {
+        <span style="color: #228b22;">HashMap</span>&lt;<span style="color: #228b22;">Integer</span>, <span style="color: #228b22;">Integer</span>&gt; <span style="color: #a0522d;">rightSideViewMap</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">HashMap</span>&lt;<span style="color: #228b22;">Integer</span>, <span style="color: #228b22;">Integer</span>&gt;();
+        <span style="color: #228b22;">int</span> <span style="color: #a0522d;">max_depth</span> = -1;
 
-        <span style="color: #66D9EF;">Stack</span>&lt;<span style="color: #66D9EF;">TreeNode</span>&gt; <span style="color: #F92672;">nodeStack</span> = <span style="color: #66D9EF;">new</span> <span style="color: #66D9EF;">Stack</span>&lt;<span style="color: #66D9EF;">TreeNode</span>&gt;();
-        <span style="color: #66D9EF;">Stack</span>&lt;<span style="color: #66D9EF;">Integer</span>&gt; <span style="color: #F92672;">depthStack</span> = <span style="color: #66D9EF;">new</span> <span style="color: #66D9EF;">Stack</span>&lt;<span style="color: #66D9EF;">Integer</span>&gt;();
+        <span style="color: #228b22;">Stack</span>&lt;<span style="color: #228b22;">TreeNode</span>&gt; <span style="color: #a0522d;">nodeStack</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">Stack</span>&lt;<span style="color: #228b22;">TreeNode</span>&gt;();
+        <span style="color: #228b22;">Stack</span>&lt;<span style="color: #228b22;">Integer</span>&gt; <span style="color: #a0522d;">depthStack</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">Stack</span>&lt;<span style="color: #228b22;">Integer</span>&gt;();
 
         nodeStack.push(root);
         depthStack.push(0);
 
-        <span style="color: #66D9EF;">while</span> (<span style="font-weight: bold;">!</span>nodeStack.isEmpty()) {
-            <span style="color: #66D9EF;">TreeNode</span> <span style="color: #F92672;">node</span> = nodeStack.pop();
-            <span style="color: #66D9EF;">int</span> <span style="color: #F92672;">depth</span> = depthStack.pop();
-            <span style="color: #66D9EF;">if</span> (node != <span style="color: #AE81FF;">null</span>) {
+        <span style="color: #a020f0;">while</span> (!nodeStack.isEmpty()) {
+            <span style="color: #228b22;">TreeNode</span> <span style="color: #a0522d;">node</span> = nodeStack.pop();
+            <span style="color: #228b22;">int</span> <span style="color: #a0522d;">depth</span> = depthStack.pop();
+            <span style="color: #a020f0;">if</span> (node != <span style="color: #008b8b;">null</span>) {
                 max_depth = Math.max(max_depth, depth);
-                <span style="color: #66D9EF;">if</span> (<span style="font-weight: bold;">!</span>rightSideViewMap.containsKey(depth)) {
+                <span style="color: #a020f0;">if</span> (!rightSideViewMap.containsKey(depth)) {
                     rightSideViewMap.put(depth, node.val);
                 }
                 nodeStack.push(node.left);
@@ -340,11 +340,11 @@ Explanation:
             }
         }
 
-        <span style="color: #66D9EF;">ArrayList</span>&lt;<span style="color: #66D9EF;">Integer</span>&gt; <span style="color: #F92672;">rightSideViewList</span> = <span style="color: #66D9EF;">new</span> <span style="color: #66D9EF;">ArrayList</span>&lt;<span style="color: #66D9EF;">Integer</span>&gt;();
-        <span style="color: #66D9EF;">for</span> (<span style="color: #66D9EF;">int</span> <span style="color: #F92672;">i</span> = 0; i &lt;= max_depth; i++) {
+        <span style="color: #228b22;">ArrayList</span>&lt;<span style="color: #228b22;">Integer</span>&gt; <span style="color: #a0522d;">rightSideViewList</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">ArrayList</span>&lt;<span style="color: #228b22;">Integer</span>&gt;();
+        <span style="color: #a020f0;">for</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> = 0; i &lt;= max_depth; i++) {
             rightSideViewList.add(rightSideViewMap.get(i));
         }
-        <span style="color: #66D9EF;">return</span> rightSideViewList;
+        <span style="color: #a020f0;">return</span> rightSideViewList;
 
     }
 }
@@ -354,80 +354,80 @@ Explanation:
 </div>
 </div>
 
-<div id="outline-container-org3c4926d" class="outline-3">
-<h3 id="org3c4926d">1.2 python 实现DFS</h3>
-<div class="outline-text-3" id="text-org3c4926d">
+<div id="outline-container-orgecfbd3a" class="outline-3">
+<h3 id="orgecfbd3a">1.2 python 实现DFS</h3>
+<div class="outline-text-3" id="text-orgecfbd3a">
 <pre class="example">
 list作为stack栈使用
 
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-java"><span style="color: #66D9EF;">class</span> <span style="color: #66D9EF;">Solution</span>(<span style="color: #66D9EF;">object</span>):
-    <span style="color: #AE81FF;">@staticmethod</span>
+<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Solution</span>(<span style="color: #228b22;">object</span>):
+    <span style="color: #008b8b;">@staticmethod</span>
     def rightSideView(root):
         rightmost_value_at_depth = dict()  # depth -&gt; node.val
         max_depth = -1
 
         stack = [(root, 0)]
-        <span style="color: #66D9EF;">while</span> stack:
+        <span style="color: #a020f0;">while</span> stack:
             node, depth = stack.pop()
 
-            <span style="color: #66D9EF;">if</span> node is not None:
+            <span style="color: #a020f0;">if</span> node is not None:
                 # maintain knowledge of the number of levels in the tree.
                 max_depth = max(max_depth, depth)
 
-                # only insert into dict <span style="color: #66D9EF;">if</span> depth is not already present.
+                # only insert into dict <span style="color: #a020f0;">if</span> depth is not already present.
                 rightmost_value_at_depth.setdefault(depth, node.val)
 
                 stack.append((node.left, depth + 1))
                 stack.append((node.right, depth + 1))
 
-        <span style="color: #66D9EF;">return</span> [rightmost_value_at_depth[depth] <span style="color: #66D9EF;">for</span> depth in range(max_depth + 1)]
+        <span style="color: #a020f0;">return</span> [rightmost_value_at_depth[depth] <span style="color: #a020f0;">for</span> depth in range(max_depth + 1)]
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgffb38fb" class="outline-2">
-<h2 id="orgffb38fb">二、Breadth-First-Search</h2>
-<div class="outline-text-2" id="text-orgffb38fb">
+<div id="outline-container-org7537298" class="outline-2">
+<h2 id="org7537298">二、Breadth-First-Search</h2>
+<div class="outline-text-2" id="text-org7537298">
 <pre class="example">
 1. 广度优先遍历 根节点--&gt;右节点--&gt;左节点 需要将每层最右端数据第一个录入到队列
 2. 时间复杂度O(n) 空间复杂度 O(n)
 
 </pre>
 </div>
-<div id="outline-container-org7b604bb" class="outline-3">
-<h3 id="org7b604bb">2.1 java</h3>
-<div class="outline-text-3" id="text-org7b604bb">
+<div id="outline-container-org3c8425b" class="outline-3">
+<h3 id="org3c8425b">2.1 java</h3>
+<div class="outline-text-3" id="text-org3c8425b">
 <div class="org-src-container">
-<pre class="src src-java"><span style="color: #E6DB74; font-style: italic;">/**</span>
-<span style="color: #E6DB74; font-style: italic;"> * bfs &#38431;&#21015;&#23454;&#29616;</span>
-<span style="color: #E6DB74; font-style: italic;"> * </span><span style="color: #AE81FF; font-style: italic;">@param</span><span style="color: #E6DB74; font-style: italic;"> root</span>
-<span style="color: #E6DB74; font-style: italic;"> * </span><span style="color: #AE81FF; font-style: italic;">@return</span>
-<span style="color: #E6DB74; font-style: italic;"> */</span>
-<span style="color: #66D9EF;">public</span> <span style="color: #66D9EF;">List</span>&lt;<span style="color: #66D9EF;">Integer</span>&gt; <span style="color: #F92672; font-style: italic;">rightSideView</span>(<span style="color: #66D9EF;">TreeNode</span> <span style="color: #F92672;">root</span>) {
-    <span style="color: #66D9EF;">HashMap</span>&lt;<span style="color: #66D9EF;">Integer</span>, <span style="color: #66D9EF;">Integer</span>&gt; <span style="color: #F92672;">rightSideViewMap</span> = <span style="color: #66D9EF;">new</span> <span style="color: #66D9EF;">HashMap</span>&lt;<span style="color: #66D9EF;">Integer</span>, <span style="color: #66D9EF;">Integer</span>&gt;();
-    <span style="color: #66D9EF;">LinkedList</span>&lt;<span style="color: #66D9EF;">TreeNode</span>&gt; <span style="color: #F92672;">nodeQueue</span> = <span style="color: #66D9EF;">new</span> <span style="color: #66D9EF;">LinkedList</span>&lt;<span style="color: #66D9EF;">TreeNode</span>&gt;();
-    <span style="color: #66D9EF;">LinkedList</span>&lt;<span style="color: #66D9EF;">Integer</span>&gt; <span style="color: #F92672;">depthQueue</span> = <span style="color: #66D9EF;">new</span> <span style="color: #66D9EF;">LinkedList</span>&lt;<span style="color: #66D9EF;">Integer</span>&gt;();
+<pre class="src src-java"><span style="color: #8b2252;">/**</span>
+<span style="color: #8b2252;"> * bfs &#38431;&#21015;&#23454;&#29616;</span>
+<span style="color: #8b2252;"> * </span><span style="color: #008b8b;">@param</span><span style="color: #8b2252;"> root</span>
+<span style="color: #8b2252;"> * </span><span style="color: #008b8b;">@return</span>
+<span style="color: #8b2252;"> */</span>
+<span style="color: #a020f0;">public</span> <span style="color: #228b22;">List</span>&lt;<span style="color: #228b22;">Integer</span>&gt; <span style="color: #0000ff;">rightSideView</span>(<span style="color: #228b22;">TreeNode</span> <span style="color: #a0522d;">root</span>) {
+    <span style="color: #228b22;">HashMap</span>&lt;<span style="color: #228b22;">Integer</span>, <span style="color: #228b22;">Integer</span>&gt; <span style="color: #a0522d;">rightSideViewMap</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">HashMap</span>&lt;<span style="color: #228b22;">Integer</span>, <span style="color: #228b22;">Integer</span>&gt;();
+    <span style="color: #228b22;">LinkedList</span>&lt;<span style="color: #228b22;">TreeNode</span>&gt; <span style="color: #a0522d;">nodeQueue</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">LinkedList</span>&lt;<span style="color: #228b22;">TreeNode</span>&gt;();
+    <span style="color: #228b22;">LinkedList</span>&lt;<span style="color: #228b22;">Integer</span>&gt; <span style="color: #a0522d;">depthQueue</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">LinkedList</span>&lt;<span style="color: #228b22;">Integer</span>&gt;();
     nodeQueue.offer(root);
     depthQueue.offer(0);
-    <span style="color: #66D9EF;">int</span> <span style="color: #F92672;">max_depth</span> = -1;
+    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">max_depth</span> = -1;
 
-    <span style="color: #465457; font-style: italic;">//</span><span style="color: #465457; font-style: italic;">Queue&#20351;&#29992;&#26102;&#35201;&#23613;&#37327;&#36991;&#20813;Collection&#30340;add()&#21644;remove()&#26041;&#27861;&#65292;&#32780;&#26159;&#35201;&#20351;&#29992;offer()&#26469;&#21152;&#20837;&#20803;&#32032;&#65292;&#20351;&#29992;poll()&#26469;&#33719;&#21462;&#24182;&#31227;&#20986;&#20803;&#32032;&#12290;</span>
-    <span style="color: #465457; font-style: italic;">// </span><span style="color: #465457; font-style: italic;">&#23427;&#20204;&#30340;&#20248;&#28857;&#26159;&#36890;&#36807;&#36820;&#22238;&#20540;&#21487;&#20197;&#21028;&#26029;&#25104;&#21151;&#19982;&#21542;&#65292;add()&#21644;remove()&#26041;&#27861;&#22312;&#22833;&#36133;&#30340;&#26102;&#20505;&#20250;&#25243;&#20986;&#24322;&#24120;&#12290;</span>
-    <span style="color: #465457; font-style: italic;">// </span><span style="color: #465457; font-style: italic;">&#22914;&#26524;&#35201;&#20351;&#29992;&#21069;&#31471;&#32780;&#19981;&#31227;&#20986;&#35813;&#20803;&#32032;&#65292;&#20351;&#29992;element()&#25110;&#32773;peek()&#26041;&#27861;&#12290;</span>
-    <span style="color: #66D9EF;">while</span> (<span style="font-weight: bold;">!</span>nodeQueue.isEmpty()) {
-        <span style="color: #66D9EF;">TreeNode</span> <span style="color: #F92672;">node</span> = nodeQueue.poll();
-        <span style="color: #66D9EF;">Integer</span> <span style="color: #F92672;">depth</span> = depthQueue.poll();
-        <span style="color: #66D9EF;">if</span> (node != <span style="color: #AE81FF;">null</span>) {
+    <span style="color: #b22222;">//</span><span style="color: #b22222;">Queue&#20351;&#29992;&#26102;&#35201;&#23613;&#37327;&#36991;&#20813;Collection&#30340;add()&#21644;remove()&#26041;&#27861;&#65292;&#32780;&#26159;&#35201;&#20351;&#29992;offer()&#26469;&#21152;&#20837;&#20803;&#32032;&#65292;&#20351;&#29992;poll()&#26469;&#33719;&#21462;&#24182;&#31227;&#20986;&#20803;&#32032;&#12290;</span>
+    <span style="color: #b22222;">// </span><span style="color: #b22222;">&#23427;&#20204;&#30340;&#20248;&#28857;&#26159;&#36890;&#36807;&#36820;&#22238;&#20540;&#21487;&#20197;&#21028;&#26029;&#25104;&#21151;&#19982;&#21542;&#65292;add()&#21644;remove()&#26041;&#27861;&#22312;&#22833;&#36133;&#30340;&#26102;&#20505;&#20250;&#25243;&#20986;&#24322;&#24120;&#12290;</span>
+    <span style="color: #b22222;">// </span><span style="color: #b22222;">&#22914;&#26524;&#35201;&#20351;&#29992;&#21069;&#31471;&#32780;&#19981;&#31227;&#20986;&#35813;&#20803;&#32032;&#65292;&#20351;&#29992;element()&#25110;&#32773;peek()&#26041;&#27861;&#12290;</span>
+    <span style="color: #a020f0;">while</span> (!nodeQueue.isEmpty()) {
+        <span style="color: #228b22;">TreeNode</span> <span style="color: #a0522d;">node</span> = nodeQueue.poll();
+        <span style="color: #228b22;">Integer</span> <span style="color: #a0522d;">depth</span> = depthQueue.poll();
+        <span style="color: #a020f0;">if</span> (node != <span style="color: #008b8b;">null</span>) {
             max_depth = Math.max(max_depth, depth);
-            <span style="color: #66D9EF;">if</span> (<span style="font-weight: bold;">!</span>rightSideViewMap.containsKey(depth)) {
+            <span style="color: #a020f0;">if</span> (!rightSideViewMap.containsKey(depth)) {
                 rightSideViewMap.put(depth, node.val);
             }
-            <span style="color: #465457; font-style: italic;">// </span><span style="color: #465457; font-style: italic;">&#38431;&#21015;&#20808;&#36827;&#20808;&#20986;&#65292;&#38656;&#35201;&#32447;&#25226;right&#33410;&#28857;&#25918;&#20837;</span>
+            <span style="color: #b22222;">// </span><span style="color: #b22222;">&#38431;&#21015;&#20808;&#36827;&#20808;&#20986;&#65292;&#38656;&#35201;&#32447;&#25226;right&#33410;&#28857;&#25918;&#20837;</span>
             nodeQueue.offer(node.right);
             depthQueue.offer(depth + 1);
             nodeQueue.offer(node.left);
@@ -435,11 +435,11 @@ list作为stack栈使用
         }
     }
 
-    <span style="color: #66D9EF;">ArrayList</span>&lt;<span style="color: #66D9EF;">Integer</span>&gt; <span style="color: #F92672;">rightSideViewList</span> = <span style="color: #66D9EF;">new</span> <span style="color: #66D9EF;">ArrayList</span>&lt;<span style="color: #66D9EF;">Integer</span>&gt;();
-    <span style="color: #66D9EF;">for</span> (<span style="color: #66D9EF;">int</span> <span style="color: #F92672;">i</span> = 0; i &lt;= max_depth; i++) {
+    <span style="color: #228b22;">ArrayList</span>&lt;<span style="color: #228b22;">Integer</span>&gt; <span style="color: #a0522d;">rightSideViewList</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">ArrayList</span>&lt;<span style="color: #228b22;">Integer</span>&gt;();
+    <span style="color: #a020f0;">for</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> = 0; i &lt;= max_depth; i++) {
         rightSideViewList.add(rightSideViewMap.get(i));
     }
-    <span style="color: #66D9EF;">return</span> rightSideViewList;
+    <span style="color: #a020f0;">return</span> rightSideViewList;
 }
 </pre>
 </div>
@@ -447,30 +447,30 @@ list作为stack栈使用
 </div>
 </div>
 
-<div id="outline-container-orgf850916" class="outline-2">
-<h2 id="orgf850916">三、Traversal</h2>
-<div class="outline-text-2" id="text-orgf850916">
+<div id="outline-container-orgfdc89b9" class="outline-2">
+<h2 id="orgfdc89b9">三、Traversal</h2>
+<div class="outline-text-2" id="text-orgfdc89b9">
 </div>
-<div id="outline-container-org14890b7" class="outline-3">
-<h3 id="org14890b7">3.1 java</h3>
-<div class="outline-text-3" id="text-org14890b7">
+<div id="outline-container-orgd644aad" class="outline-3">
+<h3 id="orgd644aad">3.1 java</h3>
+<div class="outline-text-3" id="text-orgd644aad">
 <div class="org-src-container">
 <pre class="src src-java">
-<span style="color: #E6DB74; font-style: italic;">/**</span>
-<span style="color: #E6DB74; font-style: italic;"> * &#36882;&#24402;&#23454;&#29616;  &#20445;&#35777;&#27599;&#23618;&#26368;&#21491;&#33410;&#28857;&#31532;&#19968;&#20010;&#34987;&#22788;&#29702;</span>
-<span style="color: #E6DB74; font-style: italic;"> *</span>
-<span style="color: #E6DB74; font-style: italic;"> * </span><span style="color: #AE81FF; font-style: italic;">@param</span><span style="color: #E6DB74; font-style: italic;"> root</span>
-<span style="color: #E6DB74; font-style: italic;"> * </span><span style="color: #AE81FF; font-style: italic;">@return</span>
-<span style="color: #E6DB74; font-style: italic;"> */</span>
-<span style="color: #66D9EF;">public</span> <span style="color: #66D9EF;">List</span>&lt;<span style="color: #66D9EF;">Integer</span>&gt; <span style="color: #F92672; font-style: italic;">rightSideView</span>(<span style="color: #66D9EF;">TreeNode</span> <span style="color: #F92672;">root</span>) {
-    <span style="color: #66D9EF;">ArrayList</span>&lt;<span style="color: #66D9EF;">Integer</span>&gt; <span style="color: #F92672;">rightSideViewList</span> = <span style="color: #66D9EF;">new</span> <span style="color: #66D9EF;">ArrayList</span>&lt;<span style="color: #66D9EF;">Integer</span>&gt;();
+<span style="color: #8b2252;">/**</span>
+<span style="color: #8b2252;"> * &#36882;&#24402;&#23454;&#29616;  &#20445;&#35777;&#27599;&#23618;&#26368;&#21491;&#33410;&#28857;&#31532;&#19968;&#20010;&#34987;&#22788;&#29702;</span>
+<span style="color: #8b2252;"> *</span>
+<span style="color: #8b2252;"> * </span><span style="color: #008b8b;">@param</span><span style="color: #8b2252;"> root</span>
+<span style="color: #8b2252;"> * </span><span style="color: #008b8b;">@return</span>
+<span style="color: #8b2252;"> */</span>
+<span style="color: #a020f0;">public</span> <span style="color: #228b22;">List</span>&lt;<span style="color: #228b22;">Integer</span>&gt; <span style="color: #0000ff;">rightSideView</span>(<span style="color: #228b22;">TreeNode</span> <span style="color: #a0522d;">root</span>) {
+    <span style="color: #228b22;">ArrayList</span>&lt;<span style="color: #228b22;">Integer</span>&gt; <span style="color: #a0522d;">rightSideViewList</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">ArrayList</span>&lt;<span style="color: #228b22;">Integer</span>&gt;();
     bfs(root, rightSideViewList, 0);
-    <span style="color: #66D9EF;">return</span> rightSideViewList;
+    <span style="color: #a020f0;">return</span> rightSideViewList;
 }
 
-<span style="color: #66D9EF;">private</span> <span style="color: #66D9EF;">void</span> <span style="color: #F92672; font-style: italic;">bfs</span>(<span style="color: #66D9EF;">TreeNode</span> <span style="color: #F92672;">root</span>, <span style="color: #66D9EF;">List</span>&lt;<span style="color: #66D9EF;">Integer</span>&gt; <span style="color: #F92672;">rightSideViewList</span>, <span style="color: #66D9EF;">int</span> <span style="color: #F92672;">depth</span>) {
-    <span style="color: #66D9EF;">if</span> (root == <span style="color: #AE81FF;">null</span>) <span style="color: #66D9EF;">return</span>;
-    <span style="color: #66D9EF;">if</span> (depth == rightSideViewList.size()) {
+<span style="color: #a020f0;">private</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">bfs</span>(<span style="color: #228b22;">TreeNode</span> <span style="color: #a0522d;">root</span>, <span style="color: #228b22;">List</span>&lt;<span style="color: #228b22;">Integer</span>&gt; <span style="color: #a0522d;">rightSideViewList</span>, <span style="color: #228b22;">int</span> <span style="color: #a0522d;">depth</span>) {
+    <span style="color: #a020f0;">if</span> (root == <span style="color: #008b8b;">null</span>) <span style="color: #a020f0;">return</span>;
+    <span style="color: #a020f0;">if</span> (depth == rightSideViewList.size()) {
         rightSideViewList.add(root.val);
     }
     bfs(root.right, rightSideViewList, depth + 1);

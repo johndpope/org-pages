@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-12-06 Thu 13:52 -->
+<!-- 2018-12-21 Fri 00:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>31.Next-Permutation</title>
@@ -237,8 +237,8 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgc021fdc">题意分析</a></li>
-<li><a href="#org90a42fb">java</a></li>
+<li><a href="#org17b97c1">题意分析</a></li>
+<li><a href="#org27e4cb8">java</a></li>
 </ul>
 </div>
 </div>
@@ -278,9 +278,9 @@ are in the right-hand column.
 </pre>
 
 
-<div id="outline-container-orgc021fdc" class="outline-2">
-<h2 id="orgc021fdc">题意分析</h2>
-<div class="outline-text-2" id="text-orgc021fdc">
+<div id="outline-container-org17b97c1" class="outline-2">
+<h2 id="org17b97c1">题意分析</h2>
+<div class="outline-text-2" id="text-org17b97c1">
 <p>
 给出一个数列，全排列中，求下一个较大序列
 </p>
@@ -315,53 +315,53 @@ are in the right-hand column.
 </div>
 
 
-<div id="outline-container-org90a42fb" class="outline-2">
-<h2 id="org90a42fb">java</h2>
-<div class="outline-text-2" id="text-org90a42fb">
+<div id="outline-container-org27e4cb8" class="outline-2">
+<h2 id="org27e4cb8">java</h2>
+<div class="outline-text-2" id="text-org27e4cb8">
 <div class="org-src-container">
-<pre class="src src-java"><span style="color: #66D9EF;">class</span> <span style="color: #66D9EF;">Solution</span> {
-    <span style="color: #66D9EF;">public</span> <span style="color: #66D9EF;">void</span> <span style="color: #F92672; font-style: italic;">nextPermutation</span>(<span style="color: #66D9EF;">int</span>[] <span style="color: #F92672;">nums</span>) {
-        <span style="color: #66D9EF;">int</span> <span style="color: #F92672;">index</span> = nums.length - 1;
-        <span style="color: #66D9EF;">boolean</span> <span style="color: #F92672;">change</span> = <span style="color: #AE81FF;">false</span>;
-        <span style="color: #465457; font-style: italic;">//</span><span style="color: #465457; font-style: italic;">&#21028;&#26029;&#26159;&#21542;&#26159;&#26368;&#22823;&#24207;&#21015;</span>
-        <span style="color: #66D9EF;">while</span> (index &gt; 0 &amp;&amp; <span style="font-weight: bold;">!</span>change) {
-            <span style="color: #66D9EF;">if</span> (nums[index] &gt; nums[index - 1]) {
-                change = <span style="color: #AE81FF;">true</span>;
-                <span style="color: #66D9EF;">break</span>;
+<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Solution</span> {
+    <span style="color: #a020f0;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">nextPermutation</span>(<span style="color: #228b22;">int</span>[] <span style="color: #a0522d;">nums</span>) {
+        <span style="color: #228b22;">int</span> <span style="color: #a0522d;">index</span> = nums.length - 1;
+        <span style="color: #228b22;">boolean</span> <span style="color: #a0522d;">change</span> = <span style="color: #008b8b;">false</span>;
+        <span style="color: #b22222;">//</span><span style="color: #b22222;">&#21028;&#26029;&#26159;&#21542;&#26159;&#26368;&#22823;&#24207;&#21015;</span>
+        <span style="color: #a020f0;">while</span> (index &gt; 0 &amp;&amp; !change) {
+            <span style="color: #a020f0;">if</span> (nums[index] &gt; nums[index - 1]) {
+                change = <span style="color: #008b8b;">true</span>;
+                <span style="color: #a020f0;">break</span>;
             }
             index--;
         }
-        <span style="color: #66D9EF;">if</span> (change) {
-            <span style="color: #66D9EF;">int</span> <span style="color: #F92672;">bigger_index</span> = findBigger(nums, index);
+        <span style="color: #a020f0;">if</span> (change) {
+            <span style="color: #228b22;">int</span> <span style="color: #a0522d;">bigger_index</span> = findBigger(nums, index);
             swap(nums, index-1, bigger_index);
         }
         reverseArray(nums, index, nums.length - 1);
     }
 
-    <span style="color: #66D9EF;">private</span> <span style="color: #66D9EF;">void</span> <span style="color: #F92672; font-style: italic;">reverseArray</span>(<span style="color: #66D9EF;">int</span>[] <span style="color: #F92672;">nums</span>, <span style="color: #66D9EF;">int</span> <span style="color: #F92672;">start</span>, <span style="color: #66D9EF;">int</span> <span style="color: #F92672;">end</span>) {
-        <span style="color: #66D9EF;">while</span>(start &lt; <span style="color: #66D9EF;">end</span>) {
+    <span style="color: #a020f0;">private</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">reverseArray</span>(<span style="color: #228b22;">int</span>[] <span style="color: #a0522d;">nums</span>, <span style="color: #228b22;">int</span> <span style="color: #a0522d;">start</span>, <span style="color: #228b22;">int</span> <span style="color: #a0522d;">end</span>) {
+        <span style="color: #a020f0;">while</span>(start &lt; <span style="color: #228b22;">end</span>) {
             swap(nums,start, end);
             start++;
             end--;
         }
     }
 
-    <span style="color: #66D9EF;">private</span> <span style="color: #66D9EF;">void</span> <span style="color: #F92672; font-style: italic;">swap</span>(<span style="color: #66D9EF;">int</span>[] <span style="color: #F92672;">nums</span>, <span style="color: #66D9EF;">int</span> <span style="color: #F92672;">start</span>, <span style="color: #66D9EF;">int</span> <span style="color: #F92672;">end</span>) {
-        <span style="color: #66D9EF;">int</span> <span style="color: #F92672;">t</span> = nums[start];
+    <span style="color: #a020f0;">private</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">swap</span>(<span style="color: #228b22;">int</span>[] <span style="color: #a0522d;">nums</span>, <span style="color: #228b22;">int</span> <span style="color: #a0522d;">start</span>, <span style="color: #228b22;">int</span> <span style="color: #a0522d;">end</span>) {
+        <span style="color: #228b22;">int</span> <span style="color: #a0522d;">t</span> = nums[start];
         nums[start] = nums[end];
         nums[end] = t;
     }
 
-    <span style="color: #66D9EF;">private</span> <span style="color: #66D9EF;">int</span> <span style="color: #F92672; font-style: italic;">findBigger</span>(<span style="color: #66D9EF;">int</span>[] <span style="color: #F92672;">nums</span>, <span style="color: #66D9EF;">int</span> <span style="color: #F92672;">index</span>) {
-        <span style="color: #66D9EF;">int</span> <span style="color: #F92672;">t</span> = nums[index-1];
-        <span style="color: #66D9EF;">while</span> (index &lt; nums.<span style="color: #66D9EF;">length</span>-1) {
-            <span style="color: #66D9EF;">if</span> (t &gt;= nums[index+1]) {
+    <span style="color: #a020f0;">private</span> <span style="color: #228b22;">int</span> <span style="color: #0000ff;">findBigger</span>(<span style="color: #228b22;">int</span>[] <span style="color: #a0522d;">nums</span>, <span style="color: #228b22;">int</span> <span style="color: #a0522d;">index</span>) {
+        <span style="color: #228b22;">int</span> <span style="color: #a0522d;">t</span> = nums[index-1];
+        <span style="color: #a020f0;">while</span> (index &lt; nums.<span style="color: #228b22;">length</span>-1) {
+            <span style="color: #a020f0;">if</span> (t &gt;= nums[index+1]) {
 
-                <span style="color: #66D9EF;">return</span> index;
+                <span style="color: #a020f0;">return</span> index;
             }
             index++;
         }
-        <span style="color: #66D9EF;">return</span> index;
+        <span style="color: #a020f0;">return</span> index;
     }
 }
 

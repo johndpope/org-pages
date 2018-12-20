@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-12-06 Thu 13:51 -->
+<!-- 2018-12-21 Fri 00:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>一些常用快捷键与系统命令</title>
@@ -237,21 +237,22 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org8b3ef1a">commands</a></li>
-<li><a href="#org2c98d96">shortcuts</a></li>
+<li><a href="#orga689f12">commands</a></li>
+<li><a href="#org63dd647">shortcuts</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org8b3ef1a" class="outline-2">
-<h2 id="org8b3ef1a">commands</h2>
-<div class="outline-text-2" id="text-org8b3ef1a">
+<div id="outline-container-orga689f12" class="outline-2">
+<h2 id="orga689f12">commands</h2>
+<div class="outline-text-2" id="text-orga689f12">
 <ol class="org-ol">
 <li><p>
 查找文件比较大的
 </p>
 <div class="org-src-container">
 <pre class="src src-bash">find ~ -type f -exec du {} + &gt; /tmp/size_report.txt
+
 sort -rn /tmp/size_report.txt | head -n20
 </pre>
 </div></li>
@@ -267,14 +268,25 @@ grep -r "y_T" /home/manue1/work/
 </p>
 <pre class="example">
 iftop -n
+
 nload  
+</pre></li>
+<li><p>
+which process is listening upon a port
+</p>
+<pre class="example">
+netstat -anp | grep port 
+
+lsof -i :prot
+
+lsof -p $(pidof pika)
 </pre></li>
 </ol>
 </div>
 </div>
-<div id="outline-container-org2c98d96" class="outline-2">
-<h2 id="org2c98d96">shortcuts</h2>
-<div class="outline-text-2" id="text-org2c98d96">
+<div id="outline-container-org63dd647" class="outline-2">
+<h2 id="org63dd647">shortcuts</h2>
+<div class="outline-text-2" id="text-org63dd647">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 1:</span> shortcuts</caption>
 
@@ -513,12 +525,12 @@ nload
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left">"{register}p</td>
+<td class="org-left">&ldquo;{register}p</td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left">"{register}y</td>
+<td class="org-left">&ldquo;{register}y</td>
 </tr>
 </tbody>
 </table>

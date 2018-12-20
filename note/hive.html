@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-12-06 Thu 13:52 -->
+<!-- 2018-12-21 Fri 00:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>hive 功能特性</title>
@@ -237,15 +237,15 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org97afdde">hive 基础</a></li>
-<li><a href="#org9ba62bd">hive client 使用</a>
+<li><a href="#org6faf1b8">hive 基础</a></li>
+<li><a href="#orga667142">hive client 使用</a>
 <ul>
-<li><a href="#org24c444f">清洗数据</a></li>
-<li><a href="#orge1567a1">建表导入数据</a></li>
-<li><a href="#org4f96866">python UDF实现</a></li>
+<li><a href="#org7e611ea">清洗数据</a></li>
+<li><a href="#orgf6a215d">建表导入数据</a></li>
+<li><a href="#org05e61b1">python UDF实现</a></li>
 </ul>
 </li>
-<li><a href="#org9e4dbff">hive server使用</a></li>
+<li><a href="#org023294f">hive server使用</a></li>
 </ul>
 </div>
 </div>
@@ -256,9 +256,9 @@ Hive是基于Hadoop分布式文件系统的，它的数据存储在Hadoop分布�
 在的目录中
 </p>
 
-<div id="outline-container-org97afdde" class="outline-2">
-<h2 id="org97afdde">hive 基础</h2>
-<div class="outline-text-2" id="text-org97afdde">
+<div id="outline-container-org6faf1b8" class="outline-2">
+<h2 id="org6faf1b8">hive 基础</h2>
+<div class="outline-text-2" id="text-org6faf1b8">
 <ul class="org-ul">
 <li><p>
 <b>Hive思维导图</b>
@@ -588,18 +588,18 @@ Parquet是一种支持嵌套结构的存储格式，并且使用了列式存储�
 </div>
 </div>
 
-<div id="outline-container-org9ba62bd" class="outline-2">
-<h2 id="org9ba62bd">hive client 使用</h2>
-<div class="outline-text-2" id="text-org9ba62bd">
+<div id="outline-container-orga667142" class="outline-2">
+<h2 id="orga667142">hive client 使用</h2>
+<div class="outline-text-2" id="text-orga667142">
 <p>
 测试集群16G内存，三个节点,选<a href="http://netsg.cs.sfu.ca/youtubedata/">YouTube视频统计与社交网络</a>作为数据集
 </p>
 </div>
 
 
-<div id="outline-container-org24c444f" class="outline-3">
-<h3 id="org24c444f">清洗数据</h3>
-<div class="outline-text-3" id="text-org24c444f">
+<div id="outline-container-org7e611ea" class="outline-3">
+<h3 id="org7e611ea">清洗数据</h3>
+<div class="outline-text-3" id="text-org7e611ea">
 <p>
 数据字段都是以 <code>\t</code> 分割，一个字段内有多个值的统一 <code>&amp;</code> 分割 
 </p>
@@ -742,9 +742,9 @@ Parquet是一种支持嵌套结构的存储格式，并且使用了列式存储�
 </table>
 </div>
 </div>
-<div id="outline-container-orge1567a1" class="outline-3">
-<h3 id="orge1567a1">建表导入数据</h3>
-<div class="outline-text-3" id="text-orge1567a1">
+<div id="outline-container-orgf6a215d" class="outline-3">
+<h3 id="orgf6a215d">建表导入数据</h3>
+<div class="outline-text-3" id="text-orgf6a215d">
 <p>
 首先测试数据文件上传hdfs <code>/hadoop_data/</code> 下
 </p>
@@ -792,7 +792,7 @@ stored as textfile;
 </pre>
 
 <p>
-load data inpath "/hadoop_data/clean.txt" into table i_text;
+load data inpath &ldquo;/hadoop_data/clean.txt&rdquo; into table i_text;
 </p>
 
 <p>
@@ -831,11 +831,11 @@ stored as textfile;
 </p>
 
 <p>
-load data local inpath "/home/manue1/clean.txt" into table o_text
+load data local inpath &ldquo;/home/manue1/clean.txt&rdquo; into table o_text
 </p>
 
 <p>
-load data inpath "/hadoop_data/clean.txt" into table o_text
+load data inpath &ldquo;/hadoop_data/clean.txt&rdquo; into table o_text
 </p>
 
 <p>
@@ -899,7 +899,7 @@ stored as textfile;
 </pre>
 
 <p>
-load data inpath "/hadoop_data/user.txt" into table user_text;
+load data inpath &ldquo;/hadoop_data/user.txt&rdquo; into table user_text;
 </p></li>
 
 <li><p>
@@ -920,9 +920,9 @@ insert into table user_orc select * from user_text;
 </div>
 </div>
 
-<div id="outline-container-org4f96866" class="outline-3">
-<h3 id="org4f96866">python UDF实现</h3>
-<div class="outline-text-3" id="text-org4f96866">
+<div id="outline-container-org05e61b1" class="outline-3">
+<h3 id="org05e61b1">python UDF实现</h3>
+<div class="outline-text-3" id="text-org05e61b1">
 <p>
 在内置函数无法满足当前业务需求的时候,Hive允许用户自定义一些函数，用于扩展 HiveQL 的功能，这类函数叫做 UDF（用户自定义函数）
 </p>
@@ -964,9 +964,9 @@ group by user_id, food_type;
 </div>
 </div>
 
-<div id="outline-container-org9e4dbff" class="outline-2">
-<h2 id="org9e4dbff">hive server使用</h2>
-<div class="outline-text-2" id="text-org9e4dbff">
+<div id="outline-container-org023294f" class="outline-2">
+<h2 id="org023294f">hive server使用</h2>
+<div class="outline-text-2" id="text-org023294f">
 <p>
 python的pyhive模块 通过thrift方式连接hive,实现查询和取回结果的操作
 </p>
