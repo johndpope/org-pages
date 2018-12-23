@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-12-21 Fri 00:12 -->
+<!-- 2018-12-24 Mon 00:51 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>emacs note</title>
@@ -253,6 +253,7 @@ for the JavaScript code in this tag.
 <li><a href="#org8e1875e">code</a></li>
 </ul>
 </li>
+<li><a href="#orge58422c">use emacs</a></li>
 </ul>
 </li>
 </ul>
@@ -403,7 +404,7 @@ M-x ielm  : ELISP&gt;
 </p>
 
 <p>
-(require &rsquo;cl) : the library to make elisp run Common lisp command 
+(require 'cl) : the library to make elisp run Common lisp command 
 </p>
 </div>
 
@@ -457,7 +458,7 @@ the command sets a variable to a value : the variable is objects and the value i
 <h5 id="org7f709ed">Looking around in our game world</h5>
 <div class="outline-text-5" id="text-org7f709ed">
 <p>
-The word defun means, as you might expect, that we&rsquo;re defining a function
+The word defun means, as you might expect, that we're defining a function
 </p>
 <pre class="example">
 (defun describe-location (location map)
@@ -521,6 +522,149 @@ Then the command second trims out the second item in that list, which is the des
 </pre>
 </div>
 </div>
+</div>
+</div>
+
+<div id="outline-container-orge58422c" class="outline-3">
+<h3 id="orge58422c">use emacs</h3>
+<div class="outline-text-3" id="text-orge58422c">
+<ol class="org-ol">
+<li><p>
+<code>counsel-git</code>  
+</p>
+
+<p>
+查找当前文件所在的版本控制系统内的其他文件 <code>, g f</code>
+</p></li>
+<li><p>
+init-evil.el 
+</p>
+
+<p>
+定义一些快捷键
+</p></li>
+<li><p>
+major mode / minor mode
+</p>
+
+<p>
+major mode : 语法高亮 主要基本功能a 
+</p>
+
+<p>
+text-mode special-mode prog-mode(js2-mode所有编程语言继承这种mode)
+</p>
+
+<p>
+命名: xxx-mode-key-map , xxx-mode-hook
+</p>
+
+<p>
+minor mode : 增强性功能
+</p></li>
+<li><p>
+load-file / load / require /provide /autoload
+</p>
+
+<p>
+require : If feature FEATURE is not loaded, load it from FILENAME. (c-h f)
+内部调用load
+</p>
+
+<p>
+load : load elc file(byte-compile-file) 修改el配置 load再次加载是没有没更新
+依赖load-file
+</p>
+
+<p>
+load-file 明确加载el/elc文件
+</p>
+
+<p>
+provide -&gt; 执行一次load-file后,更新feature
+</p>
+
+<p>
+autoload : (autoload 'test "init-test") 当调用test函数时候，才会执行加载init-test文件
+<code>;;;####autoload</code>
+</p></li>
+<li><p>
+dird mode (c-x d)
+</p>
+
+<p class="verse">
+<br />
+&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;+ : create a directory<br />
+&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;c-x c-f : new file<br />
+&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;g: to reflush buffer<br />
+&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;C: copy file<br />
+&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;D: delete file<br />
+&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;R: rename file<br />
+</p></li>
+<li><p>
+org-mode auto create emacs conf
+</p>
+
+<ul class="org-ul">
+<li>init.el</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-lisp"><span style="color: #707183;">(</span>package-initialize<span style="color: #707183;">)</span>
+<span style="color: #707183;">(</span><span style="color: #a020f0;">require</span> '<span style="color: #008b8b;">org-install</span><span style="color: #707183;">)</span>
+<span style="color: #707183;">(</span><span style="color: #a020f0;">require</span> '<span style="color: #008b8b;">ob-tangle</span><span style="color: #707183;">)</span>
+<span style="color: #707183;">(</span>org-bable-load-file <span style="color: #7388d6;">(</span>expand-file-name <span style="color: #8b2252;">"manue1.org"</span> user-emacs-dictionary<span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<p>
+auto create manue1.el config
+</p></li>
+<li><p>
+counsel-git-grep 
+</p>
+
+<p>
+<code>,gg</code>  通过关键字搜索版本内代码
+</p></li>
+<li><p>
+web mode
+</p>
+
+<p>
+<code>M-;</code> 注释
+</p>
+
+<p>
+支持js css html 语法高亮补全
+</p></li>
+<li><p>
+js2-refactor
+</p>
+
+<p>
+c-c c-m
+</p></li>
+<li><p>
+occur 
+</p>
+
+<p>
+<code>M-s o</code> 快速跳转到当前页面定义的字符串
+</p>
+
+<p>
+M-x customize-group popwin
+</p>
+
+<p>
+右边显示
+</p>
+
+<p>
+occur-edit  可以直接修改
+</p></li>
+<li></li>
+</ol>
 </div>
 </div>
 </div>
