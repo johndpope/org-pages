@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-12-24 Mon 00:51 -->
+<!-- 2018-12-25 Tue 11:17 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>emacs note</title>
@@ -480,16 +480,16 @@ Then the command second trims out the second item in that list, which is the des
 <div class="outline-text-4" id="text-org8e1875e">
 <div class="org-src-container">
 <pre class="src src-elisp">
-(<span style="color: #a020f0;">setq</span> objects '(whiskey-bottle bucket frog chain))
+(<span style="color: #2c53ca; font-weight: bold;">setq</span> objects '(whiskey-bottle bucket frog chain))
 
-(<span style="color: #a020f0;">setq</span> object-locations '((whiskey-bottle living-room)
+(<span style="color: #2c53ca; font-weight: bold;">setq</span> object-locations '((whiskey-bottle living-room)
                            (bucket living-room)
                            (chain garden)
                            (frog garden)))
 
-(<span style="color: #a020f0;">setq</span> location 'living-room)
+(<span style="color: #2c53ca; font-weight: bold;">setq</span> location 'living-room)
 
-(<span style="color: #a020f0;">setq</span> map '((living-room (you are in the living room
+(<span style="color: #2c53ca; font-weight: bold;">setq</span> map '((living-room (you are in the living room
                 of a wizards house - there is a wizard
                 snoring loudly on the couch -)
                 (west door garden)
@@ -502,21 +502,21 @@ Then the command second trims out the second item in that list, which is the des
                 welding torch in the corner -)
                 (downstairs stairway living-room))))
 
-(<span style="color: #a020f0;">defun</span> <span style="color: #0000ff;">describe-location</span> (location map)
+(<span style="color: #2c53ca; font-weight: bold;">defun</span> <span style="color: #2020cc;">describe-location</span> (location map)
     (second (assoc location map)))
 
 
 (describe-location 'living-room map)
 
-(message <span style="color: #8b2252;">"hello world"</span>)
+(message <span style="color: #b22222;">"hello world"</span>)
 
-(<span style="color: #a020f0;">defun</span> <span style="color: #0000ff;">hello-world</span> (name)
- <span style="color: #8b2252;">"say hello to user whose name is XX"</span>
-   (message <span style="color: #8b2252;">"hello , %s"</span> name))
+(<span style="color: #2c53ca; font-weight: bold;">defun</span> <span style="color: #2020cc;">hello-world</span> (name)
+ <span style="color: #505050; font-style: italic;">"say hello to user whose name is XX"</span>
+   (message <span style="color: #b22222;">"hello , %s"</span> name))
 
-(hello-world <span style="color: #8b2252;">"manue1"</span>)
+(hello-world <span style="color: #b22222;">"manue1"</span>)
 
-(<span style="color: #a020f0;">setq</span> foo <span style="color: #8b2252;">"i'm manue1"</span>)
+(<span style="color: #2c53ca; font-weight: bold;">setq</span> foo <span style="color: #b22222;">"i'm manue1"</span>)
 (message foo)
 
 </pre>
@@ -600,6 +600,8 @@ dird mode (c-x d)
 &#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;C: copy file<br />
 &#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;D: delete file<br />
 &#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;R: rename file<br />
+&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;Shift + 6 : 切换上级目录<br />
+&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;c-x c-j: 快速打开当前文件目录<br />
 </p></li>
 <li><p>
 org-mode auto create emacs conf
@@ -609,10 +611,10 @@ org-mode auto create emacs conf
 <li>init.el</li>
 </ul>
 <div class="org-src-container">
-<pre class="src src-lisp"><span style="color: #707183;">(</span>package-initialize<span style="color: #707183;">)</span>
-<span style="color: #707183;">(</span><span style="color: #a020f0;">require</span> '<span style="color: #008b8b;">org-install</span><span style="color: #707183;">)</span>
-<span style="color: #707183;">(</span><span style="color: #a020f0;">require</span> '<span style="color: #008b8b;">ob-tangle</span><span style="color: #707183;">)</span>
-<span style="color: #707183;">(</span>org-bable-load-file <span style="color: #7388d6;">(</span>expand-file-name <span style="color: #8b2252;">"manue1.org"</span> user-emacs-dictionary<span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
+<pre class="src src-lisp"><span style="color: #262626;">(</span>package-initialize<span style="color: #262626;">)</span>
+<span style="color: #262626;">(</span><span style="color: #2c53ca; font-weight: bold;">require</span> '<span style="color: #0d7b72;">org-install</span><span style="color: #262626;">)</span>
+<span style="color: #262626;">(</span><span style="color: #2c53ca; font-weight: bold;">require</span> '<span style="color: #0d7b72;">ob-tangle</span><span style="color: #262626;">)</span>
+<span style="color: #262626;">(</span>org-bable-load-file <span style="color: #3cb368;">(</span>expand-file-name <span style="color: #b22222;">"manue1.org"</span> user-emacs-dictionary<span style="color: #3cb368;">)</span><span style="color: #262626;">)</span>
 </pre>
 </div>
 
@@ -663,7 +665,54 @@ M-x customize-group popwin
 <p>
 occur-edit  可以直接修改
 </p></li>
-<li></li>
+<li><p>
+ag
+</p>
+
+<p>
+brew install the_silver_search
+</p>
+
+<p>
+helm-ag
+</p>
+
+<p>
+<code>c-c s</code>
+</p></li>
+<li><p>
+flycheck
+</p>
+
+<p>
+show  js error with
+</p></li>
+<li><p>
+yasnippet
+</p>
+
+<p>
+自动生成代码 补全代码
+</p>
+
+<p>
+auto-yasnippet
+</p>
+
+<p>
+自定义生成的常用代码
+</p>
+
+<p>
+,ac (aya-create)
+</p></li>
+<li><p>
+which key
+</p>
+
+<p>
+, 列出所有按键
+</p></li>
 </ol>
 </div>
 </div>
