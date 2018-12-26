@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-12-21 Fri 00:12 -->
+<!-- 2018-12-26 Wed 16:31 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>kyoto Cabinet &amp; Tycoon kv 型离线数据库</title>
@@ -237,10 +237,10 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org0f4be2e">install cabinet &amp; tycoon</a></li>
-<li><a href="#org24b687f">tycoon 服务端</a></li>
-<li><a href="#org3c09a73">tycoon 客户端</a></li>
-<li><a href="#orgec01230">hot backup</a></li>
+<li><a href="#org58f5b7d">install cabinet &amp; tycoon</a></li>
+<li><a href="#org605d826">tycoon 服务端</a></li>
+<li><a href="#org3159669">tycoon 客户端</a></li>
+<li><a href="#org8fc5e91">hot backup</a></li>
 </ul>
 </div>
 </div>
@@ -286,9 +286,9 @@ cabinet数据落地的存储类型有两种:
 </blockquote></li>
 </ul>
 
-<div id="outline-container-org0f4be2e" class="outline-2">
-<h2 id="org0f4be2e">install cabinet &amp; tycoon</h2>
-<div class="outline-text-2" id="text-org0f4be2e">
+<div id="outline-container-org58f5b7d" class="outline-2">
+<h2 id="org58f5b7d">install cabinet &amp; tycoon</h2>
+<div class="outline-text-2" id="text-org58f5b7d">
 <blockquote>
 <ol class="org-ol">
 <li><p>
@@ -314,7 +314,7 @@ python setup.py install
 
 </pre>
 <p>
-#fix &rsquo;libkyotocabinet.so.16: cannot open shared object file: No such file or directory&rsquo; error
+#fix 'libkyotocabinet.so.16: cannot open shared object file: No such file or directory' error
 </p>
 <pre class="example">
 echo "/usr/local/lib" &gt;&gt; /etc/ld.so.conf.d/usrlocal.conf
@@ -347,9 +347,9 @@ rm kyototycoon* -rf
 </div>
 </div>
 
-<div id="outline-container-org24b687f" class="outline-2">
-<h2 id="org24b687f">tycoon 服务端</h2>
-<div class="outline-text-2" id="text-org24b687f">
+<div id="outline-container-org605d826" class="outline-2">
+<h2 id="org605d826">tycoon 服务端</h2>
+<div class="outline-text-2" id="text-org605d826">
 <blockquote>
 <p>
 ktserver 作为服务端，提供数据库网络连接服务,其常用到的参数说明如下:
@@ -419,9 +419,9 @@ ktserver -port 2000 \
 </blockquote>
 </div>
 </div>
-<div id="outline-container-org3c09a73" class="outline-2">
-<h2 id="org3c09a73">tycoon 客户端</h2>
-<div class="outline-text-2" id="text-org3c09a73">
+<div id="outline-container-org3159669" class="outline-2">
+<h2 id="org3159669">tycoon 客户端</h2>
+<div class="outline-text-2" id="text-org3159669">
 <blockquote>
 <p>
 ktremotemgr 作为一款连接kt server的客户端工具,下面给出简单示例:
@@ -462,9 +462,9 @@ ktremotemgr 作为一款连接kt server的客户端工具,下面给出简单示�
 </div>
 </div>
 
-<div id="outline-container-orgec01230" class="outline-2">
-<h2 id="orgec01230">hot backup</h2>
-<div class="outline-text-2" id="text-orgec01230">
+<div id="outline-container-org8fc5e91" class="outline-2">
+<h2 id="org8fc5e91">hot backup</h2>
+<div class="outline-text-2" id="text-org8fc5e91">
 <blockquote>
 <p>
 tycoon 以本地离线文件的信息存储到磁盘，迁移的时候可以直接使用快照或者库文件，

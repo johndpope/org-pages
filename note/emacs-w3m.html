@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-12-21 Fri 00:12 -->
+<!-- 2018-12-26 Wed 16:45 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>如何在emacs中浏览网页?</title>
@@ -237,7 +237,7 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org5bd98cb"><span class="todo TODO">TODO</span> <b>3.w3m快捷键</b></a></li>
+<li><a href="#org7aa3e32"><span class="todo TODO">TODO</span> <b>3.w3m快捷键</b></a></li>
 </ul>
 </div>
 </div>
@@ -302,43 +302,12 @@ sudo make install
 
 <pre class="example">
 (add-to-list 'exec-path "/home/manue1/opt/w3m/bin")
-
-;; 设置w3m主页
-(setq w3m-home-page "http://www.baidu.com")
-
 ;; 默认显示图片
 (setq w3m-default-display-inline-images t)
 (setq w3m-default-toggle-inline-images t)
-
-
-;; 使用cookies
-(setq w3m-use-cookies t)
-
-;;设定w3m运行的参数，分别为使用cookie和使用框架
-(setq w3m-command-arguments '("-cookie" "-F"))
-
-;; 使用w3m作为默认浏览器
-(setq browse-url-browser-function 'w3m-browse-url)
-(setq w3m-view-this-url-new-session-in-background t)
-
 ;;显示图标
 (setq w3m-show-graphic-icons-in-header-line t)
 (setq w3m-show-graphic-icons-in-mode-line t)
-
-;;C-c C-p 打开，这个好用
-(setq w3m-view-this-url-new-session-in-background t)
-
-(add-hook 'w3m-fontify-after-hook 'remove-w3m-output-garbages)
-(defun remove-w3m-output-garbages ()
-    "去掉w3m输出的垃圾."
-    (interactive)
-    (let ((buffer-read-only))
-    (setf (point) (point-min))
-    (while (re-search-forward "[\200-\240]" nil t)
-    (replace-match " "))
-    (set-buffer-multibyte t))
-    (set-buffer-modified-p nil))
-
 </pre>
 
 
@@ -374,9 +343,9 @@ sudo make install
 
 
 
-<div id="outline-container-org5bd98cb" class="outline-2">
-<h2 id="org5bd98cb"><span class="todo TODO">TODO</span> <b>3.w3m快捷键</b></h2>
-<div class="outline-text-2" id="text-org5bd98cb">
+<div id="outline-container-org7aa3e32" class="outline-2">
+<h2 id="org7aa3e32"><span class="todo TODO">TODO</span> <b>3.w3m快捷键</b></h2>
+<div class="outline-text-2" id="text-org7aa3e32">
 <p>
 C-u S g 
 </p>

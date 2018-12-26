@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-12-11 Tue 16:40 -->
+<!-- 2018-12-26 Wed 16:31 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>elasticsearch 常用知识梳理</title>
@@ -237,40 +237,39 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org6f82e2d">1. elastic 常用的一些命令</a>
+<li><a href="#org20f99c7">elastic 常用的一些命令</a>
 <ul>
-<li><a href="#org1edd159">1.1. cat</a></li>
-<li><a href="#orgd3b43ae">1.2. mapping</a></li>
-<li><a href="#org5db415d">1.3. alias</a></li>
-<li><a href="#org3fed7e9">1.4. base_query</a></li>
-<li><a href="#org1db6cab">1.5. bool_query</a></li>
-<li><a href="#orga3564a8">1.6. aggs</a></li>
+<li><a href="#orgdcb8d66">cat</a></li>
+<li><a href="#org46fcad0">mapping</a></li>
+<li><a href="#org9185f05">alias</a></li>
+<li><a href="#org25e1e59">query</a></li>
+<li><a href="#org130e159">aggs</a></li>
 </ul>
 </li>
-<li><a href="#org1ef7354">2. questions</a>
+<li><a href="#orgd49e45f">questions</a>
 <ul>
-<li><a href="#org3afdf0b">2.1. from szie/scroll/search after</a></li>
-<li><a href="#org76aeee8">2.2. es shard 生命周期</a></li>
-<li><a href="#orgb823ae4">2.3. es node</a></li>
-<li><a href="#org0791b6f">2.4. es pipeline</a></li>
-<li><a href="#org010e47a">2.5. es 搜索原理</a></li>
+<li><a href="#orgdcf2e75">from szie/scroll/search after</a></li>
+<li><a href="#orgbdce58b">es shard 生命周期</a></li>
+<li><a href="#orgde25819">es node</a></li>
+<li><a href="#org5c7f04f">es pipeline</a></li>
+<li><a href="#orgeb906a9">es 搜索原理</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org6f82e2d" class="outline-2">
-<h2 id="org6f82e2d"><span class="section-number-2">1</span> elastic 常用的一些命令</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-org20f99c7" class="outline-2">
+<h2 id="org20f99c7">elastic 常用的一些命令</h2>
+<div class="outline-text-2" id="text-org20f99c7">
 <p>
 借用postman调用dsl还是很方便的
 </p>
 </div>
 
-<div id="outline-container-org1edd159" class="outline-3">
-<h3 id="org1edd159"><span class="section-number-3">1.1</span> cat</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-orgdcb8d66" class="outline-3">
+<h3 id="orgdcb8d66">cat</h3>
+<div class="outline-text-3" id="text-orgdcb8d66">
 <dl class="org-dl">
 <dt>/_cat/indices?v</dt><dd>查看集群索引</dd>
 <dt>/_cluster/health?pretty </dt><dd>集群健康</dd>
@@ -280,9 +279,9 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgd3b43ae" class="outline-3">
-<h3 id="orgd3b43ae"><span class="section-number-3">1.2</span> mapping</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-org46fcad0" class="outline-3">
+<h3 id="org46fcad0">mapping</h3>
+<div class="outline-text-3" id="text-org46fcad0">
 <dl class="org-dl">
 <dt>建立索引</dt><dd><p>
           <i>index_name</i>?pretty' -d{"settings":{"number_of_shards":20}}
@@ -298,8 +297,8 @@ for the JavaScript code in this tag.
 <p>
 mapping 存放到文件内
 </p>
-<div class="org-src-container">
-<pre class="src src-json">
+<pre class="example">
+
 {
   "ipv4": {
       "dynamic_templates": [
@@ -340,16 +339,15 @@ mapping 存放到文件内
       }
   }
 }
-</pre>
-</div></dd>
+</pre></dd>
 <dt>删除索引</dt><dd>curl -XDELETE localhost:9200/index_name</dd>
 <dt>动态改副本数量</dt><dd>curl -XPUT 'localhost:9200/index_name/_settings?pretty' -d '{"number_of_replicas":1}'</dd>
 </dl>
 </div>
 </div>
-<div id="outline-container-org5db415d" class="outline-3">
-<h3 id="org5db415d"><span class="section-number-3">1.3</span> alias</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-org9185f05" class="outline-3">
+<h3 id="org9185f05">alias</h3>
+<div class="outline-text-3" id="text-org9185f05">
 <dl class="org-dl">
 <dt>_aliases add</dt><dd><p>
 创建 alias
@@ -383,9 +381,9 @@ curl -XPOST 'http://localhost:9200/_aliases'-d '
 </dl>
 </div>
 </div>
-<div id="outline-container-org3fed7e9" class="outline-3">
-<h3 id="org3fed7e9"><span class="section-number-3">1.4</span> base_query</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-org25e1e59" class="outline-3">
+<h3 id="org25e1e59">query</h3>
+<div class="outline-text-3" id="text-org25e1e59">
 <dl class="org-dl">
 <dt>_search?pretty&amp;q=字段</dt><dd><p>
 基础查询字段   
@@ -404,14 +402,6 @@ _id 内置id查询
 curl -XGET  'localhost:9200/webasset_whois3/whois_info/_search?pretty&amp;q=_id:PERSONALLICENCECOURSES.COM'
 
 </pre></dd>
-</dl>
-</div>
-</div>
-
-<div id="outline-container-org1db6cab" class="outline-3">
-<h3 id="org1db6cab"><span class="section-number-3">1.5</span> bool_query</h3>
-<div class="outline-text-3" id="text-1-5">
-<dl class="org-dl">
 <dt>exists</dt><dd><p>
 字段是否存在
 </p>
@@ -479,12 +469,56 @@ curl -XGET  'localhost:9200/webasset_whois3/whois_info/_search?pretty&amp;q=_id:
        },
    }
 </pre></dd>
+<dt>range</dt><dd><p>
+范围查询
+</p>
+<pre class="example">
+{
+    'query': {
+           'range': {
+                     'insert_time':{
+                                    'gte': start_time,
+                                    'lte': end_time
+                     }
+          }
+       }
+}           
+</pre></dd>
+<dt>_source</dt><dd><p>
+控制返回字段
+</p>
+<pre class="example">
+{
+    "_source": ["sha1"],
+    "query": {
+        "bool": {
+            "should": [
+                {"exists": {"field": "network.domain"}},
+                {"exists": {"field": "network.http"}},
+                {"exists": {"field": "network.url"}},
+                {"exists": {"field": "network.ip"}},
+                {"exists": {"field": "network.udp"}},
+                {"exists": {"field": "network.tcp"}},
+                {"exists": {"field": "network.dns"}}
+            ],
+            "minimum_should_match": 1
+        }
+    },
+    "aggs": {
+        "count": {
+            "cardinality": {
+                "field": "sha1"
+            }
+        }
+    }
+}
+</pre></dd>
 </dl>
 </div>
 </div>
-<div id="outline-container-orga3564a8" class="outline-3">
-<h3 id="orga3564a8"><span class="section-number-3">1.6</span> aggs</h3>
-<div class="outline-text-3" id="text-1-6">
+<div id="outline-container-org130e159" class="outline-3">
+<h3 id="org130e159">aggs</h3>
+<div class="outline-text-3" id="text-org130e159">
 <p>
 10.252.16.20:9200/alias_malware/_search?size=0
 </p>
@@ -514,18 +548,35 @@ size = 0 表示返回全部
       
 }
 </pre></dd>
+
+<dt>cardinality</dt><dd><p>
+先去重再求和 
+</p>
+<pre class="example">
+{
+    "query" : {
+      "term" : { "malicious" : "UNKNOWN" }
+    },
+      "aggs": {
+        "count": {
+          "cardinality": {
+            "field": "sha1"
+          }
+        }
+      }
+}
+</pre></dd>
 </dl>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org1ef7354" class="outline-2">
-<h2 id="org1ef7354"><span class="section-number-2">2</span> questions</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-orgd49e45f" class="outline-2">
+<h2 id="orgd49e45f">questions</h2>
+<div class="outline-text-2" id="text-orgd49e45f">
 </div>
-<div id="outline-container-org3afdf0b" class="outline-3">
-<h3 id="org3afdf0b"><span class="section-number-3">2.1</span> from szie/scroll/search after</h3>
-<div class="outline-text-3" id="text-2-1">
+<div id="outline-container-orgdcf2e75" class="outline-3">
+<h3 id="orgdcf2e75">from szie/scroll/search after</h3>
+<div class="outline-text-3" id="text-orgdcf2e75">
 <p>
 <a href="http://www.jianshu.com/p/91d03b16af77">http://www.jianshu.com/p/91d03b16af77</a>
 </p>
@@ -597,9 +648,9 @@ search after
 </ul>
 </div>
 </div>
-<div id="outline-container-org76aeee8" class="outline-3">
-<h3 id="org76aeee8"><span class="section-number-3">2.2</span> es shard 生命周期</h3>
-<div class="outline-text-3" id="text-2-2">
+<div id="outline-container-orgbdce58b" class="outline-3">
+<h3 id="orgbdce58b">es shard 生命周期</h3>
+<div class="outline-text-3" id="text-orgbdce58b">
 <p>
 <a href="http://lxwei.github.io/posts/Elasticsearch-Shard-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html">http://lxwei.github.io/posts/Elasticsearch-Shard-生命周期.html</a>
 </p>
@@ -694,9 +745,9 @@ _optimize?max_num_segments=1 一个segment情况下查询要快些，但是得�
 </div>
 </div>
 
-<div id="outline-container-orgb823ae4" class="outline-3">
-<h3 id="orgb823ae4"><span class="section-number-3">2.3</span> es node</h3>
-<div class="outline-text-3" id="text-2-3">
+<div id="outline-container-orgde25819" class="outline-3">
+<h3 id="orgde25819">es node</h3>
+<div class="outline-text-3" id="text-orgde25819">
 <ul class="org-ul">
 <li><p>
 data node 上
@@ -729,18 +780,18 @@ discovery.zen.ping.timeout
 </ul>
 </div>
 </div>
-<div id="outline-container-org0791b6f" class="outline-3">
-<h3 id="org0791b6f"><span class="section-number-3">2.4</span> es pipeline</h3>
-<div class="outline-text-3" id="text-2-4">
+<div id="outline-container-org5c7f04f" class="outline-3">
+<h3 id="org5c7f04f">es pipeline</h3>
+<div class="outline-text-3" id="text-org5c7f04f">
 <p>
 <a href="https://www.felayman.com/articles/2017/11/24/1511527532643.html#b3_solo_h4_22">https://www.felayman.com/articles/2017/11/24/1511527532643.html#b3_solo_h4_22</a>
 </p>
 </div>
 </div>
 
-<div id="outline-container-org010e47a" class="outline-3">
-<h3 id="org010e47a"><span class="section-number-3">2.5</span> es 搜索原理</h3>
-<div class="outline-text-3" id="text-2-5">
+<div id="outline-container-orgeb906a9" class="outline-3">
+<h3 id="orgeb906a9">es 搜索原理</h3>
+<div class="outline-text-3" id="text-orgeb906a9">
 <p>
 <a href="https://blog.csdn.net/donghaixiaolongwang/article/category/6747676">https://blog.csdn.net/donghaixiaolongwang/article/category/6747676</a>
 </p>

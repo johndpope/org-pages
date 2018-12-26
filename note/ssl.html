@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-12-21 Fri 00:13 -->
+<!-- 2018-12-26 Wed 16:31 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>https站点证书配置</title>
@@ -237,21 +237,21 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org4505c31">证书配置安装</a></li>
-<li><a href="#org44e8467">证书定期更新</a></li>
-<li><a href="#org2b57987">nginx调用证书</a></li>
+<li><a href="#orga17897e">证书配置安装</a></li>
+<li><a href="#org65782a8">证书定期更新</a></li>
+<li><a href="#org04b5995">nginx调用证书</a></li>
 </ul>
 </div>
 </div>
 <p>
-个人https站点，首选免费开源证书,Let&rsquo;s Encrypt是国外一个公共的免费SSL项目，
+个人https站点，首选免费开源证书,Let's Encrypt是国外一个公共的免费SSL项目，
 由 Linux 基金会托管，由Mozilla、思科、Akamai、IdenTrust和EFF等组织发起，
 目的就是向网站自动签发和管理免费证书，以便加速互联网由HTTP过渡到HTTPS。
 </p>
 
 
 <p>
-let&rsquo;s encrypt优点:
+let's encrypt优点:
 </p>
 
 <ol class="org-ol">
@@ -261,11 +261,11 @@ let&rsquo;s encrypt优点:
 
 
 
-<div id="outline-container-org4505c31" class="outline-2">
-<h2 id="org4505c31">证书配置安装</h2>
-<div class="outline-text-2" id="text-org4505c31">
+<div id="outline-container-orga17897e" class="outline-2">
+<h2 id="orga17897e">证书配置安装</h2>
+<div class="outline-text-2" id="text-orga17897e">
 <p>
-let&rsquo;s encrypt 使用certbot这款软件管理电子证书，在安装certbot过程中，提示
+let's encrypt 使用certbot这款软件管理电子证书，在安装certbot过程中，提示
 机器pyopenssl版本比较低，需要高版本，<a href="http://cbs.centos.org/kojifiles/packages/pyOpenSSL/0.15.1/1.el7/noarch/pyOpenSSL-0.15.1-1.el7.noarch.rpm">pyopenssl高版本下载</a> 
 <code>sudo rpm -Uvh *.rpm</code> 安装 
 </p>
@@ -289,9 +289,9 @@ certbot certonly --standalone -d manue1.site -d www.manue1.site -m manue1@foxmai
 </div>
 </div>
 
-<div id="outline-container-org44e8467" class="outline-2">
-<h2 id="org44e8467">证书定期更新</h2>
-<div class="outline-text-2" id="text-org44e8467">
+<div id="outline-container-org65782a8" class="outline-2">
+<h2 id="org65782a8">证书定期更新</h2>
+<div class="outline-text-2" id="text-org65782a8">
 <p>
 crontab 每两月更新证书信息，避免失效, <code>--pre-hook</code> 代表 执行前需要处理的任务，
  <code>--post-hook</code> 代表执行后需要处理的任务
@@ -304,9 +304,9 @@ crontab 每两月更新证书信息，避免失效, <code>--pre-hook</code> 代�
 </div>
 </div>
 
-<div id="outline-container-org2b57987" class="outline-2">
-<h2 id="org2b57987">nginx调用证书</h2>
-<div class="outline-text-2" id="text-org2b57987">
+<div id="outline-container-org04b5995" class="outline-2">
+<h2 id="org04b5995">nginx调用证书</h2>
+<div class="outline-text-2" id="text-org04b5995">
 <p>
 将所有80端口流量转发到443端口,443端口服务配上证书认证
 </p>

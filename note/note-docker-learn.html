@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-12-21 Fri 00:13 -->
+<!-- 2018-12-26 Wed 16:31 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Docker能替代Vbox吗?</title>
@@ -237,57 +237,57 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org5349900">Docker入门</a>
+<li><a href="#org34746cf">Docker入门</a>
 <ul>
-<li><a href="#org4f325bc">初识Docker</a></li>
-<li><a href="#org0d81921">Docker核心概念</a></li>
-<li><a href="#org10eec5a">Docker install</a></li>
+<li><a href="#org9af5887">初识Docker</a></li>
+<li><a href="#orgdbea355">Docker核心概念</a></li>
+<li><a href="#orgbea1608">Docker install</a></li>
 </ul>
 </li>
-<li><a href="#orgf197a11">Docker Image</a>
+<li><a href="#org1a379b1">Docker Image</a>
 <ul>
-<li><a href="#org22471d8">获取镜像</a></li>
-<li><a href="#org658f803">查看镜像信息</a></li>
-<li><a href="#org131a0e5">搜寻镜像</a></li>
-<li><a href="#orged801d2">删除镜像</a></li>
-<li><a href="#org6a0f492">创建镜像</a></li>
-<li><a href="#org10cfcdf">存出和载入镜像</a></li>
-<li><a href="#org91c5f98">上传镜像</a></li>
+<li><a href="#org8dff23b">获取镜像</a></li>
+<li><a href="#orge59531a">查看镜像信息</a></li>
+<li><a href="#org4cac83b">搜寻镜像</a></li>
+<li><a href="#org8db7f94">删除镜像</a></li>
+<li><a href="#org0541a30">创建镜像</a></li>
+<li><a href="#org165fbd6">存出和载入镜像</a></li>
+<li><a href="#org1272960">上传镜像</a></li>
 </ul>
 </li>
-<li><a href="#org6753f1f">Docker Container</a>
+<li><a href="#orgea11b92">Docker Container</a>
 <ul>
-<li><a href="#orgf49a866">创建容器</a></li>
-<li><a href="#org6d8c0d9">启动终止容器</a></li>
-<li><a href="#orgeb3a5ff">进入容器</a></li>
-<li><a href="#orga92c2ff">删除容器</a></li>
-<li><a href="#orga3d3359">导入和导出容器</a></li>
+<li><a href="#orgc2300d5">创建容器</a></li>
+<li><a href="#orge0a9332">启动终止容器</a></li>
+<li><a href="#org2d8f2e4">进入容器</a></li>
+<li><a href="#orga025cff">删除容器</a></li>
+<li><a href="#orgc656542">导入和导出容器</a></li>
 </ul>
 </li>
-<li><a href="#orga73fc01">Docker Data</a>
+<li><a href="#org1f21310">Docker Data</a>
 <ul>
-<li><a href="#orgece956f">Data Volumes</a></li>
-<li><a href="#orgb903e7a">Data Volume Containers</a></li>
-<li><a href="#orga8ffb2a">利用数据卷容器迁移数据</a></li>
+<li><a href="#org5492117">Data Volumes</a></li>
+<li><a href="#org152dbf0">Data Volume Containers</a></li>
+<li><a href="#org907466e">利用数据卷容器迁移数据</a></li>
 </ul>
 </li>
-<li><a href="#orgafe4658">Docker network</a>
+<li><a href="#orgba87dc8">Docker network</a>
 <ul>
-<li><a href="#org70c65f4">端口映射实现访问容器</a></li>
-<li><a href="#orgc77d099">容器互联实现容器间通信</a></li>
+<li><a href="#org8aaace5">端口映射实现访问容器</a></li>
+<li><a href="#orgbdb293f">容器互联实现容器间通信</a></li>
 </ul>
 </li>
-<li><a href="#org135555e">Dockerfile</a></li>
+<li><a href="#org1f62081">Dockerfile</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org5349900" class="outline-2">
-<h2 id="org5349900">Docker入门</h2>
-<div class="outline-text-2" id="text-org5349900">
+<div id="outline-container-org34746cf" class="outline-2">
+<h2 id="org34746cf">Docker入门</h2>
+<div class="outline-text-2" id="text-org34746cf">
 </div>
-<div id="outline-container-org4f325bc" class="outline-3">
-<h3 id="org4f325bc">初识Docker</h3>
-<div class="outline-text-3" id="text-org4f325bc">
+<div id="outline-container-org9af5887" class="outline-3">
+<h3 id="org9af5887">初识Docker</h3>
+<div class="outline-text-3" id="text-org9af5887">
 <p>
 可以简单的将Docker容器理解为一种沙盒，每个容器内运行一个应用，不同的容器互相
 隔离，容器之间可以建立通信机制。容器的创建和停止都十分快速，容器自身对资源的
@@ -308,9 +308,9 @@ Docker容器是操作系统层面上实现的虚拟化，直接复用本地主�
 </div>
 </div>
 
-<div id="outline-container-org0d81921" class="outline-3">
-<h3 id="org0d81921">Docker核心概念</h3>
-<div class="outline-text-3" id="text-org0d81921">
+<div id="outline-container-orgdbea355" class="outline-3">
+<h3 id="orgdbea355">Docker核心概念</h3>
+<div class="outline-text-3" id="text-orgdbea355">
 <ol class="org-ol">
 <li>Image</li>
 <li><p>
@@ -340,9 +340,9 @@ Registry 注册服务器包含众多Repository
 </div>
 </div>
 
-<div id="outline-container-org10eec5a" class="outline-3">
-<h3 id="org10eec5a">Docker install</h3>
-<div class="outline-text-3" id="text-org10eec5a">
+<div id="outline-container-orgbea1608" class="outline-3">
+<h3 id="orgbea1608">Docker install</h3>
+<div class="outline-text-3" id="text-orgbea1608">
 <p>
 安装docker<a href="https://docs.docker.com/engine/installation/">官网</a> 有详细说明,国内网速很慢，采用了阿里云的<a href="https://yq.aliyun.com/articles/7695">镜像源</a>
 </p>
@@ -354,13 +354,13 @@ curl -sSL http://acs-public-mirror.oss-cn-hangzhou.aliyuncs.com/docker-engine/in
 </div>
 </div>
 </div>
-<div id="outline-container-orgf197a11" class="outline-2">
-<h2 id="orgf197a11">Docker Image</h2>
-<div class="outline-text-2" id="text-orgf197a11">
+<div id="outline-container-org1a379b1" class="outline-2">
+<h2 id="org1a379b1">Docker Image</h2>
+<div class="outline-text-2" id="text-org1a379b1">
 </div>
-<div id="outline-container-org22471d8" class="outline-3">
-<h3 id="org22471d8">获取镜像</h3>
-<div class="outline-text-3" id="text-org22471d8">
+<div id="outline-container-org8dff23b" class="outline-3">
+<h3 id="org8dff23b">获取镜像</h3>
+<div class="outline-text-3" id="text-org8dff23b">
 <p>
 docker pull NAME[: TAG] 
 </p>
@@ -379,9 +379,9 @@ docker pull NAME[: TAG]
 </div>
 </div>
 
-<div id="outline-container-org658f803" class="outline-3">
-<h3 id="org658f803">查看镜像信息</h3>
-<div class="outline-text-3" id="text-org658f803">
+<div id="outline-container-orge59531a" class="outline-3">
+<h3 id="orge59531a">查看镜像信息</h3>
+<div class="outline-text-3" id="text-orge59531a">
 <p>
 <code>docker images</code>  #查看本地所有镜像
 </p>
@@ -392,9 +392,9 @@ docker pull NAME[: TAG]
 </div>
 </div>
 
-<div id="outline-container-org131a0e5" class="outline-3">
-<h3 id="org131a0e5">搜寻镜像</h3>
-<div class="outline-text-3" id="text-org131a0e5">
+<div id="outline-container-org4cac83b" class="outline-3">
+<h3 id="org4cac83b">搜寻镜像</h3>
+<div class="outline-text-3" id="text-org4cac83b">
 <p>
 <code>docker search mysql</code> #搜索远端仓库中共享的镜像
 </p>
@@ -418,9 +418,9 @@ docker pull NAME[: TAG]
 </blockquote>
 </div>
 </div>
-<div id="outline-container-orged801d2" class="outline-3">
-<h3 id="orged801d2">删除镜像</h3>
-<div class="outline-text-3" id="text-orged801d2">
+<div id="outline-container-org8db7f94" class="outline-3">
+<h3 id="org8db7f94">删除镜像</h3>
+<div class="outline-text-3" id="text-org8db7f94">
 <p>
 docker rmi IMAGE[IMAGE..] #IMAGE可以是标签或者是ID
 </p>
@@ -435,9 +435,9 @@ image 创建的容器存在的时候，是无法删除的 -f 强制删除
 </div>
 </div>
 
-<div id="outline-container-org6a0f492" class="outline-3">
-<h3 id="org6a0f492">创建镜像</h3>
-<div class="outline-text-3" id="text-org6a0f492">
+<div id="outline-container-org0541a30" class="outline-3">
+<h3 id="org0541a30">创建镜像</h3>
+<div class="outline-text-3" id="text-org0541a30">
 <ol class="org-ol">
 <li><p>
 基于已有image的容器创建
@@ -471,9 +471,9 @@ cat xx.tar.gz | docker import - ubuntu:16.04
 </ol>
 </div>
 </div>
-<div id="outline-container-org10cfcdf" class="outline-3">
-<h3 id="org10cfcdf">存出和载入镜像</h3>
-<div class="outline-text-3" id="text-org10cfcdf">
+<div id="outline-container-org165fbd6" class="outline-3">
+<h3 id="org165fbd6">存出和载入镜像</h3>
+<div class="outline-text-3" id="text-org165fbd6">
 <p>
 docker save -o ubuntu-16.04.tar ubuntu:latest
 </p>
@@ -484,9 +484,9 @@ docker load &#x2013;input ubuntu-16.04.tar
 </div>
 </div>
 
-<div id="outline-container-org91c5f98" class="outline-3">
-<h3 id="org91c5f98">上传镜像</h3>
-<div class="outline-text-3" id="text-org91c5f98">
+<div id="outline-container-org1272960" class="outline-3">
+<h3 id="org1272960">上传镜像</h3>
+<div class="outline-text-3" id="text-org1272960">
 <p>
 docker tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]
 </p>
@@ -509,13 +509,13 @@ docker push TARGET_IMAGE[: TAG]
 </div>
 </div>
 </div>
-<div id="outline-container-org6753f1f" class="outline-2">
-<h2 id="org6753f1f">Docker Container</h2>
-<div class="outline-text-2" id="text-org6753f1f">
+<div id="outline-container-orgea11b92" class="outline-2">
+<h2 id="orgea11b92">Docker Container</h2>
+<div class="outline-text-2" id="text-orgea11b92">
 </div>
-<div id="outline-container-orgf49a866" class="outline-3">
-<h3 id="orgf49a866">创建容器</h3>
-<div class="outline-text-3" id="text-orgf49a866">
+<div id="outline-container-orgc2300d5" class="outline-3">
+<h3 id="orgc2300d5">创建容器</h3>
+<div class="outline-text-3" id="text-orgc2300d5">
 <p>
 <code>docker create -it ubuntu</code>
 </p>
@@ -536,9 +536,9 @@ docker push TARGET_IMAGE[: TAG]
 </blockquote>
 </div>
 </div>
-<div id="outline-container-org6d8c0d9" class="outline-3">
-<h3 id="org6d8c0d9">启动终止容器</h3>
-<div class="outline-text-3" id="text-org6d8c0d9">
+<div id="outline-container-orge0a9332" class="outline-3">
+<h3 id="orge0a9332">启动终止容器</h3>
+<div class="outline-text-3" id="text-orge0a9332">
 <p>
 docker start d3e
 </p>
@@ -552,9 +552,9 @@ docker ps -a #显示所有容器
 </p>
 </div>
 </div>
-<div id="outline-container-orgeb3a5ff" class="outline-3">
-<h3 id="orgeb3a5ff">进入容器</h3>
-<div class="outline-text-3" id="text-orgeb3a5ff">
+<div id="outline-container-org2d8f2e4" class="outline-3">
+<h3 id="org2d8f2e4">进入容器</h3>
+<div class="outline-text-3" id="text-org2d8f2e4">
 <p>
 docker attach 18a
 </p>
@@ -564,17 +564,17 @@ docker exec -ti 24c /bin/bash  (推荐)
 </p>
 </div>
 </div>
-<div id="outline-container-orga92c2ff" class="outline-3">
-<h3 id="orga92c2ff">删除容器</h3>
-<div class="outline-text-3" id="text-orga92c2ff">
+<div id="outline-container-orga025cff" class="outline-3">
+<h3 id="orga025cff">删除容器</h3>
+<div class="outline-text-3" id="text-orga025cff">
 <p>
 <code>docker rm 18a</code>
 </p>
 </div>
 </div>
-<div id="outline-container-orga3d3359" class="outline-3">
-<h3 id="orga3d3359">导入和导出容器</h3>
-<div class="outline-text-3" id="text-orga3d3359">
+<div id="outline-container-orgc656542" class="outline-3">
+<h3 id="orgc656542">导入和导出容器</h3>
+<div class="outline-text-3" id="text-orgc656542">
 <p>
 docker export 18a &gt; ubuntu_container.tar  作为镜像
 </p>
@@ -586,13 +586,13 @@ docker import a.tar
 </div>
 </div>
 
-<div id="outline-container-orga73fc01" class="outline-2">
-<h2 id="orga73fc01">Docker Data</h2>
-<div class="outline-text-2" id="text-orga73fc01">
+<div id="outline-container-org1f21310" class="outline-2">
+<h2 id="org1f21310">Docker Data</h2>
+<div class="outline-text-2" id="text-org1f21310">
 </div>
-<div id="outline-container-orgece956f" class="outline-3">
-<h3 id="orgece956f">Data Volumes</h3>
-<div class="outline-text-3" id="text-orgece956f">
+<div id="outline-container-org5492117" class="outline-3">
+<h3 id="org5492117">Data Volumes</h3>
+<div class="outline-text-3" id="text-org5492117">
 <p>
 数据卷是一个可供容器使用的特殊目录,它绕过文件系统,类似于文件mount操作
 </p>
@@ -626,9 +626,9 @@ docker import a.tar
 </div>
 </div>
 
-<div id="outline-container-orgb903e7a" class="outline-3">
-<h3 id="orgb903e7a">Data Volume Containers</h3>
-<div class="outline-text-3" id="text-orgb903e7a">
+<div id="outline-container-org152dbf0" class="outline-3">
+<h3 id="org152dbf0">Data Volume Containers</h3>
+<div class="outline-text-3" id="text-org152dbf0">
 <p>
 在容器之间共享一些持续更新的数据，最简单的方式是使用数据卷容器
 </p>
@@ -655,9 +655,9 @@ docker import a.tar
 </div>
 </div>
 
-<div id="outline-container-orga8ffb2a" class="outline-3">
-<h3 id="orga8ffb2a">利用数据卷容器迁移数据</h3>
-<div class="outline-text-3" id="text-orga8ffb2a">
+<div id="outline-container-org907466e" class="outline-3">
+<h3 id="org907466e">利用数据卷容器迁移数据</h3>
+<div class="outline-text-3" id="text-org907466e">
 <p>
 通过执行worker容器来数据备份恢复
 </p>
@@ -690,13 +690,13 @@ docker import a.tar
 </div>
 </div>
 </div>
-<div id="outline-container-orgafe4658" class="outline-2">
-<h2 id="orgafe4658">Docker network</h2>
-<div class="outline-text-2" id="text-orgafe4658">
+<div id="outline-container-orgba87dc8" class="outline-2">
+<h2 id="orgba87dc8">Docker network</h2>
+<div class="outline-text-2" id="text-orgba87dc8">
 </div>
-<div id="outline-container-org70c65f4" class="outline-3">
-<h3 id="org70c65f4">端口映射实现访问容器</h3>
-<div class="outline-text-3" id="text-org70c65f4">
+<div id="outline-container-org8aaace5" class="outline-3">
+<h3 id="org8aaace5">端口映射实现访问容器</h3>
+<div class="outline-text-3" id="text-org8aaace5">
 <p>
 docker run -itd &#x2013;rm -P 
 </p>
@@ -712,13 +712,13 @@ docker run -itd &#x2013;rm -P
 </blockquote>
 </div>
 </div>
-<div id="outline-container-orgc77d099" class="outline-3">
-<h3 id="orgc77d099">容器互联实现容器间通信</h3>
+<div id="outline-container-orgbdb293f" class="outline-3">
+<h3 id="orgbdb293f">容器互联实现容器间通信</h3>
 </div>
 </div>
-<div id="outline-container-org135555e" class="outline-2">
-<h2 id="org135555e">Dockerfile</h2>
-<div class="outline-text-2" id="text-org135555e">
+<div id="outline-container-org1f62081" class="outline-2">
+<h2 id="org1f62081">Dockerfile</h2>
+<div class="outline-text-2" id="text-org1f62081">
 <p>
 dockerfile 文件书写参考官方文档 ^^
 </p>
