@@ -6,7 +6,7 @@
 <!-- 2018-12-28 Fri 19:46 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Body Building</title>
+<title>Python Promodoro</title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -179,7 +179,7 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
-<link rel="stylesheet" href="css/worg.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/worg.css" type="text/css" media="screen" />
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -232,67 +232,71 @@ for the JavaScript code in this tag.
 <a href="https://www.manue1.site/index.html">Home</a>
 </div>
 <div id="content">
-<h1 class="title">Body Building</h1>
+<h1 class="title">Python Promodoro</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org2e8016d">Body Building</a>
+<li><a href="#orgac1722d">Python Promodoro</a>
 <ul>
-<li><a href="#orge3f7232"><span class="todo TODO">TODO</span> Weekly fitness</a></li>
-<li><a href="#org9acd5d6"><span class="todo TODO">TODO</span> Early hours</a></li>
+<li><a href="#orgf655206"><span class="todo TODO">TODO</span> pickle module</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org2e8016d" class="outline-2">
-<h2 id="org2e8016d">Body Building</h2>
-<div class="outline-text-2" id="text-org2e8016d">
+
+<div id="outline-container-orgac1722d" class="outline-2">
+<h2 id="orgac1722d">Python Promodoro</h2>
+<div class="outline-text-2" id="text-orgac1722d">
 </div>
-<div id="outline-container-orge3f7232" class="outline-3">
-<h3 id="orge3f7232"><span class="todo TODO">TODO</span> Weekly fitness</h3>
-<div class="outline-text-3" id="text-orge3f7232">
+<div id="outline-container-orgf655206" class="outline-3">
+<h3 id="orgf655206"><span class="todo TODO">TODO</span> pickle module</h3>
+<div class="outline-text-3" id="text-orgf655206">
+<blockquote>
 <p>
-:LAST_REPEAT: <span class="timestamp-wrapper"><span class="timestamp">[2017-07-18 Tue 11:10]</span></span>
+DEADLINE: <span class="timestamp-wrapper"><span class="timestamp">&lt;2018-12-28 Fri 19:23&gt;</span></span>
 </p>
-<ul class="org-ul">
-<li>State "ABORT"      from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2017-07-18 Tue 11:10] </span></span> <br /></li>
-<li>State "UNDO"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2017-06-30 Fri 10:30]</span></span></li>
-<li>State "UNDO"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2017-06-11 Sun 23:56] </span></span> <br /></li>
-</ul>
+
+
 <p>
-每周六健身
+在机器学习中，我们常常需要把训练好的模型存储起来，这样在进行决策时直接将模型读出，
 </p>
-</div>
+
+<p>
+而不需要重新训练模型，这样就大大节约了时间
+</p>
+
+<p>
+pickle 保存
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">import</span> pickle
+
+<span style="color: #a0522d;">a_dict</span> = {<span style="color: #8b2252;">'da'</span>: 111, 2: [23,1,4], <span style="color: #8b2252;">'23'</span>: {1:2,<span style="color: #8b2252;">'d'</span>:<span style="color: #8b2252;">'sad'</span>}}
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">pickle a variable to a file</span>
+<span style="color: #483d8b;">file</span> = <span style="color: #483d8b;">open</span>(<span style="color: #8b2252;">'pickle_example'</span>, <span style="color: #8b2252;">'wb'</span>)
+pickle.dump(a_dict, <span style="color: #483d8b;">file</span>)
+<span style="color: #483d8b;">file</span>.close()
+</pre>
 </div>
 
-<div id="outline-container-org9acd5d6" class="outline-3">
-<h3 id="org9acd5d6"><span class="todo TODO">TODO</span> Early hours</h3>
-<div class="outline-text-3" id="text-org9acd5d6">
 <p>
-:LAST_REPEAT: <span class="timestamp-wrapper"><span class="timestamp">[2018-12-27 Thu 12:40]</span></span>
+pickle 提取
 </p>
-<ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-27 Thu 12:40]</span></span></li>
-<li>State "DONE"       from "SOMEDAY"    <span class="timestamp-wrapper"><span class="timestamp">[2018-12-27 Thu 12:39]</span></span></li>
-<li>State "ABORT"      from "SOMEDAY"    <span class="timestamp-wrapper"><span class="timestamp">[2018-10-26 Fri 18:15] </span></span> <br />
-我觉得我现在还年轻，趁着年轻多熬几年，没毛病!</li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2017-07-05 Wed 11:50]</span></span></li>
-<li>State "UNDO"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2017-07-04 Tue 19:29]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2017-06-30 Fri 10:30]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2017-06-22 Thu 20:21]</span></span></li>
-<li>State "UNDO"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2017-06-19 Mon 10:41] </span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2017-06-11 Sun 23:58]</span></span></li>
-<li>State "UNDO"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2017-06-09 Fri 23:26]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2017-06-08 Thu 23:43]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2017-06-07 Wed 09:59]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2017-06-06 Tue 06:53] </span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2017-06-05 Mon 19:22]</span></span></li>
-</ul>
-<p>
-每天晚上12点之前睡，早上6点起床
-</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #b22222;"># </span><span style="color: #b22222;">reload a file to a variable</span>
+<span style="color: #a020f0;">with</span> <span style="color: #483d8b;">open</span>(<span style="color: #8b2252;">'pickle_example.pickle'</span>, <span style="color: #8b2252;">'rb'</span>) <span style="color: #a020f0;">as</span> <span style="color: #483d8b;">file</span>:
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">a_dict1</span> =pickle.load(<span style="color: #483d8b;">file</span>)
+
+<span style="color: #a020f0;">print</span>(a_dict1)
+
+</pre>
+</div>
+</blockquote>
 </div>
 </div>
 </div>
