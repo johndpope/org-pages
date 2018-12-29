@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-12-28 Fri 19:46 -->
+<!-- 2018-12-29 Sat 15:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Python Promodoro</title>
@@ -239,7 +239,8 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#orgac1722d">Python Promodoro</a>
 <ul>
-<li><a href="#orgf655206"><span class="todo TODO">TODO</span> pickle module</a></li>
+<li><a href="#org4863f1d"><span class="timestamp-wrapper"><span class="timestamp">[2018-12-29 Sat 12:14] </span></span> Python是怎样管理内存的?</a></li>
+<li><a href="#orgd80bffd"><span class="timestamp-wrapper"><span class="timestamp">[2018-12-28 Fri 12:03] </span></span> pickle module</a></li>
 </ul>
 </li>
 </ul>
@@ -250,14 +251,199 @@ for the JavaScript code in this tag.
 <h2 id="orgac1722d">Python Promodoro</h2>
 <div class="outline-text-2" id="text-orgac1722d">
 </div>
-<div id="outline-container-orgf655206" class="outline-3">
-<h3 id="orgf655206"><span class="todo TODO">TODO</span> pickle module</h3>
-<div class="outline-text-3" id="text-orgf655206">
+<div id="outline-container-org4863f1d" class="outline-3">
+<h3 id="org4863f1d"><span class="timestamp-wrapper"><span class="timestamp">[2018-12-29 Sat 12:14] </span></span> Python是怎样管理内存的?</h3>
+<div class="outline-text-3" id="text-org4863f1d">
 <blockquote>
 <p>
-DEADLINE: <span class="timestamp-wrapper"><span class="timestamp">&lt;2018-12-28 Fri 19:23&gt;</span></span>
+
 </p>
 
+<p>
+<a href="http://www.cnblogs.com/vamei/p/3232088.html">http://www.cnblogs.com/vamei/p/3232088.html</a>
+</p>
+
+<p>
+论是C语言的手工管理，还是Java的垃圾回收，都成为语言最重要的特征。
+这里以Python语言为例子，说明一门动态类型的、面向对象的语言的内存管理方式
+</p>
+
+<p>
+<b>对象的内存使用</b>
+</p>
+
+<p>
+is用于判断两个引用所指的对象是否相同
+</p>
+
+<p>
+在Python中，每个对象都有存有指向该对象的引用总数，即引用计数(reference count)
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-python">
+<span style="color: #8b2252;">"""</span>
+<span style="color: #8b2252;">&#20869;&#23384;&#22320;&#22336; a = b</span>
+<span style="color: #8b2252;">print hex(id(a))</span>
+<span style="color: #8b2252;">"""</span>
+<span style="color: #a0522d;">a</span> = 1
+<span style="color: #a0522d;">b</span> = 1
+<span style="color: #a020f0;">print</span> <span style="color: #483d8b;">id</span>(a)
+<span style="color: #a020f0;">print</span> <span style="color: #483d8b;">id</span>(b)
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">True</span>
+<span style="color: #a0522d;">a</span> = <span style="color: #8b2252;">"very good morning"</span>
+<span style="color: #a0522d;">b</span> = <span style="color: #8b2252;">"very good morning"</span>
+<span style="color: #a020f0;">print</span>(a <span style="color: #a020f0;">is</span> b)
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">False</span>
+<span style="color: #a0522d;">a</span> = []
+<span style="color: #a0522d;">b</span> = []
+<span style="color: #a020f0;">print</span>(a <span style="color: #a020f0;">is</span> b)
+
+<span style="color: #8b2252;">"""</span>
+<span style="color: #8b2252;">&#24403;&#20351;&#29992;&#26576;&#20010;&#24341;&#29992;&#20316;&#20026;&#21442;&#25968;&#65292;&#20256;&#36882;&#32473;getrefcount()&#26102;&#65292;&#21442;&#25968;&#23454;&#38469;&#19978;&#21019;&#24314;&#20102;&#19968;&#20010;&#20020;&#26102;&#30340;&#24341;&#29992;&#12290;</span>
+<span style="color: #8b2252;">&#22240;&#27492;&#65292;getrefcount()&#25152;&#24471;&#21040;&#30340;&#32467;&#26524;&#65292;&#20250;&#27604;&#26399;&#26395;&#30340;&#22810;1</span>
+<span style="color: #8b2252;">"""</span>
+
+<span style="color: #a020f0;">from</span> sys <span style="color: #a020f0;">import</span> getrefcount
+
+<span style="color: #a0522d;">a</span> = [1, 2, 3]
+<span style="color: #a020f0;">print</span>(getrefcount(a)) <span style="color: #b22222;">#</span><span style="color: #b22222;">2</span>
+
+<span style="color: #a0522d;">b</span> = a
+<span style="color: #a020f0;">print</span>(getrefcount(b))<span style="color: #b22222;">#</span><span style="color: #b22222;">3</span>
+</pre>
+</div>
+
+
+<p>
+<b>对象引用对象</b>
+</p>
+
+<p>
+Python的一个容器对象(container)，比如表、词典等，可以包含多个对象。
+实际上，容器对象中包含的并不是元素对象本身，是指向各个元素对象的引用。
+</p>
+
+<p>
+两个对象可能相互引用，从而构成所谓的引用环(reference cycle),引用环会给垃圾回收机制带来很大的麻烦
+</p>
+
+<p>
+某个对象的引用计数可能减少,可以使用 <code>del</code> 关键字删除某个引用
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">a</span> = []
+<span style="color: #a0522d;">b</span> = [a]
+a.append(b)
+<span style="color: #a020f0;">print</span>(getrefcount(a)) <span style="color: #b22222;">#</span><span style="color: #b22222;">3</span>
+
+<span style="color: #a020f0;">from</span> sys <span style="color: #a020f0;">import</span> getrefcount
+
+<span style="color: #a0522d;">a</span> = [1, 2, 3]
+<span style="color: #a0522d;">b</span> = a
+<span style="color: #a020f0;">print</span>(getrefcount(b)) <span style="color: #b22222;">#</span><span style="color: #b22222;">3</span>
+<span style="color: #a0522d;">a</span> = 1
+<span style="color: #b22222;"># </span><span style="color: #b22222;">del a</span>
+<span style="color: #a020f0;">print</span>(getrefcount(b)) <span style="color: #b22222;">#</span><span style="color: #b22222;">2</span>
+
+</pre>
+</div>
+
+<p>
+<b>垃圾回收</b>
+</p>
+
+<p>
+比如某个新建对象，它被分配给某个引用，对象的引用计数变为1。
+如果引用被删除，对象的引用计数为0，那么该对象就可以被垃圾回收
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">
+<span style="color: #a0522d;">a</span> = [1, 2, 3]
+<span style="color: #a020f0;">del</span> a
+</pre>
+</div>
+<p>
+当垃圾回收启动时，Python扫描到这个引用计数为0的对象，就将它所占据的内存清空
+</p>
+
+<p>
+垃圾回收时，Python不能进行其它的任务。频繁的垃圾回收将大大降低Python的工作效率
+</p>
+
+<p>
+当Python运行时，会记录其中分配对象(object allocation)和取消分配对象(object deallocation)
+的次数。当两者的差值高于某个阈值时，垃圾回收才会启动
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">import</span> gc
+<span style="color: #a020f0;">print</span>(gc.get_threshold())
+<span style="color: #b22222;">#</span><span style="color: #b22222;">(700,10,10)</span>
+</pre>
+</div>
+
+<p>
+700即是垃圾回收启动的阈,后面的两个10是与分代回收相关的阈值
+</p>
+
+<p>
+手动启动垃圾回收，即使用 <code>gc.collect()</code>
+</p>
+
+
+<p>
+*分代回收*(小家伙要多检查)
+</p>
+
+<p>
+Python同时采用了分代(generation)回收的策略: 存活时间越久的对象，越不可能在后面的程序中变成垃圾
+</p>
+
+<p>
+对于这样一些“长寿”对象，我们相信它们的用处，所以减少在垃圾回收中扫描它们的频率。
+</p>
+
+<p>
+Python将所有的对象分为0，1，2三代。所有的新建对象都是0代对象。
+当某一代对象经历过垃圾回收，依然存活，那么它就被归入下一代对象
+</p>
+
+<p>
+每10次0代垃圾回收，会配合1次1代的垃圾回收；而每10次1代的垃圾回收，才会有1次的2代垃圾回收
+</p>
+
+
+<p>
+<b>孤立的引用环</b>
+</p>
+
+<p>
+Python复制每个对象的引用计数，可以记为gc_ref
+</p>
+
+<p>
+对于每个对象i引用的对象j，将相应的gc_ref_j减1
+</p>
+
+<p>
+gc_ref不为0的对象，和这些对象引用的对象，以及继续更下游引用的对象，需要被保留,而其它的对象则被垃圾回收
+</p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-orgd80bffd" class="outline-3">
+<h3 id="orgd80bffd"><span class="timestamp-wrapper"><span class="timestamp">[2018-12-28 Fri 12:03] </span></span> pickle module</h3>
+<div class="outline-text-3" id="text-orgd80bffd">
+<blockquote>
+<p>
+
+</p>
 
 <p>
 在机器学习中，我们常常需要把训练好的模型存储起来，这样在进行决策时直接将模型读出，
