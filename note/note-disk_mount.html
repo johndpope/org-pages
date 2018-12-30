@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-12-26 Wed 16:31 -->
+<!-- 2018-12-30 Sun 18:59 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>磁盘挂载那些事</title>
@@ -238,7 +238,7 @@ for the JavaScript code in this tag.
 <div id="text-table-of-contents">
 <ul>
 <li><a href="#org7b256d5"><span class="todo TODO">TODO</span> 本地盘挂载</a></li>
-<li><a href="#org2bad2a7"><span class="todo TODO">TODO</span> 远程盘挂载</a></li>
+<li><a href="#org2bad2a7"><span class="done DONE">DONE</span> 远程盘挂载</a></li>
 </ul>
 </div>
 </div>
@@ -319,10 +319,66 @@ xfs_growfs /dev/centos/root
 </div>
 </div>
 <div id="outline-container-org2bad2a7" class="outline-2">
-<h2 id="org2bad2a7"><span class="todo TODO">TODO</span> 远程盘挂载</h2>
+<h2 id="org2bad2a7"><span class="done DONE">DONE</span> 远程盘挂载</h2>
 <div class="outline-text-2" id="text-org2bad2a7">
 <ul class="org-ul">
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-30 Sun 17:28]</span></span></li>
 <li>State "TODO"       from              <span class="timestamp-wrapper"><span class="timestamp">[2018-11-13 Tue 19:37]</span></span></li>
+</ul>
+
+<p>
+<b>nfs服务磁盘挂载</b>
+</p>
+
+<p>
+<a href="http://www.netingcn.com/centos-nfs-config.html">http://www.netingcn.com/centos-nfs-config.html</a>
+</p>
+
+<ul class="org-ul">
+<li><p>
+server 端
+</p>
+
+<p>
+需要共享出去的目录添加在/etc/exports文件中，格式为
+</p>
+
+<p>
+服务器上共享的目录  客户端主机名称1或IP1(参数1,参数2) 客户端主机名称2或IP2(参数3,参数4)
+</p>
+
+<p>
+<code>/home/data/ client-ip (rw,sync,no_root_squash)</code>
+</p>
+
+<p>
+<code>service nfs restart</code> 重启nfs
+</p>
+
+<p>
+<code>exportfs -v</code> 查看共享的目录
+</p></li>
+</ul>
+
+
+
+<ul class="org-ul">
+<li><p>
+client 端
+</p>
+
+<p>
+客户端挂载本地目录
+<code>mount -t nfs server-ip:/home/data /home/apps/update_package/</code>
+</p>
+
+<p>
+<code>umount /xxx/</code>
+</p>
+
+<p>
+<code>vim /etc/rc.local</code> 添加到开机自启动内
+</p></li>
 </ul>
 </div>
 </div>

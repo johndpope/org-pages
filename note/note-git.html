@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-12-26 Wed 16:31 -->
+<!-- 2018-12-30 Sun 15:30 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>git note</title>
@@ -259,6 +259,8 @@ for the JavaScript code in this tag.
 <li><a href="#org2760ab4">common questions</a>
 <ul>
 <li><a href="#orgab868b4">git ls-files 乱码问题</a></li>
+<li><a href="#org66eb9e8">change git push user</a></li>
+<li><a href="#orge652e2e">create branch</a></li>
 </ul>
 </li>
 </ul>
@@ -784,6 +786,40 @@ git add / git reset
 [svn]
    pathnameencoding = utf-8
 </pre>
+</div>
+</div>
+
+
+<div id="outline-container-org66eb9e8" class="outline-3">
+<h3 id="org66eb9e8">change git push user</h3>
+<div class="outline-text-3" id="text-org66eb9e8">
+<p>
+git config user.name 'xxx'
+</p>
+
+<p>
+git config user.email 'xxx'
+</p>
+</div>
+</div>
+<div id="outline-container-orge652e2e" class="outline-3">
+<h3 id="orge652e2e">create branch</h3>
+<div class="outline-text-3" id="text-orge652e2e">
+<p>
+查看本地分支   <code>git branch</code>
+</p>
+
+<p>
+查看远程分支  <code>git branch -a</code>
+</p>
+
+<p>
+创建本地分支，并切换到分支 <code>git branch manue1</code> <code>git checkout manue1</code>
+</p>
+
+<p>
+推送创建新的远程分支 <code>git push origin manue1</code>
+</p>
 </div>
 </div>
 </div>

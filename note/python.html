@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-12-29 Sat 15:29 -->
+<!-- 2018-12-30 Sun 15:30 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Python Promodoro</title>
@@ -239,6 +239,7 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#orgac1722d">Python Promodoro</a>
 <ul>
+<li><a href="#orgb2f99c4"><span class="timestamp-wrapper"><span class="timestamp">[2018-12-30 Sun 14:36] </span></span> python Context managers</a></li>
 <li><a href="#org4863f1d"><span class="timestamp-wrapper"><span class="timestamp">[2018-12-29 Sat 12:14] </span></span> Python是怎样管理内存的?</a></li>
 <li><a href="#orgd80bffd"><span class="timestamp-wrapper"><span class="timestamp">[2018-12-28 Fri 12:03] </span></span> pickle module</a></li>
 </ul>
@@ -250,6 +251,94 @@ for the JavaScript code in this tag.
 <div id="outline-container-orgac1722d" class="outline-2">
 <h2 id="orgac1722d">Python Promodoro</h2>
 <div class="outline-text-2" id="text-orgac1722d">
+</div>
+<div id="outline-container-orgb2f99c4" class="outline-3">
+<h3 id="orgb2f99c4"><span class="timestamp-wrapper"><span class="timestamp">[2018-12-30 Sun 14:36] </span></span> python Context managers</h3>
+<div class="outline-text-3" id="text-orgb2f99c4">
+<blockquote>
+<p>
+
+上下文管理器允许你在有需要的时候，精确地分配和释放资源。
+</p>
+
+<p>
+使用上下文管理器最广泛的案例就是with语句了
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">with</span> <span style="color: #483d8b;">open</span>(<span style="color: #8b2252;">'some_file'</span>, <span style="color: #8b2252;">'w'</span>) <span style="color: #a020f0;">as</span> opened_file:
+<span style="background-color: #f2f2f2;"> </span>   opened_file.write(<span style="color: #8b2252;">'Hola!'</span>)
+
+<span style="color: #8b2252;">"""</span>
+<span style="color: #8b2252;">&#36825;&#37324;&#20351;&#29992;&#20102; with &#35821;&#21477;&#65292;&#19981;&#31649;&#22312;&#22788;&#29702;&#25991;&#20214;&#36807;&#31243;&#20013;&#26159;&#21542;&#21457;&#29983;&#24322;&#24120;&#65292;</span>
+<span style="color: #8b2252;">&#37117;&#33021;&#20445;&#35777; with &#35821;&#21477;&#25191;&#34892;&#23436;&#27605;&#21518;&#24050;&#32463;&#20851;&#38381;&#20102;&#25171;&#24320;&#30340;&#25991;&#20214;&#21477;&#26564;&#12290;</span>
+<span style="color: #8b2252;">&#22914;&#26524;&#20351;&#29992;&#20256;&#32479;&#30340; try/finally &#33539;&#24335;:</span>
+<span style="color: #8b2252;">"""</span>
+<span style="color: #483d8b;">file</span> = <span style="color: #483d8b;">open</span>(<span style="color: #8b2252;">'some_file'</span>, <span style="color: #8b2252;">'w'</span>)
+<span style="color: #a020f0;">try</span>:
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #483d8b;">file</span>.write(<span style="color: #8b2252;">'Hola!'</span>)
+<span style="color: #a020f0;">finally</span>:
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #483d8b;">file</span>.close()
+</pre>
+</div>
+
+<p>
+上下文管理协议（Context Management Protocol）：包含方法 <code>__enter__()</code> 和 <code>__exit__()</code>
+</p>
+
+<p>
+上下文管理器（Context Manager）：支持上下文管理协议的对象，这种对象实现了__enter__() 和__exit__() 方法
+</p>
+
+<p>
+<b>自定义上下文管理器</b>
+</p>
+
+<p>
+写一个“open”上下文管理器
+</p>
+
+<p>
+要实现上下文管理器，必须实现两个方法
+一个负责进入语句块的准备操作，
+另一个负责离开语句块的善后操作。
+同时，我们需要两个参数：文件名和打开方式
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">
+<span style="color: #a020f0;">class</span> <span style="color: #228b22;">PypixOpen</span>:
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">__init__</span>(<span style="color: #a020f0;">self</span>, filename, mode):
+<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">self</span>.filename = filename
+<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">self</span>.mode = mode
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">__enter__</span>(<span style="color: #a020f0;">self</span>):
+<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">self</span>.openedFile = <span style="color: #483d8b;">open</span>(<span style="color: #a020f0;">self</span>.filename, <span style="color: #a020f0;">self</span>.mode)
+<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> <span style="color: #a020f0;">self</span>.openedFile
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">__exit__</span>(<span style="color: #a020f0;">self</span>, *unused):
+<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">self</span>.openedFile.close()
+
+<span style="color: #a020f0;">with</span> PypixOpen(filename, mode) <span style="color: #a020f0;">as</span> writer:
+<span style="background-color: #f2f2f2;"> </span>   writer.write(<span style="color: #8b2252;">"Hello World from our new Context Manager!"")</span>
+</pre>
+</div>
+
+<p>
+<a href="http://blog.jobbole.com/64175/">http://blog.jobbole.com/64175/</a>
+</p>
+
+<p>
+<b>python内一些实现上下文库</b>
+</p>
+
+<p>
+contextlib
+</p>
+
+<p>
+threading
+</p>
+</blockquote>
+</div>
 </div>
 <div id="outline-container-org4863f1d" class="outline-3">
 <h3 id="org4863f1d"><span class="timestamp-wrapper"><span class="timestamp">[2018-12-29 Sat 12:14] </span></span> Python是怎样管理内存的?</h3>
@@ -264,7 +353,7 @@ for the JavaScript code in this tag.
 </p>
 
 <p>
-论是C语言的手工管理，还是Java的垃圾回收，都成为语言最重要的特征。
+无论是C语言的手工管理，还是Java的垃圾回收，都成为语言最重要的特征。
 这里以Python语言为例子，说明一门动态类型的、面向对象的语言的内存管理方式
 </p>
 
@@ -398,7 +487,7 @@ a.append(b)
 
 
 <p>
-*分代回收*(小家伙要多检查)
+<b>分代回收</b> (小家伙要多检查)
 </p>
 
 <p>
