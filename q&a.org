@@ -1,11 +1,356 @@
 #+SETUPFILE: setup.org
 #+TITLE: Question & Answer
 * Question & Answer
-** TODO arch 系统剪切板调用
+** TODO definite python file template
+   SCHEDULED: <2019-01-01 Tue>
+   #+BEGIN_QUOTE
+
+   #+END_QUOTE
+** TODO bt sync 
+   #+BEGIN_QUOTE
+   DEADLINE: <2019-01-08 Tue 10:03>
+   
+   https://program-think.blogspot.com/2017/08/GFW-Resilio-Sync.html 
+   
+   *节点发现*
+   * Tracker Server（追踪服务器）
+
+   * DHT 网络
+
+   * Predefined Hosts
+
+   *Resilio Sync 国内使用*
+   #+END_QUOTE
+** DONE [#B] create telegram group
+   CLOSED: [2018-12-30 Sun 12:09]
+   - State "DONE"       from "TODO"       [2018-12-30 Sun 12:09]
+   #+BEGIN_QUOTE
+   DEADLINE: <2018-12-30 Sun 10:00>
+
+   telegram 代理支持
+
+   1. socks5
+
+      shadowrocket 127.0.0.1:1082
+   2. MTproto
+      官方提供很多 :
+
+      自建mtproto: https://github.com/TelegramMessenger/MTProxy
+
+   proxy sponsor how to set ?
+
+   
+   #+END_QUOTE
+** TODO emacs mgit use
+   #+BEGIN_QUOTE
+   DEADLINE: <2019-01-06 Sun 19:02>
+ 
+   #+END_QUOTE
+** TODO how to talk with irc in emacs
+   
+ #+BEGIN_QUOTE
+ DEADLINE: <2019-01-06 Sun 16:33>
+ 
+  #+END_QUOTE
+** DONE virtualenv set different python 
+   CLOSED: [2018-12-27 Thu 15:53]
+   - State "DONE"       from "TODO"       [2018-12-27 Thu 15:53]
+ #+BEGIN_QUOTE
+ DEADLINE: <2018-12-27 Thu 15:41>
+
+sudo pip install virtualenv
+
+mkdir ~/opt/virtualenvs 
+ 
+virtualenv --python=/usr/bin/python2.6 ~/opt/virtualenvs/emacs-python
+
+cd ~/opt/virtualenvs/emacs-python/bin
+
+source activate // deactivate
+
+alias emacs-python-enable='source ~/opt/virtualenvs/emacs-python/bin/activate'
+
+  #+END_QUOTE
+** UNDO how to use youdao translation in emacs
+   CLOSED: [2018-12-28 Fri 13:09] DEADLINE: <2018-12-28 Fri>
+   - State "UNDO"       from "TODO"       [2018-12-28 Fri 13:09]
+ #+BEGIN_QUOTE
+
+ https://github.com/xuchunyang/youdao-dictionary.el
+ 
+ #+END_QUOTE
+** DONE how to use emacs to program python
+   CLOSED: [2018-12-28 Fri 16:44] DEADLINE: <2018-12-28 Fri>
+   - State "DONE"       from "TODO"       [2018-12-28 Fri 16:44]
+   #+BEGIN_QUOTE
+
+http://wikemacs.org/wiki/Python#A_Hydra_to_choose_what_tests_to_run.2C_navigate_errors_and_switch_to_the_console
+
+https://wdicc.com/emacs-as-python-ide/
+1. elpy
+
+   pip install jedi flake8 autopep8
+   
+  *静态代码检测:*
+
+  Flake8 是由Python官方发布的一款辅助检测Python代码是否规范的工具
+    
+  *格式化代码*
+
+  YAPF (Yet Another Python Formatter)是Google开源的一个用来格式化Python代码的工具.
+  
+  支持2种代码规范 (PEP8 Google style)
+
+  Black，号称不妥协的代码格式化工具，因为它检测到不符合规范的代码风格直接就帮你全部格式化好，
+
+  根本不需要你确定，直接替你做好决定
+
+  M-x elpy-config
+
+  https://github.com/jorgenschaefer/elpy/wiki/Configuration
+
+  pip install yapf 
+   
+  M-x elpy-format-code (c-c c-r f)
+
+  #+BEGIN_SRC elisp 
+
+(when (require 'elpy nil t)
+  (elpy-enable)
+  (pyvenv-activate "~/opt/virtualenvs/emacs-python")
+)
+
+
+(defun goto-def-or-rgrep ()
+  "Go to definition of thing at point or do an rgrep in project if that fails"
+  (interactive)
+  (condition-case nil (elpy-goto-definition)
+    (error (elpy-rgrep-symbol (thing-at-point 'symbol)))))
+
+(define-key elpy-mode-map (kbd "M-.") 'goto-def-or-rgrep)
+
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:complete-on-dot t)                 ; optional
+   #+END_SRC
+
+  https://elpy.readthedocs.io/en/latest/introduction.html
+
+2. How do use Emacs to look up a function in Python?
+   
+   =M-.= like pycharm
+   
+   jedi
+   
+   http://tkf.github.io/emacs-jedi/latest/
+ 
+  #+END_QUOTE
+
+** TODO 2019年度计划
+   DEADLINE: <2018-12-31 Mon>
+** DONE how to hook pomodoro
+   CLOSED: [2018-12-28 Fri 13:17]
+
+   - State "DONE"       from "TODO"       [2018-12-28 Fri 13:17]
+   #+BEGIN_QUOTE
+   #+BEGIN_SRC elisp
+
+   (require 'pomodoro)
+
+   (eval-after-load 'pomodoro
+     '(progn
+        (setq pomodoro-break-time 2)
+        (setq pomodoro-long-break-time 5)
+        (setq pomodoro-work-time 25)
+        (pomodoro-add-to-mode-line)
+        (setq-default mode-line-frmat
+                 (cons '(pomodoro-mode-line-string pomodoro-mode-line-string)
+                       mode-line-format))))
+   #+END_SRC
+
+   M-x  customize-group config =/usr/bin/afplay game_win.wav path=
+
+   在 =pomodoro.el= 中修改pomodoro-start和pomodoro-stop函数
+   添加
+   #+BEGIN_SRC 
+    (play-pomodoro-work-sound)
+    (play-pomodoro-break-sound)
+   #+END_SRC
+
+   临时修改了原函数,lisp如何hook?
+
+   #+END_QUOTE
+** DONE emacs org-pomodoro install
+   CLOSED: [2018-12-26 Wed 16:20] DEADLINE: <2018-12-28 Fri>
+   - State "DONE"       from "TODO"       [2018-12-26 Wed 16:20] \\
+     org-pomodoro 过于臃肿，喜欢满足基本功能的pomodoro，我只需要定时+播放提示音乐功能
+** DONE mac sock to http proxy
+   CLOSED: [2018-12-26 Wed 16:43]
+   - State "DONE"       from "TODO"       [2018-12-26 Wed 16:43]
+   #+BEGIN_QUOTE
+You can install it with brew:
+
+=brew install polipo=
+And open a config file:
+
+vim ~/.poliporc
+Fill it with the content:
+
+#+BEGIN_SRC 
+# your SOCKS local port
+socksParentProxy = 127.0.0.1:1080
+socksProxyType = socks5
+
+# default port is 8123
+proxyAddress = '::0'
+proxyPort = 8888 
+#+END_SRC
+
+Start polipo with polipo -c ~/.poliporc and now polipo established a http proxy based on your socks5 proxy.
+
+后来发现shadowsocks自动开启了，socks5和http代理 伪需求了
+   #+END_QUOTE
+** DONE learn more form emacs itself
+   CLOSED: [2018-12-22 Sat 19:50]
+   
+   - State "DONE"       from "TODO"       [2018-12-22 Sat 19:50]
+   #+BEGIN_QUOTE
+   =c-h c-f= :: find-function
+
+   =c-h c-v= :: find-variables
+
+   =c-h c-k= :: find-function-no-key
+   
+   #+BEGIN_SRC lisp
+   (global-set-key (kdb "C-h C-f") 'find-function)
+   (global-set-key (kdb "C-h C-v") 'find-variable)
+   (global-set-key (kdb "C-h C-k") 'find-function-on-key)
+   #+END_SRC
+   
+   =M-x info= 学习emacs技巧
+   
+   #+END_QUOTE
+** TODO emacs 截图
+   SCHEDULED: <2018-12-31 Mon>
+** DONE emacs 使用 mpd /mpc 听音乐
+   CLOSED: [2018-12-19 Wed 20:07]
+   - State "DONE"       from "TODO"       [2018-12-19 Wed 20:07]
+#+BEGIN_QUOTE
+
+*install mpd* ::
+
+ https://computingforgeeks.com/install-configure-mpd-ncmpcpp-macos/
+
+ Start mpd service using the command:
+
+ =$ mpd=
+
+ Mpd process can be killed by running the command.
+
+ =$ mpd --kill=
+
+ To update mpd, execute the command,
+
+ =$ mpd update=
+
+*install mpc-client* ::
+
+ brew install mpc
+   
+ =mpc search any  taylor | mpc add taylor-1989=
+
+ =mpc help=
+
+*mpc command keywords* :: 
+
+    #+BEGIN_VERSE
+    
+    mpc的常用参数：
+    mpc add 添加歌曲到播放列表
+    mpc listall|mpc add 可以把所有歌曲都添加到当前的播放列表
+    mpc listall 可以列出所有的歌曲
+    mpc playlist 查看当前播放列表
+    mpc 查看当前播放歌曲的信息
+    mpc play 播放
+    mpc pause 暂停
+    mpc stop 停止
+    mpc next 播放下一首
+    mpc prev 播放前一首
+    mpc repeat on 启用重复播放
+    mpc random on 启用随机播放
+    mpc play 18 播放列表中第18首
+    mpc search filename 可以按文件名查找
+    mpc search artist 可以按歌手查找
+    mpc search title 可以按歌曲名查找
+    音量调节：
+    mpc volume +20
+    mpc volume -20
+    #+END_VERSE
+    
+    https://www.mankier.com/1/mpc#Commands-Sticker_Commands
+
+*emms as mpc config* ::
+    #+BEGIN_SRC 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; emms mpd config 
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(setq emms-player-list '(emms-player-mpd))
+(setq emms-player-mpd-server-name "localhost")
+(setq emms-player-mpd-server-port "6600")
+(setq emms-info-functions '(emms-info-mpd))
+(setq emms-volume-change-function 'emms-volume-mpd-change)
+
+
+;;;emms快捷键设置
+(global-set-key (kbd "C-c e b") 'emms-smart-browse)
+(global-set-key (kbd "C-c e r") 'emms-player-mpd-update-all-reset-cache)
+(global-set-key (kbd "C-c e l") 'emms-playlist-mode-go)
+(global-set-key (kbd "C-c e n") 'emms-next)
+(global-set-key (kbd "C-c e p") 'emms-previous)
+(global-set-key (kbd "C-c e s") 'emms-pause)
+
+(defun mpd/start-music-daemon ()
+  "Start MPD, connects to it and syncs the metadata cache."
+  (interactive)
+  (shell-command "mpd")
+  (mpd/update-database)
+  (emms-player-mpd-connect)
+  (emms-cache-set-from-mpd-all)
+  (message "MPD Started!"))
+(global-set-key (kbd "C-c m c") 'mpd/start-music-daemon)
+
+(defun mpd/kill-music-daemon ()
+  "Stops playback and kill the music daemon."
+  (interactive)
+  (emms-stop)
+  (call-process "killall" nil nil nil "mpd")
+  (message "MPD Killed!"))
+(global-set-key (kbd "C-c m k") 'mpd/kill-music-daemon)
+
+(defun mpd/update-database ()
+  "Updates the MPD database synchronously."
+  (interactive)
+  (call-process "mpc" nil nil nil "update")
+  (message "MPD Database Updated!"))
+(global-set-key (kbd "C-c m u") 'mpd/update-database)
+    
+    #+END_SRC
+
+    使用emms-smart-browse操作playlist 
+
+
+#+END_QUOTE
+   
+** DONE arch 系统剪切板调用
+   CLOSED: [2018-12-19 Wed 20:07]
+   - State "DONE"       from "TODO"       [2018-12-19 Wed 20:07]
 #+BEGIN_QUOTE
 =c-;= 方便调用
 #+END_QUOTE
 ** TODO snap 下一代linux跨发行版的包管理
+   SCHEDULED: <2019-01-04 Fri>
 ** DONE arch 安装teamviewer
    CLOSED: [2018-12-12 Wed 15:57]
    - State "DONE"       from "TODO"       [2018-12-12 Wed 15:57]
@@ -33,6 +378,7 @@ sudo systemctl enable teamviewerd
 #+END_QUOTE
    
 ** TODO emacs指定模板创建文件
+   SCHEDULED: <2019-01-01 Tue>
    #+BEGIN_QUOTE
 #+BEGIN_SRC lisp
 (defun capture-report-date-file (path)
@@ -57,8 +403,13 @@ sudo systemctl enable teamviewerd
 #+END_SRC
 
    #+END_QUOTE
-** TODO emacs配置做软链到工作目录
-** TODO 如何使用emms听音乐看视频？
+** DONE emacs配置做软链到工作目录
+   CLOSED: [2018-12-18 Tue 13:13]
+
+   =ln -s=
+** DONE 如何使用emms看视频？
+   CLOSED: [2018-12-19 Wed 16:16]
+   - State "DONE"       from "TODO"       [2018-12-19 Wed 16:16]
    - State "TODO"       from "DONE"       [2018-12-13 Thu 14:56]
    - State "DONE"       from "TODO"       [2018-12-12 Wed 21:55]
    #+BEGIN_QUOTE
@@ -69,25 +420,28 @@ sudo systemctl enable teamviewerd
    mplayer -playlist  /tmp/mylist.txt
 
    emms 快捷键
-#+BEGIN_SRC 
-(global-set-key (kbd "C-c e l") 'emms-playlist-mode-go)
-(global-set-key (kbd "C-c e s") 'emms-start)
-(global-set-key (kbd "C-c e e") 'emms-stop)
-(global-set-key (kbd "C-c e n") 'emms-next)
-(global-set-key (kbd "C-c e p") 'emms-pause)
-(global-set-key (kbd "C-c e f") 'emms-play-playlist)
-(global-set-key (kbd "C-c e o") 'emms-play-file)
-(global-set-key (kbd "C-c e d") 'emms-play-directory-tree)
-(global-set-key (kbd "C-c e a") 'emms-add-directory-tree)
-#+END_SRC
+   #+BEGIN_SRC 
+   (global-set-key (kbd "C-c e l") 'emms-playlist-mode-go)
+   (global-set-key (kbd "C-c e s") 'emms-start)
+   (global-set-key (kbd "C-c e e") 'emms-stop)
+   (global-set-key (kbd "C-c e n") 'emms-next)
+   (global-set-key (kbd "C-c e p") 'emms-pause)
+   (global-set-key (kbd "C-c e f") 'emms-play-playlist)
+   (global-set-key (kbd "C-c e o") 'emms-play-file)
+   (global-set-key (kbd "C-c e d") 'emms-play-directory-tree)
+   (global-set-key (kbd "C-c e a") 'emms-add-directory-tree)
+   #+END_SRC
 
-问题: 播放m4a格式音乐的时候mplayer会自动弹出窗口,所以用来看视频
    #+END_QUOTE
 
 ** TODO emacs如何处理博文头部尾部嵌套跳转页问题
+   SCHEDULED: <2019-01-01 Tue>
 ** TODO 推荐系统引擎 apache mahout  
+   SCHEDULED: <2019-01-09 Wed>
 ** TODO org-mode 导出中文pdf文件
+   SCHEDULED: <2019-01-09 Wed>
 ** TODO 如何publish的时候直接push html到发布分支? 
+   SCHEDULED: <2019-01-19 Sat>
 ** DONE org-mode capture倒序添加新的task
    CLOSED: [2018-12-11 Tue 21:41]
    - State "DONE"       from "TODO"       [2018-12-11 Tue 21:41]
@@ -255,4 +609,11 @@ sudo pacman -Sy yaourt base-devel fakeroot
 
 yaourt -Syu --devel --aur
    #+END_QUOTE
+
+
+   
+   
+
+
+
 

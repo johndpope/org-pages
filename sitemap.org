@@ -1,10 +1,12 @@
 #+TITLE: Sitemap
 
 - [[file:body.org][Body Building]]
+- [[file:bug.org][Bug List]]
 - [[file:code.org][Coding List]]
 - [[file:q&a.org][Question & Answer]]
 - [[file:read.org][Reading List]]
 - [[file:write.org][Writing List]]
+- [[file:link.org][link]]
 - [[file:index.org][manue1]]
 - [[file:README.org][org-pages 项目说明]]
 - [[file:setup.org][setup]]
@@ -22,8 +24,9 @@
 - note
   - [[file:note/note-linux-awk.org][AWK 程序设计语言]]
   - [[file:note/note-docker-learn.org][Docker能替代Vbox吗?]]
+  - [[file:note/python.org][Python Promodoro]]
   - [[file:note/note-threat_intelligence_scrapy.org][Threat Intelligence 情报收集爬虫]]
-  - [[file:note/note-elasticsearch.org][elasticsearch 相关知识整理]]
+  - [[file:note/note-elasticsearch.org][elasticsearch 常用知识梳理]]
   - [[file:note/note-emacs.org][emacs note]]
   - [[file:note/org-to-html.org][emacs 发布org-mode文件到html]]
   - [[file:note/note-git.org][git note]]

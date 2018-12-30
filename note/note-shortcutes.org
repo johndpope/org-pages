@@ -5,6 +5,7 @@
 1. 查找文件比较大的
     #+BEGIN_SRC bash
     find ~ -type f -exec du {} + > /tmp/size_report.txt
+
     sort -rn /tmp/size_report.txt | head -n20
     #+END_SRC
 2. 目录下查找代码
@@ -12,7 +13,16 @@
 3. 查看进出流量
    #+BEGIN_SRC 
    iftop -n
+
    nload  
+   #+END_SRC
+4. which process is listening upon a port
+   #+BEGIN_SRC 
+   netstat -anp | grep port 
+
+   lsof -i :prot
+
+   lsof -p $(pidof pika)
    #+END_SRC
 * shortcuts
   #+CAPTION: shortcuts
@@ -78,6 +88,8 @@
      | a-w                 | 复制             |
      |---------------------+------------------|
      | c-y                 | 粘贴             |
+     |---------------------+------------------|
+     |                     |                  |
      |---------------------+------------------|
      |                     |                  |
      |---------------------+------------------|

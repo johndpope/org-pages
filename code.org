@@ -5,7 +5,7 @@
 ** DONE [[file:algorithms/199-Binary Tree Right Side View.org][199. Binary Tree Right Side View]]
 ** DONE [[file:algorithms/31-Next Permutation.org][31.Next Permutation]]
 ** DONE [[file:algorithms/46-Permutations.org][46.Permutations]]
-** DONE [[file:122-Best%20Time%20to%20Buy%20and%20Sell%20Stock%20II.org][122.Best Time to Buy and Sell Stock II]] 
+** DONE [[file:algorithms/122-Best%20Time%20to%20Buy%20and%20Sell%20Stock%20II.org][122.Best Time to Buy and Sell Stock II]]
 ** TODO [[file:algorithms/47-PermutationsII.org][47.Permutations II]]
 ** TODO [[file:algorithms/60-Permutation-Sequence.org][60.Permutation Sequence]]
 ** TODO [[file:algorithms/sort.org][排序算法]]

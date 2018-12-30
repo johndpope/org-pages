@@ -2,7 +2,7 @@
 #+TITLE: Body Building
 * Body Building
 ** TODO Weekly fitness
-   SCHEDULED: <2017-07-01 Sat +1w>
+   # SCHEDULED: <2017-07-01 Sat +1w>
    :PROPERTIES:
    :LAST_REPEAT: [2017-07-18 Tue 11:10]
    :END:
@@ -11,11 +11,13 @@
    - State "UNDO"       from "TODO"       [2017-06-11 Sun 23:56] \\
    每周六健身
    
-** SOMEDAY Early hours
-   SCHEDULED: <2017-06-17 Sat +1d>
+** TODO Early hours
+   # SCHEDULED: <2017-06-19 Mon +1d>
    :PROPERTIES:
-   :LAST_REPEAT: [2017-07-05 Wed 11:50]
+   :LAST_REPEAT: [2018-12-27 Thu 12:40]
    :END:
+   - State "DONE"       from "TODO"       [2018-12-27 Thu 12:40]
+   - State "DONE"       from "SOMEDAY"    [2018-12-27 Thu 12:39]
    - State "ABORT"      from "SOMEDAY"    [2018-10-26 Fri 18:15] \\
      我觉得我现在还年轻，趁着年轻多熬几年，没毛病!
    - State "DONE"       from "TODO"       [2017-07-05 Wed 11:50]

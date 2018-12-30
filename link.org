@@ -1,0 +1,162 @@
+#+SETUPFILE: setup.org
+#+TITLE: Link notes
+* Link notes
+
+** TODO python黑魔法---上下文管理器 contextor
+  #+BEGIN_QUOTE
+  https://www.jianshu.com/p/d53449f9e7e0 
+
+  SCHEDULED:<2019-01-01 Tue 15:15>
+  
+  #+END_QUOTE
+
+** TODO python 进阶
+   SCHEDULED: <2018-12-31 ++1d Mon>
+  #+BEGIN_QUOTE
+  https://eastlakeside.gitbooks.io/interpy-zh/content/context_managers/handle_exception.html 
+
+  
+  #+END_QUOTE
+
+** TODO telegram Proxy sponsor channel set
+  #+BEGIN_QUOTE
+  https://blog.jazinbaz.in/en/2018/06/creating-your-own-official-mtproto-proxy-with-channel-promotion-very-easy-way.html 
+
+  DEADLINE:<2018-12-31 Mon 12:13>
+  
+  #+END_QUOTE
+
+** TODO flask  源码解读
+  #+BEGIN_QUOTE
+  https://amberno1111.github.io/tags/Flask/ 
+
+ SCHEDULED: <2018-12-30 ++1d Sun 19:48>
+  
+  #+END_QUOTE
+
+** TODO 添加github搜索快捷键辅助github pomodoro task
+  #+BEGIN_QUOTE
+  https://github.com/topics/flask
+
+  DEADLINE:<2018-12-31 Mon 16:55>
+  
+  #+END_QUOTE
+
+** TODO Python 博客文章知识点不错
+   SCHEDULED: <2018-12-31 ++1d Mon>
+  #+BEGIN_QUOTE
+  https://wdxtub.com/2016/03/24/thinking-in-python/
+  
+  #+END_QUOTE
+
+** TODO python pomodoro task
+   SCHEDULED: <2018-12-31 Mon ++1d >
+   :PROPERTIES:
+   :LAST_REPEAT: [2018-12-30 Sun 15:05]
+   :END:
+   - State "DONE"       from "TODO"       [2018-12-30 Sun 15:05]
+   - State "TODO"       from "DONE"       [2018-12-30 Sun 15:04]
+   - State "DONE"       from "TODO"       [2018-12-30 Sun 14:35]
+   - State "DONE"       from "TODO"       [2018-12-29 Sat 19:49]
+  #+BEGIN_QUOTE
+  https://zhuanlan.zhihu.com/p/32818342
+  https://zhuanlan.zhihu.com/p/42628522
+  #+END_QUOTE
+** TODO github pomodoro task
+   SCHEDULED: <2018-12-31 Mon>
+   :PROPERTIES:
+   :LAST_REPEAT: [2018-12-30 Sun 15:09]
+   :END:
+   - State "DONE"       from "TODO"       [2018-12-30 Sun 15:09]
+   - State "DONE"       from "TODO"       [2018-12-29 Sat 19:50]
+   - State "DONE"       from "TODO"       [2018-12-29 Sat 12:02]
+  #+BEGIN_QUOTE
+  https://github.com/Nanue1
+  
+  #+END_QUOTE
+
+** TODO 抽时间研究下这位老大爷的emacs博客
+   SCHEDULED: <2019-01-04 Fri>
+   #+BEGIN_QUOTE
+   https://hack.org/mc/blog/pomodoro.html
+   #+END_QUOTE
+
+** DONE 研究下人生发财靠康波 理论 
+   CLOSED: [2018-12-26 Wed 18:06] DEADLINE: <2018-12-27 Thu>
+   - State "DONE"       from "TODO"       [2018-12-26 Wed 18:06]
+     #+BEGIN_QUOTE
+     https://zhuanlan.zhihu.com/p/30688238
+     [2018-12-25 Tue 16:19]
+     康德拉季耶夫周期：1926年俄国经济学家康德拉季耶夫提出的一种为期50-60年的经济周期。
+
+     踏准经济周期才能更容易逆袭，老铁你听懂了吗？
+
+     五、对于未来投资的建议
+
+     1、在未来的投资目标：
+
+     未来五年是资产的下降期，这个时候大家尽量持有流动性好的资产，而不要持有流动性不好的资产。资产要求：
+     第一目标是保值，第二是流动性。这两个是未来五年大家在投资时应该注意的一个最核心的问题。
+
+     2、现状预测：
+
+     2019年是中国经济的最差年景，在另一套理论中也是可以解释的。所以美元现在还没有到达这波牛市的高点，这
+     波高点应该在明年中期。明年上半年美国也会出现滞胀，那时候美联储会连续加息，流动性会出问题，美国经济
+     掉头往下，通胀掉头往下，就会出现经济的调整。这就是2017年的中期可以看到的。
+
+     3、风险控制：
+     
+     2018年到2019年是康波周期的万劫不复之年，60年当中的最差阶段，所以一定要控制18、19年的风险。在此之前
+     做好充分的现金准备，现在可以发债，五年之后还有现金。
+
+     4、人生规划：2016年至2017年卖掉投资性房地产和新三板股权，买进黄金，休假两年，2019年重新开始。
+
+     五色土认为：在休假的两年中，人可以休息，资金可以继续赚取不动产抵押理财利息。
+     #+END_QUOTE
+
+** TODO 豆瓣评分9.0以上专辑聆听
+   #+BEGIN_QUOTE
+   SCHEDULED: <2019-01-01 Tue ++1w>
+   :PROPERTIES:
+   :LAST_REPEAT: [2018-12-25 Tue 13:14]
+   :END:
+   - State "DONE"       from "TODO"       [2018-12-25 Tue 13:14] \\
+     专辑：我去2000年
+     
+     曲目 
+     
+     1. NEW BOY
+     2. 妈妈，我..
+     3. 在希望的田野上
+     4. 那些花儿
+     5. 我去2000年
+     6. 旅途
+     7. 别，千万别
+     8. 白桦树
+     9. 活着
+     10. 召唤
+     11. 九月
+     12. 火车开往冬天
+   https://www.douban.com/doulist/241262/?start=0&sort=seq&playable=0&sub_type=
+ 
+   [2018-12-25 Tue 11:54]
+   #+END_QUOTE
+
+** DONE spacemacs rocks git  config 
+   #+BEGIN_QUOTE
+   CLOSED: [2018-12-25 Tue 11:36] DEADLINE: <2018-12-25 Tue> SCHEDULED: <2018-12-24 Mon>
+
+   - State "DONE"       from "TODO"       [2018-12-25 Tue 11:36] \\
+     zilongshanren 配置前半部分不定义hacking enacs 1-7 都仔细看过了，很多配置和使用emacs的细节很受用，*推荐*
+     
+   https://github.com/zilongshanren/emacs.d/blob/develop/lisp/init-org.el
+ 
+   [2018-12-24 Mon 13:51]
+
+   #+END_QUOTE
+
+
+ 
+ 
+ 
+ 

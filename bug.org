@@ -1,0 +1,36 @@
+#+SETUPFILE: setup.org
+#+TITLE: Bug List
+
+* Bug List
+** TODO org-mode pomodoro modeline  no time show
+   #+BEGIN_QUOTE
+   DEADLINE: <2019-01-02 Tue 11:02>
+   
+   #+END_QUOTE
+** TODO emacs execute python code error
+   DEADLINE: <2018-12-31 Mon>
+   #+BEGIN_QUOTE
+ 
+   *No org-babel-execute function for python*
+
+   #+END_QUOTE
+** DONE mac install Mysql-python
+   CLOSED: [2018-12-28 Fri 19:00]
+   - State "DONE"       from "TODO"       [2018-12-28 Fri 19:00]
+   #+BEGIN_QUOTE
+   DEADLINE: <2018-12-28 Fri 18:00>
+ 
+   *pip install mysql-python fails with EnvironmentError: mysql_config not found*
+
+   *_mysql.c:44:10: fatal error: 'my_config.h' file not found*
+   
+   https://stackoverflow.com/questions/50864438/mac-pip-install-mysql-python-unsuccessful
+   
+   Installing of an older version of the MySQL worked for me:
+
+   brew remove mysql
+   brew install mysql@5.7
+   brew link --force mysql@5.7
+   pip install mysql-python
+   
+   #+END_QUOTE

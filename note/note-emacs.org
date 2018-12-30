@@ -53,8 +53,10 @@
    M-x linum-mode   show line number
 ** emacs lisp
 *** blog
+
     http://www.woola.net/detail/2016-08-18-elisp.html
 *** casting spels emacs
+
     a comic book : Emacs Lisp version 
     http://www.lisperati.com/casting-spels-emacs/html/casting-spels-emacs-1.html
 
@@ -80,24 +82,24 @@
 **** Syntax and Semantic
 
 
-any text you give elisp interprater has to be arranged into list ,can be nested into lists of
-lists,a list in elisp (bla bla bla (abc abc))
+     any text you give elisp interprater has to be arranged into list ,can be nested into lists of
+     lists,a list in elisp (bla bla bla (abc abc))
 
-elis: interprater uses two modes to read code:  Code mode / Data mode. 
-in data mode,you can put anything into your list ;
-in Code mode, your list need to be special type of list called a form :
+     elis: interprater uses two modes to read code:  Code mode / Data mode. 
+     in data mode,you can put anything into your list ;
+     in Code mode, your list need to be special type of list called a form :
 
-#+BEGIN_SRC 
+     #+BEGIN_SRC 
 
 (foo bla bla bla)
   ^          ^
   |          |
 command     a form
-#+END_SRC
+     #+END_SRC
 
 **** Defining the data for our Game World
-in order to learn some more about forms,examples:
-#+BEGIN_SRC 
+     in order to learn some more about forms,examples:
+     #+BEGIN_SRC 
 (setq objects '(whiskey-bottle bucket frog chain))
 
 | code mode    | The single quote to 'flip' the compiler into Date mode |                                     |   |   |
@@ -105,18 +107,18 @@ in order to learn some more about forms,examples:
 | setq objects | '                                                      | (whiskey-bottle bucket frog chain)) |   |   |
 |--------------+--------------------------------------------------------+-------------------------------------+---+---|
 
-#+END_SRC
-the command sets a variable to a value : the variable is objects and the value is a list 
+     #+END_SRC
+     the command sets a variable to a value : the variable is objects and the value is a list 
      
 **** Looking around in our game world
-The word defun means, as you might expect, that we're defining a function
-#+BEGIN_SRC 
+     The word defun means, as you might expect, that we're defining a function
+     #+BEGIN_SRC 
 (defun describe-location (location map)
     (second (assoc location map)))
-#+END_SRC
-The assoc command does this and then returns the data describing the living-room
+     #+END_SRC
+     The assoc command does this and then returns the data describing the living-room
 
-Then the command second trims out the second item in that list, which is the description of the living-room
+     Then the command second trims out the second item in that list, which is the description of the living-room
      
 *** code
     #+BEGIN_SRC elisp 
@@ -162,3 +164,100 @@ Then the command second trims out the second item in that list, which is the des
     
     #+END_SRC
     
+** use emacs
+
+   1. =counsel-git=  
+
+      查找当前文件所在的版本控制系统内的其他文件 =, g f=
+   2. init-evil.el 
+      
+      定义一些快捷键
+   3. major mode / minor mode
+
+      major mode : 语法高亮 主要基本功能a 
+
+      text-mode special-mode prog-mode(js2-mode所有编程语言继承这种mode)
+
+      命名: xxx-mode-key-map , xxx-mode-hook
+
+      minor mode : 增强性功能
+   4. load-file / load / require /provide /autoload
+
+      require : If feature FEATURE is not loaded, load it from FILENAME. (c-h f)
+      内部调用load
+
+      load : load elc file(byte-compile-file) 修改el配置 load再次加载是没有没更新
+      依赖load-file
+
+      load-file 明确加载el/elc文件
+
+      provide -> 执行一次load-file后,更新feature
+
+      autoload : (autoload 'test "init-test") 当调用test函数时候，才会执行加载init-test文件
+      =;;;####autoload=
+   5. dird mode (c-x d)
+
+      #+BEGIN_VERSE
+
+      + : create a directory
+      c-x c-f : new file
+      g: to reflush buffer 
+      C: copy file
+      D: delete file
+      R: rename file
+      Shift + 6 : 切换上级目录
+      c-x c-j: 快速打开当前文件目录
+      #+END_VERSE
+   6. org-mode auto create emacs conf
+      
+      * init.el
+      #+BEGIN_SRC lisp
+      (package-initialize)
+      (require 'org-install)
+      (require 'ob-tangle)
+      (org-bable-load-file (expand-file-name "manue1.org" user-emacs-dictionary))
+      #+END_SRC
+
+      auto create manue1.el config
+   7. counsel-git-grep 
+      
+      =,gg=  通过关键字搜索版本内代码
+   8. web mode
+      
+      =M-;= 注释
+      
+      支持js css html 语法高亮补全
+   9. js2-refactor
+
+      c-c c-m
+   10. occur 
+       
+       =M-s o= 快速跳转到当前页面定义的字符串
+
+       M-x customize-group popwin
+
+       右边显示
+
+       occur-edit  可以直接修改
+   11. ag
+       
+       brew install the_silver_search
+
+       helm-ag
+
+       =c-c s=
+   12. flycheck
+   
+       show  js error with
+   13. yasnippet
+
+       自动生成代码 补全代码
+
+       auto-yasnippet
+
+       自定义生成的常用代码
+
+       ,ac (aya-create)
+   14. which key
+
+       , 列出所有按键

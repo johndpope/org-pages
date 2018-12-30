@@ -43,15 +43,19 @@
 
 *GTD*
 #+BEGIN_QUOTE
-- [[file:write.org][Writing List]]
-
-- [[file:code.org][Coding List]]
-
 - [[file:q&a.org][Question & Answer]]
+
+- [[file:write.org][Writing List]]
 
 - [[file:body.org][Body Building]]
 
+- [[file:code.org][Coding List]]
+
 - [[file:read.org][Reading List]]
+
+- [[file:link.org][Link notes]]
+
+- [[file:bug.org][Bug List]]
 
 #+END_QUOTE
 

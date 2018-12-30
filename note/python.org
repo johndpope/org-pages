@@ -1,0 +1,228 @@
+#+SETUPFILE: setup.org
+#+TITLE: Python Promodoro
+
+* Python Promodoro
+** [2018-12-30 Sun 14:36] python Context managers
+   #+BEGIN_QUOTE
+   
+   上下文管理器允许你在有需要的时候，精确地分配和释放资源。
+
+   使用上下文管理器最广泛的案例就是with语句了
+
+   #+BEGIN_SRC python
+   with open('some_file', 'w') as opened_file:
+       opened_file.write('Hola!')
+
+   """
+   这里使用了 with 语句，不管在处理文件过程中是否发生异常，
+   都能保证 with 语句执行完毕后已经关闭了打开的文件句柄。
+   如果使用传统的 try/finally 范式:
+   """
+   file = open('some_file', 'w')
+   try:
+       file.write('Hola!')
+   finally:
+       file.close()
+   #+END_SRC
+
+   上下文管理协议（Context Management Protocol）：包含方法 =__enter__()= 和 =__exit__()=
+
+   上下文管理器（Context Manager）：支持上下文管理协议的对象，这种对象实现了__enter__() 和__exit__() 方法
+
+   *自定义上下文管理器*
+   
+   写一个“open”上下文管理器
+   
+   要实现上下文管理器，必须实现两个方法
+   一个负责进入语句块的准备操作，
+   另一个负责离开语句块的善后操作。
+   同时，我们需要两个参数：文件名和打开方式
+
+   #+BEGIN_SRC python
+
+   class PypixOpen:
+       def __init__(self, filename, mode):
+           self.filename = filename
+           self.mode = mode
+       def __enter__(self):
+           self.openedFile = open(self.filename, self.mode)
+           return self.openedFile
+       def __exit__(self, *unused):
+           self.openedFile.close()
+
+   with PypixOpen(filename, mode) as writer:
+       writer.write("Hello World from our new Context Manager!"")
+   #+END_SRC
+
+   http://blog.jobbole.com/64175/
+   
+   *python内一些实现上下文库*
+
+   contextlib
+
+   threading
+   
+   
+  
+   #+END_QUOTE
+** [2018-12-29 Sat 12:14] Python是怎样管理内存的?
+   #+BEGIN_QUOTE
+
+   http://www.cnblogs.com/vamei/p/3232088.html
+  
+   无论是C语言的手工管理，还是Java的垃圾回收，都成为语言最重要的特征。
+   这里以Python语言为例子，说明一门动态类型的、面向对象的语言的内存管理方式
+
+   *对象的内存使用*
+
+   is用于判断两个引用所指的对象是否相同
+
+   在Python中，每个对象都有存有指向该对象的引用总数，即引用计数(reference count)
+
+
+   #+BEGIN_SRC python
+
+   """
+   内存地址 a = b
+   print hex(id(a))
+   """
+   a = 1
+   b = 1
+   print id(a)
+   print id(b)
+
+   # True
+   a = "very good morning"
+   b = "very good morning"
+   print(a is b)
+
+   # False
+   a = []
+   b = []
+   print(a is b)
+
+   """
+   当使用某个引用作为参数，传递给getrefcount()时，参数实际上创建了一个临时的引用。
+   因此，getrefcount()所得到的结果，会比期望的多1
+   """
+
+   from sys import getrefcount
+
+   a = [1, 2, 3]
+   print(getrefcount(a)) #2
+
+   b = a
+   print(getrefcount(b))#3
+   #+END_SRC
+
+
+   *对象引用对象*
+
+   Python的一个容器对象(container)，比如表、词典等，可以包含多个对象。
+   实际上，容器对象中包含的并不是元素对象本身，是指向各个元素对象的引用。
+
+   两个对象可能相互引用，从而构成所谓的引用环(reference cycle),引用环会给垃圾回收机制带来很大的麻烦
+
+   某个对象的引用计数可能减少,可以使用 =del= 关键字删除某个引用
+
+   #+BEGIN_SRC  python
+   a = []
+   b = [a]
+   a.append(b)
+   print(getrefcount(a)) #3
+
+   from sys import getrefcount
+
+   a = [1, 2, 3]
+   b = a
+   print(getrefcount(b)) #3
+   a = 1
+   # del a
+   print(getrefcount(b)) #2
+
+   #+END_SRC
+   
+   *垃圾回收*
+
+   比如某个新建对象，它被分配给某个引用，对象的引用计数变为1。
+   如果引用被删除，对象的引用计数为0，那么该对象就可以被垃圾回收
+
+   #+BEGIN_SRC python
+
+   a = [1, 2, 3]
+   del a
+   #+END_SRC
+   当垃圾回收启动时，Python扫描到这个引用计数为0的对象，就将它所占据的内存清空
+
+   垃圾回收时，Python不能进行其它的任务。频繁的垃圾回收将大大降低Python的工作效率
+
+   当Python运行时，会记录其中分配对象(object allocation)和取消分配对象(object deallocation)
+   的次数。当两者的差值高于某个阈值时，垃圾回收才会启动
+   
+   #+BEGIN_SRC python
+   import gc
+   print(gc.get_threshold())
+   #(700,10,10)
+   #+END_SRC
+   
+   700即是垃圾回收启动的阈,后面的两个10是与分代回收相关的阈值
+
+   手动启动垃圾回收，即使用 =gc.collect()=
+
+   
+   *分代回收* (小家伙要多检查)
+
+   Python同时采用了分代(generation)回收的策略: 存活时间越久的对象，越不可能在后面的程序中变成垃圾
+   
+   对于这样一些“长寿”对象，我们相信它们的用处，所以减少在垃圾回收中扫描它们的频率。
+   
+   Python将所有的对象分为0，1，2三代。所有的新建对象都是0代对象。
+   当某一代对象经历过垃圾回收，依然存活，那么它就被归入下一代对象
+
+   每10次0代垃圾回收，会配合1次1代的垃圾回收；而每10次1代的垃圾回收，才会有1次的2代垃圾回收
+
+
+   *孤立的引用环*
+   
+   Python复制每个对象的引用计数，可以记为gc_ref
+   
+   对于每个对象i引用的对象j，将相应的gc_ref_j减1
+   
+   gc_ref不为0的对象，和这些对象引用的对象，以及继续更下游引用的对象，需要被保留,而其它的对象则被垃圾回收
+   
+  
+   
+   
+  
+   #+END_QUOTE
+** [2018-12-28 Sat 12:03] pickle module
+   #+BEGIN_QUOTE
+
+   在机器学习中，我们常常需要把训练好的模型存储起来，这样在进行决策时直接将模型读出，
+
+   而不需要重新训练模型，这样就大大节约了时间
+
+   pickle 保存
+
+   #+BEGIN_SRC python
+   import pickle
+
+   a_dict = {'da': 111, 2: [23,1,4], '23': {1:2,'d':'sad'}}
+
+   # pickle a variable to a file
+   file = open('pickle_example', 'wb')
+   pickle.dump(a_dict, file)
+   file.close()
+   #+END_SRC
+
+   pickle 提取
+
+   #+BEGIN_SRC python
+   # reload a file to a variable
+   with open('pickle_example.pickle', 'rb') as file:
+       a_dict1 =pickle.load(file)
+
+   print(a_dict1)
+
+   #+END_SRC
+   #+END_QUOTE

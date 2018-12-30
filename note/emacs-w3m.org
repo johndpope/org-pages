@@ -34,43 +34,12 @@
 
 #+BEGIN_SRC 
 (add-to-list 'exec-path "/home/manue1/opt/w3m/bin")
-
-;; 设置w3m主页
-(setq w3m-home-page "http://www.baidu.com")
-
 ;; 默认显示图片
 (setq w3m-default-display-inline-images t)
 (setq w3m-default-toggle-inline-images t)
-
-
-;; 使用cookies
-(setq w3m-use-cookies t)
-
-;;设定w3m运行的参数，分别为使用cookie和使用框架
-(setq w3m-command-arguments '("-cookie" "-F"))
-
-;; 使用w3m作为默认浏览器
-(setq browse-url-browser-function 'w3m-browse-url)
-(setq w3m-view-this-url-new-session-in-background t)
-
 ;;显示图标
 (setq w3m-show-graphic-icons-in-header-line t)
 (setq w3m-show-graphic-icons-in-mode-line t)
-
-;;C-c C-p 打开，这个好用
-(setq w3m-view-this-url-new-session-in-background t)
-
-(add-hook 'w3m-fontify-after-hook 'remove-w3m-output-garbages)
-(defun remove-w3m-output-garbages ()
-    "去掉w3m输出的垃圾."
-    (interactive)
-    (let ((buffer-read-only))
-    (setf (point) (point-min))
-    (while (re-search-forward "[\200-\240]" nil t)
-    (replace-match " "))
-    (set-buffer-multibyte t))
-    (set-buffer-modified-p nil))
-
 #+END_SRC
 
 
@@ -98,4 +67,50 @@
 
 
 * TODO *3.w3m快捷键*
+
+C-u S g 
+
+| arg  | des                         |
+|------+-----------------------------|
+| g    | google search               |
+|------+-----------------------------|
+| q    | site: stackoverflow         |
+|------+-----------------------------|
+| s    | filetype:el                 |
+|------+-----------------------------|
+| w    | wikipedia search            |
+|------+-----------------------------|
+| d    | dictionary.reference.com    |
+|------+-----------------------------|
+| java | google q=java               |
+|------+-----------------------------|
+| f    | financial-dictionary        |
+|------+-----------------------------|
+| j    | js in developer.morilla.org |
+|------+-----------------------------|
+
+
   
+*w3m mode*
+
+ h 打开 w3m 使用快捷键说明·  
+
+|          |                                |
+|----------+--------------------------------|
+| c-c b /M | 使用默认浏览器浏览网页图片视频 |
+|----------+--------------------------------|
+| Tab      | 下一个链接                     |
+|----------+--------------------------------|
+| l        | 前一个访问记录                 |
+|----------+--------------------------------|
+| n        | 后一个访问记录                 |
+|----------+--------------------------------|
+| g        | open url in this buffer        |
+|----------+--------------------------------|
+| G        | open url in new buffer         |
+|----------+--------------------------------|
+| o        | history                        |
+|----------+--------------------------------|
+| c-c c-w  | close tab                      |
+|----------+--------------------------------|
+|          |                                |

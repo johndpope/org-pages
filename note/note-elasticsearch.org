@@ -2,7 +2,7 @@
 #+TITLE: elasticsearch 常用知识梳理
 
 * elastic 常用的一些命令
-
+  
   借用postman调用dsl还是很方便的
 
 ** cat 
@@ -20,59 +20,59 @@
                 curl -XPOST 'localhost:9200/index_name/_mapping/type?pretty' -d @mapping_file 
 
                 mapping 存放到文件内
-     #+BEGIN_SRC json
-     
-          {
-            "ipv4": {
-                "dynamic_templates": [
-                    {
-                        "notanalyzed": {
-                            "mapping": {
-                                "index": "not_analyzed",
-                                "type": "string"
-                            },
-                            "match": "*",
-                            "match_mapping_type": "string"
-                        }
-                    }
-                ],
-                "properties": {
-                    "activity": {
-                        "include_in_parent": true,
-                        "properties": {
-                            "threat_type": {
-                                "index": "not_analyzed",
-                                "type": "string"
-                            },
-                            "update_time": {
-                                "format": "YYYY-MM-dd'T'HH:mm:ss",
-                                "type": "date"
-                            }
-                        },
-                        "type": "nested"
-                    },
-                    "ip": {
-                        "fields": {
-                            "raw": {
-                                "type": "ip"
-                            }
-                        },
-                        "type": "string"
-                    }
-                }
-            }
-          }
+     #+BEGIN_SRC 
+
+     {
+       "ipv4": {
+           "dynamic_templates": [
+               {
+                   "notanalyzed": {
+                       "mapping": {
+                           "index": "not_analyzed",
+                           "type": "string"
+                       },
+                       "match": "*",
+                       "match_mapping_type": "string"
+                   }
+               }
+           ],
+           "properties": {
+               "activity": {
+                   "include_in_parent": true,
+                   "properties": {
+                       "threat_type": {
+                           "index": "not_analyzed",
+                           "type": "string"
+                       },
+                       "update_time": {
+                           "format": "YYYY-MM-dd'T'HH:mm:ss",
+                           "type": "date"
+                       }
+                   },
+                   "type": "nested"
+               },
+               "ip": {
+                   "fields": {
+                       "raw": {
+                           "type": "ip"
+                       }
+                   },
+                   "type": "string"
+               }
+           }
+       }
+     }
      #+END_SRC
 - 删除索引 ::
           curl -XDELETE localhost:9200/index_name
 - 动态改副本数量 ::
              curl -XPUT 'localhost:9200/index_name/_settings?pretty' -d '{"number_of_replicas":1}'
 ** alias
-
+   
 - _aliases add :: 创建 alias
 
                  : curl -XPOST 'localhost:9200/_aliases' -d '{"actions":[{"add":{"index" : "vulnerability_data_v4","alias" : "formal_vulnerability_data"}}]}'
-
+                 
 - _aliases remove :: 删除 alias
      : curl -XPOST 'localhost:9200/_aliases' -d '{"actions":[{"remove":{"index" : "vulnerability_data_v4","alias" : "formal_vulnerability_data"}}]}'
      

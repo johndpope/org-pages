@@ -49,5 +49,39 @@
   lvextend -l +100%FREE /dev/centos/root
   df -Th
   xfs_growfs /dev/centos/root
-* TODO 远程盘挂载
+* DONE 远程盘挂载
+  CLOSED: [2018-12-30 Sun 17:28]
+  - State "DONE"       from "TODO"       [2018-12-30 Sun 17:28]
   - State "TODO"       from              [2018-11-13 Tue 19:37]
+    
+  *nfs服务磁盘挂载*
+
+  http://www.netingcn.com/centos-nfs-config.html
+
+  - server 端
+    
+    需要共享出去的目录添加在/etc/exports文件中，格式为
+    
+    服务器上共享的目录  客户端主机名称1或IP1(参数1,参数2) 客户端主机名称2或IP2(参数3,参数4)
+
+    =/home/data/ client-ip (rw,sync,no_root_squash)=
+    
+    =service nfs restart= 重启nfs
+
+    =exportfs -v= 查看共享的目录
+
+    
+
+  - client 端
+
+    客户端挂载本地目录
+    =mount -t nfs server-ip:/home/data /home/apps/update_package/=
+
+    =umount /xxx/=
+
+    =vim /etc/rc.local= 添加到开机自启动内
+
+    
+    
+
+    

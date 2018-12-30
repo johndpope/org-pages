@@ -2,18 +2,20 @@
 #+TITLE: Reading List
 * Reading List
 ** TODO [[https://book.douban.com/subject/10432347/][算法]]  
-   SCHEDULED:<2018-11-13 Tue ++1d>
+   SCHEDULED:<2018-12-31 Mon ++1d>
    :PROPERTIES:
-   :LAST_REPEAT: [2018-11-12 Mon 22:56]
+   :LAST_REPEAT: [2018-12-30 Sun 19:34]
    :END:
+   - State "DONE"       from "TODO"       [2018-12-30 Sun 19:34]
+   - State "DONE"       from "TODO"       [2018-12-28 Fri 16:47] \\
+     梳理近期算法文档
    - State "DONE"       from "TODO"       [2018-11-12 Mon 22:56]
    - State "DONE"       from "TODO"       [2018-10-27 Sat 14:50]
    - State "DONE"       from "TODO"       [2018-10-26 Fri 18:46]
      
    #+ATTR_HTML: :width 30% :height 30% 
    [[./images/book-sf.jpg]]
-** TODO [[file:note/note-options.org][期权、期货及其衍生产品]] 
-   SCHEDULED: <2018-12-04 Tue ++1d>
+** SOMEDAY [[file:note/note-options.org][期权、期货及其衍生产品]] 
    :PROPERTIES:
    :LAST_REPEAT: [2018-12-03 Mon 16:30]
    :END:

@@ -2,6 +2,9 @@
 #+TITLE: Writing List
 
 * Writing List
+** DONE <2018-12-28 Fri 19:43> [[file:note/python.org][Python Pomodoro]]
+   CLOSED: [2018-12-28 Fri 19:45]
+   - State "DONE"       from "TODO"       [2018-12-28 Fri 19:45]
 ** DONE [[file:q&a.org][question & answer]]
    CLOSED: [2018-12-06 Thu 14:47]
    - State "DONE"       from "TODO"       [2018-12-06 Thu 14:47]
