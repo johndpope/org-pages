@@ -6,6 +6,7 @@
 - [[file:q&a.org][Question & Answer]]
 - [[file:read.org][Reading List]]
 - [[file:write.org][Writing List]]
+- [[file:fragment.org][fragment]]
 - [[file:link.org][link]]
 - [[file:index.org][manue1]]
 - [[file:README.org][org-pages 项目说明]]

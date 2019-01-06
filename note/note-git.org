@@ -252,3 +252,8 @@
    
    推送创建新的远程分支 =git push origin manue1=
    
+** merge branch
+
+合并manue1分支到dev =git merge manue1=
+
+   

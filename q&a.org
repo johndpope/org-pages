@@ -1,12 +1,73 @@
 #+SETUPFILE: setup.org
 #+TITLE: Question & Answer
 * Question & Answer
+** DONE emacs set mpv play video
+   CLOSED: [2019-01-06 Sun 21:48]
+   - State "DONE"       from "TODO"       [2019-01-06 Sun 21:48]
+   #+BEGIN_QUOTE
+   SCHEDULED: <2019-01-06 Sun 14:17>
+
+   配合调整透明度 查看视频记录笔记
+   
+   mpd 使用文档与快捷键可以查看文档
+   
+   https://mpv.io/manual/master/#description
+
+
+   [ and ]
+
+   Decrease/increase current playback speed by 10%.
+
+   { and }
+   
+   Halve/double current playback speed.
+
+   BACKSPACE
+
+   Reset playback speed to normal.
+
+   m
+   
+   Mute sound.
+
+ 
+   #+END_QUOTE
+** TODO 如何使用yasnippet提高开发python效率
+   #+BEGIN_QUOTE
+   SCHEDULED: <2019-01-09 Wed 18:02>
+ 
+   #+END_QUOTE
+** DONE emacs 代码折叠
+   CLOSED: [2019-01-04 Fri 17:21]
+   - State "DONE"       from "TODO"       [2019-01-04 Fri 17:21]
+   #+BEGIN_QUOTE
+   SCHEDULED: <2019-01-04 Fri 17:03>
+
+   hs-show-all:显示所有的代码
+
+   hs-hide-all:折叠所有的代码
+
+   hs-show-block:显示当前代码区
+
+   hs-hide-block:折叠当前代码区
+
+   hs-toggle-hiding: 折叠/显示当前代码区 (spc hs)
+
+   代码折叠，其实完全可以使用 M-x =helm-imenu= 替代
+
+   helm-imenu (spc hi)
+
+
+ 
+   #+END_QUOTE
 ** TODO definite python file template
    SCHEDULED: <2019-01-01 Tue>
    #+BEGIN_QUOTE
 
    #+END_QUOTE
-** TODO bt sync 
+** DONE bt sync 
+   CLOSED: [2019-01-02 Wed 23:44]
+   - State "DONE"       from "TODO"       [2019-01-02 Wed 23:44]
    #+BEGIN_QUOTE
    DEADLINE: <2019-01-08 Tue 10:03>
    
@@ -20,8 +81,17 @@
    * Predefined Hosts
 
    *Resilio Sync 国内使用*
+
+   proxifiter 代理能够访问一下两个节点：
+
+   target host :
+
+   173.244.217.42
+
+   209.95.56.60
+
    #+END_QUOTE
-** DONE [#B] create telegram group
+** DONE create telegram group
    CLOSED: [2018-12-30 Sun 12:09]
    - State "DONE"       from "TODO"       [2018-12-30 Sun 12:09]
    #+BEGIN_QUOTE
@@ -111,7 +181,7 @@ https://wdicc.com/emacs-as-python-ide/
 
   pip install yapf 
    
-  M-x elpy-format-code (c-c c-r f)
+  M-x elpy-format-code (, r f)
 
   #+BEGIN_SRC elisp 
 
@@ -139,11 +209,13 @@ https://wdicc.com/emacs-as-python-ide/
    
    =M-.= like pycharm
    
-   jedi
+   =c-c c-d= elpy-doc 查看函数文档
    
-   http://tkf.github.io/emacs-jedi/latest/
  
+##videos must be used with an image..so when image is clicked video starts
+[[link of the video][file:link of the image]
   #+END_QUOTE
+
 
 ** TODO 2019年度计划
    DEADLINE: <2018-12-31 Mon>
@@ -229,8 +301,82 @@ Start polipo with polipo -c ~/.poliporc and now polipo established a http proxy 
    =M-x info= 学习emacs技巧
    
    #+END_QUOTE
-** TODO emacs 截图
-   SCHEDULED: <2018-12-31 Mon>
+** DONE emacs 截图
+   CLOSED: [2019-01-07 Mon 00:33] SCHEDULED: <2018-12-31 Mon>
+   - State "DONE"       from "TODO"       [2019-01-07 Mon 00:33]
+   #+BEGIN_QUOTE
+
+   http://blog.binchen.org/posts/how-to-take-screen-shot-for-business-people-efficiently-in-emacs.html
+
+    参考陈斌的思路，mac上创建截图后，复制绝对路径到剪切板,然后调用elisp函数读取粘贴板写入org-mode文件内
+
+    #+BEGIN_SRC elisp
+    (defun my-gclip ()
+      (local-require 'simpleclip)
+      (cond
+       (simpleclip-works
+        (simpleclip-get-contents))
+       ((eq system-type 'darwin)
+        (with-output-to-string
+          (with-current-buffer standard-output
+            (call-process "/usr/bin/pbpaste" nil t nil "-Prefer" "txt"))))
+       ((eq system-type 'cygwin)
+        (with-output-to-string
+          (with-current-buffer standard-output
+            (call-process "getclip" nil t nil))))
+       ((memq system-type '(gnu gnu/linux gnu/kfreebsd))
+        (let* ((powershell-program (executable-find "powershell.exe")))
+          (cond
+           (powershell-program
+            ;; PowerLine adds extra white space character at the end of text
+            (s-trim-right
+             (with-output-to-string
+               (with-current-buffer standard-output
+                 (call-process powershell-program nil t nil "-command" "Get-Clipboard")))))
+           (t
+            (with-output-to-string
+              (with-current-buffer standard-output
+                (call-process "xsel" nil t nil "--clipboard" "--output")))))))))
+
+
+    (defun insert-file-link-from-clipboard ()
+      "Make sure the full path of file exist in clipboard.
+    This command will convert full path into relative path.
+    Then insert it as a local file link in `org-mode'."
+      (interactive)
+      (insert "#+ATTR_HTML: :width 30% :height 30% \n")
+      (insert (format "[[file:%s]]" (file-relative-name (my-gclip)))))
+
+    #+END_SRC
+
+    
+    mac 截图复制绝对路径到剪切板
+   
+   https://apple.stackexchange.com/questions/115999/take-screenshot-and-copy-its-file-path-to-clipboard
+
+   
+   =f=~/Desktop/$(date +%Y%m%d%H%M%S).png && screencapture -i $f && printf %s $f  | pbcopy=
+
+
+   *使用Automator创建workflow service*
+
+   #+BEGIN_SRC 
+   f=~/github/org-pages/images/screenshot/$(date +%Y%m%d%H%M%S).png
+   screencapture -i $f
+   osascript -e 'set the clipboard to POSIX file "'$f'"'
+   #+END_SRC
+      
+   #+ATTR_HTML: :width 30% :height 30% 
+   [[file:images/screenshot/20190107000944.png]]
+
+   Then give the service a keyboard shortcut from System Preferences
+
+   =ctrl + shift + command + p=
+
+   #+ATTR_HTML: :width 30% :height 30% 
+   [[file:images/screenshot/20190107003054.png]]
+   
+   #+END_QUOTE
 ** DONE emacs 使用 mpd /mpc 听音乐
    CLOSED: [2018-12-19 Wed 20:07]
    - State "DONE"       from "TODO"       [2018-12-19 Wed 20:07]
@@ -340,6 +486,14 @@ Start polipo with polipo -c ~/.poliporc and now polipo established a http proxy 
 
     使用emms-smart-browse操作playlist 
 
+    emms-add-directory-tree 添加内容到播放列表
+
+    emms-smart-browse ? 使用效果不佳
+
+    emms-player-mpd-connect 获取最新mpc命令行下更新的播放列表
+
+    emms-playlist-clear 清除播放列表
+     
 
 #+END_QUOTE
    
@@ -617,3 +771,8 @@ yaourt -Syu --devel --aur
 
 
 
+<img src=""
+alt="" align="left"
+title="image title"
+class="img"
+</img>
