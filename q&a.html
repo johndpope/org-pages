@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-01-04 Fri 18:03 -->
+<!-- 2019-01-07 Mon 00:54 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Question &amp; Answer</title>
@@ -239,6 +239,7 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#org8cfd06b">Question &amp; Answer</a>
 <ul>
+<li><a href="#orgc446c10"><span class="done DONE">DONE</span> emacs set mpv play video</a></li>
 <li><a href="#org8a76472"><span class="todo TODO">TODO</span> 如何使用yasnippet提高开发python效率</a></li>
 <li><a href="#orgde1cea5"><span class="done DONE">DONE</span> emacs 代码折叠</a></li>
 <li><a href="#org07eafc3"><span class="todo TODO">TODO</span> definite python file template</a></li>
@@ -254,7 +255,7 @@ for the JavaScript code in this tag.
 <li><a href="#org2d47d2a"><span class="done DONE">DONE</span> emacs org-pomodoro install</a></li>
 <li><a href="#org1cc5b94"><span class="done DONE">DONE</span> mac sock to http proxy</a></li>
 <li><a href="#orgfcfe517"><span class="done DONE">DONE</span> learn more form emacs itself</a></li>
-<li><a href="#org3e911ac"><span class="todo TODO">TODO</span> emacs 截图</a></li>
+<li><a href="#org3e911ac"><span class="done DONE">DONE</span> emacs 截图</a></li>
 <li><a href="#orge52d13b"><span class="done DONE">DONE</span> emacs 使用 mpd /mpc 听音乐</a></li>
 <li><a href="#orga90b257"><span class="done DONE">DONE</span> arch 系统剪切板调用</a></li>
 <li><a href="#org1af2baf"><span class="todo TODO">TODO</span> snap 下一代linux跨发行版的包管理</a></li>
@@ -288,6 +289,64 @@ for the JavaScript code in this tag.
 <div id="outline-container-org8cfd06b" class="outline-2">
 <h2 id="org8cfd06b">Question &amp; Answer</h2>
 <div class="outline-text-2" id="text-org8cfd06b">
+</div>
+<div id="outline-container-orgc446c10" class="outline-3">
+<h3 id="orgc446c10"><span class="done DONE">DONE</span> emacs set mpv play video</h3>
+<div class="outline-text-3" id="text-orgc446c10">
+<ul class="org-ul">
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-01-06 Sun 21:48]</span></span></li>
+</ul>
+<blockquote>
+<p>
+SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-01-06 Sun 14:17&gt;</span></span>
+</p>
+
+<p>
+配合调整透明度 查看视频记录笔记
+</p>
+
+<p>
+mpd 使用文档与快捷键可以查看文档
+</p>
+
+<p>
+<a href="https://mpv.io/manual/master/#description">https://mpv.io/manual/master/#description</a>
+</p>
+
+
+<p>
+[ and ]
+</p>
+
+<p>
+Decrease/increase current playback speed by 10%.
+</p>
+
+<p>
+{ and }
+</p>
+
+<p>
+Halve/double current playback speed.
+</p>
+
+<p>
+BACKSPACE
+</p>
+
+<p>
+Reset playback speed to normal.
+</p>
+
+<p>
+m
+</p>
+
+<p>
+Mute sound.
+</p>
+</blockquote>
+</div>
 </div>
 <div id="outline-container-org8a76472" class="outline-3">
 <h3 id="org8a76472"><span class="todo TODO">TODO</span> 如何使用yasnippet提高开发python效率</h3>
@@ -760,8 +819,109 @@ Start polipo with polipo -c ~/.poliporc and now polipo established a http proxy 
 </div>
 </div>
 <div id="outline-container-org3e911ac" class="outline-3">
-<h3 id="org3e911ac"><span class="todo TODO">TODO</span> emacs 截图</h3>
+<h3 id="org3e911ac"><span class="done DONE">DONE</span> emacs 截图</h3>
 <div class="outline-text-3" id="text-org3e911ac">
+<ul class="org-ul">
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-01-07 Mon 00:33]</span></span></li>
+</ul>
+<blockquote>
+<p>
+
+</p>
+
+<p>
+<a href="http://blog.binchen.org/posts/how-to-take-screen-shot-for-business-people-efficiently-in-emacs.html">http://blog.binchen.org/posts/how-to-take-screen-shot-for-business-people-efficiently-in-emacs.html</a>
+</p>
+
+<p>
+参考陈斌的思路，mac上创建截图后，复制绝对路径到剪切板,然后调用elisp函数读取粘贴板写入org-mode文件内
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp">(<span style="color: #a020f0;">defun</span> <span style="color: #0000ff;">my-gclip</span> ()
+  (<span style="color: #a020f0;">local-require</span> 'simpleclip)
+  (<span style="color: #a020f0;">cond</span>
+   (simpleclip-works
+    (simpleclip-get-contents))
+   ((eq system-type 'darwin)
+    (<span style="color: #a020f0;">with-output-to-string</span>
+      (<span style="color: #a020f0;">with-current-buffer</span> standard-output
+        (call-process <span style="color: #8b2252;">"/usr/bin/pbpaste"</span> nil t nil <span style="color: #8b2252;">"-Prefer"</span> <span style="color: #8b2252;">"txt"</span>))))
+   ((eq system-type 'cygwin)
+    (<span style="color: #a020f0;">with-output-to-string</span>
+      (<span style="color: #a020f0;">with-current-buffer</span> standard-output
+        (call-process <span style="color: #8b2252;">"getclip"</span> nil t nil))))
+   ((memq system-type '(gnu gnu/linux gnu/kfreebsd))
+    (<span style="color: #a020f0;">let*</span> ((powershell-program (executable-find <span style="color: #8b2252;">"powershell.exe"</span>)))
+      (<span style="color: #a020f0;">cond</span>
+       (powershell-program
+        <span style="color: #b22222;">;; </span><span style="color: #b22222;">PowerLine adds extra white space character at the end of text</span>
+        (s-trim-right
+         (<span style="color: #a020f0;">with-output-to-string</span>
+           (<span style="color: #a020f0;">with-current-buffer</span> standard-output
+             (call-process powershell-program nil t nil <span style="color: #8b2252;">"-command"</span> <span style="color: #8b2252;">"Get-Clipboard"</span>)))))
+       (t
+        (<span style="color: #a020f0;">with-output-to-string</span>
+          (<span style="color: #a020f0;">with-current-buffer</span> standard-output
+            (call-process <span style="color: #8b2252;">"xsel"</span> nil t nil <span style="color: #8b2252;">"--clipboard"</span> <span style="color: #8b2252;">"--output"</span>)))))))))
+
+
+(<span style="color: #a020f0;">defun</span> <span style="color: #0000ff;">insert-file-link-from-clipboard</span> ()
+  <span style="color: #8b2252;">"Make sure the full path of file exist in clipboard.</span>
+<span style="color: #8b2252;">This command will convert full path into relative path.</span>
+<span style="color: #8b2252;">Then insert it as a local file link in `</span><span style="color: #008b8b;">org-mode</span><span style="color: #8b2252;">'."</span>
+  (<span style="color: #a020f0;">interactive</span>)
+  (insert <span style="color: #8b2252;">"#+ATTR_HTML: :width 30% :height 30% \n"</span>)
+  (insert (format <span style="color: #8b2252;">"[[file:%s]]"</span> (file-relative-name (my-gclip)))))
+
+</pre>
+</div>
+
+
+<p>
+mac 截图复制绝对路径到剪切板
+</p>
+
+<p>
+<a href="https://apple.stackexchange.com/questions/115999/take-screenshot-and-copy-its-file-path-to-clipboard">https://apple.stackexchange.com/questions/115999/take-screenshot-and-copy-its-file-path-to-clipboard</a>
+</p>
+
+
+<p>
+<code>f=~/Desktop/$(date +%Y%m%d%H%M%S).png &amp;&amp; screencapture -i $f &amp;&amp; printf %s $f  | pbcopy</code>
+</p>
+
+
+<p>
+<b>使用Automator创建workflow service</b>
+</p>
+
+<pre class="example">
+f=~/github/org-pages/images/screenshot/$(date +%Y%m%d%H%M%S).png
+screencapture -i $f
+osascript -e 'set the clipboard to POSIX file "'$f'"'
+</pre>
+
+
+<div class="figure">
+<p><img src="images/screenshot/20190107000944.png" alt="20190107000944.png" width="30%" height="30%" />
+</p>
+</div>
+
+<p>
+Then give the service a keyboard shortcut from System Preferences
+</p>
+
+<p>
+<code>ctrl + shift + command + p</code>
+</p>
+
+
+<div class="figure">
+<p><img src="images/screenshot/20190107003054.png" alt="20190107003054.png" width="30%" height="30%" />
+</p>
+</div>
+</blockquote>
 </div>
 </div>
 <div id="outline-container-orge52d13b" class="outline-3">
@@ -909,6 +1069,22 @@ mpc volume -20<br />
 
 <p>
 使用emms-smart-browse操作playlist 
+</p>
+
+<p>
+emms-add-directory-tree 添加内容到播放列表
+</p>
+
+<p>
+emms-smart-browse ? 使用效果不佳
+</p>
+
+<p>
+emms-player-mpd-connect 获取最新mpc命令行下更新的播放列表
+</p>
+
+<p>
+emms-playlist-clear 清除播放列表
 </p>
 </blockquote>
 </div>
