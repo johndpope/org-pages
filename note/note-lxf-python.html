@@ -1,0 +1,1096 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-01-07 Mon 19:34 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>读廖雪峰python文档记录</title>
+<meta name="generator" content="Org mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" href="../css/worg.css" type="text/css" media="screen" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="preamble" class="status">
+<a href="https://www.manue1.site/index.html">Home</a>
+</div>
+<div id="content">
+<h1 class="title">读廖雪峰python文档记录</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org4aadf9f"><span class="todo TODO">TODO</span> 文档下载链接</a></li>
+<li><a href="#org1b098d9">字符编码</a></li>
+<li><a href="#orge8d41ba">python 字符串编码转换</a></li>
+<li><a href="#org54f2941">% 格式化字符串</a></li>
+<li><a href="#org278597f">list / tuple /dict /set</a></li>
+<li><a href="#org7db570b">函数</a>
+<ul>
+<li><a href="#org830c726">参数</a></li>
+<li><a href="#orgcb95a5a">递归</a></li>
+<li><a href="#orgbd89ea5">列表生成式</a></li>
+<li><a href="#org11b9d60">生成器</a></li>
+<li><a href="#org2081273">函数式编程</a></li>
+<li><a href="#orgdcb7444">匿名函数</a></li>
+<li><a href="#orge53943d">装饰器</a></li>
+<li><a href="#orgeb189f7">偏函数</a></li>
+</ul>
+</li>
+<li><a href="#org3d1d2a9">模块</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org4aadf9f" class="outline-2">
+<h2 id="org4aadf9f"><span class="todo TODO">TODO</span> 文档下载链接</h2>
+<div class="outline-text-2" id="text-org4aadf9f">
+<ul class="org-ul">
+<li>State "TODO"       from              <span class="timestamp-wrapper"><span class="timestamp">[2019-01-07 Mon 11:19]</span></span></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1b098d9" class="outline-2">
+<h2 id="org1b098d9">字符编码</h2>
+<div class="outline-text-2" id="text-org1b098d9">
+<blockquote>
+<p>
+
+<b>字符 &gt; ASCII &gt; Unicode &gt; UTF-8</b>  演变历史
+</p>
+
+<p>
+我们已经讲过了，字符串也是一种数据类型，但是，字符串比较特殊的是还有一个编码问题。
+</p>
+
+<p>
+因为计算机只能处理数字，如果要处理文本，就必须先把文本转换为数字才能处理。最早的计算机在设计时采用8个比特（bit）作为一个字节（byte），所以，一个字节能表示的最大的整数就是255（二进制11111111=十进制255），如果要表示更大的整数，就必须用更多的字节。比如两个字节可以表示的最大整数是65535，4个字节可以表示的最大整数是4294967295。
+</p>
+
+<p>
+由于计算机是美国人发明的，因此，最早只有127个字母被编码到计算机里，也就是大小写英文字母、数字和一些符号，这个编码表被称为ASCII编码，比如大写字母A的编码是65，小写字母z的编码是122。
+</p>
+
+<p>
+但是要处理中文显然一个字节是不够的，至少需要两个字节，而且还不能和ASCII编码冲突，所以，中国制定了GB2312编码，用来把中文编进去。
+</p>
+
+<p>
+你可以想得到的是，全世界有上百种语言，日本把日文编到Shift_JIS里，韩国把韩文编到Euc-kr里，各国有各国的标准，就会不可避免地出现冲突，结果就是，在多语言混合的文本中，显示出来会有乱码。
+</p>
+
+<p>
+因此，Unicode应运而生。Unicode把所有语言都统一到一套编码里，这样就不会再有乱码问题了。
+</p>
+
+<p>
+Unicode标准也在不断发展，但最常用的是用两个字节表示一个字符（如果要用到非常偏僻的字符，就需要4个字节）。现代操作系统和大多数编程语言都直接支持Unicode。
+</p>
+
+<p>
+现在，捋一捋ASCII编码和Unicode编码的区别：ASCII编码是1个字节，而Unicode编码通常是2个字节。
+</p>
+
+<p>
+字母A用ASCII编码是十进制的65，二进制的01000001；
+</p>
+
+<p>
+字符0用ASCII编码是十进制的48，二进制的00110000，注意字符'0'和整数0是不同的；
+</p>
+
+<p>
+汉字中已经超出了ASCII编码的范围，用Unicode编码是十进制的20013，二进制的01001110 00101101。
+</p>
+
+<p>
+你可以猜测，如果把ASCII编码的A用Unicode编码，只需要在前面补0就可以，因此，A的Unicode编码是00000000 01000001。
+</p>
+
+<p>
+新的问题又出现了：如果统一成Unicode编码，乱码问题从此消失了。但是，如果你写的文本基本上全部是英文的话，用Unicode编码比ASCII编码需要多一倍的存储空间，在存储和传输上就十分不划算。
+</p>
+
+<p>
+所以，本着节约的精神，又出现了把Unicode编码转化为“可变长编码”的UTF-8编码。UTF-8编码把一个Unicode字符根据不同的数字大小编码成1-6个字节，常用的英文字母被编码成1个字节，汉字通常是3个字节，只有很生僻的字符才会被编码成4-6个字节。如果你要传输的文本包含大量英文字符，用UTF-8编码就能节省空间：
+</p>
+
+
+<p>
+搞清楚了ASCII、Unicode和UTF-8的关系，我们就可以总结一下现在计算机系统通用的字符编码工作方式：
+</p>
+
+<p>
+在计算机内存中，统一使用Unicode编码，当需要保存到硬盘或者需要传输的时候，就转换为UTF-8编码。
+</p>
+
+<p>
+用记事本编辑的时候，从文件读取的UTF-8字符被转换为Unicode字符到内存里，编辑完成后，保存的时候再把Unicode转换为UTF-8保存到文件
+</p>
+
+
+<div class="figure">
+<p><img src="../images/screenshot/20190107112647.png" alt="20190107112647.png" width="60%" height="60%" />
+</p>
+</div>
+
+
+<p>
+所以你看到很多网页的源码上会有类似&lt;meta charset="UTF-8" /&gt;的信息，表示该网页正是用的UTF-8编码
+</p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-orge8d41ba" class="outline-2">
+<h2 id="orge8d41ba">python 字符串编码转换</h2>
+<div class="outline-text-2" id="text-orge8d41ba">
+<blockquote>
+<p>
+Python的诞生比Unicode标准发布的时间还要早，所以最早的Python只支持ASCII编码，普通的字符串'ABC'在Python内部都是ASCII编码的。Python提供了ord()和chr()函数，可以把字母和对应的数字相互转换
+</p>
+
+<p>
+Python在后来添加了对Unicode的支持，以Unicode表示的字符串用u'&#x2026;'表示
+</p>
+
+<p>
+<b>把u'xxx'转换为UTF-8编码的'xxx'用encode('utf-8')方法</b>
+</p>
+
+<p>
+<b>把UTF-8编码表示的字符串'xxx'转换为Unicode字符串u'xxx'用decode('utf-8')方法</b>
+</p>
+
+
+<div class="figure">
+<p><img src="../images/screenshot/20190107120203.png" alt="20190107120203.png" width="60%" height="60%" />
+</p>
+</div>
+
+<p>
+英文字符转换后表示的UTF-8的值和Unicode值相等（但占用的存储空间不同），
+而中文字符转换后1个Unicode字符将变为3个UTF-8字符
+</p>
+
+
+<div class="figure">
+<p><img src="../images/screenshot/20190107120904.png" alt="20190107120904.png" width="60%" height="60%" />
+</p>
+</div>
+
+
+<p>
+<code># -*- coding: utf-8 -*-</code> 注释是为了告诉Python解释器，按照UTF-8编码读取源代码，否则，你在源代码中写的中文输出可能会有乱码
+</p>
+
+<p>
+Python当然也支持其他编码方式，比如把Unicode编码成GB2312：
+</p>
+
+<p>
+&gt;&gt;&gt; u'中文'.encode('gb2312')
+</p>
+
+<p>
+'\xd6\xd0\xce\xc4'
+</p>
+
+<p>
+但这种方式纯属自找麻烦，如果没有特殊业务要求，请牢记仅使用Unicode和UTF-8这两种编码方式。
+</p>
+
+<p>
+在Python 3.x版本中，把'xxx'和u'xxx'统一成Unicode编码，即写不写前缀u都是一样的，而以字节形式表示的字符串则必须加上b前缀：b'xxx'。
+</p>
+</blockquote>
+</div>
+</div>
+
+<div id="outline-container-org54f2941" class="outline-2">
+<h2 id="org54f2941">% 格式化字符串</h2>
+<div class="outline-text-2" id="text-org54f2941">
+<blockquote>
+<p>
+常见的占位符有：
+%d	整数
+</p>
+
+<p>
+%f	浮点数
+</p>
+
+<p>
+%s	字符串
+</p>
+
+<p>
+%x	十六进制整数
+</p>
+
+
+<pre class="example">
+&gt;&gt;&gt; '%5d-%03d' % (3, 1)
+'    3-001'
+
+
+&gt;&gt;&gt; '%05.2f' % 3.1415926
+'03.14'
+
+
+&gt;&gt;&gt; 'growth rate: %d %%' % 7
+'growth rate: 7 %'
+</pre>
+
+<p>
+如果你不太确定应该用什么，%s永远起作用，它会把任何数据类型转换为字符串
+</p>
+
+<p>
+字符串里面的%是一个普通字符怎么办？这个时候就需要转义，用%%来表示一个%：
+</p>
+</blockquote>
+</div>
+</div>
+
+<div id="outline-container-org278597f" class="outline-2">
+<h2 id="org278597f">list / tuple /dict /set</h2>
+<div class="outline-text-2" id="text-org278597f">
+<p>
+a = [0,'1',True]
+</p>
+
+
+<p>
+t = ('a',) 定义一个元素的元组
+</p>
+
+<p>
+t = ('a', 'b', ['A', 'B'])  <b>'可变的' tuple</b>
+</p>
+
+
+<p>
+dict:
+</p>
+
+<p>
+查找和插入的速度极快，不会随着key的增加而增加；
+</p>
+
+<p>
+需要占用大量的内存，内存浪费多。
+</p>
+
+<p>
+list：
+</p>
+
+<p>
+查找和插入的时间随着元素的增加而增加；
+</p>
+
+<p>
+占用空间小，浪费内存很少。
+</p>
+
+
+<p>
+set可以做数学意义上的交集、并集等操作,set内不能存放list和dict等对象
+</p>
+
+
+<p>
+字符串'xxx'或Unicode字符串u'xxx'也可以看成是一种list，每个元素就是一个字符
+</p>
+
+<p>
+&gt;&gt;&gt; 'ABCDEFG'[::2]
+</p>
+
+<p>
+'ACEG'
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7db570b" class="outline-2">
+<h2 id="org7db570b">函数</h2>
+<div class="outline-text-2" id="text-org7db570b">
+</div>
+<div id="outline-container-org830c726" class="outline-3">
+<h3 id="org830c726">参数</h3>
+<div class="outline-text-3" id="text-org830c726">
+<p>
+<b>可变参数</b> : 仅仅在参数前面加了一个*号。在函数内部，参数numbers接收到的是一个tuple
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">calc</span>(*numbers):
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #483d8b;">sum</span> = 0
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">for</span> n <span style="color: #a020f0;">in</span> numbers:
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #483d8b;">sum</span> = <span style="color: #483d8b;">sum</span> + n * n
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> <span style="color: #483d8b;">sum</span>
+
+calc(1, 2)
+</pre>
+</div>
+<p>
+<b>关键字参数</b> :在参数前面加两个*号,允许你传入0个或任意个含参数名的参数，这些关键字参数在函数内部自动组装为一个dict
+</p>
+
+<p>
+函数person除了必选参数name和age外，还接受关键字参数kw。在调用该函数时，可以只传入必选参数
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">person</span>(name, age, **kw):
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span> <span style="color: #8b2252;">'name:'</span>, name, <span style="color: #8b2252;">'age:'</span>, age, <span style="color: #8b2252;">'other:'</span>, kw
+</pre>
+</div>
+
+<p>
+<b>参数组合</b> : 参数定义的顺序必须是：必选参数、默认参数、可变参数和关键字参数
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">func</span>(a, b, c=0, *args, **kw):
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span> <span style="color: #8b2252;">'a ='</span>, a, <span style="color: #8b2252;">'b ='</span>, b, <span style="color: #8b2252;">'c ='</span>, c, <span style="color: #8b2252;">'args ='</span>, args, <span style="color: #8b2252;">'kw ='</span>, kw
+
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgcb95a5a" class="outline-3">
+<h3 id="orgcb95a5a">递归</h3>
+<div class="outline-text-3" id="text-orgcb95a5a">
+<p>
+<b>递归函数:</b>
+</p>
+
+<p>
+理论上，所有的递归函数都可以写成循环的方式，但循环的逻辑不如递归清晰
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">fact</span>(n):
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">if</span> n==1:
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> 1
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> n * fact(n - 1def fact(n):
+
+</pre>
+</div>
+
+<p>
+<b>尾递归</b> 是指，在函数返回的时候，调用自身本身，并且，return语句不能包含表达式。
+这样，编译器或者解释器就可以把尾递归做优化，使递归本身无论调用多少次，都只占用一个栈帧，不会出现栈溢出的情况
+</p>
+
+<p>
+遗憾的是，大多数编程语言没有针对尾递归做优化，Python解释器也没有做优化
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">fact</span>(n):
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> fact_iter(1, 1, n)
+
+
+<span style="color: #a020f0;">def</span> <span style="color: #0000ff;">fact_iter</span>(product, count, <span style="color: #483d8b;">max</span>):
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">if</span> count &gt; <span style="color: #483d8b;">max</span>:
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> product
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> fact_iter(product * count, count + 1, <span style="color: #483d8b;">max</span>)
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgbd89ea5" class="outline-3">
+<h3 id="orgbd89ea5">列表生成式</h3>
+<div class="outline-text-3" id="text-orgbd89ea5">
+<p>
+list生成式 : <code>[x * x for x in range(1, 11) if x % 2 =</code> 0]=
+</p>
+
+<p>
+for i, value in enumerate(['A', 'B', 'C']): <code>enumerate</code> 函数可以把一个list变成索引-元素对
+</p>
+
+<p>
+[k + '<code>' + v for k, v in d.iteritems()] =iteritems()</code> 可以同时迭代dict的key和value
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">
+<span style="color: #a020f0;">if</span> <span style="color: #a020f0;">not</span> <span style="color: #483d8b;">isinstance</span>(x, (<span style="color: #483d8b;">int</span>, <span style="color: #483d8b;">float</span>)):
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">raise</span> <span style="color: #228b22;">TypeError</span>(<span style="color: #8b2252;">'bad operand type'</span>)
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org11b9d60" class="outline-3">
+<h3 id="org11b9d60">生成器</h3>
+<div class="outline-text-3" id="text-org11b9d60">
+<p>
+通过列表生成式，我们可以直接创建一个列表。但是，受到内存限制，列表容量肯定是有限的
+</p>
+
+<p>
+如果列表元素可以按照某种算法推算出来，那我们是否可以在循环的过程中不断推算出后续的元素呢？
+这样就不必创建完整的list，从而节省大量的空间。在Python中，这种一边循环一边计算的机制，称为生成器（Generator）
+</p>
+
+<p>
+要创建一个generator，有很多种方法。第一种方法很简单，只要把一个列表生成式的[]改成()，就创建了一个generator
+</p>
+
+<p>
+&gt;&gt;&gt; g = (x * x for x in range(10))
+</p>
+
+<p>
+&gt;&gt;&gt; g
+</p>
+
+<p>
+&lt;generator object &lt;genexpr&gt; at 0x10b612320&gt;
+</p>
+
+<p>
+通过g.next打印元素
+</p>
+
+<p>
+yield关键字定义斐波那契数列生成器
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">fib</span>(<span style="color: #483d8b;">max</span>):
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">n</span>, <span style="color: #a0522d;">a</span>, <span style="color: #a0522d;">b</span> = 0, 0, 1
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">while</span> n &lt; <span style="color: #483d8b;">max</span>:
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #b22222;">#</span><span style="color: #b22222;">print b</span>
+<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">yield</span> b
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">a</span>, <span style="color: #a0522d;">b</span> = b, a + b
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">n</span> = n + 1
+
+</pre>
+</div>
+
+<p>
+变成generator的函数，在每次调用next()的时候执行，
+遇到yield语句返回，再次执行时从上次返回的yield语句处继续执行
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2081273" class="outline-3">
+<h3 id="org2081273">函数式编程</h3>
+<div class="outline-text-3" id="text-org2081273">
+<p>
+Functional Programming，虽然也可以归结到面向过程的程序设计，但其思想更接近数学计算
+</p>
+
+<p>
+函数式编程的一个特点就是，允许把函数本身作为参数传入另一个函数，还允许返回一个函数！
+</p>
+
+<p>
+由于Python允许使用变量，因此，Python不是纯函数式编程语言
+</p>
+
+<ul class="org-ul">
+<li>论函数做为参数</li>
+</ul>
+
+<p>
+<b>高阶函数map/reduce</b>
+</p>
+
+<p>
+map()函数接收两个参数，一个是函数，一个是序列
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">f</span>(x):
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> x * x
+
+<span style="color: #483d8b;">map</span>(f, [1,2,3])
+
+</pre>
+</div>
+
+<p>
+reduce把一个函数作用在一个序列[x1, x2, x3&#x2026;]上，这个函数必须接收两个参数，reduce把结果继续和序列的下一个元素做计算
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">f</span>(x, y):
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> x * 10 + y
+
+<span style="color: #483d8b;">reduce</span>(f, [1,3,5])
+
+<span style="color: #483d8b;">reduce</span>(f, <span style="color: #483d8b;">map</span>(<span style="color: #483d8b;">int</span>, <span style="color: #8b2252;">'13579'</span>)) <span style="color: #b22222;">#</span><span style="color: #b22222;">str &#36716;&#25442;&#25104; int</span>
+
+<span style="color: #b22222;">#</span><span style="color: #b22222;">&#29992;lambda&#20989;&#25968;&#36827;&#19968;&#27493;&#31616;&#21270;&#25104;</span>
+<span style="color: #483d8b;">reduce</span>(<span style="color: #a020f0;">lambda</span> x,y : x*10+y,<span style="color: #483d8b;">map</span>(<span style="color: #483d8b;">int</span>,<span style="color: #8b2252;">'567'</span>))
+</pre>
+</div>
+<p>
+<b>自定义排序算法</b>
+sorted 排序的原则是对比较结果返回 -1,0,1
+</p>
+
+<p>
+忽略大小写来比较两个字符串，实际上就是先把字符串都变成大写（或者都变成小写），再比较
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">cmp_ignore_case</span>(s1, s2):
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">u1</span> = s1.upper()
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">u2</span> = s2.upper()
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">if</span> u1 &lt; u2:
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> -1
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">if</span> u1 &gt; u2:
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> 1
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> 0
+
+
+<span style="color: #483d8b;">sorted</span>([<span style="color: #8b2252;">'Ba'</span>,<span style="color: #8b2252;">'ba'</span>,<span style="color: #8b2252;">'Cc'</span>,<span style="color: #8b2252;">'cC'</span>])
+<span style="color: #483d8b;">sorted</span>([<span style="color: #8b2252;">'Ba'</span>,<span style="color: #8b2252;">'ba'</span>,<span style="color: #8b2252;">'Cc'</span>,<span style="color: #8b2252;">'cC'</span>],cmp_ignore_case)
+
+</pre>
+</div>
+
+<ul class="org-ul">
+<li><p>
+论函数做为返回值
+</p>
+
+<p>
+相关参数和变量都保存在返回的函数中，这种称为“闭包（Closure）”的程序结构拥有极大的威力。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">lazy_sum</span>(*args):
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">sum</span>():
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">ax</span> = 0
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">for</span> n <span style="color: #a020f0;">in</span> args:
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">ax</span> = ax + n
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> ax
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> <span style="color: #483d8b;">sum</span>
+
+<span style="color: #a0522d;">f</span> = lazy_sum(1,2,3)
+<span style="color: #b22222;">#</span><span style="color: #b22222;">&#24403;&#25105;&#20204;&#35843;&#29992;lazy_sum()&#26102;&#65292;&#36820;&#22238;&#30340;&#24182;&#19981;&#26159;&#27714;&#21644;&#32467;&#26524;&#65292;&#32780;&#26159;&#27714;&#21644;&#20989;&#25968;</span>
+<span style="color: #a020f0;">print</span> f
+<span style="color: #b22222;">#</span><span style="color: #b22222;">&#35843;&#29992;&#20989;&#25968;f&#26102;&#65292;&#25165;&#30495;&#27491;&#35745;&#31639;&#27714;&#21644;&#30340;&#32467;&#26524;</span>
+<span style="color: #a020f0;">print</span> f() <span style="color: #b22222;"># </span>
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgdcb7444" class="outline-3">
+<h3 id="orgdcb7444">匿名函数</h3>
+<div class="outline-text-3" id="text-orgdcb7444">
+<pre class="example">
+map(lambda x: x * x, [1, 2, 3, 4, 5, 6, 7, 8, 9])
+
+</pre>
+
+<p>
+关键字lambda表示匿名函数，冒号前面的x表示函数参数
+</p>
+
+<p>
+匿名函数有个限制，就是只能有一个表达式
+</p>
+
+<p>
+Python对匿名函数的支持有限，只有一些简单的情况下可以使用匿名函数
+</p>
+</div>
+</div>
+<div id="outline-container-orge53943d" class="outline-3">
+<h3 id="orge53943d">装饰器</h3>
+<div class="outline-text-3" id="text-orge53943d">
+<p>
+无参数装饰器
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">import</span> functools
+
+<span style="color: #a020f0;">def</span> <span style="color: #0000ff;">log</span>(func):
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #228b22;">@functools.wraps</span>(func)
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">wrapper</span>(*args, **kw):
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span> <span style="color: #8b2252;">'call %s():'</span> % func.<span style="color: #483d8b;">__name__</span>
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> func(*args, **kw)
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> wrapper
+
+<span style="color: #228b22;">@log</span>
+<span style="color: #a020f0;">def</span> <span style="color: #0000ff;">now</span>():
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span> <span style="color: #8b2252;">'2019-01-07'</span>
+
+
+now()
+</pre>
+</div>
+
+<p>
+log()是一个decorator，返回一个函数，于是调用now()将执行新函数，即在log()函数中返回的wrapper()函数
+</p>
+
+<p>
+需要传参数装饰器
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">import</span> functools
+
+<span style="color: #a020f0;">def</span> <span style="color: #0000ff;">log</span>(text):
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">_decorator</span>(func):
+<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #228b22;">@functools.wraps</span>(func)
+<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">wrapper</span>(*args, **kw):
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span> <span style="color: #8b2252;">'%s %s():'</span> % (text, func.<span style="color: #483d8b;">__name__</span>)
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> func(*args, **kw)
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> wrapper
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> _decorator
+
+<span style="color: #228b22;">@log</span>(<span style="color: #8b2252;">'execute'</span>)
+<span style="color: #a020f0;">def</span> <span style="color: #0000ff;">now</span>():
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span> <span style="color: #8b2252;">'2019-01-07'</span>
+
+
+now() <span style="color: #b22222;">#</span><span style="color: #b22222;">now = log('execute')(now)</span>
+
+</pre>
+</div>
+
+<p>
+以上两种decorator的定义都没有问题,它们的__name__已经从原来的'now'变成了'wrapper'
+</p>
+
+<p>
+Python内置的functools.wraps就是干这个事的，所以，一个完整的decorator的写法,需要添加
+<code>@functools.wraps(func)</code>
+</p>
+
+<p>
+面向对象（OOP）的设计模式中，decorator被称为装饰模式
+</p>
+</div>
+</div>
+<div id="outline-container-orgeb189f7" class="outline-3">
+<h3 id="orgeb189f7">偏函数</h3>
+<div class="outline-text-3" id="text-orgeb189f7">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">int2</span>(x, base=2):
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> <span style="color: #483d8b;">int</span>(x, base)
+
+int2(<span style="color: #8b2252;">'1000'</span>) <span style="color: #b22222;"># </span><span style="color: #b22222;">8</span>
+
+</pre>
+</div>
+
+<p>
+<code>functools.partial</code> 就是帮助我们创建一个偏函数的
+把一个函数的某些参数（不管有没有默认值）给固定住（也就是设置默认值），返回一个新的函数，调用这个新函数会更简单
+</p>
+
+<p>
+当函数的参数个数太多，需要简化时,使用偏函数
+</p>
+
+<p>
+int2 = functools.partial(int, base=2)
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org3d1d2a9" class="outline-2">
+<h2 id="org3d1d2a9">模块</h2>
+<div class="outline-text-2" id="text-org3d1d2a9">
+<p>
+<b>作用域</b>
+</p>
+
+<p>
+<span class="underline"><span class="underline">xxx__这样的变量是特殊变量(__author__，__name</span></span>)
+</p>
+
+<p>
+_xxx和__xxx这样的函数或变量就是非公开的（private）
+</p>
+
+<p>
+<b>模块搜索路径</b> 
+</p>
+
+<p>
+Python解释器会搜索当前目录、所有已安装的内置模块和第三方模块，搜索路径存放在sys模块的path变量中
+</p>
+
+<p>
+添加路径方式:
+</p>
+
+
+<ol class="org-ol">
+<li>运行时添加</li>
+</ol>
+<pre class="example">
+sys.path.append('/Users/michael/my_py_scripts')
+
+</pre>
+
+<p>
+2.PYTHONPATH 
+</p>
+
+<p>
+Python提供了__future__模块，把下一个新版本的特性导入到当前版本
+</p>
+
+<p>
+如果要获得一个对象的所有属性和方法，可以使用dir()函数
+</p>
+
+<p>
+为了达到限制的目的，Python允许在定义class的时候，定义一个特殊的__slots__变量，来限制该class能添加的属性
+</p>
+
+
+<p>
+<b>属性控制</b>
+</p>
+
+<p>
+Python内置的 <code>@property</code> 装饰器就是负责把一个xxx的getter方法变成属性调用,@xxx.setter
+负责把一个setter方法变成属性赋值
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Student</span>(<span style="color: #483d8b;">object</span>):
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #228b22;">@property</span>
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">score</span>(<span style="color: #a020f0;">self</span>):
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> <span style="color: #a020f0;">self</span>._score
+
+
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #228b22;">@score.setter</span>
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">score</span>(<span style="color: #a020f0;">self</span>, value):
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">if</span> <span style="color: #a020f0;">not</span> <span style="color: #483d8b;">isinstance</span>(value, <span style="color: #483d8b;">int</span>):
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">raise</span> <span style="color: #228b22;">ValueError</span>(<span style="color: #8b2252;">'score must be an integer!'</span>)
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">if</span> value &lt; 0 <span style="color: #a020f0;">or</span> value &gt; 100:
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">raise</span> <span style="color: #228b22;">ValueError</span>(<span style="color: #8b2252;">'score must between 0 ~ 100!'</span>)
+
+<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">self</span>._score = value
+
+
+
+<span style="color: #a0522d;">s</span> = Student()
+
+<span style="color: #a0522d;">s.score</span> = 60 <span style="color: #b22222;"># </span><span style="color: #b22222;">OK&#65292;&#23454;&#38469;&#36716;&#21270;&#20026;s.set_score(60)</span>
+
+s.score <span style="color: #b22222;"># </span><span style="color: #b22222;">OK&#65292;&#23454;&#38469;&#36716;&#21270;&#20026;s.get_score()</span>
+</pre>
+</div>
+
+
+<p>
+由于Python允许使用 <b>多重继承</b> ,java 是单一继承的语言
+</p>
+</div>
+</div>
+</div>
+</body>
+</html>
