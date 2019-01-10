@@ -2,6 +2,39 @@
 #+TITLE: Link notes
 * Link notes
 
+** TODO 小米路由配置aria2
+  #+BEGIN_QUOTE
+  https://www.jianshu.com/p/a23330cf8ee8 
+
+  SCHEDULED:<2019-01-29 Tue 11:58>
+  
+  #+END_QUOTE
+
+** TODO pyim 中文库和中文字体配置
+  #+BEGIN_QUOTE
+  https://github.com/redguardtoo/emacs.d#saveload-windows-layout 
+
+  SCHEDULED:<2019-01-10 Thu 16:56>
+  
+  #+END_QUOTE
+
+** TODO exwm 能否支持管理mpv和pdf阅读
+
+  #+BEGIN_QUOTE
+  https://wiki.archlinux.org/index.php/EXWM 
+
+  SCHEDULED:<2019-01-19 Wed 16:42>
+  
+  #+END_QUOTE
+
+** TODO frp内网穿透原理分析 + socat
+  #+BEGIN_QUOTE
+  https://mp.weixin.qq.com/s/8HeeDC5x5xozElN8GzQLLw 
+
+  SCHEDULED:<2019-01-18 Fri 15:15>
+  
+  #+END_QUOTE
+
 ** TODO pyim 拼音输入法
   #+BEGIN_QUOTE
   https://github.com/tumashu/pyim#org4a82653 
@@ -46,7 +79,7 @@
   #+BEGIN_QUOTE
   https://github.com/Nanue1/dot-emacs 
 
-  SCHEDULED:<2019-01-09 Wed 04:46>
+  SCHEDULED:<2019-01-19 Wed 04:46>
   
   #+END_QUOTE
 
@@ -54,7 +87,7 @@
   #+BEGIN_QUOTE
   https://karl-voit.at/2018/12/08/niklas-carlsson-video/ 
 
-  SCHEDULED:<2019-01-07 Mon 04:35>
+  SCHEDULED:<2019-01-17 Mon 04:35>
   
   #+END_QUOTE
 
@@ -132,7 +165,11 @@
   #+END_QUOTE
 
 ** TODO python 进阶
-   SCHEDULED: <2018-12-31 ++1d Mon>
+   SCHEDULED: <2019-01-09 Wed>
+   :PROPERTIES:
+   :LAST_REPEAT: [2019-01-09 Wed 14:00]
+   :END:
+   - State "DONE"       from "TODO"       [2019-01-09 Wed 14:00]
   #+BEGIN_QUOTE
   https://eastlakeside.gitbooks.io/interpy-zh/content/context_managers/handle_exception.html 
 
@@ -196,17 +233,22 @@
   #+END_QUOTE
 
 ** TODO Python 博客文章知识点不错
-   SCHEDULED: <2018-12-31 ++1d Mon>
+   SCHEDULED: <2019-01-09 Wed>
+   :PROPERTIES:
+   :LAST_REPEAT: [2019-01-09 Wed 13:59]
+   :END:
+   - State "DONE"       from "TODO"       [2019-01-09 Wed 13:59]
   #+BEGIN_QUOTE
   https://wdxtub.com/2016/03/24/thinking-in-python/
   
   #+END_QUOTE
 
 ** TODO python pomodoro task
-   SCHEDULED: <2018-12-31 Mon ++1d >
+   SCHEDULED: <2019-01-10 Thu>
    :PROPERTIES:
-   :LAST_REPEAT: [2018-12-30 Sun 15:05]
+   :LAST_REPEAT: [2019-01-09 Wed 14:01]
    :END:
+   - State "DONE"       from "TODO"       [2019-01-09 Wed 14:01]
    - State "DONE"       from "TODO"       [2018-12-30 Sun 15:05]
    - State "TODO"       from "DONE"       [2018-12-30 Sun 15:04]
    - State "DONE"       from "TODO"       [2018-12-30 Sun 14:35]

@@ -60,11 +60,6 @@
 
  
    #+END_QUOTE
-** TODO definite python file template
-   SCHEDULED: <2019-01-01 Tue>
-   #+BEGIN_QUOTE
-
-   #+END_QUOTE
 ** DONE bt sync 
    CLOSED: [2019-01-02 Wed 23:44]
    - State "DONE"       from "TODO"       [2019-01-02 Wed 23:44]
@@ -119,7 +114,7 @@
 ** TODO how to talk with irc in emacs
    
  #+BEGIN_QUOTE
- DEADLINE: <2019-01-06 Sun 16:33>
+ DEADLINE: <2019-01-16 Sun 16:33>
  
   #+END_QUOTE
 ** DONE virtualenv set different python 
@@ -215,7 +210,6 @@ https://wdicc.com/emacs-as-python-ide/
 ##videos must be used with an image..so when image is clicked video starts
 [[link of the video][file:link of the image]
   #+END_QUOTE
-
 
 ** TODO 2019年度计划
    DEADLINE: <2018-12-31 Mon>
@@ -503,8 +497,6 @@ Start polipo with polipo -c ~/.poliporc and now polipo established a http proxy 
 #+BEGIN_QUOTE
 =c-;= 方便调用
 #+END_QUOTE
-** TODO snap 下一代linux跨发行版的包管理
-   SCHEDULED: <2019-01-04 Fri>
 ** DONE arch 安装teamviewer
    CLOSED: [2018-12-12 Wed 15:57]
    - State "DONE"       from "TODO"       [2018-12-12 Wed 15:57]

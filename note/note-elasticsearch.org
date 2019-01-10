@@ -235,6 +235,24 @@
       }
 }
                  #+END_SRC
+                 #+BEGIN_SRC python
+                 {
+                     "_source": ["sha256"],
+                     "query": {
+                         "exists": {
+                             "field": "sha256"
+                         }
+                     },
+                     "aggs": {
+                         "count": {
+                             "cardinality": {
+                                 "field": "sha1"
+                             }
+                         }
+                     },
+                     "size": 0
+                 }
+                 #+END_SRC
 * questions
 ** from szie/scroll/search after
 

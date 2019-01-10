@@ -2,10 +2,11 @@
 #+TITLE: Reading List
 * Reading List
 ** TODO [[https://book.douban.com/subject/10432347/][算法]]  
-   SCHEDULED:<2018-12-31 Mon ++1d>
+   SCHEDULED:<2019-01-10 Thu ++1d>
    :PROPERTIES:
-   :LAST_REPEAT: [2018-12-30 Sun 19:34]
+   :LAST_REPEAT: [2019-01-09 Wed 14:01]
    :END:
+   - State "DONE"       from "TODO"       [2019-01-09 Wed 14:01]
    - State "DONE"       from "TODO"       [2018-12-30 Sun 19:34]
    - State "DONE"       from "TODO"       [2018-12-28 Fri 16:47] \\
      梳理近期算法文档
