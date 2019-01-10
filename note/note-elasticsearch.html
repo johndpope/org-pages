@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-12-26 Wed 16:31 -->
+<!-- 2019-01-10 Thu 11:31 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>elasticsearch 常用知识梳理</title>
@@ -565,7 +565,26 @@ size = 0 表示返回全部
         }
       }
 }
-</pre></dd>
+</pre>
+<div class="org-src-container">
+<pre class="src src-python">{
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"_source"</span>: [<span style="color: #79740e;">"sha256"</span>],
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"query"</span>: {
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"exists"</span>: {
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"field"</span>: <span style="color: #79740e;">"sha256"</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   }
+<span style="background-color: #ebdbb2;"> </span>   },
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"aggs"</span>: {
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"count"</span>: {
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"cardinality"</span>: {
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"field"</span>: <span style="color: #79740e;">"sha1"</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   }
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   }
+<span style="background-color: #ebdbb2;"> </span>   },
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"size"</span>: 0
+}
+</pre>
+</div></dd>
 </dl>
 </div>
 </div>

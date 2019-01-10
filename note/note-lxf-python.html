@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-01-07 Mon 19:34 -->
+<!-- 2019-01-10 Thu 11:31 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>读廖雪峰python文档记录</title>
@@ -277,6 +277,23 @@ for the JavaScript code in this tag.
 </ul>
 </li>
 <li><a href="#org3d1d2a9">模块</a></li>
+<li><a href="#org00b6c03">类</a>
+<ul>
+<li><a href="#orgcf72ccb">type 元类</a></li>
+<li><a href="#org11af429">metaclass</a></li>
+<li><a href="#org596ec06">BaseException</a></li>
+</ul>
+</li>
+<li><a href="#orgde6229b">debug测试</a>
+<ul>
+<li><a href="#org76a8cb9">assert 断言</a></li>
+<li><a href="#org699cf6c">pdb 断点</a></li>
+<li><a href="#org973aced">TDD</a></li>
+</ul>
+</li>
+<li><a href="#orgf5e9a19">IO编程</a></li>
+<li><a href="#org1d022cc">序列化</a></li>
+<li><a href="#orgbd51f47">进程和线程</a></li>
 </ul>
 </div>
 </div>
@@ -564,15 +581,15 @@ set可以做数学意义上的交集、并集等操作,set内不能存放list和
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">calc</span>(*numbers):
+<pre class="src src-python"><span style="color: #9d0006;">def</span> <span style="color: #b57614;">calc</span>(*numbers):
 
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #483d8b;">sum</span> = 0
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #af3a03;">sum</span> = 0
 
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">for</span> n <span style="color: #a020f0;">in</span> numbers:
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">for</span> n <span style="color: #9d0006;">in</span> numbers:
 
-<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #483d8b;">sum</span> = <span style="color: #483d8b;">sum</span> + n * n
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #af3a03;">sum</span> = <span style="color: #af3a03;">sum</span> + n * n
 
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> <span style="color: #483d8b;">sum</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> <span style="color: #af3a03;">sum</span>
 
 calc(1, 2)
 </pre>
@@ -586,9 +603,9 @@ calc(1, 2)
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">person</span>(name, age, **kw):
+<pre class="src src-python"><span style="color: #9d0006;">def</span> <span style="color: #b57614;">person</span>(name, age, **kw):
 
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span> <span style="color: #8b2252;">'name:'</span>, name, <span style="color: #8b2252;">'age:'</span>, age, <span style="color: #8b2252;">'other:'</span>, kw
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span> <span style="color: #79740e;">'name:'</span>, name, <span style="color: #79740e;">'age:'</span>, age, <span style="color: #79740e;">'other:'</span>, kw
 </pre>
 </div>
 
@@ -597,9 +614,9 @@ calc(1, 2)
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">func</span>(a, b, c=0, *args, **kw):
+<pre class="src src-python"><span style="color: #9d0006;">def</span> <span style="color: #b57614;">func</span>(a, b, c=0, *args, **kw):
 
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span> <span style="color: #8b2252;">'a ='</span>, a, <span style="color: #8b2252;">'b ='</span>, b, <span style="color: #8b2252;">'c ='</span>, c, <span style="color: #8b2252;">'args ='</span>, args, <span style="color: #8b2252;">'kw ='</span>, kw
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span> <span style="color: #79740e;">'a ='</span>, a, <span style="color: #79740e;">'b ='</span>, b, <span style="color: #79740e;">'c ='</span>, c, <span style="color: #79740e;">'args ='</span>, args, <span style="color: #79740e;">'kw ='</span>, kw
 
 
 </pre>
@@ -619,13 +636,13 @@ calc(1, 2)
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">fact</span>(n):
+<pre class="src src-python"><span style="color: #9d0006;">def</span> <span style="color: #b57614;">fact</span>(n):
 
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">if</span> n==1:
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">if</span> n==1:
 
-<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> 1
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> 1
 
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> n * fact(n - 1def fact(n):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> n * fact(n - 1def fact(n):
 
 </pre>
 </div>
@@ -640,18 +657,18 @@ calc(1, 2)
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">fact</span>(n):
+<pre class="src src-python"><span style="color: #9d0006;">def</span> <span style="color: #b57614;">fact</span>(n):
 
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> fact_iter(1, 1, n)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> fact_iter(1, 1, n)
 
 
-<span style="color: #a020f0;">def</span> <span style="color: #0000ff;">fact_iter</span>(product, count, <span style="color: #483d8b;">max</span>):
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">fact_iter</span>(product, count, <span style="color: #af3a03;">max</span>):
 
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">if</span> count &gt; <span style="color: #483d8b;">max</span>:
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">if</span> count &gt; <span style="color: #af3a03;">max</span>:
 
-<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> product
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> product
 
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> fact_iter(product * count, count + 1, <span style="color: #483d8b;">max</span>)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> fact_iter(product * count, count + 1, <span style="color: #af3a03;">max</span>)
 
 </pre>
 </div>
@@ -666,7 +683,7 @@ list生成式 : <code>[x * x for x in range(1, 11) if x % 2 =</code> 0]=
 </p>
 
 <p>
-for i, value in enumerate(['A', 'B', 'C']): <code>enumerate</code> 函数可以把一个list变成索引-元素对
+读写文件就是请求操作系统打开一个文件对象（通常称为文件描述符），然后，通过操作系统提供的接口从这个文件对象中读取数据（读文件），或者把数据写入这个文件对象（写文件） for i, value in enumerate(['A', 'B', 'C']): <code>enumerate</code> 函数可以把一个list变成索引-元素对
 </p>
 
 <p>
@@ -675,8 +692,8 @@ for i, value in enumerate(['A', 'B', 'C']): <code>enumerate</code> 函数可以�
 
 <div class="org-src-container">
 <pre class="src src-python">
-<span style="color: #a020f0;">if</span> <span style="color: #a020f0;">not</span> <span style="color: #483d8b;">isinstance</span>(x, (<span style="color: #483d8b;">int</span>, <span style="color: #483d8b;">float</span>)):
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">raise</span> <span style="color: #228b22;">TypeError</span>(<span style="color: #8b2252;">'bad operand type'</span>)
+<span style="color: #9d0006;">if</span> <span style="color: #9d0006;">not</span> <span style="color: #af3a03;">isinstance</span>(x, (<span style="color: #af3a03;">int</span>, <span style="color: #af3a03;">float</span>)):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">raise</span> <span style="color: #8f3f71;">TypeError</span>(<span style="color: #79740e;">'bad operand type'</span>)
 
 </pre>
 </div>
@@ -719,18 +736,18 @@ for i, value in enumerate(['A', 'B', 'C']): <code>enumerate</code> 函数可以�
 yield关键字定义斐波那契数列生成器
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">fib</span>(<span style="color: #483d8b;">max</span>):
+<pre class="src src-python"><span style="color: #9d0006;">def</span> <span style="color: #b57614;">fib</span>(<span style="color: #af3a03;">max</span>):
 
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">n</span>, <span style="color: #a0522d;">a</span>, <span style="color: #a0522d;">b</span> = 0, 0, 1
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">n</span>, <span style="color: #076678;">a</span>, <span style="color: #076678;">b</span> = 0, 0, 1
 
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">while</span> n &lt; <span style="color: #483d8b;">max</span>:
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">while</span> n &lt; <span style="color: #af3a03;">max</span>:
 
-<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #b22222;">#</span><span style="color: #b22222;">print b</span>
-<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">yield</span> b
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #a89984;">#</span><span style="color: #a89984;">print b</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">yield</span> b
 
-<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">a</span>, <span style="color: #a0522d;">b</span> = b, a + b
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">a</span>, <span style="color: #076678;">b</span> = b, a + b
 
-<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">n</span> = n + 1
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">n</span> = n + 1
 
 </pre>
 </div>
@@ -770,10 +787,10 @@ map()函数接收两个参数，一个是函数，一个是序列
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">f</span>(x):
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> x * x
+<pre class="src src-python"><span style="color: #9d0006;">def</span> <span style="color: #b57614;">f</span>(x):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> x * x
 
-<span style="color: #483d8b;">map</span>(f, [1,2,3])
+<span style="color: #af3a03;">map</span>(f, [1,2,3])
 
 </pre>
 </div>
@@ -783,15 +800,15 @@ reduce把一个函数作用在一个序列[x1, x2, x3&#x2026;]上，这个函数
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">f</span>(x, y):
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> x * 10 + y
+<pre class="src src-python"><span style="color: #9d0006;">def</span> <span style="color: #b57614;">f</span>(x, y):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> x * 10 + y
 
-<span style="color: #483d8b;">reduce</span>(f, [1,3,5])
+<span style="color: #af3a03;">reduce</span>(f, [1,3,5])
 
-<span style="color: #483d8b;">reduce</span>(f, <span style="color: #483d8b;">map</span>(<span style="color: #483d8b;">int</span>, <span style="color: #8b2252;">'13579'</span>)) <span style="color: #b22222;">#</span><span style="color: #b22222;">str &#36716;&#25442;&#25104; int</span>
+<span style="color: #af3a03;">reduce</span>(f, <span style="color: #af3a03;">map</span>(<span style="color: #af3a03;">int</span>, <span style="color: #79740e;">'13579'</span>)) <span style="color: #a89984;">#</span><span style="color: #a89984;">str &#36716;&#25442;&#25104; int</span>
 
-<span style="color: #b22222;">#</span><span style="color: #b22222;">&#29992;lambda&#20989;&#25968;&#36827;&#19968;&#27493;&#31616;&#21270;&#25104;</span>
-<span style="color: #483d8b;">reduce</span>(<span style="color: #a020f0;">lambda</span> x,y : x*10+y,<span style="color: #483d8b;">map</span>(<span style="color: #483d8b;">int</span>,<span style="color: #8b2252;">'567'</span>))
+<span style="color: #a89984;">#</span><span style="color: #a89984;">&#29992;lambda&#20989;&#25968;&#36827;&#19968;&#27493;&#31616;&#21270;&#25104;</span>
+<span style="color: #af3a03;">reduce</span>(<span style="color: #9d0006;">lambda</span> x,y : x*10+y,<span style="color: #af3a03;">map</span>(<span style="color: #af3a03;">int</span>,<span style="color: #79740e;">'567'</span>))
 </pre>
 </div>
 <p>
@@ -804,25 +821,25 @@ sorted 排序的原则是对比较结果返回 -1,0,1
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">cmp_ignore_case</span>(s1, s2):
+<pre class="src src-python"><span style="color: #9d0006;">def</span> <span style="color: #b57614;">cmp_ignore_case</span>(s1, s2):
 
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">u1</span> = s1.upper()
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">u1</span> = s1.upper()
 
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">u2</span> = s2.upper()
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">u2</span> = s2.upper()
 
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">if</span> u1 &lt; u2:
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">if</span> u1 &lt; u2:
 
-<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> -1
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> -1
 
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">if</span> u1 &gt; u2:
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">if</span> u1 &gt; u2:
 
-<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> 1
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> 1
 
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> 0
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> 0
 
 
-<span style="color: #483d8b;">sorted</span>([<span style="color: #8b2252;">'Ba'</span>,<span style="color: #8b2252;">'ba'</span>,<span style="color: #8b2252;">'Cc'</span>,<span style="color: #8b2252;">'cC'</span>])
-<span style="color: #483d8b;">sorted</span>([<span style="color: #8b2252;">'Ba'</span>,<span style="color: #8b2252;">'ba'</span>,<span style="color: #8b2252;">'Cc'</span>,<span style="color: #8b2252;">'cC'</span>],cmp_ignore_case)
+<span style="color: #af3a03;">sorted</span>([<span style="color: #79740e;">'Ba'</span>,<span style="color: #79740e;">'ba'</span>,<span style="color: #79740e;">'Cc'</span>,<span style="color: #79740e;">'cC'</span>])
+<span style="color: #af3a03;">sorted</span>([<span style="color: #79740e;">'Ba'</span>,<span style="color: #79740e;">'ba'</span>,<span style="color: #79740e;">'Cc'</span>,<span style="color: #79740e;">'cC'</span>],cmp_ignore_case)
 
 </pre>
 </div>
@@ -837,25 +854,25 @@ sorted 排序的原则是对比较结果返回 -1,0,1
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">lazy_sum</span>(*args):
+<pre class="src src-python"><span style="color: #9d0006;">def</span> <span style="color: #b57614;">lazy_sum</span>(*args):
 
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">sum</span>():
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">def</span> <span style="color: #b57614;">sum</span>():
 
-<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">ax</span> = 0
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">ax</span> = 0
 
-<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">for</span> n <span style="color: #a020f0;">in</span> args:
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">for</span> n <span style="color: #9d0006;">in</span> args:
 
-<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">ax</span> = ax + n
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">ax</span> = ax + n
 
-<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> ax
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> ax
 
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> <span style="color: #483d8b;">sum</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> <span style="color: #af3a03;">sum</span>
 
-<span style="color: #a0522d;">f</span> = lazy_sum(1,2,3)
-<span style="color: #b22222;">#</span><span style="color: #b22222;">&#24403;&#25105;&#20204;&#35843;&#29992;lazy_sum()&#26102;&#65292;&#36820;&#22238;&#30340;&#24182;&#19981;&#26159;&#27714;&#21644;&#32467;&#26524;&#65292;&#32780;&#26159;&#27714;&#21644;&#20989;&#25968;</span>
-<span style="color: #a020f0;">print</span> f
-<span style="color: #b22222;">#</span><span style="color: #b22222;">&#35843;&#29992;&#20989;&#25968;f&#26102;&#65292;&#25165;&#30495;&#27491;&#35745;&#31639;&#27714;&#21644;&#30340;&#32467;&#26524;</span>
-<span style="color: #a020f0;">print</span> f() <span style="color: #b22222;"># </span>
+<span style="color: #076678;">f</span> = lazy_sum(1,2,3)
+<span style="color: #a89984;">#</span><span style="color: #a89984;">&#24403;&#25105;&#20204;&#35843;&#29992;lazy_sum()&#26102;&#65292;&#36820;&#22238;&#30340;&#24182;&#19981;&#26159;&#27714;&#21644;&#32467;&#26524;&#65292;&#32780;&#26159;&#27714;&#21644;&#20989;&#25968;</span>
+<span style="color: #9d0006;">print</span> f
+<span style="color: #a89984;">#</span><span style="color: #a89984;">&#35843;&#29992;&#20989;&#25968;f&#26102;&#65292;&#25165;&#30495;&#27491;&#35745;&#31639;&#27714;&#21644;&#30340;&#32467;&#26524;</span>
+<span style="color: #9d0006;">print</span> f() <span style="color: #a89984;"># </span>
 </pre>
 </div></li>
 </ul>
@@ -890,22 +907,22 @@ Python对匿名函数的支持有限，只有一些简单的情况下可以使�
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">import</span> functools
+<pre class="src src-python"><span style="color: #9d0006;">import</span> functools
 
-<span style="color: #a020f0;">def</span> <span style="color: #0000ff;">log</span>(func):
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">log</span>(func):
 
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #228b22;">@functools.wraps</span>(func)
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">wrapper</span>(*args, **kw):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #8f3f71;">@functools.wraps</span>(func)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">def</span> <span style="color: #b57614;">wrapper</span>(*args, **kw):
 
-<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span> <span style="color: #8b2252;">'call %s():'</span> % func.<span style="color: #483d8b;">__name__</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span> <span style="color: #79740e;">'call %s():'</span> % func.<span style="color: #af3a03;">__name__</span>
 
-<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> func(*args, **kw)
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> func(*args, **kw)
 
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> wrapper
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> wrapper
 
-<span style="color: #228b22;">@log</span>
-<span style="color: #a020f0;">def</span> <span style="color: #0000ff;">now</span>():
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span> <span style="color: #8b2252;">'2019-01-07'</span>
+<span style="color: #8f3f71;">@log</span>
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">now</span>():
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span> <span style="color: #79740e;">'2019-01-07'</span>
 
 
 now()
@@ -921,28 +938,28 @@ log()是一个decorator，返回一个函数，于是调用now()将执行新函�
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">import</span> functools
+<pre class="src src-python"><span style="color: #9d0006;">import</span> functools
 
-<span style="color: #a020f0;">def</span> <span style="color: #0000ff;">log</span>(text):
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">log</span>(text):
 
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">_decorator</span>(func):
-<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #228b22;">@functools.wraps</span>(func)
-<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">wrapper</span>(*args, **kw):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">def</span> <span style="color: #b57614;">_decorator</span>(func):
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #8f3f71;">@functools.wraps</span>(func)
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">def</span> <span style="color: #b57614;">wrapper</span>(*args, **kw):
 
-<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span> <span style="color: #8b2252;">'%s %s():'</span> % (text, func.<span style="color: #483d8b;">__name__</span>)
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span> <span style="color: #79740e;">'%s %s():'</span> % (text, func.<span style="color: #af3a03;">__name__</span>)
 
-<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> func(*args, **kw)
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> func(*args, **kw)
 
-<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> wrapper
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> wrapper
 
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> _decorator
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> _decorator
 
-<span style="color: #228b22;">@log</span>(<span style="color: #8b2252;">'execute'</span>)
-<span style="color: #a020f0;">def</span> <span style="color: #0000ff;">now</span>():
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span> <span style="color: #8b2252;">'2019-01-07'</span>
+<span style="color: #8f3f71;">@log</span>(<span style="color: #79740e;">'execute'</span>)
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">now</span>():
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span> <span style="color: #79740e;">'2019-01-07'</span>
 
 
-now() <span style="color: #b22222;">#</span><span style="color: #b22222;">now = log('execute')(now)</span>
+now() <span style="color: #a89984;">#</span><span style="color: #a89984;">now = log('execute')(now)</span>
 
 </pre>
 </div>
@@ -965,10 +982,10 @@ Python内置的functools.wraps就是干这个事的，所以，一个完整的de
 <h3 id="orgeb189f7">偏函数</h3>
 <div class="outline-text-3" id="text-orgeb189f7">
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">int2</span>(x, base=2):
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> <span style="color: #483d8b;">int</span>(x, base)
+<pre class="src src-python"><span style="color: #9d0006;">def</span> <span style="color: #b57614;">int2</span>(x, base=2):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> <span style="color: #af3a03;">int</span>(x, base)
 
-int2(<span style="color: #8b2252;">'1000'</span>) <span style="color: #b22222;"># </span><span style="color: #b22222;">8</span>
+int2(<span style="color: #79740e;">'1000'</span>) <span style="color: #a89984;"># </span><span style="color: #a89984;">8</span>
 
 </pre>
 </div>
@@ -1051,37 +1068,37 @@ Python内置的 <code>@property</code> 装饰器就是负责把一个xxx的gette
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Student</span>(<span style="color: #483d8b;">object</span>):
+<pre class="src src-python"><span style="color: #9d0006;">class</span> <span style="color: #8f3f71;">Student</span>(<span style="color: #af3a03;">object</span>):
 
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #228b22;">@property</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #8f3f71;">@property</span>
 
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">score</span>(<span style="color: #a020f0;">self</span>):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">def</span> <span style="color: #b57614;">score</span>(<span style="color: #9d0006;">self</span>):
 
-<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> <span style="color: #a020f0;">self</span>._score
-
-
-
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #228b22;">@score.setter</span>
-
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">score</span>(<span style="color: #a020f0;">self</span>, value):
-
-<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">if</span> <span style="color: #a020f0;">not</span> <span style="color: #483d8b;">isinstance</span>(value, <span style="color: #483d8b;">int</span>):
-
-<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">raise</span> <span style="color: #228b22;">ValueError</span>(<span style="color: #8b2252;">'score must be an integer!'</span>)
-
-<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">if</span> value &lt; 0 <span style="color: #a020f0;">or</span> value &gt; 100:
-
-<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">raise</span> <span style="color: #228b22;">ValueError</span>(<span style="color: #8b2252;">'score must between 0 ~ 100!'</span>)
-
-<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">self</span>._score = value
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> <span style="color: #9d0006;">self</span>._score
 
 
 
-<span style="color: #a0522d;">s</span> = Student()
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #8f3f71;">@score.setter</span>
 
-<span style="color: #a0522d;">s.score</span> = 60 <span style="color: #b22222;"># </span><span style="color: #b22222;">OK&#65292;&#23454;&#38469;&#36716;&#21270;&#20026;s.set_score(60)</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">def</span> <span style="color: #b57614;">score</span>(<span style="color: #9d0006;">self</span>, value):
 
-s.score <span style="color: #b22222;"># </span><span style="color: #b22222;">OK&#65292;&#23454;&#38469;&#36716;&#21270;&#20026;s.get_score()</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">if</span> <span style="color: #9d0006;">not</span> <span style="color: #af3a03;">isinstance</span>(value, <span style="color: #af3a03;">int</span>):
+
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">raise</span> <span style="color: #8f3f71;">ValueError</span>(<span style="color: #79740e;">'score must be an integer!'</span>)
+
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">if</span> value &lt; 0 <span style="color: #9d0006;">or</span> value &gt; 100:
+
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">raise</span> <span style="color: #8f3f71;">ValueError</span>(<span style="color: #79740e;">'score must between 0 ~ 100!'</span>)
+
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">self</span>._score = value
+
+
+
+<span style="color: #076678;">s</span> = Student()
+
+<span style="color: #076678;">s.score</span> = 60 <span style="color: #a89984;"># </span><span style="color: #a89984;">OK&#65292;&#23454;&#38469;&#36716;&#21270;&#20026;s.set_score(60)</span>
+
+s.score <span style="color: #a89984;"># </span><span style="color: #a89984;">OK&#65292;&#23454;&#38469;&#36716;&#21270;&#20026;s.get_score()</span>
 </pre>
 </div>
 
@@ -1090,6 +1107,461 @@ s.score <span style="color: #b22222;"># </span><span style="color: #b22222;">OK&
 由于Python允许使用 <b>多重继承</b> ,java 是单一继承的语言
 </p>
 </div>
+</div>
+
+<div id="outline-container-org00b6c03" class="outline-2">
+<h2 id="org00b6c03">类</h2>
+<div class="outline-text-2" id="text-org00b6c03">
+</div>
+<div id="outline-container-orgcf72ccb" class="outline-3">
+<h3 id="orgcf72ccb">type 元类</h3>
+<div class="outline-text-3" id="text-orgcf72ccb">
+<p>
+type()函数既可以返回一个对象的类型，又可以创建出新的类型
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #9d0006;">def</span> <span style="color: #b57614;">fn</span>(<span style="color: #9d0006;">self</span>, name=<span style="color: #79740e;">'world'</span>):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span> <span style="color: #79740e;">"Hello %s!"</span> % name
+
+
+<span style="color: #a89984;">#</span><span style="color: #a89984;">&#21019;&#24314;Hello&#31867;</span>
+<span style="color: #076678;">Hello</span> = <span style="color: #af3a03;">type</span>(<span style="color: #79740e;">'Hello'</span>, (<span style="color: #af3a03;">object</span>, ), <span style="color: #af3a03;">dict</span>(hello=fn))
+
+<span style="color: #076678;">h</span> = Hello()
+
+h.hello()
+
+</pre>
+</div>
+
+<p>
+type(class) 结果是type ,type(实例) 结果是 &lt;class '<span class="underline"><span class="underline">main</span></span>.Hello'&gt;
+</p>
+
+
+<p>
+type要创建一个class对象，type()函数依次传入3个参数：
+</p>
+
+<ol class="org-ol">
+<li>class的名称；</li>
+<li>继承的父类集合，注意Python支持多重继承，如果只有一个父类，别忘了tuple的单元素写法；</li>
+<li>class的方法名称与函数绑定，这里我们把函数fn绑定到方法名hello上。</li>
+</ol>
+
+<p>
+通过type()函数创建的类和直接写class是完全一样的，因为Python解释器遇到class定义时，
+仅仅是扫描一下class定义的语法，然后调用type()函数创建出class
+</p>
+</div>
+</div>
+<div id="outline-container-org11af429" class="outline-3">
+<h3 id="org11af429">metaclass</h3>
+<div class="outline-text-3" id="text-org11af429">
+<p>
+除了使用type()动态创建类以外，要控制类的创建行为，还可以使用metaclass
+</p>
+
+<p>
+先定义metaclass，然后创建类,最后创建实例
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a89984;"># </span><span style="color: #a89984;">metaclass&#26159;&#21019;&#24314;&#31867;&#65292;&#25152;&#20197;&#24517;&#39035;&#20174;`type`&#31867;&#22411;&#27966;&#29983;&#65306;</span>
+
+<span style="color: #9d0006;">class</span> <span style="color: #8f3f71;">ListMetaclass</span>(<span style="color: #af3a03;">type</span>):
+
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">def</span> <span style="color: #b57614;">__new__</span>(cls, name, bases, attrs):
+
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">attrs</span>[<span style="color: #79740e;">'add'</span>] = <span style="color: #9d0006;">lambda</span> <span style="color: #9d0006;">self</span>, value: <span style="color: #9d0006;">self</span>.append(value)
+
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> <span style="color: #af3a03;">type</span>.__new__(cls, name, bases, attrs)
+
+
+
+<span style="color: #9d0006;">class</span> <span style="color: #8f3f71;">MyList</span>(<span style="color: #af3a03;">list</span>):
+
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">__metaclass__</span> = ListMetaclass <span style="color: #a89984;"># </span><span style="color: #a89984;">&#25351;&#31034;&#20351;&#29992;ListMetaclass&#26469;&#23450;&#21046;&#31867;</span>
+
+<span style="color: #076678;">l</span> = MyList()
+
+l.add(2)
+
+l
+</pre>
+</div>
+
+<p>
+ORM全称“Object Relational Mapping”，即对象-关系映射
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org596ec06" class="outline-3">
+<h3 id="org596ec06">BaseException</h3>
+<div class="outline-text-3" id="text-org596ec06">
+<p>
+因为错误是class，捕获一个错误就是捕获到该class的一个实例
+raise 抛出错误捕捉
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a89984;"># </span><span style="color: #a89984;">err.py</span>
+
+<span style="color: #9d0006;">class</span> <span style="color: #8f3f71;">FooError</span>(<span style="color: #8f3f71;">StandardError</span>):
+
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">pass</span>
+
+
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">foo</span>(s):
+
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">n</span> = <span style="color: #af3a03;">int</span>(s)
+
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">if</span> n == 0:
+
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">raise</span> FooError(<span style="color: #79740e;">'invalid value: %s'</span> % s)
+
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> 10 / n
+</pre>
+</div>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a89984;">#</span><span style="color: #a89984;">https://docs.python.org/2/library/exceptions.html#exception-hierarchy</span>
+<span style="color: #8f3f71;">BaseException</span>
+<span style="background-color: #ebdbb2;"> </span>+-- <span style="color: #8f3f71;">SystemExit</span>
+<span style="background-color: #ebdbb2;"> </span>+-- <span style="color: #8f3f71;">KeyboardInterrupt</span>
+<span style="background-color: #ebdbb2;"> </span>+-- <span style="color: #8f3f71;">GeneratorExit</span>
+<span style="background-color: #ebdbb2;"> </span>+-- <span style="color: #8f3f71;">Exception</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span> +-- <span style="color: #8f3f71;">StopIteration</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span> +-- <span style="color: #8f3f71;">StandardError</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span> |    +-- <span style="color: #8f3f71;">BufferError</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span> |    +-- <span style="color: #8f3f71;">ArithmeticError</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span> |    |    +-- <span style="color: #8f3f71;">FloatingPointError</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span> |    |    +-- <span style="color: #8f3f71;">OverflowError</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span> |    |    +-- <span style="color: #8f3f71;">ZeroDivisionError</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span> |    +-- <span style="color: #8f3f71;">AssertionError</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span> |    +-- <span style="color: #8f3f71;">AttributeError</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span> |    +-- <span style="color: #8f3f71;">EnvironmentError</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span> |    |    +-- <span style="color: #8f3f71;">IOError</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span> |    |    +-- <span style="color: #8f3f71;">OSError</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span> |    |         +-- <span style="color: #8f3f71;">WindowsError</span> (Windows)
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span> |    |         +-- <span style="color: #8f3f71;">VMSError</span> (VMS)
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span> |    +-- <span style="color: #8f3f71;">EOFError</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span> |    +-- <span style="color: #8f3f71;">ImportError</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span> |    +-- <span style="color: #8f3f71;">LookupError</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span> |    |    +-- <span style="color: #8f3f71;">IndexError</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span> |    |    +-- <span style="color: #8f3f71;">KeyError</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span> |    +-- <span style="color: #8f3f71;">MemoryError</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span> |    +-- <span style="color: #8f3f71;">NameError</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span> |    |    +-- <span style="color: #8f3f71;">UnboundLocalError</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span> |    +-- <span style="color: #8f3f71;">ReferenceError</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span> |    +-- <span style="color: #8f3f71;">RuntimeError</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span> |    |    +-- <span style="color: #8f3f71;">NotImplementedError</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span> |    +-- <span style="color: #8f3f71;">SyntaxError</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span> |    |    +-- <span style="color: #8f3f71;">IndentationError</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span> |    |         +-- <span style="color: #8f3f71;">TabError</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span> |    +-- <span style="color: #8f3f71;">SystemError</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span> |    +-- <span style="color: #8f3f71;">TypeError</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span> |    +-- <span style="color: #8f3f71;">ValueError</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span> |         +-- <span style="color: #8f3f71;">UnicodeError</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span> |              +-- <span style="color: #8f3f71;">UnicodeDecodeError</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span> |              +-- <span style="color: #8f3f71;">UnicodeEncodeError</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span> |              +-- <span style="color: #8f3f71;">UnicodeTranslateError</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span> +-- <span style="color: #8f3f71;">Warning</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>  +-- <span style="color: #8f3f71;">DeprecationWarning</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>  +-- <span style="color: #8f3f71;">PendingDeprecationWarning</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>  +-- <span style="color: #8f3f71;">RuntimeWarning</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>  +-- <span style="color: #8f3f71;">SyntaxWarning</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>  +-- <span style="color: #8f3f71;">UserWarning</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>  +-- <span style="color: #8f3f71;">FutureWarning</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>  +-- <span style="color: #8f3f71;">ImportWarning</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>  +-- <span style="color: #8f3f71;">UnicodeWarning</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>  +-- <span style="color: #8f3f71;">BytesWarning</span>
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgde6229b" class="outline-2">
+<h2 id="orgde6229b">debug测试</h2>
+<div class="outline-text-2" id="text-orgde6229b">
+</div>
+<div id="outline-container-org76a8cb9" class="outline-3">
+<h3 id="org76a8cb9">assert 断言</h3>
+<div class="outline-text-3" id="text-org76a8cb9">
+<p>
+-o 关闭后，你可以把所有的assert语句当成pass来看
+</p>
+</div>
+</div>
+<div id="outline-container-org699cf6c" class="outline-3">
+<h3 id="org699cf6c">pdb 断点</h3>
+<div class="outline-text-3" id="text-org699cf6c">
+<p>
+python -m pdb err.py
+</p>
+</div>
+</div>
+<div id="outline-container-org973aced" class="outline-3">
+<h3 id="org973aced">TDD</h3>
+<div class="outline-text-3" id="text-org973aced">
+<blockquote>
+<p>
+
+</p>
+
+<p>
+测试驱动开发（TDD：Test-Driven Development
+</p>
+
+<ol class="org-ol">
+<li><p>
+单元测试
+</p>
+
+<p>
+单元测试是用来对一个模块、一个函数或者一个类来进行正确性检验的测试工作
+</p>
+
+<p>
+unittest模块,编写单元测试
+</p>
+
+<p>
+编写一个测试类，从unittest.TestCase继承
+</p>
+
+<p>
+unittest.main()
+</p>
+
+<p>
+setUp与tearDown: 这两个方法会分别在每调用一个测试方法的前后分别被执行
+</p>
+
+<p>
+单元测试的测试用例要覆盖常用的输入组合、边界条件和异常。
+</p>
+
+<p>
+单元测试代码要非常简单，如果测试代码太复杂，那么测试代码本身就可能有bug
+</p></li>
+
+<li><p>
+文档测试
+</p>
+
+<p>
+内置doctest模块可以直接提取注释中的代码并执行测试
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #9d0006;">def</span> <span style="color: #b57614;">abs</span>(n):
+
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">'''</span>
+
+<span style="color: #79740e; background-color: #ebdbb2;"> </span><span style="color: #79740e;">   Function to get absolute value of number.</span>
+
+
+
+<span style="color: #79740e; background-color: #ebdbb2;"> </span><span style="color: #79740e;">   Example:</span>
+
+
+
+<span style="color: #79740e; background-color: #ebdbb2;"> </span><span style="color: #79740e;">   &gt;&gt;&gt; abs(1)</span>
+
+<span style="color: #79740e; background-color: #ebdbb2;"> </span><span style="color: #79740e;">   1</span>
+
+<span style="color: #79740e; background-color: #ebdbb2;"> </span><span style="color: #79740e;">   &gt;&gt;&gt; abs(-1)</span>
+
+<span style="color: #79740e; background-color: #ebdbb2;"> </span><span style="color: #79740e;">   1</span>
+
+<span style="color: #79740e; background-color: #ebdbb2;"> </span><span style="color: #79740e;">   &gt;&gt;&gt; abs(0)</span>
+
+<span style="color: #79740e; background-color: #ebdbb2;"> </span><span style="color: #79740e;">   0</span>
+
+<span style="color: #79740e; background-color: #ebdbb2;"> </span><span style="color: #79740e;">   '''</span>
+
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> n <span style="color: #9d0006;">if</span> n &gt;= 0 <span style="color: #9d0006;">else</span> (-n)
+
+
+<span style="color: #a89984;">#</span><span style="color: #a89984;">&#20351;&#29992;</span>
+<span style="color: #9d0006;">if</span> <span style="color: #af3a03;">__name__</span>==<span style="color: #79740e;">'__main__'</span>:
+
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">import</span> doctest
+
+<span style="background-color: #ebdbb2;"> </span>   doctest.testmod()
+
+</pre>
+</div></li>
+</ol>
+</blockquote>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf5e9a19" class="outline-2">
+<h2 id="orgf5e9a19">IO编程</h2>
+<div class="outline-text-2" id="text-orgf5e9a19">
+<p>
+从磁盘读取文件到内存，就只有Input操作，反过来，把数据写到磁盘文件里，就只是一个Output操作 
+</p>
+
+<p>
+同步IO 异步IO
+</p>
+
+<p>
+磁盘上读写文件的功能都是由操作系统提供的，现代操作系统不允许普通的程序直接操作磁盘
+读写文件就是请求操作系统打开一个文件对象（通常称为文件描述符），然后，通过操作系统提供的接口从这个文件对象中读取数据或写入数据  
+</p>
+
+<p>
+read(size) 反复读取size字节内容
+</p>
+
+<p>
+readline()  每次读取一行 
+</p>
+
+<p>
+读取二进制文件，比如图片、视频等等，用'rb'模式 open('x','rb')
+</p>
+
+<p>
+要读取非ASCII编码的文本文件，就必须以二进制模式打开,再解码。比如GBK编码的文件：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">
+<span style="color: #076678;">f</span> = <span style="color: #af3a03;">open</span>(<span style="color: #79740e;">'/Users/michael/gbk.txt'</span>, <span style="color: #79740e;">'rb'</span>)
+
+<span style="color: #076678;">u</span> = f.read().decode(<span style="color: #79740e;">'gbk'</span>)
+
+</pre>
+</div>
+
+<p>
+Python还提供了一个codecs模块帮我们在读文件时自动转换编码，直接读出unicode：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #9d0006;">import</span> codecs
+
+<span style="color: #9d0006;">with</span> codecs.<span style="color: #af3a03;">open</span>(<span style="color: #79740e;">'/Users/michael/gbk.txt'</span>, <span style="color: #79740e;">'r'</span>, <span style="color: #79740e;">'gbk'</span>) <span style="color: #9d0006;">as</span> f:
+
+f.read() <span style="color: #a89984;"># </span><span style="color: #a89984;">'\uu6d4b\u8bd5'</span>
+</pre>
+</div>
+
+<p>
+务必要调用f.close()来关闭文件,忘记调用close()会导致缓存在内存内的部分数据最后无法写到磁盘
+</p>
+
+<p>
+<b>os 模块</b>
+</p>
+
+<p>
+os.name 操作系统名
+</p>
+
+<p>
+os.uname 系统信息
+</p>
+
+<p>
+os.environ 操作系统中定义的环境变量  
+</p>
+
+<p>
+os.getenv('PATH')  取某个环境变量的值
+</p>
+
+<p>
+os.path.abspath('.') 查看当前目录的绝对路径: 
+</p>
+
+<p>
+os.mkdir() 创建 os.rmdir() 删除目录
+</p>
+
+<p>
+os.path.join('','')不同操作系统之间通用 os.path.split()
+</p>
+
+<p>
+os.rename('a','b')
+</p>
+
+<p>
+os.remove('a') 
+</p>
+
+<p>
+shutil模块提供了copyfile()的函数,它们可以看做是os模块的补充
+</p>
+
+<p>
+[x for x in os.listdir('.') if os.path.isdir(x)] 目录下的所有目录
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1d022cc" class="outline-2">
+<h2 id="org1d022cc">序列化</h2>
+<div class="outline-text-2" id="text-org1d022cc">
+<p>
+我们把变量从内存中变成可存储或传输的过程称之为序列化，在Python中叫pickling，
+在其他语言中也被称之为serialization，marshalling，flattening等等，都是一个意思
+</p>
+
+<p>
+反过来，把变量内容从序列化的对象重新读到内存里称之为反序列化，即unpickling
+</p>
+
+<p>
+Python提供两个模块来实现序列化：cPickle和pickle,就是它只能用于Python，并且可能不同版本的Python彼此都不兼容
+</p>
+
+<p>
+同的编程语言之间传递对象，就必须把对象序列化为标准格式,好的方法是序列化为JSON(loads dumps)
+</p>
+
+<p>
+JSON进阶:定制JSON序列化
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">json.dumps(
+<span style="background-color: #ebdbb2;"> </span>   obj,
+<span style="background-color: #ebdbb2;"> </span>   skipkeys=<span style="color: #8f3f71;">False</span>,
+<span style="background-color: #ebdbb2;"> </span>   ensure_ascii=<span style="color: #8f3f71;">True</span>,
+<span style="background-color: #ebdbb2;"> </span>   check_circular=<span style="color: #8f3f71;">True</span>,
+<span style="background-color: #ebdbb2;"> </span>   allow_nan=<span style="color: #8f3f71;">True</span>,
+<span style="background-color: #ebdbb2;"> </span>   cls=<span style="color: #8f3f71;">None</span>,
+<span style="background-color: #ebdbb2;"> </span>   indent=<span style="color: #8f3f71;">None</span>,
+<span style="background-color: #ebdbb2;"> </span>   separators=<span style="color: #8f3f71;">None</span>,
+<span style="background-color: #ebdbb2;"> </span>   encoding=<span style="color: #79740e;">"utf-8"</span>,
+<span style="background-color: #ebdbb2;"> </span>   default=<span style="color: #8f3f71;">None</span>,
+<span style="background-color: #ebdbb2;"> </span>   sort_keys=<span style="color: #8f3f71;">False</span>,
+<span style="background-color: #ebdbb2;"> </span>   **kw)
+</pre>
+</div>
+
+<p>
+default=None,把任意一个对象变成一个可序列为JSON的对象，我们只需要为class的实例专门写一个转换函数，再把函数传进去即可
+</p>
+
+<p>
+<code>json.dumps(s, default=lambda obj: obj.__dict__)</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgbd51f47" class="outline-2">
+<h2 id="orgbd51f47">进程和线程</h2>
 </div>
 </div>
 </body>

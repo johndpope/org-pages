@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-01-07 Mon 00:54 -->
+<!-- 2019-01-10 Thu 11:32 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Question &amp; Answer</title>
@@ -242,7 +242,6 @@ for the JavaScript code in this tag.
 <li><a href="#orgc446c10"><span class="done DONE">DONE</span> emacs set mpv play video</a></li>
 <li><a href="#org8a76472"><span class="todo TODO">TODO</span> 如何使用yasnippet提高开发python效率</a></li>
 <li><a href="#orgde1cea5"><span class="done DONE">DONE</span> emacs 代码折叠</a></li>
-<li><a href="#org07eafc3"><span class="todo TODO">TODO</span> definite python file template</a></li>
 <li><a href="#org795f24b"><span class="done DONE">DONE</span> bt sync</a></li>
 <li><a href="#orgcad11ff"><span class="done DONE">DONE</span> create telegram group</a></li>
 <li><a href="#org352ddd7"><span class="todo TODO">TODO</span> emacs mgit use</a></li>
@@ -258,7 +257,6 @@ for the JavaScript code in this tag.
 <li><a href="#org3e911ac"><span class="done DONE">DONE</span> emacs 截图</a></li>
 <li><a href="#orge52d13b"><span class="done DONE">DONE</span> emacs 使用 mpd /mpc 听音乐</a></li>
 <li><a href="#orga90b257"><span class="done DONE">DONE</span> arch 系统剪切板调用</a></li>
-<li><a href="#org1af2baf"><span class="todo TODO">TODO</span> snap 下一代linux跨发行版的包管理</a></li>
 <li><a href="#org5324983"><span class="done DONE">DONE</span> arch 安装teamviewer</a></li>
 <li><a href="#orga3af3fc"><span class="done DONE">DONE</span> emacs快速注释快捷键</a></li>
 <li><a href="#orgf9dfdad"><span class="todo TODO">TODO</span> emacs指定模板创建文件</a></li>
@@ -399,16 +397,6 @@ helm-imenu (spc hi)
 </blockquote>
 </div>
 </div>
-<div id="outline-container-org07eafc3" class="outline-3">
-<h3 id="org07eafc3"><span class="todo TODO">TODO</span> definite python file template</h3>
-<div class="outline-text-3" id="text-org07eafc3">
-<blockquote>
-<p>
-
-</p>
-</blockquote>
-</div>
-</div>
 <div id="outline-container-org795f24b" class="outline-3">
 <h3 id="org795f24b"><span class="done DONE">DONE</span> bt sync</h3>
 <div class="outline-text-3" id="text-org795f24b">
@@ -511,7 +499,7 @@ DEADLINE: <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-01-06
 <div class="outline-text-3" id="text-org7a34966">
 <blockquote>
 <p>
-DEADLINE: <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-01-06 Sun 16:33&gt;</span></span>
+DEADLINE: <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-01-16 Wed 16:33&gt;</span></span>
 </p>
 </blockquote>
 </div>
@@ -643,22 +631,22 @@ M-x elpy-format-code (, r f)
 
 <div class="org-src-container">
 <pre class="src src-elisp">
-(<span style="color: #a020f0;">when</span> (<span style="color: #a020f0;">require</span> '<span style="color: #008b8b;">elpy</span> nil t)
+(<span style="color: #9d0006;">when</span> (<span style="color: #9d0006;">require</span> '<span style="color: #8f3f71;">elpy</span> nil t)
   (elpy-enable)
-  (pyvenv-activate <span style="color: #8b2252;">"~/opt/virtualenvs/emacs-python"</span>)
+  (pyvenv-activate <span style="color: #79740e;">"~/opt/virtualenvs/emacs-python"</span>)
 )
 
 
-(<span style="color: #a020f0;">defun</span> <span style="color: #0000ff;">goto-def-or-rgrep</span> ()
-  <span style="color: #8b2252;">"Go to definition of thing at point or do an rgrep in project if that fails"</span>
-  (<span style="color: #a020f0;">interactive</span>)
-  (<span style="color: #a020f0;">condition-case</span> nil (elpy-goto-definition)
-    (<span style="color: #ff0000; font-weight: bold;">error</span> (elpy-rgrep-symbol (thing-at-point 'symbol)))))
+(<span style="color: #9d0006;">defun</span> <span style="color: #b57614;">goto-def-or-rgrep</span> ()
+  <span style="color: #79740e;">"Go to definition of thing at point or do an rgrep in project if that fails"</span>
+  (<span style="color: #9d0006;">interactive</span>)
+  (<span style="color: #9d0006;">condition-case</span> nil (elpy-goto-definition)
+    (<span style="color: #9d0006; font-weight: bold;">error</span> (elpy-rgrep-symbol (thing-at-point 'symbol)))))
 
-(define-key elpy-mode-map (kbd <span style="color: #8b2252;">"M-."</span>) 'goto-def-or-rgrep)
+(define-key elpy-mode-map (kbd <span style="color: #79740e;">"M-."</span>) 'goto-def-or-rgrep)
 
 (add-hook 'python-mode-hook 'jedi:setup)
-(<span style="color: #a020f0;">setq</span> jedi:complete-on-dot t)                 <span style="color: #b22222;">; </span><span style="color: #b22222;">optional</span>
+(<span style="color: #9d0006;">setq</span> jedi:complete-on-dot t)                 <span style="color: #a89984;">; </span><span style="color: #a89984;">optional</span>
 </pre>
 </div>
 
@@ -688,7 +676,6 @@ How do use Emacs to look up a function in Python?
 </div>
 </div>
 
-
 <div id="outline-container-org31e987f" class="outline-3">
 <h3 id="org31e987f"><span class="todo TODO">TODO</span> 2019年度计划</h3>
 <div class="outline-text-3" id="text-org31e987f">
@@ -703,15 +690,15 @@ How do use Emacs to look up a function in Python?
 <blockquote>
 <div class="org-src-container">
 <pre class="src src-elisp">
-(<span style="color: #a020f0;">require</span> '<span style="color: #008b8b;">pomodoro</span>)
+(<span style="color: #9d0006;">require</span> '<span style="color: #8f3f71;">pomodoro</span>)
 
 (eval-after-load 'pomodoro
-  '(<span style="color: #a020f0;">progn</span>
-     (<span style="color: #a020f0;">setq</span> pomodoro-break-time 2)
-     (<span style="color: #a020f0;">setq</span> pomodoro-long-break-time 5)
-     (<span style="color: #a020f0;">setq</span> pomodoro-work-time 25)
+  '(<span style="color: #9d0006;">progn</span>
+     (<span style="color: #9d0006;">setq</span> pomodoro-break-time 2)
+     (<span style="color: #9d0006;">setq</span> pomodoro-long-break-time 5)
+     (<span style="color: #9d0006;">setq</span> pomodoro-work-time 25)
      (pomodoro-add-to-mode-line)
-     (<span style="color: #a020f0;">setq-default</span> mode-line-frmat
+     (<span style="color: #9d0006;">setq-default</span> mode-line-frmat
               (cons '(pomodoro-mode-line-string pomodoro-mode-line-string)
                     mode-line-format))))
 </pre>
@@ -806,9 +793,9 @@ Start polipo with polipo -c ~/.poliporc and now polipo established a http proxy 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-lisp"><span style="color: #707183;">(</span>global-set-key <span style="color: #7388d6;">(</span>kdb <span style="color: #8b2252;">"C-h C-f"</span><span style="color: #7388d6;">)</span> 'find-function<span style="color: #707183;">)</span>
-<span style="color: #707183;">(</span>global-set-key <span style="color: #7388d6;">(</span>kdb <span style="color: #8b2252;">"C-h C-v"</span><span style="color: #7388d6;">)</span> 'find-variable<span style="color: #707183;">)</span>
-<span style="color: #707183;">(</span>global-set-key <span style="color: #7388d6;">(</span>kdb <span style="color: #8b2252;">"C-h C-k"</span><span style="color: #7388d6;">)</span> 'find-function-on-key<span style="color: #707183;">)</span>
+<pre class="src src-lisp"><span style="color: #458588;">(</span>global-set-key <span style="color: #b16286;">(</span>kdb <span style="color: #79740e;">"C-h C-f"</span><span style="color: #b16286;">)</span> 'find-function<span style="color: #458588;">)</span>
+<span style="color: #458588;">(</span>global-set-key <span style="color: #b16286;">(</span>kdb <span style="color: #79740e;">"C-h C-v"</span><span style="color: #b16286;">)</span> 'find-variable<span style="color: #458588;">)</span>
+<span style="color: #458588;">(</span>global-set-key <span style="color: #b16286;">(</span>kdb <span style="color: #79740e;">"C-h C-k"</span><span style="color: #b16286;">)</span> 'find-function-on-key<span style="color: #458588;">)</span>
 </pre>
 </div>
 
@@ -838,41 +825,41 @@ Start polipo with polipo -c ~/.poliporc and now polipo established a http proxy 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp">(<span style="color: #a020f0;">defun</span> <span style="color: #0000ff;">my-gclip</span> ()
-  (<span style="color: #a020f0;">local-require</span> 'simpleclip)
-  (<span style="color: #a020f0;">cond</span>
+<pre class="src src-elisp">(<span style="color: #9d0006;">defun</span> <span style="color: #b57614;">my-gclip</span> ()
+  (<span style="color: #9d0006;">local-require</span> 'simpleclip)
+  (<span style="color: #9d0006;">cond</span>
    (simpleclip-works
     (simpleclip-get-contents))
    ((eq system-type 'darwin)
-    (<span style="color: #a020f0;">with-output-to-string</span>
-      (<span style="color: #a020f0;">with-current-buffer</span> standard-output
-        (call-process <span style="color: #8b2252;">"/usr/bin/pbpaste"</span> nil t nil <span style="color: #8b2252;">"-Prefer"</span> <span style="color: #8b2252;">"txt"</span>))))
+    (<span style="color: #9d0006;">with-output-to-string</span>
+      (<span style="color: #9d0006;">with-current-buffer</span> standard-output
+        (call-process <span style="color: #79740e;">"/usr/bin/pbpaste"</span> nil t nil <span style="color: #79740e;">"-Prefer"</span> <span style="color: #79740e;">"txt"</span>))))
    ((eq system-type 'cygwin)
-    (<span style="color: #a020f0;">with-output-to-string</span>
-      (<span style="color: #a020f0;">with-current-buffer</span> standard-output
-        (call-process <span style="color: #8b2252;">"getclip"</span> nil t nil))))
+    (<span style="color: #9d0006;">with-output-to-string</span>
+      (<span style="color: #9d0006;">with-current-buffer</span> standard-output
+        (call-process <span style="color: #79740e;">"getclip"</span> nil t nil))))
    ((memq system-type '(gnu gnu/linux gnu/kfreebsd))
-    (<span style="color: #a020f0;">let*</span> ((powershell-program (executable-find <span style="color: #8b2252;">"powershell.exe"</span>)))
-      (<span style="color: #a020f0;">cond</span>
+    (<span style="color: #9d0006;">let*</span> ((powershell-program (executable-find <span style="color: #79740e;">"powershell.exe"</span>)))
+      (<span style="color: #9d0006;">cond</span>
        (powershell-program
-        <span style="color: #b22222;">;; </span><span style="color: #b22222;">PowerLine adds extra white space character at the end of text</span>
+        <span style="color: #a89984;">;; </span><span style="color: #a89984;">PowerLine adds extra white space character at the end of text</span>
         (s-trim-right
-         (<span style="color: #a020f0;">with-output-to-string</span>
-           (<span style="color: #a020f0;">with-current-buffer</span> standard-output
-             (call-process powershell-program nil t nil <span style="color: #8b2252;">"-command"</span> <span style="color: #8b2252;">"Get-Clipboard"</span>)))))
+         (<span style="color: #9d0006;">with-output-to-string</span>
+           (<span style="color: #9d0006;">with-current-buffer</span> standard-output
+             (call-process powershell-program nil t nil <span style="color: #79740e;">"-command"</span> <span style="color: #79740e;">"Get-Clipboard"</span>)))))
        (t
-        (<span style="color: #a020f0;">with-output-to-string</span>
-          (<span style="color: #a020f0;">with-current-buffer</span> standard-output
-            (call-process <span style="color: #8b2252;">"xsel"</span> nil t nil <span style="color: #8b2252;">"--clipboard"</span> <span style="color: #8b2252;">"--output"</span>)))))))))
+        (<span style="color: #9d0006;">with-output-to-string</span>
+          (<span style="color: #9d0006;">with-current-buffer</span> standard-output
+            (call-process <span style="color: #79740e;">"xsel"</span> nil t nil <span style="color: #79740e;">"--clipboard"</span> <span style="color: #79740e;">"--output"</span>)))))))))
 
 
-(<span style="color: #a020f0;">defun</span> <span style="color: #0000ff;">insert-file-link-from-clipboard</span> ()
-  <span style="color: #8b2252;">"Make sure the full path of file exist in clipboard.</span>
-<span style="color: #8b2252;">This command will convert full path into relative path.</span>
-<span style="color: #8b2252;">Then insert it as a local file link in `</span><span style="color: #008b8b;">org-mode</span><span style="color: #8b2252;">'."</span>
-  (<span style="color: #a020f0;">interactive</span>)
-  (insert <span style="color: #8b2252;">"#+ATTR_HTML: :width 30% :height 30% \n"</span>)
-  (insert (format <span style="color: #8b2252;">"[[file:%s]]"</span> (file-relative-name (my-gclip)))))
+(<span style="color: #9d0006;">defun</span> <span style="color: #b57614;">insert-file-link-from-clipboard</span> ()
+  <span style="color: #79740e;">"Make sure the full path of file exist in clipboard.</span>
+<span style="color: #79740e;">This command will convert full path into relative path.</span>
+<span style="color: #79740e;">Then insert it as a local file link in `</span><span style="color: #8f3f71;">org-mode</span><span style="color: #79740e;">'."</span>
+  (<span style="color: #9d0006;">interactive</span>)
+  (insert <span style="color: #79740e;">"#+ATTR_HTML: :width 30% :height 30% \n"</span>)
+  (insert (format <span style="color: #79740e;">"[[file:%s]]"</span> (file-relative-name (my-gclip)))))
 
 </pre>
 </div>
@@ -1103,11 +1090,6 @@ emms-playlist-clear 清除播放列表
 </blockquote>
 </div>
 </div>
-<div id="outline-container-org1af2baf" class="outline-3">
-<h3 id="org1af2baf"><span class="todo TODO">TODO</span> snap 下一代linux跨发行版的包管理</h3>
-<div class="outline-text-3" id="text-org1af2baf">
-</div>
-</div>
 <div id="outline-container-org5324983" class="outline-3">
 <h3 id="org5324983"><span class="done DONE">DONE</span> arch 安装teamviewer</h3>
 <div class="outline-text-3" id="text-org5324983">
@@ -1158,25 +1140,25 @@ vim 的多行选择I失效
 <div class="outline-text-3" id="text-orgf9dfdad">
 <blockquote>
 <div class="org-src-container">
-<pre class="src src-lisp"><span style="color: #707183;">(</span><span style="color: #a020f0;">defun</span> <span style="color: #0000ff;">capture-report-date-file</span> <span style="color: #7388d6;">(</span>path<span style="color: #7388d6;">)</span>
-       <span style="color: #7388d6;">(</span><span style="color: #a020f0;">let</span> <span style="color: #909183;">(</span><span style="color: #709870;">(</span>name <span style="color: #907373;">(</span>read-string <span style="color: #8b2252;">"Name: "</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span>
-       <span style="color: #909183;">(</span>expand-file-name <span style="color: #709870;">(</span>format <span style="color: #8b2252;">"%s-%s.org"</span>
-                              <span style="color: #907373;">(</span>format-time-string <span style="color: #8b2252;">"%Y-%m-%d"</span><span style="color: #907373;">)</span>
-                              name<span style="color: #709870;">)</span> <span style="color: #ff0000; font-weight: bold;">path</span><span style="color: #909183; font-weight: bold;">)</span><span style="color: #7388d6; font-weight: bold;">)</span><span style="color: #707183; font-weight: bold;">)</span>
+<pre class="src src-lisp"><span style="color: #458588;">(</span><span style="color: #9d0006;">defun</span> <span style="color: #b57614;">capture-report-date-file</span> <span style="color: #b16286;">(</span>path<span style="color: #b16286;">)</span>
+       <span style="color: #b16286;">(</span><span style="color: #9d0006;">let</span> <span style="color: #8ec07c;">(</span><span style="color: #d65d0e;">(</span>name <span style="color: #458588;">(</span>read-string <span style="color: #79740e;">"Name: "</span><span style="color: #458588;">)</span><span style="color: #d65d0e;">)</span><span style="color: #8ec07c;">)</span>
+       <span style="color: #8ec07c;">(</span>expand-file-name <span style="color: #d65d0e;">(</span>format <span style="color: #79740e;">"%s-%s.org"</span>
+                              <span style="color: #458588;">(</span>format-time-string <span style="color: #79740e;">"%Y-%m-%d"</span><span style="color: #458588;">)</span>
+                              name<span style="color: #d65d0e;">)</span> <span style="color: #9d0006; font-weight: bold;">path</span><span style="color: #8ec07c; font-weight: bold;">)</span><span style="color: #b16286; font-weight: bold;">)</span><span style="color: #458588; font-weight: bold;">)</span>
 
-<span style="color: #707183;">(</span>add-to-list 'org-capture-templates
-             `<span style="color: #7388d6;">(</span><span style="color: #8b2252;">"n"</span> <span style="color: #8b2252;">"note"</span> plain <span style="color: #909183;">(</span>file ,<span style="color: #709870;">(</span>capture-report-data-file <span style="color: #8b2252;">"~/github/org-pages/note/"</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span>
-              ,<span style="color: #909183;">(</span>concat <span style="color: #8b2252;">"#+startup: showall\n"</span>
-                        <span style="color: #8b2252;">"#+options: toc:nil\n"</span>
-                        <span style="color: #8b2252;">"#+begin_export html\n"</span>
-                        <span style="color: #8b2252;">"---\n"</span>
-                        <span style="color: #8b2252;">"layout     : post\n"</span>
-                        <span style="color: #8b2252;">"title      : %^{&#26631;&#39064;}\n"</span>
-                        <span style="color: #8b2252;">"categories : %^{&#31867;&#21035;}\n"</span>
-                        <span style="color: #8b2252;">"tags       : %^{&#26631;&#31614;}\n"</span>
-                        <span style="color: #8b2252;">"---\n"</span>
-                        <span style="color: #8b2252;">"#+end_export\n"</span>
-                        <span style="color: #8b2252;">"#+TOC: headlines 2\n"</span><span style="color: #909183;">)</span><span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #458588;">(</span>add-to-list 'org-capture-templates
+             `<span style="color: #b16286;">(</span><span style="color: #79740e;">"n"</span> <span style="color: #79740e;">"note"</span> plain <span style="color: #8ec07c;">(</span>file ,<span style="color: #d65d0e;">(</span>capture-report-data-file <span style="color: #79740e;">"~/github/org-pages/note/"</span><span style="color: #d65d0e;">)</span><span style="color: #8ec07c;">)</span>
+              ,<span style="color: #8ec07c;">(</span>concat <span style="color: #79740e;">"#+startup: showall\n"</span>
+                        <span style="color: #79740e;">"#+options: toc:nil\n"</span>
+                        <span style="color: #79740e;">"#+begin_export html\n"</span>
+                        <span style="color: #79740e;">"---\n"</span>
+                        <span style="color: #79740e;">"layout     : post\n"</span>
+                        <span style="color: #79740e;">"title      : %^{&#26631;&#39064;}\n"</span>
+                        <span style="color: #79740e;">"categories : %^{&#31867;&#21035;}\n"</span>
+                        <span style="color: #79740e;">"tags       : %^{&#26631;&#31614;}\n"</span>
+                        <span style="color: #79740e;">"---\n"</span>
+                        <span style="color: #79740e;">"#+end_export\n"</span>
+                        <span style="color: #79740e;">"#+TOC: headlines 2\n"</span><span style="color: #8ec07c;">)</span><span style="color: #b16286;">)</span><span style="color: #458588;">)</span>
 </pre>
 </div>
 </blockquote>
