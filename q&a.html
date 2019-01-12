@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-01-10 Thu 11:32 -->
+<!-- 2019-01-13 Sun 04:49 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Question &amp; Answer</title>
@@ -239,6 +239,7 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#org8cfd06b">Question &amp; Answer</a>
 <ul>
+<li><a href="#orge98d5d7"><span class="done DONE">DONE</span> 添加org mode habit 配置</a></li>
 <li><a href="#orgc446c10"><span class="done DONE">DONE</span> emacs set mpv play video</a></li>
 <li><a href="#org8a76472"><span class="todo TODO">TODO</span> 如何使用yasnippet提高开发python效率</a></li>
 <li><a href="#orgde1cea5"><span class="done DONE">DONE</span> emacs 代码折叠</a></li>
@@ -265,7 +266,7 @@ for the JavaScript code in this tag.
 <li><a href="#org1c7a2fc"><span class="todo TODO">TODO</span> emacs如何处理博文头部尾部嵌套跳转页问题</a></li>
 <li><a href="#org5b7c404"><span class="todo TODO">TODO</span> 推荐系统引擎 apache mahout</a></li>
 <li><a href="#org889a694"><span class="todo TODO">TODO</span> org-mode 导出中文pdf文件</a></li>
-<li><a href="#org3547ef3"><span class="todo TODO">TODO</span> 如何publish的时候直接push html到发布分支?</a></li>
+<li><a href="#org3547ef3"><span class="done DONE">DONE</span> 如何publish的时候直接push html到发布分支?</a></li>
 <li><a href="#org40f750f"><span class="done DONE">DONE</span> org-mode capture倒序添加新的task</a></li>
 <li><a href="#org8a1f696"><span class="done DONE">DONE</span> org-mode table中英文对齐问题</a></li>
 <li><a href="#org125007a"><span class="done DONE">DONE</span> 连接远程主机emacs alt键失灵问题</a></li>
@@ -287,6 +288,36 @@ for the JavaScript code in this tag.
 <div id="outline-container-org8cfd06b" class="outline-2">
 <h2 id="org8cfd06b">Question &amp; Answer</h2>
 <div class="outline-text-2" id="text-org8cfd06b">
+</div>
+<div id="outline-container-orge98d5d7" class="outline-3">
+<h3 id="orge98d5d7"><span class="done DONE">DONE</span> 添加org mode habit 配置</h3>
+<div class="outline-text-3" id="text-orge98d5d7">
+<ul class="org-ul">
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-01-13 Sun 01:52]</span></span></li>
+</ul>
+<blockquote>
+<p>
+SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-01-13 Sun 00:54&gt;</span></span>
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp">
+(<span style="color: #79740e;">"h"</span> <span style="color: #79740e;">"Habit"</span> entry (file <span style="color: #79740e;">"~/github/org-pages/habit.org"</span>)
+ <span style="color: #79740e;">"* TODO %?\nSCHEDULED: &lt;%&lt;%Y-%m-%d %a .+1d&gt;&gt;\n:PROPETIES:\n:CREATED: %U\n:STYLE: habit\n:REPEAT_TO_STATE: TODO\n:LOGGING: DONE(!)\n:ARCHIVE: %%s_archive::* Habits\n:END:\n%U\n"</span>
+ <span style="color: #af3a03;">:empty-lines</span> 1
+ <span style="color: #af3a03;">:prepend</span> t)
+
+</pre>
+</div>
+
+<p>
+<a href="https://orgmode.org/manual/Tracking-your-habits.html#Tracking-your-habits">https://orgmode.org/manual/Tracking-your-habits.html#Tracking-your-habits</a>
+</p>
+
+<p>
+TODO <a href="https://www.wanglianghome.org/2017/08/12/org-habit/">https://www.wanglianghome.org/2017/08/12/org-habit/</a>
+</p>
+</blockquote>
+</div>
 </div>
 <div id="outline-container-orgc446c10" class="outline-3">
 <h3 id="orgc446c10"><span class="done DONE">DONE</span> emacs set mpv play video</h3>
@@ -351,7 +382,7 @@ Mute sound.
 <div class="outline-text-3" id="text-org8a76472">
 <blockquote>
 <p>
-SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-01-09 Wed 18:02&gt;</span></span>
+SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-01-19 Sat 18:02&gt;</span></span>
 </p>
 </blockquote>
 </div>
@@ -489,7 +520,7 @@ proxy sponsor how to set ?
 <div class="outline-text-3" id="text-org352ddd7">
 <blockquote>
 <p>
-DEADLINE: <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-01-06 Sun 19:02&gt;</span></span>
+DEADLINE: <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-01-16 Wed 19:02&gt;</span></span>
 </p>
 </blockquote>
 </div>
@@ -1227,8 +1258,11 @@ emms 快捷键
 </div>
 </div>
 <div id="outline-container-org3547ef3" class="outline-3">
-<h3 id="org3547ef3"><span class="todo TODO">TODO</span> 如何publish的时候直接push html到发布分支?</h3>
+<h3 id="org3547ef3"><span class="done DONE">DONE</span> 如何publish的时候直接push html到发布分支?</h3>
 <div class="outline-text-3" id="text-org3547ef3">
+<ul class="org-ul">
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-01-11 Fri 10:05]</span></span></li>
+</ul>
 </div>
 </div>
 <div id="outline-container-org40f750f" class="outline-3">
