@@ -1,0 +1,14 @@
+* TODO emotional control
+SCHEDULED: <2019-01-14 Mon .+1d>
+:PROPERTIES:
+:LAST_REPEAT: [2019-01-13 Sun 01:29]
+:END:
+- State "DONE"       from "TODO"       [2019-01-13 Sun 01:29]
+:PROPETIES:
+:CREATED: [2019-01-13 Sun 01:29]
+:STYLE: habit
+:REPEAT_TO_STATE: TODO
+:LOGGING: DONE(!)
+:ARCHIVE: %%s_archive::* Habits
+:END:
+[2019-01-13 Sun 01:29]

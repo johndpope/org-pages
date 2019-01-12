@@ -1,6 +1,25 @@
 #+SETUPFILE: setup.org
 #+TITLE: Question & Answer
 * Question & Answer
+** DONE 添加org mode habit 配置
+   CLOSED: [2019-01-13 Sun 01:52]
+   - State "DONE"       from "TODO"       [2019-01-13 Sun 01:52]
+   #+BEGIN_QUOTE
+   SCHEDULED: <2019-01-13 Sun 00:54>
+   #+BEGIN_SRC elisp
+
+           ("h" "Habit" entry (file "~/github/org-pages/habit.org")
+            "* TODO %?\nSCHEDULED: <%<%Y-%m-%d %a .+1d>>\n:PROPETIES:\n:CREATED: %U\n:STYLE: habit\n:REPEAT_TO_STATE: TODO\n:LOGGING: DONE(!)\n:ARCHIVE: %%s_archive::* Habits\n:END:\n%U\n"
+            :empty-lines 1
+            :prepend t)
+
+   #+END_SRC
+
+   https://orgmode.org/manual/Tracking-your-habits.html#Tracking-your-habits
+
+   TODO https://www.wanglianghome.org/2017/08/12/org-habit/
+ 
+   #+END_QUOTE
 ** DONE emacs set mpv play video
    CLOSED: [2019-01-06 Sun 21:48]
    - State "DONE"       from "TODO"       [2019-01-06 Sun 21:48]
@@ -34,7 +53,7 @@
    #+END_QUOTE
 ** TODO 如何使用yasnippet提高开发python效率
    #+BEGIN_QUOTE
-   SCHEDULED: <2019-01-09 Wed 18:02>
+   SCHEDULED: <2019-01-19 Wed 18:02>
  
    #+END_QUOTE
 ** DONE emacs 代码折叠
@@ -108,7 +127,7 @@
    #+END_QUOTE
 ** TODO emacs mgit use
    #+BEGIN_QUOTE
-   DEADLINE: <2019-01-06 Sun 19:02>
+   DEADLINE: <2019-01-16 Sun 19:02>
  
    #+END_QUOTE
 ** TODO how to talk with irc in emacs
@@ -524,7 +543,7 @@ sudo systemctl enable teamviewerd
 #+END_QUOTE
    
 ** TODO emacs指定模板创建文件
-   SCHEDULED: <2019-01-01 Tue>
+   SCHEDULED: <2019-01-21 Tue>
    #+BEGIN_QUOTE
 #+BEGIN_SRC lisp
 (defun capture-report-date-file (path)
@@ -581,13 +600,14 @@ sudo systemctl enable teamviewerd
    #+END_QUOTE
 
 ** TODO emacs如何处理博文头部尾部嵌套跳转页问题
-   SCHEDULED: <2019-01-01 Tue>
+   SCHEDULED: <2019-01-21 Tue>
 ** TODO 推荐系统引擎 apache mahout  
-   SCHEDULED: <2019-01-09 Wed>
+   SCHEDULED: <2019-01-29 Wed>
 ** TODO org-mode 导出中文pdf文件
-   SCHEDULED: <2019-01-09 Wed>
-** TODO 如何publish的时候直接push html到发布分支? 
-   SCHEDULED: <2019-01-19 Sat>
+   SCHEDULED: <2019-01-29 Wed>
+** DONE 如何publish的时候直接push html到发布分支? 
+   CLOSED: [2019-01-11 Fri 10:05] SCHEDULED: <2019-01-19 Sat>
+   - State "DONE"       from "TODO"       [2019-01-11 Fri 10:05]
 ** DONE org-mode capture倒序添加新的task
    CLOSED: [2018-12-11 Tue 21:41]
    - State "DONE"       from "TODO"       [2018-12-11 Tue 21:41]

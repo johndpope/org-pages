@@ -2,6 +2,108 @@
 #+TITLE: Link notes
 * Link notes
 
+** DONE python gevent learn
+   CLOSED: [2019-01-13 Sun 04:43]
+   - State "DONE"       from "TODO"       [2019-01-13 Sun 04:43]
+  #+BEGIN_QUOTE
+  http://sdiehl.github.io/gevent-tutorial/ 
+
+  
+
+  SCHEDULED:<2019-01-13 Sun 03:15>
+  
+  #+END_QUOTE
+
+** TODO 如何使用org-mode 添加音乐专辑
+  #+BEGIN_QUOTE
+  https://orgmode.org/manual/Property-syntax.html 
+
+  SCHEDULED:<2019-01-23 Wed 01:55>
+  
+  #+END_QUOTE
+
+** TODO hackthebox 邀请码
+  #+BEGIN_QUOTE
+  https://www.hackthebox.eu/ 
+
+  SCHEDULED:<2019-01-16 Wed 19:27>
+  
+
+  #+END_QUOTE
+
+** TODO problem-solving-with-algorithms-and-data-structure-using-python 
+  #+BEGIN_QUOTE
+  https://facert.gitbooks.io/python-data-structure-cn/ 
+
+  SCHEDULED:<2019-01-13 Sat 14:38>
+  
+  #+END_QUOTE
+
+** TODO flask 系列
+  #+BEGIN_QUOTE
+  https://foofish.net/flask-resource.html 
+
+  SCHEDULED:<2019-01-22 ++1d Sat 14:33>
+  
+  #+END_QUOTE
+
+** DONE aria2 配置
+   CLOSED: [2019-01-11 Fri 11:24]
+   - State "DONE"       from "TODO"       [2019-01-11 Fri 11:24]
+  #+BEGIN_QUOTE
+  https://github.com/ngosang/trackerslist 
+
+  https://aria2.github.io/manual/en/html/aria2c.html#options
+
+  SCHEDULED:<2019-01-11 Fri 10:40>
+
+  
+  
+  ~/.aria2 创建文件
+
+  aria2.log （日志，空文件就行）
+
+  aria2.session （下载历史，空文件就行）
+
+  aria2.conf （配置文件）
+
+  HideRun.vbs （隐藏cmd窗口运行用到的）
+
+  : aria2c --enable-rpc --rpc-listen-all
+
+  *dht* 
+
+  找个热门种子(千万建议是种子，而不是磁力链接)，然后下一波，挂着做种，过几个小时后退出Aria2，
+  或者等Aria2会话自动保存，你会发现dht.dat从空文件变成有数据了
+  
+  #+END_QUOTE
+
+** DONE mac 系统文件过大
+   CLOSED: [2019-01-11 Fri 11:11]
+
+   - State "DONE"       from "TODO"       [2019-01-11 Fri 11:11]
+  #+BEGIN_QUOTE
+  https://blog.csdn.net/hu434587115/article/details/72874811 
+
+  SCHEDULED:<2019-01-11 Fri 10:27>
+
+  1. 清理应用缓存文件（8G）
+  
+     rm -rf ~/Library/Caches/*
+
+
+     
+  
+  #+END_QUOTE
+
+** TODO sync + bt source
+  #+BEGIN_QUOTE
+  http://wherebt.com/ 
+
+  SCHEDULED:<2019-01-15 Tue 22:03>
+  
+  #+END_QUOTE
+
 ** TODO 小米路由配置aria2
   #+BEGIN_QUOTE
   https://www.jianshu.com/p/a23330cf8ee8 
@@ -10,11 +112,17 @@
   
   #+END_QUOTE
 
-** TODO pyim 中文库和中文字体配置
+** DONE pyim 中文库和中文字体配置
+   CLOSED: [2019-01-13 Sun 00:21]
+   - State "DONE"       from "TODO"       [2019-01-13 Sun 00:21]
   #+BEGIN_QUOTE
   https://github.com/redguardtoo/emacs.d#saveload-windows-layout 
 
-  SCHEDULED:<2019-01-10 Thu 16:56>
+  下载pyim个人字典后 c-\\ 来回切换输入中英文真的很方便
+  
+  唯一需要做的就是记住pyim的快捷键
+
+  SCHEDULED:<2019-01-12 Thu 16:56>
   
   #+END_QUOTE
 
@@ -62,7 +170,7 @@
   #+BEGIN_QUOTE
   http://code.activestate.com/recipes/474088-tail-call-optimization-decorator/ 
 
-  SCHEDULED:<2019-01-12 Sat 13:54>
+  SCHEDULED:<2019-01-22 Sat 13:54>
   
   #+END_QUOTE
 
@@ -71,7 +179,7 @@
   #+BEGIN_QUOTE
   https://www.zhihu.com/question/20239473 
 
-  SCHEDULED:<2019-01-06 Sun 04:50>
+  SCHEDULED:<2019-01-16 Sun 04:50>
   
   #+END_QUOTE
 
@@ -95,7 +203,7 @@
   #+BEGIN_QUOTE
   http://emacslife.com/videos.html 
 
-  SCHEDULED:<2019-01-07 Mon 04:33>
+  SCHEDULED:<2019-01-17 Mon 04:33>
   
   #+END_QUOTE
 
@@ -103,7 +211,7 @@
   #+BEGIN_QUOTE
   https://github.com/skeeto/elfeed 
 
-  SCHEDULED:<2019-01-08 Tue 01:43>
+  SCHEDULED:<2019-01-18 Tue 01:43>
   
   #+END_QUOTE
 
@@ -111,7 +219,7 @@
   #+BEGIN_QUOTE
   http://sachachua.com/blog/ 
 
-  SCHEDULED:<2019-01-07 Mon 16:02>
+  SCHEDULED:<2019-01-17 Mon 16:02>
   
   #+END_QUOTE
 
@@ -119,7 +227,7 @@
   #+BEGIN_QUOTE
   https://cestlaz.github.io/stories/emacs/ 
 
-  SCHEDULED:<2019-01-06 Sun 14:52>
+  SCHEDULED:<2019-01-16 Sun 14:52>
   
   #+END_QUOTE
 
@@ -127,7 +235,7 @@
   #+BEGIN_QUOTE
   https://swaroopch.com/about/ 
 
-  SCHEDULED:<2019-01-05 Sat 12:35>
+  SCHEDULED:<2019-01-15 Sat 12:35>
   
   #+END_QUOTE
 
@@ -136,7 +244,7 @@
   #+BEGIN_QUOTE
   http://www.emacs.uniyar.ac.ru/doc/em24h/ 
 
-  SCHEDULED:<2019-01-04  +1d Fri 12:28>
+  SCHEDULED:<2019-01-14  +1d Fri 12:28>
   
   #+END_QUOTE
 
@@ -144,7 +252,7 @@
   #+BEGIN_QUOTE
   https://steelkiwi.com/blog/emacs-configuration-working-python/ 
 
-  SCHEDULED:<2019-01-04 Fri 21:41>
+  SCHEDULED:<2019-01-14 Fri 21:41>
   
   #+END_QUOTE
 
@@ -164,11 +272,12 @@
   
   #+END_QUOTE
 
-** TODO python 进阶
-   SCHEDULED: <2019-01-09 Wed>
+** DONE python 进阶
+   CLOSED: [2019-01-11 Fri 12:41] SCHEDULED: <2019-01-09 Wed>
    :PROPERTIES:
    :LAST_REPEAT: [2019-01-09 Wed 14:00]
    :END:
+   - State "DONE"       from "TODO"       [2019-01-11 Fri 12:41]
    - State "DONE"       from "TODO"       [2019-01-09 Wed 14:00]
   #+BEGIN_QUOTE
   https://eastlakeside.gitbooks.io/interpy-zh/content/context_managers/handle_exception.html 
@@ -233,7 +342,7 @@
   #+END_QUOTE
 
 ** TODO Python 博客文章知识点不错
-   SCHEDULED: <2019-01-09 Wed>
+   SCHEDULED: <2019-01-19 Wed>
    :PROPERTIES:
    :LAST_REPEAT: [2019-01-09 Wed 13:59]
    :END:
@@ -243,11 +352,12 @@
   
   #+END_QUOTE
 
-** TODO python pomodoro task
-   SCHEDULED: <2019-01-10 Thu>
+** DONE python pomodoro task
+   CLOSED: [2019-01-13 Sun 00:32] SCHEDULED: <2019-01-10 Thu>
    :PROPERTIES:
    :LAST_REPEAT: [2019-01-09 Wed 14:01]
    :END:
+   - State "DONE"       from "TODO"       [2019-01-13 Sun 00:32]
    - State "DONE"       from "TODO"       [2019-01-09 Wed 14:01]
    - State "DONE"       from "TODO"       [2018-12-30 Sun 15:05]
    - State "TODO"       from "DONE"       [2018-12-30 Sun 15:04]
@@ -272,7 +382,7 @@
   #+END_QUOTE
 
 ** TODO 抽时间研究下这位老大爷的emacs博客
-   SCHEDULED: <2019-01-04 Fri>
+   SCHEDULED: <2019-01-14 Fri>
    #+BEGIN_QUOTE
    https://hack.org/mc/blog/pomodoro.html
    #+END_QUOTE
@@ -311,8 +421,28 @@
      #+END_QUOTE
 
 ** TODO 豆瓣评分9.0以上专辑聆听
+   :PROPERTIES:
+   :LAST_REPEAT: [2019-01-13 Sun 00:48]
+   :END:
+   - State "DONE"       from "TODO"       [2019-01-13 Sun 00:48] \\
+     1. Hang Me, Oh Hang Me - By Oscar Isaac
+     2. Fare Thee Well (Dink's Song) - By Marcus Mumford & Oscar Isaac
+     3. The Last Thing on My Mind - By Stark Sands With Punch Brothers
+     4. Five Hundred Miles - By Justin Timberlake, Carey Mulligan & Stark Sands
+     5. Please Mr. Kennedy - By Justin Timberlake, Oscar Isaac & Adam Driver
+     6. Green, Green Rocky Road - By Oscar Isaac
+     7. The Death of Queen Jane - By Oscar Isaac
+     8. The Roving Gambler (With The Down Hill Strugglers) - By John Cohen
+     9. The Shoals of Herring (With Punch Brothers) - By Oscar Isaac
+     10. The Auld Triangle - By Chris Thile, Chris Eldridge, Marcus Mumford, Justin Timberlake & Gabe Witcher
+     11. The Storms Are on the Ocean - By Nancy Blake
+     12. Fare Thee Well (Dink's Song) - By Oscar Isaac
+     13. Farewell (unreleased studio version) - By Bob Dylan
+     14. Green, Green Rocky Road - By Dave Van Ronk
+     
+     =magnet:?xt=urn:btih:7bd79bb7f4dc157d8159df305fb23da55099b769=
    #+BEGIN_QUOTE
-   SCHEDULED: <2019-01-01 Tue ++1w>
+   SCHEDULED: <2019-01-15 Tue .1w>
    :PROPERTIES:
    :LAST_REPEAT: [2018-12-25 Tue 13:14]
    :END:
