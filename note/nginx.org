@@ -5,6 +5,7 @@
   tryp_files
 
   [[https://www.digitalocean.com/community/tutorials/understanding-nginx-server-and-location-block-selection-algorithms][reference]]
+  [[https://www.digitalocean.com/community/tutorials/understanding-nginx-server-and-location-block-selection-algorithms][reference]
 
   alias /
 
@@ -14,4 +15,5 @@
 
   upstream
 * 日志
+
 * api网关

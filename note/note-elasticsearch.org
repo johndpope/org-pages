@@ -87,6 +87,19 @@
     }'  
    #+END_SRC
 ** query
+- query_string 全文检索
+  #+BEGIN_SRC python
+
+  {
+      "query":{
+          "query_string":{
+              "query":"reputation"
+          }
+      }
+  }
+
+
+  #+END_SRC
 - _search?pretty&q=字段 :: 基础查询字段   
 
      : curl -XGET 'http://localhost:9200/ipasset_seer4/asset_from_seer/_search?pretty&q=ip:210.186.226.178'

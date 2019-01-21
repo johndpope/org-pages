@@ -233,7 +233,7 @@ Unicode标准也在不断发展，但最常用的是用两个字节表示一个�
 
  读写文件就是请求操作系统打开一个文件对象（通常称为文件描述符），然后，通过操作系统提供的接口从这个文件对象中读取数据（读文件），或者把数据写入这个文件对象（写文件） for i, value in enumerate(['A', 'B', 'C']): =enumerate= 函数可以把一个list变成索引-元素对
 
-  [k + '=' + v for k, v in d.iteritems()] =iteritems()= 可以同时迭代dict的key和value
+  =[k + '=' + v for k, v in d.iteritems()]=  =iteritems()= 可以同时迭代dict的key和value
 
   #+BEGIN_SRC  python
 

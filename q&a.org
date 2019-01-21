@@ -1,6 +1,11 @@
 #+SETUPFILE: setup.org
 #+TITLE: Question & Answer
 * Question & Answer
+** TODO [2019-01-16 Wed] emacs快速创建python文件模板
+   #+BEGIN_QUOTE
+   SCHEDULED: <2019-01-19 Sat 16:19>
+ 
+   #+END_QUOTE
 ** DONE 添加org mode habit 配置
    CLOSED: [2019-01-13 Sun 01:52]
    - State "DONE"       from "TODO"       [2019-01-13 Sun 01:52]
@@ -127,11 +132,28 @@
    #+END_QUOTE
 ** TODO emacs mgit use
    #+BEGIN_QUOTE
-   DEADLINE: <2019-01-16 Sun 19:02>
+   DEADLINE: <2019-01-19 Sun 19:02>
  
    #+END_QUOTE
-** TODO how to talk with irc in emacs
+** DONE how to talk with irc in emacs
+   CLOSED: [2019-01-18 Fri 11:11]
    
+   - State "DONE"       from "TODO"       [2019-01-18 Fri 11:11] \\
+
+
+   https://emacs-china.org/t/erc/2366
+
+   - erc
+
+    init-erc.el
+    
+    https://www.emacswiki.org/emacs/ErcSSL
+    
+   - gnutls
+     
+     http://macappstore.org/gnutls/
+
+
  #+BEGIN_QUOTE
  DEADLINE: <2019-01-16 Sun 16:33>
  
@@ -232,6 +254,11 @@ https://wdicc.com/emacs-as-python-ide/
 
 ** TODO 2019年度计划
    DEADLINE: <2018-12-31 Mon>
+   1. 每月坚持读完一本技术书籍,每天都要读书
+   2. 每周坚持锻炼一次,早睡早起,避免过劳死
+   3. 每周听一个专辑,看两部电影,同步更新sync
+   4. 每月抽出时间出去游玩一次
+
 ** DONE how to hook pomodoro
    CLOSED: [2018-12-28 Fri 13:17]
 
@@ -507,6 +534,13 @@ Start polipo with polipo -c ~/.poliporc and now polipo established a http proxy 
 
     emms-playlist-clear 清除播放列表
      
+    ---
+
+    每次添加新专辑需要更新playlist
+    
+    shell下: mpc clear && mpc ls | mpc add 添加所有到播放列表
+    
+    emacs下： emms-playlist-clear && emms-player-mpd-connect
 
 #+END_QUOTE
    

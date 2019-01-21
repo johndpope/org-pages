@@ -2,6 +2,84 @@
 #+TITLE: Link notes
 * Link notes
 
+** TODO [2019-01-18 Fri] Jabber.el  an XMPP client for Emacs
+  #+BEGIN_QUOTE
+  https://www.emacswiki.org/emacs/JabberEl 
+
+  https://zhuanlan.zhihu.com/p/43449986
+  SCHEDULED:<2019-01-28 Mon 12:00>
+  
+  #+END_QUOTE
+
+** TODO [2019-01-18 Fri] common lisp 简体中文
+
+  #+BEGIN_QUOTE
+  https://acl.readthedocs.io/en/latest/zhCN/index.html 
+
+  SCHEDULED:<2019-01-28 Mon 11:39>
+  
+  #+END_QUOTE
+
+** TODO [2019-01-16 Wed] 不错的es查询语句分析
+  #+BEGIN_QUOTE
+  https://www.cnblogs.com/elaron/p/7699623.html 
+
+  SCHEDULED:<2019-01-19 Sat 11:36>
+  
+  #+END_QUOTE
+
+** DONE [2019-01-15 Tue] fluentd plugins 
+   CLOSED: [2019-01-15 Tue 19:33]
+   - State "DONE"       from "TODO"       [2019-01-15 Tue 19:33]
+  #+BEGIN_QUOTE
+  https://www.fluentd.org/plugins 
+
+  fluentd regular expression editor
+
+  http://fluentular.herokuapp.com/
+
+  #+BEGIN_SRC python
+  ^\[(?<date>[^ ]* [^\,]*)\]\[(?<log_level>.*)\]\[(?<client_ip>.*)\]\[(?<auth_key>.*)\]\[(?<uri>.*)\]\[(?<http_method>.*)\]\[(?<query_data>.*)\]\[(?<file>[^\:]*)\: (?<line>\d+)\: (?<func>\S+)\] - \[(?<msg>.*)\]$
+
+  [2019-01-15 19:03:28 +0800][INFO][ client_ip][auth_key][uri][http_method][query_data][/usr/lib/python2.7//_internal.py: 88: _log] - [172.24.67.146 - - [15/Jan/2019 19:03:28] "POST //1.1" 200 -]
+
+  format='[%(asctime)s][%(levelname)s]' +
+  '[ client_ip][auth_key][uri][http_method][query_data]' +
+  '[%(pathname)s: %(lineno)s: %(funcName)s] - [%(message)s]',
+
+
+  #+END_SRC
+
+  - *debug*
+
+    : vim /opt/td-agent/embedded/lib/ruby/gems/2.4.0/gems/fluent-plugin-kafka-0.7.4/lib/fluent/plugin/out_kafka_buffered.rb
+
+    334的trace 改成warn,来查看匹配日志
+
+  SCHEDULED:<2019-01-25 Fri 15:02>
+  
+  #+END_QUOTE
+
+** DONE [2019-01-15 Tue] install virtualbox in mac 
+   CLOSED: [2019-01-15 Tue 12:38]
+   - State "DONE"       from "TODO"       [2019-01-15 Tue 12:38]
+  #+BEGIN_QUOTE
+  https://www.virtualbox.org/wiki/Downloads 
+
+  SCHEDULED:<2019-01-15 Tue 10:54>
+
+  - support usb2.0 and usb3.0
+
+    VirtualBox 6.0.0 Oracle VM VirtualBox Extension Pack
+
+  - install winxp
+
+    iso download : https://msdn.itellyou.cn/
+    
+    MRX3F-47B9T-2487J-KWKMF-RPWBY
+  
+  #+END_QUOTE
+
 ** DONE python gevent learn
    CLOSED: [2019-01-13 Sun 04:43]
    - State "DONE"       from "TODO"       [2019-01-13 Sun 04:43]
@@ -26,12 +104,13 @@
   #+BEGIN_QUOTE
   https://www.hackthebox.eu/ 
 
-  SCHEDULED:<2019-01-16 Wed 19:27>
+  SCHEDULED:<2019-05-16 Wed 19:27>
   
 
   #+END_QUOTE
 
-** TODO problem-solving-with-algorithms-and-data-structure-using-python 
+** DONE problem-solving-with-algorithms-and-data-structure-using-python 
+   CLOSED: [2019-01-14 Mon 10:07]
   #+BEGIN_QUOTE
   https://facert.gitbooks.io/python-data-structure-cn/ 
 
@@ -96,7 +175,9 @@
   
   #+END_QUOTE
 
-** TODO sync + bt source
+** DONE sync + bt source
+   CLOSED: [2019-01-15 Tue 12:39]
+   - State "DONE"       from "TODO"       [2019-01-15 Tue 12:39]
   #+BEGIN_QUOTE
   http://wherebt.com/ 
 
@@ -143,7 +224,9 @@
   
   #+END_QUOTE
 
-** TODO pyim 拼音输入法
+** DONE pyim 拼音输入法
+   CLOSED: [2019-01-18 Fri 11:11]
+   - State "DONE"       from "TODO"       [2019-01-18 Fri 11:11]
   #+BEGIN_QUOTE
   https://github.com/tumashu/pyim#org4a82653 
 
@@ -179,7 +262,7 @@
   #+BEGIN_QUOTE
   https://www.zhihu.com/question/20239473 
 
-  SCHEDULED:<2019-01-16 Sun 04:50>
+  SCHEDULED:<2019-01-26 Sun 04:50>
   
   #+END_QUOTE
 
@@ -227,11 +310,13 @@
   #+BEGIN_QUOTE
   https://cestlaz.github.io/stories/emacs/ 
 
-  SCHEDULED:<2019-01-16 Sun 14:52>
+  SCHEDULED:<2019-01-19 Sun 14:52>
   
   #+END_QUOTE
 
-** TODO Swaroop, The Dreamer 
+** DONE Swaroop, The Dreamer 
+   CLOSED: [2019-01-15 Tue 12:38]
+   - State "DONE"       from "TODO"       [2019-01-15 Tue 12:38]
   #+BEGIN_QUOTE
   https://swaroopch.com/about/ 
 
@@ -244,7 +329,7 @@
   #+BEGIN_QUOTE
   http://www.emacs.uniyar.ac.ru/doc/em24h/ 
 
-  SCHEDULED:<2019-01-14  +1d Fri 12:28>
+  SCHEDULED:<2019-01-24  +1d Fri 12:28>
   
   #+END_QUOTE
 
@@ -252,11 +337,13 @@
   #+BEGIN_QUOTE
   https://steelkiwi.com/blog/emacs-configuration-working-python/ 
 
-  SCHEDULED:<2019-01-14 Fri 21:41>
+  SCHEDULED:<2019-01-24 Fri 21:41>
   
   #+END_QUOTE
 
-** TODO approach for structuring a Flask RESTPlus web application 
+** DONE approach for structuring a Flask RESTPlus web application 
+   CLOSED: [2019-01-15 Tue 10:48]
+   - State "DONE"       from "TODO"       [2019-01-15 Tue 10:48]
   #+BEGIN_QUOTE
   https://medium.freecodecamp.org/structuring-a-flask-restplus-web-service-for-production-builds-c2ec676de563 
 
@@ -381,8 +468,10 @@
   
   #+END_QUOTE
 
-** TODO 抽时间研究下这位老大爷的emacs博客
-   SCHEDULED: <2019-01-14 Fri>
+** DONE 抽时间研究下这位老大爷的emacs博客
+   CLOSED: [2019-01-15 Tue 10:47] SCHEDULED: <2019-01-14 Fri>
+   - State "DONE"       from "TODO"       [2019-01-15 Tue 10:47] \\
+     about 的联系方式写的不错 irc
    #+BEGIN_QUOTE
    https://hack.org/mc/blog/pomodoro.html
    #+END_QUOTE
@@ -420,11 +509,15 @@
      五色土认为：在休假的两年中，人可以休息，资金可以继续赚取不动产抵押理财利息。
      #+END_QUOTE
 
-** TODO 豆瓣评分9.0以上专辑聆听
+** DONE 豆瓣评分9.0以上专辑聆听
+   CLOSED: [2019-01-15 Tue 12:39]
    :PROPERTIES:
    :LAST_REPEAT: [2019-01-13 Sun 00:48]
    :END:
+   - State "DONE"       from "TODO"       [2019-01-15 Tue 12:39]
    - State "DONE"       from "TODO"       [2019-01-13 Sun 00:48] \\
+     Inside Llewyn Davis
+
      1. Hang Me, Oh Hang Me - By Oscar Isaac
      2. Fare Thee Well (Dink's Song) - By Marcus Mumford & Oscar Isaac
      3. The Last Thing on My Mind - By Stark Sands With Punch Brothers
@@ -440,7 +533,6 @@
      13. Farewell (unreleased studio version) - By Bob Dylan
      14. Green, Green Rocky Road - By Dave Van Ronk
      
-     =magnet:?xt=urn:btih:7bd79bb7f4dc157d8159df305fb23da55099b769=
    #+BEGIN_QUOTE
    SCHEDULED: <2019-01-15 Tue .1w>
    :PROPERTIES:
@@ -486,3 +578,4 @@
  
  
  
+   

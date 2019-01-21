@@ -3,7 +3,7 @@
 
 -----
 #+BEGIN_CENTER
-你怎么过一天，就怎么过一生
+凡心所向，素履所往。生如逆旅，一苇以航
 #+END_CENTER
 -----
 \\
@@ -12,20 +12,28 @@
 
 #+BEGIN_QUOTE
 #+BEGIN_EXAMPLE
-这是2018年最后一个月
-我们等待着，一年中最后的告别
-常听人说，有两个时候人最容易惆怅
-时之岁末，人之中年
-这是一个不畏将来的时节
-初雪微凉，守心自暖
-只有拥有过那些遗憾和不甘后
-我们才会慢慢知道
-什么样的人才值得相守
-什么样的生活才最适合我们自己
-就像十二月初雪
-我们翼望着它的洁白如初
-在这美好的的时刻
-可以快乐就不要难过
+>>> import this
+The Zen of Python, by Tim Peters
+
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren't special enough to break the rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation to guess.
+There should be one-- and preferably only one --obvious way to do it.
+Although that way may not be obvious at first unless you're Dutch.
+Now is better than never.
+Although never is often better than *right* now.
+If the implementation is hard to explain, it's a bad idea.
+If the implementation is easy to explain, it may be a good idea.
+Namespaces are one honking great idea -- let's do more of those!
 #+END_EXAMPLE
 #+END_QUOTE
 
@@ -38,7 +46,6 @@
 很多时候,看到好书就该去一口气吃掉它.
 #+END_EXAMPLE
 #+END_QUOTE
-
 
 
 *GTD*
@@ -56,6 +63,8 @@
 - [[file:link.org][Link notes]]
 
 - [[file:bug.org][Bug List]]
+
+- [[file:fragment.org][Knowledge Fragment]]
 
 #+END_QUOTE
 

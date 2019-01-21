@@ -1,0 +1,800 @@
+#+SETUPFILE: setup.org
+#+TITLE: python gevent 学习
+* 核心部分
+** greenlets
+   
+在gevent中用到的主要模式是Greenlet, 它是以C扩展模块形式接入Python的轻量级协程。 Greenlet全部运行在
+主程序操作系统进程的内部，但它们被协作式地调度。
+
+
+在任何时刻，只有一个协程在运行。
+
+大的任务可以分解成一系列的子任务,两个子任务之间的切换也就是上下文切换。
+
+在gevent里面，上下文切换是通过yielding来完成的, 
+
+=gevent.sleep(0)= : 采用gevent.sleep()时，会切换到另外一个使用 =gevent.spawn()= 衍生的函数去执行
+
+=gevent.spawn()= : 会创建一个新的greenlet协程对象，并运行它
+
+=gevent.joinall()= : 会等待所有传入的greenlet协程运行结束后再退出
+
+=genvent.select=  : select 原理,在多路复用的模型中，比较常用的有select模型和epoll模型。这两个都是系统接口，由操作系统提供,
+将需要判断有数据传来的（可读的）socket、可以向外发送数据的（可写的）socket及发生异常状态的socket交给select，
+select会帮助我们从中遍历找出有事件发生的socket，并返回给我们，我们可以直接处理这些发生事件的socket 
+,select()函数通常是一个在各种文件描述符上轮询的阻塞调用
+
+#+BEGIN_SRC python
+import time
+import gevent
+from gevent import select
+
+start = time.time()
+tic = lambda: 'at %1.1f seconds' % (time.time() - start)
+
+
+def gr1():
+    # Busy waits for a second, but we don't want to stick around...
+    print('Started Polling: %s' % tic())
+    select.select([], [], [], 2)
+    print('Ended Polling: %s' % tic())
+
+
+def gr2():
+    # Busy waits for a second, but we don't want to stick around...
+    print('Started Polling: %s' % tic())
+    select.select([], [], [], 2)
+    print('Ended Polling: %s' % tic())
+
+
+def gr3():
+    print("Hey lets do some stuff while the greenlets poll, %s" % tic())
+    gevent.sleep(1)
+
+
+gevent.joinall([
+    gevent.spawn(gr1),
+    gevent.spawn(gr2),
+    gevent.spawn(gr3),
+])
+#+END_SRC
+** 同步与异步
+
+#+BEGIN_SRC python
+import time
+import gevent
+import random
+
+
+start = time.time()
+tic_sync = lambda: 'at %1.5f seconds' % (time.time() - start)
+
+def task(pid):
+    """
+    Some non-deterministic task
+    """
+    # gevent.sleep(random.randint(0, 2) * 0.001)
+    gevent.sleep(0)
+    # print('Task %s done' % pid)
+
+
+def synchronous():
+    for i in range(1, 10000):
+        task(i)
+    print "synchronous %s" % tic_sync()
+
+start = time.time()
+tic_async = lambda: 'at %1.5f seconds' % (time.time() - start)
+
+def asynchronous():
+    threads = [gevent.spawn(task, i) for i in xrange(10000)]
+    gevent.joinall(threads)
+    print "asynchronous %s" % tic_async()
+
+
+print('Synchronous:')
+synchronous()
+
+print('Asynchronous:')
+asynchronous()
+
+# 不存在网络磁盘IO情况下,异步协程切换还是比同步慢10倍的
+#+END_SRC
+
+异步地向服务器取数据，取数据操作的执行时间依赖于发起取数据请求时远端服务器的负载，各个请求的执行时间会有差别。
+
+=gevent.monky= : =gevent.monkey.patch_socket()= 使用monky补丁将进程内socket替换掉,变成非阻塞
+
+
+#+BEGIN_SRC python
+import gevent.monkey
+gevent.monkey.patch_socket()
+
+import gevent
+import urllib2
+import json
+import time
+
+
+def fetch(pid):
+    response = urllib2.urlopen('http://10.253.69.22:8989/api/health/HnHOmQ8N')
+    result = response.read()
+    json_result = json.loads(result)
+    status = json_result['status']
+    # print('Process %s: %s' % (pid, status))
+    return None
+
+
+start = time.time()
+tic = lambda: 'at %1.5f seconds' % (time.time() - start)
+
+
+def synchronous():
+    for i in range(1, 100):
+        fetch(i)
+    print "synchronous time : %s" % tic()
+
+
+start = time.time()
+tic = lambda: 'at %1.5f seconds' % (time.time() - start)
+
+
+def asynchronous():
+    threads = []
+    for i in range(1, 100):
+        threads.append(gevent.spawn(fetch, i))
+    gevent.joinall(threads)
+    print "asynchronous time :%s" % tic()
+
+
+print('Synchronous:')
+synchronous()
+
+print('Asynchronous:')
+asynchronous()
+
+# 超过100次请求后,异步请求才开始有优势
+#+END_SRC
+
+** 确定性 
+   greenlet具有确定性。在相同配置相同输入的情况下，它们总是会产生相同的输出
+   #+BEGIN_SRC python
+   import time
+
+
+   def echo(i):
+       time.sleep(0.001)
+       return i
+
+
+   # Non Deterministic Process Pool
+
+   from multiprocessing.pool import Pool
+
+   p = Pool(10)
+   run1 = [a for a in p.imap_unordered(echo, xrange(10))]
+   run2 = [a for a in p.imap_unordered(echo, xrange(10))]
+   run3 = [a for a in p.imap_unordered(echo, xrange(10))]
+   run4 = [a for a in p.imap_unordered(echo, xrange(10))]
+
+   print(run1 == run2 == run3 == run4)
+
+   # Deterministic Gevent Pool
+
+   from gevent.pool import Pool
+
+   p = Pool(10)
+   run1 = [a for a in p.imap_unordered(echo, xrange(10))]
+   run2 = [a for a in p.imap_unordered(echo, xrange(10))]
+   run3 = [a for a in p.imap_unordered(echo, xrange(10))]
+   run4 = [a for a in p.imap_unordered(echo, xrange(10))]
+
+   print(run1 == run2 == run3 == run4)
+
+   # multiprocessing 多线程处理后, 返回结果时无序的
+   #+END_SRC
+
+   此尽管gevent线程是一种“确定的并发”形式，使用它仍然可能会遇到像使用POSIX线程或进程时遇到的那些问题。
+** 异常处理
+   #+BEGIN_SRC python
+   import gevent
+
+
+   def win():
+       print 'You win!'
+
+
+   def fail():
+       print 'Start fail'
+       raise Exception('You fail at failing.')
+
+
+   winner = gevent.spawn(win)
+   loser = gevent.spawn(fail)
+
+   print(winner.started)  # True
+   print(loser.started)  # True
+
+   # Exceptions raised in the Greenlet, stay inside the Greenlet.
+   try:
+       gevent.joinall([winner, loser])
+   except Exception as e:
+       print('This will never be reached, no work')
+   #+END_SRC
+** 程序停止
+
+当主程序(main program)收到一个SIGQUIT信号时，不能成功做yield操作的 Greenlet可能会令意外地挂起程序的
+执行。这导致了所谓的僵尸进程，它需要在Python解释器之外被kill掉。
+
+#+BEGIN_SRC python
+import gevent
+import signal
+
+
+def run_forever():
+    gevent.sleep(1000)
+
+
+if __name__ == '__main__':
+    gevent.signal(signal.SIGQUIT, gevent.shutdown)
+    thread = gevent.spawn(run_forever)
+    thread.join()
+#+END_SRC
+
+** 超时
+   #+BEGIN_SRC python
+   import gevent
+   from gevent import Timeout
+
+
+   def wait():
+       gevent.sleep(2)
+   # 三种调用Timeout方式
+
+   # --
+   timer = Timeout(1).start()
+   thread1 = gevent.spawn(wait)
+
+   try:
+       thread1.join(timeout=timer)
+   except Timeout:
+       print('Thread 1 timed out')
+
+   # --
+   timer = Timeout.start_new(1)
+   thread2 = gevent.spawn(wait)
+
+   try:
+       thread2.get(timeout=timer)
+   except Timeout:
+       print('Thread 2 timed out')
+
+   # --
+   try:
+       gevent.with_timeout(1, wait)
+   except Timeout:
+       print('Thread 3 timed out')
+   #+END_SRC
+** 猴子补丁
+   在极端情况下当一个库需要修改Python本身的基础行为的时候，猴子补丁就派上用场了。在这种情况下，gevent能够修改标准库里面
+   大部分的阻塞式系统调用，包括socket、ssl、threading和 select等模块，而变为协作式运行。
+
+   例如，Redis的python绑定一般使用常规的tcp socket来与redis-server实例通信。通过简单地调用
+   gevent.monkey.patch_all()，可以使得redis的绑定协作式的调度请求，与gevent栈的其它部分一起工作。
+
+   这让我们可以将一般不能与gevent共同工作的库结合起来，而不用写哪怕一行代码。虽然猴子补丁仍然是邪恶的
+   (evil)，但在这种情况下它是“有用的邪恶(useful evil)”。
+
+* 数据结构
+** 事件
+
+   协程间的通信
+
+- *event*
+
+   事件(event)是一个在Greenlet之间异步通信的形式。
+
+   #+BEGIN_SRC python
+   import gevent
+   from gevent.event import Event
+   '''
+   Illustrates the use of events
+   '''
+
+   evt = Event()
+
+
+   def setter():
+       '''After 3 seconds, wake all threads waiting on the value of evt'''
+       print('A: Hey wait for me, I have to do something')
+       gevent.sleep(3)
+       print("Ok, I'm done")
+       evt.set()
+
+
+   def waiter():
+       '''After 3 seconds the get call will unblock'''
+       print("I'll wait for you")
+       evt.wait()  # blocking
+       print("It's about time")
+
+
+   def main():
+       gevent.joinall([
+           gevent.spawn(setter),
+           gevent.spawn(waiter),
+           gevent.spawn(waiter),
+           gevent.spawn(waiter),
+           gevent.spawn(waiter),
+           gevent.spawn(waiter)
+       ])
+
+   main()
+   #+END_SRC
+
+- *AsyncResult*
+
+  我是老板，让大哥和小弟同事去收账，小弟做完了后，会等大哥来问话。 
+
+  如果小弟没有完成，还在做着事情，那大哥会在一个时间里，等待小弟返回结果。一直等 ！
+
+  #+BEGIN_SRC python
+  import gevent
+  from gevent.event import AsyncResult
+
+  a = AsyncResult()
+
+
+  def setter():
+      """
+      After 3 seconds set the result of a.
+      """
+      gevent.sleep(3)
+      a.set('Hello!')
+
+
+  def waiter():
+      """
+      After 3 seconds the get call will unblock after the setter
+      puts a value into the AsyncResult.
+      """
+      print(a.get())
+
+
+  gevent.joinall([
+      gevent.spawn(setter),
+      gevent.spawn(waiter),
+  ])
+  #+END_SRC
+
+** 队列
+
+   如果一个Greenlet从队列中取出一项，此项就不会被同时执行的其它Greenlet再取到了
+
+   使用起来和一般队列一样
+
+   put和get操作都有非阻塞的版本，put_nowait和get_nowait不会阻塞，
+   然而在操作不能完成时抛出gevent.queue.Empty或gevent.queue.Full异常。
+
+
+   #+BEGIN_SRC python
+   import gevent
+   from gevent.queue import Queue, Empty
+
+   tasks = Queue(maxsize=3)
+
+   """get_nowait非阻塞，默认队列没有数据便会抛出gevent.queue.Empty异常
+
+   get是阻塞的 设置timeout后便会在超时之后不阻塞
+   """
+
+
+   # while not tasks.empty():
+   def worker(n):
+       try:
+           while True:
+               task = tasks.get(timeout=1)  # decrements queue size by 1
+               print('Worker %s got task %s' % (n, task))
+               gevent.sleep(0)
+       except Empty:
+           print('Quitting time!')
+
+
+   def boss():
+       """
+       Boss will wait to hand out work until a individual worker is
+       free since the maxsize of the task queue is 3.
+       """
+
+       for i in xrange(1, 10):
+           tasks.put(i)
+       print('Assigned all work in iteration 1')
+
+       for i in xrange(10, 20):
+           tasks.put(i)
+       print('Assigned all work in iteration 2')
+
+
+   gevent.joinall([
+       gevent.spawn(boss),
+       gevent.spawn(worker, 'steve'),
+       gevent.spawn(worker, 'john'),
+       gevent.spawn(worker, 'bob'),
+   ])
+
+   #+END_SRC
+   
+** 组和池
+   组(group)是一个运行中greenlet的集合，集合中的greenlet像一个组一样会被共同管理和调度。
+   它也兼饰了像Python的multiprocessing库那样的平行调度器的角色。
+
+   Group也以不同的方式为分组greenlet/分发工作和收集它们的结果也提供了API
+
+   imap / imap_unordered (有序 无序返回结果)
+
+   #+BEGIN_SRC python
+   import gevent
+   from gevent import getcurrent
+   from gevent.pool import Group
+
+   group = Group()
+
+
+   def hello_from(n):
+       print('Size of group %s' % len(group))
+       print('Hello from Greenlet %s' % id(getcurrent()))
+
+
+   group.map(hello_from, xrange(3))
+
+
+   def intensive(n):
+       gevent.sleep(3 - n)
+       return 'task', n
+
+
+   print('Ordered')
+
+   ogroup = Group()
+   for i in ogroup.imap(intensive, xrange(3)):
+       print(i)
+
+   print('Unordered')
+
+   igroup = Group()
+   for i in igroup.imap_unordered(intensive, xrange(3)):
+       print(i)
+   #+END_SRC
+
+   池(pool)是一个为处理数量变化并且需要 *限制并发* 的greenlet而设计的结构。在需要并行地做很多受限于网络和IO的任务时常常需要用到它。
+
+   #+BEGIN_SRC python
+   import gevent
+   from gevent.pool import Pool
+
+   pool = Pool(2)
+
+   def hello_from(n):
+       print('Size of pool %s' % len(pool))
+
+   pool.map(hello_from, xrange(3))
+
+   # Size of pool 2
+   # Size of pool 2
+   # Size of pool 1
+
+
+   #+END_SRC
+
+   #+BEGIN_SRC python
+   from gevent.pool import Pool
+
+
+   class SocketPool(object):
+       """当构造gevent驱动的服务时，经常会将围绕一个池结构的整个服务作为中心。一个例子就是在各个socket上轮询的类。
+       """
+       def __init__(self):
+           self.pool = Pool(1000)
+           self.pool.start()
+
+       def listen(self, socket):
+           while True:
+               socket.recv()
+
+       def add_handler(self, socket):
+           if self.pool.full():
+               raise Exception("At maximum pool size")
+           else:
+               self.pool.spawn(self.listen, socket)
+
+       def shutdown(self):
+           self.pool.kill()
+   #+END_SRC
+
+** 锁和信号量
+
+   信号量是一个允许greenlet相互合作，限制并发访问或运行的低层次的同步原语
+
+   信号量有两个方法，acquire和release。
+   在信号量是否已经被 acquire或release，和拥有资源的数量之间不同，被称为此信号量的范围 
+   (the bound of the semaphore)。
+   如果一个信号量的范围已经降低到0，它会阻塞acquire操作直到另一个已经获得信号量的greenlet作出释放。
+
+   范围为1的信号量也称为锁(lock)。它向单个greenlet提供了互斥访问。信号量和锁常常用来保证资源只在程序上下文被单次使用。
+
+   # TODO 替换信号示例
+
+   #+BEGIN_SRC python
+   from gevent import sleep
+   from gevent.pool import Pool
+   try:
+       from gevent.coros import BoundedSemaphore
+   except:
+       from gevent.lock import BoundedSemaphore
+
+   sem = BoundedSemaphore(2)
+
+
+   def worker1(n):
+       sem.acquire()
+       print('Worker %i acquired semaphore' % n)
+       sleep(0)
+       sem.release()
+       print('Worker %i released semaphore' % n)
+
+
+   def worker2(n):
+       with sem:
+           print('Worker %i acquired semaphore' % n)
+           sleep(0)
+       print('Worker %i released semaphore' % n)
+
+
+   pool = Pool()
+   pool.map(worker1, xrange(0, 2))
+   pool.map(worker2, xrange(3, 6))
+   #+END_SRC
+
+** 线程局部变量
+
+   Gevent也允许你指定局部于greenlet上下文的数据。在内部，它被实现为以greenlet的getcurrent()为键，在一个私有命名空间寻址的全局查找。
+
+   #+BEGIN_SRC python
+   import gevent
+   from gevent.local import local
+
+   stash = local()
+
+
+   def f1():
+       stash.x = 1
+       print(stash.x)
+
+
+   def f2():
+       stash.y = 2
+       print(stash.y)
+
+       try:
+           stash.x
+       except AttributeError:
+           print("x is not local to f2")
+
+
+   g1 = gevent.spawn(f1)
+   g2 = gevent.spawn(f2)
+
+   gevent.joinall([g1, g2])
+   #+END_SRC    
+
+   很多集成了gevent的web框架将 *HTTP会话对象*  以线程局部变量的方式存储在gevent内。
+   例如使用Werkzeug实用库和它的proxy对象，我们可以创建Flask风格的请求对象。
+
+   Werkzeug 是一个 WSGI 工具包，它可以作为一个 Web 框架的底层库
+
+
+   #+BEGIN_SRC python
+   from gevent.local import local
+   from werkzeug.local import LocalProxy
+   from werkzeug.wrappers import Request
+   from contextlib import contextmanager
+   try:
+       from gevent.wsgi import WSGIServer
+   except:
+       from gevent.pywsgi import WSGIServer
+
+   _requests = local()
+   request = LocalProxy(lambda: _requests.request)
+
+
+   @contextmanager
+   def sessionmanager(environ):
+       _requests.request = Request(environ)
+       yield
+       _requests.request = None
+
+
+   def logic():
+       return "Hello " + request.remote_addr
+
+
+   def application(environ, start_response):
+       status = '200 OK'
+
+       with sessionmanager(environ):
+           body = logic()
+
+       headers = [('Content-Type', 'text/html')]
+
+       start_response(status, headers)
+       return [body]
+
+
+   WSGIServer(('', 8000), application).serve_forever()
+
+   # http://127.0.0.1:8000/
+   # Hello ::ffff:127.0.0.1
+   #+END_SRC
+
+   Flask系统比这个例子复杂一点，然而使用线程局部变量作为局部的会话存储，这个思想是相同的。
+   
+** 子进程
+   自gevent 1.0起，gevent.subprocess，一个Python subprocess模块的修补版本已经添加。它支持协作式的等待子进程。
+
+   Python rstrip() 删除 string 字符串末尾的指定字符（默认为空格）
+
+   #+BEGIN_SRC python
+
+   import gevent
+   from gevent.subprocess import Popen, PIPE
+
+
+   def cron():
+       while True:
+           print("cron")
+           gevent.sleep(0.2)
+
+
+   g = gevent.spawn(cron)
+   sub = Popen(['sleep 1; uname'], stdout=PIPE, shell=True)
+   out, err = sub.communicate()
+   g.kill()
+   print(out.rstrip())
+
+   #cron
+   #cron
+   #cron
+   #cron
+   #cron
+   #cron
+   #Darwin
+
+   #+END_SRC
+   
+   gevent 与 multiprocessing 分别创建子进程后,通信
+
+   最明显的挑战之一就是multiprocessing提供的进程间通信默认不是协作式的
+
+   =multiprocessing.Connection= 的对象(例如Pipe)暴露了它们下面的文件描述符(file descriptor)，
+
+   =gevent.socket.wait_read= 和 =wait_write= 可以用来在直接读写之前协作式的等待ready-to-read/ready-to-write事件。
+
+
+   #+BEGIN_SRC python
+   import gevent
+   from multiprocessing import Process, Pipe
+   from gevent.socket import wait_read, wait_write
+
+   # To Process
+   a, b = Pipe()
+
+   # From Process
+   c, d = Pipe()
+
+
+   def relay():
+       for i in xrange(10):
+           msg = b.recv()
+           c.send(msg + " in " + str(i))
+
+
+   def put_msg():
+       for i in xrange(10):
+           wait_write(a.fileno())
+           a.send('hi')
+
+
+   def get_msg():
+       for i in xrange(10):
+           wait_read(d.fileno())
+           print(d.recv())
+
+
+   proc = Process(target=relay)
+   proc.start()
+
+   g1 = gevent.spawn(get_msg)
+   g2 = gevent.spawn(put_msg)
+   gevent.joinall([g1, g2], timeout=1)
+
+   """
+   hi in 0
+   hi in 1
+   hi in 2
+   hi in 3
+   hi in 4
+   hi in 5
+   hi in 6
+   hi in 7
+   hi in 8
+   hi in 9
+
+   hi -> a ->b -> c -> d 
+   """
+   #+END_SRC
+
+** Actors 
+
+   actor模型是一个由于Erlang变得普及的 *更高层的并发模型* 。
+   简单的说它的主要思想就是:
+   *许多个独立的Actor，每个Actor有一个可以从其它Actor接收消息的收件箱。
+   Actor内部的主循环遍历它收到的消息，并根据它期望的行为来采取行动* 
+
+   #+BEGIN_SRC python
+   import gevent
+   from gevent.queue import Queue
+   from gevent import Greenlet
+
+
+   class Actor(gevent.Greenlet):
+       def __init__(self):
+           self.inbox = Queue()
+           Greenlet.__init__(self)
+
+       def receive(self, message):
+           """
+           Define in your subclass.
+           """
+           raise NotImplemented()
+
+       def _run(self):
+           self.running = True
+           while self.running:
+               message = self.inbox.get()
+               self.receive(message)
+
+
+   class Pinger(Actor):
+       def receive(self, message):
+           print("ping: %s " % message)
+           pong.inbox.put('ping send to pong')
+           gevent.sleep(0)
+
+
+   class Ponger(Actor):
+       def receive(self, message):
+           print("pong: %s" % message)
+           ping.inbox.put('pong')
+           gevent.sleep(0)
+
+
+   ping = Pinger()
+   pong = Ponger()
+
+   ping.start()
+   pong.start()
+
+   ping.inbox.put('start')
+   gevent.joinall([ping, pong])
+
+   #无限循环
+   #+END_SRC
+
+* 应用
+** Gevent ZeroMQ
+** 简单server
+** WSGI Servers
+** 流式server
+** Long Polling
+** Websockets
+** 聊天server

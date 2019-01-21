@@ -1,9 +1,24 @@
 #+SETUPFILE: setup.org
 #+TITLE: Reading List
+
 * Reading List
-** TODO [2019-01-13 Sun] gevent程序员指南 
+** TODO [2019-01-15 Tue] A Byte of Python 
    #+BEGIN_QUOTE
-   SCHEDULED: <2019-01-13 Sun .+1d>
+   SCHEDULED: <2019-01-15 Tue .+1d>
+
+   en : https://python.swaroopch.com/
+
+   cn : https://bop.mol.uno/
+  
+   #+END_QUOTE
+** TODO [2019-01-13 Sun] [[file:note/python-gevent.org][gevent程序员指南]]
+   :PROPERTIES:
+   :LAST_REPEAT: [2019-01-15 Tue 12:39]
+   :END:
+   - State "DONE"       from "TODO"       [2019-01-15 Tue 12:39]
+   - State "DONE"       from "TODO"       [2019-01-14 Mon 10:05]
+   #+BEGIN_QUOTE
+   SCHEDULED: <2019-01-16 Wed .+1d>
   
 
    http://hhkbp2.github.io/gevent-tutorial/
@@ -13,13 +28,13 @@
    #+BEGIN_QUOTE
    SCHEDULED: <2019-01-13 Sun .+1d>
   
-   #+ATTR_HTML: :width 60% :height 60% 
+   #+ATTR_HTML: :width 30% :height 30% 
    [[file:images/screenshot/20190113043046.png]]
 
    https://facert.gitbooks.io/python-data-structure-cn/
 
    #+END_QUOTE
-** DONE [2019-01-13 Sun 04:21] [[https://www.liaoxuefeng.com/][廖雪峰博客-python]] 
+** DONE [2019-01-13 Sun] [[https://www.liaoxuefeng.com/][廖雪峰博客-python]] 
    CLOSED: [2019-01-13 Sun 04:24]
    :PROPERTIES:
    :LAST_REPEAT: [2019-01-13 Sun 04:24]
