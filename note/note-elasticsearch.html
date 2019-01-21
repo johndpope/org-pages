@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-01-10 Thu 11:31 -->
+<!-- 2019-01-21 Mon 21:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>elasticsearch 常用知识梳理</title>
@@ -384,8 +384,24 @@ curl -XPOST 'http://localhost:9200/_aliases'-d '
 <div id="outline-container-org25e1e59" class="outline-3">
 <h3 id="org25e1e59">query</h3>
 <div class="outline-text-3" id="text-org25e1e59">
-<dl class="org-dl">
-<dt>_search?pretty&amp;q=字段</dt><dd><p>
+<ul class="org-ul">
+<li><p>
+query_string 全文检索
+</p>
+<div class="org-src-container">
+<pre class="src src-python">
+{
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"query"</span>:{
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"query_string"</span>:{
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"query"</span>:<span style="color: #79740e;">"reputation"</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   }
+<span style="background-color: #ebdbb2;"> </span>   }
+}
+
+
+</pre>
+</div></li>
+<li id="_search?pretty&amp;q=字段"><p>
 基础查询字段   
 </p>
 
@@ -401,8 +417,8 @@ _id 内置id查询
 <pre class="example">
 curl -XGET  'localhost:9200/webasset_whois3/whois_info/_search?pretty&amp;q=_id:PERSONALLICENCECOURSES.COM'
 
-</pre></dd>
-<dt>exists</dt><dd><p>
+</pre></li>
+<li id="exists"><p>
 字段是否存在
 </p>
 <pre class="example">
@@ -423,8 +439,8 @@ curl -XGET  'localhost:9200/webasset_whois3/whois_info/_search?pretty&amp;q=_id:
     }
 }
 
-</pre></dd>
-<dt>must/filter match/term</dt><dd><p>
+</pre></li>
+<li id="must/filter match/term"><p>
 布尔过滤查询
 </p>
 
@@ -445,8 +461,8 @@ curl -XGET  'localhost:9200/webasset_whois3/whois_info/_search?pretty&amp;q=_id:
   }
 }
 
-</pre></dd>
-<dt>query/sort</dt><dd><p>
+</pre></li>
+<li id="query/sort"><p>
 查询排序
 </p>
 <pre class="example">
@@ -468,8 +484,8 @@ curl -XGET  'localhost:9200/webasset_whois3/whois_info/_search?pretty&amp;q=_id:
          "started": "desc"
        },
    }
-</pre></dd>
-<dt>range</dt><dd><p>
+</pre></li>
+<li id="range"><p>
 范围查询
 </p>
 <pre class="example">
@@ -483,8 +499,8 @@ curl -XGET  'localhost:9200/webasset_whois3/whois_info/_search?pretty&amp;q=_id:
           }
        }
 }           
-</pre></dd>
-<dt>_source</dt><dd><p>
+</pre></li>
+<li id="_source"><p>
 控制返回字段
 </p>
 <pre class="example">
@@ -512,8 +528,8 @@ curl -XGET  'localhost:9200/webasset_whois3/whois_info/_search?pretty&amp;q=_id:
         }
     }
 }
-</pre></dd>
-</dl>
+</pre></li>
+</ul>
 </div>
 </div>
 <div id="outline-container-org130e159" class="outline-3">

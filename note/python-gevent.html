@@ -1,0 +1,1255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-01-21 Mon 21:24 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>python gevent 学习</title>
+<meta name="generator" content="Org mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" href="../css/worg.css" type="text/css" media="screen" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<a href="https://www.manue1.site/index.html">Home</a>
+</div>
+<div id="content">
+<h1 class="title">python gevent 学习</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org253f20f">核心部分</a>
+<ul>
+<li><a href="#orgd33fad7">greenlets</a></li>
+<li><a href="#org85f5bd9">同步与异步</a></li>
+<li><a href="#org084d3f9">确定性</a></li>
+<li><a href="#org3890021">异常处理</a></li>
+<li><a href="#orgf7e8268">程序停止</a></li>
+<li><a href="#org0fbaa8c">超时</a></li>
+<li><a href="#org9c74a63">猴子补丁</a></li>
+</ul>
+</li>
+<li><a href="#orgd105d5e">数据结构</a>
+<ul>
+<li><a href="#org921dc16">事件</a></li>
+<li><a href="#org865bc55">队列</a></li>
+<li><a href="#org25f5bc3">组和池</a></li>
+<li><a href="#orgbd9571a">锁和信号量</a></li>
+<li><a href="#org733c6b1">线程局部变量</a></li>
+<li><a href="#org9037368">子进程</a></li>
+<li><a href="#org93eea23">Actors</a></li>
+</ul>
+</li>
+<li><a href="#org21e8dfc">应用</a>
+<ul>
+<li><a href="#org9a89f15">Gevent ZeroMQ</a></li>
+<li><a href="#orgc76866b">简单server</a></li>
+<li><a href="#org31d6728">WSGI Servers</a></li>
+<li><a href="#org3b04a51">流式server</a></li>
+<li><a href="#org05c5e25">Long Polling</a></li>
+<li><a href="#orgfd2c449">Websockets</a></li>
+<li><a href="#orgdf9e514">聊天server</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org253f20f" class="outline-2">
+<h2 id="org253f20f">核心部分</h2>
+<div class="outline-text-2" id="text-org253f20f">
+</div>
+<div id="outline-container-orgd33fad7" class="outline-3">
+<h3 id="orgd33fad7">greenlets</h3>
+<div class="outline-text-3" id="text-orgd33fad7">
+<p>
+在gevent中用到的主要模式是Greenlet, 它是以C扩展模块形式接入Python的轻量级协程。 Greenlet全部运行在
+主程序操作系统进程的内部，但它们被协作式地调度。
+</p>
+
+
+<p>
+在任何时刻，只有一个协程在运行。
+</p>
+
+<p>
+大的任务可以分解成一系列的子任务,两个子任务之间的切换也就是上下文切换。
+</p>
+
+<p>
+在gevent里面，上下文切换是通过yielding来完成的, 
+</p>
+
+<p>
+<code>gevent.sleep(0)</code> : 采用gevent.sleep()时，会切换到另外一个使用 <code>gevent.spawn()</code> 衍生的函数去执行
+</p>
+
+<p>
+<code>gevent.spawn()</code> : 会创建一个新的greenlet协程对象，并运行它
+</p>
+
+<p>
+<code>gevent.joinall()</code> : 会等待所有传入的greenlet协程运行结束后再退出
+</p>
+
+<p>
+<code>genvent.select</code>  : select 原理,在多路复用的模型中，比较常用的有select模型和epoll模型。这两个都是系统接口，由操作系统提供,
+将需要判断有数据传来的（可读的）socket、可以向外发送数据的（可写的）socket及发生异常状态的socket交给select，
+select会帮助我们从中遍历找出有事件发生的socket，并返回给我们，我们可以直接处理这些发生事件的socket 
+,select()函数通常是一个在各种文件描述符上轮询的阻塞调用
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #9d0006;">import</span> time
+<span style="color: #9d0006;">import</span> gevent
+<span style="color: #9d0006;">from</span> gevent <span style="color: #9d0006;">import</span> select
+
+<span style="color: #076678;">start</span> = time.time()
+<span style="color: #076678;">tic</span> = <span style="color: #9d0006;">lambda</span>: <span style="color: #79740e;">'at %1.1f seconds'</span> % (time.time() - start)
+
+
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">gr1</span>():
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #a89984;"># </span><span style="color: #a89984;">Busy waits for a second, but we don't want to stick around...</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span>(<span style="color: #79740e;">'Started Polling: %s'</span> % tic())
+<span style="background-color: #ebdbb2;"> </span>   select.select([], [], [], 2)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span>(<span style="color: #79740e;">'Ended Polling: %s'</span> % tic())
+
+
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">gr2</span>():
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #a89984;"># </span><span style="color: #a89984;">Busy waits for a second, but we don't want to stick around...</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span>(<span style="color: #79740e;">'Started Polling: %s'</span> % tic())
+<span style="background-color: #ebdbb2;"> </span>   select.select([], [], [], 2)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span>(<span style="color: #79740e;">'Ended Polling: %s'</span> % tic())
+
+
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">gr3</span>():
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span>(<span style="color: #79740e;">"Hey lets do some stuff while the greenlets poll, %s"</span> % tic())
+<span style="background-color: #ebdbb2;"> </span>   gevent.sleep(1)
+
+
+gevent.joinall([
+<span style="background-color: #ebdbb2;"> </span>   gevent.spawn(gr1),
+<span style="background-color: #ebdbb2;"> </span>   gevent.spawn(gr2),
+<span style="background-color: #ebdbb2;"> </span>   gevent.spawn(gr3),
+])
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org85f5bd9" class="outline-3">
+<h3 id="org85f5bd9">同步与异步</h3>
+<div class="outline-text-3" id="text-org85f5bd9">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #9d0006;">import</span> time
+<span style="color: #9d0006;">import</span> gevent
+<span style="color: #9d0006;">import</span> random
+
+
+<span style="color: #076678;">start</span> = time.time()
+<span style="color: #076678;">tic_sync</span> = <span style="color: #9d0006;">lambda</span>: <span style="color: #79740e;">'at %1.5f seconds'</span> % (time.time() - start)
+
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">task</span>(pid):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"""</span>
+<span style="color: #79740e; background-color: #ebdbb2;"> </span><span style="color: #79740e;">   Some non-deterministic task</span>
+<span style="color: #79740e; background-color: #ebdbb2;"> </span><span style="color: #79740e;">   """</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #a89984;"># </span><span style="color: #a89984;">gevent.sleep(random.randint(0, 2) * 0.001)</span>
+<span style="background-color: #ebdbb2;"> </span>   gevent.sleep(0)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #a89984;"># </span><span style="color: #a89984;">print('Task %s done' % pid)</span>
+
+
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">synchronous</span>():
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">for</span> i <span style="color: #9d0006;">in</span> <span style="color: #af3a03;">range</span>(1, 10000):
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   task(i)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span> <span style="color: #79740e;">"synchronous %s"</span> % tic_sync()
+
+<span style="color: #076678;">start</span> = time.time()
+<span style="color: #076678;">tic_async</span> = <span style="color: #9d0006;">lambda</span>: <span style="color: #79740e;">'at %1.5f seconds'</span> % (time.time() - start)
+
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">asynchronous</span>():
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">threads</span> = [gevent.spawn(task, i) <span style="color: #9d0006;">for</span> i <span style="color: #9d0006;">in</span> <span style="color: #af3a03;">xrange</span>(10000)]
+<span style="background-color: #ebdbb2;"> </span>   gevent.joinall(threads)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span> <span style="color: #79740e;">"asynchronous %s"</span> % tic_async()
+
+
+<span style="color: #9d0006;">print</span>(<span style="color: #79740e;">'Synchronous:'</span>)
+synchronous()
+
+<span style="color: #9d0006;">print</span>(<span style="color: #79740e;">'Asynchronous:'</span>)
+asynchronous()
+
+<span style="color: #a89984;"># </span><span style="color: #a89984;">&#19981;&#23384;&#22312;&#32593;&#32476;&#30913;&#30424;IO&#24773;&#20917;&#19979;,&#24322;&#27493;&#21327;&#31243;&#20999;&#25442;&#36824;&#26159;&#27604;&#21516;&#27493;&#24930;10&#20493;&#30340;</span>
+</pre>
+</div>
+
+<p>
+异步地向服务器取数据，取数据操作的执行时间依赖于发起取数据请求时远端服务器的负载，各个请求的执行时间会有差别。
+</p>
+
+<p>
+<code>gevent.monky</code> : <code>gevent.monkey.patch_socket()</code> 使用monky补丁将进程内socket替换掉,变成非阻塞
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #9d0006;">import</span> gevent.monkey
+gevent.monkey.patch_socket()
+
+<span style="color: #9d0006;">import</span> gevent
+<span style="color: #9d0006;">import</span> urllib2
+<span style="color: #9d0006;">import</span> json
+<span style="color: #9d0006;">import</span> time
+
+
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">fetch</span>(pid):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">response</span> = urllib2.urlopen(<span style="color: #79740e;">'http://10.253.69.22:8989/api/health/HnHOmQ8N'</span>)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">result</span> = response.read()
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">json_result</span> = json.loads(result)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">status</span> = json_result[<span style="color: #79740e;">'status'</span>]
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #a89984;"># </span><span style="color: #a89984;">print('Process %s: %s' % (pid, status))</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> <span style="color: #8f3f71;">None</span>
+
+
+<span style="color: #076678;">start</span> = time.time()
+<span style="color: #076678;">tic</span> = <span style="color: #9d0006;">lambda</span>: <span style="color: #79740e;">'at %1.5f seconds'</span> % (time.time() - start)
+
+
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">synchronous</span>():
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">for</span> i <span style="color: #9d0006;">in</span> <span style="color: #af3a03;">range</span>(1, 100):
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   fetch(i)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span> <span style="color: #79740e;">"synchronous time : %s"</span> % tic()
+
+
+<span style="color: #076678;">start</span> = time.time()
+<span style="color: #076678;">tic</span> = <span style="color: #9d0006;">lambda</span>: <span style="color: #79740e;">'at %1.5f seconds'</span> % (time.time() - start)
+
+
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">asynchronous</span>():
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">threads</span> = []
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">for</span> i <span style="color: #9d0006;">in</span> <span style="color: #af3a03;">range</span>(1, 100):
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   threads.append(gevent.spawn(fetch, i))
+<span style="background-color: #ebdbb2;"> </span>   gevent.joinall(threads)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span> <span style="color: #79740e;">"asynchronous time :%s"</span> % tic()
+
+
+<span style="color: #9d0006;">print</span>(<span style="color: #79740e;">'Synchronous:'</span>)
+synchronous()
+
+<span style="color: #9d0006;">print</span>(<span style="color: #79740e;">'Asynchronous:'</span>)
+asynchronous()
+
+<span style="color: #a89984;"># </span><span style="color: #a89984;">&#36229;&#36807;100&#27425;&#35831;&#27714;&#21518;,&#24322;&#27493;&#35831;&#27714;&#25165;&#24320;&#22987;&#26377;&#20248;&#21183;</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org084d3f9" class="outline-3">
+<h3 id="org084d3f9">确定性</h3>
+<div class="outline-text-3" id="text-org084d3f9">
+<p>
+greenlet具有确定性。在相同配置相同输入的情况下，它们总是会产生相同的输出
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #9d0006;">import</span> time
+
+
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">echo</span>(i):
+<span style="background-color: #ebdbb2;"> </span>   time.sleep(0.001)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> i
+
+
+<span style="color: #a89984;"># </span><span style="color: #a89984;">Non Deterministic Process Pool</span>
+
+<span style="color: #9d0006;">from</span> multiprocessing.pool <span style="color: #9d0006;">import</span> Pool
+
+<span style="color: #076678;">p</span> = Pool(10)
+<span style="color: #076678;">run1</span> = [a <span style="color: #9d0006;">for</span> a <span style="color: #9d0006;">in</span> p.imap_unordered(echo, <span style="color: #af3a03;">xrange</span>(10))]
+<span style="color: #076678;">run2</span> = [a <span style="color: #9d0006;">for</span> a <span style="color: #9d0006;">in</span> p.imap_unordered(echo, <span style="color: #af3a03;">xrange</span>(10))]
+<span style="color: #076678;">run3</span> = [a <span style="color: #9d0006;">for</span> a <span style="color: #9d0006;">in</span> p.imap_unordered(echo, <span style="color: #af3a03;">xrange</span>(10))]
+<span style="color: #076678;">run4</span> = [a <span style="color: #9d0006;">for</span> a <span style="color: #9d0006;">in</span> p.imap_unordered(echo, <span style="color: #af3a03;">xrange</span>(10))]
+
+<span style="color: #9d0006;">print</span>(run1 == run2 == run3 == run4)
+
+<span style="color: #a89984;"># </span><span style="color: #a89984;">Deterministic Gevent Pool</span>
+
+<span style="color: #9d0006;">from</span> gevent.pool <span style="color: #9d0006;">import</span> Pool
+
+<span style="color: #076678;">p</span> = Pool(10)
+<span style="color: #076678;">run1</span> = [a <span style="color: #9d0006;">for</span> a <span style="color: #9d0006;">in</span> p.imap_unordered(echo, <span style="color: #af3a03;">xrange</span>(10))]
+<span style="color: #076678;">run2</span> = [a <span style="color: #9d0006;">for</span> a <span style="color: #9d0006;">in</span> p.imap_unordered(echo, <span style="color: #af3a03;">xrange</span>(10))]
+<span style="color: #076678;">run3</span> = [a <span style="color: #9d0006;">for</span> a <span style="color: #9d0006;">in</span> p.imap_unordered(echo, <span style="color: #af3a03;">xrange</span>(10))]
+<span style="color: #076678;">run4</span> = [a <span style="color: #9d0006;">for</span> a <span style="color: #9d0006;">in</span> p.imap_unordered(echo, <span style="color: #af3a03;">xrange</span>(10))]
+
+<span style="color: #9d0006;">print</span>(run1 == run2 == run3 == run4)
+
+<span style="color: #a89984;"># </span><span style="color: #a89984;">multiprocessing &#22810;&#32447;&#31243;&#22788;&#29702;&#21518;, &#36820;&#22238;&#32467;&#26524;&#26102;&#26080;&#24207;&#30340;</span>
+</pre>
+</div>
+
+<p>
+此尽管gevent线程是一种“确定的并发”形式，使用它仍然可能会遇到像使用POSIX线程或进程时遇到的那些问题。
+</p>
+</div>
+</div>
+<div id="outline-container-org3890021" class="outline-3">
+<h3 id="org3890021">异常处理</h3>
+<div class="outline-text-3" id="text-org3890021">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #9d0006;">import</span> gevent
+
+
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">win</span>():
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span> <span style="color: #79740e;">'You win!'</span>
+
+
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">fail</span>():
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span> <span style="color: #79740e;">'Start fail'</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">raise</span> <span style="color: #8f3f71;">Exception</span>(<span style="color: #79740e;">'You fail at failing.'</span>)
+
+
+<span style="color: #076678;">winner</span> = gevent.spawn(win)
+<span style="color: #076678;">loser</span> = gevent.spawn(fail)
+
+<span style="color: #9d0006;">print</span>(winner.started)  <span style="color: #a89984;"># </span><span style="color: #a89984;">True</span>
+<span style="color: #9d0006;">print</span>(loser.started)  <span style="color: #a89984;"># </span><span style="color: #a89984;">True</span>
+
+<span style="color: #a89984;"># </span><span style="color: #a89984;">Exceptions raised in the Greenlet, stay inside the Greenlet.</span>
+<span style="color: #9d0006;">try</span>:
+<span style="background-color: #ebdbb2;"> </span>   gevent.joinall([winner, loser])
+<span style="color: #9d0006;">except</span> <span style="color: #8f3f71;">Exception</span> <span style="color: #9d0006;">as</span> e:
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span>(<span style="color: #79740e;">'This will never be reached, no work'</span>)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf7e8268" class="outline-3">
+<h3 id="orgf7e8268">程序停止</h3>
+<div class="outline-text-3" id="text-orgf7e8268">
+<p>
+当主程序(main program)收到一个SIGQUIT信号时，不能成功做yield操作的 Greenlet可能会令意外地挂起程序的
+执行。这导致了所谓的僵尸进程，它需要在Python解释器之外被kill掉。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #9d0006;">import</span> gevent
+<span style="color: #9d0006;">import</span> signal
+
+
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">run_forever</span>():
+<span style="background-color: #ebdbb2;"> </span>   gevent.sleep(1000)
+
+
+<span style="color: #9d0006;">if</span> <span style="color: #af3a03;">__name__</span> == <span style="color: #79740e;">'__main__'</span>:
+<span style="background-color: #ebdbb2;"> </span>   gevent.signal(signal.SIGQUIT, gevent.shutdown)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">thread</span> = gevent.spawn(run_forever)
+<span style="background-color: #ebdbb2;"> </span>   thread.join()
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0fbaa8c" class="outline-3">
+<h3 id="org0fbaa8c">超时</h3>
+<div class="outline-text-3" id="text-org0fbaa8c">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #9d0006;">import</span> gevent
+<span style="color: #9d0006;">from</span> gevent <span style="color: #9d0006;">import</span> Timeout
+
+
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">wait</span>():
+<span style="background-color: #ebdbb2;"> </span>   gevent.sleep(2)
+<span style="color: #a89984;"># </span><span style="color: #a89984;">&#19977;&#31181;&#35843;&#29992;Timeout&#26041;&#24335;</span>
+
+<span style="color: #a89984;"># </span><span style="color: #a89984;">--</span>
+<span style="color: #076678;">timer</span> = Timeout(1).start()
+<span style="color: #076678;">thread1</span> = gevent.spawn(wait)
+
+<span style="color: #9d0006;">try</span>:
+<span style="background-color: #ebdbb2;"> </span>   thread1.join(timeout=timer)
+<span style="color: #9d0006;">except</span> Timeout:
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span>(<span style="color: #79740e;">'Thread 1 timed out'</span>)
+
+<span style="color: #a89984;"># </span><span style="color: #a89984;">--</span>
+<span style="color: #076678;">timer</span> = Timeout.start_new(1)
+<span style="color: #076678;">thread2</span> = gevent.spawn(wait)
+
+<span style="color: #9d0006;">try</span>:
+<span style="background-color: #ebdbb2;"> </span>   thread2.get(timeout=timer)
+<span style="color: #9d0006;">except</span> Timeout:
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span>(<span style="color: #79740e;">'Thread 2 timed out'</span>)
+
+<span style="color: #a89984;"># </span><span style="color: #a89984;">--</span>
+<span style="color: #9d0006;">try</span>:
+<span style="background-color: #ebdbb2;"> </span>   gevent.with_timeout(1, wait)
+<span style="color: #9d0006;">except</span> Timeout:
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span>(<span style="color: #79740e;">'Thread 3 timed out'</span>)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org9c74a63" class="outline-3">
+<h3 id="org9c74a63">猴子补丁</h3>
+<div class="outline-text-3" id="text-org9c74a63">
+<p>
+在极端情况下当一个库需要修改Python本身的基础行为的时候，猴子补丁就派上用场了。在这种情况下，gevent能够修改标准库里面
+大部分的阻塞式系统调用，包括socket、ssl、threading和 select等模块，而变为协作式运行。
+</p>
+
+<p>
+例如，Redis的python绑定一般使用常规的tcp socket来与redis-server实例通信。通过简单地调用
+gevent.monkey.patch_all()，可以使得redis的绑定协作式的调度请求，与gevent栈的其它部分一起工作。
+</p>
+
+<p>
+这让我们可以将一般不能与gevent共同工作的库结合起来，而不用写哪怕一行代码。虽然猴子补丁仍然是邪恶的
+(evil)，但在这种情况下它是“有用的邪恶(useful evil)”。
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd105d5e" class="outline-2">
+<h2 id="orgd105d5e">数据结构</h2>
+<div class="outline-text-2" id="text-orgd105d5e">
+</div>
+<div id="outline-container-org921dc16" class="outline-3">
+<h3 id="org921dc16">事件</h3>
+<div class="outline-text-3" id="text-org921dc16">
+<p>
+协程间的通信
+</p>
+
+<ul class="org-ul">
+<li><p>
+<b>event</b>
+</p>
+
+<p>
+事件(event)是一个在Greenlet之间异步通信的形式。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #9d0006;">import</span> gevent
+<span style="color: #9d0006;">from</span> gevent.event <span style="color: #9d0006;">import</span> Event
+<span style="color: #79740e;">'''</span>
+<span style="color: #79740e;">Illustrates the use of events</span>
+<span style="color: #79740e;">'''</span>
+
+<span style="color: #076678;">evt</span> = Event()
+
+
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">setter</span>():
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">'''After 3 seconds, wake all threads waiting on the value of evt'''</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span>(<span style="color: #79740e;">'A: Hey wait for me, I have to do something'</span>)
+<span style="background-color: #ebdbb2;"> </span>   gevent.sleep(3)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span>(<span style="color: #79740e;">"Ok, I'm done"</span>)
+<span style="background-color: #ebdbb2;"> </span>   evt.<span style="color: #af3a03;">set</span>()
+
+
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">waiter</span>():
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">'''After 3 seconds the get call will unblock'''</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span>(<span style="color: #79740e;">"I'll wait for you"</span>)
+<span style="background-color: #ebdbb2;"> </span>   evt.wait()  <span style="color: #a89984;"># </span><span style="color: #a89984;">blocking</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span>(<span style="color: #79740e;">"It's about time"</span>)
+
+
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">main</span>():
+<span style="background-color: #ebdbb2;"> </span>   gevent.joinall([
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   gevent.spawn(setter),
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   gevent.spawn(waiter),
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   gevent.spawn(waiter),
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   gevent.spawn(waiter),
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   gevent.spawn(waiter),
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   gevent.spawn(waiter)
+<span style="background-color: #ebdbb2;"> </span>   ])
+
+main()
+</pre>
+</div></li>
+
+<li><p>
+<b>AsyncResult</b>
+</p>
+
+<p>
+我是老板，让大哥和小弟同事去收账，小弟做完了后，会等大哥来问话。 
+</p>
+
+<p>
+如果小弟没有完成，还在做着事情，那大哥会在一个时间里，等待小弟返回结果。一直等 ！
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #9d0006;">import</span> gevent
+<span style="color: #9d0006;">from</span> gevent.event <span style="color: #9d0006;">import</span> AsyncResult
+
+<span style="color: #076678;">a</span> = AsyncResult()
+
+
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">setter</span>():
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"""</span>
+<span style="color: #79740e; background-color: #ebdbb2;"> </span><span style="color: #79740e;">   After 3 seconds set the result of a.</span>
+<span style="color: #79740e; background-color: #ebdbb2;"> </span><span style="color: #79740e;">   """</span>
+<span style="background-color: #ebdbb2;"> </span>   gevent.sleep(3)
+<span style="background-color: #ebdbb2;"> </span>   a.<span style="color: #af3a03;">set</span>(<span style="color: #79740e;">'Hello!'</span>)
+
+
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">waiter</span>():
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"""</span>
+<span style="color: #79740e; background-color: #ebdbb2;"> </span><span style="color: #79740e;">   After 3 seconds the get call will unblock after the setter</span>
+<span style="color: #79740e; background-color: #ebdbb2;"> </span><span style="color: #79740e;">   puts a value into the AsyncResult.</span>
+<span style="color: #79740e; background-color: #ebdbb2;"> </span><span style="color: #79740e;">   """</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span>(a.get())
+
+
+gevent.joinall([
+<span style="background-color: #ebdbb2;"> </span>   gevent.spawn(setter),
+<span style="background-color: #ebdbb2;"> </span>   gevent.spawn(waiter),
+])
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org865bc55" class="outline-3">
+<h3 id="org865bc55">队列</h3>
+<div class="outline-text-3" id="text-org865bc55">
+<p>
+如果一个Greenlet从队列中取出一项，此项就不会被同时执行的其它Greenlet再取到了
+</p>
+
+<p>
+使用起来和一般队列一样
+</p>
+
+<p>
+put和get操作都有非阻塞的版本，put_nowait和get_nowait不会阻塞，
+然而在操作不能完成时抛出gevent.queue.Empty或gevent.queue.Full异常。
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #9d0006;">import</span> gevent
+<span style="color: #9d0006;">from</span> gevent.queue <span style="color: #9d0006;">import</span> Queue, Empty
+
+<span style="color: #076678;">tasks</span> = Queue(maxsize=3)
+
+<span style="color: #79740e;">"""get_nowait&#38750;&#38459;&#22622;&#65292;&#40664;&#35748;&#38431;&#21015;&#27809;&#26377;&#25968;&#25454;&#20415;&#20250;&#25243;&#20986;gevent.queue.Empty&#24322;&#24120;</span>
+
+<span style="color: #79740e;">get&#26159;&#38459;&#22622;&#30340; &#35774;&#32622;timeout&#21518;&#20415;&#20250;&#22312;&#36229;&#26102;&#20043;&#21518;&#19981;&#38459;&#22622;</span>
+<span style="color: #79740e;">"""</span>
+
+
+<span style="color: #a89984;"># </span><span style="color: #a89984;">while not tasks.empty():</span>
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">worker</span>(n):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">try</span>:
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">while</span> <span style="color: #8f3f71;">True</span>:
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">task</span> = tasks.get(timeout=1)  <span style="color: #a89984;"># </span><span style="color: #a89984;">decrements queue size by 1</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span>(<span style="color: #79740e;">'Worker %s got task %s'</span> % (n, task))
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   gevent.sleep(0)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">except</span> Empty:
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span>(<span style="color: #79740e;">'Quitting time!'</span>)
+
+
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">boss</span>():
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"""</span>
+<span style="color: #79740e; background-color: #ebdbb2;"> </span><span style="color: #79740e;">   Boss will wait to hand out work until a individual worker is</span>
+<span style="color: #79740e; background-color: #ebdbb2;"> </span><span style="color: #79740e;">   free since the maxsize of the task queue is 3.</span>
+<span style="color: #79740e; background-color: #ebdbb2;"> </span><span style="color: #79740e;">   """</span>
+
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">for</span> i <span style="color: #9d0006;">in</span> <span style="color: #af3a03;">xrange</span>(1, 10):
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   tasks.put(i)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span>(<span style="color: #79740e;">'Assigned all work in iteration 1'</span>)
+
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">for</span> i <span style="color: #9d0006;">in</span> <span style="color: #af3a03;">xrange</span>(10, 20):
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   tasks.put(i)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span>(<span style="color: #79740e;">'Assigned all work in iteration 2'</span>)
+
+
+gevent.joinall([
+<span style="background-color: #ebdbb2;"> </span>   gevent.spawn(boss),
+<span style="background-color: #ebdbb2;"> </span>   gevent.spawn(worker, <span style="color: #79740e;">'steve'</span>),
+<span style="background-color: #ebdbb2;"> </span>   gevent.spawn(worker, <span style="color: #79740e;">'john'</span>),
+<span style="background-color: #ebdbb2;"> </span>   gevent.spawn(worker, <span style="color: #79740e;">'bob'</span>),
+])
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org25f5bc3" class="outline-3">
+<h3 id="org25f5bc3">组和池</h3>
+<div class="outline-text-3" id="text-org25f5bc3">
+<p>
+组(group)是一个运行中greenlet的集合，集合中的greenlet像一个组一样会被共同管理和调度。
+它也兼饰了像Python的multiprocessing库那样的平行调度器的角色。
+</p>
+
+<p>
+Group也以不同的方式为分组greenlet/分发工作和收集它们的结果也提供了API
+</p>
+
+<p>
+imap / imap_unordered (有序 无序返回结果)
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #9d0006;">import</span> gevent
+<span style="color: #9d0006;">from</span> gevent <span style="color: #9d0006;">import</span> getcurrent
+<span style="color: #9d0006;">from</span> gevent.pool <span style="color: #9d0006;">import</span> Group
+
+<span style="color: #076678;">group</span> = Group()
+
+
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">hello_from</span>(n):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span>(<span style="color: #79740e;">'Size of group %s'</span> % <span style="color: #af3a03;">len</span>(group))
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span>(<span style="color: #79740e;">'Hello from Greenlet %s'</span> % <span style="color: #af3a03;">id</span>(getcurrent()))
+
+
+group.<span style="color: #af3a03;">map</span>(hello_from, <span style="color: #af3a03;">xrange</span>(3))
+
+
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">intensive</span>(n):
+<span style="background-color: #ebdbb2;"> </span>   gevent.sleep(3 - n)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> <span style="color: #79740e;">'task'</span>, n
+
+
+<span style="color: #9d0006;">print</span>(<span style="color: #79740e;">'Ordered'</span>)
+
+<span style="color: #076678;">ogroup</span> = Group()
+<span style="color: #9d0006;">for</span> i <span style="color: #9d0006;">in</span> ogroup.imap(intensive, <span style="color: #af3a03;">xrange</span>(3)):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span>(i)
+
+<span style="color: #9d0006;">print</span>(<span style="color: #79740e;">'Unordered'</span>)
+
+<span style="color: #076678;">igroup</span> = Group()
+<span style="color: #9d0006;">for</span> i <span style="color: #9d0006;">in</span> igroup.imap_unordered(intensive, <span style="color: #af3a03;">xrange</span>(3)):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span>(i)
+</pre>
+</div>
+
+<p>
+池(pool)是一个为处理数量变化并且需要 <b>限制并发</b> 的greenlet而设计的结构。在需要并行地做很多受限于网络和IO的任务时常常需要用到它。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #9d0006;">import</span> gevent
+<span style="color: #9d0006;">from</span> gevent.pool <span style="color: #9d0006;">import</span> Pool
+
+<span style="color: #076678;">pool</span> = Pool(2)
+
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">hello_from</span>(n):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span>(<span style="color: #79740e;">'Size of pool %s'</span> % <span style="color: #af3a03;">len</span>(pool))
+
+pool.<span style="color: #af3a03;">map</span>(hello_from, <span style="color: #af3a03;">xrange</span>(3))
+
+<span style="color: #a89984;"># </span><span style="color: #a89984;">Size of pool 2</span>
+<span style="color: #a89984;"># </span><span style="color: #a89984;">Size of pool 2</span>
+<span style="color: #a89984;"># </span><span style="color: #a89984;">Size of pool 1</span>
+
+
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #9d0006;">from</span> gevent.pool <span style="color: #9d0006;">import</span> Pool
+
+
+<span style="color: #9d0006;">class</span> <span style="color: #8f3f71;">SocketPool</span>(<span style="color: #af3a03;">object</span>):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"""&#24403;&#26500;&#36896;gevent&#39537;&#21160;&#30340;&#26381;&#21153;&#26102;&#65292;&#32463;&#24120;&#20250;&#23558;&#22260;&#32469;&#19968;&#20010;&#27744;&#32467;&#26500;&#30340;&#25972;&#20010;&#26381;&#21153;&#20316;&#20026;&#20013;&#24515;&#12290;&#19968;&#20010;&#20363;&#23376;&#23601;&#26159;&#22312;&#21508;&#20010;socket&#19978;&#36718;&#35810;&#30340;&#31867;&#12290;</span>
+<span style="color: #79740e; background-color: #ebdbb2;"> </span><span style="color: #79740e;">   """</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">def</span> <span style="color: #b57614;">__init__</span>(<span style="color: #9d0006;">self</span>):
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">self</span>.pool = Pool(1000)
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">self</span>.pool.start()
+
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">def</span> <span style="color: #b57614;">listen</span>(<span style="color: #9d0006;">self</span>, socket):
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">while</span> <span style="color: #8f3f71;">True</span>:
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   socket.recv()
+
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">def</span> <span style="color: #b57614;">add_handler</span>(<span style="color: #9d0006;">self</span>, socket):
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">if</span> <span style="color: #9d0006;">self</span>.pool.full():
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">raise</span> <span style="color: #8f3f71;">Exception</span>(<span style="color: #79740e;">"At maximum pool size"</span>)
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">else</span>:
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">self</span>.pool.spawn(<span style="color: #9d0006;">self</span>.listen, socket)
+
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">def</span> <span style="color: #b57614;">shutdown</span>(<span style="color: #9d0006;">self</span>):
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">self</span>.pool.kill()
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgbd9571a" class="outline-3">
+<h3 id="orgbd9571a">锁和信号量</h3>
+<div class="outline-text-3" id="text-orgbd9571a">
+<p>
+信号量是一个允许greenlet相互合作，限制并发访问或运行的低层次的同步原语
+</p>
+
+<p>
+信号量有两个方法，acquire和release。
+在信号量是否已经被 acquire或release，和拥有资源的数量之间不同，被称为此信号量的范围 
+(the bound of the semaphore)。
+如果一个信号量的范围已经降低到0，它会阻塞acquire操作直到另一个已经获得信号量的greenlet作出释放。
+</p>
+
+<p>
+范围为1的信号量也称为锁(lock)。它向单个greenlet提供了互斥访问。信号量和锁常常用来保证资源只在程序上下文被单次使用。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #9d0006;">from</span> gevent <span style="color: #9d0006;">import</span> sleep
+<span style="color: #9d0006;">from</span> gevent.pool <span style="color: #9d0006;">import</span> Pool
+<span style="color: #9d0006;">try</span>:
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">from</span> gevent.coros <span style="color: #9d0006;">import</span> BoundedSemaphore
+<span style="color: #9d0006;">except</span>:
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">from</span> gevent.lock <span style="color: #9d0006;">import</span> BoundedSemaphore
+
+<span style="color: #076678;">sem</span> = BoundedSemaphore(2)
+
+
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">worker1</span>(n):
+<span style="background-color: #ebdbb2;"> </span>   sem.acquire()
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span>(<span style="color: #79740e;">'Worker %i acquired semaphore'</span> % n)
+<span style="background-color: #ebdbb2;"> </span>   sleep(0)
+<span style="background-color: #ebdbb2;"> </span>   sem.release()
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span>(<span style="color: #79740e;">'Worker %i released semaphore'</span> % n)
+
+
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">worker2</span>(n):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">with</span> sem:
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span>(<span style="color: #79740e;">'Worker %i acquired semaphore'</span> % n)
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   sleep(0)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span>(<span style="color: #79740e;">'Worker %i released semaphore'</span> % n)
+
+
+<span style="color: #076678;">pool</span> = Pool()
+pool.<span style="color: #af3a03;">map</span>(worker1, <span style="color: #af3a03;">xrange</span>(0, 2))
+pool.<span style="color: #af3a03;">map</span>(worker2, <span style="color: #af3a03;">xrange</span>(3, 6))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org733c6b1" class="outline-3">
+<h3 id="org733c6b1">线程局部变量</h3>
+<div class="outline-text-3" id="text-org733c6b1">
+<p>
+Gevent也允许你指定局部于greenlet上下文的数据。在内部，它被实现为以greenlet的getcurrent()为键，在一个私有命名空间寻址的全局查找。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #9d0006;">import</span> gevent
+<span style="color: #9d0006;">from</span> gevent.local <span style="color: #9d0006;">import</span> local
+
+<span style="color: #076678;">stash</span> = local()
+
+
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">f1</span>():
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">stash.x</span> = 1
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span>(stash.x)
+
+
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">f2</span>():
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">stash.y</span> = 2
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span>(stash.y)
+
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">try</span>:
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   stash.x
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">except</span> <span style="color: #8f3f71;">AttributeError</span>:
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span>(<span style="color: #79740e;">"x is not local to f2"</span>)
+
+
+<span style="color: #076678;">g1</span> = gevent.spawn(f1)
+<span style="color: #076678;">g2</span> = gevent.spawn(f2)
+
+gevent.joinall([g1, g2])
+</pre>
+</div>
+
+<p>
+很多集成了gevent的web框架将 <b>HTTP会话对象</b>  以线程局部变量的方式存储在gevent内。
+例如使用Werkzeug实用库和它的proxy对象，我们可以创建Flask风格的请求对象。
+</p>
+
+<p>
+Werkzeug 是一个 WSGI 工具包，它可以作为一个 Web 框架的底层库
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #9d0006;">from</span> gevent.local <span style="color: #9d0006;">import</span> local
+<span style="color: #9d0006;">from</span> werkzeug.local <span style="color: #9d0006;">import</span> LocalProxy
+<span style="color: #9d0006;">from</span> werkzeug.wrappers <span style="color: #9d0006;">import</span> Request
+<span style="color: #9d0006;">from</span> contextlib <span style="color: #9d0006;">import</span> contextmanager
+<span style="color: #9d0006;">try</span>:
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">from</span> gevent.wsgi <span style="color: #9d0006;">import</span> WSGIServer
+<span style="color: #9d0006;">except</span>:
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">from</span> gevent.pywsgi <span style="color: #9d0006;">import</span> WSGIServer
+
+<span style="color: #076678;">_requests</span> = local()
+<span style="color: #076678;">request</span> = LocalProxy(<span style="color: #9d0006;">lambda</span>: _requests.request)
+
+
+<span style="color: #8f3f71;">@contextmanager</span>
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">sessionmanager</span>(environ):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">_requests.request</span> = Request(environ)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">yield</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">_requests.request</span> = <span style="color: #8f3f71;">None</span>
+
+
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">logic</span>():
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> <span style="color: #79740e;">"Hello "</span> + request.remote_addr
+
+
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">application</span>(environ, start_response):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">status</span> = <span style="color: #79740e;">'200 OK'</span>
+
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">with</span> sessionmanager(environ):
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">body</span> = logic()
+
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">headers</span> = [(<span style="color: #79740e;">'Content-Type'</span>, <span style="color: #79740e;">'text/html'</span>)]
+
+<span style="background-color: #ebdbb2;"> </span>   start_response(status, headers)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> [body]
+
+
+WSGIServer((<span style="color: #79740e;">''</span>, 8000), application).serve_forever()
+
+<span style="color: #a89984;"># </span><span style="color: #a89984;">http://127.0.0.1:8000/</span>
+<span style="color: #a89984;"># </span><span style="color: #a89984;">Hello ::ffff:127.0.0.1</span>
+</pre>
+</div>
+
+<p>
+Flask系统比这个例子复杂一点，然而使用线程局部变量作为局部的会话存储，这个思想是相同的。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9037368" class="outline-3">
+<h3 id="org9037368">子进程</h3>
+<div class="outline-text-3" id="text-org9037368">
+<p>
+自gevent 1.0起，gevent.subprocess，一个Python subprocess模块的修补版本已经添加。它支持协作式的等待子进程。
+</p>
+
+<p>
+Python rstrip() 删除 string 字符串末尾的指定字符（默认为空格）
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">
+<span style="color: #9d0006;">import</span> gevent
+<span style="color: #9d0006;">from</span> gevent.subprocess <span style="color: #9d0006;">import</span> Popen, PIPE
+
+
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">cron</span>():
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">while</span> <span style="color: #8f3f71;">True</span>:
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span>(<span style="color: #79740e;">"cron"</span>)
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   gevent.sleep(0.2)
+
+
+<span style="color: #076678;">g</span> = gevent.spawn(cron)
+<span style="color: #076678;">sub</span> = Popen([<span style="color: #79740e;">'sleep 1; uname'</span>], stdout=PIPE, shell=<span style="color: #8f3f71;">True</span>)
+<span style="color: #076678;">out</span>, <span style="color: #076678;">err</span> = sub.communicate()
+g.kill()
+<span style="color: #9d0006;">print</span>(out.rstrip())
+
+<span style="color: #a89984;">#</span><span style="color: #a89984;">cron</span>
+<span style="color: #a89984;">#</span><span style="color: #a89984;">cron</span>
+<span style="color: #a89984;">#</span><span style="color: #a89984;">cron</span>
+<span style="color: #a89984;">#</span><span style="color: #a89984;">cron</span>
+<span style="color: #a89984;">#</span><span style="color: #a89984;">cron</span>
+<span style="color: #a89984;">#</span><span style="color: #a89984;">cron</span>
+<span style="color: #a89984;">#</span><span style="color: #a89984;">Darwin</span>
+
+</pre>
+</div>
+
+<p>
+gevent 与 multiprocessing 分别创建子进程后,通信
+</p>
+
+<p>
+最明显的挑战之一就是multiprocessing提供的进程间通信默认不是协作式的
+</p>
+
+<p>
+<code>multiprocessing.Connection</code> 的对象(例如Pipe)暴露了它们下面的文件描述符(file descriptor)，
+</p>
+
+<p>
+<code>gevent.socket.wait_read</code> 和 <code>wait_write</code> 可以用来在直接读写之前协作式的等待ready-to-read/ready-to-write事件。
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #9d0006;">import</span> gevent
+<span style="color: #9d0006;">from</span> multiprocessing <span style="color: #9d0006;">import</span> Process, Pipe
+<span style="color: #9d0006;">from</span> gevent.socket <span style="color: #9d0006;">import</span> wait_read, wait_write
+
+<span style="color: #a89984;"># </span><span style="color: #a89984;">To Process</span>
+<span style="color: #076678;">a</span>, <span style="color: #076678;">b</span> = Pipe()
+
+<span style="color: #a89984;"># </span><span style="color: #a89984;">From Process</span>
+<span style="color: #076678;">c</span>, <span style="color: #076678;">d</span> = Pipe()
+
+
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">relay</span>():
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">for</span> i <span style="color: #9d0006;">in</span> <span style="color: #af3a03;">xrange</span>(10):
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">msg</span> = b.recv()
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   c.send(msg + <span style="color: #79740e;">" in "</span> + <span style="color: #af3a03;">str</span>(i))
+
+
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">put_msg</span>():
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">for</span> i <span style="color: #9d0006;">in</span> <span style="color: #af3a03;">xrange</span>(10):
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   wait_write(a.fileno())
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   a.send(<span style="color: #79740e;">'hi'</span>)
+
+
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">get_msg</span>():
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">for</span> i <span style="color: #9d0006;">in</span> <span style="color: #af3a03;">xrange</span>(10):
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   wait_read(d.fileno())
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span>(d.recv())
+
+
+<span style="color: #076678;">proc</span> = Process(target=relay)
+proc.start()
+
+<span style="color: #076678;">g1</span> = gevent.spawn(get_msg)
+<span style="color: #076678;">g2</span> = gevent.spawn(put_msg)
+gevent.joinall([g1, g2], timeout=1)
+
+<span style="color: #79740e;">"""</span>
+<span style="color: #79740e;">hi in 0</span>
+<span style="color: #79740e;">hi in 1</span>
+<span style="color: #79740e;">hi in 2</span>
+<span style="color: #79740e;">hi in 3</span>
+<span style="color: #79740e;">hi in 4</span>
+<span style="color: #79740e;">hi in 5</span>
+<span style="color: #79740e;">hi in 6</span>
+<span style="color: #79740e;">hi in 7</span>
+<span style="color: #79740e;">hi in 8</span>
+<span style="color: #79740e;">hi in 9</span>
+
+<span style="color: #79740e;">hi -&gt; a -&gt;b -&gt; c -&gt; d </span>
+<span style="color: #79740e;">"""</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org93eea23" class="outline-3">
+<h3 id="org93eea23">Actors</h3>
+<div class="outline-text-3" id="text-org93eea23">
+<p>
+actor模型是一个由于Erlang变得普及的 <b>更高层的并发模型</b> 。
+简单的说它的主要思想就是:
+<b>许多个独立的Actor，每个Actor有一个可以从其它Actor接收消息的收件箱。
+Actor内部的主循环遍历它收到的消息，并根据它期望的行为来采取行动</b> 
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #9d0006;">import</span> gevent
+<span style="color: #9d0006;">from</span> gevent.queue <span style="color: #9d0006;">import</span> Queue
+<span style="color: #9d0006;">from</span> gevent <span style="color: #9d0006;">import</span> Greenlet
+
+
+<span style="color: #9d0006;">class</span> <span style="color: #8f3f71;">Actor</span>(gevent.Greenlet):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">def</span> <span style="color: #b57614;">__init__</span>(<span style="color: #9d0006;">self</span>):
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">self</span>.inbox = Queue()
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   Greenlet.__init__(<span style="color: #9d0006;">self</span>)
+
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">def</span> <span style="color: #b57614;">receive</span>(<span style="color: #9d0006;">self</span>, message):
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"""</span>
+<span style="color: #79740e; background-color: #ebdbb2;"> </span><span style="color: #79740e;">   </span><span style="color: #79740e; background-color: #ebdbb2;"> </span><span style="color: #79740e;">   Define in your subclass.</span>
+<span style="color: #79740e; background-color: #ebdbb2;"> </span><span style="color: #79740e;">   </span><span style="color: #79740e; background-color: #ebdbb2;"> </span><span style="color: #79740e;">   """</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">raise</span> <span style="color: #8f3f71;">NotImplemented</span>()
+
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">def</span> <span style="color: #b57614;">_run</span>(<span style="color: #9d0006;">self</span>):
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">self</span>.running = <span style="color: #8f3f71;">True</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">while</span> <span style="color: #9d0006;">self</span>.running:
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">message</span> = <span style="color: #9d0006;">self</span>.inbox.get()
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">self</span>.receive(message)
+
+
+<span style="color: #9d0006;">class</span> <span style="color: #8f3f71;">Pinger</span>(Actor):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">def</span> <span style="color: #b57614;">receive</span>(<span style="color: #9d0006;">self</span>, message):
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span>(<span style="color: #79740e;">"ping: %s "</span> % message)
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   pong.inbox.put(<span style="color: #79740e;">'ping send to pong'</span>)
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   gevent.sleep(0)
+
+
+<span style="color: #9d0006;">class</span> <span style="color: #8f3f71;">Ponger</span>(Actor):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">def</span> <span style="color: #b57614;">receive</span>(<span style="color: #9d0006;">self</span>, message):
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span>(<span style="color: #79740e;">"pong: %s"</span> % message)
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   ping.inbox.put(<span style="color: #79740e;">'pong'</span>)
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   gevent.sleep(0)
+
+
+<span style="color: #076678;">ping</span> = Pinger()
+<span style="color: #076678;">pong</span> = Ponger()
+
+ping.start()
+pong.start()
+
+ping.inbox.put(<span style="color: #79740e;">'start'</span>)
+gevent.joinall([ping, pong])
+
+<span style="color: #a89984;">#</span><span style="color: #a89984;">&#26080;&#38480;&#24490;&#29615;</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org21e8dfc" class="outline-2">
+<h2 id="org21e8dfc">应用</h2>
+<div class="outline-text-2" id="text-org21e8dfc">
+</div>
+<div id="outline-container-org9a89f15" class="outline-3">
+<h3 id="org9a89f15">Gevent ZeroMQ</h3>
+</div>
+<div id="outline-container-orgc76866b" class="outline-3">
+<h3 id="orgc76866b">简单server</h3>
+</div>
+<div id="outline-container-org31d6728" class="outline-3">
+<h3 id="org31d6728">WSGI Servers</h3>
+</div>
+<div id="outline-container-org3b04a51" class="outline-3">
+<h3 id="org3b04a51">流式server</h3>
+</div>
+<div id="outline-container-org05c5e25" class="outline-3">
+<h3 id="org05c5e25">Long Polling</h3>
+</div>
+<div id="outline-container-orgfd2c449" class="outline-3">
+<h3 id="orgfd2c449">Websockets</h3>
+</div>
+<div id="outline-container-orgdf9e514" class="outline-3">
+<h3 id="orgdf9e514">聊天server</h3>
+</div>
+</div>
+</div>
+</body>
+</html>
