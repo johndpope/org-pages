@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-01-24 Thu 22:05 -->
+<!-- 2019-01-24 Thu 22:54 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>jvm 虚拟机学习</title>
@@ -180,8 +180,8 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
-<!-- <link rel="stylesheet" type="text/css" href="https://www.manue1.site/css/style.css" /> -->
-<link rel="stylesheet" type="text/css" href="http://www.langdebuqing.com/css/style.css" />
+<link rel="stylesheet" type="text/css" href="https://www.manue1.site/css/style.css" />
+<!-- <link rel="stylesheet" type="text/css" href="http://www.langdebuqing.com/css/style.css" /> -->
 <link rel="shortcut icon" href="http://www.langdebuqing.com/images/favicon.ico" type="image/x-icon" />
 <script type="text/javascript">
 /*
@@ -240,7 +240,7 @@ for the JavaScript code in this tag.
         <li class="search">
             <form action="http://google.com/search" method="get" accept-charset="utf-8">
                 <input type="search" id="search" name="q" autocomplete="off" maxlength="30" placeholder="Search..">
-                <input type="hidden" name="q" value="site:www.manue1.com">
+                <input type="hidden" name="q" value="site:www.manue1.site">
             </form>
         </li>
     </ul>
@@ -252,19 +252,19 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgda4a7aa">1. jvm</a>
+<li><a href="#orgf683cf8">1. jvm</a>
 <ul>
-<li><a href="#orga3bf989">1.1. Q &amp; A</a></li>
-<li><a href="#org9ca3341">1.2. 深入理解Java虚拟机</a>
+<li><a href="#org415d6b7">1.1. Q &amp; A</a></li>
+<li><a href="#orga665c20">1.2. 深入理解Java虚拟机</a>
 <ul>
-<li><a href="#org875b7fe">1.2.1. 自动内存管理机制</a>
+<li><a href="#org528cf84">1.2.1. 自动内存管理机制</a>
 <ul>
-<li><a href="#orgbbfc1f0">1.2.1.1. java内存区域与内存溢出异常</a></li>
-<li><a href="#orga36969a">1.2.1.2. 垃圾回收器与内存分配策略</a></li>
-<li><a href="#org795598d">1.2.1.3. jvm监控与故障处理工具</a></li>
+<li><a href="#org3dd159c">1.2.1.1. java内存区域与内存溢出异常</a></li>
+<li><a href="#org6750533">1.2.1.2. 垃圾回收器与内存分配策略</a></li>
+<li><a href="#orgc7098fc">1.2.1.3. jvm监控与故障处理工具</a></li>
 </ul>
 </li>
-<li><a href="#org15c6bb7">1.2.2. 高效并发</a></li>
+<li><a href="#orgc9e88e8">1.2.2. 高效并发</a></li>
 </ul>
 </li>
 </ul>
@@ -272,12 +272,12 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgda4a7aa" class="outline-2">
-<h2 id="orgda4a7aa"><span class="section-number-2">1</span> jvm</h2>
+<div id="outline-container-orgf683cf8" class="outline-2">
+<h2 id="orgf683cf8"><span class="section-number-2">1</span> jvm</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-orga3bf989" class="outline-3">
-<h3 id="orga3bf989"><span class="section-number-3">1.1</span> Q &amp; A</h3>
+<div id="outline-container-org415d6b7" class="outline-3">
+<h3 id="org415d6b7"><span class="section-number-3">1.1</span> Q &amp; A</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li>垃圾回收器需要关注的内容：
@@ -301,23 +301,23 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-org9ca3341" class="outline-3">
-<h3 id="org9ca3341"><span class="section-number-3">1.2</span> 深入理解Java虚拟机</h3>
+<div id="outline-container-orga665c20" class="outline-3">
+<h3 id="orga665c20"><span class="section-number-3">1.2</span> 深入理解Java虚拟机</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 周志明. 深入理解Java虚拟机
 </p>
 </div>
-<div id="outline-container-org875b7fe" class="outline-4">
-<h4 id="org875b7fe"><span class="section-number-4">1.2.1</span> 自动内存管理机制</h4>
+<div id="outline-container-org528cf84" class="outline-4">
+<h4 id="org528cf84"><span class="section-number-4">1.2.1</span> 自动内存管理机制</h4>
 <div class="outline-text-4" id="text-1-2-1">
 </div>
-<div id="outline-container-orgbbfc1f0" class="outline-5">
-<h5 id="orgbbfc1f0"><span class="section-number-5">1.2.1.1</span> java内存区域与内存溢出异常</h5>
+<div id="outline-container-org3dd159c" class="outline-5">
+<h5 id="org3dd159c"><span class="section-number-5">1.2.1.1</span> java内存区域与内存溢出异常</h5>
 <div class="outline-text-5" id="text-1-2-1-1">
 </div>
 <ol class="org-ol">
-<li><a id="org6417be3"></a>运行时数据区域<br />
+<li><a id="org83ecd97"></a>运行时数据区域<br />
 <div class="outline-text-6" id="text-1-2-1-1-1">
 <pre class="example">
   线程共享数据区     线程隔离数据区
@@ -423,7 +423,7 @@ OutOfMemoryError
 </div>
 </li>
 
-<li><a id="orgffe822a"></a>对象访问<br />
+<li><a id="orgb4ec739"></a>对象访问<br />
 <div class="outline-text-6" id="text-1-2-1-1-2">
 <p>
 最简单的访问,也会涉及java stack, java heap , method area 这三个最重要的内存区域
@@ -509,7 +509,7 @@ reference变量中直接存储的就是对象的地址
 </pre>
 </div>
 </li>
-<li><a id="orgada9d8c"></a>OutOfMemoryError异常<br />
+<li><a id="orgc495998"></a>OutOfMemoryError异常<br />
 <div class="outline-text-6" id="text-1-2-1-1-3">
 <p>
 内存 泄漏（ Memory Leak） 
@@ -583,12 +583,12 @@ PermGen space 永久代 常量池溢出
 </ol>
 </div>
 
-<div id="outline-container-orga36969a" class="outline-5">
-<h5 id="orga36969a"><span class="section-number-5">1.2.1.2</span> 垃圾回收器与内存分配策略</h5>
+<div id="outline-container-org6750533" class="outline-5">
+<h5 id="org6750533"><span class="section-number-5">1.2.1.2</span> 垃圾回收器与内存分配策略</h5>
 <div class="outline-text-5" id="text-1-2-1-2">
 </div>
 <ol class="org-ol">
-<li><a id="org81634be"></a>为什么要回收和分配<br />
+<li><a id="org34b8a34"></a>为什么要回收和分配<br />
 <div class="outline-text-6" id="text-1-2-1-2-1">
 <ol class="org-ol">
 <li><p>
@@ -647,7 +647,7 @@ java采用根搜索算法来判断对象是否存活,以GC root的对象作为�
 </div>
 </li>
 
-<li><a id="org730870b"></a>垃圾收集算法<br />
+<li><a id="orgdd17806"></a>垃圾收集算法<br />
 <div class="outline-text-6" id="text-1-2-1-2-2">
 <ol class="org-ol">
 <li>标记-清除算法
@@ -672,8 +672,8 @@ java采用根搜索算法来判断对象是否存活,以GC root的对象作为�
 </ol>
 </div>
 
-<div id="outline-container-org795598d" class="outline-5">
-<h5 id="org795598d"><span class="section-number-5">1.2.1.3</span> jvm监控与故障处理工具</h5>
+<div id="outline-container-orgc7098fc" class="outline-5">
+<h5 id="orgc7098fc"><span class="section-number-5">1.2.1.3</span> jvm监控与故障处理工具</h5>
 <div class="outline-text-5" id="text-1-2-1-3">
 <ol class="org-ol">
 <li>jps jinfo
@@ -705,8 +705,8 @@ jconsole
 </div>
 </div>
 
-<div id="outline-container-org15c6bb7" class="outline-4">
-<h4 id="org15c6bb7"><span class="section-number-4">1.2.2</span> 高效并发</h4>
+<div id="outline-container-orgc9e88e8" class="outline-4">
+<h4 id="orgc9e88e8"><span class="section-number-4">1.2.2</span> 高效并发</h4>
 <div class="outline-text-4" id="text-1-2-2">
 <ol class="org-ol">
 <li><p>
@@ -746,10 +746,10 @@ java.lang.Thread类的实例就是一个线程
     <a href="https://www.gnu.org/software/emacs/">Emacs</a>
     <a href="http://orgmode.org/">Org mode</a> 编辑和构建
 </p>
-<!-- <script src="https://www.manue1.com/css/jquery-2.1.3.min.js"></script>
-     <script src="https://www.manue1.com/css/main.js"></script> -->
-<script src="http://www.langdebuqing.com/css/jquery-2.1.3.min.js"></script>
-<script src="http://www.langdebuqing.com/css/main.js"></script>
+<script src="https://www.manue1.site/css/jquery-2.1.3.min.js"></script>
+<script src="https://www.manue1.site/css/main.js"></script>
+<!-- <script src="http://www.langdebuqing.com/css/jquery-2.1.3.min.js"></script>
+     <script src="http://www.langdebuqing.com/css/main.js"></script> -->
 </div>
 </body>
 </html>

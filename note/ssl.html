@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-01-24 Thu 22:05 -->
+<!-- 2019-01-24 Thu 22:54 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>https站点证书配置</title>
@@ -180,8 +180,8 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
-<!-- <link rel="stylesheet" type="text/css" href="https://www.manue1.site/css/style.css" /> -->
-<link rel="stylesheet" type="text/css" href="http://www.langdebuqing.com/css/style.css" />
+<link rel="stylesheet" type="text/css" href="https://www.manue1.site/css/style.css" />
+<!-- <link rel="stylesheet" type="text/css" href="http://www.langdebuqing.com/css/style.css" /> -->
 <link rel="shortcut icon" href="http://www.langdebuqing.com/images/favicon.ico" type="image/x-icon" />
 <script type="text/javascript">
 /*
@@ -240,7 +240,7 @@ for the JavaScript code in this tag.
         <li class="search">
             <form action="http://google.com/search" method="get" accept-charset="utf-8">
                 <input type="search" id="search" name="q" autocomplete="off" maxlength="30" placeholder="Search..">
-                <input type="hidden" name="q" value="site:www.manue1.com">
+                <input type="hidden" name="q" value="site:www.manue1.site">
             </form>
         </li>
     </ul>
@@ -252,9 +252,9 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org8ec795d">1. 证书配置安装</a></li>
-<li><a href="#org88f968f">2. 证书定期更新</a></li>
-<li><a href="#orgd0dd2c3">3. nginx调用证书</a></li>
+<li><a href="#orge153a06">1. 证书配置安装</a></li>
+<li><a href="#org629e606">2. 证书定期更新</a></li>
+<li><a href="#org907b63f">3. nginx调用证书</a></li>
 </ul>
 </div>
 </div>
@@ -276,8 +276,8 @@ let's encrypt优点:
 
 
 
-<div id="outline-container-org8ec795d" class="outline-2">
-<h2 id="org8ec795d"><span class="section-number-2">1</span> 证书配置安装</h2>
+<div id="outline-container-orge153a06" class="outline-2">
+<h2 id="orge153a06"><span class="section-number-2">1</span> 证书配置安装</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 let's encrypt 使用certbot这款软件管理电子证书，在安装certbot过程中，提示
@@ -304,8 +304,8 @@ certbot certonly --standalone -d manue1.site -d www.manue1.site -m manue1@foxmai
 </div>
 </div>
 
-<div id="outline-container-org88f968f" class="outline-2">
-<h2 id="org88f968f"><span class="section-number-2">2</span> 证书定期更新</h2>
+<div id="outline-container-org629e606" class="outline-2">
+<h2 id="org629e606"><span class="section-number-2">2</span> 证书定期更新</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 crontab 每两月更新证书信息，避免失效, <code>--pre-hook</code> 代表 执行前需要处理的任务，
@@ -319,8 +319,8 @@ crontab 每两月更新证书信息，避免失效, <code>--pre-hook</code> 代�
 </div>
 </div>
 
-<div id="outline-container-orgd0dd2c3" class="outline-2">
-<h2 id="orgd0dd2c3"><span class="section-number-2">3</span> nginx调用证书</h2>
+<div id="outline-container-org907b63f" class="outline-2">
+<h2 id="org907b63f"><span class="section-number-2">3</span> nginx调用证书</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 将所有80端口流量转发到443端口,443端口服务配上证书认证
@@ -369,10 +369,10 @@ server {
     <a href="https://www.gnu.org/software/emacs/">Emacs</a>
     <a href="http://orgmode.org/">Org mode</a> 编辑和构建
 </p>
-<!-- <script src="https://www.manue1.com/css/jquery-2.1.3.min.js"></script>
-     <script src="https://www.manue1.com/css/main.js"></script> -->
-<script src="http://www.langdebuqing.com/css/jquery-2.1.3.min.js"></script>
-<script src="http://www.langdebuqing.com/css/main.js"></script>
+<script src="https://www.manue1.site/css/jquery-2.1.3.min.js"></script>
+<script src="https://www.manue1.site/css/main.js"></script>
+<!-- <script src="http://www.langdebuqing.com/css/jquery-2.1.3.min.js"></script>
+     <script src="http://www.langdebuqing.com/css/main.js"></script> -->
 </div>
 </body>
 </html>

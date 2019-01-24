@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-01-24 Thu 22:05 -->
+<!-- 2019-01-24 Thu 22:54 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>199. Binary Tree Right Side View</title>
@@ -180,8 +180,8 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
-<!-- <link rel="stylesheet" type="text/css" href="https://www.manue1.site/css/style.css" /> -->
-<link rel="stylesheet" type="text/css" href="http://www.langdebuqing.com/css/style.css" />
+<link rel="stylesheet" type="text/css" href="https://www.manue1.site/css/style.css" />
+<!-- <link rel="stylesheet" type="text/css" href="http://www.langdebuqing.com/css/style.css" /> -->
 <link rel="shortcut icon" href="http://www.langdebuqing.com/images/favicon.ico" type="image/x-icon" />
 <script type="text/javascript">
 /*
@@ -240,7 +240,7 @@ for the JavaScript code in this tag.
         <li class="search">
             <form action="http://google.com/search" method="get" accept-charset="utf-8">
                 <input type="search" id="search" name="q" autocomplete="off" maxlength="30" placeholder="Search..">
-                <input type="hidden" name="q" value="site:www.manue1.com">
+                <input type="hidden" name="q" value="site:www.manue1.site">
             </form>
         </li>
     </ul>
@@ -252,21 +252,21 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgf9801fa">1. 题意分析</a></li>
-<li><a href="#orgd8fd121">2. 一、Depth-First Search</a>
+<li><a href="#org8213ac9">1. 题意分析</a></li>
+<li><a href="#org96942dd">2. 一、Depth-First Search</a>
 <ul>
-<li><a href="#org510bf7b">2.1. 1.1 java 实现DFS</a></li>
-<li><a href="#orgb921183">2.2. 1.2 python 实现DFS</a></li>
+<li><a href="#org3b99ae2">2.1. 1.1 java 实现DFS</a></li>
+<li><a href="#org87bf35e">2.2. 1.2 python 实现DFS</a></li>
 </ul>
 </li>
-<li><a href="#org4689f1e">3. 二、Breadth-First-Search</a>
+<li><a href="#orgee7ec62">3. 二、Breadth-First-Search</a>
 <ul>
-<li><a href="#org2097d46">3.1. 2.1 java</a></li>
+<li><a href="#orgefef5db">3.1. 2.1 java</a></li>
 </ul>
 </li>
-<li><a href="#org8e71cf2">4. 三、Traversal</a>
+<li><a href="#org293e9ea">4. 三、Traversal</a>
 <ul>
-<li><a href="#org75937c0">4.1. 3.1 java</a></li>
+<li><a href="#org5f87ea0">4.1. 3.1 java</a></li>
 </ul>
 </li>
 </ul>
@@ -297,8 +297,8 @@ Explanation:
   5     4       &lt;---
 </pre>
 
-<div id="outline-container-orgf9801fa" class="outline-2">
-<h2 id="orgf9801fa"><span class="section-number-2">1</span> 题意分析</h2>
+<div id="outline-container-org8213ac9" class="outline-2">
+<h2 id="org8213ac9"><span class="section-number-2">1</span> 题意分析</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 站在树右边 视野能够看到的节点
@@ -306,8 +306,8 @@ Explanation:
 </div>
 </div>
 
-<div id="outline-container-orgd8fd121" class="outline-2">
-<h2 id="orgd8fd121"><span class="section-number-2">2</span> 一、Depth-First Search</h2>
+<div id="outline-container-org96942dd" class="outline-2">
+<h2 id="org96942dd"><span class="section-number-2">2</span> 一、Depth-First Search</h2>
 <div class="outline-text-2" id="text-2">
 <pre class="example">
 1.深度遍历：根结点 ---&gt; 左子树 ---&gt; 右子树,保证同一层最后一个录入栈内的数据为最右节点
@@ -316,8 +316,8 @@ Explanation:
 </pre>
 </div>
 
-<div id="outline-container-org510bf7b" class="outline-3">
-<h3 id="org510bf7b"><span class="section-number-3">2.1</span> 1.1 java 实现DFS</h3>
+<div id="outline-container-org3b99ae2" class="outline-3">
+<h3 id="org3b99ae2"><span class="section-number-3">2.1</span> 1.1 java 实现DFS</h3>
 <div class="outline-text-3" id="text-2-1">
 <div class="org-src-container">
 <pre class="src src-java"><span style="color: #79740e;">/**</span>
@@ -369,8 +369,8 @@ Explanation:
 </div>
 </div>
 
-<div id="outline-container-orgb921183" class="outline-3">
-<h3 id="orgb921183"><span class="section-number-3">2.2</span> 1.2 python 实现DFS</h3>
+<div id="outline-container-org87bf35e" class="outline-3">
+<h3 id="org87bf35e"><span class="section-number-3">2.2</span> 1.2 python 实现DFS</h3>
 <div class="outline-text-3" id="text-2-2">
 <pre class="example">
 list作为stack栈使用
@@ -405,8 +405,8 @@ list作为stack栈使用
 </div>
 </div>
 
-<div id="outline-container-org4689f1e" class="outline-2">
-<h2 id="org4689f1e"><span class="section-number-2">3</span> 二、Breadth-First-Search</h2>
+<div id="outline-container-orgee7ec62" class="outline-2">
+<h2 id="orgee7ec62"><span class="section-number-2">3</span> 二、Breadth-First-Search</h2>
 <div class="outline-text-2" id="text-3">
 <pre class="example">
 1. 广度优先遍历 根节点--&gt;右节点--&gt;左节点 需要将每层最右端数据第一个录入到队列
@@ -414,8 +414,8 @@ list作为stack栈使用
 
 </pre>
 </div>
-<div id="outline-container-org2097d46" class="outline-3">
-<h3 id="org2097d46"><span class="section-number-3">3.1</span> 2.1 java</h3>
+<div id="outline-container-orgefef5db" class="outline-3">
+<h3 id="orgefef5db"><span class="section-number-3">3.1</span> 2.1 java</h3>
 <div class="outline-text-3" id="text-3-1">
 <div class="org-src-container">
 <pre class="src src-java"><span style="color: #79740e;">/**</span>
@@ -462,12 +462,12 @@ list作为stack栈使用
 </div>
 </div>
 
-<div id="outline-container-org8e71cf2" class="outline-2">
-<h2 id="org8e71cf2"><span class="section-number-2">4</span> 三、Traversal</h2>
+<div id="outline-container-org293e9ea" class="outline-2">
+<h2 id="org293e9ea"><span class="section-number-2">4</span> 三、Traversal</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-org75937c0" class="outline-3">
-<h3 id="org75937c0"><span class="section-number-3">4.1</span> 3.1 java</h3>
+<div id="outline-container-org5f87ea0" class="outline-3">
+<h3 id="org5f87ea0"><span class="section-number-3">4.1</span> 3.1 java</h3>
 <div class="outline-text-3" id="text-4-1">
 <div class="org-src-container">
 <pre class="src src-java">
@@ -503,10 +503,10 @@ list作为stack栈使用
     <a href="https://www.gnu.org/software/emacs/">Emacs</a>
     <a href="http://orgmode.org/">Org mode</a> 编辑和构建
 </p>
-<!-- <script src="https://www.manue1.com/css/jquery-2.1.3.min.js"></script>
-     <script src="https://www.manue1.com/css/main.js"></script> -->
-<script src="http://www.langdebuqing.com/css/jquery-2.1.3.min.js"></script>
-<script src="http://www.langdebuqing.com/css/main.js"></script>
+<script src="https://www.manue1.site/css/jquery-2.1.3.min.js"></script>
+<script src="https://www.manue1.site/css/main.js"></script>
+<!-- <script src="http://www.langdebuqing.com/css/jquery-2.1.3.min.js"></script>
+     <script src="http://www.langdebuqing.com/css/main.js"></script> -->
 </div>
 </body>
 </html>

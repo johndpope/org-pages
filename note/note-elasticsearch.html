@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-01-24 Thu 22:05 -->
+<!-- 2019-01-24 Thu 22:54 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>elasticsearch 常用知识梳理</title>
@@ -180,8 +180,8 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
-<!-- <link rel="stylesheet" type="text/css" href="https://www.manue1.site/css/style.css" /> -->
-<link rel="stylesheet" type="text/css" href="http://www.langdebuqing.com/css/style.css" />
+<link rel="stylesheet" type="text/css" href="https://www.manue1.site/css/style.css" />
+<!-- <link rel="stylesheet" type="text/css" href="http://www.langdebuqing.com/css/style.css" /> -->
 <link rel="shortcut icon" href="http://www.langdebuqing.com/images/favicon.ico" type="image/x-icon" />
 <script type="text/javascript">
 /*
@@ -240,7 +240,7 @@ for the JavaScript code in this tag.
         <li class="search">
             <form action="http://google.com/search" method="get" accept-charset="utf-8">
                 <input type="search" id="search" name="q" autocomplete="off" maxlength="30" placeholder="Search..">
-                <input type="hidden" name="q" value="site:www.manue1.com">
+                <input type="hidden" name="q" value="site:www.manue1.site">
             </form>
         </li>
     </ul>
@@ -252,38 +252,38 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org388fe9d">1. elastic 常用的一些命令</a>
+<li><a href="#orge7f792e">1. elastic 常用的一些命令</a>
 <ul>
-<li><a href="#orgf579d50">1.1. cat</a></li>
-<li><a href="#org0ebca4b">1.2. mapping</a></li>
-<li><a href="#orgfd5e0d5">1.3. alias</a></li>
-<li><a href="#org75db86e">1.4. query</a></li>
-<li><a href="#org8840993">1.5. aggs</a></li>
+<li><a href="#orga042d9f">1.1. cat</a></li>
+<li><a href="#org2261d23">1.2. mapping</a></li>
+<li><a href="#orgb6e3031">1.3. alias</a></li>
+<li><a href="#org2335973">1.4. query</a></li>
+<li><a href="#orga387929">1.5. aggs</a></li>
 </ul>
 </li>
-<li><a href="#orga4cfc7e">2. questions</a>
+<li><a href="#orgfbf814a">2. questions</a>
 <ul>
-<li><a href="#org68f7319">2.1. from szie/scroll/search after</a></li>
-<li><a href="#orgfa4b2cd">2.2. es shard 生命周期</a></li>
-<li><a href="#org9f51a41">2.3. es node</a></li>
-<li><a href="#orgeee5fb9">2.4. es pipeline</a></li>
-<li><a href="#orgff18dd0">2.5. es 搜索原理</a></li>
+<li><a href="#orgbabbdf8">2.1. from szie/scroll/search after</a></li>
+<li><a href="#org8c3ae2c">2.2. es shard 生命周期</a></li>
+<li><a href="#orgf1b4f32">2.3. es node</a></li>
+<li><a href="#org74a9466">2.4. es pipeline</a></li>
+<li><a href="#org18babb2">2.5. es 搜索原理</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org388fe9d" class="outline-2">
-<h2 id="org388fe9d"><span class="section-number-2">1</span> elastic 常用的一些命令</h2>
+<div id="outline-container-orge7f792e" class="outline-2">
+<h2 id="orge7f792e"><span class="section-number-2">1</span> elastic 常用的一些命令</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 借用postman调用dsl还是很方便的
 </p>
 </div>
 
-<div id="outline-container-orgf579d50" class="outline-3">
-<h3 id="orgf579d50"><span class="section-number-3">1.1</span> cat</h3>
+<div id="outline-container-orga042d9f" class="outline-3">
+<h3 id="orga042d9f"><span class="section-number-3">1.1</span> cat</h3>
 <div class="outline-text-3" id="text-1-1">
 <dl class="org-dl">
 <dt>/<sub>cat</sub>/indices?v</dt><dd>查看集群索引</dd>
@@ -294,8 +294,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org0ebca4b" class="outline-3">
-<h3 id="org0ebca4b"><span class="section-number-3">1.2</span> mapping</h3>
+<div id="outline-container-org2261d23" class="outline-3">
+<h3 id="org2261d23"><span class="section-number-3">1.2</span> mapping</h3>
 <div class="outline-text-3" id="text-1-2">
 <dl class="org-dl">
 <dt>建立索引</dt><dd><p>
@@ -360,8 +360,8 @@ mapping 存放到文件内
 </dl>
 </div>
 </div>
-<div id="outline-container-orgfd5e0d5" class="outline-3">
-<h3 id="orgfd5e0d5"><span class="section-number-3">1.3</span> alias</h3>
+<div id="outline-container-orgb6e3031" class="outline-3">
+<h3 id="orgb6e3031"><span class="section-number-3">1.3</span> alias</h3>
 <div class="outline-text-3" id="text-1-3">
 <dl class="org-dl">
 <dt>_aliases add</dt><dd><p>
@@ -396,8 +396,8 @@ curl -XPOST 'http://localhost:9200/_aliases'-d '
 </dl>
 </div>
 </div>
-<div id="outline-container-org75db86e" class="outline-3">
-<h3 id="org75db86e"><span class="section-number-3">1.4</span> query</h3>
+<div id="outline-container-org2335973" class="outline-3">
+<h3 id="org2335973"><span class="section-number-3">1.4</span> query</h3>
 <div class="outline-text-3" id="text-1-4">
 <ul class="org-ul">
 <li><p>
@@ -547,8 +547,8 @@ curl -XGET  'localhost:9200/webasset_whois3/whois_info/_search?pretty&amp;q=_id:
 </ul>
 </div>
 </div>
-<div id="outline-container-org8840993" class="outline-3">
-<h3 id="org8840993"><span class="section-number-3">1.5</span> aggs</h3>
+<div id="outline-container-orga387929" class="outline-3">
+<h3 id="orga387929"><span class="section-number-3">1.5</span> aggs</h3>
 <div class="outline-text-3" id="text-1-5">
 <p>
 10.252.16.20:9200/alias<sub>malware</sub>/<sub>search</sub>?size=0
@@ -620,12 +620,12 @@ size = 0 表示返回全部
 </div>
 </div>
 </div>
-<div id="outline-container-orga4cfc7e" class="outline-2">
-<h2 id="orga4cfc7e"><span class="section-number-2">2</span> questions</h2>
+<div id="outline-container-orgfbf814a" class="outline-2">
+<h2 id="orgfbf814a"><span class="section-number-2">2</span> questions</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org68f7319" class="outline-3">
-<h3 id="org68f7319"><span class="section-number-3">2.1</span> from szie/scroll/search after</h3>
+<div id="outline-container-orgbabbdf8" class="outline-3">
+<h3 id="orgbabbdf8"><span class="section-number-3">2.1</span> from szie/scroll/search after</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 <a href="http://www.jianshu.com/p/91d03b16af77">http://www.jianshu.com/p/91d03b16af77</a>
@@ -698,8 +698,8 @@ search after
 </ul>
 </div>
 </div>
-<div id="outline-container-orgfa4b2cd" class="outline-3">
-<h3 id="orgfa4b2cd"><span class="section-number-3">2.2</span> es shard 生命周期</h3>
+<div id="outline-container-org8c3ae2c" class="outline-3">
+<h3 id="org8c3ae2c"><span class="section-number-3">2.2</span> es shard 生命周期</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 <a href="http://lxwei.github.io/posts/Elasticsearch-Shard-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html">http://lxwei.github.io/posts/Elasticsearch-Shard-生命周期.html</a>
@@ -795,8 +795,8 @@ _optimize?max<sub>num</sub><sub>segments</sub>=1 一个segment情况下查询要
 </div>
 </div>
 
-<div id="outline-container-org9f51a41" class="outline-3">
-<h3 id="org9f51a41"><span class="section-number-3">2.3</span> es node</h3>
+<div id="outline-container-orgf1b4f32" class="outline-3">
+<h3 id="orgf1b4f32"><span class="section-number-3">2.3</span> es node</h3>
 <div class="outline-text-3" id="text-2-3">
 <ul class="org-ul">
 <li><p>
@@ -830,8 +830,8 @@ discovery.zen.ping.timeout
 </ul>
 </div>
 </div>
-<div id="outline-container-orgeee5fb9" class="outline-3">
-<h3 id="orgeee5fb9"><span class="section-number-3">2.4</span> es pipeline</h3>
+<div id="outline-container-org74a9466" class="outline-3">
+<h3 id="org74a9466"><span class="section-number-3">2.4</span> es pipeline</h3>
 <div class="outline-text-3" id="text-2-4">
 <p>
 <a href="https://www.felayman.com/articles/2017/11/24/1511527532643.html#b3_solo_h4_22">https://www.felayman.com/articles/2017/11/24/1511527532643.html#b3_solo_h4_22</a>
@@ -839,8 +839,8 @@ discovery.zen.ping.timeout
 </div>
 </div>
 
-<div id="outline-container-orgff18dd0" class="outline-3">
-<h3 id="orgff18dd0"><span class="section-number-3">2.5</span> es 搜索原理</h3>
+<div id="outline-container-org18babb2" class="outline-3">
+<h3 id="org18babb2"><span class="section-number-3">2.5</span> es 搜索原理</h3>
 <div class="outline-text-3" id="text-2-5">
 <p>
 <a href="https://blog.csdn.net/donghaixiaolongwang/article/category/6747676">https://blog.csdn.net/donghaixiaolongwang/article/category/6747676</a>
@@ -859,10 +859,10 @@ Elasticsearch之四种查询类型和搜索原理
     <a href="https://www.gnu.org/software/emacs/">Emacs</a>
     <a href="http://orgmode.org/">Org mode</a> 编辑和构建
 </p>
-<!-- <script src="https://www.manue1.com/css/jquery-2.1.3.min.js"></script>
-     <script src="https://www.manue1.com/css/main.js"></script> -->
-<script src="http://www.langdebuqing.com/css/jquery-2.1.3.min.js"></script>
-<script src="http://www.langdebuqing.com/css/main.js"></script>
+<script src="https://www.manue1.site/css/jquery-2.1.3.min.js"></script>
+<script src="https://www.manue1.site/css/main.js"></script>
+<!-- <script src="http://www.langdebuqing.com/css/jquery-2.1.3.min.js"></script>
+     <script src="http://www.langdebuqing.com/css/main.js"></script> -->
 </div>
 </body>
 </html>
