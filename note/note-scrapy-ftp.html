@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-01-24 Thu 22:54 -->
+<!-- 2019-01-24 Thu 23:02 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>用scrapy爬取FTP列表文件</title>
@@ -182,7 +182,7 @@
 </style>
 <link rel="stylesheet" type="text/css" href="https://www.manue1.site/css/style.css" />
 <!-- <link rel="stylesheet" type="text/css" href="http://www.langdebuqing.com/css/style.css" /> -->
-<link rel="shortcut icon" href="http://www.langdebuqing.com/images/favicon.ico" type="image/x-icon" />
+<!-- <link rel="shortcut icon" href="http://www.langdebuqing.com/images/favicon.ico" type="image/x-icon" /> -->
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -252,21 +252,21 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org7cce0f9">1. 用scrapy爬取FTP列表文件</a>
+<li><a href="#org6bec4a6">1. 用scrapy爬取FTP列表文件</a>
 <ul>
-<li><a href="#orgcbef672">1.1. scrapy crawl ftp server</a></li>
-<li><a href="#org62fbcc1">1.2. error note</a></li>
+<li><a href="#org2237fd2">1.1. scrapy crawl ftp server</a></li>
+<li><a href="#org2f053c9">1.2. error note</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org7cce0f9" class="outline-2">
-<h2 id="org7cce0f9"><span class="section-number-2">1</span> 用scrapy爬取FTP列表文件</h2>
+<div id="outline-container-org6bec4a6" class="outline-2">
+<h2 id="org6bec4a6"><span class="section-number-2">1</span> 用scrapy爬取FTP列表文件</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-orgcbef672" class="outline-3">
-<h3 id="orgcbef672"><span class="section-number-3">1.1</span> scrapy crawl ftp server</h3>
+<div id="outline-container-org2237fd2" class="outline-3">
+<h3 id="org2237fd2"><span class="section-number-3">1.1</span> scrapy crawl ftp server</h3>
 <div class="outline-text-3" id="text-1-1">
 <p class="verse">
 最近遇到一个ftp数据源，每天需要定期到ftp服务器登录下载文件压缩列表,官方提供的<a href="https://github.com/scrapy/scrapy/blob/master/scrapy/core/downloader/handlers/ftp.py">FTPDownloadHandler</a> 只能下载单个文件,但这里我需要下载文件目录下所有文件,这里找到一篇好<a href="https://gearheart.io/blog/crawling-ftp-server-with-scrapy/">文章</a> ,详细的讲述了如何重写scrapy所支持的HTTP,HTTPS,FTP等下载Handler.由于作者从单个FTP文件下载，到文件夹内全部文件下载都做了详细的阐述，这里就贴出我的实现代码吧，做了些许修改<br />
@@ -443,8 +443,8 @@ class MedisumSpider(CrawlSpider):
 </div>
 </div>
 
-<div id="outline-container-org62fbcc1" class="outline-3">
-<h3 id="org62fbcc1"><span class="section-number-3">1.2</span> error note</h3>
+<div id="outline-container-org2f053c9" class="outline-3">
+<h3 id="org2f053c9"><span class="section-number-3">1.2</span> error note</h3>
 <div class="outline-text-3" id="text-1-2">
 <ol class="org-ol">
 <li>NotImplementedError
