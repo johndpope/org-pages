@@ -1,7 +1,21 @@
 #+SETUPFILE: setup.org
 #+TITLE: Question & Answer
 * Question & Answer
-** TODO [2019-01-16 Wed] emacs快速创建python文件模板
+** TODO [2019-01-24 Thu] 查找收集新闻订阅源
+   #+BEGIN_QUOTE
+   SCHEDULED: <2019-01-27 Sun 11:42>
+ 
+   #+END_QUOTE
+
+** DONE [2019-01-16 Wed] emacs快速创建python文件模板
+   CLOSED: [2019-01-23 Wed 12:04]
+   - State "DONE"       from "TODO"       [2019-01-23 Wed 12:04] \\
+     利用yasnippet创建快捷输入，有时候会比较灵活,不需要一些定制模板
+     
+     yas-new-snippet 创建模板
+
+     c-c c-c 保存
+     
    #+BEGIN_QUOTE
    SCHEDULED: <2019-01-19 Sat 16:19>
  
@@ -54,11 +68,6 @@
    
    Mute sound.
 
- 
-   #+END_QUOTE
-** TODO 如何使用yasnippet提高开发python效率
-   #+BEGIN_QUOTE
-   SCHEDULED: <2019-01-19 Wed 18:02>
  
    #+END_QUOTE
 ** DONE emacs 代码折叠
@@ -132,7 +141,7 @@
    #+END_QUOTE
 ** TODO emacs mgit use
    #+BEGIN_QUOTE
-   DEADLINE: <2019-01-19 Sun 19:02>
+   DEADLINE: <2019-01-25 Sun 19:02>
  
    #+END_QUOTE
 ** DONE how to talk with irc in emacs
@@ -576,31 +585,11 @@ sudo systemctl enable teamviewerd
 
 #+END_QUOTE
    
-** TODO emacs指定模板创建文件
-   SCHEDULED: <2019-01-21 Tue>
+** DONE emacs指定模板创建文件
+   CLOSED: [2019-01-23 Wed 16:30] SCHEDULED: <2019-01-21 Tue>
+   - State "DONE"       from "TODO"       [2019-01-23 Wed 16:30]
    #+BEGIN_QUOTE
-#+BEGIN_SRC lisp
-(defun capture-report-date-file (path)
-       (let ((name (read-string "Name: ")))
-       (expand-file-name (format "%s-%s.org"
-                              (format-time-string "%Y-%m-%d")
-                              name) path)))
-
-(add-to-list 'org-capture-templates
-             `("n" "note" plain (file ,(capture-report-data-file "~/github/org-pages/note/"))
-              ,(concat "#+startup: showall\n"
-                        "#+options: toc:nil\n"
-                        "#+begin_export html\n"
-                        "---\n"
-                        "layout     : post\n"
-                        "title      : %^{标题}\n"
-                        "categories : %^{类别}\n"
-                        "tags       : %^{标签}\n"
-                        "---\n"
-                        "#+end_export\n"
-                        "#+TOC: headlines 2\n")))
-#+END_SRC
-
+   yasnippet do anything
    #+END_QUOTE
 ** DONE emacs配置做软链到工作目录
    CLOSED: [2018-12-18 Tue 13:13]
@@ -634,7 +623,7 @@ sudo systemctl enable teamviewerd
    #+END_QUOTE
 
 ** TODO emacs如何处理博文头部尾部嵌套跳转页问题
-   SCHEDULED: <2019-01-21 Tue>
+   SCHEDULED: <2019-01-23 Tue>
 ** TODO 推荐系统引擎 apache mahout  
    SCHEDULED: <2019-01-29 Wed>
 ** TODO org-mode 导出中文pdf文件

@@ -2,11 +2,6 @@
 #+TITLE: Bug List
 
 * Bug List
-** TODO org-mode pomodoro modeline  no time show
-   #+BEGIN_QUOTE
-   DEADLINE: <2019-01-02 Tue 11:02>
-   
-   #+END_QUOTE
 ** DONE mac install Mysql-python
    CLOSED: [2018-12-28 Fri 19:00]
    - State "DONE"       from "TODO"       [2018-12-28 Fri 19:00]

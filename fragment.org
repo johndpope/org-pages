@@ -2,6 +2,13 @@
 #+TITLE: Knowledge Fragment
 
 * Knowledge Fragment
+- [2019-01-24 Thu] 
+  #+BEGIN_QUOTE
+  On the Internet, nobody knows you're a dog. 
+
+  #+ATTR_HTML: :width 40% :height 40% 
+  [[file:images/screenshot/20190124120204.png]]
+  #+END_QUOTE
 - [2019-01-13 Sun] 
   #+BEGIN_QUOTE
   记住，你是一切情境的创造者，所以当你看到自己编造出来的各种人生戏码和剧情时，别忘了给自己一些鼓励：“我真是一个伟大的创造者，这种剧情亏我也想得出来！” 

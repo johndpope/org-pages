@@ -228,7 +228,7 @@ command     a form
       
       支持js css html 语法高亮补全
    9. js2-refactor
-
+      
       c-c c-m
    10. occur 
        

@@ -3,48 +3,23 @@
 
 -----
 #+BEGIN_CENTER
-凡心所向，素履所往。生如逆旅，一苇以航
+On the Internet, nobody knows you're a dog. 
 #+END_CENTER
 -----
 \\
 
-*札记*
+#+BEGIN_CENTER
+#+ATTR_HTML: :width 30% :height 30% 
+[[file:images/screenshot/20190124120204.png]]
+#+END_CENTER
+
+
+*SHARE*
 
 #+BEGIN_QUOTE
-#+BEGIN_EXAMPLE
->>> import this
-The Zen of Python, by Tim Peters
 
-Beautiful is better than ugly.
-Explicit is better than implicit.
-Simple is better than complex.
-Complex is better than complicated.
-Flat is better than nested.
-Sparse is better than dense.
-Readability counts.
-Special cases aren't special enough to break the rules.
-Although practicality beats purity.
-Errors should never pass silently.
-Unless explicitly silenced.
-In the face of ambiguity, refuse the temptation to guess.
-There should be one-- and preferably only one --obvious way to do it.
-Although that way may not be obvious at first unless you're Dutch.
-Now is better than never.
-Although never is often better than *right* now.
-If the implementation is hard to explain, it's a bad idea.
-If the implementation is easy to explain, it may be a good idea.
-Namespaces are one honking great idea -- let's do more of those!
-#+END_EXAMPLE
-#+END_QUOTE
+telegram channel: @chinasec  [[https://t.me/proxy?server=139.180.192.255&port=443&secret=62b1466f8b1860fd9d2c80f5585971c6][mtproxy sponsor]]
 
-
-*FTD*
-
-#+BEGIN_QUOTE
-#+BEGIN_EXAMPLE
-拖延症让我们错过了很多,该读的书没有读，改做的事情没有做!
-很多时候,看到好书就该去一口气吃掉它.
-#+END_EXAMPLE
 #+END_QUOTE
 
 
@@ -65,6 +40,8 @@ Namespaces are one honking great idea -- let's do more of those!
 - [[file:bug.org][Bug List]]
 
 - [[file:fragment.org][Knowledge Fragment]]
+
+- [[file:habit.org][Habit]]
 
 #+END_QUOTE
 

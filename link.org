@@ -2,6 +2,38 @@
 #+TITLE: Link notes
 * Link notes
 
+** TODO [2019-01-23 Wed] Jinja2 模板语言
+  #+BEGIN_QUOTE
+  https://www.kancloud.cn/manual/jinja2/70423 
+
+  SCHEDULED:<2019-01-28 Mon 12:17>
+  
+  #+END_QUOTE
+
+** DONE [2019-01-23 Wed] yasnippet 创建模板学习
+   CLOSED: [2019-01-23 Wed 16:47]
+   - State "DONE"       from "TODO"       [2019-01-23 Wed 16:47]
+  #+BEGIN_QUOTE
+  https://github.com/joaotavora/yasnippet 
+
+  SCHEDULED:<2019-01-23 Wed 12:09>
+  
+  yasnippet official snippet collections
+  
+  https://github.com/AndreaCrotti/yasnippet-snippets
+  
+  #+END_QUOTE
+
+** DONE [2019-01-23 Wed] emacs 中英文字体配置文章 
+   CLOSED: [2019-01-23 Wed 16:47]
+   - State "DONE"       from "TODO"       [2019-01-23 Wed 16:47]
+  #+BEGIN_QUOTE
+  http://zhuoqiang.me/torture-emacs.html 
+
+  SCHEDULED:<2019-01-23 Wed 11:51>
+  
+  #+END_QUOTE
+
 ** TODO [2019-01-18 Fri] Jabber.el  an XMPP client for Emacs
   #+BEGIN_QUOTE
   https://www.emacswiki.org/emacs/JabberEl 
@@ -20,7 +52,9 @@
   
   #+END_QUOTE
 
-** TODO [2019-01-16 Wed] 不错的es查询语句分析
+** DONE [2019-01-16 Wed] 不错的es查询语句分析
+   CLOSED: [2019-01-23 Wed 16:23]
+   - State "DONE"       from "TODO"       [2019-01-23 Wed 16:23]
   #+BEGIN_QUOTE
   https://www.cnblogs.com/elaron/p/7699623.html 
 
@@ -92,7 +126,10 @@
   
   #+END_QUOTE
 
-** TODO 如何使用org-mode 添加音乐专辑
+** DONE 如何使用org-mode 添加音乐专辑
+   CLOSED: [2019-01-24 Thu 12:22]
+   - State "DONE"       from "TODO"       [2019-01-24 Thu 12:22] \\
+     还是需要通过channel分享,最快捷的消息,才是最有价值的消息
   #+BEGIN_QUOTE
   https://orgmode.org/manual/Property-syntax.html 
 
@@ -122,7 +159,6 @@
   #+BEGIN_QUOTE
   https://foofish.net/flask-resource.html 
 
-  SCHEDULED:<2019-01-22 ++1d Sat 14:33>
   
   #+END_QUOTE
 
@@ -186,6 +222,8 @@
   #+END_QUOTE
 
 ** TODO 小米路由配置aria2
+   :PROPERTIES:
+   :END:
   #+BEGIN_QUOTE
   https://www.jianshu.com/p/a23330cf8ee8 
 
@@ -212,17 +250,39 @@
   #+BEGIN_QUOTE
   https://wiki.archlinux.org/index.php/EXWM 
 
-  SCHEDULED:<2019-01-19 Wed 16:42>
+  SCHEDULED:<2019-01-29 Wed 16:42>
   
   #+END_QUOTE
 
-** TODO frp内网穿透原理分析 + socat
+** DONE 端口转发
+   CLOSED: [2019-01-23 Wed 17:48] SCHEDULED: <2019-01-23 Wed>
+   - State "DONE"       from "TODO"       [2019-01-23 Wed 17:48]
   #+BEGIN_QUOTE
   https://mp.weixin.qq.com/s/8HeeDC5x5xozElN8GzQLLw 
 
-  SCHEDULED:<2019-01-18 Fri 15:15>
+  #+ATTR_HTML: :width 60% :height 60% 
+  [[file:images/screenshot/20190123165958.png]]
   
-  #+END_QUOTE
+  *三种端口转发的方法,socat,iptables,ssh*
+  
+  socat是一个很强大的socket工具，这里我们拿来做端口转向，需要在B机器上运行：
+
+  : socat -d -d TCP4-LISTEN:8080,reuseaddr,fork,su=nobody TCP4:c_ip:80
+
+  这样，我们通过A访问B的8080端口的时候，就会访问到C的80端口了，如图上半部分所示
+
+  iptables是大名鼎鼎的linux下的防火墙，也可以做端口转向，在B机器上运行：
+  
+  : iptables -t nat -A PREROUTING -d b_ip -p tcp --dport 80 -j DNAT --to-destination c_ip:8080
+ 
+  : iptables -t nat -A POSTROUTING -d c_ip -p tcp --dport 8080 -j SNAT --to--source b_ip
+
+  ssh就不多说了，对应的场景是图上最下面的部分，需要在B上ssh登录C，中间创建一个转发隧道：
+
+  : ssh -gfNL 8080:d_ip:80 root@c_ip
+  
+  
+
 
 ** DONE pyim 拼音输入法
    CLOSED: [2019-01-18 Fri 11:11]
@@ -250,10 +310,10 @@
   #+END_QUOTE
 
 ** TODO  尾递归 DECORATOR 
+   SCHEDULED: <2019-01-24 Thu>
   #+BEGIN_QUOTE
   http://code.activestate.com/recipes/474088-tail-call-optimization-decorator/ 
 
-  SCHEDULED:<2019-01-22 Sat 13:54>
   
   #+END_QUOTE
 
@@ -266,19 +326,11 @@
   
   #+END_QUOTE
 
-** TODO python ide emacs config 
-  #+BEGIN_QUOTE
-  https://github.com/Nanue1/dot-emacs 
-
-  SCHEDULED:<2019-01-19 Wed 04:46>
-  
-  #+END_QUOTE
-
 ** TODO A Screencast Video About Advanced Featurs of Emacs Org Mode
   #+BEGIN_QUOTE
   https://karl-voit.at/2018/12/08/niklas-carlsson-video/ 
 
-  SCHEDULED:<2019-01-17 Mon 04:35>
+  SCHEDULED:<2019-01-27  04:35>
   
   #+END_QUOTE
 
@@ -286,27 +338,34 @@
   #+BEGIN_QUOTE
   http://emacslife.com/videos.html 
 
-  SCHEDULED:<2019-01-17 Mon 04:33>
+  SCHEDULED:<2019-01-27 Mon 04:33>
   
   #+END_QUOTE
 
-** TODO elfeed Emacs Web Feed Reader
+** UNDO elfeed Emacs Web Feed Reader
+   CLOSED: [2019-01-23 Wed 16:38]
+   - State "UNDO"       from "TODO"       [2019-01-23 Wed 16:38] \\
+     目前没有rss强烈需求
   #+BEGIN_QUOTE
   https://github.com/skeeto/elfeed 
 
-  SCHEDULED:<2019-01-18 Tue 01:43>
+  SCHEDULED:<2019-01-21 Tue 01:43>
   
   #+END_QUOTE
 
-** TODO Sacha Chua emacs news 
+** UNDO Sacha Chua emacs news 
+   CLOSED: [2019-01-23 Wed 16:39]
+   - State "UNDO"       from "TODO"       [2019-01-23 Wed 16:39]
   #+BEGIN_QUOTE
   http://sachachua.com/blog/ 
 
-  SCHEDULED:<2019-01-17 Mon 16:02>
+  SCHEDULED:<2019-01-27 16:02>
   
   #+END_QUOTE
 
-** TODO Using Emacs Series
+** DONE Using Emacs Series
+   CLOSED: [2019-01-23 Wed 16:23]
+   - State "DONE"       from "TODO"       [2019-01-23 Wed 16:23]
   #+BEGIN_QUOTE
   https://cestlaz.github.io/stories/emacs/ 
 
@@ -333,11 +392,33 @@
   
   #+END_QUOTE
 
-** TODO emacs python 环境配置文章
+** DONE emacs python ide config
+   CLOSED: [2019-01-23 Wed 16:10]
+   - State "DONE"       from "TODO"       [2019-01-23 Wed 16:10]
   #+BEGIN_QUOTE
   https://steelkiwi.com/blog/emacs-configuration-working-python/ 
 
+  https://github.com/Nanue1/dot-emacs 
+
   SCHEDULED:<2019-01-24 Fri 21:41>
+
+   anaconda-mode 是 spacemacs 使用的跳转module
+
+   https://kevinjiang.info/2018/03/20/Emacs%E4%B8%8BPython%E5%BC%80%E5%8F%91%E9%85%8D%E7%BD%AE/
+
+   https://github.com/proofit404/anaconda-mode
+
+   M-.	anaconda-mode-find-definitions	跳转到定义处。如果不使用anaconda-mode，则是绑定到elpy的elpy-goto-definition，elpy有时候工作得不是很好
+
+   M-?	anaconda-mode-show-doc	在另外一个window中显示光标当前所在位置符号的文档
+
+   M-,	anaconda-mode-find-assignments	跳转到变量赋值位置
+
+   M-r	anaconda-mode-find-references	在另外一个window中显示光标当前所在位置变量的所有引用
+
+   M-*	anaconda-mode-go-back	返回上一个位置
+
+   
   
   #+END_QUOTE
 
@@ -386,6 +467,10 @@
   
   作者配置mtpro代理思路不错
 
+  : echo "ulimit -SHn 1048576" >> /etc/rc.local
+
+  sock连接过多导致mtpro代理无法正常转发，可以调大文件句柄
+
   Proxy sponsor channel set :
   
   
@@ -400,6 +485,8 @@
   个人搭建公益代理: 
 
   =https://t.me/proxy?server=139.180.192.255&port=443&secret=62b1466f8b1860fd9d2c80f5585971c6=
+
+  
 
 
   
@@ -428,11 +515,12 @@
   
   #+END_QUOTE
 
-** TODO Python 博客文章知识点不错
-   SCHEDULED: <2019-01-19 Wed>
+** DONE Python 博客文章知识点不错
+   CLOSED: [2019-01-23 Wed 16:24] SCHEDULED: <2019-01-19 Wed>
    :PROPERTIES:
    :LAST_REPEAT: [2019-01-09 Wed 13:59]
    :END:
+   - State "DONE"       from "TODO"       [2019-01-23 Wed 16:24]
    - State "DONE"       from "TODO"       [2019-01-09 Wed 13:59]
   #+BEGIN_QUOTE
   https://wdxtub.com/2016/03/24/thinking-in-python/
@@ -454,7 +542,7 @@
   https://zhuanlan.zhihu.com/p/32818342
   https://zhuanlan.zhihu.com/p/42628522
   #+END_QUOTE
-** DONE [#B] github pomodoro task
+** DONE github pomodoro task
    CLOSED: [2019-01-04 Fri 10:50] SCHEDULED: <2018-12-31 Mon>
    :PROPERTIES:
    :LAST_REPEAT: [2018-12-30 Sun 15:09]

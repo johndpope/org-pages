@@ -1,10 +1,29 @@
 #+SETUPFILE: setup.org
 #+TITLE: Habit 
-* TODO emotional control
-SCHEDULED: <2019-01-22 Tue .+1d>
-:PROPERTIES:
-:LAST_REPEAT: [2019-01-21 Mon 14:19]
+
+* TODO [2019-01-23 Wed] [[file:note/python.org][Python Promodoro]]
+SCHEDULED: <2019-01-23 Wed .+1d>
+:PROPETIES:
+:CREATED: [2019-01-23 Wed 18:21]
+
+:STYLE: habit
+
+:REPEAT_TO_STATE: TODO
+
+:LOGGING: DONE(!)
+
+:ARCHIVE: %%s_archive::* Habits
+
 :END:
+[2019-01-23 Wed 18:21]
+
+* TODO emotional control
+SCHEDULED: <2019-01-24 Thu .+1d>
+:PROPERTIES:
+:LAST_REPEAT: [2019-01-23 Wed 10:44]
+:END:
+- State "UNDO"       from "TODO"       [2019-01-23 Wed 10:44] \\
+  年会呀! 奖项绝缘体. 期望很大,失望也很大
 - State "DONE"       from "TODO"       [2019-01-21 Mon 14:19]
 - State "UNDO"       from "TODO"       [2019-01-18 Fri 16:53] \\
   真的不适合开会，没事少开会，爱开会的，都是爱甩锅的,都说些没用的。
@@ -18,9 +37,14 @@ SCHEDULED: <2019-01-22 Tue .+1d>
 - State "DONE"       from "TODO"       [2019-01-13 Sun 01:29]
 :PROPETIES:
 :CREATED: [2019-01-13 Sun 01:29]
+
 :STYLE: habit
+
 :REPEAT_TO_STATE: TODO
+
 :LOGGING: DONE(!)
+
 :ARCHIVE: %%s_archive::* Habits
+
 :END:
 [2019-01-13 Sun 01:29]

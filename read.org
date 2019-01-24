@@ -13,12 +13,13 @@
    #+END_QUOTE
 ** TODO [2019-01-13 Sun] [[file:note/python-gevent.org][gevent程序员指南]]
    :PROPERTIES:
-   :LAST_REPEAT: [2019-01-15 Tue 12:39]
+   :LAST_REPEAT: [2019-01-22 Tue 12:21]
    :END:
+   - State "DONE"       from "TODO"       [2019-01-22 Tue 12:21]
    - State "DONE"       from "TODO"       [2019-01-15 Tue 12:39]
    - State "DONE"       from "TODO"       [2019-01-14 Mon 10:05]
    #+BEGIN_QUOTE
-   SCHEDULED: <2019-01-16 Wed .+1d>
+   SCHEDULED: <2019-01-23 Wed .+1d>
   
 
    http://hhkbp2.github.io/gevent-tutorial/
@@ -122,9 +123,6 @@
    #+ATTR_HTML: :width 30% :height 30% 
    [[./images/book-sfzm.jpg]]   
    #+BEGIN_QUOTE
-
-   1.在测试前37%样本前，不要轻易下结论
+1.在测试前37%样本前，不要轻易下结论
    #+END_QUOTE
 
-
-  n 

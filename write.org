@@ -2,6 +2,10 @@
 #+TITLE: Writing List
 
 * Writing List
+** DONE <2019-01-23 Wed 17:50> [[file:note/note-iptables.org][iptables笔记]]
+   CLOSED: [2019-01-23 Wed 17:53]
+
+   - State "DONE"       from "TODO"       [2019-01-23 Wed 17:53]
 ** DONE <2018-12-28 Fri 19:43> [[file:note/python.org][Python Pomodoro]]
    CLOSED: [2018-12-28 Fri 19:45]
    - State "DONE"       from "TODO"       [2018-12-28 Fri 19:45]

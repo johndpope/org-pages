@@ -24,6 +24,14 @@
 
    lsof -p $(pidof pika)
    #+END_SRC
+
+5. 流量转发
+
+   socat
+
+   =nohup socat -d -d TCP4-LISTEN:8080 ,reuseaddr,fork,su=nobody TCP4:ip_c:80 >/dev/null &=
+
+   我们通过A访问B的8080端口的时候，就会访问到C的80端口了
 * shortcuts
   #+CAPTION: shortcuts
   #+ATTR_HTML: :border 2 
