@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-01-04 Fri 18:03 -->
+<!-- 2019-01-24 Thu 12:21 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>emacs note</title>
@@ -480,16 +480,16 @@ Then the command second trims out the second item in that list, which is the des
 <div class="outline-text-4" id="text-org848cf31">
 <div class="org-src-container">
 <pre class="src src-elisp">
-(<span style="color: #a020f0;">setq</span> objects '(whiskey-bottle bucket frog chain))
+(<span style="color: #9d0006;">setq</span> objects '(whiskey-bottle bucket frog chain))
 
-(<span style="color: #a020f0;">setq</span> object-locations '((whiskey-bottle living-room)
+(<span style="color: #9d0006;">setq</span> object-locations '((whiskey-bottle living-room)
                            (bucket living-room)
                            (chain garden)
                            (frog garden)))
 
-(<span style="color: #a020f0;">setq</span> location 'living-room)
+(<span style="color: #9d0006;">setq</span> location 'living-room)
 
-(<span style="color: #a020f0;">setq</span> map '((living-room (you are in the living room
+(<span style="color: #9d0006;">setq</span> map '((living-room (you are in the living room
                 of a wizards house - there is a wizard
                 snoring loudly on the couch -)
                 (west door garden)
@@ -502,21 +502,21 @@ Then the command second trims out the second item in that list, which is the des
                 welding torch in the corner -)
                 (downstairs stairway living-room))))
 
-(<span style="color: #a020f0;">defun</span> <span style="color: #0000ff;">describe-location</span> (location map)
+(<span style="color: #9d0006;">defun</span> <span style="color: #b57614;">describe-location</span> (location map)
     (second (assoc location map)))
 
 
 (describe-location 'living-room map)
 
-(message <span style="color: #8b2252;">"hello world"</span>)
+(message <span style="color: #79740e;">"hello world"</span>)
 
-(<span style="color: #a020f0;">defun</span> <span style="color: #0000ff;">hello-world</span> (name)
- <span style="color: #8b2252;">"say hello to user whose name is XX"</span>
-   (message <span style="color: #8b2252;">"hello , %s"</span> name))
+(<span style="color: #9d0006;">defun</span> <span style="color: #b57614;">hello-world</span> (name)
+ <span style="color: #79740e;">"say hello to user whose name is XX"</span>
+   (message <span style="color: #79740e;">"hello , %s"</span> name))
 
-(hello-world <span style="color: #8b2252;">"manue1"</span>)
+(hello-world <span style="color: #79740e;">"manue1"</span>)
 
-(<span style="color: #a020f0;">setq</span> foo <span style="color: #8b2252;">"i'm manue1"</span>)
+(<span style="color: #9d0006;">setq</span> foo <span style="color: #79740e;">"i'm manue1"</span>)
 (message foo)
 
 </pre>
@@ -611,10 +611,10 @@ org-mode auto create emacs conf
 <li>init.el</li>
 </ul>
 <div class="org-src-container">
-<pre class="src src-lisp"><span style="color: #707183;">(</span>package-initialize<span style="color: #707183;">)</span>
-<span style="color: #707183;">(</span><span style="color: #a020f0;">require</span> '<span style="color: #008b8b;">org-install</span><span style="color: #707183;">)</span>
-<span style="color: #707183;">(</span><span style="color: #a020f0;">require</span> '<span style="color: #008b8b;">ob-tangle</span><span style="color: #707183;">)</span>
-<span style="color: #707183;">(</span>org-bable-load-file <span style="color: #7388d6;">(</span>expand-file-name <span style="color: #8b2252;">"manue1.org"</span> user-emacs-dictionary<span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
+<pre class="src src-lisp"><span style="color: #458588;">(</span>package-initialize<span style="color: #458588;">)</span>
+<span style="color: #458588;">(</span><span style="color: #9d0006;">require</span> '<span style="color: #8f3f71;">org-install</span><span style="color: #458588;">)</span>
+<span style="color: #458588;">(</span><span style="color: #9d0006;">require</span> '<span style="color: #8f3f71;">ob-tangle</span><span style="color: #458588;">)</span>
+<span style="color: #458588;">(</span>org-bable-load-file <span style="color: #b16286;">(</span>expand-file-name <span style="color: #79740e;">"manue1.org"</span> user-emacs-dictionary<span style="color: #b16286;">)</span><span style="color: #458588;">)</span>
 </pre>
 </div>
 
