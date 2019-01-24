@@ -1,6 +1,47 @@
 #+SETUPFILE: setup.org
 #+TITLE: Habit 
 
+* TODO [2019-01-24 Thu] 豆瓣评分9.0以上专辑聆听
+SCHEDULED: <2019-01-31 Thu .+1w>
+:PROPERTIES:
+:LAST_REPEAT: [2019-01-24 Thu 12:54]
+:END:
+- State "DONE"       from "TODO"       [2019-01-24 Thu 12:54] \\
+  #+BEGIN_QUOTE
+  *Inside Llewyn Davis*
+  
+       1. Hang Me, Oh Hang Me - By Oscar Isaac
+       2. Fare Thee Well (Dink's Song) - By Marcus Mumford & Oscar Isaac
+       3. The Last Thing on My Mind - By Stark Sands With Punch Brothers
+       4. Five Hundred Miles - By Justin Timberlake, Carey Mulligan & Stark Sands
+       5. Please Mr. Kennedy - By Justin Timberlake, Oscar Isaac & Adam Driver
+       6. Green, Green Rocky Road - By Oscar Isaac
+       7. The Death of Queen Jane - By Oscar Isaac
+       8. The Roving Gambler (With The Down Hill Strugglers) - By John Cohen
+       9. The Shoals of Herring (With Punch Brothers) - By Oscar Isaac
+       10. The Auld Triangle - By Chris Thile, Chris Eldridge, Marcus Mumford, Justin Timberlake & Gabe Witcher
+       11. The Storms Are on the Ocean - By Nancy Blake
+       12. Fare Thee Well (Dink's Song) - By Oscar Isaac
+       13. Farewell (unreleased studio version) - By Bob Dylan
+       14. Green, Green Rocky Road - By Dave Van Ronk
+
+  链接: https://pan.baidu.com/s/1vFZqLMQ0gRBTmYkkyVgIIA 提取码: 58dc 
+  #+END_QUOTE
+  
+:PROPETIES:
+:CREATED: [2019-01-24 Thu 12:53]
+
+:STYLE: habit
+
+:REPEAT_TO_STATE: TODO
+
+:LOGGING: DONE(!)
+
+:ARCHIVE: %%s_archive::* Habits
+
+:END:
+[2019-01-24 Thu 12:53]
+
 * TODO [2019-01-23 Wed] [[file:note/python.org][Python Promodoro]]
 SCHEDULED: <2019-01-23 Wed .+1d>
 :PROPETIES:

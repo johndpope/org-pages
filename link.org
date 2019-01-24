@@ -334,7 +334,7 @@
   
   #+END_QUOTE
 
-** TODO emacs video list
+** TODO emacs learn video list
   #+BEGIN_QUOTE
   http://emacslife.com/videos.html 
 
@@ -383,12 +383,17 @@
   
   #+END_QUOTE
 
-** TODO Sams Teach Yourself Emacs in 24 Hours
+** DONE Sams Teach Yourself Emacs in 24 Hours                                
+   CLOSED: [2019-01-24 Thu 12:29]
+   :PROPERTIES:
+   :LAST_REPEAT: [2019-01-24 Thu 12:28]
+   :END:
 
+   - State "DONE"       from "TODO"       [2019-01-24 Thu 12:29]
   #+BEGIN_QUOTE
   http://www.emacs.uniyar.ac.ru/doc/em24h/ 
 
-  SCHEDULED:<2019-01-24  +1d Fri 12:28>
+  SCHEDULED:<2019-01-25 Fri 00:00>
   
   #+END_QUOTE
 

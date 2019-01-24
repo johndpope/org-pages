@@ -1,3 +1,6 @@
+#+SETUPFILE: setup.org
+#+TITLE: iptables笔记
+
 
 * iptables的工作机制
   #+BEGIN_QUOTE
