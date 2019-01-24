@@ -1,14 +1,234 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-01-24 Thu 21:14 -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 2019-01-24 Thu 22:04 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>git note</title>
-<meta name="generator" content="Org mode">
-<meta name="author" content="manue1">
-<link rel="stylesheet" type="text/css" href="css/worg.css" />
-<!-- <link rel="shortcut icon" href="http://www.langdebuqing.com/images/favicon.ico" type="image/x-icon" /> -->
+<meta name="generator" content="Org mode" />
+<meta name="author" content="manue1" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<!-- <link rel="stylesheet" type="text/css" href="https://www.manue1.site/css/style.css" /> -->
+<link rel="stylesheet" type="text/css" href="http://www.langdebuqing.com/css/style.css" />
+<link rel="shortcut icon" href="http://www.langdebuqing.com/images/favicon.ico" type="image/x-icon" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -29,549 +249,549 @@
 <div id="content">
 <h1 class="title">git note</h1>
 <div id="table-of-contents">
-<h2>&#30446;&#24405;</h2>
+<h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgdf3b5d5">1. git 独奏</a>
+<li><a href="#org3a4fb7b">1. git 独奏</a>
 <ul>
-<li><a href="#org3c38767">1.1. git 初始化</a></li>
-<li><a href="#orgc5cc582">1.2. git 暂存区</a></li>
-<li><a href="#org8a7e146">1.3. git reset 重置</a></li>
-<li><a href="#org1224446">1.4. git 检出</a></li>
-<li><a href="#orgfbc6e6e">1.5. git 恢复进度</a></li>
-<li><a href="#org615a620">1.6. git 基础操作</a></li>
-<li><a href="#orgc0aa750">1.7. git tools</a></li>
-<li><a href="#org7602843">1.8. 改变历史</a></li>
-<li><a href="#orga77cb6c">1.9. git克隆</a></li>
+<li><a href="#orgcf712b5">1.1. git 初始化</a></li>
+<li><a href="#orgd7c0b90">1.2. git 暂存区</a></li>
+<li><a href="#org669e4ad">1.3. git reset 重置</a></li>
+<li><a href="#org81cc43d">1.4. git 检出</a></li>
+<li><a href="#orgbe6cd16">1.5. git 恢复进度</a></li>
+<li><a href="#org7aee21e">1.6. git 基础操作</a></li>
+<li><a href="#orgac0ca84">1.7. git tools</a></li>
+<li><a href="#orge8e8e53">1.8. 改变历史</a></li>
+<li><a href="#org245c0b3">1.9. git克隆</a></li>
 </ul>
 </li>
-<li><a href="#org210a79d">2. git 和声</a>
+<li><a href="#orge2150db">2. git 和声</a>
 <ul>
-<li><a href="#org2a472d1">2.1. git 工作协调</a></li>
-<li><a href="#org7fafb5c">2.2. git 冲突解决</a></li>
+<li><a href="#org6c4f2ce">2.1. git 工作协调</a></li>
+<li><a href="#org5bdb50f">2.2. git 冲突解决</a></li>
 </ul>
 </li>
-<li><a href="#org0f1c0f5">3. common questions</a>
+<li><a href="#orge54c8e3">3. common questions</a>
 <ul>
-<li><a href="#org42b1b90">3.1. git ls-files 乱码问题</a></li>
-<li><a href="#org3c4e036">3.2. change git push user</a></li>
-<li><a href="#org70a8467">3.3. create branch</a></li>
-<li><a href="#org9862454">3.4. merge branch</a></li>
-<li><a href="#org01c621c">3.5. git add tag</a></li>
+<li><a href="#org958e39e">3.1. git ls-files 乱码问题</a></li>
+<li><a href="#orgd4847db">3.2. change git push user</a></li>
+<li><a href="#orgfed3970">3.3. create branch</a></li>
+<li><a href="#orgeee9e8b">3.4. merge branch</a></li>
+<li><a href="#org0c31196">3.5. git add tag</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 <p>
-蒋鑫. Git权威指南 机械工业出版社. Kindle 版本.<br>
+蒋鑫. Git权威指南 机械工业出版社. Kindle 版本. 
 </p>
-<div id="outline-container-orgdf3b5d5" class="outline-2">
-<h2 id="orgdf3b5d5"><span class="section-number-2">1</span> git 独奏</h2>
+<div id="outline-container-org3a4fb7b" class="outline-2">
+<h2 id="org3a4fb7b"><span class="section-number-2">1</span> git 独奏</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org3c38767" class="outline-3">
-<h3 id="org3c38767"><span class="section-number-3">1.1</span> git 初始化</h3>
+<div id="outline-container-orgcf712b5" class="outline-3">
+<h3 id="orgcf712b5"><span class="section-number-3">1.1</span> git 初始化</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li><p>
-git init<br>
+git init 
 </p>
 
 <p>
-初始化git项目<br>
+初始化git项目
 </p></li>
 <li><p>
-.git<br>
+.git
 </p>
 
 <p>
-版本库存放目录<br>
+版本库存放目录
 </p></li>
-<li>git config<br>
-修改配置文件<br>
+<li>git config
+修改配置文件
 <ul class="org-ul">
 <li><p>
-git config -e<br>
+git config -e 
 </p>
 
 <p>
-修改 <code>.git/config</code><br>
+修改 <code>.git/config</code>
 </p></li>
 <li><p>
-git config -e &#x2013;global<br>
+git config -e &#x2013;global
 </p>
 
 <p>
-修改 <code>~/.gitconfig</code><br>
+修改 <code>~/.gitconfig</code>
 </p></li>
 <li><p>
-git config -e &#x2013;system<br>
+git config -e &#x2013;system
 </p>
 
 <p>
-修改 <code>/etc/gitconfig</code><br>
+修改 <code>/etc/gitconfig</code>
 </p></li>
 <li><p>
-git config &lt;session&gt;.&lt;key&gt;<br>
+git config &lt;session&gt;.&lt;key&gt;
 </p>
 
 <p>
-读写配置文件的属性<br>
-<code>$GIT_CONF=test.ini git config a.b</code> 来处理其他配置文件<br>
+读写配置文件的属性
+<code>$GIT_CONF=test.ini git config a.b</code> 来处理其他配置文件
 </p></li>
-<li>git config &#x2013;global alias.ci "commit -s"<br>
-设置别名<br></li>
+<li>git config &#x2013;global alias.ci "commit -s"
+设置别名</li>
 </ul></li>
-<li>git clone note  note-bak<br>
-备份项目<br></li>
+<li>git clone note  note-bak
+备份项目</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc5cc582" class="outline-3">
-<h3 id="orgc5cc582"><span class="section-number-3">1.2</span> git 暂存区</h3>
+<div id="outline-container-orgd7c0b90" class="outline-3">
+<h3 id="orgd7c0b90"><span class="section-number-3">1.2</span> git 暂存区</h3>
 <div class="outline-text-3" id="text-1-2">
 
 <div class="figure">
-<p><img src="http://7xpyfe.com1.z0.glb.clouddn.com/2017101515080826245091.png" alt="2017101515080826245091.png"><br>
+<p><img src="http://7xpyfe.com1.z0.glb.clouddn.com/2017101515080826245091.png" alt="2017101515080826245091.png" />
 </p>
 </div>
 
 <p>
-工作区、暂存区、版本库<br>
+工作区、暂存区、版本库
 </p>
 <ul class="org-ul">
-<li>git status -s<br></li>
-<li>git log &#x2013;pretty=oneline<br></li>
+<li>git status -s</li>
+<li>git log &#x2013;pretty=oneline</li>
 <li><p>
-git add note-git.org<br>
+git add note-git.org 
 </p>
 
 <p>
-添加到暂存区<br>
+添加到暂存区
 </p></li>
 <li><p>
-git checkout &#x2013; note-git.org<br>
+git checkout &#x2013; note-git.org
 </p>
 
 <p>
-暂存区&#x2013;&gt;工作区<br>
+暂存区&#x2013;&gt;工作区
 </p></li>
 <li><p>
-git diff<br>
+git diff 
 </p>
 
 
 <div class="figure">
-<p><img src="http://7xpyfe.com1.z0.glb.clouddn.com/20171015150808301278029.png" alt="20171015150808301278029.png"> <br>
+<p><img src="http://7xpyfe.com1.z0.glb.clouddn.com/20171015150808301278029.png" alt="20171015150808301278029.png" /> 
 </p>
 </div>
 
 <p>
-diff介绍<br>
+diff介绍 
 </p>
 
 <p>
-diff 比较工作区、暂存区、版本库代码<br>
+diff 比较工作区、暂存区、版本库代码
 </p>
 
 <p>
-git diff 比较工作区和暂存区<br>
+git diff 比较工作区和暂存区
 </p>
 
 <p>
-git diff &#x2013;cached 比较暂存区和HEAD<br>
+git diff &#x2013;cached 比较暂存区和HEAD
 </p>
 
 <p>
-git diff HEAD 比较工作区和HEAD<br>
+git diff HEAD 比较工作区和HEAD
 </p>
 
 <p>
-git diff &lt;commit1&gt;&lt;commit2&gt; &#x2013; &lt;paths&gt;  比较不同版本文件的差异<br>
+git diff &lt;commit1&gt;&lt;commit2&gt; &#x2013; &lt;paths&gt;  比较不同版本文件的差异
 </p></li>
 <li><p>
-git stash<br>
+git stash
 </p>
 
 <p>
-保存进度，暂存状态<br>
+保存进度，暂存状态
 </p></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org8a7e146" class="outline-3">
-<h3 id="org8a7e146"><span class="section-number-3">1.3</span> git reset 重置</h3>
+<div id="outline-container-org669e4ad" class="outline-3">
+<h3 id="org669e4ad"><span class="section-number-3">1.3</span> git reset 重置</h3>
 <div class="outline-text-3" id="text-1-3">
 <ol class="org-ol">
-<li>git reset HEAD&lt;path&gt;  相当于取消 git add &lt;paths&gt; 操作<br></li>
+<li>git reset HEAD&lt;path&gt;  相当于取消 git add &lt;paths&gt; 操作</li>
 
 <li><p>
-git reset &#x2013;hard master@{2}  重置master所有位置为两次改变之前的值<br>
+git reset &#x2013;hard master@{2}  重置master所有位置为两次改变之前的值
 </p>
 
 <p>
-&#x2013;soft       只改变引用的指向，不改变暂存区和工作区<br>
+&#x2013;soft       只改变引用的指向，不改变暂存区和工作区
 </p>
 
 <p>
-&#x2013;mixed      更改引用的指向，重置暂存区，不改变工作区<br>
+&#x2013;mixed      更改引用的指向，重置暂存区，不改变工作区
 </p></li>
 
-<li>git reset &#x2013;soft HEAD^ 放弃最新的提交<br></li>
-<li>git reset HEAD filename<br></li>
+<li>git reset &#x2013;soft HEAD^ 放弃最新的提交</li>
+<li>git reset HEAD filename</li>
 </ol>
 </div>
 </div>
 
-<div id="outline-container-org1224446" class="outline-3">
-<h3 id="org1224446"><span class="section-number-3">1.4</span> git 检出</h3>
+<div id="outline-container-org81cc43d" class="outline-3">
+<h3 id="org81cc43d"><span class="section-number-3">1.4</span> git 检出</h3>
 <div class="outline-text-3" id="text-1-4">
 <ul class="org-ul">
 <li><p>
-git checkout branch_name<br>
+git checkout branch<sub>name</sub>
 </p>
 
 <p>
-git branch -v<br>
+git branch -v
 </p></li>
-<li>git checkout&#x2013;filename  用暂存区的文件覆盖工作区的 取消上次add<br></li>
+<li>git checkout&#x2013;filename  用暂存区的文件覆盖工作区的 取消上次add</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgfbc6e6e" class="outline-3">
-<h3 id="orgfbc6e6e"><span class="section-number-3">1.5</span> git 恢复进度</h3>
+<div id="outline-container-orgbe6cd16" class="outline-3">
+<h3 id="orgbe6cd16"><span class="section-number-3">1.5</span> git 恢复进度</h3>
 <div class="outline-text-3" id="text-1-5">
 <ul class="org-ul">
 <li><p>
-git stash<br>
+git stash
 </p>
 
 <p>
-git stash list<br>
+git stash list
 </p>
 
 <p>
-git stash pop 从最近保持的进度恢复<br>
+git stash pop 从最近保持的进度恢复
 </p>
 
 <p>
-git stash drop 默认删除最新的进度<br>
+git stash drop 默认删除最新的进度
 </p>
 
 <p>
-git stash clear 删除所有进度<br>
+git stash clear 删除所有进度
 </p>
 
 <p>
-git stash branch &lt;branchname&gt;  基于进度创建分支<br>
+git stash branch &lt;branchname&gt;  基于进度创建分支
 </p></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org615a620" class="outline-3">
-<h3 id="org615a620"><span class="section-number-3">1.6</span> git 基础操作</h3>
+<div id="outline-container-org7aee21e" class="outline-3">
+<h3 id="org7aee21e"><span class="section-number-3">1.6</span> git 基础操作</h3>
 <div class="outline-text-3" id="text-1-6">
 <ul class="org-ul">
 <li><p>
-删除文件<br>
+删除文件
 </p>
 
 <p>
-git ls-files 查看暂存区文件<br>
+git ls-files 查看暂存区文件
 </p>
 
 <p>
-git rm filename 删除暂存区文件<br>
+git rm filename 删除暂存区文件
 </p>
 
 <p>
-git reset &#x2013;hard HEAD^ 重置上次提交的删除操作<br>
+git reset &#x2013;hard HEAD^ 重置上次提交的删除操作
 </p>
 
 <p>
-git add-u 快速标记操作,下次提交会生效<br>
+git add-u 快速标记操作,下次提交会生效
 </p></li>
 <li><p>
-恢复文件<br>
+恢复文件
 </p>
 
 <p>
-git show HEAD~1:circl.html &gt; circl.html<br>
+git show HEAD~1:circl.html &gt; circl.html
 </p>
 
 <p>
-git checkout HEAD~1 &#x2013; circl.html<br>
+git checkout HEAD~1 &#x2013; circl.html
 </p></li>
 <li><p>
-移动文件<br>
+移动文件
 </p>
 
 <p>
-git mv a b<br>
+git mv a b
 </p></li>
 <li><p>
-选择性添加<br>
+选择性添加
 </p>
 
 <p>
-git add -i 交互窗口<br>
+git add -i 交互窗口
 </p></li>
 <li><p>
-文件忽略<br>
+文件忽略
 </p>
 
 <p>
-在工作目录下添加.gitignore<br>
+在工作目录下添加.gitignore
 </p>
 
 <p>
-<code>*.pyc</code><br>
+<code>*.pyc</code>
 </p>
 
 <p>
-git status &#x2013;ignored -s 可以查看哪些文件被忽略了<br>
+git status &#x2013;ignored -s 可以查看哪些文件被忽略了
 </p>
 
 <p>
-git add -f filename 或略的文件强制更新<br>
+git add -f filename 或略的文件强制更新
 </p>
 
 <p>
-git commit -a -m  "偷懒了 直接提交 不用 git add"<br>
+git commit -a -m  "偷懒了 直接提交 不用 git add"
 </p></li>
 <li><p>
-文件归档<br>
+文件归档
 </p>
 
 <p>
-git archive -o lastest.zip HEAD  最新归档<br>
+git archive -o lastest.zip HEAD  最新归档
 </p>
 
 <p>
-git archive -o partial.tar HEAD src doc  只归档两个文件夹<br>
+git archive -o partial.tar HEAD src doc  只归档两个文件夹
 </p></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgc0aa750" class="outline-3">
-<h3 id="orgc0aa750"><span class="section-number-3">1.7</span> git tools</h3>
+<div id="outline-container-orgac0ca84" class="outline-3">
+<h3 id="orgac0ca84"><span class="section-number-3">1.7</span> git tools</h3>
 <div class="outline-text-3" id="text-1-7">
 <p>
-版本库浏览器能更好看提交关系图<br>
+版本库浏览器能更好看提交关系图
 </p>
 <ol class="org-ol">
-<li>gitk<br></li>
-<li>gitg<br></li>
-<li>qgit<br></li>
-<li>命令行<br>
+<li>gitk</li>
+<li>gitg</li>
+<li>qgit</li>
+<li>命令行
 <ul class="org-ul">
 <li><p>
-git log<br>
+git log 
 </p>
 
 <p>
-git config &#x2013;global alias.glog "log &#x2013;graph"  使用:git glog &#x2013;oneline<br>
+git config &#x2013;global alias.glog "log &#x2013;graph"  使用:git glog &#x2013;oneline
 </p></li>
 <li><p>
-文件追溯<br>
+文件追溯
 </p>
 
 <p>
-git blame filename 逐行显示谁编辑的 追踪bug!<br>
+git blame filename 逐行显示谁编辑的 追踪bug!
 </p></li>
 <li><p>
-二分查找<br>
+二分查找
 </p>
 
 <p>
-找到一个好版本和坏版本,在中间版本的master上执行<br>
+找到一个好版本和坏版本,在中间版本的master上执行
 </p>
 
 <p>
-git bisect start<br>
+git bisect start
 </p></li>
 </ul></li>
 </ol>
 </div>
 </div>
 
-<div id="outline-container-org7602843" class="outline-3">
-<h3 id="org7602843"><span class="section-number-3">1.8</span> 改变历史</h3>
+<div id="outline-container-orge8e8e53" class="outline-3">
+<h3 id="orge8e8e53"><span class="section-number-3">1.8</span> 改变历史</h3>
 <div class="outline-text-3" id="text-1-8">
 <ul class="org-ul">
 <li><p>
-单步悔棋<br>
+单步悔棋
 </p>
 
 <p>
-git commit &#x2013;amend  修改commit原因<br>
+git commit &#x2013;amend  修改commit原因
 </p>
 
 <p>
-git checkout HEAD^ &#x2013;filepath 还原删除的文件到暂存区<br>
+git checkout HEAD^ &#x2013;filepath 还原删除的文件到暂存区
 </p></li>
 <li><p>
-多步悔棋<br>
-git reset &#x2013;soft HEAD^^ 后退两个版本到暂存区<br>
+多步悔棋
+git reset &#x2013;soft HEAD^^ 后退两个版本到暂存区
 </p>
 
 <p>
-git commit -m "new reason "<br>
+git commit -m "new reason "
 </p></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orga77cb6c" class="outline-3">
-<h3 id="orga77cb6c"><span class="section-number-3">1.9</span> git克隆</h3>
+<div id="outline-container-org245c0b3" class="outline-3">
+<h3 id="org245c0b3"><span class="section-number-3">1.9</span> git克隆</h3>
 <div class="outline-text-3" id="text-1-9">
 <ul class="org-ul">
 <li><p>
-git clone<br>
+git clone
 </p>
 
 <p>
-git clone &lt;rep&gt; dir<br>
+git clone &lt;rep&gt; dir
 </p>
 
 <p>
-git clone &#x2013;bare &lt;rep&gt; dir<br>
+git clone &#x2013;bare &lt;rep&gt; dir
 </p>
 
 <p>
-git clone &#x2013;mirror &lt;rep&gt; dir<br>
+git clone &#x2013;mirror &lt;rep&gt; dir
 </p></li>
-<li>git push<br></li>
-<li>git pull<br></li>
+<li>git push</li>
+<li>git pull</li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org210a79d" class="outline-2">
-<h2 id="org210a79d"><span class="section-number-2">2</span> git 和声</h2>
+<div id="outline-container-orge2150db" class="outline-2">
+<h2 id="orge2150db"><span class="section-number-2">2</span> git 和声</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org2a472d1" class="outline-3">
-<h3 id="org2a472d1"><span class="section-number-3">2.1</span> git 工作协调</h3>
+<div id="outline-container-org6c4f2ce" class="outline-3">
+<h3 id="org6c4f2ce"><span class="section-number-3">2.1</span> git 工作协调</h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
-<li>支持的协议<br>
-智能协议: 数据传输过程中有清晰的进度显示,按需传输，传输量小，速度快 (ssh,git,file//)<br>
-哑协议: 创术速度慢，传输进度不可见，不知道什么时候完成数据传输(ftp,rsync)<br></li>
+<li>支持的协议
+智能协议: 数据传输过程中有清晰的进度显示,按需传输，传输量小，速度快 (ssh,git,file//)  
+哑协议: 创术速度慢，传输进度不可见，不知道什么时候完成数据传输(ftp,rsync)</li>
 <li><p>
-强制非快进式推送<br>
+强制非快进式推送
 </p>
 
 <p>
-git rev-list HEAD  本地版本库最新提交<br>
+git rev-list HEAD  本地版本库最新提交
 </p>
 
 <p>
-git ls-remote origin 远程版本库的引用<br>
+git ls-remote origin 远程版本库的引用
 </p>
 
 <p>
-git push 报non-fast-forward updates were rejected 不可以git push -f 强制更新<br>
+git push 报non-fast-forward updates were rejected 不可以git push -f 强制更新
 </p></li>
 <li><p>
-合并后推送<br>
+合并后推送
 </p>
 
 <p>
-git pull = git fetch + git merge<br>
+git pull = git fetch + git merge
 </p>
 
 <p>
-git log &#x2013;graph &#x2013;oneline<br>
+git log &#x2013;graph &#x2013;oneline
 </p>
 
 <p>
-git push<br>
+git push
 </p></li>
 </ul>
 </div>
 </div>
 
 
-<div id="outline-container-org7fafb5c" class="outline-3">
-<h3 id="org7fafb5c"><span class="section-number-3">2.2</span> git 冲突解决</h3>
+<div id="outline-container-org5bdb50f" class="outline-3">
+<h3 id="org5bdb50f"><span class="section-number-3">2.2</span> git 冲突解决</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
-git merge<br>
+git merge
 </p>
 
 <ol class="org-ol">
 <li><p>
-自动合并<br>
+自动合并
 </p>
 
 <p>
-git fetch<br>
+git fetch
 </p>
 
 <p>
-git merge refs/remotes/origin/master<br>
+git merge refs/remotes/origin/master
 </p>
 
 <p>
-git push<br>
+git push
 </p>
 
 <p>
-git log -1 -m &#x2013;stat  m参数可以查看合并操作<br>
+git log -1 -m &#x2013;stat  m参数可以查看合并操作
 </p></li>
-<li>逻辑冲突<br>
+<li>逻辑冲突
 <ul class="org-ul">
-<li>修改文件名，其他文件引用了原来的文件名<br></li>
-<li>函数修改了返回值,但其他地方调用的还是原来的返回值函数<br></li>
+<li>修改文件名，其他文件引用了原来的文件名</li>
+<li>函数修改了返回值,但其他地方调用的还是原来的返回值函数</li>
 </ul></li>
 <li><p>
-冲突解决<br>
+冲突解决
 </p>
 <ul class="org-ul">
 <li><p>
-&lt;&lt;&lt;&lt;&lt;&lt;&lt;(七个小于号) 和 <code>=====</code> (七个等于号)<br>
+&lt;&lt;&lt;&lt;&lt;&lt;&lt;(七个小于号) 和 <code>=====</code> (七个等于号)
 </p>
 
 <p>
-当前分支所更改的内容<br>
+当前分支所更改的内容
 </p></li>
 <li><p>
-=======(七个等于号) 和 &gt;&gt;&gt;&gt;&gt;&gt;&gt; (七个大于号)<br>
+=======(七个等于号) 和 &gt;&gt;&gt;&gt;&gt;&gt;&gt; (七个大于号)
 </p>
 
 <p>
-所要合并的版本要更改的内容<br>
+所要合并的版本要更改的内容
 </p></li>
 </ul>
 
 <p>
-git add / git reset<br>
+git add / git reset
 </p></li>
-<li>树冲突<br></li>
-<li>合并策略<br>
+<li>树冲突</li>
+<li>合并策略
 <ul class="org-ul">
-<li>resolve<br></li>
-<li>recursive<br></li>
+<li>resolve</li>
+<li>recursive</li>
 </ul></li>
 </ol>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org0f1c0f5" class="outline-2">
-<h2 id="org0f1c0f5"><span class="section-number-2">3</span> <a href="http://mazhuang.org/wiki/git/">common questions</a></h2>
+<div id="outline-container-orge54c8e3" class="outline-2">
+<h2 id="orge54c8e3"><span class="section-number-2">3</span> <a href="http://mazhuang.org/wiki/git/">common questions</a></h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org42b1b90" class="outline-3">
-<h3 id="org42b1b90"><span class="section-number-3">3.1</span> git ls-files 乱码问题</h3>
+<div id="outline-container-org958e39e" class="outline-3">
+<h3 id="org958e39e"><span class="section-number-3">3.1</span> git ls-files 乱码问题</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
-在 <code>~/.gitconfig</code> 中添加如下内容<br>
+在 <code>~/.gitconfig</code> 中添加如下内容
 </p>
 <pre class="example">
 [core]
@@ -586,58 +806,58 @@ git add / git reset<br>
 </div>
 </div>
 
-<div id="outline-container-org3c4e036" class="outline-3">
-<h3 id="org3c4e036"><span class="section-number-3">3.2</span> change git push user</h3>
+<div id="outline-container-orgd4847db" class="outline-3">
+<h3 id="orgd4847db"><span class="section-number-3">3.2</span> change git push user</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
-git config user.name 'xxx'<br>
+git config user.name 'xxx'
 </p>
 
 <p>
-git config user.email 'xxx'<br>
+git config user.email 'xxx'
 </p>
 </div>
 </div>
-<div id="outline-container-org70a8467" class="outline-3">
-<h3 id="org70a8467"><span class="section-number-3">3.3</span> create branch</h3>
+<div id="outline-container-orgfed3970" class="outline-3">
+<h3 id="orgfed3970"><span class="section-number-3">3.3</span> create branch</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
-查看本地分支   <code>git branch</code><br>
+查看本地分支   <code>git branch</code>
 </p>
 
 <p>
-查看远程分支  <code>git branch -a</code><br>
+查看远程分支  <code>git branch -a</code>
 </p>
 
 <p>
-创建本地分支，并切换到分支 <code>git branch manue1</code> <code>git checkout manue1</code><br>
+创建本地分支，并切换到分支 <code>git branch manue1</code> <code>git checkout manue1</code>
 </p>
 
 <p>
-推送创建新的远程分支 <code>git push origin manue1</code><br>
+推送创建新的远程分支 <code>git push origin manue1</code>
 </p>
 </div>
 </div>
 
-<div id="outline-container-org9862454" class="outline-3">
-<h3 id="org9862454"><span class="section-number-3">3.4</span> merge branch</h3>
+<div id="outline-container-orgeee9e8b" class="outline-3">
+<h3 id="orgeee9e8b"><span class="section-number-3">3.4</span> merge branch</h3>
 <div class="outline-text-3" id="text-3-4">
 <p>
-合并manue1分支到dev <code>git merge manue1</code><br>
+合并manue1分支到dev <code>git merge manue1</code>
 </p>
 </div>
 </div>
 
 
-<div id="outline-container-org01c621c" class="outline-3">
-<h3 id="org01c621c"><span class="section-number-3">3.5</span> git add tag</h3>
+<div id="outline-container-org0c31196" class="outline-3">
+<h3 id="org0c31196"><span class="section-number-3">3.5</span> git add tag</h3>
 <div class="outline-text-3" id="text-3-5">
 <p>
-<a href="https://git-scm.com/book/zh/v1/Git-%E5%9F%BA%E7%A1%80-%E6%89%93%E6%A0%87%E7%AD%BE">https://git-scm.com/book/zh/v1/Git-基础-打标签</a><br>
+<a href="https://git-scm.com/book/zh/v1/Git-%E5%9F%BA%E7%A1%80-%E6%89%93%E6%A0%87%E7%AD%BE">https://git-scm.com/book/zh/v1/Git-基础-打标签</a>
 </p>
 
 <p>
-git tag -a v1.4 -m 'my version 1.4'<br>
+git tag -a v1.4 -m 'my version 1.4'
 </p>
 
 <p>
@@ -652,6 +872,8 @@ git push origin &#x2013;tags #一次推送所有本地新增的标签上去</p>
     <a href="https://www.gnu.org/software/emacs/">Emacs</a>
     <a href="http://orgmode.org/">Org mode</a> 编辑和构建
 </p>
+<!-- <script src="https://www.manue1.com/css/jquery-2.1.3.min.js"></script>
+     <script src="https://www.manue1.com/css/main.js"></script> -->
 <script src="http://www.langdebuqing.com/css/jquery-2.1.3.min.js"></script>
 <script src="http://www.langdebuqing.com/css/main.js"></script>
 </div>

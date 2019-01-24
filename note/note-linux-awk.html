@@ -1,14 +1,234 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-01-24 Thu 21:14 -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 2019-01-24 Thu 22:05 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>AWK 程序设计语言</title>
-<meta name="generator" content="Org mode">
-<meta name="author" content="manue1">
-<link rel="stylesheet" type="text/css" href="css/worg.css" />
-<!-- <link rel="shortcut icon" href="http://www.langdebuqing.com/images/favicon.ico" type="image/x-icon" /> -->
+<meta name="generator" content="Org mode" />
+<meta name="author" content="manue1" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<!-- <link rel="stylesheet" type="text/css" href="https://www.manue1.site/css/style.css" /> -->
+<link rel="stylesheet" type="text/css" href="http://www.langdebuqing.com/css/style.css" />
+<link rel="shortcut icon" href="http://www.langdebuqing.com/images/favicon.ico" type="image/x-icon" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         displayAlign: "center",
@@ -30,7 +250,7 @@
 });
 </script>
 <script type="text/javascript"
-        src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -51,120 +271,120 @@
 <div id="content">
 <h1 class="title">AWK 程序设计语言</h1>
 <div id="table-of-contents">
-<h2>&#30446;&#24405;</h2>
+<h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orge2cba41">1. awk 基本语法</a>
+<li><a href="#org79243bd">1. awk 基本语法</a>
 <ul>
-<li><a href="#orgd158cd6">1.1. pattern</a></li>
-<li><a href="#org88689b8">1.2. action</a></li>
+<li><a href="#org97766a5">1.1. pattern</a></li>
+<li><a href="#orge32e51b">1.2. action</a></li>
 </ul>
 </li>
-<li><a href="#orgeda585e">2. awk 常用命令</a></li>
+<li><a href="#orgb3da689">2. awk 常用命令</a></li>
 </ul>
 </div>
 </div>
 <p>
-使用awk的目的是为了方便解决: 计数、数据格式转换、计算、以及从报表中提取数据.<br>
-这本<a href="https://github.com/wuzhouhui/awk">AWK 程序设计语言</a> 几百页的书，很好的诠释了这门工具语言的强大，书中最后附录<br>
-A总结了很多awk的使用注意事项,有兴趣的可以关注一下.这里只是记录一下工作中用到<br>
-的一些使用awk提高工作效率的场景<br>
+使用awk的目的是为了方便解决: 计数、数据格式转换、计算、以及从报表中提取数据.
+这本<a href="https://github.com/wuzhouhui/awk">AWK 程序设计语言</a> 几百页的书，很好的诠释了这门工具语言的强大，书中最后附录
+A总结了很多awk的使用注意事项,有兴趣的可以关注一下.这里只是记录一下工作中用到
+的一些使用awk提高工作效率的场景
 </p>
 
-<div id="outline-container-orge2cba41" class="outline-2">
-<h2 id="orge2cba41"><span class="section-number-2">1</span> awk 基本语法</h2>
+<div id="outline-container-org79243bd" class="outline-2">
+<h2 id="org79243bd"><span class="section-number-2">1</span> awk 基本语法</h2>
 <div class="outline-text-2" id="text-1">
 <p>
-最简单的awk 程序是一个或多个模式–动作语句构成的序列:<br>
+最简单的awk 程序是一个或多个模式–动作语句构成的序列:
 </p>
 
 <p>
-<code>pattern { action }</code><br>
+<code>pattern { action }</code>
 </p>
 
 <p>
-<code>pattern { action }</code><br>
+<code>pattern { action }</code>
 </p>
 
 <p>
-简单的单行awk语句可以直接执行<br>
+简单的单行awk语句可以直接执行
 </p>
 
 <p>
-<code>awk pattern {action} filename</code><br>
+<code>awk pattern {action} filename</code>
 </p>
 
 <p>
-如果复杂点的awk语句,可以写入文件内,<br>
+如果复杂点的awk语句,可以写入文件内,
 </p>
 
 <p>
-<code>awk -f awk.sh awk_txt</code><br>
+<code>awk -f awk.sh awk_txt</code>
 </p>
 </div>
-<div id="outline-container-orgd158cd6" class="outline-3">
-<h3 id="orgd158cd6"><span class="section-number-3">1.1</span> pattern</h3>
+<div id="outline-container-org97766a5" class="outline-3">
+<h3 id="org97766a5"><span class="section-number-3">1.1</span> pattern</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
-模式汇总<br>
+模式汇总
 </p>
 <ol class="org-ol">
 <li><p>
-BEGIN{ statements}<br>
+BEGIN{ statements}
 </p>
 
 <p>
-在输入被读取之前, statements 执行一次.<br>
+在输入被读取之前, statements 执行一次.
 </p></li>
 <li><p>
-END{ statements}<br>
+END{ statements}
 </p>
 
 <p>
-当所有输入被读取完毕之后, statements 执行一次.<br>
+当所有输入被读取完毕之后, statements 执行一次.
 </p></li>
 <li><p>
-expression{ statements}<br>
+expression{ statements}
 </p>
 
 <p>
-每碰到一个使expression 为真的输入行, statements 就执行<br>
-expression 为真指的是其值非零或非空.<br>
+每碰到一个使expression 为真的输入行, statements 就执行
+expression 为真指的是其值非零或非空.
 </p></li>
 <li><p>
-regular expression { statements}<br>
+regular expression { statements}
 </p>
 
 <p>
-当碰到这样一个输入行时, statements 就执行: 输入行含有一段字符串,<br>
-而该字符串可以被regular expression 匹配.<br>
+当碰到这样一个输入行时, statements 就执行: 输入行含有一段字符串,
+而该字符串可以被regular expression 匹配.
 </p></li>
 <li><p>
-compound pattern { statements}<br>
+compound pattern { statements}
 </p>
 
 <p>
-一个复合模式将表达式用&amp;&amp;(AND), ||(OR), !(NOT), 以及括号组合起来;<br>
-当compound pattern为真时, statements 执行.<br>
+一个复合模式将表达式用&amp;&amp;(AND), ||(OR), !(NOT), 以及括号组合起来;
+当compound pattern为真时, statements 执行.
 </p></li>
 <li><p>
-pattern1, pattern2 { statements}<br>
+pattern1, pattern2 { statements}
 </p>
 
 <p>
-一个范围模式匹配多个输入行, 这些输入行从匹配pattern1 的行开始,<br>
-到匹配pattern2 的行结束(包括这两行), 对这其中的每一行执行statements<br>
-BEGIN 与END 不与其他模式组合. 一个范围模式不能是其他模式的一部分.<br>
-BEGIN 与END 是唯一两个不能省略动作的模式.<br>
+一个范围模式匹配多个输入行, 这些输入行从匹配pattern1 的行开始, 
+到匹配pattern2 的行结束(包括这两行), 对这其中的每一行执行statements
+BEGIN 与END 不与其他模式组合. 一个范围模式不能是其他模式的一部分.
+BEGIN 与END 是唯一两个不能省略动作的模式.
 </p></li>
 </ol>
 </div>
 </div>
-<div id="outline-container-org88689b8" class="outline-3">
-<h3 id="org88689b8"><span class="section-number-3">1.2</span> action</h3>
+<div id="outline-container-orge32e51b" class="outline-3">
+<h3 id="orge32e51b"><span class="section-number-3">1.2</span> action</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
-动作中的语句可以包括:<br>
+动作中的语句可以包括:
 </p>
 <pre class="example">
 expression, 包括常量, 变量, 赋值, 函数调用等等.
@@ -180,17 +400,17 @@ break
 continue
 </pre>
 <p>
-awk作为一种编程语言,刚开始接触awk语句看得眼晕主要是不了解它的内置变量<br>
+awk作为一种编程语言,刚开始接触awk语句看得眼晕主要是不了解它的内置变量
 </p>
-<table>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
-<col  class="org-left">
+<col  class="org-left" />
 
-<col  class="org-left">
+<col  class="org-left" />
 
-<col  class="org-left">
+<col  class="org-left" />
 </colgroup>
 <thead>
 <tr>
@@ -289,40 +509,40 @@ awk作为一种编程语言,刚开始接触awk语句看得眼晕主要是不了�
 </div>
 </div>
 
-<div id="outline-container-orgeda585e" class="outline-2">
-<h2 id="orgeda585e"><span class="section-number-2">2</span> awk 常用命令</h2>
+<div id="outline-container-orgb3da689" class="outline-2">
+<h2 id="orgb3da689"><span class="section-number-2">2</span> awk 常用命令</h2>
 <div class="outline-text-2" id="text-2">
 <ol class="org-ol">
 <li><p>
-kill 进程<br>
+kill 进程
 </p>
 
 <p>
-<code>ps aux|grep test.py|awk '{print $2}'|xargs kill -9</code><br>
+<code>ps aux|grep test.py|awk '{print $2}'|xargs kill -9</code>
 </p></li>
 
 <li><p>
-两文件比较 取相同部分<br>
+两文件比较 取相同部分
 </p>
 
 <p>
-<code>awk -F ':' 'NR==FNR{a[$1]++}NR!=FNR{if($1 in a){print $i}}' 1.txt 2.txt &gt;3.txt</code><br>
+<code>awk -F ':' 'NR==FNR{a[$1]++}NR!=FNR{if($1 in a){print $i}}' 1.txt 2.txt &gt;3.txt</code>
 </p>
 
 <p>
-输出2.txt在1.txt中第一列相同的所有值<br>
+输出2.txt在1.txt中第一列相同的所有值
 </p></li>
 
 <li><p>
-输出3文件内 大于10列<br>
+输出3文件内 大于10列
 </p>
 
 <p>
-awk 'NF&gt;10 {print $i}' 3.txt &gt; 4.txt<br>
+awk 'NF&gt;10 {print $i}' 3.txt &gt; 4.txt
 </p></li>
 
 <li><p>
-删除重复行<br>
+删除重复行
 </p>
 
 <p>
@@ -337,6 +557,8 @@ awk 'NF&gt;10 {print $i}' 3.txt &gt; 4.txt<br>
     <a href="https://www.gnu.org/software/emacs/">Emacs</a>
     <a href="http://orgmode.org/">Org mode</a> 编辑和构建
 </p>
+<!-- <script src="https://www.manue1.com/css/jquery-2.1.3.min.js"></script>
+     <script src="https://www.manue1.com/css/main.js"></script> -->
 <script src="http://www.langdebuqing.com/css/jquery-2.1.3.min.js"></script>
 <script src="http://www.langdebuqing.com/css/main.js"></script>
 </div>

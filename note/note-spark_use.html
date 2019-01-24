@@ -1,14 +1,234 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-01-24 Thu 21:14 -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 2019-01-24 Thu 22:05 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>spark 学习</title>
-<meta name="generator" content="Org mode">
-<meta name="author" content="manue1">
-<link rel="stylesheet" type="text/css" href="css/worg.css" />
-<!-- <link rel="shortcut icon" href="http://www.langdebuqing.com/images/favicon.ico" type="image/x-icon" /> -->
+<meta name="generator" content="Org mode" />
+<meta name="author" content="manue1" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<!-- <link rel="stylesheet" type="text/css" href="https://www.manue1.site/css/style.css" /> -->
+<link rel="stylesheet" type="text/css" href="http://www.langdebuqing.com/css/style.css" />
+<link rel="shortcut icon" href="http://www.langdebuqing.com/images/favicon.ico" type="image/x-icon" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -29,205 +249,205 @@
 <div id="content">
 <h1 class="title">spark 学习</h1>
 <div id="table-of-contents">
-<h2>&#30446;&#24405;</h2>
+<h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgd5a4cff">1. what is spark</a></li>
-<li><a href="#orgd36ee9e">2. RDD</a>
+<li><a href="#org5695136">1. what is spark</a></li>
+<li><a href="#orgb0133cd">2. RDD</a>
 <ul>
-<li><a href="#orgf4e40f1">2.1. RDD基础</a></li>
+<li><a href="#org59c5d70">2.1. RDD基础</a></li>
 </ul>
 </li>
-<li><a href="#org59ba57b">3. spark use</a>
+<li><a href="#org4888a69">3. spark use</a>
 <ul>
-<li><a href="#orgdf08fd5">3.1. spark base</a></li>
-<li><a href="#org7a40198">3.2. spark install</a></li>
-<li><a href="#org453515d">3.3. spark shell</a></li>
-<li><a href="#orgc774246">3.4. idea spark scala</a></li>
-<li><a href="#org06d14c5">3.5. idea spark java</a></li>
-<li><a href="#org8c133c1">3.6. rdd &amp; dataframe</a></li>
+<li><a href="#org6dd7215">3.1. spark base</a></li>
+<li><a href="#org7d4021a">3.2. spark install</a></li>
+<li><a href="#org70da073">3.3. spark shell</a></li>
+<li><a href="#org90f880b">3.4. idea spark scala</a></li>
+<li><a href="#org99d3152">3.5. idea spark java</a></li>
+<li><a href="#org66b4438">3.6. rdd &amp; dataframe</a></li>
 </ul>
 </li>
-<li><a href="#org338c1ab">4. <span class="todo TODO">TODO</span> 如何转表格</a></li>
-<li><a href="#org965e902">5. Spark Executor在YARN上的内存分配</a></li>
-<li><a href="#org2bae758">6. 如何对spark任务调优?</a></li>
+<li><a href="#orgcbf23a3">4. <span class="todo TODO">TODO</span> 如何转表格</a></li>
+<li><a href="#org7a9ac5d">5. Spark Executor在YARN上的内存分配</a></li>
+<li><a href="#orge13430b">6. 如何对spark任务调优?</a></li>
 </ul>
 </div>
 </div>
 <p>
-Spark快速大数据分析[美] 卡劳（Holden Karau）<br>
+Spark快速大数据分析[美] 卡劳（Holden Karau）
 </p>
-<div id="outline-container-orgd5a4cff" class="outline-2">
-<h2 id="orgd5a4cff"><span class="section-number-2">1</span> what is spark</h2>
+<div id="outline-container-org5695136" class="outline-2">
+<h2 id="org5695136"><span class="section-number-2">1</span> what is spark</h2>
 <div class="outline-text-2" id="text-1">
 <p>
-spark 是一个用来实现快速而通用的集群计算的平台<br>
+spark 是一个用来实现快速而通用的集群计算的平台
 </p>
 <ul class="org-ul">
-<li>spark core<br></li>
-<li>spark sql<br></li>
-<li>spark streaming<br></li>
-<li>MLlib<br></li>
-<li>GraphX<br></li>
-<li>集群管理器<br>
+<li>spark core</li>
+<li>spark sql</li>
+<li>spark streaming</li>
+<li>MLlib</li>
+<li>GraphX</li>
+<li>集群管理器
 <ul class="org-ul">
-<li>自带简易调度器，独立调度器<br></li>
-<li>Hadoop YARN<br></li>
-<li>Apache Mesos<br></li>
+<li>自带简易调度器，独立调度器</li>
+<li>Hadoop YARN</li>
+<li>Apache Mesos</li>
 </ul></li>
-<li>Spark的存储层次<br>
+<li>Spark的存储层次
 <ul class="org-ul">
-<li>支持本地文件,HDFS,Hive,HBase<br></li>
-<li>文件格式:文本文件,SequenceFile,Avro,Parquet<br></li>
+<li>支持本地文件,HDFS,Hive,HBase</li>
+<li>文件格式:文本文件,SequenceFile,Avro,Parquet</li>
 </ul></li>
-<li>shell<br>
-spark shell 可用来与分布式存储在许多机器的内存或者硬盘上的数据进行交互<br>
-python shell / scala shell<br></li>
-<li>SparkContext<br>
-每个Sparkyingy<br></li>
+<li>shell
+spark shell 可用来与分布式存储在许多机器的内存或者硬盘上的数据进行交互
+python shell / scala shell</li>
+<li>SparkContext
+每个Sparkyingy</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd36ee9e" class="outline-2">
-<h2 id="orgd36ee9e"><span class="section-number-2">2</span> RDD</h2>
+<div id="outline-container-orgb0133cd" class="outline-2">
+<h2 id="orgb0133cd"><span class="section-number-2">2</span> RDD</h2>
 <div class="outline-text-2" id="text-2">
 <p>
-RDD(resilient distributed dataset)<br>
+RDD(resilient distributed dataset)
 </p>
 </div>
-<div id="outline-container-orgf4e40f1" class="outline-3">
-<h3 id="orgf4e40f1"><span class="section-number-3">2.1</span> RDD基础</h3>
+<div id="outline-container-org59c5d70" class="outline-3">
+<h3 id="org59c5d70"><span class="section-number-3">2.1</span> RDD基础</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
-Spark中的RDD是一个不可变的分布式对象集合<br>
+Spark中的RDD是一个不可变的分布式对象集合
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org59ba57b" class="outline-2">
-<h2 id="org59ba57b"><span class="section-number-2">3</span> spark use</h2>
+<div id="outline-container-org4888a69" class="outline-2">
+<h2 id="org4888a69"><span class="section-number-2">3</span> spark use</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-orgdf08fd5" class="outline-3">
-<h3 id="orgdf08fd5"><span class="section-number-3">3.1</span> spark base</h3>
+<div id="outline-container-org6dd7215" class="outline-3">
+<h3 id="org6dd7215"><span class="section-number-3">3.1</span> spark base</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
-rdd(resilient distributed dataset)<br>
+rdd(resilient distributed dataset)
 </p>
 </div>
 </div>
-<div id="outline-container-org7a40198" class="outline-3">
-<h3 id="org7a40198"><span class="section-number-3">3.2</span> spark install</h3>
+<div id="outline-container-org7d4021a" class="outline-3">
+<h3 id="org7d4021a"><span class="section-number-3">3.2</span> spark install</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
-函数式编程<br>
-shell下执行:paste<br>
+函数式编程
+shell下执行:paste
 </p>
 </div>
 </div>
-<div id="outline-container-org453515d" class="outline-3">
-<h3 id="org453515d"><span class="section-number-3">3.3</span> spark shell</h3>
+<div id="outline-container-org70da073" class="outline-3">
+<h3 id="org70da073"><span class="section-number-3">3.3</span> spark shell</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
-bin/spark-shell<br>
+bin/spark-shell
 </p>
 <ul class="org-ul">
-<li>创建RDD<br>
-sc.parallelize()<br></li>
-<li>RDD操作<br>
+<li>创建RDD
+sc.parallelize()</li>
+<li>RDD操作
 <ul class="org-ul">
-<li>转化操作<br>
-返回的是RDD<br>
-map()<br>
-filter()<br></li>
-<li>行动操作<br>
-返回结果或把结果写入外部系统的操作,返回的是其他数据类型<br></li>
+<li>转化操作
+返回的是RDD
+map()
+filter()</li>
+<li>行动操作
+返回结果或把结果写入外部系统的操作,返回的是其他数据类型</li>
 </ul></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgc774246" class="outline-3">
-<h3 id="orgc774246"><span class="section-number-3">3.4</span> idea spark scala</h3>
+<div id="outline-container-org90f880b" class="outline-3">
+<h3 id="org90f880b"><span class="section-number-3">3.4</span> idea spark scala</h3>
 <div class="outline-text-3" id="text-3-4">
 <p>
-scala 项目手动打包<br>
-删除scala 和spark的包<br>
+scala 项目手动打包
+删除scala 和spark的包
 </p>
 
 <p>
-执行中 spark-submit &#x2013;class com.nti.spark.SparkTags spark_scala_jar.jar<br>
+执行中 spark-submit &#x2013;class com.nti.spark.SparkTags spark<sub>scala</sub><sub>jar.jar</sub>
 </p>
 
 <p>
-sbt 构建项目 需要等待sbt版本下载好才会生成src目录<br>
+sbt 构建项目 需要等待sbt版本下载好才会生成src目录
 </p>
 </div>
 </div>
 
-<div id="outline-container-org06d14c5" class="outline-3">
-<h3 id="org06d14c5"><span class="section-number-3">3.5</span> idea spark java</h3>
+<div id="outline-container-org99d3152" class="outline-3">
+<h3 id="org99d3152"><span class="section-number-3">3.5</span> idea spark java</h3>
 <div class="outline-text-3" id="text-3-5">
 <ol class="org-ol">
-<li>jre 1.5 换成1.8<br></li>
+<li>jre 1.5 换成1.8</li>
 </ol>
 </div>
 </div>
-<div id="outline-container-org8c133c1" class="outline-3">
-<h3 id="org8c133c1"><span class="section-number-3">3.6</span> rdd &amp; dataframe</h3>
+<div id="outline-container-org66b4438" class="outline-3">
+<h3 id="org66b4438"><span class="section-number-3">3.6</span> rdd &amp; dataframe</h3>
 </div>
 </div>
-<div id="outline-container-org338c1ab" class="outline-2">
-<h2 id="org338c1ab"><span class="section-number-2">4</span> <span class="todo TODO">TODO</span> 如何转表格</h2>
+<div id="outline-container-orgcbf23a3" class="outline-2">
+<h2 id="orgcbf23a3"><span class="section-number-2">4</span> <span class="todo TODO">TODO</span> 如何转表格</h2>
 <div class="outline-text-2" id="text-4">
 <p>
-格式	可分割	平均压缩速度	文本文件压缩效率	Hadoop压缩编解码器	纯Java实现	原生	备注<br>
-gzip	否	快	高	org.apache.hadoop.io.compress.GzipCodec	是	是<br>
-lzo	是（取决于所使用的库）	非常快	中等	com.hadoop.compression.lzo.LzoCodec	是	是	需要在每个节点上安装LZO<br>
-bzip2	是	慢	非常高	org.apache.hadoop.io.compress.Bzip2Codec	是	是	为可分割版本使用纯Java<br>
-zlib	否	慢	中等	org.apache.hadoop.io.compress.DefaultCodec	是	是	Hadoop 的默认压缩编解码器<br>
-Snappy	否	非常快	低	org.apache.hadoop.io.compress.SnappyCodec	否	是	Snappy 有纯Java的移植版，但是在Spark/Hadoop中不能用<br>
+格式	可分割	平均压缩速度	文本文件压缩效率	Hadoop压缩编解码器	纯Java实现	原生	备注
+gzip	否	快	高	org.apache.hadoop.io.compress.GzipCodec	是	是	
+lzo	是（取决于所使用的库）	非常快	中等	com.hadoop.compression.lzo.LzoCodec	是	是	需要在每个节点上安装LZO
+bzip2	是	慢	非常高	org.apache.hadoop.io.compress.Bzip2Codec	是	是	为可分割版本使用纯Java
+zlib	否	慢	中等	org.apache.hadoop.io.compress.DefaultCodec	是	是	Hadoop 的默认压缩编解码器
+Snappy	否	非常快	低	org.apache.hadoop.io.compress.SnappyCodec	否	是	Snappy 有纯Java的移植版，但是在Spark/Hadoop中不能用
 </p>
 </div>
 </div>
-<div id="outline-container-org965e902" class="outline-2">
-<h2 id="org965e902"><span class="section-number-2">5</span> Spark Executor在YARN上的内存分配</h2>
+<div id="outline-container-org7a9ac5d" class="outline-2">
+<h2 id="org7a9ac5d"><span class="section-number-2">5</span> Spark Executor在YARN上的内存分配</h2>
 <div class="outline-text-2" id="text-5">
 <p>
-从Spark的角度看，Executor占用的内存分为两部分：ExecutorMemory和MemoryOverhead<br>
-一、ExecutorMemory<br>
-ExecutorMemory为JVM进程的Java堆区域。大小通过属性spark.executor.memory设置。也可以在spark-submit命令时用参数&#x2013;executor-memory设置。<br>
+从Spark的角度看，Executor占用的内存分为两部分：ExecutorMemory和MemoryOverhead
+一、ExecutorMemory
+ExecutorMemory为JVM进程的Java堆区域。大小通过属性spark.executor.memory设置。也可以在spark-submit命令时用参数&#x2013;executor-memory设置。
 </p>
 
 <p>
-用于缓存RDD数据的memoryStore位于这一区域。<br>
-memoryStore占用空间的比例通过属性spark.storage.memoryFraction和spark.storage.safetyFraction控制<br>
+用于缓存RDD数据的memoryStore位于这一区域。
+memoryStore占用空间的比例通过属性spark.storage.memoryFraction和spark.storage.safetyFraction控制
 </p>
 
 <p>
-二、MemoryOverhead<br>
+二、MemoryOverhead
 </p>
 
 <p>
-MemoryOverhead是JVM进程中除Java堆以外占用的空间大小，包括方法区（永久代）、Java虚拟机栈、本地方法栈、JVM进程本身所用的内存、直接内存（Direct Memory）等。通过spark.yarn.executor.memoryOverhead设置，单位MB。<br>
+MemoryOverhead是JVM进程中除Java堆以外占用的空间大小，包括方法区（永久代）、Java虚拟机栈、本地方法栈、JVM进程本身所用的内存、直接内存（Direct Memory）等。通过spark.yarn.executor.memoryOverhead设置，单位MB。
 </p>
 
 <p>
-三、相关问题<br>
+三、相关问题
 </p>
 
 
 <p>
-如果用于存储RDD的空间不足，先存储的RDD的分区会被后存储的覆盖。当需要使用丢失分区的数据时，丢失的数据会被重新计算<br>
+如果用于存储RDD的空间不足，先存储的RDD的分区会被后存储的覆盖。当需要使用丢失分区的数据时，丢失的数据会被重新计算
 </p>
 
 <p>
-如果Java堆或者永久代的内存不足，则会产生各种OOM异常，executor会被结束。spark会重新申请一个container运行executor。失败executor上的任务和存储的数据会在其他executor上重新计算。<br>
+如果Java堆或者永久代的内存不足，则会产生各种OOM异常，executor会被结束。spark会重新申请一个container运行executor。失败executor上的任务和存储的数据会在其他executor上重新计算。
 </p>
 
 <p>
-如果实际运行过程中ExecutorMemory+MemoryOverhead之和（JVM进程总内存）超过container的容量。YARN会直接杀死container。executor日志中不会有异常记录。spark同样会重新申请container运行executor。<br>
+如果实际运行过程中ExecutorMemory+MemoryOverhead之和（JVM进程总内存）超过container的容量。YARN会直接杀死container。executor日志中不会有异常记录。spark同样会重新申请container运行executor。
 </p>
 
 
@@ -235,50 +455,50 @@ MemoryOverhead是JVM进程中除Java堆以外占用的空间大小，包括方�
 
 
 <p>
-在Java堆以外的JVM进程内存占用较多的情况下，应该将MemoryOverhead设置为一个足够大的值，应该将MemoryOverhead设置为一个足够大的值，以防JVM进程因实际占用的内存超标而被kill。如果默认值（math.max((MEMORY_OVERHEAD_FACTOR *executorMemory).toInt,MEMORY_OVERHEAD_MIN）不够大，可以通过spark.yarn.executor.memoryOverhead手动设置一个更大的值。<br>
+在Java堆以外的JVM进程内存占用较多的情况下，应该将MemoryOverhead设置为一个足够大的值，应该将MemoryOverhead设置为一个足够大的值，以防JVM进程因实际占用的内存超标而被kill。如果默认值（math.max((MEMORY<sub>OVERHEAD</sub><sub>FACTOR</sub> *executorMemory).toInt,MEMORY<sub>OVERHEAD</sub><sub>MIN</sub>）不够大，可以通过spark.yarn.executor.memoryOverhead手动设置一个更大的值。
 </p>
 </div>
 </div>
-<div id="outline-container-org2bae758" class="outline-2">
-<h2 id="org2bae758"><span class="section-number-2">6</span> 如何对spark任务调优?</h2>
+<div id="outline-container-orge13430b" class="outline-2">
+<h2 id="orge13430b"><span class="section-number-2">6</span> 如何对spark任务调优?</h2>
 <div class="outline-text-2" id="text-6">
 <p>
-<a href="http://www.cnblogs.com/xing901022/p/6445254.html">http://www.cnblogs.com/xing901022/p/6445254.html</a><br>
+<a href="http://www.cnblogs.com/xing901022/p/6445254.html">http://www.cnblogs.com/xing901022/p/6445254.html</a>
 </p>
 
 <p>
-调优的经验总结<br>
-1 输出信息<br>
-在Spark应用里面可以直接使用System.out.println把信息输出出来，系统会直接拦截out输出到spark的日志。像我们使用的yarn作为资源管理系统，在yarn的日志中就可以直接看到这些输出信息了。这在数据量很大的时候，做一些show()（默认显示20），count() 或者 take(10)的时候会很方便。<br>
+调优的经验总结
+1 输出信息
+在Spark应用里面可以直接使用System.out.println把信息输出出来，系统会直接拦截out输出到spark的日志。像我们使用的yarn作为资源管理系统，在yarn的日志中就可以直接看到这些输出信息了。这在数据量很大的时候，做一些show()（默认显示20），count() 或者 take(10)的时候会很方便。
 </p>
 
 <p>
-2 内存不够<br>
-当任务失败，收到sparkContext shutdown的信息时，基本都是执行者的内存不够。这个时候，一方面可以调大&#x2013;excutor-memory参数，另一方面还是得回去看看程序。如果受限于系统的硬件条件，无法加大内存，可以采用局部调试法，检查是在哪里出现的内存问题。比如，你的程序分成几个步骤，一步一步的打包运行，最后检查出现问题的点就可以了。<br>
+2 内存不够
+当任务失败，收到sparkContext shutdown的信息时，基本都是执行者的内存不够。这个时候，一方面可以调大&#x2013;excutor-memory参数，另一方面还是得回去看看程序。如果受限于系统的硬件条件，无法加大内存，可以采用局部调试法，检查是在哪里出现的内存问题。比如，你的程序分成几个步骤，一步一步的打包运行，最后检查出现问题的点就可以了。
 </p>
 
 <p>
-3 ThreadPool<br>
-线程池不够，这个是因为&#x2013;excutor-core给的太少了，出现线程池不够用的情况。这个时候就需要调整参数的配置了。<br>
+3 ThreadPool
+线程池不够，这个是因为&#x2013;excutor-core给的太少了，出现线程池不够用的情况。这个时候就需要调整参数的配置了。
 </p>
 
 <p>
-4 physical memory不够<br>
+4 physical memory不够
 </p>
 
 
 <p>
-这种问题一般是driver memory不够导致的，driver memory通常存储了以一些调度方面的信息，这种情况很有可能是你的调度过于复杂，或者是内部死循环导致。<br>
+这种问题一般是driver memory不够导致的，driver memory通常存储了以一些调度方面的信息，这种情况很有可能是你的调度过于复杂，或者是内部死循环导致。
 </p>
 
 <p>
-5 合理利用缓存<br>
-在Spark的计算中，不太建议直接使用cache，万一cache的量很大，可能导致内存溢出。可以采用persist的方式，指定缓存的级别为MEMORY_AND_DISK,这样在内存不够的时候，可以把数据缓存到磁盘上。另外，要合理的设计代码，恰当地使用广播和缓存，广播的数据量太大会对传输带来压力，缓存过多未及时释放，也会导致内存占用。一般来说，你的代码在需要重复使用某一个rdd的时候，才需要考虑进行缓存，并且在不使用的时候，要及时unpersist释放。<br>
+5 合理利用缓存
+在Spark的计算中，不太建议直接使用cache，万一cache的量很大，可能导致内存溢出。可以采用persist的方式，指定缓存的级别为MEMORY<sub>AND</sub><sub>DISK,这样在内存不够的时候</sub>，可以把数据缓存到磁盘上。另外，要合理的设计代码，恰当地使用广播和缓存，广播的数据量太大会对传输带来压力，缓存过多未及时释放，也会导致内存占用。一般来说，你的代码在需要重复使用某一个rdd的时候，才需要考虑进行缓存，并且在不使用的时候，要及时unpersist释放。
 </p>
 
 <p>
-6 尽量避免shuffle<br>
-这个点，在优化的过程中是很重要的。比如你需要把两个rdd按照某个key进行groupby，然后在进行leftouterjoin，这个时候一定要考虑大小表的问题。如果把大表关联到小表，那么性能很可能会很惨。而只需要简单的调换一下位置，性能就可能提升好几倍。<br>
+6 尽量避免shuffle
+这个点，在优化的过程中是很重要的。比如你需要把两个rdd按照某个key进行groupby，然后在进行leftouterjoin，这个时候一定要考虑大小表的问题。如果把大表关联到小表，那么性能很可能会很惨。而只需要简单的调换一下位置，性能就可能提升好几倍。
 </p>
 </div>
 </div>
@@ -289,6 +509,8 @@ MemoryOverhead是JVM进程中除Java堆以外占用的空间大小，包括方�
     <a href="https://www.gnu.org/software/emacs/">Emacs</a>
     <a href="http://orgmode.org/">Org mode</a> 编辑和构建
 </p>
+<!-- <script src="https://www.manue1.com/css/jquery-2.1.3.min.js"></script>
+     <script src="https://www.manue1.com/css/main.js"></script> -->
 <script src="http://www.langdebuqing.com/css/jquery-2.1.3.min.js"></script>
 <script src="http://www.langdebuqing.com/css/main.js"></script>
 </div>

@@ -1,14 +1,234 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-01-24 Thu 21:14 -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 2019-01-24 Thu 22:05 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>hive 功能特性</title>
-<meta name="generator" content="Org mode">
-<meta name="author" content="manue1">
-<link rel="stylesheet" type="text/css" href="css/worg.css" />
-<!-- <link rel="shortcut icon" href="http://www.langdebuqing.com/images/favicon.ico" type="image/x-icon" /> -->
+<meta name="generator" content="Org mode" />
+<meta name="author" content="manue1" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<!-- <link rel="stylesheet" type="text/css" href="https://www.manue1.site/css/style.css" /> -->
+<link rel="stylesheet" type="text/css" href="http://www.langdebuqing.com/css/style.css" />
+<link rel="shortcut icon" href="http://www.langdebuqing.com/images/favicon.ico" type="image/x-icon" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -29,105 +249,105 @@
 <div id="content">
 <h1 class="title">hive 功能特性</h1>
 <div id="table-of-contents">
-<h2>&#30446;&#24405;</h2>
+<h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgb80e220">1. hive 基础</a></li>
-<li><a href="#org93ad765">2. hive client 使用</a>
+<li><a href="#orgd7a2de1">1. hive 基础</a></li>
+<li><a href="#org817ad46">2. hive client 使用</a>
 <ul>
-<li><a href="#org0c52e7c">2.1. 清洗数据</a></li>
-<li><a href="#orgc823698">2.2. 建表导入数据</a></li>
-<li><a href="#org82fe9e6">2.3. python UDF实现</a></li>
+<li><a href="#org9625cc9">2.1. 清洗数据</a></li>
+<li><a href="#orgfec545f">2.2. 建表导入数据</a></li>
+<li><a href="#orgf55bb77">2.3. python UDF实现</a></li>
 </ul>
 </li>
-<li><a href="#org90210cc">3. hive server使用</a></li>
+<li><a href="#orgfc94c43">3. hive server使用</a></li>
 </ul>
 </div>
 </div>
 <p>
-Hive是基于Hadoop分布式文件系统的，它的数据存储在Hadoop分布式文件系统中。Hive本身是<br>
-没有专门的数据存储格式，也没有为数据建立索引，只需要在创建表的时候告诉Hive数据中的列分<br>
-隔符和行分隔符，Hive就可以解析数据。所以往Hive表里面导入数据只是简单的将数据移动到表所<br>
-在的目录中<br>
+Hive是基于Hadoop分布式文件系统的，它的数据存储在Hadoop分布式文件系统中。Hive本身是
+没有专门的数据存储格式，也没有为数据建立索引，只需要在创建表的时候告诉Hive数据中的列分
+隔符和行分隔符，Hive就可以解析数据。所以往Hive表里面导入数据只是简单的将数据移动到表所
+在的目录中
 </p>
 
-<div id="outline-container-orgb80e220" class="outline-2">
-<h2 id="orgb80e220"><span class="section-number-2">1</span> hive 基础</h2>
+<div id="outline-container-orgd7a2de1" class="outline-2">
+<h2 id="orgd7a2de1"><span class="section-number-2">1</span> hive 基础</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li><p>
-<b>Hive思维导图</b><br>
+<b>Hive思维导图</b>
 </p>
 
 <div class="figure">
-<p><img src="../images/hive-0.jpg" alt="hive-0.jpg" width="85%" height="90%"><br>
+<p><img src="../images/hive-0.jpg" alt="hive-0.jpg" width="85%" height="90%" />
 </p>
 </div></li>
 
 <li><p>
-<b>数据模型</b><br>
+<b>数据模型</b>
 </p>
 
 <p>
-Table(表)，External Table(外部表)，Partition(分区)，Bucket(桶)<br>
+Table(表)，External Table(外部表)，Partition(分区)，Bucket(桶)
 </p>
 
 <p>
-内部表和外部表最大的区别: 内部表DROP时候会删除HDFS上的数据;外部表DROP时候不会删除HDFS上的数据;<br>
+内部表和外部表最大的区别: 内部表DROP时候会删除HDFS上的数据;外部表DROP时候不会删除HDFS上的数据;
 </p>
 
 <p>
-内部表适用场景：Hive中间表、结果表、一般不需要从外部（如本地文件、HDFS上load数据）的情况。<br>
+内部表适用场景：Hive中间表、结果表、一般不需要从外部（如本地文件、HDFS上load数据）的情况。
 </p>
 
 <p>
-外部表适用场景: 源表，需要定期将外部数据映射到表中。<br>
+外部表适用场景: 源表，需要定期将外部数据映射到表中。
 </p>
 
 <blockquote>
 <p>
-db：在 hdfs 中表现为${hive.metastore.warehouse.dir}目录下一个文件夹<br>
+db：在 hdfs 中表现为${hive.metastore.warehouse.dir}目录下一个文件夹
 </p>
 
 <p>
-table：在 hdfs 中表现所属 db 目录下一个文件夹<br>
+table：在 hdfs 中表现所属 db 目录下一个文件夹
 </p>
 
 <p>
-external table：与 table 类似，不过其数据存放位置可以在任意指定路径<br>
+external table：与 table 类似，不过其数据存放位置可以在任意指定路径
 </p>
 
 <p>
-partition：在 hdfs 中表现为 table 目录下的子目录<br>
+partition：在 hdfs 中表现为 table 目录下的子目录
 </p>
 
 <p>
-bucket：在 hdfs 中表现为同一个表目录下根据 hash 散列之后的多个文件<br>
+bucket：在 hdfs 中表现为同一个表目录下根据 hash 散列之后的多个文件
 </p>
 </blockquote>
 
 
 <div class="figure">
-<p><img src="../images/hive-1.jpg" alt="hive-1.jpg"><br>
+<p><img src="../images/hive-1.jpg" alt="hive-1.jpg" />
 </p>
 </div></li>
 
-<li><b>字段类型</b><br>
+<li><b>字段类型</b>
 
 <ol class="org-ol">
 <li><p>
-基础数据类型<br>
+基础数据类型
 </p>
 <blockquote>
-<table>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
-<col  class="org-left">
+<col  class="org-left" />
 
-<col  class="org-left">
+<col  class="org-left" />
 
-<col  class="org-left">
+<col  class="org-left" />
 </colgroup>
 <thead>
 <tr>
@@ -238,19 +458,19 @@ bucket：在 hdfs 中表现为同一个表目录下根据 hash 散列之后的�
 </blockquote></li>
 
 <li><p>
-复杂数据类型<br>
+复杂数据类型
 </p>
 
 <blockquote>
-<table>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
-<col  class="org-left">
+<col  class="org-left" />
 
-<col  class="org-left">
+<col  class="org-left" />
 
-<col  class="org-left">
+<col  class="org-left" />
 </colgroup>
 <thead>
 <tr>
@@ -299,26 +519,26 @@ bucket：在 hdfs 中表现为同一个表目录下根据 hash 散列之后的�
 </ol></li>
 
 <li><p>
-<b>存储格式</b> <br>
+<b>存储格式</b> 
 </p>
 
 <p>
-存储格式主要是 Hive 的概念，<br>
-但是对于数据同步来讲，格式的选择会影响同步数据，类型系统的兼容性等等，<br>
-我们必须予以关注<br>
+存储格式主要是 Hive 的概念，
+但是对于数据同步来讲，格式的选择会影响同步数据，类型系统的兼容性等等，
+我们必须予以关注
 </p>
 
-<table>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
-<col  class="org-left">
+<col  class="org-left" />
 
-<col  class="org-left">
+<col  class="org-left" />
 
-<col  class="org-left">
+<col  class="org-left" />
 
-<col  class="org-left">
+<col  class="org-left" />
 </colgroup>
 <thead>
 <tr>
@@ -364,54 +584,54 @@ bucket：在 hdfs 中表现为同一个表目录下根据 hash 散列之后的�
 
 
 <div class="figure">
-<p><img src="../images/hive-2.jpg" alt="hive-2.jpg" width="85%" height="90%"><br>
+<p><img src="../images/hive-2.jpg" alt="hive-2.jpg" width="85%" height="90%" />
 </p>
 </div>
 
 <p>
-Hive 默认的存储格式是 TextFile，TextFile 类似一个 CSV 文件，<br>
-使用不可见符号分割列，同步后的数据可读性比较好。但是因为所有数据都是按文本存储的，<br>
-对于某些类型（比如 blob/bit ）无法支持。<br>
+Hive 默认的存储格式是 TextFile，TextFile 类似一个 CSV 文件，
+使用不可见符号分割列，同步后的数据可读性比较好。但是因为所有数据都是按文本存储的，
+对于某些类型（比如 blob/bit ）无法支持。
 </p>
 
 <p>
-Parquet/ORC 都是列式存储格式，这里不多介绍。在生产环境中更倾向于选择,<br>
-Parquet/ORC,节省空间的同时在Hive上的查询速度也更快,<br>
-Parquet是一种支持嵌套结构的存储格式，并且使用了列式存储的方式提升查询性能<br>
+Parquet/ORC 都是列式存储格式，这里不多介绍。在生产环境中更倾向于选择,
+Parquet/ORC,节省空间的同时在Hive上的查询速度也更快,
+Parquet是一种支持嵌套结构的存储格式，并且使用了列式存储的方式提升查询性能
 </p></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org93ad765" class="outline-2">
-<h2 id="org93ad765"><span class="section-number-2">2</span> hive client 使用</h2>
+<div id="outline-container-org817ad46" class="outline-2">
+<h2 id="org817ad46"><span class="section-number-2">2</span> hive client 使用</h2>
 <div class="outline-text-2" id="text-2">
 <p>
-测试集群16G内存，三个节点,选<a href="http://netsg.cs.sfu.ca/youtubedata/">YouTube视频统计与社交网络</a>作为数据集<br>
+测试集群16G内存，三个节点,选<a href="http://netsg.cs.sfu.ca/youtubedata/">YouTube视频统计与社交网络</a>作为数据集
 </p>
 </div>
 
 
-<div id="outline-container-org0c52e7c" class="outline-3">
-<h3 id="org0c52e7c"><span class="section-number-3">2.1</span> 清洗数据</h3>
+<div id="outline-container-org9625cc9" class="outline-3">
+<h3 id="org9625cc9"><span class="section-number-3">2.1</span> 清洗数据</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
-数据字段都是以 <code>\t</code> 分割，一个字段内有多个值的统一 <code>&amp;</code> 分割<br>
+数据字段都是以 <code>\t</code> 分割，一个字段内有多个值的统一 <code>&amp;</code> 分割 
 </p>
 
 <p>
-视频相关字段信息<br>
+视频相关字段信息
 </p>
 
-<table>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
-<col  class="org-left">
+<col  class="org-left" />
 
-<col  class="org-left">
+<col  class="org-left" />
 
-<col  class="org-right">
+<col  class="org-right" />
 </colgroup>
 <thead>
 <tr>
@@ -493,18 +713,18 @@ Parquet是一种支持嵌套结构的存储格式，并且使用了列式存储�
 </table>
 
 <p>
-用户相关信息<br>
+用户相关信息
 </p>
 
-<table>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
-<col  class="org-left">
+<col  class="org-left" />
 
-<col  class="org-left">
+<col  class="org-left" />
 
-<col  class="org-right">
+<col  class="org-right" />
 </colgroup>
 <thead>
 <tr>
@@ -537,15 +757,15 @@ Parquet是一种支持嵌套结构的存储格式，并且使用了列式存储�
 </table>
 </div>
 </div>
-<div id="outline-container-orgc823698" class="outline-3">
-<h3 id="orgc823698"><span class="section-number-3">2.2</span> 建表导入数据</h3>
+<div id="outline-container-orgfec545f" class="outline-3">
+<h3 id="orgfec545f"><span class="section-number-3">2.2</span> 建表导入数据</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
-首先测试数据文件上传hdfs <code>/hadoop_data/</code> 下<br>
+首先测试数据文件上传hdfs <code>/hadoop_data/</code> 下
 </p>
 
 <p>
-创建数据库<br>
+创建数据库
 </p>
 
 <pre class="example">
@@ -559,14 +779,14 @@ drop database hdb cascade;
 </pre>
 
 <p>
-<b>视频信息创建表</b><br>
+<b>视频信息创建表</b>
 </p>
 
 <ul class="org-ul">
-<li>文件格式为textfile<br>
+<li>文件格式为textfile
 <ol class="org-ol">
 <li><p>
-内部表<br>
+内部表
 </p>
 <pre class="example">
 create table i_text(
@@ -587,20 +807,20 @@ stored as textfile;
 </pre>
 
 <p>
-load data inpath "/hadoop_data/clean.txt" into table i_text;<br>
+load data inpath "/hadoop<sub>data</sub>/clean.txt" into table i<sub>text</sub>;
 </p>
 
 <p>
-此时你会发现 <code>/hadoop_data/clean.txt</code> 源文件已经被copy到<br>
-<code>/user/hive/warehouse/hdb.db/i_text</code>,内部表删除后，此文件也会被删除<br>
+此时你会发现 <code>/hadoop_data/clean.txt</code> 源文件已经被copy到
+<code>/user/hive/warehouse/hdb.db/i_text</code>,内部表删除后，此文件也会被删除
 </p></li>
 
 <li><p>
-外部表<br>
+外部表 
 </p>
 
 <p>
-external table 指定hdfs任意位置存储<br>
+external table 指定hdfs任意位置存储
 </p>
 
 <pre class="example">
@@ -622,29 +842,29 @@ stored as textfile;
 </pre>
 
 <p>
-注意: sorted as 和 locatioon 的顺序<br>
+注意: sorted as 和 locatioon 的顺序
 </p>
 
 <p>
-load data local inpath "/home/manue1/clean.txt" into table o_text<br>
+load data local inpath "/home/manue1/clean.txt" into table o<sub>text</sub>
 </p>
 
 <p>
-load data inpath "/hadoop_data/clean.txt" into table o_text<br>
+load data inpath "/hadoop<sub>data</sub>/clean.txt" into table o<sub>text</sub>
 </p>
 
 <p>
-此时你会发现 <code>/hadoop_data/clean.txt</code> 源文件已经被copy到<br>
-<code>/user/hive/warehouse/hdb.db/o_text</code>,外部表删除后，此文件还在<br>
+此时你会发现 <code>/hadoop_data/clean.txt</code> 源文件已经被copy到
+<code>/user/hive/warehouse/hdb.db/o_text</code>,外部表删除后，此文件还在
 </p></li>
 </ol></li>
 
 <li><p>
-文件格式为orc<br>
+文件格式为orc
 </p>
 
 <p>
-对update上传者字段进行桶分区<br>
+对update上传者字段进行桶分区
 </p>
 
 <pre class="example">
@@ -668,21 +888,21 @@ stored as textfile;
 </pre>
 
 <p>
-由于无法将textfile格式的数据导入到orc格式的表格，所以数据需要从i_text导入到b_orc<br>
+由于无法将textfile格式的数据导入到orc格式的表格，所以数据需要从i<sub>text导入到b</sub><sub>orc</sub>
 </p>
 
 <p>
-insert into table b_orc select * from i_text;<br>
+insert into table b<sub>orc</sub> select * from i<sub>text</sub>;
 </p></li>
 </ul>
 
 <p>
-<b>用户信息创建表</b><br>
+<b>用户信息创建表</b>
 </p>
 
 <ul class="org-ul">
 <li><p>
-textfile<br>
+textfile
 </p>
 
 <pre class="example">
@@ -694,11 +914,11 @@ stored as textfile;
 </pre>
 
 <p>
-load data inpath "/hadoop_data/user.txt" into table user_text;<br>
+load data inpath "/hadoop<sub>data</sub>/user.txt" into table user<sub>text</sub>;
 </p></li>
 
 <li><p>
-orc<br>
+orc
 </p>
 
 <pre class="example">
@@ -709,21 +929,21 @@ stored as orc;
 </pre>
 
 <p>
-insert into table user_orc select * from user_text;<br>
+insert into table user<sub>orc</sub> select * from user<sub>text</sub>;
 </p></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org82fe9e6" class="outline-3">
-<h3 id="org82fe9e6"><span class="section-number-3">2.3</span> python UDF实现</h3>
+<div id="outline-container-orgf55bb77" class="outline-3">
+<h3 id="orgf55bb77"><span class="section-number-3">2.3</span> python UDF实现</h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
-在内置函数无法满足当前业务需求的时候,Hive允许用户自定义一些函数，用于扩展 HiveQL 的功能，这类函数叫做 UDF（用户自定义函数）<br>
+在内置函数无法满足当前业务需求的时候,Hive允许用户自定义一些函数，用于扩展 HiveQL 的功能，这类函数叫做 UDF（用户自定义函数）
 </p>
 
 <p>
-编写 <code>mp.py</code> 用来处理复杂逻辑<br>
+编写 <code>mp.py</code> 用来处理复杂逻辑
 </p>
 
 <pre class="example">
@@ -742,7 +962,7 @@ if __name__=="__main__":
 </pre>
 
 <p>
-hive client 调用UDF<br>
+hive client 调用UDF
 </p>
 
 <pre class="example">
@@ -759,15 +979,15 @@ group by user_id, food_type;
 </div>
 </div>
 
-<div id="outline-container-org90210cc" class="outline-2">
-<h2 id="org90210cc"><span class="section-number-2">3</span> hive server使用</h2>
+<div id="outline-container-orgfc94c43" class="outline-2">
+<h2 id="orgfc94c43"><span class="section-number-2">3</span> hive server使用</h2>
 <div class="outline-text-2" id="text-3">
 <p>
-python的pyhive模块 通过thrift方式连接hive,实现查询和取回结果的操作<br>
+python的pyhive模块 通过thrift方式连接hive,实现查询和取回结果的操作
 </p>
 
 <p>
-<b>DB-API</b><br>
+<b>DB-API</b>
 </p>
 
 <pre class="example">
@@ -780,7 +1000,7 @@ print cursor.fetchall()
 </pre>
 
 <p>
-<b>DB-API (asynchronous)</b><br>
+<b>DB-API (asynchronous)</b>
 </p>
 
 <pre class="example">
@@ -814,6 +1034,8 @@ print cursor.fetchall()
     <a href="https://www.gnu.org/software/emacs/">Emacs</a>
     <a href="http://orgmode.org/">Org mode</a> 编辑和构建
 </p>
+<!-- <script src="https://www.manue1.com/css/jquery-2.1.3.min.js"></script>
+     <script src="https://www.manue1.com/css/main.js"></script> -->
 <script src="http://www.langdebuqing.com/css/jquery-2.1.3.min.js"></script>
 <script src="http://www.langdebuqing.com/css/main.js"></script>
 </div>

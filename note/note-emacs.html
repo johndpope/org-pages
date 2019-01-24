@@ -1,14 +1,234 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-01-24 Thu 21:14 -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 2019-01-24 Thu 22:05 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>emacs note</title>
-<meta name="generator" content="Org mode">
-<meta name="author" content="manue1">
-<link rel="stylesheet" type="text/css" href="css/worg.css" />
-<!-- <link rel="shortcut icon" href="http://www.langdebuqing.com/images/favicon.ico" type="image/x-icon" /> -->
+<meta name="generator" content="Org mode" />
+<meta name="author" content="manue1" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<!-- <link rel="stylesheet" type="text/css" href="https://www.manue1.site/css/style.css" /> -->
+<link rel="stylesheet" type="text/css" href="http://www.langdebuqing.com/css/style.css" />
+<link rel="shortcut icon" href="http://www.langdebuqing.com/images/favicon.ico" type="image/x-icon" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -29,55 +249,55 @@
 <div id="content">
 <h1 class="title">emacs note</h1>
 <div id="table-of-contents">
-<h2>&#30446;&#24405;</h2>
+<h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orga5b6c93">1. note-emacs</a>
+<li><a href="#org633c9c3">1. note-emacs</a>
 <ul>
-<li><a href="#org7b244fd">1.1. emacs tutorial</a></li>
-<li><a href="#org5fc1b01">1.2. emacs lisp</a>
+<li><a href="#org4d5c04b">1.1. emacs tutorial</a></li>
+<li><a href="#org16ae242">1.2. emacs lisp</a>
 <ul>
-<li><a href="#orgf9769d3">1.2.1. blog</a></li>
-<li><a href="#org1ae073a">1.2.2. casting spels emacs</a>
+<li><a href="#org1cfbd55">1.2.1. blog</a></li>
+<li><a href="#org771fc5c">1.2.2. casting spels emacs</a>
 <ul>
-<li><a href="#org1cf9b5e">1.2.2.1. Syntax and Semantic</a></li>
-<li><a href="#org803cc70">1.2.2.2. Defining the data for our Game World</a></li>
-<li><a href="#org31fbfdf">1.2.2.3. Looking around in our game world</a></li>
+<li><a href="#orgc8a3e57">1.2.2.1. Syntax and Semantic</a></li>
+<li><a href="#org90569bd">1.2.2.2. Defining the data for our Game World</a></li>
+<li><a href="#orge6990a5">1.2.2.3. Looking around in our game world</a></li>
 </ul>
 </li>
-<li><a href="#org89b8c3b">1.2.3. code</a></li>
+<li><a href="#orge1a62d1">1.2.3. code</a></li>
 </ul>
 </li>
-<li><a href="#org9f01fd7">1.3. use emacs</a></li>
+<li><a href="#orgaddf312">1.3. use emacs</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orga5b6c93" class="outline-2">
-<h2 id="orga5b6c93"><span class="section-number-2">1</span> note-emacs</h2>
+<div id="outline-container-org633c9c3" class="outline-2">
+<h2 id="org633c9c3"><span class="section-number-2">1</span> note-emacs</h2>
 <div class="outline-text-2" id="text-1">
 <p>
-the learning environment is mac<br>
+the learning environment is mac 
 </p>
 </div>
-<div id="outline-container-org7b244fd" class="outline-3">
-<h3 id="org7b244fd"><span class="section-number-3">1.1</span> emacs tutorial</h3>
+<div id="outline-container-org4d5c04b" class="outline-3">
+<h3 id="org4d5c04b"><span class="section-number-3">1.1</span> emacs tutorial</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
-use c-h t open tutorial<br>
+use c-h t open tutorial 
 </p>
 
 <p>
-c - control  M - option<br>
+c - control  M - option
 </p>
 
 <p>
-c-x c-c  quit emacs<br>
+c-x c-c  quit emacs
 </p>
 
 <p>
-c-g      quit current command<br>
+c-g      quit current command
 </p>
 
 <pre class="example">
@@ -96,126 +316,126 @@ c-g      quit current command<br>
 
 
 <p>
-c-/ | c-x u     undo<br>
+c-/ | c-x u     undo 
 </p>
 
 <p>
-c-_      undo step by step<br>
+c-_      undo step by step
 </p>
 
 <p>
-c-k      delete<br>
+c-k      delete
 </p>
 
 <p>
-c-x c-f  search file<br>
+c-x c-f  search file
 </p>
 
 <p>
-c-x c-s  save file<br>
+c-x c-s  save file
 </p>
 
 <p>
-c-x s    save more buffer<br>
+c-x s    save more buffer
 </p>
 
 <p>
-c-x c-b | c-x b  search buffer<br>
+c-x c-b | c-x b  search buffer
 </p>
 
 <p>
-c-s     search forwards<br>
+c-s     search forwards
 </p>
 
 <p>
-c-r     search backwards<br>
+c-r     search backwards
 </p>
 
 <p>
-c-h k ()  query shortcut description<br>
+c-h k ()  query shortcut description
 </p>
 
 <p>
-c-h f ()  describe function<br>
+c-h f ()  describe function
 </p>
 
 <p>
-c-h a     search for command g<br>
+c-h a     search for command g
 </p>
 
 <p>
-M-x linum-mode   show line number<br>
+M-x linum-mode   show line number
 </p>
 </div>
 </div>
-<div id="outline-container-org5fc1b01" class="outline-3">
-<h3 id="org5fc1b01"><span class="section-number-3">1.2</span> emacs lisp</h3>
+<div id="outline-container-org16ae242" class="outline-3">
+<h3 id="org16ae242"><span class="section-number-3">1.2</span> emacs lisp</h3>
 <div class="outline-text-3" id="text-1-2">
 </div>
-<div id="outline-container-orgf9769d3" class="outline-4">
-<h4 id="orgf9769d3"><span class="section-number-4">1.2.1</span> blog</h4>
+<div id="outline-container-org1cfbd55" class="outline-4">
+<h4 id="org1cfbd55"><span class="section-number-4">1.2.1</span> blog</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <p>
-<a href="http://www.woola.net/detail/2016-08-18-elisp.html">http://www.woola.net/detail/2016-08-18-elisp.html</a><br>
+<a href="http://www.woola.net/detail/2016-08-18-elisp.html">http://www.woola.net/detail/2016-08-18-elisp.html</a>
 </p>
 </div>
 </div>
-<div id="outline-container-org1ae073a" class="outline-4">
-<h4 id="org1ae073a"><span class="section-number-4">1.2.2</span> casting spels emacs</h4>
+<div id="outline-container-org771fc5c" class="outline-4">
+<h4 id="org771fc5c"><span class="section-number-4">1.2.2</span> casting spels emacs</h4>
 <div class="outline-text-4" id="text-1-2-2">
 <p>
-a comic book : Emacs Lisp version<br>
-<a href="http://www.lisperati.com/casting-spels-emacs/html/casting-spels-emacs-1.html">http://www.lisperati.com/casting-spels-emacs/html/casting-spels-emacs-1.html</a><br>
+a comic book : Emacs Lisp version 
+<a href="http://www.lisperati.com/casting-spels-emacs/html/casting-spels-emacs-1.html">http://www.lisperati.com/casting-spels-emacs/html/casting-spels-emacs-1.html</a>
 </p>
 
 <p>
-Emacs <b>scratch</b> buffer is Lisp interacion : c-x b <b>scratch</b><br>
-</p>
-
-
-<p>
-Emacs tutorial <a href="https://www.gnu.org/software/emacs/tour/">https://www.gnu.org/software/emacs/tour/</a><br>
+Emacs <b>scratch</b> buffer is Lisp interacion : c-x b <b>scratch</b>
 </p>
 
 
 <p>
-Emacs manual : <a href="https://www.gnu.org/software/emacs/manual/index.html">https://www.gnu.org/software/emacs/manual/index.html</a><br>
+Emacs tutorial <a href="https://www.gnu.org/software/emacs/tour/">https://www.gnu.org/software/emacs/tour/</a>
+</p>
+
+
+<p>
+Emacs manual : <a href="https://www.gnu.org/software/emacs/manual/index.html">https://www.gnu.org/software/emacs/manual/index.html</a>
 </p>
 
 <p>
-c-x c-e  : evaluable each expression (move the cursor to the end of each expression )<br>
+c-x c-e  : evaluable each expression (move the cursor to the end of each expression )
 </p>
 
 <p>
-M-x top-level : clears out errors<br>
+M-x top-level : clears out errors
 </p>
 
 <p>
-M-x ielm  : ELISP&gt;<br>
+M-x ielm  : ELISP&gt;
 </p>
 
 <p>
-(setq eval-expression-print-length nil) : prevent emacs truncate messages<br>
+(setq eval-expression-print-length nil) : prevent emacs truncate messages
 </p>
 
 <p>
-(require 'cl) : the library to make elisp run Common lisp command<br>
+(require 'cl) : the library to make elisp run Common lisp command 
 </p>
 </div>
 
 
-<div id="outline-container-org1cf9b5e" class="outline-5">
-<h5 id="org1cf9b5e"><span class="section-number-5">1.2.2.1</span> Syntax and Semantic</h5>
+<div id="outline-container-orgc8a3e57" class="outline-5">
+<h5 id="orgc8a3e57"><span class="section-number-5">1.2.2.1</span> Syntax and Semantic</h5>
 <div class="outline-text-5" id="text-1-2-2-1">
 <p>
-any text you give elisp interprater has to be arranged into list ,can be nested into lists of<br>
-lists,a list in elisp (bla bla bla (abc abc))<br>
+any text you give elisp interprater has to be arranged into list ,can be nested into lists of
+lists,a list in elisp (bla bla bla (abc abc))
 </p>
 
 <p>
-elis: interprater uses two modes to read code:  Code mode / Data mode.<br>
-in data mode,you can put anything into your list ;<br>
-in Code mode, your list need to be special type of list called a form :<br>
+elis: interprater uses two modes to read code:  Code mode / Data mode. 
+in data mode,you can put anything into your list ;
+in Code mode, your list need to be special type of list called a form :
 </p>
 
 <pre class="example">
@@ -228,11 +448,11 @@ command     a form
 </div>
 </div>
 
-<div id="outline-container-org803cc70" class="outline-5">
-<h5 id="org803cc70"><span class="section-number-5">1.2.2.2</span> Defining the data for our Game World</h5>
+<div id="outline-container-org90569bd" class="outline-5">
+<h5 id="org90569bd"><span class="section-number-5">1.2.2.2</span> Defining the data for our Game World</h5>
 <div class="outline-text-5" id="text-1-2-2-2">
 <p>
-in order to learn some more about forms,examples:<br>
+in order to learn some more about forms,examples:
 </p>
 <pre class="example">
 (setq objects '(whiskey-bottle bucket frog chain))
@@ -244,34 +464,34 @@ in order to learn some more about forms,examples:<br>
 
 </pre>
 <p>
-the command sets a variable to a value : the variable is objects and the value is a list<br>
+the command sets a variable to a value : the variable is objects and the value is a list 
 </p>
 </div>
 </div>
 
-<div id="outline-container-org31fbfdf" class="outline-5">
-<h5 id="org31fbfdf"><span class="section-number-5">1.2.2.3</span> Looking around in our game world</h5>
+<div id="outline-container-orge6990a5" class="outline-5">
+<h5 id="orge6990a5"><span class="section-number-5">1.2.2.3</span> Looking around in our game world</h5>
 <div class="outline-text-5" id="text-1-2-2-3">
 <p>
-The word defun means, as you might expect, that we're defining a function<br>
+The word defun means, as you might expect, that we're defining a function
 </p>
 <pre class="example">
 (defun describe-location (location map)
     (second (assoc location map)))
 </pre>
 <p>
-The assoc command does this and then returns the data describing the living-room<br>
+The assoc command does this and then returns the data describing the living-room
 </p>
 
 <p>
-Then the command second trims out the second item in that list, which is the description of the living-room<br>
+Then the command second trims out the second item in that list, which is the description of the living-room
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org89b8c3b" class="outline-4">
-<h4 id="org89b8c3b"><span class="section-number-4">1.2.3</span> code</h4>
+<div id="outline-container-orge1a62d1" class="outline-4">
+<h4 id="orge1a62d1"><span class="section-number-4">1.2.3</span> code</h4>
 <div class="outline-text-4" id="text-1-2-3">
 <div class="org-src-container">
 <pre class="src src-elisp">
@@ -320,90 +540,90 @@ Then the command second trims out the second item in that list, which is the des
 </div>
 </div>
 
-<div id="outline-container-org9f01fd7" class="outline-3">
-<h3 id="org9f01fd7"><span class="section-number-3">1.3</span> use emacs</h3>
+<div id="outline-container-orgaddf312" class="outline-3">
+<h3 id="orgaddf312"><span class="section-number-3">1.3</span> use emacs</h3>
 <div class="outline-text-3" id="text-1-3">
 <ol class="org-ol">
 <li><p>
-<code>counsel-git</code>  <br>
+<code>counsel-git</code>  
 </p>
 
 <p>
-查找当前文件所在的版本控制系统内的其他文件 <code>, g f</code><br>
+查找当前文件所在的版本控制系统内的其他文件 <code>, g f</code>
 </p></li>
 <li><p>
-init-evil.el<br>
+init-evil.el 
 </p>
 
 <p>
-定义一些快捷键<br>
+定义一些快捷键
 </p></li>
 <li><p>
-major mode / minor mode<br>
+major mode / minor mode
 </p>
 
 <p>
-major mode : 语法高亮 主要基本功能a<br>
+major mode : 语法高亮 主要基本功能a 
 </p>
 
 <p>
-text-mode special-mode prog-mode(js2-mode所有编程语言继承这种mode)<br>
+text-mode special-mode prog-mode(js2-mode所有编程语言继承这种mode)
 </p>
 
 <p>
-命名: xxx-mode-key-map , xxx-mode-hook<br>
+命名: xxx-mode-key-map , xxx-mode-hook
 </p>
 
 <p>
-minor mode : 增强性功能<br>
+minor mode : 增强性功能
 </p></li>
 <li><p>
-load-file / load / require /provide /autoload<br>
+load-file / load / require /provide /autoload
 </p>
 
 <p>
-require : If feature FEATURE is not loaded, load it from FILENAME. (c-h f)<br>
-内部调用load<br>
+require : If feature FEATURE is not loaded, load it from FILENAME. (c-h f)
+内部调用load
 </p>
 
 <p>
-load : load elc file(byte-compile-file) 修改el配置 load再次加载是没有没更新<br>
-依赖load-file<br>
+load : load elc file(byte-compile-file) 修改el配置 load再次加载是没有没更新
+依赖load-file
 </p>
 
 <p>
-load-file 明确加载el/elc文件<br>
+load-file 明确加载el/elc文件
 </p>
 
 <p>
-provide -&gt; 执行一次load-file后,更新feature<br>
+provide -&gt; 执行一次load-file后,更新feature
 </p>
 
 <p>
-autoload : (autoload 'test "init-test") 当调用test函数时候，才会执行加载init-test文件<br>
-<code>;;;####autoload</code><br>
+autoload : (autoload 'test "init-test") 当调用test函数时候，才会执行加载init-test文件
+<code>;;;####autoload</code>
 </p></li>
 <li><p>
-dird mode (c-x d)<br>
+dird mode (c-x d)
 </p>
 
 <p class="verse">
-<br>
-&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;+ : create a directory<br>
-&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;c-x c-f : new file<br>
-&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;g: to reflush buffer<br>
-&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;C: copy file<br>
-&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;D: delete file<br>
-&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;R: rename file<br>
-&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;Shift + 6 : 切换上级目录<br>
-&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;c-x c-j: 快速打开当前文件目录<br>
+<br />
+&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;+ : create a directory<br />
+&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;c-x c-f : new file<br />
+&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;g: to reflush buffer<br />
+&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;C: copy file<br />
+&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;D: delete file<br />
+&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;R: rename file<br />
+&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;Shift + 6 : 切换上级目录<br />
+&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;c-x c-j: 快速打开当前文件目录<br />
 </p></li>
 <li><p>
-org-mode auto create emacs conf<br>
+org-mode auto create emacs conf
 </p>
 
 <ul class="org-ul">
-<li>init.el<br></li>
+<li>init.el</li>
 </ul>
 <div class="org-src-container">
 <pre class="src src-lisp"><span style="color: #458588;">(</span>package-initialize<span style="color: #458588;">)</span>
@@ -414,99 +634,99 @@ org-mode auto create emacs conf<br>
 </div>
 
 <p>
-auto create manue1.el config<br>
+auto create manue1.el config
 </p></li>
 <li><p>
-counsel-git-grep<br>
+counsel-git-grep 
 </p>
 
 <p>
-<code>,gg</code>  通过关键字搜索版本内代码<br>
+<code>,gg</code>  通过关键字搜索版本内代码
 </p></li>
 <li><p>
-web mode<br>
+web mode
 </p>
 
 <p>
-<code>M-;</code> 注释<br>
+<code>M-;</code> 注释
 </p>
 
 <p>
-支持js css html 语法高亮补全<br>
+支持js css html 语法高亮补全
 </p></li>
 <li><p>
-js2-refactor<br>
+js2-refactor
 </p>
 
 <p>
-c-c c-m<br>
+c-c c-m
 </p></li>
 <li><p>
-occur<br>
+occur 
 </p>
 
 <p>
-<code>M-s o</code> 快速跳转到当前页面定义的字符串<br>
+<code>M-s o</code> 快速跳转到当前页面定义的字符串
 </p>
 
 <p>
-M-x customize-group popwin<br>
+M-x customize-group popwin
 </p>
 
 <p>
-右边显示<br>
+右边显示
 </p>
 
 <p>
-occur-edit  可以直接修改<br>
+occur-edit  可以直接修改
 </p></li>
 <li><p>
-ag<br>
+ag
 </p>
 
 <p>
-brew install the_silver_search<br>
+brew install the<sub>silver</sub><sub>search</sub>
 </p>
 
 <p>
-helm-ag<br>
+helm-ag
 </p>
 
 <p>
-<code>c-c s</code><br>
+<code>c-c s</code>
 </p></li>
 <li><p>
-flycheck<br>
+flycheck
 </p>
 
 <p>
-show  js error with<br>
+show  js error with
 </p></li>
 <li><p>
-yasnippet<br>
+yasnippet
 </p>
 
 <p>
-自动生成代码 补全代码<br>
+自动生成代码 补全代码
 </p>
 
 <p>
-auto-yasnippet<br>
+auto-yasnippet
 </p>
 
 <p>
-自定义生成的常用代码<br>
+自定义生成的常用代码
 </p>
 
 <p>
-,ac (aya-create)<br>
+,ac (aya-create)
 </p></li>
 <li><p>
-which key<br>
+which key
 </p>
 
 <p>
-, 列出所有按键<br>
+, 列出所有按键
 </p></li>
 </ol>
 </div>
@@ -519,6 +739,8 @@ which key<br>
     <a href="https://www.gnu.org/software/emacs/">Emacs</a>
     <a href="http://orgmode.org/">Org mode</a> 编辑和构建
 </p>
+<!-- <script src="https://www.manue1.com/css/jquery-2.1.3.min.js"></script>
+     <script src="https://www.manue1.com/css/main.js"></script> -->
 <script src="http://www.langdebuqing.com/css/jquery-2.1.3.min.js"></script>
 <script src="http://www.langdebuqing.com/css/main.js"></script>
 </div>

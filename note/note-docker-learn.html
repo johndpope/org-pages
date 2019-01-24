@@ -1,14 +1,234 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-01-24 Thu 21:14 -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 2019-01-24 Thu 22:05 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Docker能替代Vbox吗?</title>
-<meta name="generator" content="Org mode">
-<meta name="author" content="manue1">
-<link rel="stylesheet" type="text/css" href="css/worg.css" />
-<!-- <link rel="shortcut icon" href="http://www.langdebuqing.com/images/favicon.ico" type="image/x-icon" /> -->
+<meta name="generator" content="Org mode" />
+<meta name="author" content="manue1" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<!-- <link rel="stylesheet" type="text/css" href="https://www.manue1.site/css/style.css" /> -->
+<link rel="stylesheet" type="text/css" href="http://www.langdebuqing.com/css/style.css" />
+<link rel="shortcut icon" href="http://www.langdebuqing.com/images/favicon.ico" type="image/x-icon" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -29,117 +249,117 @@
 <div id="content">
 <h1 class="title">Docker能替代Vbox吗?</h1>
 <div id="table-of-contents">
-<h2>&#30446;&#24405;</h2>
+<h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgb203555">1. Docker入门</a>
+<li><a href="#org97301a7">1. Docker入门</a>
 <ul>
-<li><a href="#orga64568c">1.1. 初识Docker</a></li>
-<li><a href="#orga360c05">1.2. Docker核心概念</a></li>
-<li><a href="#orgb0536c0">1.3. Docker install</a></li>
+<li><a href="#org0d63d4e">1.1. 初识Docker</a></li>
+<li><a href="#org6e60f8a">1.2. Docker核心概念</a></li>
+<li><a href="#orgc91685e">1.3. Docker install</a></li>
 </ul>
 </li>
-<li><a href="#org76e0e7a">2. Docker Image</a>
+<li><a href="#orge45027a">2. Docker Image</a>
 <ul>
-<li><a href="#org2d5cd9c">2.1. 获取镜像</a></li>
-<li><a href="#org286c533">2.2. 查看镜像信息</a></li>
-<li><a href="#org14f5cb1">2.3. 搜寻镜像</a></li>
-<li><a href="#org445f712">2.4. 删除镜像</a></li>
-<li><a href="#orgee96ae8">2.5. 创建镜像</a></li>
-<li><a href="#orgc5a7901">2.6. 存出和载入镜像</a></li>
-<li><a href="#org200a33b">2.7. 上传镜像</a></li>
+<li><a href="#orgdb74029">2.1. 获取镜像</a></li>
+<li><a href="#orgc472338">2.2. 查看镜像信息</a></li>
+<li><a href="#orgbb85233">2.3. 搜寻镜像</a></li>
+<li><a href="#orge48e76e">2.4. 删除镜像</a></li>
+<li><a href="#orga838bb3">2.5. 创建镜像</a></li>
+<li><a href="#org5827071">2.6. 存出和载入镜像</a></li>
+<li><a href="#orgc5d3914">2.7. 上传镜像</a></li>
 </ul>
 </li>
-<li><a href="#org3e467e8">3. Docker Container</a>
+<li><a href="#orgb3b05b7">3. Docker Container</a>
 <ul>
-<li><a href="#org0724280">3.1. 创建容器</a></li>
-<li><a href="#orgfa3a2ba">3.2. 启动终止容器</a></li>
-<li><a href="#org112b30e">3.3. 进入容器</a></li>
-<li><a href="#orgdfc3adf">3.4. 删除容器</a></li>
-<li><a href="#org6bb5289">3.5. 导入和导出容器</a></li>
+<li><a href="#orgb7e9176">3.1. 创建容器</a></li>
+<li><a href="#org5067b2d">3.2. 启动终止容器</a></li>
+<li><a href="#org1a2bce6">3.3. 进入容器</a></li>
+<li><a href="#org9521f2d">3.4. 删除容器</a></li>
+<li><a href="#org018e487">3.5. 导入和导出容器</a></li>
 </ul>
 </li>
-<li><a href="#org863ed88">4. Docker Data</a>
+<li><a href="#org79d5473">4. Docker Data</a>
 <ul>
-<li><a href="#orgf489c93">4.1. Data Volumes</a></li>
-<li><a href="#orga608af1">4.2. Data Volume Containers</a></li>
-<li><a href="#orgab6bbda">4.3. 利用数据卷容器迁移数据</a></li>
+<li><a href="#org161ec2b">4.1. Data Volumes</a></li>
+<li><a href="#org3e58f43">4.2. Data Volume Containers</a></li>
+<li><a href="#org83ea145">4.3. 利用数据卷容器迁移数据</a></li>
 </ul>
 </li>
-<li><a href="#orgca43494">5. Docker network</a>
+<li><a href="#orgf8faf2d">5. Docker network</a>
 <ul>
-<li><a href="#org8ce13ac">5.1. 端口映射实现访问容器</a></li>
-<li><a href="#org0e93e19">5.2. 容器互联实现容器间通信</a></li>
+<li><a href="#org1976043">5.1. 端口映射实现访问容器</a></li>
+<li><a href="#org70d5f4a">5.2. 容器互联实现容器间通信</a></li>
 </ul>
 </li>
-<li><a href="#org4f382c9">6. Dockerfile</a></li>
+<li><a href="#org82eccc1">6. Dockerfile</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb203555" class="outline-2">
-<h2 id="orgb203555"><span class="section-number-2">1</span> Docker入门</h2>
+<div id="outline-container-org97301a7" class="outline-2">
+<h2 id="org97301a7"><span class="section-number-2">1</span> Docker入门</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-orga64568c" class="outline-3">
-<h3 id="orga64568c"><span class="section-number-3">1.1</span> 初识Docker</h3>
+<div id="outline-container-org0d63d4e" class="outline-3">
+<h3 id="org0d63d4e"><span class="section-number-3">1.1</span> 初识Docker</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
-可以简单的将Docker容器理解为一种沙盒，每个容器内运行一个应用，不同的容器互相<br>
-隔离，容器之间可以建立通信机制。容器的创建和停止都十分快速，容器自身对资源的<br>
-需求也十分有限，远远低于虚拟机。<br>
+可以简单的将Docker容器理解为一种沙盒，每个容器内运行一个应用，不同的容器互相
+隔离，容器之间可以建立通信机制。容器的创建和停止都十分快速，容器自身对资源的
+需求也十分有限，远远低于虚拟机。
 </p>
 
 <p>
-与传统虚拟机比较，Docker容器快，对系统资源需求少，一台主机可以运行数千个<br>
-Docker容器,docker通过git的操作管理减少学习成本，通过Dockerfile配置文件来<br>
-灵活自动化创建和部署<br>
+与传统虚拟机比较，Docker容器快，对系统资源需求少，一台主机可以运行数千个
+Docker容器,docker通过git的操作管理减少学习成本，通过Dockerfile配置文件来
+灵活自动化创建和部署
 </p>
 
 <p>
-传统方式是硬件层面实现虚拟化，需要有额外的虚拟机管理应用和虚拟机操作系统层，<br>
-Docker容器是操作系统层面上实现的虚拟化，直接复用本地主机的操作系统，因此更加<br>
-轻量级<br>
+传统方式是硬件层面实现虚拟化，需要有额外的虚拟机管理应用和虚拟机操作系统层，
+Docker容器是操作系统层面上实现的虚拟化，直接复用本地主机的操作系统，因此更加
+轻量级
 </p>
 </div>
 </div>
 
-<div id="outline-container-orga360c05" class="outline-3">
-<h3 id="orga360c05"><span class="section-number-3">1.2</span> Docker核心概念</h3>
+<div id="outline-container-org6e60f8a" class="outline-3">
+<h3 id="org6e60f8a"><span class="section-number-3">1.2</span> Docker核心概念</h3>
 <div class="outline-text-3" id="text-1-2">
 <ol class="org-ol">
-<li>Image<br></li>
+<li>Image</li>
 <li><p>
-Container<br>
+Container
 </p>
 
 <p>
-镜像自身是只读的，容器从镜像启动的时候，Docker会在镜像的最上层创建<br>
-一个可写层，镜像本身将保持不变<br>
+镜像自身是只读的，容器从镜像启动的时候，Docker会在镜像的最上层创建
+一个可写层，镜像本身将保持不变
 </p></li>
 <li><p>
-Repository<br>
+Repository
 </p>
 
 <p>
-Docker集中存放镜像文件的场所<br>
+Docker集中存放镜像文件的场所
 </p>
 
 <p>
-目前最大的公开仓库是Docker Hub 国内 Docker Pool<br>
+目前最大的公开仓库是Docker Hub 国内 Docker Pool
 </p>
 
 <p>
-Registry 注册服务器包含众多Repository<br>
+Registry 注册服务器包含众多Repository
 </p></li>
 </ol>
 </div>
 </div>
 
-<div id="outline-container-orgb0536c0" class="outline-3">
-<h3 id="orgb0536c0"><span class="section-number-3">1.3</span> Docker install</h3>
+<div id="outline-container-orgc91685e" class="outline-3">
+<h3 id="orgc91685e"><span class="section-number-3">1.3</span> Docker install</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
-安装docker<a href="https://docs.docker.com/engine/installation/">官网</a> 有详细说明,国内网速很慢，采用了阿里云的<a href="https://yq.aliyun.com/articles/7695">镜像源</a><br>
+安装docker<a href="https://docs.docker.com/engine/installation/">官网</a> 有详细说明,国内网速很慢，采用了阿里云的<a href="https://yq.aliyun.com/articles/7695">镜像源</a>
 </p>
 
 <pre class="example">
@@ -149,373 +369,373 @@ curl -sSL http://acs-public-mirror.oss-cn-hangzhou.aliyuncs.com/docker-engine/in
 </div>
 </div>
 </div>
-<div id="outline-container-org76e0e7a" class="outline-2">
-<h2 id="org76e0e7a"><span class="section-number-2">2</span> Docker Image</h2>
+<div id="outline-container-orge45027a" class="outline-2">
+<h2 id="orge45027a"><span class="section-number-2">2</span> Docker Image</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org2d5cd9c" class="outline-3">
-<h3 id="org2d5cd9c"><span class="section-number-3">2.1</span> 获取镜像</h3>
+<div id="outline-container-orgdb74029" class="outline-3">
+<h3 id="orgdb74029"><span class="section-number-3">2.1</span> 获取镜像</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
-docker pull NAME[: TAG]<br>
+docker pull NAME[: TAG] 
 </p>
 
 <p>
-<code>docker pull ubuntu</code><br>
+<code>docker pull ubuntu</code>
 </p>
 
 <p>
-<code>docker pull registry.hub.docker.com/ubuntu :latest</code><br>
+<code>docker pull registry.hub.docker.com/ubuntu :latest</code>
 </p>
 
 <p>
-不指定TAG默认选择latest标签,最新版本的镜像<br>
+不指定TAG默认选择latest标签,最新版本的镜像
 </p>
 </div>
 </div>
 
-<div id="outline-container-org286c533" class="outline-3">
-<h3 id="org286c533"><span class="section-number-3">2.2</span> 查看镜像信息</h3>
+<div id="outline-container-orgc472338" class="outline-3">
+<h3 id="orgc472338"><span class="section-number-3">2.2</span> 查看镜像信息</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
-<code>docker images</code>  #查看本地所有镜像<br>
+<code>docker images</code>  #查看本地所有镜像
 </p>
 
 <p>
-<code>docker inspect 747cb2d60bbe</code> #查看镜像信息<br>
+<code>docker inspect 747cb2d60bbe</code> #查看镜像信息
 </p>
 </div>
 </div>
 
-<div id="outline-container-org14f5cb1" class="outline-3">
-<h3 id="org14f5cb1"><span class="section-number-3">2.3</span> 搜寻镜像</h3>
+<div id="outline-container-orgbb85233" class="outline-3">
+<h3 id="orgbb85233"><span class="section-number-3">2.3</span> 搜寻镜像</h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
-<code>docker search mysql</code> #搜索远端仓库中共享的镜像<br>
+<code>docker search mysql</code> #搜索远端仓库中共享的镜像
 </p>
 
 <p>
-<code>docker search k8s --no-trunc=false --filter=stars=1 --filter=is-automated=true</code><br>
+<code>docker search k8s --no-trunc=false --filter=stars=1 --filter=is-automated=true</code>
 </p>
 
 <blockquote>
 <p>
-&#x2013;filter=is-automated=true #只显示自动创建的镜像<br>
+&#x2013;filter=is-automated=true #只显示自动创建的镜像
 </p>
 
 <p>
-&#x2013;no-trunc=false  #输出信息不截断显示<br>
+&#x2013;no-trunc=false  #输出信息不截断显示
 </p>
 
 <p>
-&#x2013;filter=stars=0 #指定星级以上的镜像<br>
+&#x2013;filter=stars=0 #指定星级以上的镜像
 </p>
 </blockquote>
 </div>
 </div>
-<div id="outline-container-org445f712" class="outline-3">
-<h3 id="org445f712"><span class="section-number-3">2.4</span> 删除镜像</h3>
+<div id="outline-container-orge48e76e" class="outline-3">
+<h3 id="orge48e76e"><span class="section-number-3">2.4</span> 删除镜像</h3>
 <div class="outline-text-3" id="text-2-4">
 <p>
-docker rmi IMAGE[IMAGE..] #IMAGE可以是标签或者是ID<br>
+docker rmi IMAGE[IMAGE..] #IMAGE可以是标签或者是ID
 </p>
 
 <p>
-<code>docker rmi ff4 -f</code><br>
+<code>docker rmi ff4 -f</code>
 </p>
 
 <p>
-image 创建的容器存在的时候，是无法删除的 -f 强制删除<br>
+image 创建的容器存在的时候，是无法删除的 -f 强制删除
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgee96ae8" class="outline-3">
-<h3 id="orgee96ae8"><span class="section-number-3">2.5</span> 创建镜像</h3>
+<div id="outline-container-orga838bb3" class="outline-3">
+<h3 id="orga838bb3"><span class="section-number-3">2.5</span> 创建镜像</h3>
 <div class="outline-text-3" id="text-2-5">
 <ol class="org-ol">
 <li><p>
-基于已有image的容器创建<br>
+基于已有image的容器创建
 </p>
 
 <p>
-docker commit [OPTIONS] CONTAINER [REPOSITORY[: TAG]]<br>
+docker commit [OPTIONS] CONTAINER [REPOSITORY[: TAG]]
 </p>
 
 <p>
-<code>docker commit -m "add a test" -a 'manue1' -p 836 centos_test:v1.0</code><br>
+<code>docker commit -m "add a test" -a 'manue1' -p 836 centos_test:v1.0</code>
 </p>
 
 <blockquote>
 <p>
--a 作者 -m  提交信息 -p 提交时暂停容器运行<br>
+-a 作者 -m  提交信息 -p 提交时暂停容器运行
 </p>
 </blockquote></li>
 <li><p>
-基于本地模版导入<br>
+基于本地模版导入
 </p>
 
 <p>
-<a href="https://openvz.org/Download/template/precreated">下载系统镜像模板</a><br>
+<a href="https://openvz.org/Download/template/precreated">下载系统镜像模板</a>
 </p>
 
 <p>
-cat xx.tar.gz | docker import - ubuntu:16.04<br>
+cat xx.tar.gz | docker import - ubuntu:16.04
 </p></li>
-<li>基于Dockerfile创建（推荐）<br></li>
+<li>基于Dockerfile创建（推荐）</li>
 </ol>
 </div>
 </div>
-<div id="outline-container-orgc5a7901" class="outline-3">
-<h3 id="orgc5a7901"><span class="section-number-3">2.6</span> 存出和载入镜像</h3>
+<div id="outline-container-org5827071" class="outline-3">
+<h3 id="org5827071"><span class="section-number-3">2.6</span> 存出和载入镜像</h3>
 <div class="outline-text-3" id="text-2-6">
 <p>
-docker save -o ubuntu-16.04.tar ubuntu:latest<br>
+docker save -o ubuntu-16.04.tar ubuntu:latest
 </p>
 
 <p>
-docker load &#x2013;input ubuntu-16.04.tar<br>
+docker load &#x2013;input ubuntu-16.04.tar
 </p>
 </div>
 </div>
 
-<div id="outline-container-org200a33b" class="outline-3">
-<h3 id="org200a33b"><span class="section-number-3">2.7</span> 上传镜像</h3>
+<div id="outline-container-orgc5d3914" class="outline-3">
+<h3 id="orgc5d3914"><span class="section-number-3">2.7</span> 上传镜像</h3>
 <div class="outline-text-3" id="text-2-7">
 <p>
-docker tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]<br>
+docker tag SOURCE<sub>IMAGE</sub>[:TAG] TARGET<sub>IMAGE</sub>[:TAG]
 </p>
 
 <p>
-docker push TARGET_IMAGE[: TAG]<br>
+docker push TARGET<sub>IMAGE</sub>[: TAG]
 </p>
 
 <p>
-需要先修改本地仓库name为远程仓库名，必须先创建远程仓库manue1sec/test<br>
+需要先修改本地仓库name为远程仓库名，必须先创建远程仓库manue1sec/test
 </p>
 
 <p>
-<code>docker tag 3a4 manue1sec/test:u_test</code><br>
+<code>docker tag 3a4 manue1sec/test:u_test</code>
 </p>
 
 <p>
-<code>docker push manue1sec/test</code><br>
+<code>docker push manue1sec/test</code>
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org3e467e8" class="outline-2">
-<h2 id="org3e467e8"><span class="section-number-2">3</span> Docker Container</h2>
+<div id="outline-container-orgb3b05b7" class="outline-2">
+<h2 id="orgb3b05b7"><span class="section-number-2">3</span> Docker Container</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org0724280" class="outline-3">
-<h3 id="org0724280"><span class="section-number-3">3.1</span> 创建容器</h3>
+<div id="outline-container-orgb7e9176" class="outline-3">
+<h3 id="orgb7e9176"><span class="section-number-3">3.1</span> 创建容器</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
-<code>docker create -it ubuntu</code><br>
+<code>docker create -it ubuntu</code>
 </p>
 
 <p>
-<code>docker run -it ubuntu /bin/bash</code> (推荐)<br>
+<code>docker run -it ubuntu /bin/bash</code> (推荐)
 </p>
 <blockquote>
 <p>
-#创建并启动容器<br>
--t 启动一个虚拟终端<br>
--i 保持终端<br>
--d 在后台守护运行<br>
--P Publish all exposed ports to random ports<br>
--v 数据卷<br>
-&#x2013;rm  Automatically remove the container when it exits<br>
+#创建并启动容器
+-t 启动一个虚拟终端
+-i 保持终端
+-d 在后台守护运行
+-P Publish all exposed ports to random ports 
+-v 数据卷
+&#x2013;rm  Automatically remove the container when it exits 
 </p>
 </blockquote>
 </div>
 </div>
-<div id="outline-container-orgfa3a2ba" class="outline-3">
-<h3 id="orgfa3a2ba"><span class="section-number-3">3.2</span> 启动终止容器</h3>
+<div id="outline-container-org5067b2d" class="outline-3">
+<h3 id="org5067b2d"><span class="section-number-3">3.2</span> 启动终止容器</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
-docker start d3e<br>
+docker start d3e
 </p>
 
 <p>
-docker kill ce5<br>
+docker kill ce5 
 </p>
 
 <p>
-docker ps -a #显示所有容器<br>
+docker ps -a #显示所有容器
 </p>
 </div>
 </div>
-<div id="outline-container-org112b30e" class="outline-3">
-<h3 id="org112b30e"><span class="section-number-3">3.3</span> 进入容器</h3>
+<div id="outline-container-org1a2bce6" class="outline-3">
+<h3 id="org1a2bce6"><span class="section-number-3">3.3</span> 进入容器</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
-docker attach 18a<br>
+docker attach 18a
 </p>
 
 <p>
-docker exec -ti 24c /bin/bash  (推荐)<br>
+docker exec -ti 24c /bin/bash  (推荐)
 </p>
 </div>
 </div>
-<div id="outline-container-orgdfc3adf" class="outline-3">
-<h3 id="orgdfc3adf"><span class="section-number-3">3.4</span> 删除容器</h3>
+<div id="outline-container-org9521f2d" class="outline-3">
+<h3 id="org9521f2d"><span class="section-number-3">3.4</span> 删除容器</h3>
 <div class="outline-text-3" id="text-3-4">
 <p>
-<code>docker rm 18a</code><br>
+<code>docker rm 18a</code>
 </p>
 </div>
 </div>
-<div id="outline-container-org6bb5289" class="outline-3">
-<h3 id="org6bb5289"><span class="section-number-3">3.5</span> 导入和导出容器</h3>
+<div id="outline-container-org018e487" class="outline-3">
+<h3 id="org018e487"><span class="section-number-3">3.5</span> 导入和导出容器</h3>
 <div class="outline-text-3" id="text-3-5">
 <p>
-docker export 18a &gt; ubuntu_container.tar  作为镜像<br>
+docker export 18a &gt; ubuntu<sub>container.tar</sub>  作为镜像
 </p>
 
 <p>
-docker import a.tar<br>
+docker import a.tar
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org863ed88" class="outline-2">
-<h2 id="org863ed88"><span class="section-number-2">4</span> Docker Data</h2>
+<div id="outline-container-org79d5473" class="outline-2">
+<h2 id="org79d5473"><span class="section-number-2">4</span> Docker Data</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-orgf489c93" class="outline-3">
-<h3 id="orgf489c93"><span class="section-number-3">4.1</span> Data Volumes</h3>
+<div id="outline-container-org161ec2b" class="outline-3">
+<h3 id="org161ec2b"><span class="section-number-3">4.1</span> Data Volumes</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
-数据卷是一个可供容器使用的特殊目录,它绕过文件系统,类似于文件mount操作<br>
+数据卷是一个可供容器使用的特殊目录,它绕过文件系统,类似于文件mount操作
 </p>
 
 <ol class="org-ol">
-<li>数据卷可以在容器之间共享和重用<br></li>
-<li>对数据卷的修改会立马生效<br></li>
-<li>对数据卷的更新不会影响镜像<br></li>
-<li>卷会一直存在直到没有容器使用<br></li>
+<li>数据卷可以在容器之间共享和重用</li>
+<li>对数据卷的修改会立马生效</li>
+<li>对数据卷的更新不会影响镜像</li>
+<li>卷会一直存在直到没有容器使用</li>
 
 <li><p>
-创建数据卷<br>
+创建数据卷
 </p>
 
 <p>
-<code>docker run -dit -P --name web -v /tmp/webapp training/webapp python app.py</code><br>
+<code>docker run -dit -P --name web -v /tmp/webapp training/webapp python app.py</code>
 </p>
 <blockquote>
 <p>
--v 数据卷挂在容器内/tmp/webapp     #多次使用可以创建多个数据卷<br>
+-v 数据卷挂在容器内/tmp/webapp     #多次使用可以创建多个数据卷
 </p>
 
 <p>
--v /src/webapp:/tmp/webapp:ro  加载主机的/src/webapp目录到容器的/tmp/webapp :ro为修改默认rw权限为只读<br>
+-v /src/webapp:/tmp/webapp:ro  加载主机的/src/webapp目录到容器的/tmp/webapp :ro为修改默认rw权限为只读
 </p>
 </blockquote>
 <p>
-<code>docker run  -itd --rm -P --name iou  -v ~/github/web-iou-docker/iou-web:/tmp/web-iou  a35 /bin/bash</code><br>
+<code>docker run  -itd --rm -P --name iou  -v ~/github/web-iou-docker/iou-web:/tmp/web-iou  a35 /bin/bash</code>
 </p></li>
 </ol>
 </div>
 </div>
 
-<div id="outline-container-orga608af1" class="outline-3">
-<h3 id="orga608af1"><span class="section-number-3">4.2</span> Data Volume Containers</h3>
+<div id="outline-container-org3e58f43" class="outline-3">
+<h3 id="org3e58f43"><span class="section-number-3">4.2</span> Data Volume Containers</h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
-在容器之间共享一些持续更新的数据，最简单的方式是使用数据卷容器<br>
+在容器之间共享一些持续更新的数据，最简单的方式是使用数据卷容器
 </p>
 
 <p>
-<code>docker run -dit -v /dbdata --name data_vc ff4</code>  #创建数据卷容器<br>
+<code>docker run -dit -v /dbdata --name data_vc ff4</code>  #创建数据卷容器
 </p>
 
 <p>
-在其他容器中使用&#x2013;volumes-from来挂在dbdata容器中的数据卷<br>
+在其他容器中使用&#x2013;volumes-from来挂在dbdata容器中的数据卷
 </p>
 
 <p>
-<code>docker run -dit --volumes-from data_vc --name db1 ff4</code><br>
+<code>docker run -dit --volumes-from data_vc --name db1 ff4</code>
 </p>
 
 <p>
-<code>docker run -dit --volumes-from data_vc --name db2 ff4</code><br>
+<code>docker run -dit --volumes-from data_vc --name db2 ff4</code>
 </p>
 
 <p>
-此时在任意容器上都存在/dbdata共享目录<br>
+此时在任意容器上都存在/dbdata共享目录
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgab6bbda" class="outline-3">
-<h3 id="orgab6bbda"><span class="section-number-3">4.3</span> 利用数据卷容器迁移数据</h3>
+<div id="outline-container-org83ea145" class="outline-3">
+<h3 id="org83ea145"><span class="section-number-3">4.3</span> 利用数据卷容器迁移数据</h3>
 <div class="outline-text-3" id="text-4-3">
 <p>
-通过执行worker容器来数据备份恢复<br>
+通过执行worker容器来数据备份恢复
 </p>
 
 <ul class="org-ul">
 <li><p>
-备份<br>
+备份
 </p>
 
 <p>
-<code>docker run --volumes-from data_vc -v $(pwd):/backup --name back_worker ff4 tar cvf /backup/dbdata.tar /dbdata</code><br>
+<code>docker run --volumes-from data_vc -v $(pwd):/backup --name back_worker ff4 tar cvf /backup/dbdata.tar /dbdata</code>
 </p>
 
 <p>
-备份data_vc上的/dbdata目录 到本地dbdata.tar压缩文件内<br>
+备份data<sub>vc上的</sub>/dbdata目录 到本地dbdata.tar压缩文件内
 </p></li>
 
 <li><p>
-恢复<br>
+恢复
 </p>
 
 <p>
-<code>docker run --volumes-from data_vc -v $(pwd):/dbdata ff4 tar xvf /dbdata/dbdata.tar</code><br>
+<code>docker run --volumes-from data_vc -v $(pwd):/dbdata ff4 tar xvf /dbdata/dbdata.tar</code>
 </p>
 
 <p>
-从本地备份tar文件恢复数据<br>
+从本地备份tar文件恢复数据
 </p></li>
 </ul>
 </div>
 </div>
 </div>
-<div id="outline-container-orgca43494" class="outline-2">
-<h2 id="orgca43494"><span class="section-number-2">5</span> Docker network</h2>
+<div id="outline-container-orgf8faf2d" class="outline-2">
+<h2 id="orgf8faf2d"><span class="section-number-2">5</span> Docker network</h2>
 <div class="outline-text-2" id="text-5">
 </div>
-<div id="outline-container-org8ce13ac" class="outline-3">
-<h3 id="org8ce13ac"><span class="section-number-3">5.1</span> 端口映射实现访问容器</h3>
+<div id="outline-container-org1976043" class="outline-3">
+<h3 id="org1976043"><span class="section-number-3">5.1</span> 端口映射实现访问容器</h3>
 <div class="outline-text-3" id="text-5-1">
 <p>
-docker run -itd &#x2013;rm -P<br>
+docker run -itd &#x2013;rm -P 
 </p>
 
 <blockquote>
 <p>
--p docker_port:8080 指定映射端口<br>
+-p docker<sub>port</sub>:8080 指定映射端口
 </p>
 
 <p>
--P 动态分配<br>
+-P 动态分配 
 </p>
 </blockquote>
 </div>
 </div>
-<div id="outline-container-org0e93e19" class="outline-3">
-<h3 id="org0e93e19"><span class="section-number-3">5.2</span> 容器互联实现容器间通信</h3>
+<div id="outline-container-org70d5f4a" class="outline-3">
+<h3 id="org70d5f4a"><span class="section-number-3">5.2</span> 容器互联实现容器间通信</h3>
 </div>
 </div>
-<div id="outline-container-org4f382c9" class="outline-2">
-<h2 id="org4f382c9"><span class="section-number-2">6</span> Dockerfile</h2>
+<div id="outline-container-org82eccc1" class="outline-2">
+<h2 id="org82eccc1"><span class="section-number-2">6</span> Dockerfile</h2>
 <div class="outline-text-2" id="text-6">
 <p>
-dockerfile 文件书写参考官方文档 ^^<br>
+dockerfile 文件书写参考官方文档 ^^
 </p>
 </div>
 </div>
@@ -526,6 +746,8 @@ dockerfile 文件书写参考官方文档 ^^<br>
     <a href="https://www.gnu.org/software/emacs/">Emacs</a>
     <a href="http://orgmode.org/">Org mode</a> 编辑和构建
 </p>
+<!-- <script src="https://www.manue1.com/css/jquery-2.1.3.min.js"></script>
+     <script src="https://www.manue1.com/css/main.js"></script> -->
 <script src="http://www.langdebuqing.com/css/jquery-2.1.3.min.js"></script>
 <script src="http://www.langdebuqing.com/css/main.js"></script>
 </div>
