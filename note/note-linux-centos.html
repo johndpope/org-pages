@@ -1,231 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-<!-- 2018-12-26 Wed 16:31 -->
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- 2019-01-24 Thu 21:14 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>note-linux-centos</title>
-<meta name="generator" content="Org mode" />
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center;
-             margin-bottom: .2em; }
-  .subtitle { text-align: center;
-              font-size: medium;
-              font-weight: bold;
-              margin-top:0; }
-  .todo   { font-family: monospace; color: red; }
-  .done   { font-family: monospace; color: green; }
-  .priority { font-family: monospace; color: orange; }
-  .tag    { background-color: #eee; font-family: monospace;
-            padding: 2px; font-size: 80%; font-weight: normal; }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
-  .underline { text-decoration: underline; }
-  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
-  p.verse { margin-left: 3%; }
-  pre {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
-    padding: 8pt;
-    font-family: monospace;
-    overflow: auto;
-    margin: 1.2em;
-  }
-  pre.src {
-    position: relative;
-    overflow: visible;
-    padding-top: 1.2em;
-  }
-  pre.src:before {
-    display: none;
-    position: absolute;
-    background-color: white;
-    top: -10px;
-    right: 10px;
-    padding: 3px;
-    border: 1px solid black;
-  }
-  pre.src:hover:before { display: inline;}
-  /* Languages per Org manual */
-  pre.src-asymptote:before { content: 'Asymptote'; }
-  pre.src-awk:before { content: 'Awk'; }
-  pre.src-C:before { content: 'C'; }
-  /* pre.src-C++ doesn't work in CSS */
-  pre.src-clojure:before { content: 'Clojure'; }
-  pre.src-css:before { content: 'CSS'; }
-  pre.src-D:before { content: 'D'; }
-  pre.src-ditaa:before { content: 'ditaa'; }
-  pre.src-dot:before { content: 'Graphviz'; }
-  pre.src-calc:before { content: 'Emacs Calc'; }
-  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-fortran:before { content: 'Fortran'; }
-  pre.src-gnuplot:before { content: 'gnuplot'; }
-  pre.src-haskell:before { content: 'Haskell'; }
-  pre.src-hledger:before { content: 'hledger'; }
-  pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
-  pre.src-latex:before { content: 'LaTeX'; }
-  pre.src-ledger:before { content: 'Ledger'; }
-  pre.src-lisp:before { content: 'Lisp'; }
-  pre.src-lilypond:before { content: 'Lilypond'; }
-  pre.src-lua:before { content: 'Lua'; }
-  pre.src-matlab:before { content: 'MATLAB'; }
-  pre.src-mscgen:before { content: 'Mscgen'; }
-  pre.src-ocaml:before { content: 'Objective Caml'; }
-  pre.src-octave:before { content: 'Octave'; }
-  pre.src-org:before { content: 'Org mode'; }
-  pre.src-oz:before { content: 'OZ'; }
-  pre.src-plantuml:before { content: 'Plantuml'; }
-  pre.src-processing:before { content: 'Processing.js'; }
-  pre.src-python:before { content: 'Python'; }
-  pre.src-R:before { content: 'R'; }
-  pre.src-ruby:before { content: 'Ruby'; }
-  pre.src-sass:before { content: 'Sass'; }
-  pre.src-scheme:before { content: 'Scheme'; }
-  pre.src-screen:before { content: 'Gnu Screen'; }
-  pre.src-sed:before { content: 'Sed'; }
-  pre.src-sh:before { content: 'shell'; }
-  pre.src-sql:before { content: 'SQL'; }
-  pre.src-sqlite:before { content: 'SQLite'; }
-  /* additional languages in org.el's org-babel-load-languages alist */
-  pre.src-forth:before { content: 'Forth'; }
-  pre.src-io:before { content: 'IO'; }
-  pre.src-J:before { content: 'J'; }
-  pre.src-makefile:before { content: 'Makefile'; }
-  pre.src-maxima:before { content: 'Maxima'; }
-  pre.src-perl:before { content: 'Perl'; }
-  pre.src-picolisp:before { content: 'Pico Lisp'; }
-  pre.src-scala:before { content: 'Scala'; }
-  pre.src-shell:before { content: 'Shell Script'; }
-  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
-  /* additional language identifiers per "defun org-babel-execute"
-       in ob-*.el */
-  pre.src-cpp:before  { content: 'C++'; }
-  pre.src-abc:before  { content: 'ABC'; }
-  pre.src-coq:before  { content: 'Coq'; }
-  pre.src-groovy:before  { content: 'Groovy'; }
-  /* additional language identifiers from org-babel-shell-names in
-     ob-shell.el: ob-shell is the only babel language using a lambda to put
-     the execution function name together. */
-  pre.src-bash:before  { content: 'bash'; }
-  pre.src-csh:before  { content: 'csh'; }
-  pre.src-ash:before  { content: 'ash'; }
-  pre.src-dash:before  { content: 'dash'; }
-  pre.src-ksh:before  { content: 'ksh'; }
-  pre.src-mksh:before  { content: 'mksh'; }
-  pre.src-posh:before  { content: 'posh'; }
-  /* Additional Emacs modes also supported by the LaTeX listings package */
-  pre.src-ada:before { content: 'Ada'; }
-  pre.src-asm:before { content: 'Assembler'; }
-  pre.src-caml:before { content: 'Caml'; }
-  pre.src-delphi:before { content: 'Delphi'; }
-  pre.src-html:before { content: 'HTML'; }
-  pre.src-idl:before { content: 'IDL'; }
-  pre.src-mercury:before { content: 'Mercury'; }
-  pre.src-metapost:before { content: 'MetaPost'; }
-  pre.src-modula-2:before { content: 'Modula-2'; }
-  pre.src-pascal:before { content: 'Pascal'; }
-  pre.src-ps:before { content: 'PostScript'; }
-  pre.src-prolog:before { content: 'Prolog'; }
-  pre.src-simula:before { content: 'Simula'; }
-  pre.src-tcl:before { content: 'tcl'; }
-  pre.src-tex:before { content: 'TeX'; }
-  pre.src-plain-tex:before { content: 'Plain TeX'; }
-  pre.src-verilog:before { content: 'Verilog'; }
-  pre.src-vhdl:before { content: 'VHDL'; }
-  pre.src-xml:before { content: 'XML'; }
-  pre.src-nxml:before { content: 'XML'; }
-  /* add a generic configuration mode; LaTeX export needs an additional
-     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
-  pre.src-conf:before { content: 'Configuration File'; }
-
-  table { border-collapse:collapse; }
-  caption.t-above { caption-side: top; }
-  caption.t-bottom { caption-side: bottom; }
-  td, th { vertical-align:top;  }
-  th.org-right  { text-align: center;  }
-  th.org-left   { text-align: center;   }
-  th.org-center { text-align: center; }
-  td.org-right  { text-align: right;  }
-  td.org-left   { text-align: left;   }
-  td.org-center { text-align: center; }
-  dt { font-weight: bold; }
-  .footpara { display: inline; }
-  .footdef  { margin-bottom: 1em; }
-  .figure { padding: 1em; }
-  .figure p { text-align: center; }
-  .inlinetask {
-    padding: 10px;
-    border: 2px solid gray;
-    margin: 10px;
-    background: #ffffcc;
-  }
-  #org-div-home-and-up
-   { text-align: right; font-size: 70%; white-space: nowrap; }
-  textarea { overflow-x: auto; }
-  .linenr { font-size: smaller }
-  .code-highlighted { background-color: #ffff00; }
-  .org-info-js_info-navigation { border-style: none; }
-  #org-info-js_console-label
-    { font-size: 10px; font-weight: bold; white-space: nowrap; }
-  .org-info-js_search-highlight
-    { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
-  /*]]>*/-->
-</style>
-<link rel="stylesheet" href="../css/worg.css" type="text/css" media="screen" />
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2018 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
+<meta name="generator" content="Org mode">
+<meta name="author" content="manue1">
+<link rel="stylesheet" type="text/css" href="css/worg.css" />
+<!-- <link rel="shortcut icon" href="http://www.langdebuqing.com/images/favicon.ico" type="image/x-icon" /> -->
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         displayAlign: "center",
@@ -247,125 +30,144 @@ for the JavaScript code in this tag.
 });
 </script>
 <script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+        src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="preamble" class="status">
-<a href="https://www.manue1.site/index.html">Home</a>
+<div id="navbar">
+    <ul>
+        <li id="site-master"><a href="https://www.manue1.site/">Manue1's Journal</a></li>
+        <li><a class="navbar-item" href="https://www.manue1.site/write.html">All Posts</a> </li>
+        <li><a class="navbar-item" href="https://www.manue1.site/link.html">Links</a> </li>
+        <li class="search">
+            <form action="http://google.com/search" method="get" accept-charset="utf-8">
+                <input type="search" id="search" name="q" autocomplete="off" maxlength="30" placeholder="Search..">
+                <input type="hidden" name="q" value="site:www.manue1.com">
+            </form>
+        </li>
+    </ul>
+</div>
 </div>
 <div id="content">
 <h1 class="title">note-linux-centos</h1>
 <div id="table-of-contents">
-<h2>Table of Contents</h2>
+<h2>&#30446;&#24405;</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org8aed799">VboxManage</a></li>
-<li><a href="#org6fd28a6">centos7 basic environment</a>
+<li><a href="#orgb4bc295">1. VboxManage</a></li>
+<li><a href="#org8fa9d05">2. centos7 basic environment</a>
 <ul>
-<li><a href="#orgd96cc4d">lvm</a></li>
-<li><a href="#orge69e2ea">ip</a></li>
-<li><a href="#org17857a7">sshd</a></li>
-<li><a href="#orgabee887">hostname</a></li>
-<li><a href="#orge9a6575">yum source</a></li>
-<li><a href="#orgbd851a3">ntp</a></li>
-<li><a href="#orgc600404">firewallds</a></li>
-<li><a href="#orgae17481">disable selinux</a></li>
-<li><a href="#org6ac42c0">java  &amp; scala</a></li>
+<li><a href="#org1db0c76">2.1. lvm</a></li>
+<li><a href="#org3f2cec8">2.2. ip</a></li>
+<li><a href="#orgcc029ca">2.3. sshd</a></li>
+<li><a href="#orge62db2d">2.4. hostname</a></li>
+<li><a href="#org2eb08b7">2.5. yum source</a></li>
+<li><a href="#orgc8069de">2.6. ntp</a></li>
+<li><a href="#orga1e5a5a">2.7. firewallds</a></li>
+<li><a href="#org5150738">2.8. disable selinux</a></li>
+<li><a href="#orgdace1ef">2.9. java  &amp; scala</a></li>
 </ul>
 </li>
-<li><a href="#orgae41274">hadoop 集群配置</a>
+<li><a href="#orga450f1c">3. hadoop 集群配置</a>
 <ul>
-<li><a href="#orgf15dc06">hadoop hbase spark 版本选择</a></li>
-<li><a href="#org475ed56">环境准备</a></li>
-<li><a href="#org84529b2">配置hadoop cluster</a></li>
-<li><a href="#org250d825">启动hadoop</a></li>
+<li><a href="#org3502b74">3.1. hadoop hbase spark 版本选择</a></li>
+<li><a href="#org3769c7a">3.2. 环境准备</a></li>
+<li><a href="#org155a3aa">3.3. 配置hadoop cluster</a></li>
+<li><a href="#orgbe1e46c">3.4. 启动hadoop</a></li>
 </ul>
 </li>
-<li><a href="#orgcfd1360">elasticstk 集群</a>
+<li><a href="#orge9a6482">4. elasticstk 集群</a>
 <ul>
-<li><a href="#orgd978f77">elasticsearch-611</a></li>
-<li><a href="#org34fa9db">kibana</a></li>
-<li><a href="#orgbebe7b6">logstash</a></li>
-<li><a href="#orgf8ae5e6">beats</a></li>
+<li><a href="#orgc3bf245">4.1. elasticsearch-611</a></li>
+<li><a href="#orga40b31e">4.2. kibana</a></li>
+<li><a href="#orgab74ef3">4.3. logstash</a></li>
+<li><a href="#org68cd599">4.4. beats</a>
+<ul>
+<li><a href="#org0633916">4.4.1. topbeat</a></li>
+<li><a href="#orgecb9c41">4.4.2. filebeat</a></li>
+<li><a href="#orgfcabc6e">4.4.3. metricbeat</a></li>
+<li><a href="#org425ef76">4.4.4. packetbeat</a></li>
 </ul>
 </li>
-<li><a href="#orgffe4f56">hive</a>
-<ul>
-<li><a href="#org71a5a4b">install mariadb</a></li>
-<li><a href="#orga5cba41">config hive</a></li>
-<li><a href="#orgdbdaa03">start hive</a></li>
 </ul>
 </li>
-<li><a href="#orgb556ef8">sqoop</a></li>
-<li><a href="#orgba888d0">zookeeper</a>
+<li><a href="#org8502d96">5. hive</a>
 <ul>
-<li><a href="#orge444285">Replicated ZooKeeper configural</a></li>
+<li><a href="#org51c3ed6">5.1. install mariadb</a></li>
+<li><a href="#org37af443">5.2. config hive</a></li>
+<li><a href="#orgc20d3d0">5.3. start hive</a></li>
 </ul>
 </li>
-<li><a href="#org6502a1a">hbase</a>
+<li><a href="#org87cae1b">6. sqoop</a></li>
+<li><a href="#org9db1495">7. zookeeper</a>
 <ul>
-<li><a href="#org2499d9d">hbase configural</a></li>
-<li><a href="#org9761f6d">hbase start</a></li>
+<li><a href="#org4d0af91">7.1. Replicated ZooKeeper configural</a></li>
 </ul>
 </li>
-<li><a href="#orgff7dd50">kafka</a>
+<li><a href="#org29c71df">8. hbase</a>
 <ul>
-<li><a href="#org8999d45">kafka configural</a></li>
-<li><a href="#orgaba9925">kafka start service</a></li>
-<li><a href="#org330c33b">use kafka</a></li>
+<li><a href="#org72db9d3">8.1. hbase configural</a></li>
+<li><a href="#orge6e4751">8.2. hbase start</a></li>
 </ul>
 </li>
-<li><a href="#org8b5e650">spark</a>
+<li><a href="#org9d606ad">9. kafka</a>
 <ul>
-<li><a href="#orga26b06f">spark configural</a></li>
-<li><a href="#org426e7b7">spark start</a></li>
+<li><a href="#orgbd36419">9.1. kafka configural</a></li>
+<li><a href="#org539271a">9.2. kafka start service</a></li>
+<li><a href="#org8634632">9.3. use kafka</a></li>
+</ul>
+</li>
+<li><a href="#org6494061">10. spark</a>
+<ul>
+<li><a href="#org6fd3e2b">10.1. spark configural</a></li>
+<li><a href="#org8161813">10.2. spark start</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 <p>
-vbox自建centos集群环境，方便本地开发测试,
+vbox自建centos集群环境，方便本地开发测试,<br>
 </p>
 
-<div id="outline-container-org8aed799" class="outline-2">
-<h2 id="org8aed799">VboxManage</h2>
-<div class="outline-text-2" id="text-org8aed799">
+<div id="outline-container-orgb4bc295" class="outline-2">
+<h2 id="orgb4bc295"><span class="section-number-2">1</span> VboxManage</h2>
+<div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li><p>
-vms 基本信息
+vms 基本信息<br>
 </p>
 
 <p>
-VBoxManage showvminfo Centos701
+VBoxManage showvminfo Centos701<br>
 </p></li>
 
 <li><p>
-无界面启动vms
+无界面启动vms<br>
 </p>
 
 <p>
-VBoxManage startvm Centos701 &#x2013;type headless
+VBoxManage startvm Centos701 &#x2013;type headless<br>
 </p>
 
 <p>
-VBoxManage controlvm ubuntu01 savestate # 保存当前状态关闭
+VBoxManage controlvm ubuntu01 savestate # 保存当前状态关闭<br>
 </p></li>
 
 <li><p>
-修改vms内存总量
+修改vms内存总量<br>
 </p>
 
 <p>
-VBoxManage modifyvm Centos701 &#x2013;memory 1024
+VBoxManage modifyvm Centos701 &#x2013;memory 1024<br>
 </p></li>
 
 <li><p>
-修改vms磁盘容量
+修改vms磁盘容量<br>
 </p>
 
 <p>
-VBoxManage modifyhd Centos702.vdi &#x2013;resize 7168
+VBoxManage modifyhd Centos702.vdi &#x2013;resize 7168<br>
 </p>
 
 <pre class="example">
@@ -376,31 +178,31 @@ VBoxManage modifyhd \{aea51811-5e79-46e9-b5ba-f66740e6f47b\}.vdi  --resize 10248
 </pre></li>
 
 <li><p>
-创建快照
+创建快照<br>
 </p>
 
 <p>
-VBoxManage snapshot ubuntu01 take ubuntu_basic_ssh
+VBoxManage snapshot ubuntu01 take ubuntu_basic_ssh<br>
 </p>
 
 <p>
-VBoxManage snapshot ubuntu01 list
+VBoxManage snapshot ubuntu01 list<br>
 </p>
 
 <p>
-VBoxManage snapshot ubuntu01 delete ubuntu_basic
+VBoxManage snapshot ubuntu01 delete ubuntu_basic<br>
 </p>
 
 <p>
-VBoxManage snapshot ubuntu01 restore ubuntu_basic_ssh
+VBoxManage snapshot ubuntu01 restore ubuntu_basic_ssh<br>
 </p></li>
 
 <li><p>
-clone vm
+clone vm<br>
 </p>
 
 <p>
-VBoxManage clonevm  Centos701 &#x2013;snapshot  centos7_basic  &#x2013;name Centos_basic
+VBoxManage clonevm  Centos701 &#x2013;snapshot  centos7_basic  &#x2013;name Centos_basic<br>
 </p></li>
 </ul>
 
@@ -418,71 +220,71 @@ VBoxManage clonevm  Centos701 &#x2013;snapshot  centos7_basic  &#x2013;name Cent
 </div>
 </div>
 
-<div id="outline-container-org6fd28a6" class="outline-2">
-<h2 id="org6fd28a6">centos7 basic environment</h2>
-<div class="outline-text-2" id="text-org6fd28a6">
+<div id="outline-container-org8fa9d05" class="outline-2">
+<h2 id="org8fa9d05"><span class="section-number-2">2</span> centos7 basic environment</h2>
+<div class="outline-text-2" id="text-2">
 <p>
-centos7 镜像<a href="http://isoredirect.centos.org/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1708.iso">下载</a>
+centos7 镜像<a href="http://isoredirect.centos.org/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1708.iso">下载</a><br>
 </p>
 </div>
 
-<div id="outline-container-orgd96cc4d" class="outline-3">
-<h3 id="orgd96cc4d">lvm</h3>
-<div class="outline-text-3" id="text-orgd96cc4d">
+<div id="outline-container-org1db0c76" class="outline-3">
+<h3 id="org1db0c76"><span class="section-number-3">2.1</span> lvm</h3>
+<div class="outline-text-3" id="text-2-1">
 <p>
-在文件中添加要挂载的分区和文件目录可以修改文件
+在文件中添加要挂载的分区和文件目录可以修改文件<br>
 </p>
 
 <p>
-/etc/fstab
+/etc/fstab<br>
 </p>
 
 <p>
-<i>dev/sda5</i>    media/win    ntfs    defaults   02
+<i>dev/sda5</i>    media/win    ntfs    defaults   02<br>
 </p>
 
 <p>
-然后 mount -a
+然后 mount -a<br>
 </p>
 
 <ol class="org-ol">
 <li><p>
-查看几块硬盘
+查看几块硬盘<br>
 </p>
 
 <p>
-sudo fdisk -l |grep sd
+sudo fdisk -l |grep sd<br>
 </p></li>
 
 <li><p>
-创建分区
+创建分区<br>
 </p>
 
 <p>
-虚拟机现有20g的硬盘,使用fdisk划分磁盘
+虚拟机现有20g的硬盘,使用fdisk划分磁盘<br>
 </p>
 
 <p>
-sudo fdisk /dev/sda
+sudo fdisk /dev/sda<br>
 </p>
 
 <p class="verse">
-m  帮助信息<br />
-n 创建分区<br />
-e 扩展分区    +5G  pppp/pppe<br />
-p 打印分区<br />
-t 分区类型 L  (lvm)<br />
-w 写入保存分区<br />
+m  帮助信息<br>
+n 创建分区<br>
+e 扩展分区    +5G  pppp/pppe<br>
+p 打印分区<br>
+t 分区类型 L  (lvm)<br>
+w 写入保存分区<br>
 </p></li>
 
-<li>格式化 分区</li>
+<li>格式化 分区<br></li>
 
 <li><p>
-LVM
-pv &#x2013;&gt; vg &#x2013;&gt; lv
-参考:
-<a href="http://blog.sina.com.cn/s/blog_b77735d20101e5cn.html">http://blog.sina.com.cn/s/blog_b77735d20101e5cn.html</a>
-<a href="http://aurthurxlc.github.io/Aurthur-2017/Centos-7-extend-lvm-volume.html">http://aurthurxlc.github.io/Aurthur-2017/Centos-7-extend-lvm-volume.html</a>
+LVM<br>
+pv &#x2013;&gt; vg &#x2013;&gt; lv<br>
+参考:<br>
+<a href="http://blog.sina.com.cn/s/blog_b77735d20101e5cn.html">http://blog.sina.com.cn/s/blog_b77735d20101e5cn.html</a><br>
+<a href="http://aurthurxlc.github.io/Aurthur-2017/Centos-7-extend-lvm-volume.html">http://aurthurxlc.github.io/Aurthur-2017/Centos-7-extend-lvm-volume.html</a><br>
 </p>
 
 <pre class="example">
@@ -504,21 +306,21 @@ xfs_growfs /dev/centos/root
 </ol>
 </div>
 </div>
-<div id="outline-container-orge69e2ea" class="outline-3">
-<h3 id="orge69e2ea">ip</h3>
-<div class="outline-text-3" id="text-orge69e2ea">
+<div id="outline-container-org3f2cec8" class="outline-3">
+<h3 id="org3f2cec8"><span class="section-number-3">2.2</span> ip</h3>
+<div class="outline-text-3" id="text-2-2">
 <ul class="org-ul">
 <li><p>
-联网方式: 配置三张网卡
+联网方式: 配置三张网卡<br>
 </p>
 
 <ol class="org-ol">
-<li>NAT 
-网卡1 用来连接外网</li>
+<li>NAT<br>
+网卡1 用来连接外网<br></li>
 <li><p>
-Host-only
-用来配置静态IP 配置集群服务的时候不需要修改IP
-vi <i>etc/sysconfig/network-scripts</i>  
+Host-only<br>
+用来配置静态IP 配置集群服务的时候不需要修改IP<br>
+vi <i>etc/sysconfig/network-scripts</i>  <br>
 </p>
 <pre class="example">
 #static assignment
@@ -528,34 +330,34 @@ IPADDR=192.168.56.10
 NETMASK=255.255.255.0
 GATEWAY=192.168.56.1
 </pre></li>
-<li>Bridge
-vbox 自动配置IP，也很方便</li>
+<li>Bridge<br>
+vbox 自动配置IP，也很方便<br></li>
 </ol>
 
 <p>
-这边打算使用网卡1 nat模式连接外网，网卡3的桥接模式与局域网内其他主机通信,网卡二的主机模式搭建集群
+这边打算使用网卡1 nat模式连接外网，网卡3的桥接模式与局域网内其他主机通信,网卡二的主机模式搭建集群<br>
 </p>
 
 <p>
-注意： 网卡二和网卡三的 gateway 字段要注释掉
+注意： 网卡二和网卡三的 gateway 字段要注释掉<br>
 </p>
 
 <p>
-sudo service network restart
+sudo service network restart<br>
 </p></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org17857a7" class="outline-3">
-<h3 id="org17857a7">sshd</h3>
-<div class="outline-text-3" id="text-org17857a7">
+<div id="outline-container-orgcc029ca" class="outline-3">
+<h3 id="orgcc029ca"><span class="section-number-3">2.3</span> sshd</h3>
+<div class="outline-text-3" id="text-2-3">
 <p>
-ssh 连接异常慢
+ssh 连接异常慢<br>
 </p>
 
 <p>
-sudo vi /etc/ssh/sshd_config
+sudo vi /etc/ssh/sshd_config<br>
 </p>
 
 <pre class="example">
@@ -565,19 +367,19 @@ UseDNS no
 </div>
 </div>
 
-<div id="outline-container-orgabee887" class="outline-3">
-<h3 id="orgabee887">hostname</h3>
-<div class="outline-text-3" id="text-orgabee887">
+<div id="outline-container-orge62db2d" class="outline-3">
+<h3 id="orge62db2d"><span class="section-number-3">2.4</span> hostname</h3>
+<div class="outline-text-3" id="text-2-4">
 <p>
-永久修改主机名字
+永久修改主机名字<br>
 </p>
 
 <p>
-sudo hostnamectl &#x2013;static set-hostname master
+sudo hostnamectl &#x2013;static set-hostname master<br>
 </p>
 
 <p>
-sudo vi /etc/hosts
+sudo vi /etc/hosts<br>
 </p>
 
 <pre class="example">
@@ -591,67 +393,67 @@ sudo vi /etc/hosts
 </div>
 
 
-<div id="outline-container-orge9a6575" class="outline-3">
-<h3 id="orge9a6575">yum source</h3>
-<div class="outline-text-3" id="text-orge9a6575">
+<div id="outline-container-org2eb08b7" class="outline-3">
+<h3 id="org2eb08b7"><span class="section-number-3">2.5</span> yum source</h3>
+<div class="outline-text-3" id="text-2-5">
 <p>
-sudo yum -y install wget
+sudo yum -y install wget<br>
 </p>
 
 <ul class="org-ul">
 <li><p>
-备份
+备份<br>
 </p>
 
 <p>
-sudo mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup
+sudo mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup<br>
 </p></li>
 
 <li><p>
-设置aliyun source
+设置aliyun source<br>
 </p>
 
 <p>
-sudo wget -O /etc/yum.repos.d/CentOS-Base.repo <a href="http://mirrors.aliyun.com/repo/Centos-7.repo">http://mirrors.aliyun.com/repo/Centos-7.repo</a>
+sudo wget -O /etc/yum.repos.d/CentOS-Base.repo <a href="http://mirrors.aliyun.com/repo/Centos-7.repo">http://mirrors.aliyun.com/repo/Centos-7.repo</a><br>
 </p></li>
 
 <li><p>
-设置EPLEPEL source
+设置EPLEPEL source<br>
 </p>
 
 <p>
-sudo wget -P <i>etc/yum.repos.d</i> <a href="http://mirrors.aliyun.com/repo/epel-7.repo">http://mirrors.aliyun.com/repo/epel-7.repo</a>
+sudo wget -P <i>etc/yum.repos.d</i> <a href="http://mirrors.aliyun.com/repo/epel-7.repo">http://mirrors.aliyun.com/repo/epel-7.repo</a><br>
 </p>
 
 <p>
-添加后可以像fedora上 yum install packname
+添加后可以像fedora上 yum install packname<br>
 </p></li>
 
 <li><p>
-清理缓存并生成新的缓存
+清理缓存并生成新的缓存<br>
 </p>
 
 <p>
-sudo yum clean all  
+sudo yum clean all<br>
 </p>
 
 <p>
-sudo yum makecache  
+sudo yum makecache<br>
 </p></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgbd851a3" class="outline-3">
-<h3 id="orgbd851a3">ntp</h3>
-<div class="outline-text-3" id="text-orgbd851a3">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<div id="outline-container-orgc8069de" class="outline-3">
+<h3 id="orgc8069de"><span class="section-number-3">2.6</span> ntp</h3>
+<div class="outline-text-3" id="text-2-6">
+<table>
 
 
 <colgroup>
-<col  class="org-left" />
+<col  class="org-left">
 
-<col  class="org-left" />
+<col  class="org-left">
 </colgroup>
 <thead>
 <tr>
@@ -674,31 +476,31 @@ sudo yum makecache
 
 <ul class="org-ul">
 <li><p>
-any nodes
+any nodes<br>
 </p>
 
 <p>
-sudo yum -y install ntp
+sudo yum -y install ntp<br>
 </p>
 
 <p>
-timedatectl set-timezone Asia/Shanghai   # 设置上海时区
+timedatectl set-timezone Asia/Shanghai   # 设置上海时区<br>
 </p></li>
 
 <li><p>
-server configural
+server configural<br>
 </p>
 
 <p>
-systemctl start ntpd
+systemctl start ntpd<br>
 </p>
 
 <p>
-systemctl enable ntpd
+systemctl enable ntpd<br>
 </p>
 
 <p>
-vi /etc/ntp.conf 
+vi /etc/ntp.conf<br>
 </p>
 
 <pre class="example">
@@ -711,24 +513,24 @@ fudge 127.127.1.0 stratum 10
 </pre>
 
 <p>
-systemctl restart ntpd
+systemctl restart ntpd<br>
 </p>
 
 <ul class="org-ul">
 <li><p>
-client configural
+client configural<br>
 </p>
 
 <p>
-systemctl start ntpd
+systemctl start ntpd<br>
 </p>
 
 <p>
-systemctl enable ntpd
+systemctl enable ntpd<br>
 </p>
 
 <p>
-vi /etc/ntp.conf
+vi /etc/ntp.conf<br>
 </p>
 
 <pre class="example">
@@ -737,33 +539,33 @@ server 192.168.56.10
 </pre>
 
 <p>
-netstat -anp | grep 123
+netstat -anp | grep 123<br>
 </p></li>
 </ul></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgc600404" class="outline-3">
-<h3 id="orgc600404">firewallds</h3>
-<div class="outline-text-3" id="text-orgc600404">
+<div id="outline-container-orga1e5a5a" class="outline-3">
+<h3 id="orga1e5a5a"><span class="section-number-3">2.7</span> firewallds</h3>
+<div class="outline-text-3" id="text-2-7">
 <dl class="org-dl">
-<dt>查看状态</dt><dd>systemctl status firewalld</dd>
-<dt>关闭</dt><dd>systemctl stop firewalld</dd>
-<dt>禁用</dt><dd>systemctl disable firewalld</dd>
+<dt>查看状态</dt><dd>systemctl status firewalld<br></dd>
+<dt>关闭</dt><dd>systemctl stop firewalld<br></dd>
+<dt>禁用</dt><dd>systemctl disable firewalld<br></dd>
 </dl>
 </div>
 </div>
-<div id="outline-container-orgae17481" class="outline-3">
-<h3 id="orgae17481">disable selinux</h3>
-<div class="outline-text-3" id="text-orgae17481">
+<div id="outline-container-org5150738" class="outline-3">
+<h3 id="org5150738"><span class="section-number-3">2.8</span> disable selinux</h3>
+<div class="outline-text-3" id="text-2-8">
 <p>
-一款为了提高系统安全性的软件：对系统服务，文件权限，网络端口访问有极其严格的限制，
-例如：如果对一个文件没有正确安全上下文配置， 甚至你是root用户，你也不能启动某服务
+一款为了提高系统安全性的软件：对系统服务，文件权限，网络端口访问有极其严格的限制，<br>
+例如：如果对一个文件没有正确安全上下文配置， 甚至你是root用户，你也不能启动某服务<br>
 </p>
 
 <p>
-sudo vi /etc/sysconfig/selinux
+sudo vi /etc/sysconfig/selinux<br>
 </p>
 <pre class="example">
 selinux = disable
@@ -771,34 +573,34 @@ selinux = disable
 </pre>
 </div>
 </div>
-<div id="outline-container-org6ac42c0" class="outline-3">
-<h3 id="org6ac42c0">java  &amp; scala</h3>
-<div class="outline-text-3" id="text-org6ac42c0">
+<div id="outline-container-orgdace1ef" class="outline-3">
+<h3 id="orgdace1ef"><span class="section-number-3">2.9</span> java  &amp; scala</h3>
+<div class="outline-text-3" id="text-2-9">
 <p>
-基础环境用root 配置在/etc/profile 自启动环境文件内
+基础环境用root 配置在/etc/profile 自启动环境文件内<br>
 </p>
 
 <p>
-refer : <a href="https://www.mtyun.com/library/how-to-setup-scala-on-centos7">1</a>
+refer : <a href="https://www.mtyun.com/library/how-to-setup-scala-on-centos7">1</a><br>
 </p>
 
 <ul class="org-ul">
-<li>java rpm install
+<li>java rpm install<br>
 
 <ol class="org-ol">
-<li><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download</a></li>
+<li><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download</a><br></li>
 <li><p>
-install
+install<br>
 </p>
 <p class="verse">
-sudo rpm -ivh jdk-8u144-linux-x64.rpm<br />
-sudo rpm -aq | grep jdk<br />
-sudo rpm -e jdk   无效<br />
-sudo yum remove jdk<br />
+sudo rpm -ivh jdk-8u144-linux-x64.rpm<br>
+sudo rpm -aq | grep jdk<br>
+sudo rpm -e jdk   无效<br>
+sudo yum remove jdk<br>
 </p>
 
 <p>
-sudo vi /etc/profile
+sudo vi /etc/profile<br>
 </p>
 
 <pre class="example">
@@ -809,15 +611,15 @@ export PATH=$PATH:$JAVA_HOME/bin
 </pre></li>
 </ol></li>
 <li><p>
-java 离线包安装
+java 离线包安装<br>
 </p>
 
 <p>
-tar -zxvf jdk-8u151-linux-x64.tar.gz
+tar -zxvf jdk-8u151-linux-x64.tar.gz<br>
 </p>
 
 <p>
-vi /etc/profile
+vi /etc/profile<br>
 </p>
 <pre class="example">
 #JAVA_HOME
@@ -826,15 +628,15 @@ PATH=$PATH:$JAVA_HOME/bin
 export JAVA_HOME PATH
 </pre></li>
 <li><p>
-scala 离线包安装
+scala 离线包安装<br>
 </p>
 
 <p>
-当前最新版本
+当前最新版本<br>
 </p>
 
 <p>
-tar zxvf scala-2.11.7.tgz
+tar zxvf scala-2.11.7.tgz<br>
 </p>
 
 <pre class="example">
@@ -847,103 +649,103 @@ export SCALA_HOME PATH
 </div>
 </div>
 
-<div id="outline-container-orgae41274" class="outline-2">
-<h2 id="orgae41274">hadoop 集群配置</h2>
-<div class="outline-text-2" id="text-orgae41274">
+<div id="outline-container-orga450f1c" class="outline-2">
+<h2 id="orga450f1c"><span class="section-number-2">3</span> hadoop 集群配置</h2>
+<div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-orgf15dc06" class="outline-3">
-<h3 id="orgf15dc06">hadoop hbase spark 版本选择</h3>
-<div class="outline-text-3" id="text-orgf15dc06">
+<div id="outline-container-org3502b74" class="outline-3">
+<h3 id="org3502b74"><span class="section-number-3">3.1</span> hadoop hbase spark 版本选择</h3>
+<div class="outline-text-3" id="text-3-1">
 <ul class="org-ul">
 <li><p>
-hbase 支持 hadoop 版本对照表
+hbase 支持 hadoop 版本对照表<br>
 </p>
 
 <p>
-The 1.2.x series is the current stable release line
+The 1.2.x series is the current stable release line<br>
 </p>
 
 <p>
-<a href="http://www-us.apache.org/dist/hbase/">http://www-us.apache.org/dist/hbase/</a>
+<a href="http://www-us.apache.org/dist/hbase/">http://www-us.apache.org/dist/hbase/</a><br>
 </p>
 
 <p>
-下面查看1.2.x 需要的hadoop版本
+下面查看1.2.x 需要的hadoop版本<br>
 </p>
 
 <p>
-<a href="http://hbase.apache.org/book.html#arch.overview">http://hbase.apache.org/book.html#arch.overview</a>
+<a href="http://hbase.apache.org/book.html#arch.overview">http://hbase.apache.org/book.html#arch.overview</a><br>
 </p>
 
 <p>
-crtl + F  "s" 搜索页面
+crtl + F  "s" 搜索页面<br>
 </p>
 
 <p>
-选择 Hadoop-2.7.1+
+选择 Hadoop-2.7.1+<br>
 </p></li>
 
 <li><p>
-spark 支持 hadoop
+spark 支持 hadoop<br>
 </p>
 
 <p>
-<a href="http://spark.apache.org/downloads.html">http://spark.apache.org/downloads.html</a>
+<a href="http://spark.apache.org/downloads.html">http://spark.apache.org/downloads.html</a><br>
 </p>
 
 <p>
-官方下载页面可以手动选择
+官方下载页面可以手动选择<br>
 </p></li>
 
 <li><p>
-hive 支持 hadoop
+hive 支持 hadoop<br>
 </p>
 
 <p>
-<a href="https://hive.apache.org/downloads.html">https://hive.apache.org/downloads.html</a>
+<a href="https://hive.apache.org/downloads.html">https://hive.apache.org/downloads.html</a><br>
 </p>
 
 <p>
-稳定版下载地址
+稳定版下载地址<br>
 </p>
 
 <p>
-<a href="http://mirrors.shuosc.org/apache/hive/stable-2/">http://mirrors.shuosc.org/apache/hive/stable-2/</a>
+<a href="http://mirrors.shuosc.org/apache/hive/stable-2/">http://mirrors.shuosc.org/apache/hive/stable-2/</a><br>
 </p></li>
 
 <li><p>
-zookeeper
+zookeeper<br>
 </p>
 
 <p>
-下载稳定版即可
+下载稳定版即可<br>
 </p>
 
 <p>
-<a href="http://mirrors.shuosc.org/apache/zookeeper/stable/">http://mirrors.shuosc.org/apache/zookeeper/stable/</a>
+<a href="http://mirrors.shuosc.org/apache/zookeeper/stable/">http://mirrors.shuosc.org/apache/zookeeper/stable/</a><br>
 </p></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org475ed56" class="outline-3">
-<h3 id="org475ed56">环境准备</h3>
-<div class="outline-text-3" id="text-org475ed56">
+<div id="outline-container-org3769c7a" class="outline-3">
+<h3 id="org3769c7a"><span class="section-number-3">3.2</span> 环境准备</h3>
+<div class="outline-text-3" id="text-3-2">
 <p>
-三台vbox 虚拟centos7 配置 java scala 环境 关闭防火墙和selinux
+三台vbox 虚拟centos7 配置 java scala 环境 关闭防火墙和selinux<br>
 </p>
 
 <ul class="org-ul">
 <li><p>
-cluster
+cluster<br>
 </p>
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table>
 
 
 <colgroup>
-<col  class="org-left" />
+<col  class="org-left">
 
-<col  class="org-right" />
+<col  class="org-right">
 </colgroup>
 <thead>
 <tr>
@@ -972,15 +774,15 @@ cluster
 </table></li>
 
 <li><p>
-disable ipv6
+disable ipv6<br>
 </p>
 
 <p>
-sudo vi /etc/sysctl.conf
+sudo vi /etc/sysctl.conf<br>
 </p>
 
 <p>
-添加下面内容
+添加下面内容<br>
 </p>
 
 <pre class="example">
@@ -993,11 +795,11 @@ net.ipv6.conf.lo.disable_ipv6 = 1
 </pre>
 
 <p>
-解决master:50070 页面找不到live node 
+解决master:50070 页面找不到live node<br>
 </p>
 
 <p>
-解决 connection exception
+解决 connection exception<br>
 </p>
 
 <pre class="example">
@@ -1007,15 +809,15 @@ ls:all From slave01/127.0.0.1 to master:9000 failed on connection exception: jav
 </pre></li>
 
 <li><p>
-hostname &amp; host
+hostname &amp; host<br>
 </p>
 
 <p>
-三台主机都要,修改主机名,修改/etc/hosts 互相添加hostname访问别名
+三台主机都要,修改主机名,修改/etc/hosts 互相添加hostname访问别名<br>
 </p>
 
 <p>
-注意； #127.0.0.1 master 这样的映射一定要注释掉,master:8088无法访问最终定位到这里了
+注意； #127.0.0.1 master 这样的映射一定要注释掉,master:8088无法访问最终定位到这里了<br>
 </p>
 <pre class="example">
 #ceos7 cluster
@@ -1025,31 +827,31 @@ hostname &amp; host
 </pre></li>
 
 <li><p>
-免登录验证
+免登录验证<br>
 </p>
 <p class="verse">
-ssh-keygen -t rsa<br />
-ssh-copy-id -i ~/.ssh/id_rsa.pub manue1@slave01<br />
-ssh-copy-id -i ~/.ssh/id_rsa.pub manue1@slave02<br />
-ssh-copy-id -i ~/.ssh/id_rsa.pub manue1@master<br />
+ssh-keygen -t rsa<br>
+ssh-copy-id -i ~/.ssh/id_rsa.pub manue1@slave01<br>
+ssh-copy-id -i ~/.ssh/id_rsa.pub manue1@slave02<br>
+ssh-copy-id -i ~/.ssh/id_rsa.pub manue1@master<br>
 </p></li>
 
-<li>download hadoop
-tar -zxvf hadoop-2.7.5.tar.gz</li>
+<li>download hadoop<br>
+tar -zxvf hadoop-2.7.5.tar.gz<br></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org84529b2" class="outline-3">
-<h3 id="org84529b2">配置hadoop cluster</h3>
-<div class="outline-text-3" id="text-org84529b2">
+<div id="outline-container-org155a3aa" class="outline-3">
+<h3 id="org155a3aa"><span class="section-number-3">3.3</span> 配置hadoop cluster</h3>
+<div class="outline-text-3" id="text-3-3">
 <ul class="org-ul">
 <li><p>
-hadoop_home
-三台节点都需要配置
+hadoop_home<br>
+三台节点都需要配置<br>
 </p>
 
 <p>
-vi .bashrc
+vi .bashrc<br>
 </p>
 <pre class="example">
 # Hadoop Environment Variables
@@ -1067,16 +869,16 @@ export CATALINA_BASE=$HADOOP_HOME/share/hadoop/httpfs/tomcat #支持httpfs rest 
 </pre></li>
 
 <li><p>
-master
+master<br>
 </p>
 
 <p>
-<i>home/manue1/opt/hadoop-2.7.5/etc/hadoop</i> 下6个配置文件
+<i>home/manue1/opt/hadoop-2.7.5/etc/hadoop</i> 下6个配置文件<br>
 </p>
 
 <ol class="org-ol">
 <li><p>
-core-site.xml
+core-site.xml<br>
 </p>
 
 <pre class="example">
@@ -1109,7 +911,7 @@ core-site.xml
 </pre></li>
 
 <li><p>
-hdfs-site.xml
+hdfs-site.xml<br>
 </p>
 
 <pre class="example">
@@ -1140,11 +942,11 @@ hdfs-site.xml
 </pre></li>
 
 <li><p>
-mapred-site.xml
+mapred-site.xml<br>
 </p>
 
 <p>
-mv mapred-site.xml.template mapred-site.xml
+mv mapred-site.xml.template mapred-site.xml<br>
 </p>
 
 <pre class="example">
@@ -1167,7 +969,7 @@ mv mapred-site.xml.template mapred-site.xml
 </pre></li>
 
 <li><p>
-yarn-site.xml
+yarn-site.xml<br>
 </p>
 
 <pre class="example">
@@ -1194,7 +996,7 @@ yarn-site.xml
 </pre></li>
 
 <li><p>
-slaves
+slaves<br>
 </p>
 
 <pre class="example">
@@ -1203,21 +1005,21 @@ slave02
 </pre></li>
 
 <li><p>
-hadoop-env.sh
+hadoop-env.sh<br>
 </p>
 
 <p>
-修改
-export JAVA_HOME=/home/manue1/opt/jdk8
+修改<br>
+export JAVA_HOME=/home/manue1/opt/jdk8<br>
 </p></li>
 </ol></li>
 
 <li><p>
-slaves
+slaves<br>
 </p>
 
 <p>
-复制master节点配置好的安装包到指定slaves目录
+复制master节点配置好的安装包到指定slaves目录<br>
 </p>
 
 <pre class="example">
@@ -1229,11 +1031,11 @@ scp hadoop-2.7.5_conf_finshed.tar.gz manue1@slave02:/home/manue1/opt/
 </div>
 </div>
 
-<div id="outline-container-org250d825" class="outline-3">
-<h3 id="org250d825">启动hadoop</h3>
-<div class="outline-text-3" id="text-org250d825">
+<div id="outline-container-orgbe1e46c" class="outline-3">
+<h3 id="orgbe1e46c"><span class="section-number-3">3.4</span> 启动hadoop</h3>
+<div class="outline-text-3" id="text-3-4">
 <p>
-第一次启动要执行格式化，之后启动不用执行这条
+第一次启动要执行格式化，之后启动不用执行这条<br>
 </p>
 <pre class="example">
 hdfs namenode -format 
@@ -1241,7 +1043,7 @@ hdfs namenode -format
 </pre>
 
 <p>
-启动命令:
+启动命令:<br>
 </p>
 <pre class="example">
 start-dfs.sh
@@ -1254,7 +1056,7 @@ httpfs.sh start
 
 <ul class="org-ul">
 <li><p>
-master
+master<br>
 </p>
 <pre class="example">
 manue1@master sbin]$ jps
@@ -1268,7 +1070,7 @@ manue1@master sbin]$ jps
 </pre></li>
 
 <li><p>
-slaves
+slaves<br>
 </p>
 <pre class="example">
 [manue1@slave01 hadoop]$ jps
@@ -1279,7 +1081,7 @@ slaves
 </ul>
 
 <p>
-hadoop cluster状态展示界面 webhdfs
+hadoop cluster状态展示界面 webhdfs<br>
 </p>
 
 <pre class="example">
@@ -1289,7 +1091,7 @@ curl "http://master:50070/webhdfs/v1/?op=liststatus&amp;user.name=manue1"
 </pre>
 
 <p>
-httpfs rest api 配置HA的时候找不到namenode可以采用httpfs
+httpfs rest api 配置HA的时候找不到namenode可以采用httpfs<br>
 </p>
 
 <pre class="example">
@@ -1299,7 +1101,7 @@ curl "http://master:14000/webhdfs/v1/?op=liststatus&amp;user.name=manue1"
 </pre>
 
 <p>
-yarn 管理界面
+yarn 管理界面<br>
 </p>
 
 <pre class="example">
@@ -1310,28 +1112,28 @@ http://master:8088
 </div>
 </div>
 
-<div id="outline-container-orgcfd1360" class="outline-2">
-<h2 id="orgcfd1360">elasticstk 集群</h2>
-<div class="outline-text-2" id="text-orgcfd1360">
+<div id="outline-container-orge9a6482" class="outline-2">
+<h2 id="orge9a6482"><span class="section-number-2">4</span> elasticstk 集群</h2>
+<div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-orgd978f77" class="outline-3">
-<h3 id="orgd978f77">elasticsearch-611</h3>
-<div class="outline-text-3" id="text-orgd978f77">
+<div id="outline-container-orgc3bf245" class="outline-3">
+<h3 id="orgc3bf245"><span class="section-number-3">4.1</span> elasticsearch-611</h3>
+<div class="outline-text-3" id="text-4-1">
 <blockquote>
 <ol class="org-ol">
 <li><p>
-环境准备
+环境准备<br>
 </p>
 
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table>
 
 
 <colgroup>
-<col  class="org-left" />
+<col  class="org-left">
 
-<col  class="org-right" />
+<col  class="org-right">
 
-<col  class="org-left" />
+<col  class="org-left">
 </colgroup>
 <thead>
 <tr>
@@ -1365,39 +1167,39 @@ http://master:8088
 
 <ul class="org-ul">
 <li><p>
-生产环境配置: 
+生产环境配置:<br>
 </p>
 
 <p>
-10节点 6个master候选节点
+10节点 6个master候选节点<br>
 </p>
 
 <p>
-1节点 4G + lucene 3G = 8G
+1节点 4G + lucene 3G = 8G<br>
 </p>
 
 <p>
-10T硬盘，最多存5T数据
+10T硬盘，最多存5T数据<br>
 </p>
 
 <p>
-4c + 8g + 1T * 10台 = 10T 
+4c + 8g + 1T * 10台 = 10T<br>
 </p>
 
 <p>
-4c + 16g + 2T * 5台 = 10T
+4c + 16g + 2T * 5台 = 10T<br>
 </p></li>
 
-<li>java 环境配置，关闭firewalld,主机名配置,官网下载elasticsearch-6.1.1.tar.gz</li>
+<li>java 环境配置，关闭firewalld,主机名配置,官网下载elasticsearch-6.1.1.tar.gz<br></li>
 
-<li>普通用户下安装es  username:manue1</li>
+<li>普通用户下安装es  username:manue1<br></li>
 
 <li><p>
-系统设置
+系统设置<br>
 </p>
 
 <p>
-sudo -s 切换到root下执行
+sudo -s 切换到root下执行<br>
 </p>
 
 <pre class="example">
@@ -1431,17 +1233,17 @@ sed -e '/root       soft    nproc     unlimited/a\*           soft   nofile     
 </pre>
 
 <p>
-修改系统配置文件后，重启系统生效
+修改系统配置文件后，重启系统生效<br>
 </p></li>
 </ul></li>
 
 <li><p>
-配置elasticsearch
+配置elasticsearch<br>
 </p>
 
 <ul class="org-ul">
 <li><p>
-elasticsearch.yml          # els的配置文件
+elasticsearch.yml          # els的配置文件<br>
 </p>
 
 <pre class="example">
@@ -1472,7 +1274,7 @@ http.port: 9200                 # 对外提供服务的端口，9300为集群服
 </pre></li>
 
 <li><p>
-jvm.options                # JVM相关的配置，内存大小等等
+jvm.options                # JVM相关的配置，内存大小等等<br>
 </p>
 
 <pre class="example">
@@ -1481,25 +1283,25 @@ jvm.options                # JVM相关的配置，内存大小等等
 -Xmx1g与-Xms1gJVM的最大最小内存。如果太小会导致Elasticsearch刚刚启动就立刻停止。太大会拖慢系统本身
 </pre></li>
 
-<li>log4j2.properties          # 日志系统定义</li>
+<li>log4j2.properties          # 日志系统定义<br></li>
 </ul>
 
 <p>
-将配置好的elasticsearch 打包传到各个节点，需要注意的是，如果配置过程中运行产生的data/nodes/0 文件
-一定要删掉，再打包使用，否则各个节点启动成功了，无法加入到集群，节点id冲突
-报错信息: <code>with the same id but is a different node instance</code>
+将配置好的elasticsearch 打包传到各个节点，需要注意的是，如果配置过程中运行产生的data/nodes/0 文件<br>
+一定要删掉，再打包使用，否则各个节点启动成功了，无法加入到集群，节点id冲突<br>
+报错信息: <code>with the same id but is a different node instance</code><br>
 </p></li>
 
 <li><p>
-启动elasticsearch
+启动elasticsearch<br>
 </p>
 
 <p>
-su manue1
+su manue1<br>
 </p>
 
 <p>
-vi  /home/manue1/opt/elasticsearch-6.1.1/bin/elasticsearch
+vi  /home/manue1/opt/elasticsearch-6.1.1/bin/elasticsearch<br>
 </p>
 
 <pre class="example">
@@ -1508,38 +1310,38 @@ MAX_OPEN_FILES=262144
 </pre>
 
 <p>
-nohup ./bin/elasticsearch -d 
+nohup ./bin/elasticsearch -d<br>
 </p>
 
 <p>
-关闭 ps -ef |grep elasticsearch|awk '{print $2}'|xargs kill -9
+关闭 ps -ef |grep elasticsearch|awk '{print $2}'|xargs kill -9<br>
 </p></li>
 
 <li><p>
-refer
+refer<br>
 </p>
 
 <p>
-<a href="https://blog.csdn.net/thomas0yang/article/details/55518105#%E5%86%85%E5%AD%98">1</a> <a href="https://www.elastic.co/guide/cn/elasticsearch/guide/cn/important-configuration-changes.html#_%E6%9C%80%E5%B0%8F%E4%B8%BB%E8%8A%82%E7%82%B9%E6%95%B0">2</a> <a href="https://zhuanlan.zhihu.com/p/35291900">3</a>
+<a href="https://blog.csdn.net/thomas0yang/article/details/55518105#%E5%86%85%E5%AD%98">1</a> <a href="https://www.elastic.co/guide/cn/elasticsearch/guide/cn/important-configuration-changes.html#_%E6%9C%80%E5%B0%8F%E4%B8%BB%E8%8A%82%E7%82%B9%E6%95%B0">2</a> <a href="https://zhuanlan.zhihu.com/p/35291900">3</a><br>
 </p></li>
 </ol>
 
 <p>
-`
+`<br>
 </p>
 </blockquote>
 </div>
 </div>
 
-<div id="outline-container-org34fa9db" class="outline-3">
-<h3 id="org34fa9db">kibana</h3>
-<div class="outline-text-3" id="text-org34fa9db">
+<div id="outline-container-orga40b31e" class="outline-3">
+<h3 id="orga40b31e"><span class="section-number-3">4.2</span> kibana</h3>
+<div class="outline-text-3" id="text-4-2">
 <p>
-配置在es的非数据节点上: 192.168.56.10
+配置在es的非数据节点上: 192.168.56.10<br>
 </p>
 
 <p>
-修改 config/kibana.yml
+修改 config/kibana.yml<br>
 </p>
 <pre class="example">
 server.host: "0.0.0.0" #不同网卡网段能够访问
@@ -1547,32 +1349,32 @@ elasticsearch.url: "http://master:9200"
 </pre>
 
 <p>
-启动： nohup  bin/kibana  &amp;
+启动： nohup  bin/kibana  &amp;<br>
 </p>
 
 <p>
-关闭: ps -ef |grep kibana |awk '{print $2}'|xargs kill -9
+关闭: ps -ef |grep kibana |awk '{print $2}'|xargs kill -9<br>
 </p>
 
 <p>
-ss -lnp | grep 5601
+ss -lnp | grep 5601<br>
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgbebe7b6" class="outline-3">
-<h3 id="orgbebe7b6">logstash</h3>
-<div class="outline-text-3" id="text-orgbebe7b6">
+<div id="outline-container-orgab74ef3" class="outline-3">
+<h3 id="orgab74ef3"><span class="section-number-3">4.3</span> logstash</h3>
+<div class="outline-text-3" id="text-4-3">
 <ol class="org-ol">
-<li>download
-logstash-6.1.1.tar.gz</li>
-<li>config
+<li>download<br>
+logstash-6.1.1.tar.gz<br></li>
+<li>config<br>
 
 <ul class="org-ul">
 <li><p>
-创建logstash-conf 目录
-beat的配置文件
-vi beats.conf
+创建logstash-conf 目录<br>
+beat的配置文件<br>
+vi beats.conf<br>
 </p>
 <pre class="example">
 input {
@@ -1597,57 +1399,57 @@ output {
 
 </pre></li>
 
-<li>jvm.options
-修改 xms xmx 最大最小jvm 为256M 比es测试集群吃内存多</li>
+<li>jvm.options<br>
+修改 xms xmx 最大最小jvm 为256M 比es测试集群吃内存多<br></li>
 
-<li>logstash.yml</li>
+<li>logstash.yml<br></li>
 </ul></li>
 
-<li>start logstash
+<li>start logstash<br>
 
 <ul class="org-ul">
-<li>bin/logstash -e 'input { stdin { } } output { stdout {} }'
-测试启动</li>
+<li>bin/logstash -e 'input { stdin { } } output { stdout {} }'<br>
+测试启动<br></li>
 
 <li><p>
-./bin/logstash -f logstash-conf/beats.conf &amp;
+./bin/logstash -f logstash-conf/beats.conf &amp;<br>
 </p>
 
 <p>
-配置文件启动
+配置文件启动<br>
 </p>
 
 <p>
-sudo netstat -anp | grep 5044
+sudo netstat -anp | grep 5044<br>
 </p></li>
 </ul></li>
 </ol>
 </div>
 </div>
-<div id="outline-container-orgf8ae5e6" class="outline-3">
-<h3 id="orgf8ae5e6">beats</h3>
-<div class="outline-text-3" id="text-orgf8ae5e6">
+<div id="outline-container-org68cd599" class="outline-3">
+<h3 id="org68cd599"><span class="section-number-3">4.4</span> beats</h3>
+<div class="outline-text-3" id="text-4-4">
 </div>
-<div id="outline-container-orgb5a2587" class="outline-4">
-<h4 id="orgb5a2587">topbeat</h4>
-<div class="outline-text-4" id="text-orgb5a2587">
+<div id="outline-container-org0633916" class="outline-4">
+<h4 id="org0633916"><span class="section-number-4">4.4.1</span> topbeat</h4>
+<div class="outline-text-4" id="text-4-4-1">
 <p>
-5.x版本后弃用了
+5.x版本后弃用了<br>
 </p>
 <ol class="org-ol">
-<li>下载
-topbeat-1.3.1-x86_64.tar.gz</li>
+<li>下载<br>
+topbeat-1.3.1-x86_64.tar.gz<br></li>
 
-<li>配置
+<li>配置<br>
 
 <ul class="org-ul">
-<li>topbeat</li>
+<li>topbeat<br></li>
 
-<li>topbeat.template.json  
-topbeat自带的模版，用来创建存放收集数据的索引结构</li>
+<li>topbeat.template.json<br>
+topbeat自带的模版，用来创建存放收集数据的索引结构<br></li>
 
 <li><p>
-topbeat.yml
+topbeat.yml<br>
 </p>
 <pre class="example">
 input:
@@ -1669,12 +1471,12 @@ logging:
 
 
 <ol class="org-ol">
-<li>es导入模版
-导入topbeat自带的模版，用来创建存放收集数据的索引结构
+<li>es导入模版<br>
+导入topbeat自带的模版，用来创建存放收集数据的索引结构<br>
 
 <ul class="org-ul">
 <li><p>
-Configuring Template Loading - supported for Elasticsearch output only
+Configuring Template Loading - supported for Elasticsearch output only<br>
 </p>
 <pre class="example">
 ERR Failed to perform any bulk index operations: 406 Not Acceptable
@@ -1682,46 +1484,46 @@ ERR Failed to perform any bulk index operations: 406 Not Acceptable
 再去官网查看，topbeat 从5.0 已经被 Metricbeat替换了
 </pre></li>
 
-<li>Loading the Template Manually - required for Logstash output</li>
+<li>Loading the Template Manually - required for Logstash output<br></li>
 </ul></li>
 </ol>
 
 
 <ol class="org-ol">
-<li>kibana</li>
+<li>kibana<br></li>
 
 <li><p>
-启动topbeat节点
+启动topbeat节点<br>
 </p>
 
 <p>
-sudo ./topbeat -e -c topbeat.yml -d "publish"
+sudo ./topbeat -e -c topbeat.yml -d "publish"<br>
 </p></li>
 </ol>
 </div>
 </div>
-<div id="outline-container-orgd3d9060" class="outline-4">
-<h4 id="orgd3d9060">filebeat</h4>
-<div class="outline-text-4" id="text-orgd3d9060">
+<div id="outline-container-orgecb9c41" class="outline-4">
+<h4 id="orgecb9c41"><span class="section-number-4">4.4.2</span> filebeat</h4>
+<div class="outline-text-4" id="text-4-4-2">
 <ol class="org-ol">
 <li><p>
-download
+download<br>
 </p>
 
 <p>
-filebeat-6.1.1-linux-x86_64.tar.gz
+filebeat-6.1.1-linux-x86_64.tar.gz<br>
 </p>
 
 <p>
-<a href="https://download.elastic.co/demos/logstash/gettingstarted/logstash-tutorial.log.gz">https://download.elastic.co/demos/logstash/gettingstarted/logstash-tutorial.log.gz</a>
-logstash-tutorial.log.gz apache 的日志文件样本
+<a href="https://download.elastic.co/demos/logstash/gettingstarted/logstash-tutorial.log.gz">https://download.elastic.co/demos/logstash/gettingstarted/logstash-tutorial.log.gz</a><br>
+logstash-tutorial.log.gz apache 的日志文件样本<br>
 </p></li>
 
-<li>config
+<li>config<br>
 
 <ul class="org-ul">
 <li><p>
-filebeat.yml
+filebeat.yml<br>
 </p>
 <pre class="example">
 - type: log
@@ -1746,40 +1548,40 @@ setup.kibana:
 </pre></li>
 
 <li><p>
-modules
+modules<br>
 </p>
 
 <p>
-sudo chown -R root /home/manue1/opt/filebeat-6.1.1-linux-x86_64/module
+sudo chown -R root /home/manue1/opt/filebeat-6.1.1-linux-x86_64/module<br>
 </p>
 
 <p>
-sudo chown -R root /home/manue1/opt/filebeat-6.1.1-linux-x86_64/modules.d
+sudo chown -R root /home/manue1/opt/filebeat-6.1.1-linux-x86_64/modules.d<br>
 </p>
 
 <ul class="org-ul">
 <li><p>
-Enable modules when you run Filebeatedit
+Enable modules when you run Filebeatedit<br>
 </p>
 
 <p>
-sudo ./filebeat -e &#x2013;modules system,nginx,mysql  
+sudo ./filebeat -e &#x2013;modules system,nginx,mysql<br>
 </p>
 
 <p>
-./filebeat -e &#x2013;modules nginx -M "nginx.access.var.paths=[/var/log/nginx/access.log*]"
+./filebeat -e &#x2013;modules nginx -M "nginx.access.var.paths=[/var/log/nginx/access.log*]"<br>
 </p></li>
 
 <li><p>
-filebeat.yml
+filebeat.yml<br>
 </p>
 
 <p>
-sudo ./filebeat modules list
+sudo ./filebeat modules list<br>
 </p>
 
 <p>
-sudo ./filebeat modules enable system 
+sudo ./filebeat modules enable system<br>
 </p>
 
 <pre class="example">
@@ -1800,18 +1602,18 @@ filebeat.modules:
 
 <ul class="org-ul">
 <li><p>
-setup template
+setup template<br>
 </p>
 
 <p>
-for logstash manually setup
+for logstash manually setup<br>
 </p>
 <pre class="example">
 ./filebeat setup --template -E output.logstash.enabled=false -E 'output.elasticsearch.hosts=["localhost:9200"]'
 </pre></li>
 
 <li><p>
-setup kibana dashboards
+setup kibana dashboards<br>
 </p>
 
 <pre class="example">
@@ -1819,53 +1621,53 @@ setup kibana dashboards
 </pre></li>
 
 <li><p>
-start filebeat
+start filebeat<br>
 </p>
 
 <p>
-sudo chown root filebeat.yml 
+sudo chown root filebeat.yml<br>
 </p>
 
 <p>
-sudo -s
+sudo -s<br>
 </p>
 
 <p>
-nohup /home/manue1/opt/filebeat-6.1.1-linux-x86_64/filebeat -e -c /home/manue1/opt/filebeat-6.1.1-linux-x86_64/filebeat.yml -d "publish" &amp;
+nohup /home/manue1/opt/filebeat-6.1.1-linux-x86_64/filebeat -e -c /home/manue1/opt/filebeat-6.1.1-linux-x86_64/filebeat.yml -d "publish" &amp;<br>
 </p>
 
 <p>
-ps aux |grep beat
+ps aux |grep beat<br>
 </p></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org2429178" class="outline-4">
-<h4 id="org2429178">metricbeat</h4>
-<div class="outline-text-4" id="text-org2429178">
+<div id="outline-container-orgfcabc6e" class="outline-4">
+<h4 id="orgfcabc6e"><span class="section-number-4">4.4.3</span> metricbeat</h4>
+<div class="outline-text-4" id="text-4-4-3">
 <ol class="org-ol">
 <li><p>
-download
+download<br>
 </p>
 
 <p>
-metricbeat-6.1.1-linux-x86_64.tar.gz
+metricbeat-6.1.1-linux-x86_64.tar.gz<br>
 </p></li>
 
-<li>conf
+<li>conf<br>
 
 <ul class="org-ul">
-<li>metricbeat.yml
+<li>metricbeat.yml<br>
 
 <ol class="org-ol">
 <li><p>
-修改es和kibana的地址
+修改es和kibana的地址<br>
 </p>
 
 <p>
-如果输出到logstash中，需要关闭直接写入es，并配置logstash监听5044端口
-es也要手动加载template
+如果输出到logstash中，需要关闭直接写入es，并配置logstash监听5044端口<br>
+es也要手动加载template<br>
 </p>
 <pre class="example">
 output.logstash:
@@ -1873,12 +1675,12 @@ output.logstash:
   hosts: ["master:5044"]
 </pre></li>
 
-<li>配置template模版
+<li>配置template模版<br>
 <ul class="org-ul">
-<li>Configure template loading</li>
+<li>Configure template loading<br></li>
 <li><p>
-Load the template manually  
-required for Logstash output
+Load the template manually<br>
+required for Logstash output<br>
 </p>
 <pre class="example">
 
@@ -1891,90 +1693,90 @@ sudo ./metricbeat setup --template -E output.logstash.enabled=false -E 'output.e
 
 
 <ul class="org-ul">
-<li>modules.d 
-目录下面可以配置多种模块
-修改 logstash.yml.disabled 为 logstash.yml 启动模块</li>
+<li>modules.d<br>
+目录下面可以配置多种模块<br>
+修改 logstash.yml.disabled 为 logstash.yml 启动模块<br></li>
 
 <li><p>
-kibana dashboard
+kibana dashboard<br>
 </p>
 
 <p>
-./metricbeat setup &#x2013;dashboards
+./metricbeat setup &#x2013;dashboards<br>
 </p></li>
 </ul>
 <ol class="org-ol">
 <li><p>
-start 
+start<br>
 </p>
 
 <p>
-sudo chown root metricbeat.yml 
-sudo chown root modules.d/system.yml 
-sudo ./metricbeat -e -c metricbeat.yml -d "publish"
+sudo chown root metricbeat.yml<br>
+sudo chown root modules.d/system.yml<br>
+sudo ./metricbeat -e -c metricbeat.yml -d "publish"<br>
 </p>
 
 <p>
-ps aux |grep metricbeat
+ps aux |grep metricbeat<br>
 </p></li>
 </ol>
 
 
 <p>
-复制到不同节点部署
+复制到不同节点部署<br>
 </p>
 </div>
 </div>
-<div id="outline-container-orge660ead" class="outline-4">
-<h4 id="orge660ead">packetbeat</h4>
-<div class="outline-text-4" id="text-orge660ead">
+<div id="outline-container-org425ef76" class="outline-4">
+<h4 id="org425ef76"><span class="section-number-4">4.4.4</span> packetbeat</h4>
+<div class="outline-text-4" id="text-4-4-4">
 <ol class="org-ol">
 <li><p>
-download 
+download<br>
 </p>
 
 <p>
-packetbeat-6.1.1-linux-x86_64.tar.gz
+packetbeat-6.1.1-linux-x86_64.tar.gz<br>
 </p></li>
 
-<li>config 
+<li>config<br>
 
 <ul class="org-ul">
 <li><p>
-packetbeat.yml
+packetbeat.yml<br>
 </p>
 
 <p>
-logstash &amp; kibana 地址修改
+logstash &amp; kibana 地址修改<br>
 </p></li>
 
 <li><p>
-setup template
+setup template<br>
 </p>
 
 <p>
-./packetbeat setup &#x2013;template -E output.logstash.enabled=false -E 'output.elasticsearch.hosts=["master:9200"]'
+./packetbeat setup &#x2013;template -E output.logstash.enabled=false -E 'output.elasticsearch.hosts=["master:9200"]'<br>
 </p></li>
 
 <li><p>
-set up kibana dashboard
+set up kibana dashboard<br>
 </p>
 
 <p>
-./packetbeat setup &#x2013;dashboards
+./packetbeat setup &#x2013;dashboards<br>
 </p></li>
 </ul></li>
 
 <li><p>
-start beat
+start beat<br>
 </p>
 
 <p>
-sudo chown root packetbeat.yml 
+sudo chown root packetbeat.yml<br>
 </p>
 
 <p>
-nohup /home/manue1/opt/packetbeat-6.1.1-linux-x86_64/packetbeat -e -c  /home/manue1/opt/packetbeat-6.1.1-linux-x86_64/packetbeat.yml -d "publish" &amp;
+nohup /home/manue1/opt/packetbeat-6.1.1-linux-x86_64/packetbeat -e -c  /home/manue1/opt/packetbeat-6.1.1-linux-x86_64/packetbeat.yml -d "publish" &amp;<br>
 </p></li>
 </ol>
 </div>
@@ -1982,28 +1784,28 @@ nohup /home/manue1/opt/packetbeat-6.1.1-linux-x86_64/packetbeat -e -c  /home/man
 </div>
 </div>
 
-<div id="outline-container-orgffe4f56" class="outline-2">
-<h2 id="orgffe4f56">hive</h2>
-<div class="outline-text-2" id="text-orgffe4f56">
+<div id="outline-container-org8502d96" class="outline-2">
+<h2 id="org8502d96"><span class="section-number-2">5</span> hive</h2>
+<div class="outline-text-2" id="text-5">
 <p>
-hive只需要安装在集群任意一个节点上即可,这里安装在slave01上
+hive只需要安装在集群任意一个节点上即可,这里安装在slave01上<br>
 </p>
 </div>
 
-<div id="outline-container-org71a5a4b" class="outline-3">
-<h3 id="org71a5a4b">install mariadb</h3>
-<div class="outline-text-3" id="text-org71a5a4b">
+<div id="outline-container-org51c3ed6" class="outline-3">
+<h3 id="org51c3ed6"><span class="section-number-3">5.1</span> install mariadb</h3>
+<div class="outline-text-3" id="text-5-1">
 <p>
-安装hive前，需要mysql作为外置存储引擎，存放hive元数据(metastore)
+安装hive前，需要mysql作为外置存储引擎，存放hive元数据(metastore)<br>
 </p>
 
 <p>
-<a href="http://blog.csdn.net/Nemo____/article/details/72897455">参考安装</a> mysql准备环境
+<a href="http://blog.csdn.net/Nemo____/article/details/72897455">参考安装</a> mysql准备环境<br>
 </p>
 
 <ul class="org-ul">
 <li><p>
-remove mariadb
+remove mariadb<br>
 </p>
 <pre class="example">
 rpm -qa|grep mariadb         //查询出已安装的mariadb
@@ -2013,7 +1815,7 @@ sudo  rpm -e --nodeps mariadb-libscc
 </pre></li>
 
 <li><p>
-install mariadb
+install mariadb<br>
 </p>
 
 <pre class="example">
@@ -2029,7 +1831,7 @@ grant all privileges on *.* to root@'%'identified by 'manue1';  #远程连接设
 </pre>
 
 <p>
-vi /etc/my.cnf
+vi /etc/my.cnf<br>
 </p>
 <pre class="example">
 # set utf8
@@ -2040,20 +1842,20 @@ default-character-set=utf8  # NO SPACE
 </div>
 </div>
 
-<div id="outline-container-orga5cba41" class="outline-3">
-<h3 id="orga5cba41">config hive</h3>
-<div class="outline-text-3" id="text-orga5cba41">
+<div id="outline-container-org37af443" class="outline-3">
+<h3 id="org37af443"><span class="section-number-3">5.2</span> config hive</h3>
+<div class="outline-text-3" id="text-5-2">
 <p>
-配置安装<a href="http://mirrors.shuosc.org/apache/hive/stable-2/">hive</a> 参考： <a href="https://cwiki.apache.org/confluence/display/Hive/GettingStarted">1</a>  <a href="http://blog.csdn.net/jssg_tzw/article/details/72354470">2</a>
+配置安装<a href="http://mirrors.shuosc.org/apache/hive/stable-2/">hive</a> 参考： <a href="https://cwiki.apache.org/confluence/display/Hive/GettingStarted">1</a>  <a href="http://blog.csdn.net/jssg_tzw/article/details/72354470">2</a><br>
 </p>
 
 <ul class="org-ul">
 <li><p>
-<b>.bashrc</b>
+<b>.bashrc</b><br>
 </p>
 
 <p>
-hive 环境变量配置
+hive 环境变量配置<br>
 </p>
 
 <pre class="example">
@@ -2063,11 +1865,11 @@ export PATH=$PATH:$HIVE_HOME/bin
 </pre></li>
 
 <li><p>
-<b>metastore conf</b>
+<b>metastore conf</b><br>
 </p>
 
 <p>
-hive元数据存放mysql,为hive建立相应的mysql账户,并赋予足够的权限
+hive元数据存放mysql,为hive建立相应的mysql账户,并赋予足够的权限<br>
 </p>
 
 <pre class="example">
@@ -2080,11 +1882,11 @@ flush privileges;
 </pre></li>
 
 <li><p>
-<b>配置hive-env.sh 文件</b>
+<b>配置hive-env.sh 文件</b><br>
 </p>
 
 <p>
-mv hive-env.sh.template hive-env.sh
+mv hive-env.sh.template hive-env.sh<br>
 </p>
 
 <pre class="example">
@@ -2095,7 +1897,7 @@ export HIVE_AUX_JARS_PATH=/home/manue1/opt/apache-hive-2.3.2-bin/lib
 </pre></li>
 
 <li><p>
-<b>hive-site.xml</b>
+<b>hive-site.xml</b><br>
 </p>
 
 <pre class="example">
@@ -2105,11 +1907,11 @@ mv hive-default.xml hive-site.xml
 
 <ol class="org-ol">
 <li><p>
-hdfs新建hive数据目录
+hdfs新建hive数据目录<br>
 </p>
 
 <p>
-因为在hive-site.xml配置了hive表的数据存放在hdfs上的/user/hive/warehouse内,
+因为在hive-site.xml配置了hive表的数据存放在hdfs上的/user/hive/warehouse内,<br>
 </p>
 
 <pre class="example">
@@ -2121,7 +1923,7 @@ hdfs新建hive数据目录
 </pre>
 
 <p>
-所以要在Hadoop集群新建目录，执行命令
+所以要在Hadoop集群新建目录，执行命令<br>
 </p>
 
 <pre class="example">
@@ -2133,11 +1935,11 @@ hdfs新建hive数据目录
 </pre></li>
 
 <li><p>
-hive-site.xml内mysql相关配置
+hive-site.xml内mysql相关配置<br>
 </p>
 
 <p>
-需要java连接mysql的依赖包下载<a href="https://dev.mysql.com/downloads/connector/j/5.1.html">mysql-connector-java-5.1.45-bin.jar</a> 
+需要java连接mysql的依赖包下载<a href="https://dev.mysql.com/downloads/connector/j/5.1.html">mysql-connector-java-5.1.45-bin.jar</a> <br>
 </p>
 
 <pre class="example">
@@ -2167,15 +1969,15 @@ mv mysql-connector-java-5.1.45-bin.jar lib/
 </pre></li>
 
 <li><p>
-替换${system 等值
+替换${system 等值<br>
 </p>
 
 <p>
-${system:user.name}都替换为manue1
+${system:user.name}都替换为manue1<br>
 </p>
 
 <p>
-${system:java.io.tmpdir}替换为hive的临时目录 /home/manue1/opt/apache-hive-2.3.2-bin/iotmp,先创建，再替换
+${system:java.io.tmpdir}替换为hive的临时目录 /home/manue1/opt/apache-hive-2.3.2-bin/iotmp,先创建，再替换<br>
 </p>
 
 <pre class="example">
@@ -2193,7 +1995,7 @@ ${system:java.io.tmpdir}替换为hive的临时目录 /home/manue1/opt/apache-hiv
 </ul>
 
 <p>
-最后初始化metadata表数据
+最后初始化metadata表数据<br>
 </p>
 
 <pre class="example">
@@ -2203,54 +2005,54 @@ schematool -initSchema -dbType mysql
 </div>
 </div>
 
-<div id="outline-container-orgdbdaa03" class="outline-3">
-<h3 id="orgdbdaa03">start hive</h3>
-<div class="outline-text-3" id="text-orgdbdaa03">
+<div id="outline-container-orgc20d3d0" class="outline-3">
+<h3 id="orgc20d3d0"><span class="section-number-3">5.3</span> start hive</h3>
+<div class="outline-text-3" id="text-5-3">
 <p>
-Hive的三种启动方式
+Hive的三种启动方式<br>
 </p>
 
 <ol class="org-ol">
 <li><p>
-hive  命令行模式
+hive  命令行模式<br>
 </p>
 
 <p>
-进入hive安装目录，输入bin/hive的执行程序，或者输入 hive &#x2013;service cli
+进入hive安装目录，输入bin/hive的执行程序，或者输入 hive &#x2013;service cli<br>
 </p>
 
 <p>
-用于linux平台命令行查询，查询语句基本跟mysql查询语句类似
+用于linux平台命令行查询，查询语句基本跟mysql查询语句类似<br>
 </p></li>
 
 <li><p>
-hive  web界面的启动方式
+hive  web界面的启动方式<br>
 </p>
 
 <p>
-bin/hive &#x2013;service hwi 
+bin/hive &#x2013;service hwi<br>
 </p>
 
 <p>
-用于通过浏览器来访问hive，感觉没多大用途，浏览器访问地址是：127.0.0.1:9999/hwi
+用于通过浏览器来访问hive，感觉没多大用途，浏览器访问地址是：127.0.0.1:9999/hwi<br>
 </p></li>
 
 <li><p>
-hive  远程服务 (端口号10000) 启动方式
+hive  远程服务 (端口号10000) 启动方式<br>
 </p>
 
 <p>
-bin/hive &#x2013;service hiveserver2 &amp;
+bin/hive &#x2013;service hiveserver2 &amp;<br>
 </p>
 
 <p>
-用java，python等程序实现通过jdbc等驱动的访问hive就用这种起动方式了，这个是程序员最需要的方式了
+用java，python等程序实现通过jdbc等驱动的访问hive就用这种起动方式了，这个是程序员最需要的方式了<br>
 </p></li>
 </ol>
 
 
 <p>
-此时可以使用beeline 测试jdbc连接
+此时可以使用beeline 测试jdbc连接<br>
 </p>
 
 <pre class="example">
@@ -2260,7 +2062,7 @@ beeline -u jdbc:hive2://slave01:10000 -n manue1 -p mmanue1
 
 
 <p>
-问题一:
+问题一:<br>
 </p>
 <pre class="example">
 
@@ -2285,7 +2087,7 @@ beeline&gt;
 </pre>
 
 <p>
-问题二:
+问题二:<br>
 </p>
 <pre class="example">
 ERROR 1045 (28000): Access denied for user 'hive'@'slave01' (using password: YES)
@@ -2299,16 +2101,16 @@ flush privileges;
 </div>
 </div>
 </div>
-<div id="outline-container-orgb556ef8" class="outline-2">
-<h2 id="orgb556ef8">sqoop</h2>
-<div class="outline-text-2" id="text-orgb556ef8">
+<div id="outline-container-org87cae1b" class="outline-2">
+<h2 id="org87cae1b"><span class="section-number-2">6</span> sqoop</h2>
+<div class="outline-text-2" id="text-6">
 <ol class="org-ol">
 <li><p>
-环境配置
+环境配置<br>
 </p>
 
 <p>
-从<a href="https://sqoop.apache.org">官网下载</a> 解压安装，配置SQOOP_HOME目录
+从<a href="https://sqoop.apache.org">官网下载</a> 解压安装，配置SQOOP_HOME目录<br>
 </p>
 <pre class="example">
 export SQOOP_HOME=/home/manue1/opt/sqoop-1.4.7.bin__hadoop-2.6.0
@@ -2316,8 +2118,8 @@ export PATH=$SQOOP_HOME/bin:$PATH
 </pre>
 <p>
 拷贝\({SQOOP_HOME}/conf/sqoop-env-template.sh  
-    到\){SQOOP_HOME}/conf/sqoop-env.sh，
-然后修改sqoop-env.sh
+    到\){SQOOP_HOME}/conf/sqoop-env.sh，<br>
+然后修改sqoop-env.sh<br>
 </p>
 <pre class="example">
 export HADOOP_COMMON_HOME=/home/manue1/opt/hadoop-2.7.5
@@ -2326,11 +2128,11 @@ export HIVE_HOME=/home/manue1/opt/apache-hive-2.3.2-bin
 </pre></li>
 
 <li><p>
-测试连接mysql
+测试连接mysql<br>
 </p>
 
 <p>
-将连接mysql的jar导入sqoop/lib内
+将连接mysql的jar导入sqoop/lib内<br>
 </p>
 
 <pre class="example">
@@ -2340,13 +2142,13 @@ sqoop list-databases --connect jdbc:mysql://slave01:3306/hive --username root --
 </ol>
 </div>
 </div>
-<div id="outline-container-orgba888d0" class="outline-2">
-<h2 id="orgba888d0">zookeeper</h2>
-<div class="outline-text-2" id="text-orgba888d0">
+<div id="outline-container-org9db1495" class="outline-2">
+<h2 id="org9db1495"><span class="section-number-2">7</span> zookeeper</h2>
+<div class="outline-text-2" id="text-7">
 </div>
-<div id="outline-container-orge444285" class="outline-3">
-<h3 id="orge444285">Replicated ZooKeeper configural</h3>
-<div class="outline-text-3" id="text-orge444285">
+<div id="outline-container-org4d0af91" class="outline-3">
+<h3 id="org4d0af91"><span class="section-number-3">7.1</span> Replicated ZooKeeper configural</h3>
+<div class="outline-text-3" id="text-7-1">
 <pre class="example">
 note
 
@@ -2357,13 +2159,13 @@ For replicated mode, a minimum of three servers are required, and it is strongly
 
 <ul class="org-ul">
 <li><p>
-vi conf/zoo.cfg
+vi conf/zoo.cfg<br>
 </p>
 
 <p>
-sudo mkdir -p <i>var/lib/zookeeper
-sudo chown manue1:manue1  /var/lib/zookeeper</i> #manue1 user start service
-创建 vi /var/lib/zookeeper/myid 内容为node server.x ,如 master为1
+sudo mkdir -p <i>var/lib/zookeeper<br>
+sudo chown manue1:manue1  /var/lib/zookeeper</i> #manue1 user start service<br>
+创建 vi /var/lib/zookeeper/myid 内容为node server.x ,如 master为1<br>
 </p>
 
 <pre class="example">
@@ -2381,46 +2183,46 @@ server.3=slave02:2888:3888
 
 </pre>
 <p>
-scp -r zookeeper-3.4.10 manue1@slave01:/home/manue1/opt
-scp -r zookeeper-3.4.10 manue1@slave02:/home/manue1/opt
+scp -r zookeeper-3.4.10 manue1@slave01:/home/manue1/opt<br>
+scp -r zookeeper-3.4.10 manue1@slave02:/home/manue1/opt<br>
 </p></li>
 
 <li><p>
-start service
+start service<br>
 </p>
 
 <p>
-nohup /home/manue1/opt/zookeeper-3.4.10/bin/zkServer.sh restart
+nohup /home/manue1/opt/zookeeper-3.4.10/bin/zkServer.sh restart<br>
 </p>
 
 <p>
-ps -ef | grep zookeeper
+ps -ef | grep zookeeper<br>
 </p>
 
 <p>
-netstat -tnlpa | grep 2181 
+netstat -tnlpa | grep 2181<br>
 </p>
 
 <p>
-echo state | nc localhost 2181
+echo state | nc localhost 2181<br>
 </p></li>
 </ul>
 </div>
 </div>
 </div>
-<div id="outline-container-org6502a1a" class="outline-2">
-<h2 id="org6502a1a">hbase</h2>
-<div class="outline-text-2" id="text-org6502a1a">
+<div id="outline-container-org29c71df" class="outline-2">
+<h2 id="org29c71df"><span class="section-number-2">8</span> hbase</h2>
+<div class="outline-text-2" id="text-8">
 <p>
-start hadoop &amp; zookeeper
+start hadoop &amp; zookeeper<br>
 </p>
 </div>
-<div id="outline-container-org2499d9d" class="outline-3">
-<h3 id="org2499d9d">hbase configural</h3>
-<div class="outline-text-3" id="text-org2499d9d">
+<div id="outline-container-org72db9d3" class="outline-3">
+<h3 id="org72db9d3"><span class="section-number-3">8.1</span> hbase configural</h3>
+<div class="outline-text-3" id="text-8-1">
 <ul class="org-ul">
 <li><p>
-.bashrc
+.bashrc<br>
 </p>
 
 <pre class="example">
@@ -2433,7 +2235,7 @@ PATH=$JAVA_HOME/bin:$HADOOP_HOME/bin:$HBASE_HOME/bin:$PATH
 </pre></li>
 
 <li><p>
-hbase-env.sh
+hbase-env.sh<br>
 </p>
 <pre class="example">
 export JAVA_HOME=/home/manue1/opt/jdk8
@@ -2441,10 +2243,10 @@ export HBASE_MANAGES_ZK=false
 
 </pre></li>
 
-<li>hbase-site.xml</li>
+<li>hbase-site.xml<br></li>
 
 <li><p>
-regionservers
+regionservers<br>
 </p>
 <pre class="example">
 master
@@ -2456,34 +2258,34 @@ slave02
 </div>
 
 
-<div id="outline-container-org9761f6d" class="outline-3">
-<h3 id="org9761f6d">hbase start</h3>
-<div class="outline-text-3" id="text-org9761f6d">
+<div id="outline-container-orge6e4751" class="outline-3">
+<h3 id="orge6e4751"><span class="section-number-3">8.2</span> hbase start</h3>
+<div class="outline-text-3" id="text-8-2">
 <p>
-nohup /home/manue1/opt/hbase-1.2.6/bin/start-hbase.sh &amp;
+nohup /home/manue1/opt/hbase-1.2.6/bin/start-hbase.sh &amp;<br>
 </p>
 
 <p>
-nohup /home/manue1/opt/hbase-1.2.6/bin/stop-hbase.sh &amp;
+nohup /home/manue1/opt/hbase-1.2.6/bin/stop-hbase.sh &amp;<br>
 </p>
 
 
 <p>
-<a href="http://master:16010/master-status">http://master:16010/master-status</a>
+<a href="http://master:16010/master-status">http://master:16010/master-status</a><br>
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-orgff7dd50" class="outline-2">
-<h2 id="orgff7dd50">kafka</h2>
-<div class="outline-text-2" id="text-orgff7dd50">
+<div id="outline-container-org9d606ad" class="outline-2">
+<h2 id="org9d606ad"><span class="section-number-2">9</span> kafka</h2>
+<div class="outline-text-2" id="text-9">
 </div>
-<div id="outline-container-org8999d45" class="outline-3">
-<h3 id="org8999d45">kafka configural</h3>
-<div class="outline-text-3" id="text-org8999d45">
+<div id="outline-container-orgbd36419" class="outline-3">
+<h3 id="orgbd36419"><span class="section-number-3">9.1</span> kafka configural</h3>
+<div class="outline-text-3" id="text-9-1">
 <ul class="org-ul">
 <li><p>
-conf/server.properties
+conf/server.properties<br>
 </p>
 
 <pre class="example">
@@ -2499,25 +2301,25 @@ listeners=PLAINTEXT://master:9092
 log.dir=/var/log/kafka
 </pre>
 <p>
-sudo mkdir -p /var/log/kafka  
-sudo chown manue1:manue1 /var/log/kafka
+sudo mkdir -p /var/log/kafka<br>
+sudo chown manue1:manue1 /var/log/kafka<br>
 </p>
 
 <p>
-scp -r kafka_2.11-1.0.0/ manue1@slave01:/home/manue1/opt
-scp -r kafka_2.11-1.0.0/ manue1@slave02:/home/manue1/opt
-各个节点修改broker.id 和 listeners
+scp -r kafka_2.11-1.0.0/ manue1@slave01:/home/manue1/opt<br>
+scp -r kafka_2.11-1.0.0/ manue1@slave02:/home/manue1/opt<br>
+各个节点修改broker.id 和 listeners<br>
 </p></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgaba9925" class="outline-3">
-<h3 id="orgaba9925">kafka start service</h3>
-<div class="outline-text-3" id="text-orgaba9925">
+<div id="outline-container-org539271a" class="outline-3">
+<h3 id="org539271a"><span class="section-number-3">9.2</span> kafka start service</h3>
+<div class="outline-text-3" id="text-9-2">
 <ul class="org-ul">
 <li><p>
-vi .bashrc
+vi .bashrc<br>
 </p>
 <pre class="example">
 # KAFKA_HOME Environment Variables
@@ -2529,11 +2331,11 @@ export PATH=$PATH:$KAFKA_HOME/bin
 
 
 <p>
-nohup  $KAFKA_HOME/bin/kafka-server-start.sh $KAFKA_HOME/config/server.properties &amp;
+nohup  $KAFKA_HOME/bin/kafka-server-start.sh $KAFKA_HOME/config/server.properties &amp;<br>
 </p>
 
 <p>
-$KAFKA_HOME/bin/kafka-server-stop.sh
+$KAFKA_HOME/bin/kafka-server-stop.sh<br>
 </p>
 <pre class="example">
 
@@ -2549,19 +2351,19 @@ KAFKA_HEAP_OPTS="-Xmx256M -Xms128M
 </pre>
 
 <p>
-sudo netstat -anp | grep 9092
+sudo netstat -anp | grep 9092<br>
 </p>
 </div>
 </div>
-<div id="outline-container-org330c33b" class="outline-3">
-<h3 id="org330c33b">use kafka</h3>
-<div class="outline-text-3" id="text-org330c33b">
+<div id="outline-container-org8634632" class="outline-3">
+<h3 id="org8634632"><span class="section-number-3">9.3</span> use kafka</h3>
+<div class="outline-text-3" id="text-9-3">
 <p>
-<a href="http://blog.csdn.net/u010297957/article/details/72758765">http://blog.csdn.net/u010297957/article/details/72758765</a>
+<a href="http://blog.csdn.net/u010297957/article/details/72758765">http://blog.csdn.net/u010297957/article/details/72758765</a><br>
 </p>
 
 <p>
-producer &amp; consumer
+producer &amp; consumer<br>
 </p>
 <pre class="example">
 
@@ -2589,21 +2391,21 @@ i love zbr
 </div>
 </div>
 </div>
-<div id="outline-container-org8b5e650" class="outline-2">
-<h2 id="org8b5e650">spark</h2>
-<div class="outline-text-2" id="text-org8b5e650">
+<div id="outline-container-org6494061" class="outline-2">
+<h2 id="org6494061"><span class="section-number-2">10</span> spark</h2>
+<div class="outline-text-2" id="text-10">
 </div>
-<div id="outline-container-orga26b06f" class="outline-3">
-<h3 id="orga26b06f">spark configural</h3>
-<div class="outline-text-3" id="text-orga26b06f">
+<div id="outline-container-org6fd3e2b" class="outline-3">
+<h3 id="org6fd3e2b"><span class="section-number-3">10.1</span> spark configural</h3>
+<div class="outline-text-3" id="text-10-1">
 <p>
-<a href="https://data-flair.training/blogs/install-apache-spark-multi-node-cluster/">https://data-flair.training/blogs/install-apache-spark-multi-node-cluster/</a>
+<a href="https://data-flair.training/blogs/install-apache-spark-multi-node-cluster/">https://data-flair.training/blogs/install-apache-spark-multi-node-cluster/</a><br>
 </p>
 
 
 <ul class="org-ul">
 <li><p>
-.bashrc
+.bashrc<br>
 </p>
 <pre class="example">
 #SPARK_HOME Environment Variables
@@ -2612,11 +2414,11 @@ export PATH=$PATH:$SPARK_HOME/bin
 </pre></li>
 
 <li><p>
-spark-env.sh
+spark-env.sh<br>
 </p>
 
 <p>
-cp spark-env.sh.template spark-env.sh
+cp spark-env.sh.template spark-env.sh<br>
 </p>
 
 <pre class="example">
@@ -2649,7 +2451,7 @@ SPARK_WORKER_INSTANCES：每台机器上开启的worker节点的数目
 </pre></li>
 
 <li><p>
-slaves
+slaves<br>
 </p>
 <pre class="example">
 master
@@ -2660,43 +2462,52 @@ slave02
 
 
 <p>
-slave sync
+slave sync<br>
 </p>
 
 <p>
-scp -r spark-2.2.1-bin-hadoop2.7/ manue1@192.168.1.109:/home/manue1/opt
+scp -r spark-2.2.1-bin-hadoop2.7/ manue1@192.168.1.109:/home/manue1/opt<br>
 </p>
 </div>
 </div>
-<div id="outline-container-org426e7b7" class="outline-3">
-<h3 id="org426e7b7">spark start</h3>
-<div class="outline-text-3" id="text-org426e7b7">
+<div id="outline-container-org8161813" class="outline-3">
+<h3 id="org8161813"><span class="section-number-3">10.2</span> spark start</h3>
+<div class="outline-text-3" id="text-10-2">
 <p>
-nohup sh /home/manue1/opt/hadoop-2.7.5/sbin/start-all.sh &amp;  #启动hdfs即可
+nohup sh /home/manue1/opt/hadoop-2.7.5/sbin/start-all.sh &amp;  #启动hdfs即可<br>
 </p>
 
 <p>
-$SPARK_HOME/sbin/start-all.sh
+$SPARK_HOME/sbin/start-all.sh<br>
 </p>
 
 
 <p>
-WebUI
-<a href="http://master:8080/">http://master:8080/</a>
+WebUI<br>
+<a href="http://master:8080/">http://master:8080/</a><br>
 </p>
 
 <p>
-spark-shell.sh 运行后可以访问后台执行的任务
-<a href="http://master:4040/">http://master:4040/</a>
+spark-shell.sh 运行后可以访问后台执行的任务<br>
+<a href="http://master:4040/">http://master:4040/</a><br>
 </p>
 
 <p>
-spark-submit yarn 管理方式
-<a href="http://master:8088/">http://master:8088/</a>
+spark-submit yarn 管理方式<br>
+<a href="http://master:8088/">http://master:8088/</a><br>
 </p>
 </div>
 </div>
 </div>
+</div>
+<div id="postamble" class="status">
+<p>
+    <a href="">manue1</a> 搭建和维护，使用
+    <a href="https://www.gnu.org/software/emacs/">Emacs</a>
+    <a href="http://orgmode.org/">Org mode</a> 编辑和构建
+</p>
+<script src="http://www.langdebuqing.com/css/jquery-2.1.3.min.js"></script>
+<script src="http://www.langdebuqing.com/css/main.js"></script>
 </div>
 </body>
 </html>

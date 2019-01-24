@@ -1,269 +1,64 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-<!-- 2018-12-26 Wed 16:31 -->
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- 2019-01-24 Thu 21:14 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>中国股市行情分析笔记</title>
-<meta name="generator" content="Org mode" />
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center;
-             margin-bottom: .2em; }
-  .subtitle { text-align: center;
-              font-size: medium;
-              font-weight: bold;
-              margin-top:0; }
-  .todo   { font-family: monospace; color: red; }
-  .done   { font-family: monospace; color: green; }
-  .priority { font-family: monospace; color: orange; }
-  .tag    { background-color: #eee; font-family: monospace;
-            padding: 2px; font-size: 80%; font-weight: normal; }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
-  .underline { text-decoration: underline; }
-  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
-  p.verse { margin-left: 3%; }
-  pre {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
-    padding: 8pt;
-    font-family: monospace;
-    overflow: auto;
-    margin: 1.2em;
-  }
-  pre.src {
-    position: relative;
-    overflow: visible;
-    padding-top: 1.2em;
-  }
-  pre.src:before {
-    display: none;
-    position: absolute;
-    background-color: white;
-    top: -10px;
-    right: 10px;
-    padding: 3px;
-    border: 1px solid black;
-  }
-  pre.src:hover:before { display: inline;}
-  /* Languages per Org manual */
-  pre.src-asymptote:before { content: 'Asymptote'; }
-  pre.src-awk:before { content: 'Awk'; }
-  pre.src-C:before { content: 'C'; }
-  /* pre.src-C++ doesn't work in CSS */
-  pre.src-clojure:before { content: 'Clojure'; }
-  pre.src-css:before { content: 'CSS'; }
-  pre.src-D:before { content: 'D'; }
-  pre.src-ditaa:before { content: 'ditaa'; }
-  pre.src-dot:before { content: 'Graphviz'; }
-  pre.src-calc:before { content: 'Emacs Calc'; }
-  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-fortran:before { content: 'Fortran'; }
-  pre.src-gnuplot:before { content: 'gnuplot'; }
-  pre.src-haskell:before { content: 'Haskell'; }
-  pre.src-hledger:before { content: 'hledger'; }
-  pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
-  pre.src-latex:before { content: 'LaTeX'; }
-  pre.src-ledger:before { content: 'Ledger'; }
-  pre.src-lisp:before { content: 'Lisp'; }
-  pre.src-lilypond:before { content: 'Lilypond'; }
-  pre.src-lua:before { content: 'Lua'; }
-  pre.src-matlab:before { content: 'MATLAB'; }
-  pre.src-mscgen:before { content: 'Mscgen'; }
-  pre.src-ocaml:before { content: 'Objective Caml'; }
-  pre.src-octave:before { content: 'Octave'; }
-  pre.src-org:before { content: 'Org mode'; }
-  pre.src-oz:before { content: 'OZ'; }
-  pre.src-plantuml:before { content: 'Plantuml'; }
-  pre.src-processing:before { content: 'Processing.js'; }
-  pre.src-python:before { content: 'Python'; }
-  pre.src-R:before { content: 'R'; }
-  pre.src-ruby:before { content: 'Ruby'; }
-  pre.src-sass:before { content: 'Sass'; }
-  pre.src-scheme:before { content: 'Scheme'; }
-  pre.src-screen:before { content: 'Gnu Screen'; }
-  pre.src-sed:before { content: 'Sed'; }
-  pre.src-sh:before { content: 'shell'; }
-  pre.src-sql:before { content: 'SQL'; }
-  pre.src-sqlite:before { content: 'SQLite'; }
-  /* additional languages in org.el's org-babel-load-languages alist */
-  pre.src-forth:before { content: 'Forth'; }
-  pre.src-io:before { content: 'IO'; }
-  pre.src-J:before { content: 'J'; }
-  pre.src-makefile:before { content: 'Makefile'; }
-  pre.src-maxima:before { content: 'Maxima'; }
-  pre.src-perl:before { content: 'Perl'; }
-  pre.src-picolisp:before { content: 'Pico Lisp'; }
-  pre.src-scala:before { content: 'Scala'; }
-  pre.src-shell:before { content: 'Shell Script'; }
-  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
-  /* additional language identifiers per "defun org-babel-execute"
-       in ob-*.el */
-  pre.src-cpp:before  { content: 'C++'; }
-  pre.src-abc:before  { content: 'ABC'; }
-  pre.src-coq:before  { content: 'Coq'; }
-  pre.src-groovy:before  { content: 'Groovy'; }
-  /* additional language identifiers from org-babel-shell-names in
-     ob-shell.el: ob-shell is the only babel language using a lambda to put
-     the execution function name together. */
-  pre.src-bash:before  { content: 'bash'; }
-  pre.src-csh:before  { content: 'csh'; }
-  pre.src-ash:before  { content: 'ash'; }
-  pre.src-dash:before  { content: 'dash'; }
-  pre.src-ksh:before  { content: 'ksh'; }
-  pre.src-mksh:before  { content: 'mksh'; }
-  pre.src-posh:before  { content: 'posh'; }
-  /* Additional Emacs modes also supported by the LaTeX listings package */
-  pre.src-ada:before { content: 'Ada'; }
-  pre.src-asm:before { content: 'Assembler'; }
-  pre.src-caml:before { content: 'Caml'; }
-  pre.src-delphi:before { content: 'Delphi'; }
-  pre.src-html:before { content: 'HTML'; }
-  pre.src-idl:before { content: 'IDL'; }
-  pre.src-mercury:before { content: 'Mercury'; }
-  pre.src-metapost:before { content: 'MetaPost'; }
-  pre.src-modula-2:before { content: 'Modula-2'; }
-  pre.src-pascal:before { content: 'Pascal'; }
-  pre.src-ps:before { content: 'PostScript'; }
-  pre.src-prolog:before { content: 'Prolog'; }
-  pre.src-simula:before { content: 'Simula'; }
-  pre.src-tcl:before { content: 'tcl'; }
-  pre.src-tex:before { content: 'TeX'; }
-  pre.src-plain-tex:before { content: 'Plain TeX'; }
-  pre.src-verilog:before { content: 'Verilog'; }
-  pre.src-vhdl:before { content: 'VHDL'; }
-  pre.src-xml:before { content: 'XML'; }
-  pre.src-nxml:before { content: 'XML'; }
-  /* add a generic configuration mode; LaTeX export needs an additional
-     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
-  pre.src-conf:before { content: 'Configuration File'; }
-
-  table { border-collapse:collapse; }
-  caption.t-above { caption-side: top; }
-  caption.t-bottom { caption-side: bottom; }
-  td, th { vertical-align:top;  }
-  th.org-right  { text-align: center;  }
-  th.org-left   { text-align: center;   }
-  th.org-center { text-align: center; }
-  td.org-right  { text-align: right;  }
-  td.org-left   { text-align: left;   }
-  td.org-center { text-align: center; }
-  dt { font-weight: bold; }
-  .footpara { display: inline; }
-  .footdef  { margin-bottom: 1em; }
-  .figure { padding: 1em; }
-  .figure p { text-align: center; }
-  .inlinetask {
-    padding: 10px;
-    border: 2px solid gray;
-    margin: 10px;
-    background: #ffffcc;
-  }
-  #org-div-home-and-up
-   { text-align: right; font-size: 70%; white-space: nowrap; }
-  textarea { overflow-x: auto; }
-  .linenr { font-size: smaller }
-  .code-highlighted { background-color: #ffff00; }
-  .org-info-js_info-navigation { border-style: none; }
-  #org-info-js_console-label
-    { font-size: 10px; font-weight: bold; white-space: nowrap; }
-  .org-info-js_search-highlight
-    { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
-  /*]]>*/-->
-</style>
-<link rel="stylesheet" href="../css/worg.css" type="text/css" media="screen" />
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2018 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
+<meta name="generator" content="Org mode">
+<meta name="author" content="manue1">
+<link rel="stylesheet" type="text/css" href="css/worg.css" />
+<!-- <link rel="shortcut icon" href="http://www.langdebuqing.com/images/favicon.ico" type="image/x-icon" /> -->
 </head>
 <body>
 <div id="preamble" class="status">
-<a href="https://www.manue1.site/index.html">Home</a>
+<div id="navbar">
+    <ul>
+        <li id="site-master"><a href="https://www.manue1.site/">Manue1's Journal</a></li>
+        <li><a class="navbar-item" href="https://www.manue1.site/write.html">All Posts</a> </li>
+        <li><a class="navbar-item" href="https://www.manue1.site/link.html">Links</a> </li>
+        <li class="search">
+            <form action="http://google.com/search" method="get" accept-charset="utf-8">
+                <input type="search" id="search" name="q" autocomplete="off" maxlength="30" placeholder="Search..">
+                <input type="hidden" name="q" value="site:www.manue1.com">
+            </form>
+        </li>
+    </ul>
+</div>
 </div>
 <div id="content">
 <h1 class="title">中国股市行情分析笔记</h1>
 <div id="table-of-contents">
-<h2>Table of Contents</h2>
+<h2>&#30446;&#24405;</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org0e3829a">stock source</a>
+<li><a href="#orgcd503d4">1. stock source</a>
 <ul>
-<li><a href="#org5c8a4b7">xueqiu</a></li>
-<li><a href="#orgc2519a2">东方财富网</a></li>
-<li><a href="#orgb846cb8">和讯网</a></li>
-<li><a href="#org6d0ad40">腾讯财经</a></li>
-<li><a href="#orgc1a3d6a">招商证券</a></li>
-<li><a href="#orge9c82ff">get</a></li>
+<li><a href="#orgf0699f6">1.1. xueqiu</a></li>
+<li><a href="#org623bb98">1.2. 东方财富网</a></li>
+<li><a href="#orgff6b556">1.3. 和讯网</a></li>
+<li><a href="#orgbe66422">1.4. 腾讯财经</a></li>
+<li><a href="#org136fdf5">1.5. 招商证券</a></li>
+<li><a href="#org9788794">1.6. get</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org0e3829a" class="outline-2">
-<h2 id="org0e3829a">stock source</h2>
-<div class="outline-text-2" id="text-org0e3829a">
+<div id="outline-container-orgcd503d4" class="outline-2">
+<h2 id="orgcd503d4"><span class="section-number-2">1</span> stock source</h2>
+<div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org5c8a4b7" class="outline-3">
-<h3 id="org5c8a4b7">xueqiu</h3>
-<div class="outline-text-3" id="text-org5c8a4b7">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<div id="outline-container-orgf0699f6" class="outline-3">
+<h3 id="orgf0699f6"><span class="section-number-3">1.1</span> xueqiu</h3>
+<div class="outline-text-3" id="text-1-1">
+<table>
 
 
 <colgroup>
-<col  class="org-left" />
+<col  class="org-left">
 
-<col  class="org-left" />
+<col  class="org-left">
 </colgroup>
 <thead>
 <tr>
@@ -370,32 +165,32 @@ for the JavaScript code in this tag.
 </table>
 
 <ul class="org-ul">
-<li>sza
-<a href="https://xueqiu.com/stock/quote_order.json?page=1&amp;size=1000&amp;order=desc&amp;exchange=CN&amp;stockType=sza&amp;orderBy=percent&amp;column=symbol,name">https://xueqiu.com/stock/quote_order.json?page=1&amp;size=1000&amp;order=desc&amp;exchange=CN&amp;stockType=sza&amp;orderBy=percent&amp;column=symbol,name</a></li>
-<li>cyb
-<a href="https://xueqiu.com/stock/quote_order.json?page=1&amp;size=1000&amp;order=desc&amp;exchange=CN&amp;stockType=cyb&amp;orderBy=percent&amp;column=symbol,name">https://xueqiu.com/stock/quote_order.json?page=1&amp;size=1000&amp;order=desc&amp;exchange=CN&amp;stockType=cyb&amp;orderBy=percent&amp;column=symbol,name</a></li>
-<li>sha
-<a href="https://xueqiu.com/stock/quote_order.json?page=1&amp;size=1000&amp;order=desc&amp;exchange=CN&amp;stockType=sha&amp;orderBy=percent&amp;column=symbol,name">https://xueqiu.com/stock/quote_order.json?page=1&amp;size=1000&amp;order=desc&amp;exchange=CN&amp;stockType=sha&amp;orderBy=percent&amp;column=symbol,name</a></li>
+<li>sza<br>
+<a href="https://xueqiu.com/stock/quote_order.json?page=1&amp;size=1000&amp;order=desc&amp;exchange=CN&amp;stockType=sza&amp;orderBy=percent&amp;column=symbol,name">https://xueqiu.com/stock/quote_order.json?page=1&amp;size=1000&amp;order=desc&amp;exchange=CN&amp;stockType=sza&amp;orderBy=percent&amp;column=symbol,name</a><br></li>
+<li>cyb<br>
+<a href="https://xueqiu.com/stock/quote_order.json?page=1&amp;size=1000&amp;order=desc&amp;exchange=CN&amp;stockType=cyb&amp;orderBy=percent&amp;column=symbol,name">https://xueqiu.com/stock/quote_order.json?page=1&amp;size=1000&amp;order=desc&amp;exchange=CN&amp;stockType=cyb&amp;orderBy=percent&amp;column=symbol,name</a><br></li>
+<li>sha<br>
+<a href="https://xueqiu.com/stock/quote_order.json?page=1&amp;size=1000&amp;order=desc&amp;exchange=CN&amp;stockType=sha&amp;orderBy=percent&amp;column=symbol,name">https://xueqiu.com/stock/quote_order.json?page=1&amp;size=1000&amp;order=desc&amp;exchange=CN&amp;stockType=sha&amp;orderBy=percent&amp;column=symbol,name</a><br></li>
 </ul>
 
 <p>
-<a href="https://stock.xueqiu.com/v5/stock/quote.json?symbol=SH603880&amp;extend=detail">https://stock.xueqiu.com/v5/stock/quote.json?symbol=SH603880&amp;extend=detail</a>
+<a href="https://stock.xueqiu.com/v5/stock/quote.json?symbol=SH603880&amp;extend=detail">https://stock.xueqiu.com/v5/stock/quote.json?symbol=SH603880&amp;extend=detail</a><br>
 </p>
 
 <p>
-{"data":{"market":{"status_id":7,"region":"CN","status":"已收盘","time_zone":"Asia/Shanghai"},"quote":{"symbol":"SH603880","code":"603880","exchange":"SH","name":"南卫股份","type":11,"sub_type":"ASH","status":1,"current":21.63,"currency":"CNY","percent":10.02,"chg":1.97,"timestamp":1534834800000,"time":1534834800000,"lot_size":100,"tick_size":0.01,"open":17.9,"last_close":19.66,"high":21.63,"low":17.69,"avg_price":19.181,"volume":16303478,"amount":3.1271458E8,"turnover_rate":25.71,"amplitude":20.04,"market_capital":2.8119E9,"float_market_capital":1.371504225E9,"total_shares":130000000,"float_shares":63407500,"issue_date":1502035200000,"lock_set":null,"high52w":27.1851,"low52w":14.147,"limit_up":21.63,"limit_down":17.69,"volume_ratio":2.08,"eps":null,"pe_ttm":58.307,"pe_forecast":57.6,"pe_lyr":59.072,"navps":4.18,"pb":5.175,"dividend":0.145,"dividend_yield":0.67,"profit":4.760136773E7,"profit_four":4.822598637E7,"profit_forecast":4.8817597E7},"others":{"pankou_ratio":100.0},"tags":[]},"error_code":0,"error_description":""}
+{"data":{"market":{"status_id":7,"region":"CN","status":"已收盘","time_zone":"Asia/Shanghai"},"quote":{"symbol":"SH603880","code":"603880","exchange":"SH","name":"南卫股份","type":11,"sub_type":"ASH","status":1,"current":21.63,"currency":"CNY","percent":10.02,"chg":1.97,"timestamp":1534834800000,"time":1534834800000,"lot_size":100,"tick_size":0.01,"open":17.9,"last_close":19.66,"high":21.63,"low":17.69,"avg_price":19.181,"volume":16303478,"amount":3.1271458E8,"turnover_rate":25.71,"amplitude":20.04,"market_capital":2.8119E9,"float_market_capital":1.371504225E9,"total_shares":130000000,"float_shares":63407500,"issue_date":1502035200000,"lock_set":null,"high52w":27.1851,"low52w":14.147,"limit_up":21.63,"limit_down":17.69,"volume_ratio":2.08,"eps":null,"pe_ttm":58.307,"pe_forecast":57.6,"pe_lyr":59.072,"navps":4.18,"pb":5.175,"dividend":0.145,"dividend_yield":0.67,"profit":4.760136773E7,"profit_four":4.822598637E7,"profit_forecast":4.8817597E7},"others":{"pankou_ratio":100.0},"tags":[]},"error_code":0,"error_description":""}<br>
 </p>
 
 
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table>
 
 
 <colgroup>
-<col  class="org-left" />
+<col  class="org-left">
 
-<col  class="org-right" />
+<col  class="org-right">
 
-<col  class="org-left" />
+<col  class="org-left">
 </colgroup>
 <tbody>
 <tr>
@@ -677,54 +472,54 @@ for the JavaScript code in this tag.
 </table>
 </div>
 </div>
-<div id="outline-container-orgc2519a2" class="outline-3">
-<h3 id="orgc2519a2">东方财富网</h3>
-<div class="outline-text-3" id="text-orgc2519a2">
+<div id="outline-container-org623bb98" class="outline-3">
+<h3 id="org623bb98"><span class="section-number-3">1.2</span> 东方财富网</h3>
+<div class="outline-text-3" id="text-1-2">
 <pre class="example">
 http://nufm.dfcfw.com/EM_Finance2014NumericApplication/JS.aspx?type=CT&amp;cmd=3001012&amp;sty=CTBF&amp;st=z&amp;sr=&amp;p=&amp;ps=&amp;cb=var%20pie_data=&amp;js=(x)&amp;token=28758b27a75f62dc3065b81f7facb365&amp;_=1497258906443
 
 </pre>
 </div>
 </div>
-<div id="outline-container-orgb846cb8" class="outline-3">
-<h3 id="orgb846cb8">和讯网</h3>
+<div id="outline-container-orgff6b556" class="outline-3">
+<h3 id="orgff6b556"><span class="section-number-3">1.3</span> 和讯网</h3>
 </div>
-<div id="outline-container-org6d0ad40" class="outline-3">
-<h3 id="org6d0ad40">腾讯财经</h3>
+<div id="outline-container-orgbe66422" class="outline-3">
+<h3 id="orgbe66422"><span class="section-number-3">1.4</span> 腾讯财经</h3>
 </div>
-<div id="outline-container-orgc1a3d6a" class="outline-3">
-<h3 id="orgc1a3d6a">招商证券</h3>
+<div id="outline-container-org136fdf5" class="outline-3">
+<h3 id="org136fdf5"><span class="section-number-3">1.5</span> 招商证券</h3>
 </div>
-<div id="outline-container-orge9c82ff" class="outline-3">
-<h3 id="orge9c82ff">get</h3>
-<div class="outline-text-3" id="text-orge9c82ff">
+<div id="outline-container-org9788794" class="outline-3">
+<h3 id="org9788794"><span class="section-number-3">1.6</span> get</h3>
+<div class="outline-text-3" id="text-1-6">
 <p>
-实时数据获取
+实时数据获取<br>
 </p>
 
 <ol class="org-ol">
 <li><p>
-主力资金流向
+主力资金流向<br>
 </p>
 
 <p>
-<a href="http://data.eastmoney.com/zjlx/list.html">http://data.eastmoney.com/zjlx/list.html</a>
+<a href="http://data.eastmoney.com/zjlx/list.html">http://data.eastmoney.com/zjlx/list.html</a><br>
 </p>
 
 <p>
-<a href="http://data.eastmoney.com/zjlx/detail.html">http://data.eastmoney.com/zjlx/detail.html</a>
-<a href="http://nufm.dfcfw.com/EM_Finance2014NumericApplication/JS.aspx?type=ct&amp;st=(BalFlowNetRate)">http://nufm.dfcfw.com/EM_Finance2014NumericApplication/JS.aspx?type=ct&amp;st=(BalFlowNetRate)</a>&amp;sr=-1&amp;p=1&amp;ps=50&amp;js=var FcQDTvYs={pages:(pc),date:%222014-10-22%22,data:[(x)]}&amp;token=894050c76af8597a853f5b408b759f5d&amp;cmd=C._AB&amp;sty=DCFFITA&amp;rt=51124918
+<a href="http://data.eastmoney.com/zjlx/detail.html">http://data.eastmoney.com/zjlx/detail.html</a><br>
+<a href="http://nufm.dfcfw.com/EM_Finance2014NumericApplication/JS.aspx?type=ct&amp;st=(BalFlowNetRate)">http://nufm.dfcfw.com/EM_Finance2014NumericApplication/JS.aspx?type=ct&amp;st=(BalFlowNetRate)</a>&amp;sr=-1&amp;p=1&amp;ps=50&amp;js=var FcQDTvYs={pages:(pc),date:%222014-10-22%22,data:[(x)]}&amp;token=894050c76af8597a853f5b408b759f5d&amp;cmd=C._AB&amp;sty=DCFFITA&amp;rt=51124918<br>
 </p>
 
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table>
 
 
 <colgroup>
-<col  class="org-right" />
+<col  class="org-right">
 
-<col  class="org-left" />
+<col  class="org-left">
 
-<col  class="org-left" />
+<col  class="org-left">
 </colgroup>
 <thead>
 <tr>
@@ -833,22 +628,22 @@ http://nufm.dfcfw.com/EM_Finance2014NumericApplication/JS.aspx?type=CT&amp;cmd=3
 </table></li>
 
 <li><p>
-单只股票主力 30 日主力 大单小单占比
-<a href="http://ff.eastmoney.com/EM_CapitalFlowInterface/api/js?type=hff&amp;rtntype=2&amp;acces_token=1942f5da9b46b069953c873404aad4b5&amp;js">http://ff.eastmoney.com/EM_CapitalFlowInterface/api/js?type=hff&amp;rtntype=2&amp;acces_token=1942f5da9b46b069953c873404aad4b5&amp;js</a>=({data:[(x)]})&amp;cb=var%20zlzjLsData=&amp;check=TMLBMSPROCR&amp;id=3003102&amp;style=top&amp;num=31
+单只股票主力 30 日主力 大单小单占比<br>
+<a href="http://ff.eastmoney.com/EM_CapitalFlowInterface/api/js?type=hff&amp;rtntype=2&amp;acces_token=1942f5da9b46b069953c873404aad4b5&amp;js">http://ff.eastmoney.com/EM_CapitalFlowInterface/api/js?type=hff&amp;rtntype=2&amp;acces_token=1942f5da9b46b069953c873404aad4b5&amp;js</a>=({data:[(x)]})&amp;cb=var%20zlzjLsData=&amp;check=TMLBMSPROCR&amp;id=3003102&amp;style=top&amp;num=31<br>
 </p>
 
 <p>
-2018-08-13,3068.4965,32.3%,1705.6208,17.95%,1362.8757,14.34%,-1093.2954,-11.51%,-1975.201,-20.79%,5.28,10.0%
+2018-08-13,3068.4965,32.3%,1705.6208,17.95%,1362.8757,14.34%,-1093.2954,-11.51%,-1975.201,-20.79%,5.28,10.0%<br>
 </p>
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table>
 
 
 <colgroup>
-<col  class="org-right" />
+<col  class="org-right">
 
-<col  class="org-left" />
+<col  class="org-left">
 
-<col  class="org-left" />
+<col  class="org-left">
 </colgroup>
 <thead>
 <tr>
@@ -920,23 +715,23 @@ http://nufm.dfcfw.com/EM_Finance2014NumericApplication/JS.aspx?type=CT&amp;cmd=3
 </tbody>
 </table></li>
 <li><p>
-单股 k线 信息
-<a href="http://pdfm2.eastmoney.com/EM_UBG_PDTI_Fast/api/js?id=3003102&amp;TYPE=K&amp;js=fsData">http://pdfm2.eastmoney.com/EM_UBG_PDTI_Fast/api/js?id=3003102&amp;TYPE=K&amp;js=fsData</a>((x))&amp;rtntype=5&amp;style=top&amp;num=120&amp;authorityType=fa
+单股 k线 信息<br>
+<a href="http://pdfm2.eastmoney.com/EM_UBG_PDTI_Fast/api/js?id=3003102&amp;TYPE=K&amp;js=fsData">http://pdfm2.eastmoney.com/EM_UBG_PDTI_Fast/api/js?id=3003102&amp;TYPE=K&amp;js=fsData</a>((x))&amp;rtntype=5&amp;style=top&amp;num=120&amp;authorityType=fa<br>
 </p>
 
 <p>
-2018-08-13,4.72,5.28,5.28,4.69,187158,95905294,12.29%,2.98"
+2018-08-13,4.72,5.28,5.28,4.69,187158,95905294,12.29%,2.98"<br>
 </p>
 
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table>
 
 
 <colgroup>
-<col  class="org-right" />
+<col  class="org-right">
 
-<col  class="org-left" />
+<col  class="org-left">
 
-<col  class="org-left" />
+<col  class="org-left">
 </colgroup>
 <thead>
 <tr>
@@ -997,11 +792,11 @@ http://nufm.dfcfw.com/EM_Finance2014NumericApplication/JS.aspx?type=CT&amp;cmd=3
 </tr>
 </tbody>
 </table></li>
-<li>前三热门板块
-<a href="http://data.eastmoney.com/bkzj/hy.html">http://data.eastmoney.com/bkzj/hy.html</a></li>
-<li>单只股票所属板块跌幅</li>
-<li>筹码分布
-<a href="http://quote.eastmoney.com/concept/sz002331.html">http://quote.eastmoney.com/concept/sz002331.html</a>#</li>
+<li>前三热门板块<br>
+<a href="http://data.eastmoney.com/bkzj/hy.html">http://data.eastmoney.com/bkzj/hy.html</a><br></li>
+<li>单只股票所属板块跌幅<br></li>
+<li>筹码分布<br>
+<a href="http://quote.eastmoney.com/concept/sz002331.html">http://quote.eastmoney.com/concept/sz002331.html</a>#<br></li>
 </ol>
 <pre class="example">
 
@@ -1009,33 +804,42 @@ http://nufm.dfcfw.com/EM_Finance2014NumericApplication/JS.aspx?type=CT&amp;cmd=3
 </pre>
 <ul class="org-ul">
 <li><p>
-换手率
-七、换手率法选股注意事项
+换手率<br>
+七、换手率法选股注意事项<br>
 </p>
 
 <p>
-1、每日收盘后对换手率进行排行，观察换手率在6%以上的个股。
+1、每日收盘后对换手率进行排行，观察换手率在6%以上的个股。<br>
 </p>
 
 <p>
-2、选择流通股本数量较小的，最好在3亿以下，中小板尤佳。
+2、选择流通股本数量较小的，最好在3亿以下，中小板尤佳。<br>
 </p>
 
 <p>
-3、前一日换手大于5%，量比大于2，今日涨幅大于5%，换手率大于5%
+3、前一日换手大于5%，量比大于2，今日涨幅大于5%，换手率大于5%<br>
 </p>
 
 <p>
-4、第二日开盘阶段量比较大排在量比排行榜前列的个股。
+4、第二日开盘阶段量比较大排在量比排行榜前列的个股。<br>
 </p>
 
 <p>
-5、选择换手率突然放大3倍以上进入此区域或连续多日平均换手率维持在此区域的个股。
+5、选择换手率突然放大3倍以上进入此区域或连续多日平均换手率维持在此区域的个股。<br>
 </p></li>
 </ul>
 </div>
 </div>
 </div>
+</div>
+<div id="postamble" class="status">
+<p>
+    <a href="">manue1</a> 搭建和维护，使用
+    <a href="https://www.gnu.org/software/emacs/">Emacs</a>
+    <a href="http://orgmode.org/">Org mode</a> 编辑和构建
+</p>
+<script src="http://www.langdebuqing.com/css/jquery-2.1.3.min.js"></script>
+<script src="http://www.langdebuqing.com/css/main.js"></script>
 </div>
 </body>
 </html>

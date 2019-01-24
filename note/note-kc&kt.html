@@ -1,298 +1,93 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-<!-- 2018-12-26 Wed 16:31 -->
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- 2019-01-24 Thu 21:14 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>kyoto Cabinet &amp; Tycoon kv 型离线数据库</title>
-<meta name="generator" content="Org mode" />
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center;
-             margin-bottom: .2em; }
-  .subtitle { text-align: center;
-              font-size: medium;
-              font-weight: bold;
-              margin-top:0; }
-  .todo   { font-family: monospace; color: red; }
-  .done   { font-family: monospace; color: green; }
-  .priority { font-family: monospace; color: orange; }
-  .tag    { background-color: #eee; font-family: monospace;
-            padding: 2px; font-size: 80%; font-weight: normal; }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
-  .underline { text-decoration: underline; }
-  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
-  p.verse { margin-left: 3%; }
-  pre {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
-    padding: 8pt;
-    font-family: monospace;
-    overflow: auto;
-    margin: 1.2em;
-  }
-  pre.src {
-    position: relative;
-    overflow: visible;
-    padding-top: 1.2em;
-  }
-  pre.src:before {
-    display: none;
-    position: absolute;
-    background-color: white;
-    top: -10px;
-    right: 10px;
-    padding: 3px;
-    border: 1px solid black;
-  }
-  pre.src:hover:before { display: inline;}
-  /* Languages per Org manual */
-  pre.src-asymptote:before { content: 'Asymptote'; }
-  pre.src-awk:before { content: 'Awk'; }
-  pre.src-C:before { content: 'C'; }
-  /* pre.src-C++ doesn't work in CSS */
-  pre.src-clojure:before { content: 'Clojure'; }
-  pre.src-css:before { content: 'CSS'; }
-  pre.src-D:before { content: 'D'; }
-  pre.src-ditaa:before { content: 'ditaa'; }
-  pre.src-dot:before { content: 'Graphviz'; }
-  pre.src-calc:before { content: 'Emacs Calc'; }
-  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-fortran:before { content: 'Fortran'; }
-  pre.src-gnuplot:before { content: 'gnuplot'; }
-  pre.src-haskell:before { content: 'Haskell'; }
-  pre.src-hledger:before { content: 'hledger'; }
-  pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
-  pre.src-latex:before { content: 'LaTeX'; }
-  pre.src-ledger:before { content: 'Ledger'; }
-  pre.src-lisp:before { content: 'Lisp'; }
-  pre.src-lilypond:before { content: 'Lilypond'; }
-  pre.src-lua:before { content: 'Lua'; }
-  pre.src-matlab:before { content: 'MATLAB'; }
-  pre.src-mscgen:before { content: 'Mscgen'; }
-  pre.src-ocaml:before { content: 'Objective Caml'; }
-  pre.src-octave:before { content: 'Octave'; }
-  pre.src-org:before { content: 'Org mode'; }
-  pre.src-oz:before { content: 'OZ'; }
-  pre.src-plantuml:before { content: 'Plantuml'; }
-  pre.src-processing:before { content: 'Processing.js'; }
-  pre.src-python:before { content: 'Python'; }
-  pre.src-R:before { content: 'R'; }
-  pre.src-ruby:before { content: 'Ruby'; }
-  pre.src-sass:before { content: 'Sass'; }
-  pre.src-scheme:before { content: 'Scheme'; }
-  pre.src-screen:before { content: 'Gnu Screen'; }
-  pre.src-sed:before { content: 'Sed'; }
-  pre.src-sh:before { content: 'shell'; }
-  pre.src-sql:before { content: 'SQL'; }
-  pre.src-sqlite:before { content: 'SQLite'; }
-  /* additional languages in org.el's org-babel-load-languages alist */
-  pre.src-forth:before { content: 'Forth'; }
-  pre.src-io:before { content: 'IO'; }
-  pre.src-J:before { content: 'J'; }
-  pre.src-makefile:before { content: 'Makefile'; }
-  pre.src-maxima:before { content: 'Maxima'; }
-  pre.src-perl:before { content: 'Perl'; }
-  pre.src-picolisp:before { content: 'Pico Lisp'; }
-  pre.src-scala:before { content: 'Scala'; }
-  pre.src-shell:before { content: 'Shell Script'; }
-  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
-  /* additional language identifiers per "defun org-babel-execute"
-       in ob-*.el */
-  pre.src-cpp:before  { content: 'C++'; }
-  pre.src-abc:before  { content: 'ABC'; }
-  pre.src-coq:before  { content: 'Coq'; }
-  pre.src-groovy:before  { content: 'Groovy'; }
-  /* additional language identifiers from org-babel-shell-names in
-     ob-shell.el: ob-shell is the only babel language using a lambda to put
-     the execution function name together. */
-  pre.src-bash:before  { content: 'bash'; }
-  pre.src-csh:before  { content: 'csh'; }
-  pre.src-ash:before  { content: 'ash'; }
-  pre.src-dash:before  { content: 'dash'; }
-  pre.src-ksh:before  { content: 'ksh'; }
-  pre.src-mksh:before  { content: 'mksh'; }
-  pre.src-posh:before  { content: 'posh'; }
-  /* Additional Emacs modes also supported by the LaTeX listings package */
-  pre.src-ada:before { content: 'Ada'; }
-  pre.src-asm:before { content: 'Assembler'; }
-  pre.src-caml:before { content: 'Caml'; }
-  pre.src-delphi:before { content: 'Delphi'; }
-  pre.src-html:before { content: 'HTML'; }
-  pre.src-idl:before { content: 'IDL'; }
-  pre.src-mercury:before { content: 'Mercury'; }
-  pre.src-metapost:before { content: 'MetaPost'; }
-  pre.src-modula-2:before { content: 'Modula-2'; }
-  pre.src-pascal:before { content: 'Pascal'; }
-  pre.src-ps:before { content: 'PostScript'; }
-  pre.src-prolog:before { content: 'Prolog'; }
-  pre.src-simula:before { content: 'Simula'; }
-  pre.src-tcl:before { content: 'tcl'; }
-  pre.src-tex:before { content: 'TeX'; }
-  pre.src-plain-tex:before { content: 'Plain TeX'; }
-  pre.src-verilog:before { content: 'Verilog'; }
-  pre.src-vhdl:before { content: 'VHDL'; }
-  pre.src-xml:before { content: 'XML'; }
-  pre.src-nxml:before { content: 'XML'; }
-  /* add a generic configuration mode; LaTeX export needs an additional
-     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
-  pre.src-conf:before { content: 'Configuration File'; }
-
-  table { border-collapse:collapse; }
-  caption.t-above { caption-side: top; }
-  caption.t-bottom { caption-side: bottom; }
-  td, th { vertical-align:top;  }
-  th.org-right  { text-align: center;  }
-  th.org-left   { text-align: center;   }
-  th.org-center { text-align: center; }
-  td.org-right  { text-align: right;  }
-  td.org-left   { text-align: left;   }
-  td.org-center { text-align: center; }
-  dt { font-weight: bold; }
-  .footpara { display: inline; }
-  .footdef  { margin-bottom: 1em; }
-  .figure { padding: 1em; }
-  .figure p { text-align: center; }
-  .inlinetask {
-    padding: 10px;
-    border: 2px solid gray;
-    margin: 10px;
-    background: #ffffcc;
-  }
-  #org-div-home-and-up
-   { text-align: right; font-size: 70%; white-space: nowrap; }
-  textarea { overflow-x: auto; }
-  .linenr { font-size: smaller }
-  .code-highlighted { background-color: #ffff00; }
-  .org-info-js_info-navigation { border-style: none; }
-  #org-info-js_console-label
-    { font-size: 10px; font-weight: bold; white-space: nowrap; }
-  .org-info-js_search-highlight
-    { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
-  /*]]>*/-->
-</style>
-<link rel="stylesheet" href="../css/worg.css" type="text/css" media="screen" />
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2018 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
+<meta name="generator" content="Org mode">
+<meta name="author" content="manue1">
+<link rel="stylesheet" type="text/css" href="css/worg.css" />
+<!-- <link rel="shortcut icon" href="http://www.langdebuqing.com/images/favicon.ico" type="image/x-icon" /> -->
 </head>
 <body>
 <div id="preamble" class="status">
-<a href="https://www.manue1.site/index.html">Home</a>
+<div id="navbar">
+    <ul>
+        <li id="site-master"><a href="https://www.manue1.site/">Manue1's Journal</a></li>
+        <li><a class="navbar-item" href="https://www.manue1.site/write.html">All Posts</a> </li>
+        <li><a class="navbar-item" href="https://www.manue1.site/link.html">Links</a> </li>
+        <li class="search">
+            <form action="http://google.com/search" method="get" accept-charset="utf-8">
+                <input type="search" id="search" name="q" autocomplete="off" maxlength="30" placeholder="Search..">
+                <input type="hidden" name="q" value="site:www.manue1.com">
+            </form>
+        </li>
+    </ul>
+</div>
 </div>
 <div id="content">
 <h1 class="title">kyoto Cabinet &amp; Tycoon kv 型离线数据库</h1>
 <div id="table-of-contents">
-<h2>Table of Contents</h2>
+<h2>&#30446;&#24405;</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org58f5b7d">install cabinet &amp; tycoon</a></li>
-<li><a href="#org605d826">tycoon 服务端</a></li>
-<li><a href="#org3159669">tycoon 客户端</a></li>
-<li><a href="#org8fc5e91">hot backup</a></li>
+<li><a href="#orge3553c2">1. install cabinet &amp; tycoon</a></li>
+<li><a href="#orgb3ed199">2. tycoon 服务端</a></li>
+<li><a href="#org79af5aa">3. tycoon 客户端</a></li>
+<li><a href="#org5a30027">4. hot backup</a></li>
 </ul>
 </div>
 </div>
 <p>
-这里是 <a href="http://fallabs.com/kyotocabinet/">cabinet</a> 和 <a href="http://fallabs.com/kyototycoon/">tycoon</a> 的官方地址,简单的说，cabinet提供存储服务,
-tycoon提供网络连接服务,两者配合使用，作为一款kv型离线数据库使用，
-备份及其方便，占用空间小，适用于高qps的api接口服务，此处记录下，在使用
-这款小众kv数据库中的一些记录. 
+这里是 <a href="http://fallabs.com/kyotocabinet/">cabinet</a> 和 <a href="http://fallabs.com/kyototycoon/">tycoon</a> 的官方地址,简单的说，cabinet提供存储服务,<br>
+tycoon提供网络连接服务,两者配合使用，作为一款kv型离线数据库使用，<br>
+备份及其方便，占用空间小，适用于高qps的api接口服务，此处记录下，在使用<br>
+这款小众kv数据库中的一些记录.<br>
 </p>
 
 <p>
-目前项目使用中数据量为亿级，由于作者已经不再维护此项目，项目kv单机数据库
-切换为pika.
+目前项目使用中数据量为亿级，由于作者已经不再维护此项目，项目kv单机数据库<br>
+切换为pika.<br>
 </p>
 
 <p>
-cabinet数据落地的存储类型有两种:
+cabinet数据落地的存储类型有两种:<br>
 </p>
 <ul class="org-ul">
 <li><p>
-以kch结尾的文件
+以kch结尾的文件<br>
 </p>
 <blockquote>
 <p>
-代表使用hash表存储数据，每个操作的时间复杂度是 O(1) 
+代表使用hash表存储数据，每个操作的时间复杂度是 O(1)<br>
 </p>
 </blockquote></li>
 <li><p>
-以kct结尾的文件
+以kct结尾的文件<br>
 </p>
 <blockquote>
 <p>
-代表使用B+ tree表存储数据，每个操作的时间复杂度是 O(log N),
+代表使用B+ tree表存储数据，每个操作的时间复杂度是 O(log N),<br>
 </p>
 
 <p>
-但B+ tree数据库支持对key顺序的连续访问，这可以实现对字符串的
+但B+ tree数据库支持对key顺序的连续访问，这可以实现对字符串的<br>
 </p>
 
 <p>
-前向匹配查找和整数的范围查找
+前向匹配查找和整数的范围查找<br>
 </p>
 </blockquote></li>
 </ul>
 
-<div id="outline-container-org58f5b7d" class="outline-2">
-<h2 id="org58f5b7d">install cabinet &amp; tycoon</h2>
-<div class="outline-text-2" id="text-org58f5b7d">
+<div id="outline-container-orge3553c2" class="outline-2">
+<h2 id="orge3553c2"><span class="section-number-2">1</span> install cabinet &amp; tycoon</h2>
+<div class="outline-text-2" id="text-1">
 <blockquote>
 <ol class="org-ol">
 <li><p>
-install cabinet
+install cabinet<br>
 </p>
 <pre class="example">
 wget http://fallabs.com/kyotocabinet/pkg/kyotocabinet-1.2.76.tar.gz
@@ -304,7 +99,7 @@ rm kyotocabinet-1.2.76* -rf
 </pre></li>
 
 <li><p>
-install cabinet python binding
+install cabinet python binding<br>
 </p>
 <pre class="example">
 wget http://fallabs.com/kyotocabinet/pythonlegacypkg/kyotocabinet-python-legacy-1.18.tar.gz
@@ -314,7 +109,7 @@ python setup.py install
 
 </pre>
 <p>
-#fix 'libkyotocabinet.so.16: cannot open shared object file: No such file or directory' error
+#fix 'libkyotocabinet.so.16: cannot open shared object file: No such file or directory' error<br>
 </p>
 <pre class="example">
 echo "/usr/local/lib" &gt;&gt; /etc/ld.so.conf.d/usrlocal.conf
@@ -324,7 +119,7 @@ rm kyotocabinet-python-legacy-1.18* -rf
 </pre></li>
 
 <li><p>
-install tycoon
+install tycoon<br>
 </p>
 <pre class="example">
 wget http://fallabs.com/kyototycoon/pkg/kyototycoon-0.9.56.tar.gz
@@ -334,7 +129,7 @@ sed -i '24a\#include &lt;unistd.h&gt;' ktdbext.h
 
 </pre>
 <p>
-#fix ktserver: error while loading shared libraries: libkyototycoon.so.2: cannot open shared object file: No such file or directory
+#fix ktserver: error while loading shared libraries: libkyototycoon.so.2: cannot open shared object file: No such file or directory<br>
 </p>
 <pre class="example">
 cp libkyototycoon.so.2 /usr/lib
@@ -347,12 +142,12 @@ rm kyototycoon* -rf
 </div>
 </div>
 
-<div id="outline-container-org605d826" class="outline-2">
-<h2 id="org605d826">tycoon 服务端</h2>
-<div class="outline-text-2" id="text-org605d826">
+<div id="outline-container-orgb3ed199" class="outline-2">
+<h2 id="orgb3ed199"><span class="section-number-2">2</span> tycoon 服务端</h2>
+<div class="outline-text-2" id="text-2">
 <blockquote>
 <p>
-ktserver 作为服务端，提供数据库网络连接服务,其常用到的参数说明如下:
+ktserver 作为服务端，提供数据库网络连接服务,其常用到的参数说明如下:<br>
 </p>
 <pre class="example">
 port num : 指定需要绑定的端口号。默认端口号为1978
@@ -372,12 +167,12 @@ dmn   以daemon方式启动。
 </pre>
 
 <p>
-官方推荐两种启动kt服务方式:
+官方推荐两种启动kt服务方式:<br>
 </p>
 
 <ul class="org-ul">
 <li><p>
-Typical Server Setting
+Typical Server Setting<br>
 </p>
 <pre class="example">
 ktserver -port 8901 \
@@ -391,22 +186,22 @@ ktserver -port 8901 \
         /root/data/compromise.kch#opts=l#bnum=5120000#msiz=3g#dfunit=8
 </pre></li>
 <li><p>
-On-memory Server Setting
+On-memory Server Setting<br>
 </p>
 
 <p>
-数据加载到内存的方式 一般用来替代memcached服务,kt的空间使用效率要
-比memcached好,1000w每条1k文档存储到库内，需要10GB内存,kt服务一般
-会占用服务器65%左右内存
+数据加载到内存的方式 一般用来替代memcached服务,kt的空间使用效率要<br>
+比memcached好,1000w每条1k文档存储到库内，需要10GB内存,kt服务一般<br>
+会占用服务器65%左右内存<br>
 </p>
 
 <p>
-在这种on-memory 模式下启动的数据库，备份快照方式同redis相同,
-定期将内存中的数据存入到目录,重启服务的时候，会将所有文档重新加载
+在这种on-memory 模式下启动的数据库，备份快照方式同redis相同,<br>
+定期将内存中的数据存入到目录,重启服务的时候，会将所有文档重新加载<br>
 </p>
 
 <p>
-启动server后每10秒钟做快照以lzo压缩备份到/home/manue1目录下
+启动server后每10秒钟做快照以lzo压缩备份到/home/manue1目录下<br>
 </p>
 <pre class="example">
 ktserver -port 2000 \
@@ -419,61 +214,61 @@ ktserver -port 2000 \
 </blockquote>
 </div>
 </div>
-<div id="outline-container-org3159669" class="outline-2">
-<h2 id="org3159669">tycoon 客户端</h2>
-<div class="outline-text-2" id="text-org3159669">
+<div id="outline-container-org79af5aa" class="outline-2">
+<h2 id="org79af5aa"><span class="section-number-2">3</span> tycoon 客户端</h2>
+<div class="outline-text-2" id="text-3">
 <blockquote>
 <p>
-ktremotemgr 作为一款连接kt server的客户端工具,下面给出简单示例:
+ktremotemgr 作为一款连接kt server的客户端工具,下面给出简单示例:<br>
 </p>
 
 <p>
-插入数据
+插入数据<br>
 </p>
 
 <p>
-<code>ktremotemgr set -host 127.0.0.1 -port 8901 manue1 360</code>
+<code>ktremotemgr set -host 127.0.0.1 -port 8901 manue1 360</code><br>
 </p>
 
 <p>
-查询
+查询<br>
 </p>
 
 <p>
-<code>ktremotemgr get -host 127.0.0.1 -port 8901 manue1</code>
+<code>ktremotemgr get -host 127.0.0.1 -port 8901 manue1</code><br>
 </p>
 
 <p>
-删除
+删除<br>
 </p>
 
 <p>
-<code>ktremotemgr remove -host 127.0.0.1 -port 8901 manue2</code>
+<code>ktremotemgr remove -host 127.0.0.1 -port 8901 manue2</code><br>
 </p>
 
 <p>
-列出所有key
+列出所有key<br>
 </p>
 
 <p>
-<code>ktremotemgr list -host 127.0.0.1 -port 8901</code>
+<code>ktremotemgr list -host 127.0.0.1 -port 8901</code><br>
 </p>
 </blockquote>
 </div>
 </div>
 
-<div id="outline-container-org8fc5e91" class="outline-2">
-<h2 id="org8fc5e91">hot backup</h2>
-<div class="outline-text-2" id="text-org8fc5e91">
+<div id="outline-container-org5a30027" class="outline-2">
+<h2 id="org5a30027"><span class="section-number-2">4</span> hot backup</h2>
+<div class="outline-text-2" id="text-4">
 <blockquote>
 <p>
-tycoon 以本地离线文件的信息存储到磁盘，迁移的时候可以直接使用快照或者库文件，
-下面提供热备份的详细步骤:
+tycoon 以本地离线文件的信息存储到磁盘，迁移的时候可以直接使用快照或者库文件，<br>
+下面提供热备份的详细步骤:<br>
 </p>
 
 <ol class="org-ol">
 <li><p>
-dbbackup.sh It must have executable permissions
+dbbackup.sh It must have executable permissions<br>
 </p>
 <pre class="example">
 #! /bin/sh
@@ -482,7 +277,7 @@ destfile="$1.$2"
 cp -f "$srcfile" "$destfile"
 </pre></li>
 <li><p>
-ktserver -cmd  -ulog  set
+ktserver -cmd  -ulog  set<br>
 </p>
 <pre class="example">
 server -port 1978 \
@@ -500,19 +295,19 @@ server -port 1978 \
        /root/data/malfile.kch#opts=l#bnum=5120000#msiz=3g#dfunit=8
 </pre></li>
 <li><p>
-ktremotemgr make a backup file  
+ktremotemgr make a backup file<br>
 </p>
 
 <p>
-<code>ktremotemgr  sync -cmd dbbackup.sh</code>
+<code>ktremotemgr  sync -cmd dbbackup.sh</code><br>
 </p></li>
 
 <li><p>
-recover kt data
+recover kt data<br>
 </p>
 
 <p>
-$1 is interactive arg : 01524834405899000000
+$1 is interactive arg : 01524834405899000000<br>
 </p>
 <pre class="example">
 rm  /root/data/malfile.kch -f
@@ -524,6 +319,15 @@ kttimedmgr recover -ts $1 /root/data/malfile.kch /var/log/backup_update_log
 </blockquote>
 </div>
 </div>
+</div>
+<div id="postamble" class="status">
+<p>
+    <a href="">manue1</a> 搭建和维护，使用
+    <a href="https://www.gnu.org/software/emacs/">Emacs</a>
+    <a href="http://orgmode.org/">Org mode</a> 编辑和构建
+</p>
+<script src="http://www.langdebuqing.com/css/jquery-2.1.3.min.js"></script>
+<script src="http://www.langdebuqing.com/css/main.js"></script>
 </div>
 </body>
 </html>

@@ -1,340 +1,135 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-<!-- 2019-01-24 Thu 12:22 -->
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- 2019-01-24 Thu 21:15 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Question &amp; Answer</title>
-<meta name="generator" content="Org mode" />
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center;
-             margin-bottom: .2em; }
-  .subtitle { text-align: center;
-              font-size: medium;
-              font-weight: bold;
-              margin-top:0; }
-  .todo   { font-family: monospace; color: red; }
-  .done   { font-family: monospace; color: green; }
-  .priority { font-family: monospace; color: orange; }
-  .tag    { background-color: #eee; font-family: monospace;
-            padding: 2px; font-size: 80%; font-weight: normal; }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
-  .underline { text-decoration: underline; }
-  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
-  p.verse { margin-left: 3%; }
-  pre {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
-    padding: 8pt;
-    font-family: monospace;
-    overflow: auto;
-    margin: 1.2em;
-  }
-  pre.src {
-    position: relative;
-    overflow: visible;
-    padding-top: 1.2em;
-  }
-  pre.src:before {
-    display: none;
-    position: absolute;
-    background-color: white;
-    top: -10px;
-    right: 10px;
-    padding: 3px;
-    border: 1px solid black;
-  }
-  pre.src:hover:before { display: inline;}
-  /* Languages per Org manual */
-  pre.src-asymptote:before { content: 'Asymptote'; }
-  pre.src-awk:before { content: 'Awk'; }
-  pre.src-C:before { content: 'C'; }
-  /* pre.src-C++ doesn't work in CSS */
-  pre.src-clojure:before { content: 'Clojure'; }
-  pre.src-css:before { content: 'CSS'; }
-  pre.src-D:before { content: 'D'; }
-  pre.src-ditaa:before { content: 'ditaa'; }
-  pre.src-dot:before { content: 'Graphviz'; }
-  pre.src-calc:before { content: 'Emacs Calc'; }
-  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-fortran:before { content: 'Fortran'; }
-  pre.src-gnuplot:before { content: 'gnuplot'; }
-  pre.src-haskell:before { content: 'Haskell'; }
-  pre.src-hledger:before { content: 'hledger'; }
-  pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
-  pre.src-latex:before { content: 'LaTeX'; }
-  pre.src-ledger:before { content: 'Ledger'; }
-  pre.src-lisp:before { content: 'Lisp'; }
-  pre.src-lilypond:before { content: 'Lilypond'; }
-  pre.src-lua:before { content: 'Lua'; }
-  pre.src-matlab:before { content: 'MATLAB'; }
-  pre.src-mscgen:before { content: 'Mscgen'; }
-  pre.src-ocaml:before { content: 'Objective Caml'; }
-  pre.src-octave:before { content: 'Octave'; }
-  pre.src-org:before { content: 'Org mode'; }
-  pre.src-oz:before { content: 'OZ'; }
-  pre.src-plantuml:before { content: 'Plantuml'; }
-  pre.src-processing:before { content: 'Processing.js'; }
-  pre.src-python:before { content: 'Python'; }
-  pre.src-R:before { content: 'R'; }
-  pre.src-ruby:before { content: 'Ruby'; }
-  pre.src-sass:before { content: 'Sass'; }
-  pre.src-scheme:before { content: 'Scheme'; }
-  pre.src-screen:before { content: 'Gnu Screen'; }
-  pre.src-sed:before { content: 'Sed'; }
-  pre.src-sh:before { content: 'shell'; }
-  pre.src-sql:before { content: 'SQL'; }
-  pre.src-sqlite:before { content: 'SQLite'; }
-  /* additional languages in org.el's org-babel-load-languages alist */
-  pre.src-forth:before { content: 'Forth'; }
-  pre.src-io:before { content: 'IO'; }
-  pre.src-J:before { content: 'J'; }
-  pre.src-makefile:before { content: 'Makefile'; }
-  pre.src-maxima:before { content: 'Maxima'; }
-  pre.src-perl:before { content: 'Perl'; }
-  pre.src-picolisp:before { content: 'Pico Lisp'; }
-  pre.src-scala:before { content: 'Scala'; }
-  pre.src-shell:before { content: 'Shell Script'; }
-  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
-  /* additional language identifiers per "defun org-babel-execute"
-       in ob-*.el */
-  pre.src-cpp:before  { content: 'C++'; }
-  pre.src-abc:before  { content: 'ABC'; }
-  pre.src-coq:before  { content: 'Coq'; }
-  pre.src-groovy:before  { content: 'Groovy'; }
-  /* additional language identifiers from org-babel-shell-names in
-     ob-shell.el: ob-shell is the only babel language using a lambda to put
-     the execution function name together. */
-  pre.src-bash:before  { content: 'bash'; }
-  pre.src-csh:before  { content: 'csh'; }
-  pre.src-ash:before  { content: 'ash'; }
-  pre.src-dash:before  { content: 'dash'; }
-  pre.src-ksh:before  { content: 'ksh'; }
-  pre.src-mksh:before  { content: 'mksh'; }
-  pre.src-posh:before  { content: 'posh'; }
-  /* Additional Emacs modes also supported by the LaTeX listings package */
-  pre.src-ada:before { content: 'Ada'; }
-  pre.src-asm:before { content: 'Assembler'; }
-  pre.src-caml:before { content: 'Caml'; }
-  pre.src-delphi:before { content: 'Delphi'; }
-  pre.src-html:before { content: 'HTML'; }
-  pre.src-idl:before { content: 'IDL'; }
-  pre.src-mercury:before { content: 'Mercury'; }
-  pre.src-metapost:before { content: 'MetaPost'; }
-  pre.src-modula-2:before { content: 'Modula-2'; }
-  pre.src-pascal:before { content: 'Pascal'; }
-  pre.src-ps:before { content: 'PostScript'; }
-  pre.src-prolog:before { content: 'Prolog'; }
-  pre.src-simula:before { content: 'Simula'; }
-  pre.src-tcl:before { content: 'tcl'; }
-  pre.src-tex:before { content: 'TeX'; }
-  pre.src-plain-tex:before { content: 'Plain TeX'; }
-  pre.src-verilog:before { content: 'Verilog'; }
-  pre.src-vhdl:before { content: 'VHDL'; }
-  pre.src-xml:before { content: 'XML'; }
-  pre.src-nxml:before { content: 'XML'; }
-  /* add a generic configuration mode; LaTeX export needs an additional
-     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
-  pre.src-conf:before { content: 'Configuration File'; }
-
-  table { border-collapse:collapse; }
-  caption.t-above { caption-side: top; }
-  caption.t-bottom { caption-side: bottom; }
-  td, th { vertical-align:top;  }
-  th.org-right  { text-align: center;  }
-  th.org-left   { text-align: center;   }
-  th.org-center { text-align: center; }
-  td.org-right  { text-align: right;  }
-  td.org-left   { text-align: left;   }
-  td.org-center { text-align: center; }
-  dt { font-weight: bold; }
-  .footpara { display: inline; }
-  .footdef  { margin-bottom: 1em; }
-  .figure { padding: 1em; }
-  .figure p { text-align: center; }
-  .inlinetask {
-    padding: 10px;
-    border: 2px solid gray;
-    margin: 10px;
-    background: #ffffcc;
-  }
-  #org-div-home-and-up
-   { text-align: right; font-size: 70%; white-space: nowrap; }
-  textarea { overflow-x: auto; }
-  .linenr { font-size: smaller }
-  .code-highlighted { background-color: #ffff00; }
-  .org-info-js_info-navigation { border-style: none; }
-  #org-info-js_console-label
-    { font-size: 10px; font-weight: bold; white-space: nowrap; }
-  .org-info-js_search-highlight
-    { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
-  /*]]>*/-->
-</style>
-<link rel="stylesheet" href="css/worg.css" type="text/css" media="screen" />
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2018 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
+<meta name="generator" content="Org mode">
+<meta name="author" content="manue1">
+<link rel="stylesheet" type="text/css" href="css/worg.css" />
+<!-- <link rel="shortcut icon" href="http://www.langdebuqing.com/images/favicon.ico" type="image/x-icon" /> -->
 </head>
 <body>
 <div id="preamble" class="status">
-<a href="https://www.manue1.site/index.html">Home</a>
+<div id="navbar">
+    <ul>
+        <li id="site-master"><a href="https://www.manue1.site/">Manue1's Journal</a></li>
+        <li><a class="navbar-item" href="https://www.manue1.site/write.html">All Posts</a> </li>
+        <li><a class="navbar-item" href="https://www.manue1.site/link.html">Links</a> </li>
+        <li class="search">
+            <form action="http://google.com/search" method="get" accept-charset="utf-8">
+                <input type="search" id="search" name="q" autocomplete="off" maxlength="30" placeholder="Search..">
+                <input type="hidden" name="q" value="site:www.manue1.com">
+            </form>
+        </li>
+    </ul>
+</div>
 </div>
 <div id="content">
 <h1 class="title">Question &amp; Answer</h1>
 <div id="table-of-contents">
-<h2>Table of Contents</h2>
+<h2>&#30446;&#24405;</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org8cfd06b">Question &amp; Answer</a>
+<li><a href="#org5306c9d">1. Question &amp; Answer</a>
 <ul>
-<li><a href="#org3aa4e95"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-01-24 Thu] </span></span> 查找收集新闻订阅源</a></li>
-<li><a href="#org294e19f"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-01-16 Wed] </span></span> emacs快速创建python文件模板</a></li>
-<li><a href="#orge98d5d7"><span class="done DONE">DONE</span> 添加org mode habit 配置</a></li>
-<li><a href="#orgc446c10"><span class="done DONE">DONE</span> emacs set mpv play video</a></li>
-<li><a href="#orgde1cea5"><span class="done DONE">DONE</span> emacs 代码折叠</a></li>
-<li><a href="#org795f24b"><span class="done DONE">DONE</span> bt sync</a></li>
-<li><a href="#orgcad11ff"><span class="done DONE">DONE</span> create telegram group</a></li>
-<li><a href="#org352ddd7"><span class="todo TODO">TODO</span> emacs mgit use</a></li>
-<li><a href="#org7a34966"><span class="done DONE">DONE</span> how to talk with irc in emacs</a></li>
-<li><a href="#org859b7fa"><span class="done DONE">DONE</span> virtualenv set different python</a></li>
-<li><a href="#org7f594f9"><span class="done UNDO">UNDO</span> how to use youdao translation in emacs</a></li>
-<li><a href="#orgd90b2db"><span class="done DONE">DONE</span> how to use emacs to program python</a></li>
-<li><a href="#org31e987f"><span class="todo TODO">TODO</span> 2019年度计划</a></li>
-<li><a href="#org141fd18"><span class="done DONE">DONE</span> how to hook pomodoro</a></li>
-<li><a href="#org2d47d2a"><span class="done DONE">DONE</span> emacs org-pomodoro install</a></li>
-<li><a href="#org1cc5b94"><span class="done DONE">DONE</span> mac sock to http proxy</a></li>
-<li><a href="#orgfcfe517"><span class="done DONE">DONE</span> learn more form emacs itself</a></li>
-<li><a href="#org3e911ac"><span class="done DONE">DONE</span> emacs 截图</a></li>
-<li><a href="#orge52d13b"><span class="done DONE">DONE</span> emacs 使用 mpd /mpc 听音乐</a></li>
-<li><a href="#orga90b257"><span class="done DONE">DONE</span> arch 系统剪切板调用</a></li>
-<li><a href="#org5324983"><span class="done DONE">DONE</span> arch 安装teamviewer</a></li>
-<li><a href="#orga3af3fc"><span class="done DONE">DONE</span> emacs快速注释快捷键</a></li>
-<li><a href="#orgf9dfdad"><span class="done DONE">DONE</span> emacs指定模板创建文件</a></li>
-<li><a href="#orgfdc5fb8"><span class="done DONE">DONE</span> emacs配置做软链到工作目录</a></li>
-<li><a href="#org41f481a"><span class="done DONE">DONE</span> 如何使用emms看视频？</a></li>
-<li><a href="#org1c7a2fc"><span class="todo TODO">TODO</span> emacs如何处理博文头部尾部嵌套跳转页问题</a></li>
-<li><a href="#org5b7c404"><span class="todo TODO">TODO</span> 推荐系统引擎 apache mahout</a></li>
-<li><a href="#org889a694"><span class="todo TODO">TODO</span> org-mode 导出中文pdf文件</a></li>
-<li><a href="#org3547ef3"><span class="done DONE">DONE</span> 如何publish的时候直接push html到发布分支?</a></li>
-<li><a href="#org40f750f"><span class="done DONE">DONE</span> org-mode capture倒序添加新的task</a></li>
-<li><a href="#org8a1f696"><span class="done DONE">DONE</span> org-mode table中英文对齐问题</a></li>
-<li><a href="#org125007a"><span class="done DONE">DONE</span> 连接远程主机emacs alt键失灵问题</a></li>
-<li><a href="#org88791d7"><span class="done DONE">DONE</span> 远程开发代码备份与调用远程开发环境</a></li>
-<li><a href="#org836b000"><span class="done DONE">DONE</span> emacs数据恢复问题</a></li>
-<li><a href="#org7347047"><span class="done DONE">DONE</span> github git push 一直无响应</a></li>
-<li><a href="#orgf3e80af"><span class="done DONE">DONE</span> ssh Permission denied (publickey)</a></li>
-<li><a href="#org937bc86"><span class="done DONE">DONE</span> arch下载百度云大文件</a></li>
-<li><a href="#org02b040f"><span class="done DONE">DONE</span> emacs快速调用chrome或者emacs-w3m打开链接</a></li>
-<li><a href="#orgbeaafaf"><span class="done DONE">DONE</span> org-mode 自动显示图片</a></li>
-<li><a href="#org1d6c1b8"><span class="done DONE">DONE</span> 不重启emacs如何重新加载配置</a></li>
-<li><a href="#org8cbb739"><span class="done DONE">DONE</span> rabbitmq队列数据量堆积过多，服务不正常问题解决?</a></li>
-<li><a href="#org4992d96"><span class="done DONE">DONE</span> arch install yaourt</a></li>
+<li><a href="#orgd9d3dd9">1.1. <span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-01-24 Thu] </span></span> 查找收集新闻订阅源</a></li>
+<li><a href="#org4cf667a">1.2. <span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-01-16 Wed] </span></span> emacs快速创建python文件模板</a></li>
+<li><a href="#orgdaca518">1.3. <span class="done DONE">DONE</span> 添加org mode habit 配置</a></li>
+<li><a href="#org5beb11d">1.4. <span class="done DONE">DONE</span> emacs set mpv play video</a></li>
+<li><a href="#org452a907">1.5. <span class="done DONE">DONE</span> emacs 代码折叠</a></li>
+<li><a href="#org05ebab3">1.6. <span class="done DONE">DONE</span> bt sync</a></li>
+<li><a href="#org61065ca">1.7. <span class="done DONE">DONE</span> create telegram group</a></li>
+<li><a href="#org746320c">1.8. <span class="todo TODO">TODO</span> emacs mgit use</a></li>
+<li><a href="#orga0e1753">1.9. <span class="done DONE">DONE</span> how to talk with irc in emacs</a></li>
+<li><a href="#org2d421fd">1.10. <span class="done DONE">DONE</span> virtualenv set different python</a></li>
+<li><a href="#org8c3c1e3">1.11. <span class="done UNDO">UNDO</span> how to use youdao translation in emacs</a></li>
+<li><a href="#orgf5c655b">1.12. <span class="done DONE">DONE</span> how to use emacs to program python</a></li>
+<li><a href="#org587b9cd">1.13. <span class="todo TODO">TODO</span> 2019年度计划</a></li>
+<li><a href="#org2cec4ab">1.14. <span class="done DONE">DONE</span> how to hook pomodoro</a></li>
+<li><a href="#orgc85df47">1.15. <span class="done DONE">DONE</span> emacs org-pomodoro install</a></li>
+<li><a href="#orgfd2b3e8">1.16. <span class="done DONE">DONE</span> mac sock to http proxy</a></li>
+<li><a href="#org073e801">1.17. <span class="done DONE">DONE</span> learn more form emacs itself</a></li>
+<li><a href="#orgf70a98e">1.18. <span class="done DONE">DONE</span> emacs 截图</a></li>
+<li><a href="#org40f6ce8">1.19. <span class="done DONE">DONE</span> emacs 使用 mpd /mpc 听音乐</a></li>
+<li><a href="#org5a62c8f">1.20. <span class="done DONE">DONE</span> arch 系统剪切板调用</a></li>
+<li><a href="#org87d43db">1.21. <span class="done DONE">DONE</span> arch 安装teamviewer</a></li>
+<li><a href="#org6c5e2b3">1.22. <span class="done DONE">DONE</span> emacs快速注释快捷键</a></li>
+<li><a href="#org94aa49d">1.23. <span class="done DONE">DONE</span> emacs指定模板创建文件</a></li>
+<li><a href="#org35ca18a">1.24. <span class="done DONE">DONE</span> emacs配置做软链到工作目录</a></li>
+<li><a href="#orgf861185">1.25. <span class="done DONE">DONE</span> 如何使用emms看视频？</a></li>
+<li><a href="#org3d7b868">1.26. <span class="todo TODO">TODO</span> emacs如何处理博文头部尾部嵌套跳转页问题</a></li>
+<li><a href="#orgae72d02">1.27. <span class="todo TODO">TODO</span> 推荐系统引擎 apache mahout</a></li>
+<li><a href="#org36174ab">1.28. <span class="todo TODO">TODO</span> org-mode 导出中文pdf文件</a></li>
+<li><a href="#orgcaf23d8">1.29. <span class="done DONE">DONE</span> 如何publish的时候直接push html到发布分支?</a></li>
+<li><a href="#orgc330bea">1.30. <span class="done DONE">DONE</span> org-mode capture倒序添加新的task</a></li>
+<li><a href="#orgc5de511">1.31. <span class="done DONE">DONE</span> org-mode table中英文对齐问题</a></li>
+<li><a href="#org0e1a721">1.32. <span class="done DONE">DONE</span> 连接远程主机emacs alt键失灵问题</a></li>
+<li><a href="#orgdc09195">1.33. <span class="done DONE">DONE</span> 远程开发代码备份与调用远程开发环境</a></li>
+<li><a href="#org1097a3b">1.34. <span class="done DONE">DONE</span> emacs数据恢复问题</a></li>
+<li><a href="#orgde58571">1.35. <span class="done DONE">DONE</span> github git push 一直无响应</a></li>
+<li><a href="#org88860e5">1.36. <span class="done DONE">DONE</span> ssh Permission denied (publickey)</a></li>
+<li><a href="#orgbfbebcd">1.37. <span class="done DONE">DONE</span> arch下载百度云大文件</a></li>
+<li><a href="#orgcce24a3">1.38. <span class="done DONE">DONE</span> emacs快速调用chrome或者emacs-w3m打开链接</a></li>
+<li><a href="#org5d4f2c4">1.39. <span class="done DONE">DONE</span> org-mode 自动显示图片</a></li>
+<li><a href="#org318a1a5">1.40. <span class="done DONE">DONE</span> 不重启emacs如何重新加载配置</a></li>
+<li><a href="#org9434620">1.41. <span class="done DONE">DONE</span> rabbitmq队列数据量堆积过多，服务不正常问题解决?</a></li>
+<li><a href="#org176f19c">1.42. <span class="done DONE">DONE</span> arch install yaourt</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org8cfd06b" class="outline-2">
-<h2 id="org8cfd06b">Question &amp; Answer</h2>
-<div class="outline-text-2" id="text-org8cfd06b">
+<div id="outline-container-org5306c9d" class="outline-2">
+<h2 id="org5306c9d"><span class="section-number-2">1</span> Question &amp; Answer</h2>
+<div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org3aa4e95" class="outline-3">
-<h3 id="org3aa4e95"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-01-24 Thu] </span></span> 查找收集新闻订阅源</h3>
-<div class="outline-text-3" id="text-org3aa4e95">
+<div id="outline-container-orgd9d3dd9" class="outline-3">
+<h3 id="orgd9d3dd9"><span class="section-number-3">1.1</span> <span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-01-24 Thu] </span></span> 查找收集新闻订阅源</h3>
+<div class="outline-text-3" id="text-1-1">
 <blockquote>
 <p>
-SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-01-27 Sun 11:42&gt;</span></span>
+SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-01-27 Sun 11:42&gt;</span></span><br>
 </p>
 </blockquote>
 </div>
 </div>
 
-<div id="outline-container-org294e19f" class="outline-3">
-<h3 id="org294e19f"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-01-16 Wed] </span></span> emacs快速创建python文件模板</h3>
-<div class="outline-text-3" id="text-org294e19f">
+<div id="outline-container-org4cf667a" class="outline-3">
+<h3 id="org4cf667a"><span class="section-number-3">1.2</span> <span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-01-16 Wed] </span></span> emacs快速创建python文件模板</h3>
+<div class="outline-text-3" id="text-1-2">
 <ul class="org-ul">
 <li><p>
-State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-01-23 Wed 12:04] </span></span> <br />
-利用yasnippet创建快捷输入，有时候会比较灵活,不需要一些定制模板
+State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-01-23 Wed 12:04] </span></span> <br>
+利用yasnippet创建快捷输入，有时候会比较灵活,不需要一些定制模板<br>
 </p>
 
 <p>
-yas-new-snippet 创建模板
+yas-new-snippet 创建模板<br>
 </p>
 
 <p>
-c-c c-c 保存
+c-c c-c 保存<br>
 </p></li>
 </ul>
 
 <blockquote>
 <p>
-SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-01-19 Sat 16:19&gt;</span></span>
+SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-01-19 Sat 16:19&gt;</span></span><br>
 </p>
 </blockquote>
 </div>
 </div>
-<div id="outline-container-orge98d5d7" class="outline-3">
-<h3 id="orge98d5d7"><span class="done DONE">DONE</span> 添加org mode habit 配置</h3>
-<div class="outline-text-3" id="text-orge98d5d7">
+<div id="outline-container-orgdaca518" class="outline-3">
+<h3 id="orgdaca518"><span class="section-number-3">1.3</span> <span class="done DONE">DONE</span> 添加org mode habit 配置</h3>
+<div class="outline-text-3" id="text-1-3">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-01-13 Sun 01:52]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-01-13 Sun 01:52]</span></span><br></li>
 </ul>
 <blockquote>
 <p>
-SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-01-13 Sun 00:54&gt;</span></span>
+SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-01-13 Sun 00:54&gt;</span></span><br>
 </p>
 <div class="org-src-container">
 <pre class="src src-elisp">
@@ -347,376 +142,376 @@ SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-01-1
 </div>
 
 <p>
-<a href="https://orgmode.org/manual/Tracking-your-habits.html#Tracking-your-habits">https://orgmode.org/manual/Tracking-your-habits.html#Tracking-your-habits</a>
+<a href="https://orgmode.org/manual/Tracking-your-habits.html#Tracking-your-habits">https://orgmode.org/manual/Tracking-your-habits.html#Tracking-your-habits</a><br>
 </p>
 
 <p>
-TODO <a href="https://www.wanglianghome.org/2017/08/12/org-habit/">https://www.wanglianghome.org/2017/08/12/org-habit/</a>
+TODO <a href="https://www.wanglianghome.org/2017/08/12/org-habit/">https://www.wanglianghome.org/2017/08/12/org-habit/</a><br>
 </p>
 </blockquote>
 </div>
 </div>
-<div id="outline-container-orgc446c10" class="outline-3">
-<h3 id="orgc446c10"><span class="done DONE">DONE</span> emacs set mpv play video</h3>
-<div class="outline-text-3" id="text-orgc446c10">
+<div id="outline-container-org5beb11d" class="outline-3">
+<h3 id="org5beb11d"><span class="section-number-3">1.4</span> <span class="done DONE">DONE</span> emacs set mpv play video</h3>
+<div class="outline-text-3" id="text-1-4">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-01-06 Sun 21:48]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-01-06 Sun 21:48]</span></span><br></li>
 </ul>
 <blockquote>
 <p>
-SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-01-06 Sun 14:17&gt;</span></span>
+SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-01-06 Sun 14:17&gt;</span></span><br>
 </p>
 
 <p>
-配合调整透明度 查看视频记录笔记
+配合调整透明度 查看视频记录笔记<br>
 </p>
 
 <p>
-mpd 使用文档与快捷键可以查看文档
+mpd 使用文档与快捷键可以查看文档<br>
 </p>
 
 <p>
-<a href="https://mpv.io/manual/master/#description">https://mpv.io/manual/master/#description</a>
+<a href="https://mpv.io/manual/master/#description">https://mpv.io/manual/master/#description</a><br>
 </p>
 
 
 <p>
-[ and ]
+[ and ]<br>
 </p>
 
 <p>
-Decrease/increase current playback speed by 10%.
+Decrease/increase current playback speed by 10%.<br>
 </p>
 
 <p>
-{ and }
+{ and }<br>
 </p>
 
 <p>
-Halve/double current playback speed.
+Halve/double current playback speed.<br>
 </p>
 
 <p>
-BACKSPACE
+BACKSPACE<br>
 </p>
 
 <p>
-Reset playback speed to normal.
+Reset playback speed to normal.<br>
 </p>
 
 <p>
-m
+m<br>
 </p>
 
 <p>
-Mute sound.
+Mute sound.<br>
 </p>
 </blockquote>
 </div>
 </div>
-<div id="outline-container-orgde1cea5" class="outline-3">
-<h3 id="orgde1cea5"><span class="done DONE">DONE</span> emacs 代码折叠</h3>
-<div class="outline-text-3" id="text-orgde1cea5">
+<div id="outline-container-org452a907" class="outline-3">
+<h3 id="org452a907"><span class="section-number-3">1.5</span> <span class="done DONE">DONE</span> emacs 代码折叠</h3>
+<div class="outline-text-3" id="text-1-5">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-01-04 Fri 17:21]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-01-04 Fri 17:21]</span></span><br></li>
 </ul>
 <blockquote>
 <p>
-SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-01-04 Fri 17:03&gt;</span></span>
+SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-01-04 Fri 17:03&gt;</span></span><br>
 </p>
 
 <p>
-hs-show-all:显示所有的代码
+hs-show-all:显示所有的代码<br>
 </p>
 
 <p>
-hs-hide-all:折叠所有的代码
+hs-hide-all:折叠所有的代码<br>
 </p>
 
 <p>
-hs-show-block:显示当前代码区
+hs-show-block:显示当前代码区<br>
 </p>
 
 <p>
-hs-hide-block:折叠当前代码区
+hs-hide-block:折叠当前代码区<br>
 </p>
 
 <p>
-hs-toggle-hiding: 折叠/显示当前代码区 (spc hs)
+hs-toggle-hiding: 折叠/显示当前代码区 (spc hs)<br>
 </p>
 
 <p>
-代码折叠，其实完全可以使用 M-x <code>helm-imenu</code> 替代
+代码折叠，其实完全可以使用 M-x <code>helm-imenu</code> 替代<br>
 </p>
 
 <p>
-helm-imenu (spc hi)
+helm-imenu (spc hi)<br>
 </p>
 </blockquote>
 </div>
 </div>
-<div id="outline-container-org795f24b" class="outline-3">
-<h3 id="org795f24b"><span class="done DONE">DONE</span> bt sync</h3>
-<div class="outline-text-3" id="text-org795f24b">
+<div id="outline-container-org05ebab3" class="outline-3">
+<h3 id="org05ebab3"><span class="section-number-3">1.6</span> <span class="done DONE">DONE</span> bt sync</h3>
+<div class="outline-text-3" id="text-1-6">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-01-02 Wed 23:44]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-01-02 Wed 23:44]</span></span><br></li>
 </ul>
 <blockquote>
 <p>
-DEADLINE: <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-01-08 Tue 10:03&gt;</span></span>
+DEADLINE: <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-01-08 Tue 10:03&gt;</span></span><br>
 </p>
 
 <p>
-<a href="https://program-think.blogspot.com/2017/08/GFW-Resilio-Sync.html">https://program-think.blogspot.com/2017/08/GFW-Resilio-Sync.html</a> 
+<a href="https://program-think.blogspot.com/2017/08/GFW-Resilio-Sync.html">https://program-think.blogspot.com/2017/08/GFW-Resilio-Sync.html</a> <br>
 </p>
 
 <p>
-<b>节点发现</b>
+<b>节点发现</b><br>
 </p>
 <ul class="org-ul">
-<li>Tracker Server（追踪服务器）</li>
+<li>Tracker Server（追踪服务器）<br></li>
 
-<li>DHT 网络</li>
+<li>DHT 网络<br></li>
 
-<li>Predefined Hosts</li>
+<li>Predefined Hosts<br></li>
 </ul>
 
 <p>
-<b>Resilio Sync 国内使用</b>
+<b>Resilio Sync 国内使用</b><br>
 </p>
 
 <p>
-proxifiter 代理能够访问一下两个节点：
+proxifiter 代理能够访问一下两个节点：<br>
 </p>
 
 <p>
-target host :
+target host :<br>
 </p>
 
 <p>
-173.244.217.42
+173.244.217.42<br>
 </p>
 
 <p>
-209.95.56.60
+209.95.56.60<br>
 </p>
 </blockquote>
 </div>
 </div>
-<div id="outline-container-orgcad11ff" class="outline-3">
-<h3 id="orgcad11ff"><span class="done DONE">DONE</span> create telegram group</h3>
-<div class="outline-text-3" id="text-orgcad11ff">
+<div id="outline-container-org61065ca" class="outline-3">
+<h3 id="org61065ca"><span class="section-number-3">1.7</span> <span class="done DONE">DONE</span> create telegram group</h3>
+<div class="outline-text-3" id="text-1-7">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-30 Sun 12:09]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-30 Sun 12:09]</span></span><br></li>
 </ul>
 <blockquote>
 <p>
-DEADLINE: <span class="timestamp-wrapper"><span class="timestamp">&lt;2018-12-30 Sun 10:00&gt;</span></span>
+DEADLINE: <span class="timestamp-wrapper"><span class="timestamp">&lt;2018-12-30 Sun 10:00&gt;</span></span><br>
 </p>
 
 <p>
-telegram 代理支持
+telegram 代理支持<br>
 </p>
 
 <ol class="org-ol">
 <li><p>
-socks5
+socks5<br>
 </p>
 
 <p>
-shadowrocket 127.0.0.1:1082
+shadowrocket 127.0.0.1:1082<br>
 </p></li>
 <li><p>
-MTproto
-官方提供很多 :
+MTproto<br>
+官方提供很多 :<br>
 </p>
 
 <p>
-自建mtproto: <a href="https://github.com/TelegramMessenger/MTProxy">https://github.com/TelegramMessenger/MTProxy</a>
+自建mtproto: <a href="https://github.com/TelegramMessenger/MTProxy">https://github.com/TelegramMessenger/MTProxy</a><br>
 </p></li>
 </ol>
 
 <p>
-proxy sponsor how to set ?
+proxy sponsor how to set ?<br>
 </p>
 </blockquote>
 </div>
 </div>
-<div id="outline-container-org352ddd7" class="outline-3">
-<h3 id="org352ddd7"><span class="todo TODO">TODO</span> emacs mgit use</h3>
-<div class="outline-text-3" id="text-org352ddd7">
+<div id="outline-container-org746320c" class="outline-3">
+<h3 id="org746320c"><span class="section-number-3">1.8</span> <span class="todo TODO">TODO</span> emacs mgit use</h3>
+<div class="outline-text-3" id="text-1-8">
 <blockquote>
 <p>
-DEADLINE: <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-01-25 Fri 19:02&gt;</span></span>
+DEADLINE: <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-01-25 Fri 19:02&gt;</span></span><br>
 </p>
 </blockquote>
 </div>
 </div>
-<div id="outline-container-org7a34966" class="outline-3">
-<h3 id="org7a34966"><span class="done DONE">DONE</span> how to talk with irc in emacs</h3>
-<div class="outline-text-3" id="text-org7a34966">
+<div id="outline-container-orga0e1753" class="outline-3">
+<h3 id="orga0e1753"><span class="section-number-3">1.9</span> <span class="done DONE">DONE</span> how to talk with irc in emacs</h3>
+<div class="outline-text-3" id="text-1-9">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-01-18 Fri 11:11] </span></span> <br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-01-18 Fri 11:11] </span></span> <br></li>
 </ul>
 
 
 <p>
-<a href="https://emacs-china.org/t/erc/2366">https://emacs-china.org/t/erc/2366</a>
+<a href="https://emacs-china.org/t/erc/2366">https://emacs-china.org/t/erc/2366</a><br>
 </p>
 
 <ul class="org-ul">
 <li><p>
-erc
+erc<br>
 </p>
 
 <p>
-init-erc.el
+init-erc.el<br>
 </p>
 
 <p>
-<a href="https://www.emacswiki.org/emacs/ErcSSL">https://www.emacswiki.org/emacs/ErcSSL</a>
+<a href="https://www.emacswiki.org/emacs/ErcSSL">https://www.emacswiki.org/emacs/ErcSSL</a><br>
 </p></li>
 
 <li><p>
-gnutls
+gnutls<br>
 </p>
 
 <p>
-<a href="http://macappstore.org/gnutls/">http://macappstore.org/gnutls/</a>
+<a href="http://macappstore.org/gnutls/">http://macappstore.org/gnutls/</a><br>
 </p></li>
 </ul>
 
 
 <blockquote>
 <p>
-DEADLINE: <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-01-16 Wed 16:33&gt;</span></span>
+DEADLINE: <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-01-16 Wed 16:33&gt;</span></span><br>
 </p>
 </blockquote>
 </div>
 </div>
-<div id="outline-container-org859b7fa" class="outline-3">
-<h3 id="org859b7fa"><span class="done DONE">DONE</span> virtualenv set different python</h3>
-<div class="outline-text-3" id="text-org859b7fa">
+<div id="outline-container-org2d421fd" class="outline-3">
+<h3 id="org2d421fd"><span class="section-number-3">1.10</span> <span class="done DONE">DONE</span> virtualenv set different python</h3>
+<div class="outline-text-3" id="text-1-10">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-27 Thu 15:53]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-27 Thu 15:53]</span></span><br></li>
 </ul>
 <blockquote>
 <p>
-DEADLINE: <span class="timestamp-wrapper"><span class="timestamp">&lt;2018-12-27 Thu 15:41&gt;</span></span>
+DEADLINE: <span class="timestamp-wrapper"><span class="timestamp">&lt;2018-12-27 Thu 15:41&gt;</span></span><br>
 </p>
 
 <p>
-sudo pip install virtualenv
+sudo pip install virtualenv<br>
 </p>
 
 <p>
-mkdir ~/opt/virtualenvs 
+mkdir ~/opt/virtualenvs<br>
 </p>
 
 <p>
-virtualenv &#x2013;python=/usr/bin/python2.6 ~/opt/virtualenvs/emacs-python
+virtualenv &#x2013;python=/usr/bin/python2.6 ~/opt/virtualenvs/emacs-python<br>
 </p>
 
 <p>
-cd ~/opt/virtualenvs/emacs-python/bin
+cd ~/opt/virtualenvs/emacs-python/bin<br>
 </p>
 
 <p>
-source activate // deactivate
+source activate // deactivate<br>
 </p>
 
 <p>
-alias emacs-python-enable='source ~/opt/virtualenvs/emacs-python/bin/activate'
+alias emacs-python-enable='source ~/opt/virtualenvs/emacs-python/bin/activate'<br>
 </p>
 </blockquote>
 </div>
 </div>
-<div id="outline-container-org7f594f9" class="outline-3">
-<h3 id="org7f594f9"><span class="done UNDO">UNDO</span> how to use youdao translation in emacs</h3>
-<div class="outline-text-3" id="text-org7f594f9">
+<div id="outline-container-org8c3c1e3" class="outline-3">
+<h3 id="org8c3c1e3"><span class="section-number-3">1.11</span> <span class="done UNDO">UNDO</span> how to use youdao translation in emacs</h3>
+<div class="outline-text-3" id="text-1-11">
 <ul class="org-ul">
-<li>State "UNDO"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-28 Fri 13:09]</span></span></li>
+<li>State "UNDO"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-28 Fri 13:09]</span></span><br></li>
 </ul>
 <blockquote>
 <p>
-
+<br>
 </p>
 
 <p>
-<a href="https://github.com/xuchunyang/youdao-dictionary.el">https://github.com/xuchunyang/youdao-dictionary.el</a>
+<a href="https://github.com/xuchunyang/youdao-dictionary.el">https://github.com/xuchunyang/youdao-dictionary.el</a><br>
 </p>
 </blockquote>
 </div>
 </div>
-<div id="outline-container-orgd90b2db" class="outline-3">
-<h3 id="orgd90b2db"><span class="done DONE">DONE</span> how to use emacs to program python</h3>
-<div class="outline-text-3" id="text-orgd90b2db">
+<div id="outline-container-orgf5c655b" class="outline-3">
+<h3 id="orgf5c655b"><span class="section-number-3">1.12</span> <span class="done DONE">DONE</span> how to use emacs to program python</h3>
+<div class="outline-text-3" id="text-1-12">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-28 Fri 16:44]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-28 Fri 16:44]</span></span><br></li>
 </ul>
 <blockquote>
 <p>
-
+<br>
 </p>
 
 <p>
-<a href="http://wikemacs.org/wiki/Python#A_Hydra_to_choose_what_tests_to_run.2C_navigate_errors_and_switch_to_the_console">http://wikemacs.org/wiki/Python#A_Hydra_to_choose_what_tests_to_run.2C_navigate_errors_and_switch_to_the_console</a>
+<a href="http://wikemacs.org/wiki/Python#A_Hydra_to_choose_what_tests_to_run.2C_navigate_errors_and_switch_to_the_console">http://wikemacs.org/wiki/Python#A_Hydra_to_choose_what_tests_to_run.2C_navigate_errors_and_switch_to_the_console</a><br>
 </p>
 
 <p>
-<a href="https://wdicc.com/emacs-as-python-ide/">https://wdicc.com/emacs-as-python-ide/</a>
+<a href="https://wdicc.com/emacs-as-python-ide/">https://wdicc.com/emacs-as-python-ide/</a><br>
 </p>
 <ol class="org-ol">
 <li><p>
-elpy
+elpy<br>
 </p>
 
 <p>
-pip install jedi flake8 autopep8
+pip install jedi flake8 autopep8<br>
 </p>
 
 <p>
-<b>静态代码检测:</b>
+<b>静态代码检测:</b><br>
 </p>
 
 <p>
-Flake8 是由Python官方发布的一款辅助检测Python代码是否规范的工具
+Flake8 是由Python官方发布的一款辅助检测Python代码是否规范的工具<br>
 </p>
 
 <p>
-<b>格式化代码</b>
+<b>格式化代码</b><br>
 </p>
 
 <p>
-YAPF (Yet Another Python Formatter)是Google开源的一个用来格式化Python代码的工具.
+YAPF (Yet Another Python Formatter)是Google开源的一个用来格式化Python代码的工具.<br>
 </p>
 
 <p>
-支持2种代码规范 (PEP8 Google style)
+支持2种代码规范 (PEP8 Google style)<br>
 </p>
 
 <p>
-Black，号称不妥协的代码格式化工具，因为它检测到不符合规范的代码风格直接就帮你全部格式化好，
+Black，号称不妥协的代码格式化工具，因为它检测到不符合规范的代码风格直接就帮你全部格式化好，<br>
 </p>
 
 <p>
-根本不需要你确定，直接替你做好决定
+根本不需要你确定，直接替你做好决定<br>
 </p>
 
 <p>
-M-x elpy-config
+M-x elpy-config<br>
 </p>
 
 <p>
-<a href="https://github.com/jorgenschaefer/elpy/wiki/Configuration">https://github.com/jorgenschaefer/elpy/wiki/Configuration</a>
+<a href="https://github.com/jorgenschaefer/elpy/wiki/Configuration">https://github.com/jorgenschaefer/elpy/wiki/Configuration</a><br>
 </p>
 
 <p>
-pip install yapf 
+pip install yapf<br>
 </p>
 
 <p>
-M-x elpy-format-code (, r f)
+M-x elpy-format-code (, r f)<br>
 </p>
 
 <div class="org-src-container">
@@ -741,48 +536,48 @@ M-x elpy-format-code (, r f)
 </div>
 
 <p>
-<a href="https://elpy.readthedocs.io/en/latest/introduction.html">https://elpy.readthedocs.io/en/latest/introduction.html</a>
+<a href="https://elpy.readthedocs.io/en/latest/introduction.html">https://elpy.readthedocs.io/en/latest/introduction.html</a><br>
 </p></li>
 
 <li><p>
-How do use Emacs to look up a function in Python?
+How do use Emacs to look up a function in Python?<br>
 </p>
 
 <p>
-<code>M-.</code> like pycharm
+<code>M-.</code> like pycharm<br>
 </p>
 
 <p>
-<code>c-c c-d</code> elpy-doc 查看函数文档
+<code>c-c c-d</code> elpy-doc 查看函数文档<br>
 </p></li>
 </ol>
 
 
 <p>
-##videos must be used with an image..so when image is clicked video starts
-[[link of the video][<a href="link">link</a> of the image]
+##videos must be used with an image..so when image is clicked video starts<br>
+[[link of the video][<a href="link">link</a> of the image]<br>
 </p>
 </blockquote>
 </div>
 </div>
 
-<div id="outline-container-org31e987f" class="outline-3">
-<h3 id="org31e987f"><span class="todo TODO">TODO</span> 2019年度计划</h3>
-<div class="outline-text-3" id="text-org31e987f">
+<div id="outline-container-org587b9cd" class="outline-3">
+<h3 id="org587b9cd"><span class="section-number-3">1.13</span> <span class="todo TODO">TODO</span> 2019年度计划</h3>
+<div class="outline-text-3" id="text-1-13">
 <ol class="org-ol">
-<li>每月坚持读完一本技术书籍,每天都要读书</li>
-<li>每周坚持锻炼一次,早睡早起,避免过劳死</li>
-<li>每周听一个专辑,看两部电影,同步更新sync</li>
-<li>每月抽出时间出去游玩一次</li>
+<li>每月坚持读完一本技术书籍,每天都要读书<br></li>
+<li>每周坚持锻炼一次,早睡早起,避免过劳死<br></li>
+<li>每周听一个专辑,看两部电影,同步更新sync<br></li>
+<li>每月抽出时间出去游玩一次<br></li>
 </ol>
 </div>
 </div>
 
-<div id="outline-container-org141fd18" class="outline-3">
-<h3 id="org141fd18"><span class="done DONE">DONE</span> how to hook pomodoro</h3>
-<div class="outline-text-3" id="text-org141fd18">
+<div id="outline-container-org2cec4ab" class="outline-3">
+<h3 id="org2cec4ab"><span class="section-number-3">1.14</span> <span class="done DONE">DONE</span> how to hook pomodoro</h3>
+<div class="outline-text-3" id="text-1-14">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-28 Fri 13:17]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-28 Fri 13:17]</span></span><br></li>
 </ul>
 <blockquote>
 <div class="org-src-container">
@@ -802,12 +597,12 @@ How do use Emacs to look up a function in Python?
 </div>
 
 <p>
-M-x  customize-group config <code>/usr/bin/afplay game_win.wav path</code>
+M-x  customize-group config <code>/usr/bin/afplay game_win.wav path</code><br>
 </p>
 
 <p>
-在 <code>pomodoro.el</code> 中修改pomodoro-start和pomodoro-stop函数
-添加
+在 <code>pomodoro.el</code> 中修改pomodoro-start和pomodoro-stop函数<br>
+添加<br>
 </p>
 <pre class="example">
 (play-pomodoro-work-sound)
@@ -815,39 +610,39 @@ M-x  customize-group config <code>/usr/bin/afplay game_win.wav path</code>
 </pre>
 
 <p>
-临时修改了原函数,lisp如何hook?
+临时修改了原函数,lisp如何hook?<br>
 </p>
 </blockquote>
 </div>
 </div>
-<div id="outline-container-org2d47d2a" class="outline-3">
-<h3 id="org2d47d2a"><span class="done DONE">DONE</span> emacs org-pomodoro install</h3>
-<div class="outline-text-3" id="text-org2d47d2a">
+<div id="outline-container-orgc85df47" class="outline-3">
+<h3 id="orgc85df47"><span class="section-number-3">1.15</span> <span class="done DONE">DONE</span> emacs org-pomodoro install</h3>
+<div class="outline-text-3" id="text-1-15">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-26 Wed 16:20] </span></span> <br />
-org-pomodoro 过于臃肿，喜欢满足基本功能的pomodoro，我只需要定时+播放提示音乐功能</li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-26 Wed 16:20] </span></span> <br>
+org-pomodoro 过于臃肿，喜欢满足基本功能的pomodoro，我只需要定时+播放提示音乐功能<br></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org1cc5b94" class="outline-3">
-<h3 id="org1cc5b94"><span class="done DONE">DONE</span> mac sock to http proxy</h3>
-<div class="outline-text-3" id="text-org1cc5b94">
+<div id="outline-container-orgfd2b3e8" class="outline-3">
+<h3 id="orgfd2b3e8"><span class="section-number-3">1.16</span> <span class="done DONE">DONE</span> mac sock to http proxy</h3>
+<div class="outline-text-3" id="text-1-16">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-26 Wed 16:43]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-26 Wed 16:43]</span></span><br></li>
 </ul>
 <blockquote>
 <p>
-You can install it with brew:
+You can install it with brew:<br>
 </p>
 
 <p>
-<code>brew install polipo</code>
-And open a config file:
+<code>brew install polipo</code><br>
+And open a config file:<br>
 </p>
 
 <p>
-vim ~/.poliporc
-Fill it with the content:
+vim ~/.poliporc<br>
+Fill it with the content:<br>
 </p>
 
 <pre class="example">
@@ -861,32 +656,32 @@ proxyPort = 8888
 </pre>
 
 <p>
-Start polipo with polipo -c ~/.poliporc and now polipo established a http proxy based on your socks5 proxy.
+Start polipo with polipo -c ~/.poliporc and now polipo established a http proxy based on your socks5 proxy.<br>
 </p>
 
 <p>
-后来发现shadowsocks自动开启了，socks5和http代理 伪需求了
+后来发现shadowsocks自动开启了，socks5和http代理 伪需求了<br>
 </p>
 </blockquote>
 </div>
 </div>
-<div id="outline-container-orgfcfe517" class="outline-3">
-<h3 id="orgfcfe517"><span class="done DONE">DONE</span> learn more form emacs itself</h3>
-<div class="outline-text-3" id="text-orgfcfe517">
+<div id="outline-container-org073e801" class="outline-3">
+<h3 id="org073e801"><span class="section-number-3">1.17</span> <span class="done DONE">DONE</span> learn more form emacs itself</h3>
+<div class="outline-text-3" id="text-1-17">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-22 Sat 19:50]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-22 Sat 19:50]</span></span><br></li>
 </ul>
 <blockquote>
 <p>
-<code>c-h c-f</code> :: find-function
+<code>c-h c-f</code> :: find-function<br>
 </p>
 
 <p>
-<code>c-h c-v</code> :: find-variables
+<code>c-h c-v</code> :: find-variables<br>
 </p>
 
 <p>
-<code>c-h c-k</code> :: find-function-no-key
+<code>c-h c-k</code> :: find-function-no-key<br>
 </p>
 
 <div class="org-src-container">
@@ -897,28 +692,28 @@ Start polipo with polipo -c ~/.poliporc and now polipo established a http proxy 
 </div>
 
 <p>
-<code>M-x info</code> 学习emacs技巧
+<code>M-x info</code> 学习emacs技巧<br>
 </p>
 </blockquote>
 </div>
 </div>
-<div id="outline-container-org3e911ac" class="outline-3">
-<h3 id="org3e911ac"><span class="done DONE">DONE</span> emacs 截图</h3>
-<div class="outline-text-3" id="text-org3e911ac">
+<div id="outline-container-orgf70a98e" class="outline-3">
+<h3 id="orgf70a98e"><span class="section-number-3">1.18</span> <span class="done DONE">DONE</span> emacs 截图</h3>
+<div class="outline-text-3" id="text-1-18">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-01-07 Mon 00:33]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-01-07 Mon 00:33]</span></span><br></li>
 </ul>
 <blockquote>
 <p>
-
+<br>
 </p>
 
 <p>
-<a href="http://blog.binchen.org/posts/how-to-take-screen-shot-for-business-people-efficiently-in-emacs.html">http://blog.binchen.org/posts/how-to-take-screen-shot-for-business-people-efficiently-in-emacs.html</a>
+<a href="http://blog.binchen.org/posts/how-to-take-screen-shot-for-business-people-efficiently-in-emacs.html">http://blog.binchen.org/posts/how-to-take-screen-shot-for-business-people-efficiently-in-emacs.html</a><br>
 </p>
 
 <p>
-参考陈斌的思路，mac上创建截图后，复制绝对路径到剪切板,然后调用elisp函数读取粘贴板写入org-mode文件内
+参考陈斌的思路，mac上创建截图后，复制绝对路径到剪切板,然后调用elisp函数读取粘贴板写入org-mode文件内<br>
 </p>
 
 <div class="org-src-container">
@@ -963,21 +758,21 @@ Start polipo with polipo -c ~/.poliporc and now polipo established a http proxy 
 
 
 <p>
-mac 截图复制绝对路径到剪切板
+mac 截图复制绝对路径到剪切板<br>
 </p>
 
 <p>
-<a href="https://apple.stackexchange.com/questions/115999/take-screenshot-and-copy-its-file-path-to-clipboard">https://apple.stackexchange.com/questions/115999/take-screenshot-and-copy-its-file-path-to-clipboard</a>
-</p>
-
-
-<p>
-<code>f=~/Desktop/$(date +%Y%m%d%H%M%S).png &amp;&amp; screencapture -i $f &amp;&amp; printf %s $f  | pbcopy</code>
+<a href="https://apple.stackexchange.com/questions/115999/take-screenshot-and-copy-its-file-path-to-clipboard">https://apple.stackexchange.com/questions/115999/take-screenshot-and-copy-its-file-path-to-clipboard</a><br>
 </p>
 
 
 <p>
-<b>使用Automator创建workflow service</b>
+<code>f=~/Desktop/$(date +%Y%m%d%H%M%S).png &amp;&amp; screencapture -i $f &amp;&amp; printf %s $f  | pbcopy</code><br>
+</p>
+
+
+<p>
+<b>使用Automator创建workflow service</b><br>
 </p>
 
 <pre class="example">
@@ -988,119 +783,119 @@ osascript -e 'set the clipboard to POSIX file "'$f'"'
 
 
 <div class="figure">
-<p><img src="images/screenshot/20190107000944.png" alt="20190107000944.png" width="30%" height="30%" />
+<p><img src="images/screenshot/20190107000944.png" alt="20190107000944.png" width="30%" height="30%"><br>
 </p>
 </div>
 
 <p>
-Then give the service a keyboard shortcut from System Preferences
+Then give the service a keyboard shortcut from System Preferences<br>
 </p>
 
 <p>
-<code>ctrl + shift + command + p</code>
+<code>ctrl + shift + command + p</code><br>
 </p>
 
 
 <div class="figure">
-<p><img src="images/screenshot/20190107003054.png" alt="20190107003054.png" width="30%" height="30%" />
+<p><img src="images/screenshot/20190107003054.png" alt="20190107003054.png" width="30%" height="30%"><br>
 </p>
 </div>
 </blockquote>
 </div>
 </div>
-<div id="outline-container-orge52d13b" class="outline-3">
-<h3 id="orge52d13b"><span class="done DONE">DONE</span> emacs 使用 mpd /mpc 听音乐</h3>
-<div class="outline-text-3" id="text-orge52d13b">
+<div id="outline-container-org40f6ce8" class="outline-3">
+<h3 id="org40f6ce8"><span class="section-number-3">1.19</span> <span class="done DONE">DONE</span> emacs 使用 mpd /mpc 听音乐</h3>
+<div class="outline-text-3" id="text-1-19">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-19 Wed 20:07]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-19 Wed 20:07]</span></span><br></li>
 </ul>
 <blockquote>
 <p>
-
+<br>
 </p>
 
 <p>
-<b>install mpd</b> ::
+<b>install mpd</b> ::<br>
 </p>
 
 <p>
-<a href="https://computingforgeeks.com/install-configure-mpd-ncmpcpp-macos/">https://computingforgeeks.com/install-configure-mpd-ncmpcpp-macos/</a>
+<a href="https://computingforgeeks.com/install-configure-mpd-ncmpcpp-macos/">https://computingforgeeks.com/install-configure-mpd-ncmpcpp-macos/</a><br>
 </p>
 
 <p>
-Start mpd service using the command:
+Start mpd service using the command:<br>
 </p>
 
 <p>
-<code>$ mpd</code>
+<code>$ mpd</code><br>
 </p>
 
 <p>
-Mpd process can be killed by running the command.
+Mpd process can be killed by running the command.<br>
 </p>
 
 <p>
-<code>$ mpd --kill</code>
+<code>$ mpd --kill</code><br>
 </p>
 
 <p>
-To update mpd, execute the command,
+To update mpd, execute the command,<br>
 </p>
 
 <p>
-<code>$ mpd update</code>
+<code>$ mpd update</code><br>
 </p>
 
 <p>
-<b>install mpc-client</b> ::
+<b>install mpc-client</b> ::<br>
 </p>
 
 <p>
-brew install mpc
+brew install mpc<br>
 </p>
 
 <p>
-<code>mpc search any  taylor | mpc add taylor-1989</code>
+<code>mpc search any  taylor | mpc add taylor-1989</code><br>
 </p>
 
 <p>
-<code>mpc help</code>
+<code>mpc help</code><br>
 </p>
 
 <p>
-<b>mpc command keywords</b> :: 
+<b>mpc command keywords</b> ::<br>
 </p>
 
 <p class="verse">
-<br />
-mpc的常用参数：<br />
-mpc add 添加歌曲到播放列表<br />
-mpc listall|mpc add 可以把所有歌曲都添加到当前的播放列表<br />
-mpc listall 可以列出所有的歌曲<br />
-mpc playlist 查看当前播放列表<br />
-mpc 查看当前播放歌曲的信息<br />
-mpc play 播放<br />
-mpc pause 暂停<br />
-mpc stop 停止<br />
-mpc next 播放下一首<br />
-mpc prev 播放前一首<br />
-mpc repeat on 启用重复播放<br />
-mpc random on 启用随机播放<br />
-mpc play 18 播放列表中第18首<br />
-mpc search filename 可以按文件名查找<br />
-mpc search artist 可以按歌手查找<br />
-mpc search title 可以按歌曲名查找<br />
-音量调节：<br />
-mpc volume +20<br />
-mpc volume -20<br />
+<br>
+mpc的常用参数：<br>
+mpc add 添加歌曲到播放列表<br>
+mpc listall|mpc add 可以把所有歌曲都添加到当前的播放列表<br>
+mpc listall 可以列出所有的歌曲<br>
+mpc playlist 查看当前播放列表<br>
+mpc 查看当前播放歌曲的信息<br>
+mpc play 播放<br>
+mpc pause 暂停<br>
+mpc stop 停止<br>
+mpc next 播放下一首<br>
+mpc prev 播放前一首<br>
+mpc repeat on 启用重复播放<br>
+mpc random on 启用随机播放<br>
+mpc play 18 播放列表中第18首<br>
+mpc search filename 可以按文件名查找<br>
+mpc search artist 可以按歌手查找<br>
+mpc search title 可以按歌曲名查找<br>
+音量调节：<br>
+mpc volume +20<br>
+mpc volume -20<br>
 </p>
 
 <p>
-<a href="https://www.mankier.com/1/mpc#Commands-Sticker_Commands">https://www.mankier.com/1/mpc#Commands-Sticker_Commands</a>
+<a href="https://www.mankier.com/1/mpc#Commands-Sticker_Commands">https://www.mankier.com/1/mpc#Commands-Sticker_Commands</a><br>
 </p>
 
 <p>
-<b>emms as mpc config</b> ::
+<b>emms as mpc config</b> ::<br>
 </p>
 <pre class="example">
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1152,74 +947,74 @@ mpc volume -20<br />
 </pre>
 
 <p>
-使用emms-smart-browse操作playlist 
+使用emms-smart-browse操作playlist<br>
 </p>
 
 <p>
-emms-add-directory-tree 添加内容到播放列表
+emms-add-directory-tree 添加内容到播放列表<br>
 </p>
 
 <p>
-emms-smart-browse ? 使用效果不佳
+emms-smart-browse ? 使用效果不佳<br>
 </p>
 
 <p>
-emms-player-mpd-connect 获取最新mpc命令行下更新的播放列表
+emms-player-mpd-connect 获取最新mpc命令行下更新的播放列表<br>
 </p>
 
 <p>
-emms-playlist-clear 清除播放列表
+emms-playlist-clear 清除播放列表<br>
 </p>
 
 <p>
-&#x2014;
+&#x2014;<br>
 </p>
 
 <p>
-每次添加新专辑需要更新playlist
+每次添加新专辑需要更新playlist<br>
 </p>
 
 <p>
-shell下: mpc clear &amp;&amp; mpc ls | mpc add 添加所有到播放列表
+shell下: mpc clear &amp;&amp; mpc ls | mpc add 添加所有到播放列表<br>
 </p>
 
 <p>
-emacs下： emms-playlist-clear &amp;&amp; emms-player-mpd-connect
+emacs下： emms-playlist-clear &amp;&amp; emms-player-mpd-connect<br>
 </p>
 </blockquote>
 </div>
 </div>
 
-<div id="outline-container-orga90b257" class="outline-3">
-<h3 id="orga90b257"><span class="done DONE">DONE</span> arch 系统剪切板调用</h3>
-<div class="outline-text-3" id="text-orga90b257">
+<div id="outline-container-org5a62c8f" class="outline-3">
+<h3 id="org5a62c8f"><span class="section-number-3">1.20</span> <span class="done DONE">DONE</span> arch 系统剪切板调用</h3>
+<div class="outline-text-3" id="text-1-20">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-19 Wed 20:07]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-19 Wed 20:07]</span></span><br></li>
 </ul>
 <blockquote>
 <p>
-<code>c-;</code> 方便调用
+<code>c-;</code> 方便调用<br>
 </p>
 </blockquote>
 </div>
 </div>
-<div id="outline-container-org5324983" class="outline-3">
-<h3 id="org5324983"><span class="done DONE">DONE</span> arch 安装teamviewer</h3>
-<div class="outline-text-3" id="text-org5324983">
+<div id="outline-container-org87d43db" class="outline-3">
+<h3 id="org87d43db"><span class="section-number-3">1.21</span> <span class="done DONE">DONE</span> arch 安装teamviewer</h3>
+<div class="outline-text-3" id="text-1-21">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-12 Wed 15:57]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-12 Wed 15:57]</span></span><br></li>
 </ul>
 <blockquote>
 <p>
-<code>sudo pacman -Sy teamviewer</code>
+<code>sudo pacman -Sy teamviewer</code><br>
 </p>
 
 <p>
-版本14 无法运行
+版本14 无法运行<br>
 </p>
 
 <p>
-版本12 安装<a href="https://linuxhint.com/install_teamviewer_arch_linux/">参考</a> ,运行teamviewer需要启动下面deamon进程
+版本12 安装<a href="https://linuxhint.com/install_teamviewer_arch_linux/">参考</a> ,运行teamviewer需要启动下面deamon进程<br>
 </p>
 
 <pre class="example">
@@ -1230,68 +1025,68 @@ sudo systemctl enable teamviewerd
 </blockquote>
 </div>
 </div>
-<div id="outline-container-orga3af3fc" class="outline-3">
-<h3 id="orga3af3fc"><span class="done DONE">DONE</span> emacs快速注释快捷键</h3>
-<div class="outline-text-3" id="text-orga3af3fc">
+<div id="outline-container-org6c5e2b3" class="outline-3">
+<h3 id="org6c5e2b3"><span class="section-number-3">1.22</span> <span class="done DONE">DONE</span> emacs快速注释快捷键</h3>
+<div class="outline-text-3" id="text-1-22">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-12 Wed 17:20]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-12 Wed 17:20]</span></span><br></li>
 </ul>
 <blockquote>
 <p>
-vim 的多行选择I失效
+vim 的多行选择I失效<br>
 </p>
 
 <p>
-<code>M-;</code> 注释/反注释选中的行
+<code>M-;</code> 注释/反注释选中的行<br>
 </p>
 </blockquote>
 </div>
 </div>
 
-<div id="outline-container-orgf9dfdad" class="outline-3">
-<h3 id="orgf9dfdad"><span class="done DONE">DONE</span> emacs指定模板创建文件</h3>
-<div class="outline-text-3" id="text-orgf9dfdad">
+<div id="outline-container-org94aa49d" class="outline-3">
+<h3 id="org94aa49d"><span class="section-number-3">1.23</span> <span class="done DONE">DONE</span> emacs指定模板创建文件</h3>
+<div class="outline-text-3" id="text-1-23">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-01-23 Wed 16:30]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-01-23 Wed 16:30]</span></span><br></li>
 </ul>
 <blockquote>
 <p>
-yasnippet do anything
+yasnippet do anything<br>
 </p>
 </blockquote>
 </div>
 </div>
-<div id="outline-container-orgfdc5fb8" class="outline-3">
-<h3 id="orgfdc5fb8"><span class="done DONE">DONE</span> emacs配置做软链到工作目录</h3>
-<div class="outline-text-3" id="text-orgfdc5fb8">
+<div id="outline-container-org35ca18a" class="outline-3">
+<h3 id="org35ca18a"><span class="section-number-3">1.24</span> <span class="done DONE">DONE</span> emacs配置做软链到工作目录</h3>
+<div class="outline-text-3" id="text-1-24">
 <p>
-<code>ln -s</code>
+<code>ln -s</code><br>
 </p>
 </div>
 </div>
-<div id="outline-container-org41f481a" class="outline-3">
-<h3 id="org41f481a"><span class="done DONE">DONE</span> 如何使用emms看视频？</h3>
-<div class="outline-text-3" id="text-org41f481a">
+<div id="outline-container-orgf861185" class="outline-3">
+<h3 id="orgf861185"><span class="section-number-3">1.25</span> <span class="done DONE">DONE</span> 如何使用emms看视频？</h3>
+<div class="outline-text-3" id="text-1-25">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-19 Wed 16:16]</span></span></li>
-<li>State "TODO"       from "DONE"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-13 Thu 14:56]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-12 Wed 21:55]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-19 Wed 16:16]</span></span><br></li>
+<li>State "TODO"       from "DONE"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-13 Thu 14:56]</span></span><br></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-12 Wed 21:55]</span></span><br></li>
 </ul>
 <blockquote>
 <p>
-mplayer
+mplayer<br>
 </p>
 
 <p>
-find <i>music</i> -type f  | egrep '\.(mp3|ape)$' &gt; /tmp/mylist.txt
+find <i>music</i> -type f  | egrep '\.(mp3|ape)$' &gt; /tmp/mylist.txt<br>
 </p>
 
 <p>
-mplayer -playlist  /tmp/mylist.txt
+mplayer -playlist  /tmp/mylist.txt<br>
 </p>
 
 <p>
-emms 快捷键
+emms 快捷键<br>
 </p>
 <pre class="example">
 (global-set-key (kbd "C-c e l") 'emms-playlist-mode-go)
@@ -1308,38 +1103,38 @@ emms 快捷键
 </div>
 </div>
 
-<div id="outline-container-org1c7a2fc" class="outline-3">
-<h3 id="org1c7a2fc"><span class="todo TODO">TODO</span> emacs如何处理博文头部尾部嵌套跳转页问题</h3>
-<div class="outline-text-3" id="text-org1c7a2fc">
+<div id="outline-container-org3d7b868" class="outline-3">
+<h3 id="org3d7b868"><span class="section-number-3">1.26</span> <span class="todo TODO">TODO</span> emacs如何处理博文头部尾部嵌套跳转页问题</h3>
+<div class="outline-text-3" id="text-1-26">
 </div>
 </div>
-<div id="outline-container-org5b7c404" class="outline-3">
-<h3 id="org5b7c404"><span class="todo TODO">TODO</span> 推荐系统引擎 apache mahout</h3>
-<div class="outline-text-3" id="text-org5b7c404">
+<div id="outline-container-orgae72d02" class="outline-3">
+<h3 id="orgae72d02"><span class="section-number-3">1.27</span> <span class="todo TODO">TODO</span> 推荐系统引擎 apache mahout</h3>
+<div class="outline-text-3" id="text-1-27">
 </div>
 </div>
-<div id="outline-container-org889a694" class="outline-3">
-<h3 id="org889a694"><span class="todo TODO">TODO</span> org-mode 导出中文pdf文件</h3>
-<div class="outline-text-3" id="text-org889a694">
+<div id="outline-container-org36174ab" class="outline-3">
+<h3 id="org36174ab"><span class="section-number-3">1.28</span> <span class="todo TODO">TODO</span> org-mode 导出中文pdf文件</h3>
+<div class="outline-text-3" id="text-1-28">
 </div>
 </div>
-<div id="outline-container-org3547ef3" class="outline-3">
-<h3 id="org3547ef3"><span class="done DONE">DONE</span> 如何publish的时候直接push html到发布分支?</h3>
-<div class="outline-text-3" id="text-org3547ef3">
+<div id="outline-container-orgcaf23d8" class="outline-3">
+<h3 id="orgcaf23d8"><span class="section-number-3">1.29</span> <span class="done DONE">DONE</span> 如何publish的时候直接push html到发布分支?</h3>
+<div class="outline-text-3" id="text-1-29">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-01-11 Fri 10:05]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-01-11 Fri 10:05]</span></span><br></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org40f750f" class="outline-3">
-<h3 id="org40f750f"><span class="done DONE">DONE</span> org-mode capture倒序添加新的task</h3>
-<div class="outline-text-3" id="text-org40f750f">
+<div id="outline-container-orgc330bea" class="outline-3">
+<h3 id="orgc330bea"><span class="section-number-3">1.30</span> <span class="done DONE">DONE</span> org-mode capture倒序添加新的task</h3>
+<div class="outline-text-3" id="text-1-30">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-11 Tue 21:41]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-11 Tue 21:41]</span></span><br></li>
 </ul>
 <blockquote>
 <p>
-<code>prepend</code> 前置函数配置后即可,<a href="https://orgmode.org/manual/Template-elements.html#Template-elements">官方文档</a>中提到14个参数
+<code>prepend</code> 前置函数配置后即可,<a href="https://orgmode.org/manual/Template-elements.html#Template-elements">官方文档</a>中提到14个参数<br>
 </p>
 <pre class="example">
 ("r" "Read" entry (file+headline "~/github/org-pages/read.org" "Reading List")
@@ -1349,20 +1144,20 @@ emms 快捷键
 </blockquote>
 
 <p>
-<a href="http://www.zmonster.me/2018/02/28/org-mode-capture.html">org-mode capture 文章</a>
+<a href="http://www.zmonster.me/2018/02/28/org-mode-capture.html">org-mode capture 文章</a><br>
 </p>
 </div>
 </div>
 
-<div id="outline-container-org8a1f696" class="outline-3">
-<h3 id="org8a1f696"><span class="done DONE">DONE</span> org-mode table中英文对齐问题</h3>
-<div class="outline-text-3" id="text-org8a1f696">
+<div id="outline-container-orgc5de511" class="outline-3">
+<h3 id="orgc5de511"><span class="section-number-3">1.31</span> <span class="done DONE">DONE</span> org-mode table中英文对齐问题</h3>
+<div class="outline-text-3" id="text-1-31">
 <ul class="org-ul">
-<li>State "DONE"       from              <span class="timestamp-wrapper"><span class="timestamp">[2018-11-09 Fri 12:35]</span></span></li>
+<li>State "DONE"       from              <span class="timestamp-wrapper"><span class="timestamp">[2018-11-09 Fri 12:35]</span></span><br></li>
 </ul>
 <blockquote>
 <p>
-只需要设置org-table的字体为等宽字体
+只需要设置org-table的字体为等宽字体<br>
 </p>
 <pre class="example">
 ;; Org table font
@@ -1370,7 +1165,7 @@ emms 快捷键
 '(org-table ((t (:family "Ubuntu Mono derivative Powerline")))))
 </pre>
 <p>
-安装Ubuntu Mono derivative Powerline
+安装Ubuntu Mono derivative Powerline<br>
 </p>
 <pre class="example">
 git clone https://aur.archlinux.org/ttf-ubuntu-mono-derivative-powerline-git.git
@@ -1381,241 +1176,241 @@ sudo pacman -U *.tar.xz
 </blockquote>
 </div>
 </div>
-<div id="outline-container-org125007a" class="outline-3">
-<h3 id="org125007a"><span class="done DONE">DONE</span> 连接远程主机emacs alt键失灵问题</h3>
-<div class="outline-text-3" id="text-org125007a">
+<div id="outline-container-org0e1a721" class="outline-3">
+<h3 id="org0e1a721"><span class="section-number-3">1.32</span> <span class="done DONE">DONE</span> 连接远程主机emacs alt键失灵问题</h3>
+<div class="outline-text-3" id="text-1-32">
 <blockquote>
 <p>
-主要是因为xshell的配置问题
+主要是因为xshell的配置问题<br>
 </p>
 
 <p>
-文件&#x2013;&gt;属性&#x2013;&gt;终端&#x2013;&gt;键盘&#x2013;&gt;元(meta)键仿真 
+文件&#x2013;&gt;属性&#x2013;&gt;终端&#x2013;&gt;键盘&#x2013;&gt;元(meta)键仿真<br>
 </p>
 </blockquote>
 </div>
 </div>
-<div id="outline-container-org88791d7" class="outline-3">
-<h3 id="org88791d7"><span class="done DONE">DONE</span> 远程开发代码备份与调用远程开发环境</h3>
-<div class="outline-text-3" id="text-org88791d7">
+<div id="outline-container-orgdc09195" class="outline-3">
+<h3 id="orgdc09195"><span class="section-number-3">1.33</span> <span class="done DONE">DONE</span> 远程开发代码备份与调用远程开发环境</h3>
+<div class="outline-text-3" id="text-1-33">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-11-14 Wed 10:07]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-11-14 Wed 10:07]</span></span><br></li>
 </ul>
 <blockquote>
 <p>
-简单说,win7环境下使用idea开发java，python,但是我想将代码自动同步到ubuntu上做备份;同时,python的运行环境使用vmware的ubuntu上的多版本python环境,实现本地使用idea开发，代码运行在远端linux上,当然java还是使用的物理机安装的环境
+简单说,win7环境下使用idea开发java，python,但是我想将代码自动同步到ubuntu上做备份;同时,python的运行环境使用vmware的ubuntu上的多版本python环境,实现本地使用idea开发，代码运行在远端linux上,当然java还是使用的物理机安装的环境<br>
 </p>
 
 <p>
-查看了下资料，idea官方说明有 <a href="http://www.jetbrains.com/help/idea/2017.1/remote-host-tool-window.html">sftp </a>这个功能,创建sftp服务连接 
-<code>tool -&gt; deployment -&gt; +</code>
+查看了下资料，idea官方说明有 <a href="http://www.jetbrains.com/help/idea/2017.1/remote-host-tool-window.html">sftp </a>这个功能,创建sftp服务连接<br>
+<code>tool -&gt; deployment -&gt; +</code><br>
 </p>
 
 <ol class="org-ol">
 <li><p>
-本地开发的java项目备份到远端linux目录
+本地开发的java项目备份到远端linux目录<br>
 </p>
 
 <p>
-RemoteHost内配置好mappings，本地项目备份到ubuntu的路径
+RemoteHost内配置好mappings，本地项目备份到ubuntu的路径<br>
 </p>
 
 <p>
-右键项目Upload to 服务器
+右键项目Upload to 服务器<br>
 </p></li>
 
 <li><p>
-使用linux python环境 写python项目
+使用linux python环境 写python项目<br>
 </p>
 
 <p>
-<code>F4 -&gt; project -&gt; +  -&gt; add remote</code>
+<code>F4 -&gt; project -&gt; +  -&gt; add remote</code><br>
 </p>
 
 <p>
-只需要本地开发编码不报错，运行可以同步到服务器运行
+只需要本地开发编码不报错，运行可以同步到服务器运行<br>
 </p></li>
 </ol>
 </blockquote>
 </div>
 </div>
-<div id="outline-container-org836b000" class="outline-3">
-<h3 id="org836b000"><span class="done DONE">DONE</span> emacs数据恢复问题</h3>
-<div class="outline-text-3" id="text-org836b000">
+<div id="outline-container-org1097a3b" class="outline-3">
+<h3 id="org1097a3b"><span class="section-number-3">1.34</span> <span class="done DONE">DONE</span> emacs数据恢复问题</h3>
+<div class="outline-text-3" id="text-1-34">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-11-14 Wed 10:08]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-11-14 Wed 10:08]</span></span><br></li>
 </ul>
 <blockquote>
 <p>
-<code>c-x u</code> 解决问题
+<code>c-x u</code> 解决问题<br>
 </p>
 </blockquote>
 </div>
 </div>
-<div id="outline-container-org7347047" class="outline-3">
-<h3 id="org7347047"><span class="done DONE">DONE</span> github git push 一直无响应</h3>
-<div class="outline-text-3" id="text-org7347047">
+<div id="outline-container-orgde58571" class="outline-3">
+<h3 id="orgde58571"><span class="section-number-3">1.35</span> <span class="done DONE">DONE</span> github git push 一直无响应</h3>
+<div class="outline-text-3" id="text-1-35">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-07 Fri 13:18]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-07 Fri 13:18]</span></span><br></li>
 </ul>
 
 <blockquote>
 <p>
-github dns解析地址有问题
+github dns解析地址有问题<br>
 </p>
 
 <p>
-/etc/hosts 配置下github的主机地址
+/etc/hosts 配置下github的主机地址<br>
 </p>
 
 <p>
-<code>192.30.253.113 github.com</code>
-</p>
-</blockquote>
-</div>
-</div>
-
-<div id="outline-container-orgf3e80af" class="outline-3">
-<h3 id="orgf3e80af"><span class="done DONE">DONE</span> ssh Permission denied (publickey)</h3>
-<div class="outline-text-3" id="text-orgf3e80af">
-<blockquote>
-<p>
-在目标主机的 <code>/.ssh/authorized_keys</code> 文件内，添加id_rsa.pub
+<code>192.30.253.113 github.com</code><br>
 </p>
 </blockquote>
 </div>
 </div>
 
-<div id="outline-container-org937bc86" class="outline-3">
-<h3 id="org937bc86"><span class="done DONE">DONE</span> arch下载百度云大文件</h3>
-<div class="outline-text-3" id="text-org937bc86">
-<ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-11-29 Thu 14:47]</span></span></li>
-</ul>
-
+<div id="outline-container-org88860e5" class="outline-3">
+<h3 id="org88860e5"><span class="section-number-3">1.36</span> <span class="done DONE">DONE</span> ssh Permission denied (publickey)</h3>
+<div class="outline-text-3" id="text-1-36">
 <blockquote>
 <p>
-<a href="https://github.com/iikira/BaiduPCS-Go">go实现的百度云大文件下载</a> 使用文档很详细
+在目标主机的 <code>/.ssh/authorized_keys</code> 文件内，添加id_rsa.pub<br>
 </p>
 </blockquote>
 </div>
 </div>
 
-<div id="outline-container-org02b040f" class="outline-3">
-<h3 id="org02b040f"><span class="done DONE">DONE</span> <a href="note/emacs-w3m.html">emacs快速调用chrome或者emacs-w3m打开链接</a></h3>
-<div class="outline-text-3" id="text-org02b040f">
+<div id="outline-container-orgbfbebcd" class="outline-3">
+<h3 id="orgbfbebcd"><span class="section-number-3">1.37</span> <span class="done DONE">DONE</span> arch下载百度云大文件</h3>
+<div class="outline-text-3" id="text-1-37">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-07 Fri 11:57]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-11-29 Thu 14:47]</span></span><br></li>
+</ul>
+
+<blockquote>
+<p>
+<a href="https://github.com/iikira/BaiduPCS-Go">go实现的百度云大文件下载</a> 使用文档很详细<br>
+</p>
+</blockquote>
+</div>
+</div>
+
+<div id="outline-container-orgcce24a3" class="outline-3">
+<h3 id="orgcce24a3"><span class="section-number-3">1.38</span> <span class="done DONE">DONE</span> <a href="note/emacs-w3m.html">emacs快速调用chrome或者emacs-w3m打开链接</a></h3>
+<div class="outline-text-3" id="text-1-38">
+<ul class="org-ul">
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-07 Fri 11:57]</span></span><br></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgbeaafaf" class="outline-3">
-<h3 id="orgbeaafaf"><span class="done DONE">DONE</span> org-mode 自动显示图片</h3>
-<div class="outline-text-3" id="text-orgbeaafaf">
+<div id="outline-container-org5d4f2c4" class="outline-3">
+<h3 id="org5d4f2c4"><span class="section-number-3">1.39</span> <span class="done DONE">DONE</span> org-mode 自动显示图片</h3>
+<div class="outline-text-3" id="text-1-39">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-07 Fri 13:10]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-07 Fri 13:10]</span></span><br></li>
 </ul>
 <blockquote>
 <p>
-
+<br>
 </p>
 
 <p>
-M-x <code>org-toggle-inline-images</code> 参数用来控制org-mode图片显示
+M-x <code>org-toggle-inline-images</code> 参数用来控制org-mode图片显示<br>
 </p>
 
 <p>
-快捷键 c-c c-x c-v
+快捷键 c-c c-x c-v<br>
 </p>
 
 <p>
-;配置图片默认显示大小
+;配置图片默认显示大小<br>
 </p>
 
 <p>
-<code>(setq org-image-actual-width 300)</code>
+<code>(setq org-image-actual-width 300)</code><br>
 </p>
 
 
 <div class="figure">
-<p><img src="images/index-0.jpg" alt="index-0.jpg" />
+<p><img src="images/index-0.jpg" alt="index-0.jpg"><br>
 </p>
 </div>
 
 <p>
-<code>c-c c-l</code> 修改url链接地址
+<code>c-c c-l</code> 修改url链接地址<br>
 </p>
 </blockquote>
 </div>
 </div>
 
-<div id="outline-container-org1d6c1b8" class="outline-3">
-<h3 id="org1d6c1b8"><span class="done DONE">DONE</span> 不重启emacs如何重新加载配置</h3>
-<div class="outline-text-3" id="text-org1d6c1b8">
+<div id="outline-container-org318a1a5" class="outline-3">
+<h3 id="org318a1a5"><span class="section-number-3">1.40</span> <span class="done DONE">DONE</span> 不重启emacs如何重新加载配置</h3>
+<div class="outline-text-3" id="text-1-40">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-07 Fri 13:09]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-07 Fri 13:09]</span></span><br></li>
 </ul>
 <blockquote>
 <p>
-M-x <code>eval-buffer</code>
+M-x <code>eval-buffer</code><br>
 </p>
 </blockquote>
 </div>
 </div>
 
-<div id="outline-container-org8cbb739" class="outline-3">
-<h3 id="org8cbb739"><span class="done DONE">DONE</span> rabbitmq队列数据量堆积过多，服务不正常问题解决?</h3>
-<div class="outline-text-3" id="text-org8cbb739">
+<div id="outline-container-org9434620" class="outline-3">
+<h3 id="org9434620"><span class="section-number-3">1.41</span> <span class="done DONE">DONE</span> rabbitmq队列数据量堆积过多，服务不正常问题解决?</h3>
+<div class="outline-text-3" id="text-1-41">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-10 Mon 16:36]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-10 Mon 16:36]</span></span><br></li>
 </ul>
 <blockquote>
 <p>
-rabbitmq 队列数据堆积过多，导致queue无法取,只能写入，队列无法删除等诡异问题
+rabbitmq 队列数据堆积过多，导致queue无法取,只能写入，队列无法删除等诡异问题<br>
 </p>
 
 <p>
-这里直接删除堆积的大量数据
+这里直接删除堆积的大量数据<br>
 </p>
 
 <p>
-mq数据的存储目录 <code>var/lib/rabbitmq/mnesia/node_name/msg_stores</code> 删除数据，重启节点
+mq数据的存储目录 <code>var/lib/rabbitmq/mnesia/node_name/msg_stores</code> 删除数据，重启节点<br>
 </p>
 </blockquote>
 </div>
 </div>
 
-<div id="outline-container-org4992d96" class="outline-3">
-<h3 id="org4992d96"><span class="done DONE">DONE</span> arch install yaourt</h3>
-<div class="outline-text-3" id="text-org4992d96">
+<div id="outline-container-org176f19c" class="outline-3">
+<h3 id="org176f19c"><span class="section-number-3">1.42</span> <span class="done DONE">DONE</span> arch install yaourt</h3>
+<div class="outline-text-3" id="text-1-42">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-11 Tue 19:03]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-11 Tue 19:03]</span></span><br></li>
 </ul>
 <blockquote>
 <p>
-git clone <a href="https://aur.archlinux.org/package-query.git">https://aur.archlinux.org/package-query.git</a>
+git clone <a href="https://aur.archlinux.org/package-query.git">https://aur.archlinux.org/package-query.git</a><br>
 </p>
 
 <p>
-git clone <a href="https://aur.archlinux.org/yaourt.git">https://aur.archlinux.org/yaourt.git</a>
+git clone <a href="https://aur.archlinux.org/yaourt.git">https://aur.archlinux.org/yaourt.git</a><br>
 </p>
 
 <p>
-makepkg -si
+makepkg -si<br>
 </p>
 
 <p>
-sudo pacman -U *.tar.xz
+sudo pacman -U *.tar.xz<br>
 </p>
 
 
 <p>
-清华镜像:
+清华镜像:<br>
 </p>
 
 <p>
-使用方法：在 /etc/pacman.conf 文件末尾添加以下两行：
+使用方法：在 /etc/pacman.conf 文件末尾添加以下两行：<br>
 </p>
 
 <pre class="example">
@@ -1624,15 +1419,15 @@ Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
 </pre>
 
 <p>
-之后安装 archlinuxcn-keyrin 包导入 GPG key。
+之后安装 archlinuxcn-keyrin 包导入 GPG key。<br>
 </p>
 
 <p>
-sudo pacman -Sy yaourt base-devel fakeroot
+sudo pacman -Sy yaourt base-devel fakeroot<br>
 </p>
 
 <p>
-yaourt -Syu &#x2013;devel &#x2013;aur
+yaourt -Syu &#x2013;devel &#x2013;aur<br>
 </p>
 </blockquote>
 
@@ -1644,14 +1439,23 @@ yaourt -Syu &#x2013;devel &#x2013;aur
 
 
 <p>
-&lt;img src=""
-alt="" align="left"
-title="image title"
-class="img"
+&lt;img src=""<br>
+alt="" align="left"<br>
+title="image title"<br>
+class="img"<br>
 &lt;/img&gt;</p>
 </div>
 </div>
 </div>
+</div>
+<div id="postamble" class="status">
+<p>
+    <a href="">manue1</a> 搭建和维护，使用
+    <a href="https://www.gnu.org/software/emacs/">Emacs</a>
+    <a href="http://orgmode.org/">Org mode</a> 编辑和构建
+</p>
+<script src="http://www.langdebuqing.com/css/jquery-2.1.3.min.js"></script>
+<script src="http://www.langdebuqing.com/css/main.js"></script>
 </div>
 </body>
 </html>

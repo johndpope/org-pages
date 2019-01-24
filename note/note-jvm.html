@@ -1,298 +1,104 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-<!-- 2018-12-26 Wed 16:31 -->
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- 2019-01-24 Thu 21:14 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>jvm 虚拟机学习</title>
-<meta name="generator" content="Org mode" />
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center;
-             margin-bottom: .2em; }
-  .subtitle { text-align: center;
-              font-size: medium;
-              font-weight: bold;
-              margin-top:0; }
-  .todo   { font-family: monospace; color: red; }
-  .done   { font-family: monospace; color: green; }
-  .priority { font-family: monospace; color: orange; }
-  .tag    { background-color: #eee; font-family: monospace;
-            padding: 2px; font-size: 80%; font-weight: normal; }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
-  .underline { text-decoration: underline; }
-  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
-  p.verse { margin-left: 3%; }
-  pre {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
-    padding: 8pt;
-    font-family: monospace;
-    overflow: auto;
-    margin: 1.2em;
-  }
-  pre.src {
-    position: relative;
-    overflow: visible;
-    padding-top: 1.2em;
-  }
-  pre.src:before {
-    display: none;
-    position: absolute;
-    background-color: white;
-    top: -10px;
-    right: 10px;
-    padding: 3px;
-    border: 1px solid black;
-  }
-  pre.src:hover:before { display: inline;}
-  /* Languages per Org manual */
-  pre.src-asymptote:before { content: 'Asymptote'; }
-  pre.src-awk:before { content: 'Awk'; }
-  pre.src-C:before { content: 'C'; }
-  /* pre.src-C++ doesn't work in CSS */
-  pre.src-clojure:before { content: 'Clojure'; }
-  pre.src-css:before { content: 'CSS'; }
-  pre.src-D:before { content: 'D'; }
-  pre.src-ditaa:before { content: 'ditaa'; }
-  pre.src-dot:before { content: 'Graphviz'; }
-  pre.src-calc:before { content: 'Emacs Calc'; }
-  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-fortran:before { content: 'Fortran'; }
-  pre.src-gnuplot:before { content: 'gnuplot'; }
-  pre.src-haskell:before { content: 'Haskell'; }
-  pre.src-hledger:before { content: 'hledger'; }
-  pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
-  pre.src-latex:before { content: 'LaTeX'; }
-  pre.src-ledger:before { content: 'Ledger'; }
-  pre.src-lisp:before { content: 'Lisp'; }
-  pre.src-lilypond:before { content: 'Lilypond'; }
-  pre.src-lua:before { content: 'Lua'; }
-  pre.src-matlab:before { content: 'MATLAB'; }
-  pre.src-mscgen:before { content: 'Mscgen'; }
-  pre.src-ocaml:before { content: 'Objective Caml'; }
-  pre.src-octave:before { content: 'Octave'; }
-  pre.src-org:before { content: 'Org mode'; }
-  pre.src-oz:before { content: 'OZ'; }
-  pre.src-plantuml:before { content: 'Plantuml'; }
-  pre.src-processing:before { content: 'Processing.js'; }
-  pre.src-python:before { content: 'Python'; }
-  pre.src-R:before { content: 'R'; }
-  pre.src-ruby:before { content: 'Ruby'; }
-  pre.src-sass:before { content: 'Sass'; }
-  pre.src-scheme:before { content: 'Scheme'; }
-  pre.src-screen:before { content: 'Gnu Screen'; }
-  pre.src-sed:before { content: 'Sed'; }
-  pre.src-sh:before { content: 'shell'; }
-  pre.src-sql:before { content: 'SQL'; }
-  pre.src-sqlite:before { content: 'SQLite'; }
-  /* additional languages in org.el's org-babel-load-languages alist */
-  pre.src-forth:before { content: 'Forth'; }
-  pre.src-io:before { content: 'IO'; }
-  pre.src-J:before { content: 'J'; }
-  pre.src-makefile:before { content: 'Makefile'; }
-  pre.src-maxima:before { content: 'Maxima'; }
-  pre.src-perl:before { content: 'Perl'; }
-  pre.src-picolisp:before { content: 'Pico Lisp'; }
-  pre.src-scala:before { content: 'Scala'; }
-  pre.src-shell:before { content: 'Shell Script'; }
-  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
-  /* additional language identifiers per "defun org-babel-execute"
-       in ob-*.el */
-  pre.src-cpp:before  { content: 'C++'; }
-  pre.src-abc:before  { content: 'ABC'; }
-  pre.src-coq:before  { content: 'Coq'; }
-  pre.src-groovy:before  { content: 'Groovy'; }
-  /* additional language identifiers from org-babel-shell-names in
-     ob-shell.el: ob-shell is the only babel language using a lambda to put
-     the execution function name together. */
-  pre.src-bash:before  { content: 'bash'; }
-  pre.src-csh:before  { content: 'csh'; }
-  pre.src-ash:before  { content: 'ash'; }
-  pre.src-dash:before  { content: 'dash'; }
-  pre.src-ksh:before  { content: 'ksh'; }
-  pre.src-mksh:before  { content: 'mksh'; }
-  pre.src-posh:before  { content: 'posh'; }
-  /* Additional Emacs modes also supported by the LaTeX listings package */
-  pre.src-ada:before { content: 'Ada'; }
-  pre.src-asm:before { content: 'Assembler'; }
-  pre.src-caml:before { content: 'Caml'; }
-  pre.src-delphi:before { content: 'Delphi'; }
-  pre.src-html:before { content: 'HTML'; }
-  pre.src-idl:before { content: 'IDL'; }
-  pre.src-mercury:before { content: 'Mercury'; }
-  pre.src-metapost:before { content: 'MetaPost'; }
-  pre.src-modula-2:before { content: 'Modula-2'; }
-  pre.src-pascal:before { content: 'Pascal'; }
-  pre.src-ps:before { content: 'PostScript'; }
-  pre.src-prolog:before { content: 'Prolog'; }
-  pre.src-simula:before { content: 'Simula'; }
-  pre.src-tcl:before { content: 'tcl'; }
-  pre.src-tex:before { content: 'TeX'; }
-  pre.src-plain-tex:before { content: 'Plain TeX'; }
-  pre.src-verilog:before { content: 'Verilog'; }
-  pre.src-vhdl:before { content: 'VHDL'; }
-  pre.src-xml:before { content: 'XML'; }
-  pre.src-nxml:before { content: 'XML'; }
-  /* add a generic configuration mode; LaTeX export needs an additional
-     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
-  pre.src-conf:before { content: 'Configuration File'; }
-
-  table { border-collapse:collapse; }
-  caption.t-above { caption-side: top; }
-  caption.t-bottom { caption-side: bottom; }
-  td, th { vertical-align:top;  }
-  th.org-right  { text-align: center;  }
-  th.org-left   { text-align: center;   }
-  th.org-center { text-align: center; }
-  td.org-right  { text-align: right;  }
-  td.org-left   { text-align: left;   }
-  td.org-center { text-align: center; }
-  dt { font-weight: bold; }
-  .footpara { display: inline; }
-  .footdef  { margin-bottom: 1em; }
-  .figure { padding: 1em; }
-  .figure p { text-align: center; }
-  .inlinetask {
-    padding: 10px;
-    border: 2px solid gray;
-    margin: 10px;
-    background: #ffffcc;
-  }
-  #org-div-home-and-up
-   { text-align: right; font-size: 70%; white-space: nowrap; }
-  textarea { overflow-x: auto; }
-  .linenr { font-size: smaller }
-  .code-highlighted { background-color: #ffff00; }
-  .org-info-js_info-navigation { border-style: none; }
-  #org-info-js_console-label
-    { font-size: 10px; font-weight: bold; white-space: nowrap; }
-  .org-info-js_search-highlight
-    { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
-  /*]]>*/-->
-</style>
-<link rel="stylesheet" href="../css/worg.css" type="text/css" media="screen" />
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2018 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
+<meta name="generator" content="Org mode">
+<meta name="author" content="manue1">
+<link rel="stylesheet" type="text/css" href="css/worg.css" />
+<!-- <link rel="shortcut icon" href="http://www.langdebuqing.com/images/favicon.ico" type="image/x-icon" /> -->
 </head>
 <body>
 <div id="preamble" class="status">
-<a href="https://www.manue1.site/index.html">Home</a>
+<div id="navbar">
+    <ul>
+        <li id="site-master"><a href="https://www.manue1.site/">Manue1's Journal</a></li>
+        <li><a class="navbar-item" href="https://www.manue1.site/write.html">All Posts</a> </li>
+        <li><a class="navbar-item" href="https://www.manue1.site/link.html">Links</a> </li>
+        <li class="search">
+            <form action="http://google.com/search" method="get" accept-charset="utf-8">
+                <input type="search" id="search" name="q" autocomplete="off" maxlength="30" placeholder="Search..">
+                <input type="hidden" name="q" value="site:www.manue1.com">
+            </form>
+        </li>
+    </ul>
+</div>
 </div>
 <div id="content">
 <h1 class="title">jvm 虚拟机学习</h1>
 <div id="table-of-contents">
-<h2>Table of Contents</h2>
+<h2>&#30446;&#24405;</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgf4c219f">jvm</a>
+<li><a href="#orge20ee70">1. jvm</a>
 <ul>
-<li><a href="#org3d6d609">Q &amp; A</a></li>
-<li><a href="#org6cc355d">深入理解Java虚拟机</a></li>
+<li><a href="#orgf21dffc">1.1. Q &amp; A</a></li>
+<li><a href="#org1f917b5">1.2. 深入理解Java虚拟机</a>
+<ul>
+<li><a href="#org32d9bd4">1.2.1. 自动内存管理机制</a>
+<ul>
+<li><a href="#orga9c27a3">1.2.1.1. java内存区域与内存溢出异常</a></li>
+<li><a href="#orgbefeb7f">1.2.1.2. 垃圾回收器与内存分配策略</a></li>
+<li><a href="#org61097c2">1.2.1.3. jvm监控与故障处理工具</a></li>
+</ul>
+</li>
+<li><a href="#org04b13c5">1.2.2. 高效并发</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf4c219f" class="outline-2">
-<h2 id="orgf4c219f">jvm</h2>
-<div class="outline-text-2" id="text-orgf4c219f">
+<div id="outline-container-orge20ee70" class="outline-2">
+<h2 id="orge20ee70"><span class="section-number-2">1</span> jvm</h2>
+<div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org3d6d609" class="outline-3">
-<h3 id="org3d6d609">Q &amp; A</h3>
-<div class="outline-text-3" id="text-org3d6d609">
+<div id="outline-container-orgf21dffc" class="outline-3">
+<h3 id="orgf21dffc"><span class="section-number-3">1.1</span> Q &amp; A</h3>
+<div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
-<li>垃圾回收器需要关注的内容：
+<li>垃圾回收器需要关注的内容：<br>
 <ol class="org-ol">
-<li>使用的垃圾回收器的种类</li>
-<li>Java堆的大小</li>
-<li>新生代和老年代的大小</li>
-<li>永久代的大小</li>
-<li>minor GC的持续时间</li>
-<li>minor GC的发生频率</li>
-<li>minor GC回收了多少空间</li>
-<li>major GC的持续时间</li>
-<li>major GC的频率</li>
-<li>在一个并行的垃圾回收周期中回收的空间</li>
-<li>垃圾回收之前和之后Java堆的占用空间</li>
-<li>垃圾回收前后新生代和老年代的占用空间</li>
-<li>垃圾回收前后永久区的占用空间</li>
-<li>是老年代的占用空间还是永久代的占用空间超过阀值促发了一次major GC</li>
-<li>应用程序是否显示调用了system.gc()方法</li>
+<li>使用的垃圾回收器的种类<br></li>
+<li>Java堆的大小<br></li>
+<li>新生代和老年代的大小<br></li>
+<li>永久代的大小<br></li>
+<li>minor GC的持续时间<br></li>
+<li>minor GC的发生频率<br></li>
+<li>minor GC回收了多少空间<br></li>
+<li>major GC的持续时间<br></li>
+<li>major GC的频率<br></li>
+<li>在一个并行的垃圾回收周期中回收的空间<br></li>
+<li>垃圾回收之前和之后Java堆的占用空间<br></li>
+<li>垃圾回收前后新生代和老年代的占用空间<br></li>
+<li>垃圾回收前后永久区的占用空间<br></li>
+<li>是老年代的占用空间还是永久代的占用空间超过阀值促发了一次major GC<br></li>
+<li>应用程序是否显示调用了system.gc()方法<br></li>
 </ol></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org6cc355d" class="outline-3">
-<h3 id="org6cc355d">深入理解Java虚拟机</h3>
-<div class="outline-text-3" id="text-org6cc355d">
+<div id="outline-container-org1f917b5" class="outline-3">
+<h3 id="org1f917b5"><span class="section-number-3">1.2</span> 深入理解Java虚拟机</h3>
+<div class="outline-text-3" id="text-1-2">
 <p>
-周志明. 深入理解Java虚拟机
+周志明. 深入理解Java虚拟机<br>
 </p>
 </div>
-<div id="outline-container-org5a3ac0c" class="outline-4">
-<h4 id="org5a3ac0c">自动内存管理机制</h4>
-<div class="outline-text-4" id="text-org5a3ac0c">
+<div id="outline-container-org32d9bd4" class="outline-4">
+<h4 id="org32d9bd4"><span class="section-number-4">1.2.1</span> 自动内存管理机制</h4>
+<div class="outline-text-4" id="text-1-2-1">
 </div>
-<div id="outline-container-org1b814a8" class="outline-5">
-<h5 id="org1b814a8">java内存区域与内存溢出异常</h5>
-<div class="outline-text-5" id="text-org1b814a8">
+<div id="outline-container-orga9c27a3" class="outline-5">
+<h5 id="orga9c27a3"><span class="section-number-5">1.2.1.1</span> java内存区域与内存溢出异常</h5>
+<div class="outline-text-5" id="text-1-2-1-1">
 </div>
-<ul class="org-ul">
-<li><a id="org53d3db1"></a>运行时数据区域<br />
-<div class="outline-text-6" id="text-org53d3db1">
+<ol class="org-ol">
+<li><a id="org7c6bbad"></a>运行时数据区域<br>
+<div class="outline-text-6" id="text-1-2-1-1-1">
 <pre class="example">
   线程共享数据区     线程隔离数据区
 | Method Area |   | VM Stack | Native Method Stack |
@@ -303,131 +109,131 @@ for the JavaScript code in this tag.
 </pre>
 <ol class="org-ol">
 <li><p>
-pc
-存放一条字节码指令，用来完成 分支，循环，跳转，异常处理
+pc<br>
+存放一条字节码指令，用来完成 分支，循环，跳转，异常处理<br>
 </p>
 
 <p>
-每个处理器都会有一个独立的pc，各条线程之间的计数器不影响
+每个处理器都会有一个独立的pc，各条线程之间的计数器不影响<br>
 </p>
 
 <p>
-pc是唯一一个在jvm中没有规定OutofMemoryError情况的内存区域
+pc是唯一一个在jvm中没有规定OutofMemoryError情况的内存区域<br>
 </p></li>
 <li><p>
-vm stack
-为执行java方法服务
+vm stack<br>
+为执行java方法服务<br>
 </p>
 
 <p>
-stack 用于存储 局部变量、操作栈、动态链接、方法出口等
+stack 用于存储 局部变量、操作栈、动态链接、方法出口等<br>
 </p>
 
 <p>
-每一个方法被调用直至完成的过程，就是对应一个栈帧在虚拟机栈中从入栈到出栈的过程
+每一个方法被调用直至完成的过程，就是对应一个栈帧在虚拟机栈中从入栈到出栈的过程<br>
 </p>
 
 <p>
-方法运行期间不会改变局部变量表的大小
+方法运行期间不会改变局部变量表的大小<br>
 </p>
 
 <p>
-StackOverFlowError 和 OutOfMemoryError 
+StackOverFlowError 和 OutOfMemoryError<br>
 </p></li>
 <li><p>
-Native Method Stacks
+Native Method Stacks<br>
 </p>
 
 <p>
-为jvm使用Native方法服务
+为jvm使用Native方法服务<br>
 </p>
 
 <p>
-不同的虚拟机的native方法实现都不同,语言也不同
+不同的虚拟机的native方法实现都不同,语言也不同<br>
 </p>
 
 <p>
-StackOverFlowError 和 OutOfMemoryError 
+StackOverFlowError 和 OutOfMemoryError<br>
 </p></li>
 <li><p>
-Heap
-此内存区域的唯一目的就是存放对象实例
+Heap<br>
+此内存区域的唯一目的就是存放对象实例<br>
 </p>
 
 <p>
-虚拟机启动时创建,线程共享内存最大的一块
+虚拟机启动时创建,线程共享内存最大的一块<br>
 </p>
 
 <p>
--Xmx和-Xms控制堆内存扩展
+-Xmx和-Xms控制堆内存扩展<br>
 </p>
 
 <p>
-OutOfMemoryError
+OutOfMemoryError<br>
 </p></li>
 <li><p>
-Method Area
-此共享内存区,用来存放被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据
+Method Area<br>
+此共享内存区,用来存放被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据<br>
 </p>
 
 <p>
-方法区被描述为堆的一个逻辑部分
+方法区被描述为堆的一个逻辑部分<br>
 </p>
 
 <p>
-Hotspot虚拟机上,人们把方法区称为"永久代" Permanent Generation
+Hotspot虚拟机上,人们把方法区称为"永久代" Permanent Generation<br>
 </p>
 
 <p>
-gc在这个方法区比较少,但也不是永久的,回收的目标主要是对常量池的回收、类型的卸载
+gc在这个方法区比较少,但也不是永久的,回收的目标主要是对常量池的回收、类型的卸载<br>
 </p>
 
 <p>
-OutOfMemoryError
+OutOfMemoryError<br>
 </p>
 
 <p>
-运行时常量池: 存放编译期生成的各种字面量和符号引用
+运行时常量池: 存放编译期生成的各种字面量和符号引用<br>
 </p>
 
 <p>
-动态性：不要求常量一定只在编译期产生，运行期间也能将常量放入池中，如String的intern()方法
+动态性：不要求常量一定只在编译期产生，运行期间也能将常量放入池中，如String的intern()方法<br>
 </p></li>
 </ol>
 </div>
 </li>
 
-<li><a id="org0beef43"></a>对象访问<br />
-<div class="outline-text-6" id="text-org0beef43">
+<li><a id="org73150a8"></a>对象访问<br>
+<div class="outline-text-6" id="text-1-2-1-1-2">
 <p>
-最简单的访问,也会涉及java stack, java heap , method area 这三个最重要的内存区域
+最简单的访问,也会涉及java stack, java heap , method area 这三个最重要的内存区域<br>
 </p>
 
 <p>
-Object obj = new Object()
+Object obj = new Object()<br>
 </p>
 
 <p>
-stack : "Object obj" 会反映的stack中，作为reference类型
+stack : "Object obj" 会反映的stack中，作为reference类型<br>
 </p>
 
 <p>
-heap :  "new Object()" 在heap中形成长度不定的内存，存储实例数据值
+heap :  "new Object()" 在heap中形成长度不定的内存，存储实例数据值<br>
 </p>
 
 <p>
-method area ； java heap中需要找到数据的对象类型(对象类型、父类、接口)，都存在方法区内
+method area ； java heap中需要找到数据的对象类型(对象类型、父类、接口)，都存在方法区内<br>
 </p>
 <ol class="org-ol">
-<li>句柄访问方式</li>
+<li>句柄访问方式<br></li>
 </ol>
 
 <p>
-优点： reference存储的是稳定的句柄地址,gc的时候移动对象时候，只会改变句柄中的实例数据的指针
+优点： reference存储的是稳定的句柄地址,gc的时候移动对象时候，只会改变句柄中的实例数据的指针<br>
 </p>
 
 <p>
-reference本身不需要改变
+reference本身不需要改变<br>
 </p>
 
 <pre class="example">
@@ -449,19 +255,19 @@ reference本身不需要改变
 </pre>
 <ol class="org-ol">
 <li><p>
-指针访问方式
+指针访问方式<br>
 </p>
 
 <p>
-优点: 速度快,节省了一次指针定位的时间开销
+优点: 速度快,节省了一次指针定位的时间开销<br>
 </p>
 
 <p>
-sun hotspot 虚拟机采用这种
+sun hotspot 虚拟机采用这种<br>
 </p>
 
 <p>
-reference变量中直接存储的就是对象的地址
+reference变量中直接存储的就是对象的地址<br>
 </p></li>
 </ol>
 
@@ -483,236 +289,245 @@ reference变量中直接存储的就是对象的地址
 </pre>
 </div>
 </li>
-<li><a id="org355cf48"></a>OutOfMemoryError异常<br />
-<div class="outline-text-6" id="text-org355cf48">
+<li><a id="orgabb28d6"></a>OutOfMemoryError异常<br>
+<div class="outline-text-6" id="text-1-2-1-1-3">
 <p>
-内存 泄漏（ Memory Leak） 
+内存 泄漏（ Memory Leak）<br>
 </p>
 
 <p>
-内存 溢出（ Memory Overflow）
+内存 溢出（ Memory Overflow）<br>
 </p>
 
 <ol class="org-ol">
-<li>java堆溢出
-将堆最小值-Xms和最大值-Xmx 设置一样可避免堆自动扩展</li>
+<li>java堆溢出<br>
+将堆最小值-Xms和最大值-Xmx 设置一样可避免堆自动扩展<br></li>
 </ol>
 
 <p>
-&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-   参数- XX：+ HeapDump OnOutOfMemoryError 出现内存溢出做快照以便后续分析
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD<br>
+   参数- XX：+ HeapDump OnOutOfMemoryError 出现内存溢出做快照以便后续分析<br>
 </p>
 
 <p>
-java. lang. OutOfMemoryError: Java heap space
+java. lang. OutOfMemoryError: Java heap space<br>
 </p>
 
 <ol class="org-ol">
 <li><p>
-vm stack 和 native method stack 溢出
+vm stack 和 native method stack 溢出<br>
 </p>
 
 <p>
-HotSpot不区分虚拟机栈和本地方法栈，对于HotSpot来说，-Xoss参数 设置本地方法栈大小 是无效的，
+HotSpot不区分虚拟机栈和本地方法栈，对于HotSpot来说，-Xoss参数 设置本地方法栈大小 是无效的，<br>
 </p>
 
 <p>
-栈容量只由-Xss参数设定
+栈容量只由-Xss参数设定<br>
 </p>
 
 <p>
-每个线程分配的stack容量越大,线程数就越少,建立线程时越容易把内存耗尽,开发多线程时候要注意栈溢出
+每个线程分配的stack容量越大,线程数就越少,建立线程时越容易把内存耗尽,开发多线程时候要注意栈溢出<br>
 </p>
 
 <p>
-如window 32位 一个进程最多2g，这种栈溢出，可以采用减少最大堆和减少栈容量来处理多线程
+如window 32位 一个进程最多2g，这种栈溢出，可以采用减少最大堆和减少栈容量来处理多线程<br>
 </p></li>
 
 <li><p>
-方法区内 常量池溢出
+方法区内 常量池溢出<br>
 </p>
 
 <p>
--XX : PermSize 和 -XX : MaxPermSize 限制方法区大小
+-XX : PermSize 和 -XX : MaxPermSize 限制方法区大小<br>
 </p>
 
 <p>
-PermGen space 永久代 常量池溢出
+PermGen space 永久代 常量池溢出<br>
 </p>
 
 <p>
-方法区用于存放 Class的 相关信息
+方法区用于存放 Class的 相关信息<br>
 </p>
 
 <p>
-如类名、访问修饰符、常量池、字段描述、方法描述等。
+如类名、访问修饰符、常量池、字段描述、方法描述等。<br>
 </p>
 
 <p>
-对于这个区域的测试,基本的思路是运行时产生大量 的类去填满方法区,直到溢出
+对于这个区域的测试,基本的思路是运行时产生大量 的类去填满方法区,直到溢出<br>
 </p></li>
 </ol>
 </div>
 </li>
-</ul>
+</ol>
 </div>
 
-<div id="outline-container-org5d7598a" class="outline-5">
-<h5 id="org5d7598a">垃圾回收器与内存分配策略</h5>
-<div class="outline-text-5" id="text-org5d7598a">
+<div id="outline-container-orgbefeb7f" class="outline-5">
+<h5 id="orgbefeb7f"><span class="section-number-5">1.2.1.2</span> 垃圾回收器与内存分配策略</h5>
+<div class="outline-text-5" id="text-1-2-1-2">
 </div>
-<ul class="org-ul">
-<li><a id="orgc2d31e5"></a>为什么要回收和分配<br />
-<div class="outline-text-6" id="text-orgc2d31e5">
+<ol class="org-ol">
+<li><a id="org2e93009"></a>为什么要回收和分配<br>
+<div class="outline-text-6" id="text-1-2-1-2-1">
 <ol class="org-ol">
 <li><p>
-哪些内存需要回收？ 
+哪些内存需要回收？<br>
 </p>
 
 <p>
-vm stack 、native method stack 、 method area
-生命周期伴随线程，大小也基本在类结构确定下来时就已知的,这些不需要回收
+vm stack 、native method stack 、 method area<br>
+生命周期伴随线程，大小也基本在类结构确定下来时就已知的,这些不需要回收<br>
 </p>
 
 <p>
-java堆中，一个接口中的多个实现类需要的内存可能不一样，
-一个方法中的多个分支需要的内存也不一样，
-只有在程序运行是才知道创建哪些对象，这些内存分配和回收是动态的
+java堆中，一个接口中的多个实现类需要的内存可能不一样，<br>
+一个方法中的多个分支需要的内存也不一样，<br>
+只有在程序运行是才知道创建哪些对象，这些内存分配和回收是动态的<br>
 </p></li>
 
 <li><p>
-什么时候回收？ 
+什么时候回收？<br>
 </p>
 
 <p>
-java采用根搜索算法来判断对象是否存活,以GC root的对象作为起始点，向下搜索，
-搜索所走的路径叫引用链 reference chain
+java采用根搜索算法来判断对象是否存活,以GC root的对象作为起始点，向下搜索，<br>
+搜索所走的路径叫引用链 reference chain<br>
 </p>
 
 <p>
-当一个对象多GC Root没有任何引用链（gcroot到这个对象不可达）,则对象是不可用的
+当一个对象多GC Root没有任何引用链（gcroot到这个对象不可达）,则对象是不可用的<br>
 </p>
 
 <ul class="org-ul">
-<li>GC Root对象: 
-· 虚拟机栈（栈帧中的本地变量表）中的引用的对象。</li>
+<li>GC Root对象:<br>
+· 虚拟机栈（栈帧中的本地变量表）中的引用的对象。<br></li>
 </ul></li>
 </ol>
 
 
 <ol class="org-ol">
 <li><p>
-如何回收？
+如何回收？<br>
 </p>
 
 <p>
-内存动态分配和内存回收技术
+内存动态分配和内存回收技术<br>
 </p>
 
 <p>
-方法区回收主要：废弃常量和无用的类，
-回收效率很低，回收条件苛刻(1.java堆中不存在任何该类实例2.加载该类的ClassLoader已经回收3.没有引用)
+方法区回收主要：废弃常量和无用的类，<br>
+回收效率很低，回收条件苛刻(1.java堆中不存在任何该类实例2.加载该类的ClassLoader已经回收3.没有引用)<br>
 </p>
 
 <p>
-在堆中，尤其是在新生代中，常规应用进行一次垃圾收集一般可以回收70%-95%的空间
+在堆中，尤其是在新生代中，常规应用进行一次垃圾收集一般可以回收70%-95%的空间<br>
 </p></li>
 </ol>
 </div>
 </li>
 
-<li><a id="orgf2d8fa0"></a>垃圾收集算法<br />
-<div class="outline-text-6" id="text-orgf2d8fa0">
+<li><a id="org5a45f83"></a>垃圾收集算法<br>
+<div class="outline-text-6" id="text-1-2-1-2-2">
 <ol class="org-ol">
-<li>标记-清除算法
-清除之后产生大量不连续内存碎片</li>
+<li>标记-清除算法<br>
+清除之后产生大量不连续内存碎片<br></li>
 <li><p>
-复制收集算法
-先将内存按容量分为大小相同的两块，当一块内存用完，将存活的对象复制到另外一块上面,然后再把使用过的内存一次清洗掉
+复制收集算法<br>
+先将内存按容量分为大小相同的两块，当一块内存用完，将存活的对象复制到另外一块上面,然后再把使用过的内存一次清洗掉<br>
 </p>
 
 <p>
-这样不需要考虑内存碎片问题
+这样不需要考虑内存碎片问题<br>
 </p>
 
 <p>
-很多商业虚拟机都采用这种收集算法来回收新生代,HotSpot将新生代内存分为80%Eden和两个10%Survivor区域,
-预留10%的survivor空间来存储存活的对象
+很多商业虚拟机都采用这种收集算法来回收新生代,HotSpot将新生代内存分为80%Eden和两个10%Survivor区域,<br>
+预留10%的survivor空间来存储存活的对象<br>
 </p></li>
-<li>标记-整理算法</li>
+<li>标记-整理算法<br></li>
 </ol>
 </div>
 </li>
-</ul>
+</ol>
 </div>
 
-<div id="outline-container-org6ad6052" class="outline-5">
-<h5 id="org6ad6052">jvm监控与故障处理工具</h5>
-<div class="outline-text-5" id="text-org6ad6052">
+<div id="outline-container-org61097c2" class="outline-5">
+<h5 id="org61097c2"><span class="section-number-5">1.2.1.3</span> jvm监控与故障处理工具</h5>
+<div class="outline-text-5" id="text-1-2-1-3">
 <ol class="org-ol">
-<li>jps jinfo
-运行的使用jvm的进程</li>
+<li>jps jinfo<br>
+运行的使用jvm的进程<br></li>
 <li><p>
-jstat 
+jstat<br>
 </p>
 
 <p>
-jstat -gc 24612 250 10 250ms查询一次24612进程的gc情况，10次
+jstat -gc 24612 250 10 250ms查询一次24612进程的gc情况，10次<br>
 </p></li>
-<li>jstack</li>
+<li>jstack<br></li>
 
 <li><p>
-jconsole
+jconsole<br>
 </p>
 
 <p>
-内存监控 jstat 
+内存监控 jstat<br>
 </p>
 
 <p>
-线程监控 jstack
+线程监控 jstack<br>
 </p></li>
 
-<li>Visual VM</li>
+<li>Visual VM<br></li>
 </ol>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orga78b360" class="outline-4">
-<h4 id="orga78b360">高效并发</h4>
-<div class="outline-text-4" id="text-orga78b360">
+<div id="outline-container-org04b13c5" class="outline-4">
+<h4 id="org04b13c5"><span class="section-number-4">1.2.2</span> 高效并发</h4>
+<div class="outline-text-4" id="text-1-2-2">
 <ol class="org-ol">
 <li><p>
-java内存模型
-存储设备 (内存) &lt; 高速缓存  &lt; 处理器 
-计算操作从缓存同步内存设备中的数据，这样处理器就无须等待缓慢的内存读写
+java内存模型<br>
+存储设备 (内存) &lt; 高速缓存  &lt; 处理器<br>
+计算操作从缓存同步内存设备中的数据，这样处理器就无须等待缓慢的内存读写<br>
 </p>
 
 <p>
-多处理器系统内,每一个处理器都有自己的高速缓存,同时共享一个主内存，就会导致各自的缓存不一致,所以高速缓存要遵循一些协议
+多处理器系统内,每一个处理器都有自己的高速缓存,同时共享一个主内存，就会导致各自的缓存不一致,所以高速缓存要遵循一些协议<br>
 </p>
 
 <p>
-java内存模型 JMM 的设计同上，在多个线程并发处理的时候，jvm采用ava内存模型来缓存存储设备上的数据,来实现高效并发
+java内存模型 JMM 的设计同上，在多个线程并发处理的时候，jvm采用ava内存模型来缓存存储设备上的数据,来实现高效并发<br>
 </p></li>
 
 <li><p>
-java与线程 
+java与线程<br>
 </p>
 
 <p>
-线程既可以共享进程资源(内存地址、文件IO)，又可以独立调度(线程是CPU调度的最基本单位)
+线程既可以共享进程资源(内存地址、文件IO)，又可以独立调度(线程是CPU调度的最基本单位)<br>
 </p>
 
 <p>
-java.lang.Thread类的实例就是一个线程
+java.lang.Thread类的实例就是一个线程<br>
 </p></li>
 </ol>
 </div>
 </div>
 </div>
 </div>
+</div>
+<div id="postamble" class="status">
+<p>
+    <a href="">manue1</a> 搭建和维护，使用
+    <a href="https://www.gnu.org/software/emacs/">Emacs</a>
+    <a href="http://orgmode.org/">Org mode</a> 编辑和构建
+</p>
+<script src="http://www.langdebuqing.com/css/jquery-2.1.3.min.js"></script>
+<script src="http://www.langdebuqing.com/css/main.js"></script>
 </div>
 </body>
 </html>

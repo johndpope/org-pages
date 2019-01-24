@@ -1,231 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-<!-- 2018-12-26 Wed 16:31 -->
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- 2019-01-24 Thu 21:14 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>emacs 发布org-mode文件到html</title>
-<meta name="generator" content="Org mode" />
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center;
-             margin-bottom: .2em; }
-  .subtitle { text-align: center;
-              font-size: medium;
-              font-weight: bold;
-              margin-top:0; }
-  .todo   { font-family: monospace; color: red; }
-  .done   { font-family: monospace; color: green; }
-  .priority { font-family: monospace; color: orange; }
-  .tag    { background-color: #eee; font-family: monospace;
-            padding: 2px; font-size: 80%; font-weight: normal; }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
-  .underline { text-decoration: underline; }
-  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
-  p.verse { margin-left: 3%; }
-  pre {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
-    padding: 8pt;
-    font-family: monospace;
-    overflow: auto;
-    margin: 1.2em;
-  }
-  pre.src {
-    position: relative;
-    overflow: visible;
-    padding-top: 1.2em;
-  }
-  pre.src:before {
-    display: none;
-    position: absolute;
-    background-color: white;
-    top: -10px;
-    right: 10px;
-    padding: 3px;
-    border: 1px solid black;
-  }
-  pre.src:hover:before { display: inline;}
-  /* Languages per Org manual */
-  pre.src-asymptote:before { content: 'Asymptote'; }
-  pre.src-awk:before { content: 'Awk'; }
-  pre.src-C:before { content: 'C'; }
-  /* pre.src-C++ doesn't work in CSS */
-  pre.src-clojure:before { content: 'Clojure'; }
-  pre.src-css:before { content: 'CSS'; }
-  pre.src-D:before { content: 'D'; }
-  pre.src-ditaa:before { content: 'ditaa'; }
-  pre.src-dot:before { content: 'Graphviz'; }
-  pre.src-calc:before { content: 'Emacs Calc'; }
-  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-fortran:before { content: 'Fortran'; }
-  pre.src-gnuplot:before { content: 'gnuplot'; }
-  pre.src-haskell:before { content: 'Haskell'; }
-  pre.src-hledger:before { content: 'hledger'; }
-  pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
-  pre.src-latex:before { content: 'LaTeX'; }
-  pre.src-ledger:before { content: 'Ledger'; }
-  pre.src-lisp:before { content: 'Lisp'; }
-  pre.src-lilypond:before { content: 'Lilypond'; }
-  pre.src-lua:before { content: 'Lua'; }
-  pre.src-matlab:before { content: 'MATLAB'; }
-  pre.src-mscgen:before { content: 'Mscgen'; }
-  pre.src-ocaml:before { content: 'Objective Caml'; }
-  pre.src-octave:before { content: 'Octave'; }
-  pre.src-org:before { content: 'Org mode'; }
-  pre.src-oz:before { content: 'OZ'; }
-  pre.src-plantuml:before { content: 'Plantuml'; }
-  pre.src-processing:before { content: 'Processing.js'; }
-  pre.src-python:before { content: 'Python'; }
-  pre.src-R:before { content: 'R'; }
-  pre.src-ruby:before { content: 'Ruby'; }
-  pre.src-sass:before { content: 'Sass'; }
-  pre.src-scheme:before { content: 'Scheme'; }
-  pre.src-screen:before { content: 'Gnu Screen'; }
-  pre.src-sed:before { content: 'Sed'; }
-  pre.src-sh:before { content: 'shell'; }
-  pre.src-sql:before { content: 'SQL'; }
-  pre.src-sqlite:before { content: 'SQLite'; }
-  /* additional languages in org.el's org-babel-load-languages alist */
-  pre.src-forth:before { content: 'Forth'; }
-  pre.src-io:before { content: 'IO'; }
-  pre.src-J:before { content: 'J'; }
-  pre.src-makefile:before { content: 'Makefile'; }
-  pre.src-maxima:before { content: 'Maxima'; }
-  pre.src-perl:before { content: 'Perl'; }
-  pre.src-picolisp:before { content: 'Pico Lisp'; }
-  pre.src-scala:before { content: 'Scala'; }
-  pre.src-shell:before { content: 'Shell Script'; }
-  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
-  /* additional language identifiers per "defun org-babel-execute"
-       in ob-*.el */
-  pre.src-cpp:before  { content: 'C++'; }
-  pre.src-abc:before  { content: 'ABC'; }
-  pre.src-coq:before  { content: 'Coq'; }
-  pre.src-groovy:before  { content: 'Groovy'; }
-  /* additional language identifiers from org-babel-shell-names in
-     ob-shell.el: ob-shell is the only babel language using a lambda to put
-     the execution function name together. */
-  pre.src-bash:before  { content: 'bash'; }
-  pre.src-csh:before  { content: 'csh'; }
-  pre.src-ash:before  { content: 'ash'; }
-  pre.src-dash:before  { content: 'dash'; }
-  pre.src-ksh:before  { content: 'ksh'; }
-  pre.src-mksh:before  { content: 'mksh'; }
-  pre.src-posh:before  { content: 'posh'; }
-  /* Additional Emacs modes also supported by the LaTeX listings package */
-  pre.src-ada:before { content: 'Ada'; }
-  pre.src-asm:before { content: 'Assembler'; }
-  pre.src-caml:before { content: 'Caml'; }
-  pre.src-delphi:before { content: 'Delphi'; }
-  pre.src-html:before { content: 'HTML'; }
-  pre.src-idl:before { content: 'IDL'; }
-  pre.src-mercury:before { content: 'Mercury'; }
-  pre.src-metapost:before { content: 'MetaPost'; }
-  pre.src-modula-2:before { content: 'Modula-2'; }
-  pre.src-pascal:before { content: 'Pascal'; }
-  pre.src-ps:before { content: 'PostScript'; }
-  pre.src-prolog:before { content: 'Prolog'; }
-  pre.src-simula:before { content: 'Simula'; }
-  pre.src-tcl:before { content: 'tcl'; }
-  pre.src-tex:before { content: 'TeX'; }
-  pre.src-plain-tex:before { content: 'Plain TeX'; }
-  pre.src-verilog:before { content: 'Verilog'; }
-  pre.src-vhdl:before { content: 'VHDL'; }
-  pre.src-xml:before { content: 'XML'; }
-  pre.src-nxml:before { content: 'XML'; }
-  /* add a generic configuration mode; LaTeX export needs an additional
-     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
-  pre.src-conf:before { content: 'Configuration File'; }
-
-  table { border-collapse:collapse; }
-  caption.t-above { caption-side: top; }
-  caption.t-bottom { caption-side: bottom; }
-  td, th { vertical-align:top;  }
-  th.org-right  { text-align: center;  }
-  th.org-left   { text-align: center;   }
-  th.org-center { text-align: center; }
-  td.org-right  { text-align: right;  }
-  td.org-left   { text-align: left;   }
-  td.org-center { text-align: center; }
-  dt { font-weight: bold; }
-  .footpara { display: inline; }
-  .footdef  { margin-bottom: 1em; }
-  .figure { padding: 1em; }
-  .figure p { text-align: center; }
-  .inlinetask {
-    padding: 10px;
-    border: 2px solid gray;
-    margin: 10px;
-    background: #ffffcc;
-  }
-  #org-div-home-and-up
-   { text-align: right; font-size: 70%; white-space: nowrap; }
-  textarea { overflow-x: auto; }
-  .linenr { font-size: smaller }
-  .code-highlighted { background-color: #ffff00; }
-  .org-info-js_info-navigation { border-style: none; }
-  #org-info-js_console-label
-    { font-size: 10px; font-weight: bold; white-space: nowrap; }
-  .org-info-js_search-highlight
-    { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
-  /*]]>*/-->
-</style>
-<link rel="stylesheet" href="../css/worg.css" type="text/css" media="screen" />
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2018 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
+<meta name="generator" content="Org mode">
+<meta name="author" content="manue1">
+<link rel="stylesheet" type="text/css" href="css/worg.css" />
+<!-- <link rel="shortcut icon" href="http://www.langdebuqing.com/images/favicon.ico" type="image/x-icon" /> -->
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         displayAlign: "center",
@@ -247,76 +30,88 @@ for the JavaScript code in this tag.
 });
 </script>
 <script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+        src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="preamble" class="status">
-<a href="https://www.manue1.site/index.html">Home</a>
+<div id="navbar">
+    <ul>
+        <li id="site-master"><a href="https://www.manue1.site/">Manue1's Journal</a></li>
+        <li><a class="navbar-item" href="https://www.manue1.site/write.html">All Posts</a> </li>
+        <li><a class="navbar-item" href="https://www.manue1.site/link.html">Links</a> </li>
+        <li class="search">
+            <form action="http://google.com/search" method="get" accept-charset="utf-8">
+                <input type="search" id="search" name="q" autocomplete="off" maxlength="30" placeholder="Search..">
+                <input type="hidden" name="q" value="site:www.manue1.com">
+            </form>
+        </li>
+    </ul>
+</div>
 </div>
 <div id="content">
 <h1 class="title">emacs 发布org-mode文件到html</h1>
 <div id="table-of-contents">
-<h2>Table of Contents</h2>
+<h2>&#30446;&#24405;</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org74e8c9d">简介</a></li>
-<li><a href="#org4eb07f6">基本使用</a></li>
-<li><a href="#org9fec940">发布org工程文件</a></li>
-<li><a href="#org570af04">重写导出模版有两种方式</a></li>
-<li><a href="#orgdc3b5a2">概述 overview</a>
+<li><a href="#org6daa755">1. 简介</a></li>
+<li><a href="#orgeb98630">2. 基本使用</a></li>
+<li><a href="#org9e0bd83">3. 发布org工程文件</a></li>
+<li><a href="#org6c2d205">4. 重写导出模版有两种方式</a></li>
+<li><a href="#orgb7ea539">5. 概述 overview</a>
 <ul>
-<li><a href="#org6466c3a">sitemap</a></li>
-<li><a href="#orge0c4ab6">org-info.js</a></li>
+<li><a href="#orgad3b541">5.1. sitemap</a></li>
+<li><a href="#org046e60b">5.2. org-info.js</a></li>
 </ul>
 </li>
-<li><a href="#orga9c0134">特殊符号表</a></li>
+<li><a href="#orgcec8350">6. 特殊符号表</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org74e8c9d" class="outline-2">
-<h2 id="org74e8c9d">简介</h2>
-<div class="outline-text-2" id="text-org74e8c9d">
+<div id="outline-container-org6daa755" class="outline-2">
+<h2 id="org6daa755"><span class="section-number-2">1</span> 简介</h2>
+<div class="outline-text-2" id="text-1">
 <p>
-此向导描述了一些以XHTML格式发布Org-mode文件的方法.
-用自动发布机制使生成的 <code>*.html</code> 文件与原始 <code>*.org</code> 文件分离,
-自动生成的XHTML能够运行在任何地方，可以通过 <code>file:///</code> 协议访问.
+此向导描述了一些以XHTML格式发布Org-mode文件的方法.<br>
+用自动发布机制使生成的 <code>*.html</code> 文件与原始 <code>*.org</code> 文件分离,<br>
+自动生成的XHTML能够运行在任何地方，可以通过 <code>file:///</code> 协议访问.<br>
 </p>
 
 <ul class="org-ul">
-<li>在html内不会出现绝对路径</li>
-<li>没有服务器端脚本来指定我们的输出目录</li>
-<li>没有base元素（从XHTML 1.0严格来看是可选的）</li>
-<li>只需要emacs,org-mode,浏览器</li>
+<li>在html内不会出现绝对路径<br></li>
+<li>没有服务器端脚本来指定我们的输出目录<br></li>
+<li>没有base元素（从XHTML 1.0严格来看是可选的）<br></li>
+<li>只需要emacs,org-mode,浏览器<br></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org4eb07f6" class="outline-2">
-<h2 id="org4eb07f6">基本使用</h2>
-<div class="outline-text-2" id="text-org4eb07f6">
+<div id="outline-container-orgeb98630" class="outline-2">
+<h2 id="orgeb98630"><span class="section-number-2">2</span> 基本使用</h2>
+<div class="outline-text-2" id="text-2">
 <p>
-在这个向导内，我们假设我们所有的Org-mode文件在 <code>～/org-pages/</code> ，并且将它发布到 <code>~/html-pages/</code> .
+在这个向导内，我们假设我们所有的Org-mode文件在 <code>～/org-pages/</code> ，并且将它发布到 <code>~/html-pages/</code> .<br>
 </p>
 
 <p>
-首先创建 <code>~/org-pages</code> ,这里存放org note文件，在 <code>~/org-pages/</code> 目录内我们需要 <code>css/</code> 目录存放
+首先创建 <code>~/org-pages</code> ,这里存放org note文件，在 <code>~/org-pages/</code> 目录内我们需要 <code>css/</code> 目录存放<br>
 </p>
 
 <p>
-stylesheets 和 scripts 还需要 <code>images/</code> 目录存放图片视频的文件
+stylesheets 和 scripts 还需要 <code>images/</code> 目录存放图片视频的文件<br>
 </p>
 
 <p>
-在 <code>~/org-pages</code> 目录下创建的第一个 主页文件 <code>index.org</code> ,发布文件后，生成 <code>~/html-pages/index.html</code>
+在 <code>~/org-pages</code> 目录下创建的第一个 主页文件 <code>index.org</code> ,发布文件后，生成 <code>~/html-pages/index.html</code><br>
 </p>
 
 <p>
-添加一个样式文件到 <code>~/org-pages/css</code> 目录下，这里提供一个worg的css格式 <a href="file:///Users/manue1/org/css/worg.css">file:///Users/manue1/org/css/worg.css</a>
+添加一个样式文件到 <code>~/org-pages/css</code> 目录下，这里提供一个worg的css格式 <a href="file:///Users/manue1/org/css/worg.css">file:///Users/manue1/org/css/worg.css</a><br>
 </p>
 
 <p>
-在 <code>~/org-pages</code> 目录下创建第二个 头文件 <code>setup.org</code> ,用来在每个org文件内引入样式
+在 <code>~/org-pages</code> 目录下创建第二个 头文件 <code>setup.org</code> ,用来在每个org文件内引入样式<br>
 </p>
 
 <pre class="example">
@@ -330,7 +125,7 @@ stylesheets 和 scripts 还需要 <code>images/</code> 目录存放图片视频�
 </pre>
 
 <p>
-添加一个文件和图片的引用，用下面的方式
+添加一个文件和图片的引用，用下面的方式<br>
 </p>
 
 <pre class="example">
@@ -341,50 +136,50 @@ stylesheets 和 scripts 还需要 <code>images/</code> 目录存放图片视频�
 </div>
 </div>
 
-<div id="outline-container-org9fec940" class="outline-2">
-<h2 id="org9fec940">发布org工程文件</h2>
-<div class="outline-text-2" id="text-org9fec940">
+<div id="outline-container-org9e0bd83" class="outline-2">
+<h2 id="org9e0bd83"><span class="section-number-2">3</span> 发布org工程文件</h2>
+<div class="outline-text-2" id="text-3">
 <p>
-emacs配置如下：
+emacs配置如下：<br>
 </p>
 <div class="org-src-container">
 <pre class="src src-lisp">
-<span style="color: #707183;">(</span>setq org-publish-project-alist
-  '<span style="color: #7388d6;">(</span>
-    <span style="color: #909183;">(</span><span style="color: #8b2252;">"org-html"</span>
-        <span style="color: #483d8b;">:base-directory</span> <span style="color: #8b2252;">"~/github/org-pages"</span>
-        <span style="color: #483d8b;">:base-extension</span> <span style="color: #8b2252;">"org"</span>
-        <span style="color: #483d8b;">:publishing-directory</span> <span style="color: #8b2252;">"~/github/html-pages"</span>
-        <span style="color: #483d8b;">:section-numbers</span> nil
-        <span style="color: #483d8b;">:recursive</span> t
-        <span style="color: #483d8b;">:publishing-function</span> org-html-publish-to-html
-        <span style="color: #483d8b;">:headline-levels</span> 4
-        <span style="color: #483d8b;">:auto-sitemap</span> t
-        <span style="color: #483d8b;">:sitemap-filename</span> <span style="color: #8b2252;">"sitemap.org"</span>
-        <span style="color: #483d8b;">:sitemap-title</span> <span style="color: #8b2252;">"Sitemap"</span>
-        <span style="color: #483d8b;">:auto-preamble</span> t
-        <span style="color: #483d8b;">:author</span> nil
-        <span style="color: #483d8b;">:creator-info</span> nil
-        <span style="color: #483d8b;">:auto-postamble</span> nil<span style="color: #909183;">)</span>
-    <span style="color: #909183;">(</span><span style="color: #8b2252;">"org-static"</span>
-        <span style="color: #483d8b;">:base-directory</span> <span style="color: #8b2252;">"~/github/org-pages"</span>
-        <span style="color: #483d8b;">:base-extension</span> <span style="color: #8b2252;">"html\\|css\\|js\\|ico\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf\\|java\\|py\\|zip\\|arff\\|dat\\|cpp\\|xls\\|otf\\|woff"</span>
-        <span style="color: #483d8b;">:publishing-directory</span> <span style="color: #8b2252;">"~/github/html-pages"</span>
-        <span style="color: #483d8b;">:recursive</span> t
-        <span style="color: #483d8b;">:publishing-function</span> org-publish-attachment<span style="color: #909183;">)</span>
-    <span style="color: #909183;">(</span><span style="color: #8b2252;">"org-pages"</span> <span style="color: #483d8b;">:components</span> <span style="color: #709870;">(</span><span style="color: #8b2252;">"org-html"</span> <span style="color: #8b2252;">"org-static"</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span>
-<span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #458588;">(</span>setq org-publish-project-alist
+  '<span style="color: #b16286;">(</span>
+    <span style="color: #8ec07c;">(</span><span style="color: #79740e;">"org-html"</span>
+        <span style="color: #af3a03;">:base-directory</span> <span style="color: #79740e;">"~/github/org-pages"</span>
+        <span style="color: #af3a03;">:base-extension</span> <span style="color: #79740e;">"org"</span>
+        <span style="color: #af3a03;">:publishing-directory</span> <span style="color: #79740e;">"~/github/html-pages"</span>
+        <span style="color: #af3a03;">:section-numbers</span> nil
+        <span style="color: #af3a03;">:recursive</span> t
+        <span style="color: #af3a03;">:publishing-function</span> org-html-publish-to-html
+        <span style="color: #af3a03;">:headline-levels</span> 4
+        <span style="color: #af3a03;">:auto-sitemap</span> t
+        <span style="color: #af3a03;">:sitemap-filename</span> <span style="color: #79740e;">"sitemap.org"</span>
+        <span style="color: #af3a03;">:sitemap-title</span> <span style="color: #79740e;">"Sitemap"</span>
+        <span style="color: #af3a03;">:auto-preamble</span> t
+        <span style="color: #af3a03;">:author</span> nil
+        <span style="color: #af3a03;">:creator-info</span> nil
+        <span style="color: #af3a03;">:auto-postamble</span> nil<span style="color: #8ec07c;">)</span>
+    <span style="color: #8ec07c;">(</span><span style="color: #79740e;">"org-static"</span>
+        <span style="color: #af3a03;">:base-directory</span> <span style="color: #79740e;">"~/github/org-pages"</span>
+        <span style="color: #af3a03;">:base-extension</span> <span style="color: #79740e;">"html\\|css\\|js\\|ico\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf\\|java\\|py\\|zip\\|arff\\|dat\\|cpp\\|xls\\|otf\\|woff"</span>
+        <span style="color: #af3a03;">:publishing-directory</span> <span style="color: #79740e;">"~/github/html-pages"</span>
+        <span style="color: #af3a03;">:recursive</span> t
+        <span style="color: #af3a03;">:publishing-function</span> org-publish-attachment<span style="color: #8ec07c;">)</span>
+    <span style="color: #8ec07c;">(</span><span style="color: #79740e;">"org-pages"</span> <span style="color: #af3a03;">:components</span> <span style="color: #d65d0e;">(</span><span style="color: #79740e;">"org-html"</span> <span style="color: #79740e;">"org-static"</span><span style="color: #d65d0e;">)</span><span style="color: #8ec07c;">)</span>
+<span style="color: #b16286;">)</span><span style="color: #458588;">)</span>
 
-<span style="color: #b22222;">;</span><span style="color: #b22222;">export html no footer detail</span>
-<span style="color: #707183;">(</span>setq org-html-postamble nil<span style="color: #707183;">)</span>
-<span style="color: #707183;">(</span>setq org-html-preamble <span style="color: #8b2252;">"&lt;a href=\"index.html\"&gt;Home&lt;/a&gt;"</span><span style="color: #707183;">)</span>
+<span style="color: #a89984;">;</span><span style="color: #a89984;">export html no footer detail</span>
+<span style="color: #458588;">(</span>setq org-html-postamble nil<span style="color: #458588;">)</span>
+<span style="color: #458588;">(</span>setq org-html-preamble <span style="color: #79740e;">"&lt;a href=\"index.html\"&gt;Home&lt;/a&gt;"</span><span style="color: #458588;">)</span>
 
 
 </pre>
 </div>
 
 <p>
-一些有用的参数:
+一些有用的参数:<br>
 </p>
 <pre class="example">
 recursive t 发布子目录
@@ -393,34 +188,34 @@ recursive t 发布子目录
 
 
 <p>
-发布快捷键：
-： M-x org-publish-project RET org-pages RET
+发布快捷键：<br>
+： M-x org-publish-project RET org-pages RET<br>
 </p>
 </div>
 </div>
 
-<div id="outline-container-org570af04" class="outline-2">
-<h2 id="org570af04">重写导出模版有两种方式</h2>
-<div class="outline-text-2" id="text-org570af04">
+<div id="outline-container-org6c2d205" class="outline-2">
+<h2 id="org6c2d205"><span class="section-number-2">4</span> 重写导出模版有两种方式</h2>
+<div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li><p>
-<code>C-c C-e #</code>
+<code>C-c C-e #</code><br>
 </p>
 
 <p>
-添加各种导出格式的模版,手动添加比较繁琐
+添加各种导出格式的模版,手动添加比较繁琐<br>
 </p></li>
 
 <li><p>
-<code>~/.emacs.d/org-templates/</code>
+<code>~/.emacs.d/org-templates/</code><br>
 </p>
 
 <p>
-生成一个org导出样式模版，各级目录的样式进行规范
+生成一个org导出样式模版，各级目录的样式进行规范<br>
 </p>
 
 <p>
-文章头部引入方式
+文章头部引入方式<br>
 </p>
 
 <pre class="example">
@@ -432,15 +227,15 @@ recursive t 发布子目录
 </div>
 </div>
 
-<div id="outline-container-orgdc3b5a2" class="outline-2">
-<h2 id="orgdc3b5a2">概述 overview</h2>
-<div class="outline-text-2" id="text-orgdc3b5a2">
+<div id="outline-container-orgb7ea539" class="outline-2">
+<h2 id="orgb7ea539"><span class="section-number-2">5</span> 概述 overview</h2>
+<div class="outline-text-2" id="text-5">
 </div>
-<div id="outline-container-org6466c3a" class="outline-3">
-<h3 id="org6466c3a">sitemap</h3>
-<div class="outline-text-3" id="text-org6466c3a">
+<div id="outline-container-orgad3b541" class="outline-3">
+<h3 id="orgad3b541"><span class="section-number-3">5.1</span> sitemap</h3>
+<div class="outline-text-3" id="text-5-1">
 <p>
-在发布org工程的时候通过下面这些参数控制sitemap的生成
+在发布org工程的时候通过下面这些参数控制sitemap的生成<br>
 </p>
 <pre class="example">
 :auto-sitemap t                ; Generate sitemap.org automagically...
@@ -450,12 +245,12 @@ recursive t 发布子目录
 </pre>
 
 <p>
-进入sitemap的方式有两种:
+进入sitemap的方式有两种:<br>
 </p>
 
 <ol class="org-ol">
 <li><p>
-设置link-up
+设置link-up<br>
 </p>
 <pre class="example">
 #+LINK_UP: sitemap.html
@@ -463,7 +258,7 @@ recursive t 发布子目录
 </pre></li>
 
 <li><p>
-使用INCLUDE指令
+使用INCLUDE指令<br>
 </p>
 <pre class="example">
 #+INCLUDE: sitemap.org
@@ -474,16 +269,16 @@ recursive t 发布子目录
 </div>
 
 
-<div id="outline-container-orge0c4ab6" class="outline-3">
-<h3 id="orge0c4ab6">org-info.js</h3>
-<div class="outline-text-3" id="text-orge0c4ab6">
+<div id="outline-container-org046e60b" class="outline-3">
+<h3 id="org046e60b"><span class="section-number-3">5.2</span> org-info.js</h3>
+<div class="outline-text-3" id="text-5-2">
 <p>
-LINK_UP 在不同层级目录配置有所不同
+LINK_UP 在不同层级目录配置有所不同<br>
 </p>
 
 <ol class="org-ol">
 <li><p>
-对于每个文件内，或者是org-level-N.org
+对于每个文件内，或者是org-level-N.org<br>
 </p>
 
 <pre class="example">
@@ -492,17 +287,17 @@ LINK_UP 在不同层级目录配置有所不同
 </pre>
 
 <p>
-这里是指向当前子目录的主页
+这里是指向当前子目录的主页<br>
 </p></li>
 <li><p>
-根目录下的index.org 配置
+根目录下的index.org 配置<br>
 </p>
 <pre class="example">
 #+LINK_UP: sitemap.html
 
 </pre></li>
 <li><p>
-子目录下的index.org 配置
+子目录下的index.org 配置<br>
 </p>
 <pre class="example">
 #+LINK_UP: ../index.html
@@ -513,20 +308,20 @@ LINK_UP 在不同层级目录配置有所不同
 </div>
 </div>
 
-<div id="outline-container-orga9c0134" class="outline-2">
-<h2 id="orga9c0134">特殊符号表</h2>
-<div class="outline-text-2" id="text-orga9c0134">
+<div id="outline-container-orgcec8350" class="outline-2">
+<h2 id="orgcec8350"><span class="section-number-2">6</span> 特殊符号表</h2>
+<div class="outline-text-2" id="text-6">
 <p>
-org-mode 支持的 LaTeX 特殊符号
+org-mode 支持的 LaTeX 特殊符号<br>
 </p>
 
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table>
 
 
 <colgroup>
-<col  class="org-left" />
+<col  class="org-left">
 
-<col  class="org-left" />
+<col  class="org-left">
 </colgroup>
 <thead>
 <tr>
@@ -1967,6 +1762,15 @@ org-mode 支持的 LaTeX 特殊符号
 <a href="https://orgmode.org/worg/org-tutorials/org-publish-html-tutorial.html">官方文档</a></p>
 </div>
 </div>
+</div>
+<div id="postamble" class="status">
+<p>
+    <a href="">manue1</a> 搭建和维护，使用
+    <a href="https://www.gnu.org/software/emacs/">Emacs</a>
+    <a href="http://orgmode.org/">Org mode</a> 编辑和构建
+</p>
+<script src="http://www.langdebuqing.com/css/jquery-2.1.3.min.js"></script>
+<script src="http://www.langdebuqing.com/css/main.js"></script>
 </div>
 </body>
 </html>

@@ -1,470 +1,274 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-<!-- 2019-01-24 Thu 12:22 -->
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- 2019-01-24 Thu 21:15 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Writing List</title>
-<meta name="generator" content="Org mode" />
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center;
-             margin-bottom: .2em; }
-  .subtitle { text-align: center;
-              font-size: medium;
-              font-weight: bold;
-              margin-top:0; }
-  .todo   { font-family: monospace; color: red; }
-  .done   { font-family: monospace; color: green; }
-  .priority { font-family: monospace; color: orange; }
-  .tag    { background-color: #eee; font-family: monospace;
-            padding: 2px; font-size: 80%; font-weight: normal; }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
-  .underline { text-decoration: underline; }
-  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
-  p.verse { margin-left: 3%; }
-  pre {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
-    padding: 8pt;
-    font-family: monospace;
-    overflow: auto;
-    margin: 1.2em;
-  }
-  pre.src {
-    position: relative;
-    overflow: visible;
-    padding-top: 1.2em;
-  }
-  pre.src:before {
-    display: none;
-    position: absolute;
-    background-color: white;
-    top: -10px;
-    right: 10px;
-    padding: 3px;
-    border: 1px solid black;
-  }
-  pre.src:hover:before { display: inline;}
-  /* Languages per Org manual */
-  pre.src-asymptote:before { content: 'Asymptote'; }
-  pre.src-awk:before { content: 'Awk'; }
-  pre.src-C:before { content: 'C'; }
-  /* pre.src-C++ doesn't work in CSS */
-  pre.src-clojure:before { content: 'Clojure'; }
-  pre.src-css:before { content: 'CSS'; }
-  pre.src-D:before { content: 'D'; }
-  pre.src-ditaa:before { content: 'ditaa'; }
-  pre.src-dot:before { content: 'Graphviz'; }
-  pre.src-calc:before { content: 'Emacs Calc'; }
-  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-fortran:before { content: 'Fortran'; }
-  pre.src-gnuplot:before { content: 'gnuplot'; }
-  pre.src-haskell:before { content: 'Haskell'; }
-  pre.src-hledger:before { content: 'hledger'; }
-  pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
-  pre.src-latex:before { content: 'LaTeX'; }
-  pre.src-ledger:before { content: 'Ledger'; }
-  pre.src-lisp:before { content: 'Lisp'; }
-  pre.src-lilypond:before { content: 'Lilypond'; }
-  pre.src-lua:before { content: 'Lua'; }
-  pre.src-matlab:before { content: 'MATLAB'; }
-  pre.src-mscgen:before { content: 'Mscgen'; }
-  pre.src-ocaml:before { content: 'Objective Caml'; }
-  pre.src-octave:before { content: 'Octave'; }
-  pre.src-org:before { content: 'Org mode'; }
-  pre.src-oz:before { content: 'OZ'; }
-  pre.src-plantuml:before { content: 'Plantuml'; }
-  pre.src-processing:before { content: 'Processing.js'; }
-  pre.src-python:before { content: 'Python'; }
-  pre.src-R:before { content: 'R'; }
-  pre.src-ruby:before { content: 'Ruby'; }
-  pre.src-sass:before { content: 'Sass'; }
-  pre.src-scheme:before { content: 'Scheme'; }
-  pre.src-screen:before { content: 'Gnu Screen'; }
-  pre.src-sed:before { content: 'Sed'; }
-  pre.src-sh:before { content: 'shell'; }
-  pre.src-sql:before { content: 'SQL'; }
-  pre.src-sqlite:before { content: 'SQLite'; }
-  /* additional languages in org.el's org-babel-load-languages alist */
-  pre.src-forth:before { content: 'Forth'; }
-  pre.src-io:before { content: 'IO'; }
-  pre.src-J:before { content: 'J'; }
-  pre.src-makefile:before { content: 'Makefile'; }
-  pre.src-maxima:before { content: 'Maxima'; }
-  pre.src-perl:before { content: 'Perl'; }
-  pre.src-picolisp:before { content: 'Pico Lisp'; }
-  pre.src-scala:before { content: 'Scala'; }
-  pre.src-shell:before { content: 'Shell Script'; }
-  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
-  /* additional language identifiers per "defun org-babel-execute"
-       in ob-*.el */
-  pre.src-cpp:before  { content: 'C++'; }
-  pre.src-abc:before  { content: 'ABC'; }
-  pre.src-coq:before  { content: 'Coq'; }
-  pre.src-groovy:before  { content: 'Groovy'; }
-  /* additional language identifiers from org-babel-shell-names in
-     ob-shell.el: ob-shell is the only babel language using a lambda to put
-     the execution function name together. */
-  pre.src-bash:before  { content: 'bash'; }
-  pre.src-csh:before  { content: 'csh'; }
-  pre.src-ash:before  { content: 'ash'; }
-  pre.src-dash:before  { content: 'dash'; }
-  pre.src-ksh:before  { content: 'ksh'; }
-  pre.src-mksh:before  { content: 'mksh'; }
-  pre.src-posh:before  { content: 'posh'; }
-  /* Additional Emacs modes also supported by the LaTeX listings package */
-  pre.src-ada:before { content: 'Ada'; }
-  pre.src-asm:before { content: 'Assembler'; }
-  pre.src-caml:before { content: 'Caml'; }
-  pre.src-delphi:before { content: 'Delphi'; }
-  pre.src-html:before { content: 'HTML'; }
-  pre.src-idl:before { content: 'IDL'; }
-  pre.src-mercury:before { content: 'Mercury'; }
-  pre.src-metapost:before { content: 'MetaPost'; }
-  pre.src-modula-2:before { content: 'Modula-2'; }
-  pre.src-pascal:before { content: 'Pascal'; }
-  pre.src-ps:before { content: 'PostScript'; }
-  pre.src-prolog:before { content: 'Prolog'; }
-  pre.src-simula:before { content: 'Simula'; }
-  pre.src-tcl:before { content: 'tcl'; }
-  pre.src-tex:before { content: 'TeX'; }
-  pre.src-plain-tex:before { content: 'Plain TeX'; }
-  pre.src-verilog:before { content: 'Verilog'; }
-  pre.src-vhdl:before { content: 'VHDL'; }
-  pre.src-xml:before { content: 'XML'; }
-  pre.src-nxml:before { content: 'XML'; }
-  /* add a generic configuration mode; LaTeX export needs an additional
-     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
-  pre.src-conf:before { content: 'Configuration File'; }
-
-  table { border-collapse:collapse; }
-  caption.t-above { caption-side: top; }
-  caption.t-bottom { caption-side: bottom; }
-  td, th { vertical-align:top;  }
-  th.org-right  { text-align: center;  }
-  th.org-left   { text-align: center;   }
-  th.org-center { text-align: center; }
-  td.org-right  { text-align: right;  }
-  td.org-left   { text-align: left;   }
-  td.org-center { text-align: center; }
-  dt { font-weight: bold; }
-  .footpara { display: inline; }
-  .footdef  { margin-bottom: 1em; }
-  .figure { padding: 1em; }
-  .figure p { text-align: center; }
-  .inlinetask {
-    padding: 10px;
-    border: 2px solid gray;
-    margin: 10px;
-    background: #ffffcc;
-  }
-  #org-div-home-and-up
-   { text-align: right; font-size: 70%; white-space: nowrap; }
-  textarea { overflow-x: auto; }
-  .linenr { font-size: smaller }
-  .code-highlighted { background-color: #ffff00; }
-  .org-info-js_info-navigation { border-style: none; }
-  #org-info-js_console-label
-    { font-size: 10px; font-weight: bold; white-space: nowrap; }
-  .org-info-js_search-highlight
-    { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
-  /*]]>*/-->
-</style>
-<link rel="stylesheet" href="css/worg.css" type="text/css" media="screen" />
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2018 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
+<meta name="generator" content="Org mode">
+<meta name="author" content="manue1">
+<link rel="stylesheet" type="text/css" href="css/worg.css" />
+<!-- <link rel="shortcut icon" href="http://www.langdebuqing.com/images/favicon.ico" type="image/x-icon" /> -->
 </head>
 <body>
 <div id="preamble" class="status">
-<a href="https://www.manue1.site/index.html">Home</a>
+<div id="navbar">
+    <ul>
+        <li id="site-master"><a href="https://www.manue1.site/">Manue1's Journal</a></li>
+        <li><a class="navbar-item" href="https://www.manue1.site/write.html">All Posts</a> </li>
+        <li><a class="navbar-item" href="https://www.manue1.site/link.html">Links</a> </li>
+        <li class="search">
+            <form action="http://google.com/search" method="get" accept-charset="utf-8">
+                <input type="search" id="search" name="q" autocomplete="off" maxlength="30" placeholder="Search..">
+                <input type="hidden" name="q" value="site:www.manue1.com">
+            </form>
+        </li>
+    </ul>
+</div>
 </div>
 <div id="content">
 <h1 class="title">Writing List</h1>
 <div id="table-of-contents">
-<h2>Table of Contents</h2>
+<h2>&#30446;&#24405;</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org171ffc4">Writing List</a>
+<li><a href="#orgdb3f9c2">1. Writing List</a>
 <ul>
-<li><a href="#org1302961"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-01-23 Wed 17:50&gt; </span></span> iptables笔记</a></li>
-<li><a href="#orgc7d964f"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">&lt;2018-12-28 Fri 19:43&gt; </span></span> Python Pomodoro</a></li>
-<li><a href="#org7b00844"><span class="done DONE">DONE</span> question &amp; answer</a></li>
-<li><a href="#org910b80f"><span class="done DONE">DONE</span> emacs 发布org-mode文件到html</a></li>
-<li><a href="#orgf8eeebc"><span class="done DONE">DONE</span> emacs快速调用chrome或者emacs-w3m打开链接</a></li>
-<li><a href="#org4d1c384"><span class="done DONE">DONE</span> centos集群部署</a></li>
-<li><a href="#org4149652"><span class="done DONE">DONE</span> hive的使用</a></li>
-<li><a href="#org56f5c2f"><span class="done DONE">DONE</span> sqoop同步关系型数据库</a></li>
-<li><a href="#org716aae2"><span class="done DONE">DONE</span> kytoto cabinet &amp; tycoon k-v型离线数据库</a></li>
-<li><a href="#orgaf3a540"><span class="done DONE">DONE</span> awk程序设计语言</a></li>
-<li><a href="#orgd47e9d6"><span class="done DONE">DONE</span> 使用docker自动部署cisco iou实验环境</a></li>
-<li><a href="#orgcffeccd"><span class="done DONE">DONE</span> docker能替代vbox吗?</a></li>
-<li><a href="#orgf96b16e"><span class="done DONE">DONE</span> https站点证书配置</a></li>
-<li><a href="#org0f86216"><span class="done DONE">DONE</span> rabbitmq使用中的一些记录</a></li>
-<li><a href="#orgf998cd6"><span class="done DONE">DONE</span> 一些常用快捷键和系统命令</a></li>
-<li><a href="#org3626597"><span class="done ABORT">ABORT</span> elasticsearch</a></li>
-<li><a href="#org717ef70"><span class="todo TODO">TODO</span> 量化交易</a></li>
-<li><a href="#org8c3b609"><span class="todo TODO">TODO</span> kafka</a></li>
-<li><a href="#org96f9ff9"><span class="todo TODO">TODO</span> mysql</a></li>
-<li><a href="#org5ce38b5"><span class="todo TODO">TODO</span> 磁盘管理</a></li>
-<li><a href="#org83971a8"><span class="todo TODO">TODO</span> emacs</a></li>
-<li><a href="#org02a621e"><span class="todo TODO">TODO</span> git</a></li>
-<li><a href="#orgb08298c"><span class="todo TODO">TODO</span> jvm理解</a></li>
-<li><a href="#org0c4c78b"><span class="todo TODO">TODO</span> 对冲基金</a></li>
-<li><a href="#org81e0a4d"><span class="todo TODO">TODO</span> redis</a></li>
-<li><a href="#org76538fb"><span class="todo TODO">TODO</span> scrapy对ftp站点遍历下载</a></li>
-<li><a href="#orga9e0d9d"><span class="todo TODO">TODO</span> spark</a></li>
-<li><a href="#orgb9996c8"><span class="todo TODO">TODO</span> tmux</a></li>
-<li><a href="#orgb3c9776"><span class="todo TODO">TODO</span> 微信机器人</a></li>
-<li><a href="#org8f76abf"><span class="todo TODO">TODO</span> nginx</a></li>
-<li><a href="#org75b66d1"><span class="todo TODO">TODO</span> org-mode格式排版</a></li>
+<li><a href="#orgc746f51">1.1. <span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-01-23 Wed 17:50&gt; </span></span> iptables笔记</a></li>
+<li><a href="#orgf98c6df">1.2. <span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">&lt;2018-12-28 Fri 19:43&gt; </span></span> Python Pomodoro</a></li>
+<li><a href="#org903d22e">1.3. <span class="done DONE">DONE</span> question &amp; answer</a></li>
+<li><a href="#org94dfed1">1.4. <span class="done DONE">DONE</span> emacs 发布org-mode文件到html</a></li>
+<li><a href="#org6dec5ac">1.5. <span class="done DONE">DONE</span> emacs快速调用chrome或者emacs-w3m打开链接</a></li>
+<li><a href="#org3dd23d1">1.6. <span class="done DONE">DONE</span> centos集群部署</a></li>
+<li><a href="#org58629ca">1.7. <span class="done DONE">DONE</span> hive的使用</a></li>
+<li><a href="#org982e988">1.8. <span class="done DONE">DONE</span> sqoop同步关系型数据库</a></li>
+<li><a href="#org77a796e">1.9. <span class="done DONE">DONE</span> kytoto cabinet &amp; tycoon k-v型离线数据库</a></li>
+<li><a href="#org5058b9d">1.10. <span class="done DONE">DONE</span> awk程序设计语言</a></li>
+<li><a href="#orgab82ed3">1.11. <span class="done DONE">DONE</span> 使用docker自动部署cisco iou实验环境</a></li>
+<li><a href="#orgd1d62fb">1.12. <span class="done DONE">DONE</span> docker能替代vbox吗?</a></li>
+<li><a href="#org0423c0a">1.13. <span class="done DONE">DONE</span> https站点证书配置</a></li>
+<li><a href="#org2b7ecda">1.14. <span class="done DONE">DONE</span> rabbitmq使用中的一些记录</a></li>
+<li><a href="#orgd4753d1">1.15. <span class="done DONE">DONE</span> 一些常用快捷键和系统命令</a></li>
+<li><a href="#orgc56e9dc">1.16. <span class="done ABORT">ABORT</span> elasticsearch</a></li>
+<li><a href="#org8bf2287">1.17. <span class="todo TODO">TODO</span> 量化交易</a></li>
+<li><a href="#org8fcc82a">1.18. <span class="todo TODO">TODO</span> kafka</a></li>
+<li><a href="#org38f5799">1.19. <span class="todo TODO">TODO</span> mysql</a></li>
+<li><a href="#org12e00d8">1.20. <span class="todo TODO">TODO</span> 磁盘管理</a></li>
+<li><a href="#orgebd0827">1.21. <span class="todo TODO">TODO</span> emacs</a></li>
+<li><a href="#org9feb646">1.22. <span class="todo TODO">TODO</span> git</a></li>
+<li><a href="#orge52ccab">1.23. <span class="todo TODO">TODO</span> jvm理解</a></li>
+<li><a href="#orgbc6caed">1.24. <span class="todo TODO">TODO</span> 对冲基金</a></li>
+<li><a href="#orgcbd6b00">1.25. <span class="todo TODO">TODO</span> redis</a></li>
+<li><a href="#org6630ba4">1.26. <span class="todo TODO">TODO</span> scrapy对ftp站点遍历下载</a></li>
+<li><a href="#org3224a57">1.27. <span class="todo TODO">TODO</span> spark</a></li>
+<li><a href="#org957dc8f">1.28. <span class="todo TODO">TODO</span> tmux</a></li>
+<li><a href="#org0e42a77">1.29. <span class="todo TODO">TODO</span> 微信机器人</a></li>
+<li><a href="#org6c39257">1.30. <span class="todo TODO">TODO</span> nginx</a></li>
+<li><a href="#orgd8ad5d6">1.31. <span class="todo TODO">TODO</span> org-mode格式排版</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org171ffc4" class="outline-2">
-<h2 id="org171ffc4">Writing List</h2>
-<div class="outline-text-2" id="text-org171ffc4">
+<div id="outline-container-orgdb3f9c2" class="outline-2">
+<h2 id="orgdb3f9c2"><span class="section-number-2">1</span> Writing List</h2>
+<div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org1302961" class="outline-3">
-<h3 id="org1302961"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-01-23 Wed 17:50&gt; </span></span> <a href="note/note-iptables.html">iptables笔记</a></h3>
-<div class="outline-text-3" id="text-org1302961">
+<div id="outline-container-orgc746f51" class="outline-3">
+<h3 id="orgc746f51"><span class="section-number-3">1.1</span> <span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-01-23 Wed 17:50&gt; </span></span> <a href="note/note-iptables.html">iptables笔记</a></h3>
+<div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-01-23 Wed 17:53]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-01-23 Wed 17:53]</span></span><br></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc7d964f" class="outline-3">
-<h3 id="orgc7d964f"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">&lt;2018-12-28 Fri 19:43&gt; </span></span> <a href="note/python.html">Python Pomodoro</a></h3>
-<div class="outline-text-3" id="text-orgc7d964f">
+<div id="outline-container-orgf98c6df" class="outline-3">
+<h3 id="orgf98c6df"><span class="section-number-3">1.2</span> <span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">&lt;2018-12-28 Fri 19:43&gt; </span></span> <a href="note/python.html">Python Pomodoro</a></h3>
+<div class="outline-text-3" id="text-1-2">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-28 Fri 19:45]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-28 Fri 19:45]</span></span><br></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org7b00844" class="outline-3">
-<h3 id="org7b00844"><span class="done DONE">DONE</span> <a href="q&amp;a.html">question &amp; answer</a></h3>
-<div class="outline-text-3" id="text-org7b00844">
+<div id="outline-container-org903d22e" class="outline-3">
+<h3 id="org903d22e"><span class="section-number-3">1.3</span> <span class="done DONE">DONE</span> <a href="q&amp;a.html">question &amp; answer</a></h3>
+<div class="outline-text-3" id="text-1-3">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-06 Thu 14:47]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-06 Thu 14:47]</span></span><br></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org910b80f" class="outline-3">
-<h3 id="org910b80f"><span class="done DONE">DONE</span> <a href="note/org-to-html.html">emacs 发布org-mode文件到html</a></h3>
-<div class="outline-text-3" id="text-org910b80f">
+<div id="outline-container-org94dfed1" class="outline-3">
+<h3 id="org94dfed1"><span class="section-number-3">1.4</span> <span class="done DONE">DONE</span> <a href="note/org-to-html.html">emacs 发布org-mode文件到html</a></h3>
+<div class="outline-text-3" id="text-1-4">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-06 Thu 14:48]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-06 Thu 14:48]</span></span><br></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf8eeebc" class="outline-3">
-<h3 id="orgf8eeebc"><span class="done DONE">DONE</span> <a href="note/emacs-w3m.html">emacs快速调用chrome或者emacs-w3m打开链接</a></h3>
-<div class="outline-text-3" id="text-orgf8eeebc">
+<div id="outline-container-org6dec5ac" class="outline-3">
+<h3 id="org6dec5ac"><span class="section-number-3">1.5</span> <span class="done DONE">DONE</span> <a href="note/emacs-w3m.html">emacs快速调用chrome或者emacs-w3m打开链接</a></h3>
+<div class="outline-text-3" id="text-1-5">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-07 Fri 15:21]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-07 Fri 15:21]</span></span><br></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org4d1c384" class="outline-3">
-<h3 id="org4d1c384"><span class="done DONE">DONE</span> <a href="note/note-linux-centos.html">centos集群部署</a></h3>
-<div class="outline-text-3" id="text-org4d1c384">
+<div id="outline-container-org3dd23d1" class="outline-3">
+<h3 id="org3dd23d1"><span class="section-number-3">1.6</span> <span class="done DONE">DONE</span> <a href="note/note-linux-centos.html">centos集群部署</a></h3>
+<div class="outline-text-3" id="text-1-6">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-06 Thu 14:48]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-06 Thu 14:48]</span></span><br></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org4149652" class="outline-3">
-<h3 id="org4149652"><span class="done DONE">DONE</span> <a href="note/hive.html">hive的使用</a></h3>
-<div class="outline-text-3" id="text-org4149652">
+<div id="outline-container-org58629ca" class="outline-3">
+<h3 id="org58629ca"><span class="section-number-3">1.7</span> <span class="done DONE">DONE</span> <a href="note/hive.html">hive的使用</a></h3>
+<div class="outline-text-3" id="text-1-7">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-06 Thu 14:49]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-06 Thu 14:49]</span></span><br></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org56f5c2f" class="outline-3">
-<h3 id="org56f5c2f"><span class="done DONE">DONE</span> <a href="note/sqoop.html">sqoop同步关系型数据库</a></h3>
-<div class="outline-text-3" id="text-org56f5c2f">
+<div id="outline-container-org982e988" class="outline-3">
+<h3 id="org982e988"><span class="section-number-3">1.8</span> <span class="done DONE">DONE</span> <a href="note/sqoop.html">sqoop同步关系型数据库</a></h3>
+<div class="outline-text-3" id="text-1-8">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-06 Thu 12:50]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-06 Thu 12:50]</span></span><br></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org716aae2" class="outline-3">
-<h3 id="org716aae2"><span class="done DONE">DONE</span> <a href="note/note-kc&amp;kt.html">kytoto cabinet &amp; tycoon k-v型离线数据库</a></h3>
-<div class="outline-text-3" id="text-org716aae2">
+<div id="outline-container-org77a796e" class="outline-3">
+<h3 id="org77a796e"><span class="section-number-3">1.9</span> <span class="done DONE">DONE</span> <a href="note/note-kc&amp;kt.html">kytoto cabinet &amp; tycoon k-v型离线数据库</a></h3>
+<div class="outline-text-3" id="text-1-9">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-06 Thu 14:49]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-06 Thu 14:49]</span></span><br></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgaf3a540" class="outline-3">
-<h3 id="orgaf3a540"><span class="done DONE">DONE</span> <a href="note/note-linux-awk.html">awk程序设计语言</a></h3>
-<div class="outline-text-3" id="text-orgaf3a540">
+<div id="outline-container-org5058b9d" class="outline-3">
+<h3 id="org5058b9d"><span class="section-number-3">1.10</span> <span class="done DONE">DONE</span> <a href="note/note-linux-awk.html">awk程序设计语言</a></h3>
+<div class="outline-text-3" id="text-1-10">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-06 Thu 14:50]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-06 Thu 14:50]</span></span><br></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd47e9d6" class="outline-3">
-<h3 id="orgd47e9d6"><span class="done DONE">DONE</span> <a href="note/note-docker-cisco_iou.html">使用docker自动部署cisco iou实验环境</a></h3>
-<div class="outline-text-3" id="text-orgd47e9d6">
+<div id="outline-container-orgab82ed3" class="outline-3">
+<h3 id="orgab82ed3"><span class="section-number-3">1.11</span> <span class="done DONE">DONE</span> <a href="note/note-docker-cisco_iou.html">使用docker自动部署cisco iou实验环境</a></h3>
+<div class="outline-text-3" id="text-1-11">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-06 Thu 14:50]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-06 Thu 14:50]</span></span><br></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgcffeccd" class="outline-3">
-<h3 id="orgcffeccd"><span class="done DONE">DONE</span> <a href="note/note-docker-learn.html">docker能替代vbox吗?</a></h3>
-<div class="outline-text-3" id="text-orgcffeccd">
+<div id="outline-container-orgd1d62fb" class="outline-3">
+<h3 id="orgd1d62fb"><span class="section-number-3">1.12</span> <span class="done DONE">DONE</span> <a href="note/note-docker-learn.html">docker能替代vbox吗?</a></h3>
+<div class="outline-text-3" id="text-1-12">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-06 Thu 14:50]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-06 Thu 14:50]</span></span><br></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf96b16e" class="outline-3">
-<h3 id="orgf96b16e"><span class="done DONE">DONE</span> <a href="note/ssl.html">https站点证书配置</a></h3>
-<div class="outline-text-3" id="text-orgf96b16e">
+<div id="outline-container-org0423c0a" class="outline-3">
+<h3 id="org0423c0a"><span class="section-number-3">1.13</span> <span class="done DONE">DONE</span> <a href="note/ssl.html">https站点证书配置</a></h3>
+<div class="outline-text-3" id="text-1-13">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-06 Thu 14:50]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-06 Thu 14:50]</span></span><br></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org0f86216" class="outline-3">
-<h3 id="org0f86216"><span class="done DONE">DONE</span> <a href="note/rabbitmq.html">rabbitmq使用中的一些记录</a></h3>
-<div class="outline-text-3" id="text-org0f86216">
+<div id="outline-container-org2b7ecda" class="outline-3">
+<h3 id="org2b7ecda"><span class="section-number-3">1.14</span> <span class="done DONE">DONE</span> <a href="note/rabbitmq.html">rabbitmq使用中的一些记录</a></h3>
+<div class="outline-text-3" id="text-1-14">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-06 Thu 14:50]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-06 Thu 14:50]</span></span><br></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf998cd6" class="outline-3">
-<h3 id="orgf998cd6"><span class="done DONE">DONE</span> <a href="note/note-shortcutes.html">一些常用快捷键和系统命令</a></h3>
-<div class="outline-text-3" id="text-orgf998cd6">
+<div id="outline-container-orgd4753d1" class="outline-3">
+<h3 id="orgd4753d1"><span class="section-number-3">1.15</span> <span class="done DONE">DONE</span> <a href="note/note-shortcutes.html">一些常用快捷键和系统命令</a></h3>
+<div class="outline-text-3" id="text-1-15">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-06 Thu 14:50]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-06 Thu 14:50]</span></span><br></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org3626597" class="outline-3">
-<h3 id="org3626597"><span class="done ABORT">ABORT</span> <a href="note/note-elasticsearch.html">elasticsearch</a></h3>
-<div class="outline-text-3" id="text-org3626597">
+<div id="outline-container-orgc56e9dc" class="outline-3">
+<h3 id="orgc56e9dc"><span class="section-number-3">1.16</span> <span class="done ABORT">ABORT</span> <a href="note/note-elasticsearch.html">elasticsearch</a></h3>
+<div class="outline-text-3" id="text-1-16">
 <ul class="org-ul">
-<li>State "ABORT"      from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-11 Tue 16:41]</span></span></li>
+<li>State "ABORT"      from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-11 Tue 16:41]</span></span><br></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org717ef70" class="outline-3">
-<h3 id="org717ef70"><span class="todo TODO">TODO</span> <a href="note/auto-stack.html">量化交易</a></h3>
+<div id="outline-container-org8bf2287" class="outline-3">
+<h3 id="org8bf2287"><span class="section-number-3">1.17</span> <span class="todo TODO">TODO</span> <a href="note/auto-stack.html">量化交易</a></h3>
 </div>
-<div id="outline-container-org8c3b609" class="outline-3">
-<h3 id="org8c3b609"><span class="todo TODO">TODO</span> <a href="note/kafka.html">kafka</a></h3>
+<div id="outline-container-org8fcc82a" class="outline-3">
+<h3 id="org8fcc82a"><span class="section-number-3">1.18</span> <span class="todo TODO">TODO</span> <a href="note/kafka.html">kafka</a></h3>
 </div>
 
-<div id="outline-container-org96f9ff9" class="outline-3">
-<h3 id="org96f9ff9"><span class="todo TODO">TODO</span> <a href="note/mysql.html">mysql</a></h3>
+<div id="outline-container-org38f5799" class="outline-3">
+<h3 id="org38f5799"><span class="section-number-3">1.19</span> <span class="todo TODO">TODO</span> <a href="note/mysql.html">mysql</a></h3>
 </div>
 
-<div id="outline-container-org5ce38b5" class="outline-3">
-<h3 id="org5ce38b5"><span class="todo TODO">TODO</span> <a href="note/note-disk_mount.html">磁盘管理</a></h3>
+<div id="outline-container-org12e00d8" class="outline-3">
+<h3 id="org12e00d8"><span class="section-number-3">1.20</span> <span class="todo TODO">TODO</span> <a href="note/note-disk_mount.html">磁盘管理</a></h3>
 </div>
 
-<div id="outline-container-org83971a8" class="outline-3">
-<h3 id="org83971a8"><span class="todo TODO">TODO</span> <a href="note/note-emacs.html">emacs</a></h3>
+<div id="outline-container-orgebd0827" class="outline-3">
+<h3 id="orgebd0827"><span class="section-number-3">1.21</span> <span class="todo TODO">TODO</span> <a href="note/note-emacs.html">emacs</a></h3>
 </div>
 
-<div id="outline-container-org02a621e" class="outline-3">
-<h3 id="org02a621e"><span class="todo TODO">TODO</span> <a href="note/note-git.html">git</a></h3>
+<div id="outline-container-org9feb646" class="outline-3">
+<h3 id="org9feb646"><span class="section-number-3">1.22</span> <span class="todo TODO">TODO</span> <a href="note/note-git.html">git</a></h3>
 </div>
 
-<div id="outline-container-orgb08298c" class="outline-3">
-<h3 id="orgb08298c"><span class="todo TODO">TODO</span> <a href="note/note-jvm.html">jvm理解</a></h3>
+<div id="outline-container-orge52ccab" class="outline-3">
+<h3 id="orge52ccab"><span class="section-number-3">1.23</span> <span class="todo TODO">TODO</span> <a href="note/note-jvm.html">jvm理解</a></h3>
 </div>
 
-<div id="outline-container-org0c4c78b" class="outline-3">
-<h3 id="org0c4c78b"><span class="todo TODO">TODO</span> <a href="note/note-options.html">对冲基金</a></h3>
+<div id="outline-container-orgbc6caed" class="outline-3">
+<h3 id="orgbc6caed"><span class="section-number-3">1.24</span> <span class="todo TODO">TODO</span> <a href="note/note-options.html">对冲基金</a></h3>
 </div>
 
-<div id="outline-container-org81e0a4d" class="outline-3">
-<h3 id="org81e0a4d"><span class="todo TODO">TODO</span> <a href="note/note-redis.html">redis</a></h3>
+<div id="outline-container-orgcbd6b00" class="outline-3">
+<h3 id="orgcbd6b00"><span class="section-number-3">1.25</span> <span class="todo TODO">TODO</span> <a href="note/note-redis.html">redis</a></h3>
 </div>
 
-<div id="outline-container-org76538fb" class="outline-3">
-<h3 id="org76538fb"><span class="todo TODO">TODO</span> <a href="note/note-scrapy-ftp.html">scrapy对ftp站点遍历下载</a></h3>
+<div id="outline-container-org6630ba4" class="outline-3">
+<h3 id="org6630ba4"><span class="section-number-3">1.26</span> <span class="todo TODO">TODO</span> <a href="note/note-scrapy-ftp.html">scrapy对ftp站点遍历下载</a></h3>
 </div>
-<div id="outline-container-orga9e0d9d" class="outline-3">
-<h3 id="orga9e0d9d"><span class="todo TODO">TODO</span> <a href="note/note-spark_use.html">spark</a></h3>
-</div>
-
-<div id="outline-container-orgb9996c8" class="outline-3">
-<h3 id="orgb9996c8"><span class="todo TODO">TODO</span> <a href="note/note-tmux.html">tmux</a></h3>
+<div id="outline-container-org3224a57" class="outline-3">
+<h3 id="org3224a57"><span class="section-number-3">1.27</span> <span class="todo TODO">TODO</span> <a href="note/note-spark_use.html">spark</a></h3>
 </div>
 
-<div id="outline-container-orgb3c9776" class="outline-3">
-<h3 id="orgb3c9776"><span class="todo TODO">TODO</span> <a href="note/note-wx-bot.html">微信机器人</a></h3>
+<div id="outline-container-org957dc8f" class="outline-3">
+<h3 id="org957dc8f"><span class="section-number-3">1.28</span> <span class="todo TODO">TODO</span> <a href="note/note-tmux.html">tmux</a></h3>
 </div>
 
-<div id="outline-container-org8f76abf" class="outline-3">
-<h3 id="org8f76abf"><span class="todo TODO">TODO</span> <a href="note/nginx.html">nginx</a></h3>
+<div id="outline-container-org0e42a77" class="outline-3">
+<h3 id="org0e42a77"><span class="section-number-3">1.29</span> <span class="todo TODO">TODO</span> <a href="note/note-wx-bot.html">微信机器人</a></h3>
 </div>
-<div id="outline-container-org75b66d1" class="outline-3">
-<h3 id="org75b66d1"><span class="todo TODO">TODO</span> <a href="note/org-mode.html">org-mode格式排版</a></h3>
+
+<div id="outline-container-org6c39257" class="outline-3">
+<h3 id="org6c39257"><span class="section-number-3">1.30</span> <span class="todo TODO">TODO</span> <a href="note/nginx.html">nginx</a></h3>
+</div>
+<div id="outline-container-orgd8ad5d6" class="outline-3">
+<h3 id="orgd8ad5d6"><span class="section-number-3">1.31</span> <span class="todo TODO">TODO</span> <a href="note/org-mode.html">org-mode格式排版</a></h3>
 </div>
 </div>
+</div>
+<div id="postamble" class="status">
+<p>
+    <a href="">manue1</a> 搭建和维护，使用
+    <a href="https://www.gnu.org/software/emacs/">Emacs</a>
+    <a href="http://orgmode.org/">Org mode</a> 编辑和构建
+</p>
+<script src="http://www.langdebuqing.com/css/jquery-2.1.3.min.js"></script>
+<script src="http://www.langdebuqing.com/css/main.js"></script>
 </div>
 </body>
 </html>

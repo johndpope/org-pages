@@ -1,301 +1,96 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-<!-- 2019-01-21 Mon 21:24 -->
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- 2019-01-24 Thu 21:14 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>elasticsearch 常用知识梳理</title>
-<meta name="generator" content="Org mode" />
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center;
-             margin-bottom: .2em; }
-  .subtitle { text-align: center;
-              font-size: medium;
-              font-weight: bold;
-              margin-top:0; }
-  .todo   { font-family: monospace; color: red; }
-  .done   { font-family: monospace; color: green; }
-  .priority { font-family: monospace; color: orange; }
-  .tag    { background-color: #eee; font-family: monospace;
-            padding: 2px; font-size: 80%; font-weight: normal; }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
-  .underline { text-decoration: underline; }
-  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
-  p.verse { margin-left: 3%; }
-  pre {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
-    padding: 8pt;
-    font-family: monospace;
-    overflow: auto;
-    margin: 1.2em;
-  }
-  pre.src {
-    position: relative;
-    overflow: visible;
-    padding-top: 1.2em;
-  }
-  pre.src:before {
-    display: none;
-    position: absolute;
-    background-color: white;
-    top: -10px;
-    right: 10px;
-    padding: 3px;
-    border: 1px solid black;
-  }
-  pre.src:hover:before { display: inline;}
-  /* Languages per Org manual */
-  pre.src-asymptote:before { content: 'Asymptote'; }
-  pre.src-awk:before { content: 'Awk'; }
-  pre.src-C:before { content: 'C'; }
-  /* pre.src-C++ doesn't work in CSS */
-  pre.src-clojure:before { content: 'Clojure'; }
-  pre.src-css:before { content: 'CSS'; }
-  pre.src-D:before { content: 'D'; }
-  pre.src-ditaa:before { content: 'ditaa'; }
-  pre.src-dot:before { content: 'Graphviz'; }
-  pre.src-calc:before { content: 'Emacs Calc'; }
-  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-fortran:before { content: 'Fortran'; }
-  pre.src-gnuplot:before { content: 'gnuplot'; }
-  pre.src-haskell:before { content: 'Haskell'; }
-  pre.src-hledger:before { content: 'hledger'; }
-  pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
-  pre.src-latex:before { content: 'LaTeX'; }
-  pre.src-ledger:before { content: 'Ledger'; }
-  pre.src-lisp:before { content: 'Lisp'; }
-  pre.src-lilypond:before { content: 'Lilypond'; }
-  pre.src-lua:before { content: 'Lua'; }
-  pre.src-matlab:before { content: 'MATLAB'; }
-  pre.src-mscgen:before { content: 'Mscgen'; }
-  pre.src-ocaml:before { content: 'Objective Caml'; }
-  pre.src-octave:before { content: 'Octave'; }
-  pre.src-org:before { content: 'Org mode'; }
-  pre.src-oz:before { content: 'OZ'; }
-  pre.src-plantuml:before { content: 'Plantuml'; }
-  pre.src-processing:before { content: 'Processing.js'; }
-  pre.src-python:before { content: 'Python'; }
-  pre.src-R:before { content: 'R'; }
-  pre.src-ruby:before { content: 'Ruby'; }
-  pre.src-sass:before { content: 'Sass'; }
-  pre.src-scheme:before { content: 'Scheme'; }
-  pre.src-screen:before { content: 'Gnu Screen'; }
-  pre.src-sed:before { content: 'Sed'; }
-  pre.src-sh:before { content: 'shell'; }
-  pre.src-sql:before { content: 'SQL'; }
-  pre.src-sqlite:before { content: 'SQLite'; }
-  /* additional languages in org.el's org-babel-load-languages alist */
-  pre.src-forth:before { content: 'Forth'; }
-  pre.src-io:before { content: 'IO'; }
-  pre.src-J:before { content: 'J'; }
-  pre.src-makefile:before { content: 'Makefile'; }
-  pre.src-maxima:before { content: 'Maxima'; }
-  pre.src-perl:before { content: 'Perl'; }
-  pre.src-picolisp:before { content: 'Pico Lisp'; }
-  pre.src-scala:before { content: 'Scala'; }
-  pre.src-shell:before { content: 'Shell Script'; }
-  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
-  /* additional language identifiers per "defun org-babel-execute"
-       in ob-*.el */
-  pre.src-cpp:before  { content: 'C++'; }
-  pre.src-abc:before  { content: 'ABC'; }
-  pre.src-coq:before  { content: 'Coq'; }
-  pre.src-groovy:before  { content: 'Groovy'; }
-  /* additional language identifiers from org-babel-shell-names in
-     ob-shell.el: ob-shell is the only babel language using a lambda to put
-     the execution function name together. */
-  pre.src-bash:before  { content: 'bash'; }
-  pre.src-csh:before  { content: 'csh'; }
-  pre.src-ash:before  { content: 'ash'; }
-  pre.src-dash:before  { content: 'dash'; }
-  pre.src-ksh:before  { content: 'ksh'; }
-  pre.src-mksh:before  { content: 'mksh'; }
-  pre.src-posh:before  { content: 'posh'; }
-  /* Additional Emacs modes also supported by the LaTeX listings package */
-  pre.src-ada:before { content: 'Ada'; }
-  pre.src-asm:before { content: 'Assembler'; }
-  pre.src-caml:before { content: 'Caml'; }
-  pre.src-delphi:before { content: 'Delphi'; }
-  pre.src-html:before { content: 'HTML'; }
-  pre.src-idl:before { content: 'IDL'; }
-  pre.src-mercury:before { content: 'Mercury'; }
-  pre.src-metapost:before { content: 'MetaPost'; }
-  pre.src-modula-2:before { content: 'Modula-2'; }
-  pre.src-pascal:before { content: 'Pascal'; }
-  pre.src-ps:before { content: 'PostScript'; }
-  pre.src-prolog:before { content: 'Prolog'; }
-  pre.src-simula:before { content: 'Simula'; }
-  pre.src-tcl:before { content: 'tcl'; }
-  pre.src-tex:before { content: 'TeX'; }
-  pre.src-plain-tex:before { content: 'Plain TeX'; }
-  pre.src-verilog:before { content: 'Verilog'; }
-  pre.src-vhdl:before { content: 'VHDL'; }
-  pre.src-xml:before { content: 'XML'; }
-  pre.src-nxml:before { content: 'XML'; }
-  /* add a generic configuration mode; LaTeX export needs an additional
-     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
-  pre.src-conf:before { content: 'Configuration File'; }
-
-  table { border-collapse:collapse; }
-  caption.t-above { caption-side: top; }
-  caption.t-bottom { caption-side: bottom; }
-  td, th { vertical-align:top;  }
-  th.org-right  { text-align: center;  }
-  th.org-left   { text-align: center;   }
-  th.org-center { text-align: center; }
-  td.org-right  { text-align: right;  }
-  td.org-left   { text-align: left;   }
-  td.org-center { text-align: center; }
-  dt { font-weight: bold; }
-  .footpara { display: inline; }
-  .footdef  { margin-bottom: 1em; }
-  .figure { padding: 1em; }
-  .figure p { text-align: center; }
-  .inlinetask {
-    padding: 10px;
-    border: 2px solid gray;
-    margin: 10px;
-    background: #ffffcc;
-  }
-  #org-div-home-and-up
-   { text-align: right; font-size: 70%; white-space: nowrap; }
-  textarea { overflow-x: auto; }
-  .linenr { font-size: smaller }
-  .code-highlighted { background-color: #ffff00; }
-  .org-info-js_info-navigation { border-style: none; }
-  #org-info-js_console-label
-    { font-size: 10px; font-weight: bold; white-space: nowrap; }
-  .org-info-js_search-highlight
-    { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
-  /*]]>*/-->
-</style>
-<link rel="stylesheet" href="../css/worg.css" type="text/css" media="screen" />
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2018 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
+<meta name="generator" content="Org mode">
+<meta name="author" content="manue1">
+<link rel="stylesheet" type="text/css" href="css/worg.css" />
+<!-- <link rel="shortcut icon" href="http://www.langdebuqing.com/images/favicon.ico" type="image/x-icon" /> -->
 </head>
 <body>
 <div id="preamble" class="status">
-<a href="https://www.manue1.site/index.html">Home</a>
+<div id="navbar">
+    <ul>
+        <li id="site-master"><a href="https://www.manue1.site/">Manue1's Journal</a></li>
+        <li><a class="navbar-item" href="https://www.manue1.site/write.html">All Posts</a> </li>
+        <li><a class="navbar-item" href="https://www.manue1.site/link.html">Links</a> </li>
+        <li class="search">
+            <form action="http://google.com/search" method="get" accept-charset="utf-8">
+                <input type="search" id="search" name="q" autocomplete="off" maxlength="30" placeholder="Search..">
+                <input type="hidden" name="q" value="site:www.manue1.com">
+            </form>
+        </li>
+    </ul>
+</div>
 </div>
 <div id="content">
 <h1 class="title">elasticsearch 常用知识梳理</h1>
 <div id="table-of-contents">
-<h2>Table of Contents</h2>
+<h2>&#30446;&#24405;</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org20f99c7">elastic 常用的一些命令</a>
+<li><a href="#org1acb028">1. elastic 常用的一些命令</a>
 <ul>
-<li><a href="#orgdcb8d66">cat</a></li>
-<li><a href="#org46fcad0">mapping</a></li>
-<li><a href="#org9185f05">alias</a></li>
-<li><a href="#org25e1e59">query</a></li>
-<li><a href="#org130e159">aggs</a></li>
+<li><a href="#org7b1cff6">1.1. cat</a></li>
+<li><a href="#org8086713">1.2. mapping</a></li>
+<li><a href="#orgf639a63">1.3. alias</a></li>
+<li><a href="#orgcb0343a">1.4. query</a></li>
+<li><a href="#org6bf086e">1.5. aggs</a></li>
 </ul>
 </li>
-<li><a href="#orgd49e45f">questions</a>
+<li><a href="#org4ab9740">2. questions</a>
 <ul>
-<li><a href="#orgdcf2e75">from szie/scroll/search after</a></li>
-<li><a href="#orgbdce58b">es shard 生命周期</a></li>
-<li><a href="#orgde25819">es node</a></li>
-<li><a href="#org5c7f04f">es pipeline</a></li>
-<li><a href="#orgeb906a9">es 搜索原理</a></li>
+<li><a href="#org8f76d2c">2.1. from szie/scroll/search after</a></li>
+<li><a href="#org38a592b">2.2. es shard 生命周期</a></li>
+<li><a href="#org47633f0">2.3. es node</a></li>
+<li><a href="#org2bbe9fc">2.4. es pipeline</a></li>
+<li><a href="#orgb970eca">2.5. es 搜索原理</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org20f99c7" class="outline-2">
-<h2 id="org20f99c7">elastic 常用的一些命令</h2>
-<div class="outline-text-2" id="text-org20f99c7">
+<div id="outline-container-org1acb028" class="outline-2">
+<h2 id="org1acb028"><span class="section-number-2">1</span> elastic 常用的一些命令</h2>
+<div class="outline-text-2" id="text-1">
 <p>
-借用postman调用dsl还是很方便的
+借用postman调用dsl还是很方便的<br>
 </p>
 </div>
 
-<div id="outline-container-orgdcb8d66" class="outline-3">
-<h3 id="orgdcb8d66">cat</h3>
-<div class="outline-text-3" id="text-orgdcb8d66">
+<div id="outline-container-org7b1cff6" class="outline-3">
+<h3 id="org7b1cff6"><span class="section-number-3">1.1</span> cat</h3>
+<div class="outline-text-3" id="text-1-1">
 <dl class="org-dl">
-<dt>/_cat/indices?v</dt><dd>查看集群索引</dd>
-<dt>/_cluster/health?pretty </dt><dd>集群健康</dd>
-<dt>/_cat/shards/index_name?v</dt><dd>分片状态</dd>
-<dt>/_cat/segments/index_name?v</dt><dd>查看 segment</dd>
+<dt>/_cat/indices?v</dt><dd>查看集群索引<br></dd>
+<dt>/_cluster/health?pretty </dt><dd>集群健康<br></dd>
+<dt>/_cat/shards/index_name?v</dt><dd>分片状态<br></dd>
+<dt>/_cat/segments/index_name?v</dt><dd>查看 segment<br></dd>
 </dl>
 </div>
 </div>
 
-<div id="outline-container-org46fcad0" class="outline-3">
-<h3 id="org46fcad0">mapping</h3>
-<div class="outline-text-3" id="text-org46fcad0">
+<div id="outline-container-org8086713" class="outline-3">
+<h3 id="org8086713"><span class="section-number-3">1.2</span> mapping</h3>
+<div class="outline-text-3" id="text-1-2">
 <dl class="org-dl">
 <dt>建立索引</dt><dd><p>
-          <i>index_name</i>?pretty' -d{"settings":{"number_of_shards":20}}
+          <i>index_name</i>?pretty' -d{"settings":{"number_of_shards":20}}<br>
 </p>
 
 <p>
-/index_name/_settings'  -d {"number_of_replicas":1}
+/index_name/_settings'  -d {"number_of_replicas":1}<br>
 </p></dd>
 <dt>设置mapping </dt><dd><p>
-                curl -XPOST 'localhost:9200/index_name/_mapping/type?pretty' -d @mapping_file 
+                curl -XPOST 'localhost:9200/index_name/_mapping/type?pretty' -d @mapping_file <br>
 </p>
 
 <p>
-mapping 存放到文件内
+mapping 存放到文件内<br>
 </p>
 <pre class="example">
 
@@ -340,17 +135,17 @@ mapping 存放到文件内
   }
 }
 </pre></dd>
-<dt>删除索引</dt><dd>curl -XDELETE localhost:9200/index_name</dd>
-<dt>动态改副本数量</dt><dd>curl -XPUT 'localhost:9200/index_name/_settings?pretty' -d '{"number_of_replicas":1}'</dd>
+<dt>删除索引</dt><dd>curl -XDELETE localhost:9200/index_name<br></dd>
+<dt>动态改副本数量</dt><dd>curl -XPUT 'localhost:9200/index_name/_settings?pretty' -d '{"number_of_replicas":1}'<br></dd>
 </dl>
 </div>
 </div>
-<div id="outline-container-org9185f05" class="outline-3">
-<h3 id="org9185f05">alias</h3>
-<div class="outline-text-3" id="text-org9185f05">
+<div id="outline-container-orgf639a63" class="outline-3">
+<h3 id="orgf639a63"><span class="section-number-3">1.3</span> alias</h3>
+<div class="outline-text-3" id="text-1-3">
 <dl class="org-dl">
 <dt>_aliases add</dt><dd><p>
-创建 alias
+创建 alias<br>
 </p>
 
 <pre class="example">
@@ -359,7 +154,7 @@ curl -XPOST 'localhost:9200/_aliases' -d '{"actions":[{"add":{"index" : "vulnera
 </pre></dd>
 
 <dt>_aliases remove</dt><dd><p>
-删除 alias
+删除 alias<br>
 </p>
 <pre class="example">
 curl -XPOST 'localhost:9200/_aliases' -d '{"actions":[{"remove":{"index" : "vulnerability_data_v4","alias" : "formal_vulnerability_data"}}]}'
@@ -367,7 +162,7 @@ curl -XPOST 'localhost:9200/_aliases' -d '{"actions":[{"remove":{"index" : "vuln
 </pre></dd>
 
 <dt>_aliases actions</dt><dd><p>
-创建映射多个索引
+创建映射多个索引<br>
 </p>
 <pre class="example">
 curl -XPOST 'http://localhost:9200/_aliases'-d '  
@@ -381,12 +176,12 @@ curl -XPOST 'http://localhost:9200/_aliases'-d '
 </dl>
 </div>
 </div>
-<div id="outline-container-org25e1e59" class="outline-3">
-<h3 id="org25e1e59">query</h3>
-<div class="outline-text-3" id="text-org25e1e59">
+<div id="outline-container-orgcb0343a" class="outline-3">
+<h3 id="orgcb0343a"><span class="section-number-3">1.4</span> query</h3>
+<div class="outline-text-3" id="text-1-4">
 <ul class="org-ul">
 <li><p>
-query_string 全文检索
+query_string 全文检索<br>
 </p>
 <div class="org-src-container">
 <pre class="src src-python">
@@ -402,7 +197,7 @@ query_string 全文检索
 </pre>
 </div></li>
 <li id="_search?pretty&amp;q=字段"><p>
-基础查询字段   
+基础查询字段<br>
 </p>
 
 <pre class="example">
@@ -411,7 +206,7 @@ curl -XGET 'http://localhost:9200/ipasset_seer4/asset_from_seer/_search?pretty&a
 </pre>
 
 <p>
-_id 内置id查询
+_id 内置id查询<br>
 </p>
 
 <pre class="example">
@@ -419,7 +214,7 @@ curl -XGET  'localhost:9200/webasset_whois3/whois_info/_search?pretty&amp;q=_id:
 
 </pre></li>
 <li id="exists"><p>
-字段是否存在
+字段是否存在<br>
 </p>
 <pre class="example">
 {
@@ -441,7 +236,7 @@ curl -XGET  'localhost:9200/webasset_whois3/whois_info/_search?pretty&amp;q=_id:
 
 </pre></li>
 <li id="must/filter match/term"><p>
-布尔过滤查询
+布尔过滤查询<br>
 </p>
 
 <pre class="example">
@@ -463,7 +258,7 @@ curl -XGET  'localhost:9200/webasset_whois3/whois_info/_search?pretty&amp;q=_id:
 
 </pre></li>
 <li id="query/sort"><p>
-查询排序
+查询排序<br>
 </p>
 <pre class="example">
 {
@@ -486,7 +281,7 @@ curl -XGET  'localhost:9200/webasset_whois3/whois_info/_search?pretty&amp;q=_id:
    }
 </pre></li>
 <li id="range"><p>
-范围查询
+范围查询<br>
 </p>
 <pre class="example">
 {
@@ -501,7 +296,7 @@ curl -XGET  'localhost:9200/webasset_whois3/whois_info/_search?pretty&amp;q=_id:
 }           
 </pre></li>
 <li id="_source"><p>
-控制返回字段
+控制返回字段<br>
 </p>
 <pre class="example">
 {
@@ -532,20 +327,20 @@ curl -XGET  'localhost:9200/webasset_whois3/whois_info/_search?pretty&amp;q=_id:
 </ul>
 </div>
 </div>
-<div id="outline-container-org130e159" class="outline-3">
-<h3 id="org130e159">aggs</h3>
-<div class="outline-text-3" id="text-org130e159">
+<div id="outline-container-org6bf086e" class="outline-3">
+<h3 id="org6bf086e"><span class="section-number-3">1.5</span> aggs</h3>
+<div class="outline-text-3" id="text-1-5">
 <p>
-10.252.16.20:9200/alias_malware/_search?size=0
+10.252.16.20:9200/alias_malware/_search?size=0<br>
 </p>
 
 <dl class="org-dl">
 <dt>terms</dt><dd><p>
-字段各类型count统计
+字段各类型count统计<br>
 </p>
 
 <p>
-size = 0 表示返回全部
+size = 0 表示返回全部<br>
 </p>
 
 <pre class="example">
@@ -566,7 +361,7 @@ size = 0 表示返回全部
 </pre></dd>
 
 <dt>cardinality</dt><dd><p>
-先去重再求和 
+先去重再求和<br>
 </p>
 <pre class="example">
 {
@@ -605,238 +400,247 @@ size = 0 表示返回全部
 </div>
 </div>
 </div>
-<div id="outline-container-orgd49e45f" class="outline-2">
-<h2 id="orgd49e45f">questions</h2>
-<div class="outline-text-2" id="text-orgd49e45f">
+<div id="outline-container-org4ab9740" class="outline-2">
+<h2 id="org4ab9740"><span class="section-number-2">2</span> questions</h2>
+<div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-orgdcf2e75" class="outline-3">
-<h3 id="orgdcf2e75">from szie/scroll/search after</h3>
-<div class="outline-text-3" id="text-orgdcf2e75">
+<div id="outline-container-org8f76d2c" class="outline-3">
+<h3 id="org8f76d2c"><span class="section-number-3">2.1</span> from szie/scroll/search after</h3>
+<div class="outline-text-3" id="text-2-1">
 <p>
-<a href="http://www.jianshu.com/p/91d03b16af77">http://www.jianshu.com/p/91d03b16af77</a>
+<a href="http://www.jianshu.com/p/91d03b16af77">http://www.jianshu.com/p/91d03b16af77</a><br>
 </p>
 
 <p>
-在使用关系型数据库中，我们被告知要注意甚至被明确禁止使用深度分页，同理，在 Elasticsearch 中，也应该尽量避免使用深度分页
+在使用关系型数据库中，我们被告知要注意甚至被明确禁止使用深度分页，同理，在 Elasticsearch 中，也应该尽量避免使用深度分页<br>
 </p>
 
 <p>
-深度分页的问题:CUP、内存、IO、网络带宽问题  10个shard*一亿条数据的doc_id
+深度分页的问题:CUP、内存、IO、网络带宽问题  10个shard*一亿条数据的doc_id<br>
 </p>
 
 <ul class="org-ul">
 <li><p>
-from size
+from size<br>
 </p>
 
 <p>
-100+10、110+10&#x2026;..10000+10 越往后请求的越多
+100+10、110+10&#x2026;..10000+10 越往后请求的越多<br>
 </p></li>
 
 <li><p>
-scroll:
+scroll:<br>
 </p>
 
 <p>
-query fetch merge
+query fetch merge<br>
 </p>
 
 <p>
-查询结果缓存,每次fetch size*shard文档 merge输出
+查询结果缓存,每次fetch size*shard文档 merge输出<br>
 </p>
 
 <p>
-scroll不适合做实时查询: 1.初始化结果缓存成快照 2.fetch数据，操作数据
+scroll不适合做实时查询: 1.初始化结果缓存成快照 2.fetch数据，操作数据<br>
 </p>
 
 <p>
-search_type。赋值为scan，表示采用 Scroll-Scan 的方式遍历，同时告诉 Elasticsearch 搜索结果不需要排序
+search_type。赋值为scan，表示采用 Scroll-Scan 的方式遍历，同时告诉 Elasticsearch 搜索结果不需要排序<br>
 </p>
 
 <p>
-size 控制的是每个分片的返回的数据量而不是整个请求返回的数据量。
+size 控制的是每个分片的返回的数据量而不是整个请求返回的数据量。<br>
 </p></li>
 
 <li><p>
-search after
+search after<br>
 </p>
 
 <p>
-1.必须先要指定排序,记住坐标
+1.必须先要指定排序,记住坐标<br>
 </p>
 
 <p>
-2.从任意一个位置 带上search_after=lastEmittedDocFieldValue 偏移量查数据
+2.从任意一个位置 带上search_after=lastEmittedDocFieldValue 偏移量查数据<br>
 </p>
 
 <p>
-如果我要做非常多页的查询时，最起码search after是一个常量查询延迟和开销，并无什么副作用。
+如果我要做非常多页的查询时，最起码search after是一个常量查询延迟和开销，并无什么副作用。<br>
 </p>
 
 <p>
-无论去到多少页，请求始终就是请求了size个docs,是个常量 
+无论去到多少页，请求始终就是请求了size个docs,是个常量<br>
 </p>
 
 <p>
-业务折衷一：禁止跳页查询 只提供下一页
+业务折衷一：禁止跳页查询 只提供下一页<br>
 </p></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgbdce58b" class="outline-3">
-<h3 id="orgbdce58b">es shard 生命周期</h3>
-<div class="outline-text-3" id="text-orgbdce58b">
+<div id="outline-container-org38a592b" class="outline-3">
+<h3 id="org38a592b"><span class="section-number-3">2.2</span> es shard 生命周期</h3>
+<div class="outline-text-3" id="text-2-2">
 <p>
-<a href="http://lxwei.github.io/posts/Elasticsearch-Shard-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html">http://lxwei.github.io/posts/Elasticsearch-Shard-生命周期.html</a>
+<a href="http://lxwei.github.io/posts/Elasticsearch-Shard-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html">http://lxwei.github.io/posts/Elasticsearch-Shard-生命周期.html</a><br>
 </p>
 
 <ul class="org-ul">
 <li><p>
-动态索引 
+动态索引<br>
 </p>
 
 <p>
-三个关键的索引结构：倒排列表、临时索引、已删除列表 
+三个关键的索引结构：倒排列表、临时索引、已删除列表<br>
 </p>
 
 <ul class="org-ul">
 <li><p>
-临时索引
+临时索引<br>
 </p>
 
 <p>
-临时索引是在内存中实时建立的倒排索引，结果与倒排列表一样，
-只是存在于内存中，当有新文档时，实时解析文档并加到这个临时索引中
+临时索引是在内存中实时建立的倒排索引，结果与倒排列表一样，<br>
+只是存在于内存中，当有新文档时，实时解析文档并加到这个临时索引中<br>
 </p></li>
 
 <li><p>
-已删除列表
+已删除列表<br>
 </p>
 
 <p>
-已删除列表存储已被删除的文档的文档ID
-一个文档被修改，搜索引擎一般删除旧文档，新建新文档,间接实现更新,
-这么做的原因主要是索引文件存储在磁盘文件，写磁盘不方便
+已删除列表存储已被删除的文档的文档ID<br>
+一个文档被修改，搜索引擎一般删除旧文档，新建新文档,间接实现更新,<br>
+这么做的原因主要是索引文件存储在磁盘文件，写磁盘不方便<br>
 </p></li>
 
 <li><p>
-倒排列表
+倒排列表<br>
 </p>
 
 <p>
-倒排索引是已经建好的索引结果，倒排列表存在磁盘文件中，单词词典在内存中
+倒排索引是已经建好的索引结果，倒排列表存在磁盘文件中，单词词典在内存中<br>
 </p>
 
 <p>
-搜索操作：同时到内存和磁盘中查找，合并，然后利用已删除列表过滤文档
+搜索操作：同时到内存和磁盘中查找，合并，然后利用已删除列表过滤文档<br>
 </p></li>
 </ul></li>
 
 <li><p>
-es动态更新
+es动态更新<br>
 </p>
 
 <p>
-segment是lucence定义的索引段，一个索引内包含多个，segment对外提供搜索服务
+segment是lucence定义的索引段，一个索引内包含多个，segment对外提供搜索服务<br>
 </p>
 
 <p>
-新文档&#x2013;&gt;内存的buffer内&#x2013;&gt;写到磁盘生成新的segment，对外服务 同时清空buffer
+新文档&#x2013;&gt;内存的buffer内&#x2013;&gt;写到磁盘生成新的segment，对外服务 同时清空buffer<br>
 </p>
 
 <p>
-要频繁的写入磁盘十分消耗资源,es先将文档写到filesystem cache内，此时就能被搜索到了(linux下文件句柄要调整)
+要频繁的写入磁盘十分消耗资源,es先将文档写到filesystem cache内，此时就能被搜索到了(linux下文件句柄要调整)<br>
 </p>
 
 <p>
-必须调用fsync将segment刷到磁盘上，才能保证数据不丢失。
+必须调用fsync将segment刷到磁盘上，才能保证数据不丢失。<br>
 </p></li>
 
 <li><p>
-refresh/flush
+refresh/flush<br>
 </p>
 
 <p>
-refresh是轻量级的写和打开一个新segment的操作
+refresh是轻量级的写和打开一个新segment的操作<br>
 </p>
 
 <p>
-Elasticsearch中，执行commit操作并删除translog的操作叫flush
+Elasticsearch中，执行commit操作并删除translog的操作叫flush<br>
 </p></li>
 
 <li><p>
-segment merge
+segment merge<br>
 </p>
 
 <p>
-如果不停的产生新的segment，Elasticsearch中很快就会段爆炸，
-每个段都要消耗文件描述符、内存、CPU 周期，且每个search请求都需要遍历所有的segment，会造成搜索操作很慢。
+如果不停的产生新的segment，Elasticsearch中很快就会段爆炸，<br>
+每个段都要消耗文件描述符、内存、CPU 周期，且每个search请求都需要遍历所有的segment，会造成搜索操作很慢。<br>
 </p>
 
 <p>
-_optimize?max_num_segments=1 一个segment情况下查询要快些，但是得控制大小，
+_optimize?max_num_segments=1 一个segment情况下查询要快些，但是得控制大小，<br>
 </p></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgde25819" class="outline-3">
-<h3 id="orgde25819">es node</h3>
-<div class="outline-text-3" id="text-orgde25819">
+<div id="outline-container-org47633f0" class="outline-3">
+<h3 id="org47633f0"><span class="section-number-3">2.3</span> es node</h3>
+<div class="outline-text-3" id="text-2-3">
 <ul class="org-ul">
 <li><p>
-data node 上
+data node 上<br>
 </p>
 
 <p>
-http.enabled: false，同时也不要安装head, bigdesk, marvel等监控 插件
-http功能可以在非数据节点服务器上开启
-一台服务器上最好只部署一个Node
+http.enabled: false，同时也不要安装head, bigdesk, marvel等监控 插件<br>
+http功能可以在非数据节点服务器上开启<br>
+一台服务器上最好只部署一个Node<br>
 </p></li>
 
-<li>避免脑裂现象
+<li>避免脑裂现象<br>
 <ol class="org-ol">
 <li><p>
-discovery.zen.minimum_master_nodes N/2+1
+discovery.zen.minimum_master_nodes N/2+1<br>
 </p>
 
 <p>
-要选举一个Master需要多少了候选节点，默认为1
-3节点的集群 3/2+1 = 2(向下取整)
+要选举一个Master需要多少了候选节点，默认为1<br>
+3节点的集群 3/2+1 = 2(向下取整)<br>
 </p></li>
 <li><p>
-discovery.zen.ping.timeout
+discovery.zen.ping.timeout<br>
 </p>
 
 <p>
-等待ping响应的超时时间，默认值是3秒。如果网络缓慢或拥塞，建议略微调大这个值
+等待ping响应的超时时间，默认值是3秒。如果网络缓慢或拥塞，建议略微调大这个值<br>
 </p></li>
 </ol></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org5c7f04f" class="outline-3">
-<h3 id="org5c7f04f">es pipeline</h3>
-<div class="outline-text-3" id="text-org5c7f04f">
+<div id="outline-container-org2bbe9fc" class="outline-3">
+<h3 id="org2bbe9fc"><span class="section-number-3">2.4</span> es pipeline</h3>
+<div class="outline-text-3" id="text-2-4">
 <p>
-<a href="https://www.felayman.com/articles/2017/11/24/1511527532643.html#b3_solo_h4_22">https://www.felayman.com/articles/2017/11/24/1511527532643.html#b3_solo_h4_22</a>
+<a href="https://www.felayman.com/articles/2017/11/24/1511527532643.html#b3_solo_h4_22">https://www.felayman.com/articles/2017/11/24/1511527532643.html#b3_solo_h4_22</a><br>
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgeb906a9" class="outline-3">
-<h3 id="orgeb906a9">es 搜索原理</h3>
-<div class="outline-text-3" id="text-orgeb906a9">
+<div id="outline-container-orgb970eca" class="outline-3">
+<h3 id="orgb970eca"><span class="section-number-3">2.5</span> es 搜索原理</h3>
+<div class="outline-text-3" id="text-2-5">
 <p>
-<a href="https://blog.csdn.net/donghaixiaolongwang/article/category/6747676">https://blog.csdn.net/donghaixiaolongwang/article/category/6747676</a>
+<a href="https://blog.csdn.net/donghaixiaolongwang/article/category/6747676">https://blog.csdn.net/donghaixiaolongwang/article/category/6747676</a><br>
 </p>
 
 <p>
-Elasticsearch之四种查询类型和搜索原理
+Elasticsearch之四种查询类型和搜索原理<br>
 </p>
 </div>
 </div>
 </div>
+</div>
+<div id="postamble" class="status">
+<p>
+    <a href="">manue1</a> 搭建和维护，使用
+    <a href="https://www.gnu.org/software/emacs/">Emacs</a>
+    <a href="http://orgmode.org/">Org mode</a> 编辑和构建
+</p>
+<script src="http://www.langdebuqing.com/css/jquery-2.1.3.min.js"></script>
+<script src="http://www.langdebuqing.com/css/main.js"></script>
 </div>
 </body>
 </html>
