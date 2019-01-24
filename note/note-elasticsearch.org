@@ -1,4 +1,3 @@
-#+SETUPFILE: setup.org
 #+TITLE: elasticsearch 常用知识梳理
 
 * elastic 常用的一些命令

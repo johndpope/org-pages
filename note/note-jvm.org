@@ -1,6 +1,3 @@
-#+OPTIONS: toc:2
-#+OPTIONS: ^:nil
-#+SETUPFILE: setup.org
 #+TITLE: jvm 虚拟机学习
 * jvm
 ** Q & A

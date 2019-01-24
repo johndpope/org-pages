@@ -1,4 +1,3 @@
-#+SETUPFILE: setup.org
 #+TITLE: Threat Intelligence 情报收集爬虫
 
 此文档记录了爬取开源情报的一些细节，[[https://github.com/Nanue1/opensource_threat_intel][爬虫项目]] 已经不再更新!

@@ -1,4 +1,3 @@
-#+SETUPFILE: setup.org
 #+TITLE: Python Promodoro
 
 * Python Promodoro

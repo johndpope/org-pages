@@ -1,4 +1,3 @@
-#+SETUPFILE: setup.org
 #+TITLE: emacs 发布org-mode文件到html
 
 * 简介

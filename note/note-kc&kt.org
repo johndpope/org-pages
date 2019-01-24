@@ -1,6 +1,3 @@
-#+OPTIONS: toc:2
-#+OPTIONS: ^:nil
-#+SETUPFILE: setup.org
 #+TITLE:kyoto Cabinet & Tycoon kv 型离线数据库
 这里是 [[http://fallabs.com/kyotocabinet/][cabinet]] 和 [[http://fallabs.com/kyototycoon/][tycoon]] 的官方地址,简单的说，cabinet提供存储服务,
 tycoon提供网络连接服务,两者配合使用，作为一款kv型离线数据库使用，

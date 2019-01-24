@@ -1,6 +1,14 @@
-#+SETUPFILE: setup.org
 #+TITLE: Link notes
 * Link notes
+
+** TODO [2019-01-24 Thu] orgmode 博客配置文章
+  #+BEGIN_QUOTE
+  http://www.langdebuqing.com/emacs%20notebook/%E6%90%AD%E5%BB%BA%E6%88%91%E7%9A%84%E7%AC%94%E8%AE%B0%E7%B3%BB%E7%BB%9F.html 
+
+  SCHEDULED:<2019-02-03 Sun 17:19>
+  
+
+  #+END_QUOTE
 
 ** TODO [2019-01-23 Wed] Jinja2 模板语言
   #+BEGIN_QUOTE

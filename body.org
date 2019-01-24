@@ -1,4 +1,3 @@
-#+SETUPFILE: setup.org
 #+TITLE: Body Building
 * Body Building
 ** TODO Weekly fitness

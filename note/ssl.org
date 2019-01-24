@@ -1,4 +1,3 @@
-#+SETUPFILE: setup.org
 #+TITLE: https站点证书配置
 
 个人https站点，首选免费开源证书,Let's Encrypt是国外一个公共的免费SSL项目，

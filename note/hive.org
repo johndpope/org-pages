@@ -1,4 +1,3 @@
-#+SETUPFILE: setup.org
 #+TITLE: hive 功能特性
 
 Hive是基于Hadoop分布式文件系统的，它的数据存储在Hadoop分布式文件系统中。Hive本身是

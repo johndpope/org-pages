@@ -1,4 +1,3 @@
-#+SETUPFILE: setup.org
 #+TITLE: org-pages 项目说明
 * [[http://www.manue1.site/][org-pages]]
 

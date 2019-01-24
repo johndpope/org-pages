@@ -1,4 +1,3 @@
-#+SETUPFILE: setup.org
 #+TITLE: python gevent 学习
 * 核心部分
 ** greenlets

@@ -1,5 +1,3 @@
-
-#+SETUPFILE: setup.org
 #+TITLE: tmux + ssh 管理远程会话
 
 * tmux use

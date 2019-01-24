@@ -1,4 +1,3 @@
-#+SETUPFILE: setup.org
 #+TITLE: sync-key
 
 * btsynckeys.com

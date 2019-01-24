@@ -1,4 +1,3 @@
-#+SETUPFILE: setup.org
 #+TITLE: Writing List
 
 * Writing List

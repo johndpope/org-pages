@@ -1,4 +1,3 @@
-#+SETUPFILE: setup.org
 #+TITLE: 使用Docker自动部署Cisco IOU实验环境
 
 准备ccie lab的过程中难免用到Cisco IOU环境，这里提供一个自己使用的docker

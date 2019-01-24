@@ -1,6 +1,3 @@
-#+OPTIONS: toc:2
-#+OPTIONS: ^:nil
-#+SETUPFILE: setup.org
 #+TITLE: AWK 程序设计语言
 
 使用awk的目的是为了方便解决: 计数、数据格式转换、计算、以及从报表中提取数据.

@@ -1,4 +1,3 @@
-#+SETUPFILE: setup.org
 #+TITLE: git note
 蒋鑫. Git权威指南 机械工业出版社. Kindle 版本. 
 * git 独奏

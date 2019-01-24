@@ -1,4 +1,3 @@
-#+SETUPFILE: setup.org
 #+TITLE: Reading List
 
 * Reading List
