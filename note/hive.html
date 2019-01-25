@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-01-25 Fri 11:35 -->
+<!-- 2019-01-25 Fri 11:43 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>hive 功能特性</title>
@@ -251,15 +251,15 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org05a07f3">1. hive 基础</a></li>
-<li><a href="#org1d7a3af">2. hive client 使用</a>
+<li><a href="#org3cf7efd">1. hive 基础</a></li>
+<li><a href="#org9bcc80c">2. hive client 使用</a>
 <ul>
-<li><a href="#orga8d3395">2.1. 清洗数据</a></li>
-<li><a href="#orgb3998b6">2.2. 建表导入数据</a></li>
-<li><a href="#org09dd1e4">2.3. python UDF实现</a></li>
+<li><a href="#org53c494b">2.1. 清洗数据</a></li>
+<li><a href="#org74bd431">2.2. 建表导入数据</a></li>
+<li><a href="#orga1200df">2.3. python UDF实现</a></li>
 </ul>
 </li>
-<li><a href="#orgf9467d0">3. hive server使用</a></li>
+<li><a href="#org0dc9be9">3. hive server使用</a></li>
 </ul>
 </div>
 </div>
@@ -270,8 +270,8 @@ Hive是基于Hadoop分布式文件系统的，它的数据存储在Hadoop分布�
 在的目录中
 </p>
 
-<div id="outline-container-org05a07f3" class="outline-2">
-<h2 id="org05a07f3"><span class="section-number-2">1</span> hive 基础</h2>
+<div id="outline-container-org3cf7efd" class="outline-2">
+<h2 id="org3cf7efd"><span class="section-number-2">1</span> hive 基础</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li><p>
@@ -602,8 +602,8 @@ Parquet是一种支持嵌套结构的存储格式，并且使用了列式存储�
 </div>
 </div>
 
-<div id="outline-container-org1d7a3af" class="outline-2">
-<h2 id="org1d7a3af"><span class="section-number-2">2</span> hive client 使用</h2>
+<div id="outline-container-org9bcc80c" class="outline-2">
+<h2 id="org9bcc80c"><span class="section-number-2">2</span> hive client 使用</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 测试集群16G内存，三个节点,选<a href="http://netsg.cs.sfu.ca/youtubedata/">YouTube视频统计与社交网络</a>作为数据集
@@ -611,8 +611,8 @@ Parquet是一种支持嵌套结构的存储格式，并且使用了列式存储�
 </div>
 
 
-<div id="outline-container-orga8d3395" class="outline-3">
-<h3 id="orga8d3395"><span class="section-number-3">2.1</span> 清洗数据</h3>
+<div id="outline-container-org53c494b" class="outline-3">
+<h3 id="org53c494b"><span class="section-number-3">2.1</span> 清洗数据</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 数据字段都是以 <code>\t</code> 分割，一个字段内有多个值的统一 <code>&amp;</code> 分割 
@@ -756,8 +756,8 @@ Parquet是一种支持嵌套结构的存储格式，并且使用了列式存储�
 </table>
 </div>
 </div>
-<div id="outline-container-orgb3998b6" class="outline-3">
-<h3 id="orgb3998b6"><span class="section-number-3">2.2</span> 建表导入数据</h3>
+<div id="outline-container-org74bd431" class="outline-3">
+<h3 id="org74bd431"><span class="section-number-3">2.2</span> 建表导入数据</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 首先测试数据文件上传hdfs <code>/hadoop_data/</code> 下
@@ -934,8 +934,8 @@ insert into table user<sub>orc</sub> select * from user<sub>text</sub>;
 </div>
 </div>
 
-<div id="outline-container-org09dd1e4" class="outline-3">
-<h3 id="org09dd1e4"><span class="section-number-3">2.3</span> python UDF实现</h3>
+<div id="outline-container-orga1200df" class="outline-3">
+<h3 id="orga1200df"><span class="section-number-3">2.3</span> python UDF实现</h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
 在内置函数无法满足当前业务需求的时候,Hive允许用户自定义一些函数，用于扩展 HiveQL 的功能，这类函数叫做 UDF（用户自定义函数）
@@ -978,8 +978,8 @@ group by user_id, food_type;
 </div>
 </div>
 
-<div id="outline-container-orgf9467d0" class="outline-2">
-<h2 id="orgf9467d0"><span class="section-number-2">3</span> hive server使用</h2>
+<div id="outline-container-org0dc9be9" class="outline-2">
+<h2 id="org0dc9be9"><span class="section-number-2">3</span> hive server使用</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 python的pyhive模块 通过thrift方式连接hive,实现查询和取回结果的操作

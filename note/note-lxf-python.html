@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-01-25 Fri 11:34 -->
+<!-- 2019-01-25 Fri 11:43 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>读廖雪峰python文档记录</title>
@@ -273,50 +273,50 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org6d7a737">1. 字符编码</a></li>
-<li><a href="#org207dfe6">2. python 字符串编码转换</a></li>
-<li><a href="#org26f0428">3. % 格式化字符串</a></li>
-<li><a href="#org05fc015">4. list / tuple /dict /set</a></li>
-<li><a href="#org4fd09cc">5. 函数</a>
+<li><a href="#org147179a">1. 字符编码</a></li>
+<li><a href="#org5fa46c1">2. python 字符串编码转换</a></li>
+<li><a href="#org25564a9">3. % 格式化字符串</a></li>
+<li><a href="#org94367db">4. list / tuple /dict /set</a></li>
+<li><a href="#org85e7de6">5. 函数</a>
 <ul>
-<li><a href="#org3b8ab8a">5.1. 参数</a></li>
-<li><a href="#org20e15c1">5.2. 递归</a></li>
-<li><a href="#orgf129d55">5.3. 列表生成式</a></li>
-<li><a href="#org055b2d9">5.4. 生成器</a></li>
-<li><a href="#org7f4a2e2">5.5. 函数式编程</a></li>
-<li><a href="#orgd7a2f4c">5.6. 匿名函数</a></li>
-<li><a href="#org0c73979">5.7. 装饰器</a></li>
-<li><a href="#org497c05f">5.8. 偏函数</a></li>
+<li><a href="#orgdf59239">5.1. 参数</a></li>
+<li><a href="#orgddda997">5.2. 递归</a></li>
+<li><a href="#org5dea0f4">5.3. 列表生成式</a></li>
+<li><a href="#orgf251cca">5.4. 生成器</a></li>
+<li><a href="#orgfda54a8">5.5. 函数式编程</a></li>
+<li><a href="#orgf5f160f">5.6. 匿名函数</a></li>
+<li><a href="#org115080e">5.7. 装饰器</a></li>
+<li><a href="#orgbce5f02">5.8. 偏函数</a></li>
 </ul>
 </li>
-<li><a href="#orgf62e61f">6. 模块</a></li>
-<li><a href="#org664d1e9">7. 类</a>
+<li><a href="#org6f22e13">6. 模块</a></li>
+<li><a href="#orge4b12fa">7. 类</a>
 <ul>
-<li><a href="#org90053a8">7.1. type 元类</a></li>
-<li><a href="#org691596b">7.2. metaclass</a></li>
-<li><a href="#org2a33881">7.3. BaseException</a></li>
+<li><a href="#org459bbe9">7.1. type 元类</a></li>
+<li><a href="#org224db4f">7.2. metaclass</a></li>
+<li><a href="#orgdc732da">7.3. BaseException</a></li>
 </ul>
 </li>
-<li><a href="#org8d45002">8. debug测试</a>
+<li><a href="#org21162f1">8. debug测试</a>
 <ul>
-<li><a href="#org9aba76b">8.1. assert 断言</a></li>
-<li><a href="#orgaaf431a">8.2. pdb 断点</a></li>
-<li><a href="#orgbf18871">8.3. TDD</a></li>
+<li><a href="#orga2018bc">8.1. assert 断言</a></li>
+<li><a href="#org21774e8">8.2. pdb 断点</a></li>
+<li><a href="#org3e1d01e">8.3. TDD</a></li>
 </ul>
 </li>
-<li><a href="#orgf72b45d">9. IO编程</a></li>
-<li><a href="#orge8a7952">10. 序列化</a></li>
-<li><a href="#org1822a06">11. 进程和线程</a></li>
-<li><a href="#orgf42c286">12. 异步IO</a>
+<li><a href="#org43b52b7">9. IO编程</a></li>
+<li><a href="#org2060f19">10. 序列化</a></li>
+<li><a href="#org959c084">11. 进程和线程</a></li>
+<li><a href="#org1f3e4dc">12. 异步IO</a>
 <ul>
-<li><a href="#org1aa5a62">12.1. 协程</a></li>
+<li><a href="#org3f231e0">12.1. 协程</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org6d7a737" class="outline-2">
-<h2 id="org6d7a737"><span class="section-number-2">1</span> 字符编码</h2>
+<div id="outline-container-org147179a" class="outline-2">
+<h2 id="org147179a"><span class="section-number-2">1</span> 字符编码</h2>
 <div class="outline-text-2" id="text-1">
 <blockquote>
 <p>
@@ -406,8 +406,8 @@ Unicode标准也在不断发展，但最常用的是用两个字节表示一个�
 </blockquote>
 </div>
 </div>
-<div id="outline-container-org207dfe6" class="outline-2">
-<h2 id="org207dfe6"><span class="section-number-2">2</span> python 字符串编码转换</h2>
+<div id="outline-container-org5fa46c1" class="outline-2">
+<h2 id="org5fa46c1"><span class="section-number-2">2</span> python 字符串编码转换</h2>
 <div class="outline-text-2" id="text-2">
 <blockquote>
 <p>
@@ -472,8 +472,8 @@ Python当然也支持其他编码方式，比如把Unicode编码成GB2312：
 </div>
 </div>
 
-<div id="outline-container-org26f0428" class="outline-2">
-<h2 id="org26f0428"><span class="section-number-2">3</span> % 格式化字符串</h2>
+<div id="outline-container-org25564a9" class="outline-2">
+<h2 id="org25564a9"><span class="section-number-2">3</span> % 格式化字符串</h2>
 <div class="outline-text-2" id="text-3">
 <blockquote>
 <p>
@@ -518,8 +518,8 @@ Python当然也支持其他编码方式，比如把Unicode编码成GB2312：
 </div>
 </div>
 
-<div id="outline-container-org05fc015" class="outline-2">
-<h2 id="org05fc015"><span class="section-number-2">4</span> list / tuple /dict /set</h2>
+<div id="outline-container-org94367db" class="outline-2">
+<h2 id="org94367db"><span class="section-number-2">4</span> list / tuple /dict /set</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 a = [0,'1',True]
@@ -579,12 +579,12 @@ set可以做数学意义上的交集、并集等操作,set内不能存放list和
 </div>
 </div>
 
-<div id="outline-container-org4fd09cc" class="outline-2">
-<h2 id="org4fd09cc"><span class="section-number-2">5</span> 函数</h2>
+<div id="outline-container-org85e7de6" class="outline-2">
+<h2 id="org85e7de6"><span class="section-number-2">5</span> 函数</h2>
 <div class="outline-text-2" id="text-5">
 </div>
-<div id="outline-container-org3b8ab8a" class="outline-3">
-<h3 id="org3b8ab8a"><span class="section-number-3">5.1</span> 参数</h3>
+<div id="outline-container-orgdf59239" class="outline-3">
+<h3 id="orgdf59239"><span class="section-number-3">5.1</span> 参数</h3>
 <div class="outline-text-3" id="text-5-1">
 <p>
 <b>可变参数</b> : 仅仅在参数前面加了一个*号。在函数内部，参数numbers接收到的是一个tuple
@@ -634,8 +634,8 @@ calc(1, 2)
 </div>
 </div>
 
-<div id="outline-container-org20e15c1" class="outline-3">
-<h3 id="org20e15c1"><span class="section-number-3">5.2</span> 递归</h3>
+<div id="outline-container-orgddda997" class="outline-3">
+<h3 id="orgddda997"><span class="section-number-3">5.2</span> 递归</h3>
 <div class="outline-text-3" id="text-5-2">
 <p>
 <b>递归函数:</b>
@@ -685,8 +685,8 @@ calc(1, 2)
 </div>
 </div>
 
-<div id="outline-container-orgf129d55" class="outline-3">
-<h3 id="orgf129d55"><span class="section-number-3">5.3</span> 列表生成式</h3>
+<div id="outline-container-org5dea0f4" class="outline-3">
+<h3 id="org5dea0f4"><span class="section-number-3">5.3</span> 列表生成式</h3>
 <div class="outline-text-3" id="text-5-3">
 <p>
 list生成式 : <code>[x * x for x in range(1, 11) if x % 2 =</code> 0]=
@@ -710,8 +710,8 @@ list生成式 : <code>[x * x for x in range(1, 11) if x % 2 =</code> 0]=
 </div>
 </div>
 
-<div id="outline-container-org055b2d9" class="outline-3">
-<h3 id="org055b2d9"><span class="section-number-3">5.4</span> 生成器</h3>
+<div id="outline-container-orgf251cca" class="outline-3">
+<h3 id="orgf251cca"><span class="section-number-3">5.4</span> 生成器</h3>
 <div class="outline-text-3" id="text-5-4">
 <p>
 通过列表生成式，我们可以直接创建一个列表。但是，受到内存限制，列表容量肯定是有限的
@@ -769,8 +769,8 @@ yield关键字定义斐波那契数列生成器
 </div>
 </div>
 
-<div id="outline-container-org7f4a2e2" class="outline-3">
-<h3 id="org7f4a2e2"><span class="section-number-3">5.5</span> 函数式编程</h3>
+<div id="outline-container-orgfda54a8" class="outline-3">
+<h3 id="orgfda54a8"><span class="section-number-3">5.5</span> 函数式编程</h3>
 <div class="outline-text-3" id="text-5-5">
 <p>
 Functional Programming，虽然也可以归结到面向过程的程序设计，但其思想更接近数学计算
@@ -888,8 +888,8 @@ sorted 排序的原则是对比较结果返回 -1,0,1
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd7a2f4c" class="outline-3">
-<h3 id="orgd7a2f4c"><span class="section-number-3">5.6</span> 匿名函数</h3>
+<div id="outline-container-orgf5f160f" class="outline-3">
+<h3 id="orgf5f160f"><span class="section-number-3">5.6</span> 匿名函数</h3>
 <div class="outline-text-3" id="text-5-6">
 <pre class="example">
 map(lambda x: x * x, [1, 2, 3, 4, 5, 6, 7, 8, 9])
@@ -909,8 +909,8 @@ Python对匿名函数的支持有限，只有一些简单的情况下可以使�
 </p>
 </div>
 </div>
-<div id="outline-container-org0c73979" class="outline-3">
-<h3 id="org0c73979"><span class="section-number-3">5.7</span> 装饰器</h3>
+<div id="outline-container-org115080e" class="outline-3">
+<h3 id="org115080e"><span class="section-number-3">5.7</span> 装饰器</h3>
 <div class="outline-text-3" id="text-5-7">
 <p>
 无参数装饰器
@@ -988,8 +988,8 @@ Python内置的functools.wraps就是干这个事的，所以，一个完整的de
 </p>
 </div>
 </div>
-<div id="outline-container-org497c05f" class="outline-3">
-<h3 id="org497c05f"><span class="section-number-3">5.8</span> 偏函数</h3>
+<div id="outline-container-orgbce5f02" class="outline-3">
+<h3 id="orgbce5f02"><span class="section-number-3">5.8</span> 偏函数</h3>
 <div class="outline-text-3" id="text-5-8">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #9d0006;">def</span> <span style="color: #b57614;">int2</span>(x, base=2):
@@ -1015,8 +1015,8 @@ int2 = functools.partial(int, base=2)
 </div>
 </div>
 </div>
-<div id="outline-container-orgf62e61f" class="outline-2">
-<h2 id="orgf62e61f"><span class="section-number-2">6</span> 模块</h2>
+<div id="outline-container-org6f22e13" class="outline-2">
+<h2 id="org6f22e13"><span class="section-number-2">6</span> 模块</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 <b>作用域</b>
@@ -1119,12 +1119,12 @@ s.score <span style="color: #a89984;"># </span><span style="color: #a89984;">OK&
 </div>
 </div>
 
-<div id="outline-container-org664d1e9" class="outline-2">
-<h2 id="org664d1e9"><span class="section-number-2">7</span> 类</h2>
+<div id="outline-container-orge4b12fa" class="outline-2">
+<h2 id="orge4b12fa"><span class="section-number-2">7</span> 类</h2>
 <div class="outline-text-2" id="text-7">
 </div>
-<div id="outline-container-org90053a8" class="outline-3">
-<h3 id="org90053a8"><span class="section-number-3">7.1</span> type 元类</h3>
+<div id="outline-container-org459bbe9" class="outline-3">
+<h3 id="org459bbe9"><span class="section-number-3">7.1</span> type 元类</h3>
 <div class="outline-text-3" id="text-7-1">
 <p>
 type()函数既可以返回一个对象的类型，又可以创建出新的类型
@@ -1166,8 +1166,8 @@ type要创建一个class对象，type()函数依次传入3个参数：
 </p>
 </div>
 </div>
-<div id="outline-container-org691596b" class="outline-3">
-<h3 id="org691596b"><span class="section-number-3">7.2</span> metaclass</h3>
+<div id="outline-container-org224db4f" class="outline-3">
+<h3 id="org224db4f"><span class="section-number-3">7.2</span> metaclass</h3>
 <div class="outline-text-3" id="text-7-2">
 <p>
 除了使用type()动态创建类以外，要控制类的创建行为，还可以使用metaclass
@@ -1208,8 +1208,8 @@ ORM全称“Object Relational Mapping”，即对象-关系映射
 </div>
 </div>
 
-<div id="outline-container-org2a33881" class="outline-3">
-<h3 id="org2a33881"><span class="section-number-3">7.3</span> BaseException</h3>
+<div id="outline-container-orgdc732da" class="outline-3">
+<h3 id="orgdc732da"><span class="section-number-3">7.3</span> BaseException</h3>
 <div class="outline-text-3" id="text-7-3">
 <p>
 因为错误是class，捕获一个错误就是捕获到该class的一个实例
@@ -1292,28 +1292,28 @@ raise 抛出错误捕捉
 </div>
 </div>
 </div>
-<div id="outline-container-org8d45002" class="outline-2">
-<h2 id="org8d45002"><span class="section-number-2">8</span> debug测试</h2>
+<div id="outline-container-org21162f1" class="outline-2">
+<h2 id="org21162f1"><span class="section-number-2">8</span> debug测试</h2>
 <div class="outline-text-2" id="text-8">
 </div>
-<div id="outline-container-org9aba76b" class="outline-3">
-<h3 id="org9aba76b"><span class="section-number-3">8.1</span> assert 断言</h3>
+<div id="outline-container-orga2018bc" class="outline-3">
+<h3 id="orga2018bc"><span class="section-number-3">8.1</span> assert 断言</h3>
 <div class="outline-text-3" id="text-8-1">
 <p>
 -o 关闭后，你可以把所有的assert语句当成pass来看
 </p>
 </div>
 </div>
-<div id="outline-container-orgaaf431a" class="outline-3">
-<h3 id="orgaaf431a"><span class="section-number-3">8.2</span> pdb 断点</h3>
+<div id="outline-container-org21774e8" class="outline-3">
+<h3 id="org21774e8"><span class="section-number-3">8.2</span> pdb 断点</h3>
 <div class="outline-text-3" id="text-8-2">
 <p>
 python -m pdb err.py
 </p>
 </div>
 </div>
-<div id="outline-container-orgbf18871" class="outline-3">
-<h3 id="orgbf18871"><span class="section-number-3">8.3</span> TDD</h3>
+<div id="outline-container-org3e1d01e" class="outline-3">
+<h3 id="org3e1d01e"><span class="section-number-3">8.3</span> TDD</h3>
 <div class="outline-text-3" id="text-8-3">
 <blockquote>
 <p>
@@ -1410,8 +1410,8 @@ setUp与tearDown: 这两个方法会分别在每调用一个测试方法的前�
 </div>
 </div>
 
-<div id="outline-container-orgf72b45d" class="outline-2">
-<h2 id="orgf72b45d"><span class="section-number-2">9</span> IO编程</h2>
+<div id="outline-container-org43b52b7" class="outline-2">
+<h2 id="org43b52b7"><span class="section-number-2">9</span> IO编程</h2>
 <div class="outline-text-2" id="text-9">
 <p>
 从磁盘读取文件到内存，就只有Input操作，反过来，把数据写到磁盘文件里，就只是一个Output操作 
@@ -1518,8 +1518,8 @@ shutil模块提供了copyfile()的函数,它们可以看做是os模块的补充
 </div>
 </div>
 
-<div id="outline-container-orge8a7952" class="outline-2">
-<h2 id="orge8a7952"><span class="section-number-2">10</span> 序列化</h2>
+<div id="outline-container-org2060f19" class="outline-2">
+<h2 id="org2060f19"><span class="section-number-2">10</span> 序列化</h2>
 <div class="outline-text-2" id="text-10">
 <p>
 我们把变量从内存中变成可存储或传输的过程称之为序列化，在Python中叫pickling，
@@ -1569,8 +1569,8 @@ default=None,把任意一个对象变成一个可序列为JSON的对象，我们
 </div>
 </div>
 
-<div id="outline-container-org1822a06" class="outline-2">
-<h2 id="org1822a06"><span class="section-number-2">11</span> 进程和线程</h2>
+<div id="outline-container-org959c084" class="outline-2">
+<h2 id="org959c084"><span class="section-number-2">11</span> 进程和线程</h2>
 <div class="outline-text-2" id="text-11">
 <p>
 <b>fork</b> 
@@ -1787,12 +1787,12 @@ ThreadLocal最常用的地方就是为每个线程绑定一个数据库连接，
 </div>
 </div>
 
-<div id="outline-container-orgf42c286" class="outline-2">
-<h2 id="orgf42c286"><span class="section-number-2">12</span> 异步IO</h2>
+<div id="outline-container-org1f3e4dc" class="outline-2">
+<h2 id="org1f3e4dc"><span class="section-number-2">12</span> 异步IO</h2>
 <div class="outline-text-2" id="text-12">
 </div>
-<div id="outline-container-org1aa5a62" class="outline-3">
-<h3 id="org1aa5a62"><span class="section-number-3">12.1</span> 协程</h3>
+<div id="outline-container-org3f231e0" class="outline-3">
+<h3 id="org3f231e0"><span class="section-number-3">12.1</span> 协程</h3>
 <div class="outline-text-3" id="text-12-1">
 <p>
 协程，又称微线程，纤程。英文名Coroutine
