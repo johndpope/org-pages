@@ -148,8 +148,8 @@
    
    - State "DONE"       from "TODO"       [2019-01-18 Fri 11:11] \\
 
-
-   https://emacs-china.org/t/erc/2366
+     #+BEGIN_QUOTE
+     https://emacs-china.org/t/erc/2366
 
    - erc
 
@@ -160,6 +160,8 @@
    - gnutls
      
      http://macappstore.org/gnutls/
+     #+END_QUOTE
+
 
 
  #+BEGIN_QUOTE
@@ -621,8 +623,22 @@ sudo systemctl enable teamviewerd
 
    #+END_QUOTE
 
-** TODO emacs如何处理博文头部尾部嵌套跳转页问题
-   SCHEDULED: <2019-01-23 Tue>
+** DONE emacs如何处理博文头部尾部嵌套跳转页问题
+   CLOSED: [2019-01-25 Fri 11:48] SCHEDULED: <2019-01-23 Tue>
+   - State "DONE"       from "TODO"       [2019-01-25 Fri 11:48]
+   #+BEGIN_QUOTE
+   作者写的很详细，参考解决此问题
+
+   http://www.langdebuqing.com/emacs%20notebook/%E6%90%AD%E5%BB%BA%E6%88%91%E7%9A%84%E7%AC%94%E8%AE%B0%E7%B3%BB%E7%BB%9F.html
+   
+   #+BEGIN_VERSE
+   │── templates                # html 模版目录。导出 html 时会根据相关配置把这些模版放到 html 的合适位置。生产环境使用该目录n
+   │   ├── html-head.html       # html head
+   │   ├── postamble.html       # 放到 html 的尾部
+   │   └── preamble.html        # 放到 html 的开始部分
+   #+END_VERSE
+
+   #+END_QUOTE
 ** TODO 推荐系统引擎 apache mahout  
    SCHEDULED: <2019-01-29 Wed>
 ** TODO org-mode 导出中文pdf文件
@@ -750,7 +766,7 @@ sudo systemctl enable teamviewerd
 
 ** DONE 不重启emacs如何重新加载配置
    CLOSED: [2018-12-07 Fri 13:09]
-
+   
    - State "DONE"       from "TODO"       [2018-12-07 Fri 13:09]
 #+BEGIN_QUOTE
    M-x =eval-buffer=
@@ -797,16 +813,3 @@ sudo pacman -Sy yaourt base-devel fakeroot
 
 yaourt -Syu --devel --aur
    #+END_QUOTE
-
-
-   
-   
-
-
-
-
-<img src=""
-alt="" align="left"
-title="image title"
-class="img"
-</img>
