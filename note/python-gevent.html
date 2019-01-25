@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-01-25 Fri 11:43 -->
+<!-- 2019-01-25 Fri 12:37 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>python gevent 学习</title>
@@ -251,48 +251,48 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org3711e14">1. 核心部分</a>
+<li><a href="#org85d1a83">1. 核心部分</a>
 <ul>
-<li><a href="#org761eed0">1.1. greenlets</a></li>
-<li><a href="#orge620ae5">1.2. 同步与异步</a></li>
-<li><a href="#orgf2334ec">1.3. 确定性</a></li>
-<li><a href="#org14303fa">1.4. 异常处理</a></li>
-<li><a href="#org2847e8d">1.5. 程序停止</a></li>
-<li><a href="#org747b265">1.6. 超时</a></li>
-<li><a href="#org4bc4200">1.7. 猴子补丁</a></li>
+<li><a href="#org34d4359">1.1. greenlets</a></li>
+<li><a href="#org2e2c584">1.2. 同步与异步</a></li>
+<li><a href="#orge64e6c1">1.3. 确定性</a></li>
+<li><a href="#org2e11993">1.4. 异常处理</a></li>
+<li><a href="#orgc194e32">1.5. 程序停止</a></li>
+<li><a href="#org57daf55">1.6. 超时</a></li>
+<li><a href="#org17d91e9">1.7. 猴子补丁</a></li>
 </ul>
 </li>
-<li><a href="#org9ee1d85">2. 数据结构</a>
+<li><a href="#org01b6414">2. 数据结构</a>
 <ul>
-<li><a href="#orga89057c">2.1. 事件</a></li>
-<li><a href="#orgc001586">2.2. 队列</a></li>
-<li><a href="#orgca7b6fe">2.3. 组和池</a></li>
-<li><a href="#orgb25744e">2.4. 锁和信号量</a></li>
-<li><a href="#org236ef0b">2.5. 线程局部变量</a></li>
-<li><a href="#orga119fac">2.6. 子进程</a></li>
-<li><a href="#org820d1f9">2.7. Actors</a></li>
+<li><a href="#org2060902">2.1. 事件</a></li>
+<li><a href="#orgc8a0184">2.2. 队列</a></li>
+<li><a href="#orgae8564f">2.3. 组和池</a></li>
+<li><a href="#org8ae4a74">2.4. 锁和信号量</a></li>
+<li><a href="#org6edce0f">2.5. 线程局部变量</a></li>
+<li><a href="#org01d1756">2.6. 子进程</a></li>
+<li><a href="#org26d3bbf">2.7. Actors</a></li>
 </ul>
 </li>
-<li><a href="#org15c6a41">3. 应用</a>
+<li><a href="#org7e09a07">3. 应用</a>
 <ul>
-<li><a href="#orge488708">3.1. Gevent ZeroMQ</a></li>
-<li><a href="#org9b7bd9f">3.2. 简单server</a></li>
-<li><a href="#org95f6492">3.3. WSGI Servers</a></li>
-<li><a href="#orgc7a20a4">3.4. 流式server</a></li>
-<li><a href="#orgc105e26">3.5. Long Polling</a></li>
-<li><a href="#org87ec569">3.6. Websockets</a></li>
-<li><a href="#org3793170">3.7. 聊天server</a></li>
+<li><a href="#org6fa8744">3.1. Gevent ZeroMQ</a></li>
+<li><a href="#org2889670">3.2. 简单server</a></li>
+<li><a href="#orgb4f76ae">3.3. WSGI Servers</a></li>
+<li><a href="#org6a32f6b">3.4. 流式server</a></li>
+<li><a href="#org24efc58">3.5. Long Polling</a></li>
+<li><a href="#org3874b49">3.6. Websockets</a></li>
+<li><a href="#org79e7232">3.7. 聊天server</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org3711e14" class="outline-2">
-<h2 id="org3711e14"><span class="section-number-2">1</span> 核心部分</h2>
+<div id="outline-container-org85d1a83" class="outline-2">
+<h2 id="org85d1a83"><span class="section-number-2">1</span> 核心部分</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org761eed0" class="outline-3">
-<h3 id="org761eed0"><span class="section-number-3">1.1</span> greenlets</h3>
+<div id="outline-container-org34d4359" class="outline-3">
+<h3 id="org34d4359"><span class="section-number-3">1.1</span> greenlets</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 在gevent中用到的主要模式是Greenlet, 它是以C扩展模块形式接入Python的轻量级协程。 Greenlet全部运行在
@@ -368,8 +368,8 @@ gevent.joinall([
 </div>
 </div>
 </div>
-<div id="outline-container-orge620ae5" class="outline-3">
-<h3 id="orge620ae5"><span class="section-number-3">1.2</span> 同步与异步</h3>
+<div id="outline-container-org2e2c584" class="outline-3">
+<h3 id="org2e2c584"><span class="section-number-3">1.2</span> 同步与异步</h3>
 <div class="outline-text-3" id="text-1-2">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #9d0006;">import</span> time
@@ -475,8 +475,8 @@ asynchronous()
 </div>
 </div>
 
-<div id="outline-container-orgf2334ec" class="outline-3">
-<h3 id="orgf2334ec"><span class="section-number-3">1.3</span> 确定性</h3>
+<div id="outline-container-orge64e6c1" class="outline-3">
+<h3 id="orge64e6c1"><span class="section-number-3">1.3</span> 确定性</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 greenlet具有确定性。在相同配置相同输入的情况下，它们总是会产生相同的输出
@@ -523,8 +523,8 @@ greenlet具有确定性。在相同配置相同输入的情况下，它们总是
 </p>
 </div>
 </div>
-<div id="outline-container-org14303fa" class="outline-3">
-<h3 id="org14303fa"><span class="section-number-3">1.4</span> 异常处理</h3>
+<div id="outline-container-org2e11993" class="outline-3">
+<h3 id="org2e11993"><span class="section-number-3">1.4</span> 异常处理</h3>
 <div class="outline-text-3" id="text-1-4">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #9d0006;">import</span> gevent
@@ -554,8 +554,8 @@ greenlet具有确定性。在相同配置相同输入的情况下，它们总是
 </div>
 </div>
 </div>
-<div id="outline-container-org2847e8d" class="outline-3">
-<h3 id="org2847e8d"><span class="section-number-3">1.5</span> 程序停止</h3>
+<div id="outline-container-orgc194e32" class="outline-3">
+<h3 id="orgc194e32"><span class="section-number-3">1.5</span> 程序停止</h3>
 <div class="outline-text-3" id="text-1-5">
 <p>
 当主程序(main program)收到一个SIGQUIT信号时，不能成功做yield操作的 Greenlet可能会令意外地挂起程序的
@@ -580,8 +580,8 @@ greenlet具有确定性。在相同配置相同输入的情况下，它们总是
 </div>
 </div>
 
-<div id="outline-container-org747b265" class="outline-3">
-<h3 id="org747b265"><span class="section-number-3">1.6</span> 超时</h3>
+<div id="outline-container-org57daf55" class="outline-3">
+<h3 id="org57daf55"><span class="section-number-3">1.6</span> 超时</h3>
 <div class="outline-text-3" id="text-1-6">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #9d0006;">import</span> gevent
@@ -619,8 +619,8 @@ greenlet具有确定性。在相同配置相同输入的情况下，它们总是
 </div>
 </div>
 </div>
-<div id="outline-container-org4bc4200" class="outline-3">
-<h3 id="org4bc4200"><span class="section-number-3">1.7</span> 猴子补丁</h3>
+<div id="outline-container-org17d91e9" class="outline-3">
+<h3 id="org17d91e9"><span class="section-number-3">1.7</span> 猴子补丁</h3>
 <div class="outline-text-3" id="text-1-7">
 <p>
 在极端情况下当一个库需要修改Python本身的基础行为的时候，猴子补丁就派上用场了。在这种情况下，gevent能够修改标准库里面
@@ -640,12 +640,12 @@ gevent.monkey.patch<sub>all</sub>()，可以使得redis的绑定协作式的调�
 </div>
 </div>
 
-<div id="outline-container-org9ee1d85" class="outline-2">
-<h2 id="org9ee1d85"><span class="section-number-2">2</span> 数据结构</h2>
+<div id="outline-container-org01b6414" class="outline-2">
+<h2 id="org01b6414"><span class="section-number-2">2</span> 数据结构</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-orga89057c" class="outline-3">
-<h3 id="orga89057c"><span class="section-number-3">2.1</span> 事件</h3>
+<div id="outline-container-org2060902" class="outline-3">
+<h3 id="org2060902"><span class="section-number-3">2.1</span> 事件</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 协程间的通信
@@ -744,8 +744,8 @@ gevent.joinall([
 </div>
 </div>
 
-<div id="outline-container-orgc001586" class="outline-3">
-<h3 id="orgc001586"><span class="section-number-3">2.2</span> 队列</h3>
+<div id="outline-container-orgc8a0184" class="outline-3">
+<h3 id="orgc8a0184"><span class="section-number-3">2.2</span> 队列</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 如果一个Greenlet从队列中取出一项，此项就不会被同时执行的其它Greenlet再取到了
@@ -811,8 +811,8 @@ gevent.joinall([
 </div>
 </div>
 
-<div id="outline-container-orgca7b6fe" class="outline-3">
-<h3 id="orgca7b6fe"><span class="section-number-3">2.3</span> 组和池</h3>
+<div id="outline-container-orgae8564f" class="outline-3">
+<h3 id="orgae8564f"><span class="section-number-3">2.3</span> 组和池</h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
 组(group)是一个运行中greenlet的集合，集合中的greenlet像一个组一样会被共同管理和调度。
@@ -913,8 +913,8 @@ pool.<span style="color: #af3a03;">map</span>(hello_from, <span style="color: #a
 </div>
 </div>
 
-<div id="outline-container-orgb25744e" class="outline-3">
-<h3 id="orgb25744e"><span class="section-number-3">2.4</span> 锁和信号量</h3>
+<div id="outline-container-org8ae4a74" class="outline-3">
+<h3 id="org8ae4a74"><span class="section-number-3">2.4</span> 锁和信号量</h3>
 <div class="outline-text-3" id="text-2-4">
 <p>
 信号量是一个允许greenlet相互合作，限制并发访问或运行的低层次的同步原语
@@ -965,8 +965,8 @@ pool.<span style="color: #af3a03;">map</span>(worker2, <span style="color: #af3a
 </div>
 </div>
 
-<div id="outline-container-org236ef0b" class="outline-3">
-<h3 id="org236ef0b"><span class="section-number-3">2.5</span> 线程局部变量</h3>
+<div id="outline-container-org6edce0f" class="outline-3">
+<h3 id="org6edce0f"><span class="section-number-3">2.5</span> 线程局部变量</h3>
 <div class="outline-text-3" id="text-2-5">
 <p>
 Gevent也允许你指定局部于greenlet上下文的数据。在内部，它被实现为以greenlet的getcurrent()为键，在一个私有命名空间寻址的全局查找。
@@ -1061,8 +1061,8 @@ Flask系统比这个例子复杂一点，然而使用线程局部变量作为局
 </div>
 </div>
 
-<div id="outline-container-orga119fac" class="outline-3">
-<h3 id="orga119fac"><span class="section-number-3">2.6</span> 子进程</h3>
+<div id="outline-container-org01d1756" class="outline-3">
+<h3 id="org01d1756"><span class="section-number-3">2.6</span> 子进程</h3>
 <div class="outline-text-3" id="text-2-6">
 <p>
 自gevent 1.0起，gevent.subprocess，一个Python subprocess模块的修补版本已经添加。它支持协作式的等待子进程。
@@ -1174,8 +1174,8 @@ gevent.joinall([g1, g2], timeout=1)
 </div>
 </div>
 
-<div id="outline-container-org820d1f9" class="outline-3">
-<h3 id="org820d1f9"><span class="section-number-3">2.7</span> Actors</h3>
+<div id="outline-container-org26d3bbf" class="outline-3">
+<h3 id="org26d3bbf"><span class="section-number-3">2.7</span> Actors</h3>
 <div class="outline-text-3" id="text-2-7">
 <p>
 actor模型是一个由于Erlang变得普及的 <b>更高层的并发模型</b> 。
@@ -1238,30 +1238,30 @@ gevent.joinall([ping, pong])
 </div>
 </div>
 
-<div id="outline-container-org15c6a41" class="outline-2">
-<h2 id="org15c6a41"><span class="section-number-2">3</span> 应用</h2>
+<div id="outline-container-org7e09a07" class="outline-2">
+<h2 id="org7e09a07"><span class="section-number-2">3</span> 应用</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-orge488708" class="outline-3">
-<h3 id="orge488708"><span class="section-number-3">3.1</span> Gevent ZeroMQ</h3>
+<div id="outline-container-org6fa8744" class="outline-3">
+<h3 id="org6fa8744"><span class="section-number-3">3.1</span> Gevent ZeroMQ</h3>
 </div>
-<div id="outline-container-org9b7bd9f" class="outline-3">
-<h3 id="org9b7bd9f"><span class="section-number-3">3.2</span> 简单server</h3>
+<div id="outline-container-org2889670" class="outline-3">
+<h3 id="org2889670"><span class="section-number-3">3.2</span> 简单server</h3>
 </div>
-<div id="outline-container-org95f6492" class="outline-3">
-<h3 id="org95f6492"><span class="section-number-3">3.3</span> WSGI Servers</h3>
+<div id="outline-container-orgb4f76ae" class="outline-3">
+<h3 id="orgb4f76ae"><span class="section-number-3">3.3</span> WSGI Servers</h3>
 </div>
-<div id="outline-container-orgc7a20a4" class="outline-3">
-<h3 id="orgc7a20a4"><span class="section-number-3">3.4</span> 流式server</h3>
+<div id="outline-container-org6a32f6b" class="outline-3">
+<h3 id="org6a32f6b"><span class="section-number-3">3.4</span> 流式server</h3>
 </div>
-<div id="outline-container-orgc105e26" class="outline-3">
-<h3 id="orgc105e26"><span class="section-number-3">3.5</span> Long Polling</h3>
+<div id="outline-container-org24efc58" class="outline-3">
+<h3 id="org24efc58"><span class="section-number-3">3.5</span> Long Polling</h3>
 </div>
-<div id="outline-container-org87ec569" class="outline-3">
-<h3 id="org87ec569"><span class="section-number-3">3.6</span> Websockets</h3>
+<div id="outline-container-org3874b49" class="outline-3">
+<h3 id="org3874b49"><span class="section-number-3">3.6</span> Websockets</h3>
 </div>
-<div id="outline-container-org3793170" class="outline-3">
-<h3 id="org3793170"><span class="section-number-3">3.7</span> 聊天server</h3>
+<div id="outline-container-org79e7232" class="outline-3">
+<h3 id="org79e7232"><span class="section-number-3">3.7</span> 聊天server</h3>
 </div>
 </div>
 </div>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-01-25 Fri 11:43 -->
+<!-- 2019-01-25 Fri 12:37 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>redis 使用</title>
@@ -251,12 +251,12 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org77f49e2">1. redis</a>
+<li><a href="#org4fce2ac">1. redis</a>
 <ul>
-<li><a href="#org2ace81b">1.1. redis 安装使用</a></li>
-<li><a href="#org87f2c9d">1.2. 数据结构与对象</a>
+<li><a href="#orgd243adc">1.1. redis 安装使用</a></li>
+<li><a href="#org024d8c0">1.2. 数据结构与对象</a>
 <ul>
-<li><a href="#org1e25361">1.2.1. SDS</a></li>
+<li><a href="#orge4dfe84">1.2.1. SDS</a></li>
 </ul>
 </li>
 </ul>
@@ -265,12 +265,12 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org77f49e2" class="outline-2">
-<h2 id="org77f49e2"><span class="section-number-2">1</span> redis</h2>
+<div id="outline-container-org4fce2ac" class="outline-2">
+<h2 id="org4fce2ac"><span class="section-number-2">1</span> redis</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org2ace81b" class="outline-3">
-<h3 id="org2ace81b"><span class="section-number-3">1.1</span> redis 安装使用</h3>
+<div id="outline-container-orgd243adc" class="outline-3">
+<h3 id="orgd243adc"><span class="section-number-3">1.1</span> redis 安装使用</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 redis开发使用的话，推荐docker直接部署，避免浪费时间，redis 配置文件 
@@ -296,12 +296,12 @@ redis 数据库里面的每个键值对(key-value pair)都是由对象(object)�
 </div>
 </div>
 
-<div id="outline-container-org87f2c9d" class="outline-3">
-<h3 id="org87f2c9d"><span class="section-number-3">1.2</span> 数据结构与对象</h3>
+<div id="outline-container-org024d8c0" class="outline-3">
+<h3 id="org024d8c0"><span class="section-number-3">1.2</span> 数据结构与对象</h3>
 <div class="outline-text-3" id="text-1-2">
 </div>
-<div id="outline-container-org1e25361" class="outline-4">
-<h4 id="org1e25361"><span class="section-number-4">1.2.1</span> SDS</h4>
+<div id="outline-container-orge4dfe84" class="outline-4">
+<h4 id="orge4dfe84"><span class="section-number-4">1.2.1</span> SDS</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <p>
 redis没有使用c语言内的以空字符结尾的字符数组作为字符串，而是自己定义了一种SDS，
