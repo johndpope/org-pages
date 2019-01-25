@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-01-25 Fri 12:37 -->
+<!-- 2019-01-25 Fri 12:51 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>用scrapy爬取FTP列表文件</title>
@@ -181,7 +181,7 @@
   /*]]>*/-->
 </style>
 <link rel="stylesheet" type="text/css" href="https://www.manue1.site/css/style.css" />
-<link rel="shortcut icon" href="https://www.manue1.site/images/hack_favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="https://www.manue1.site/images/favicon.ico" type="image/x-icon" />
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -234,8 +234,10 @@ for the JavaScript code in this tag.
 <div id="navbar">
     <ul>
         <li id="site-master"><a href="https://www.manue1.site/">Manue1's Journal</a></li>
-        <li><a class="navbar-item" href="https://www.manue1.site/write.html">All Posts</a> </li>
+        <li><a class="navbar-item" href="https://www.manue1.site/q&a.html">Q&A</a> </li>
+        <li><a class="navbar-item" href="https://www.manue1.site/write.html">Posts</a> </li>
         <li><a class="navbar-item" href="https://www.manue1.site/link.html">Links</a> </li>
+        <li><a class="navbar-item" href="https://www.manue1.site/read.html">Read</a> </li>
         <li class="search">
             <form action="http://google.com/search" method="get" accept-charset="utf-8">
                 <input type="search" id="search" name="q" autocomplete="off" maxlength="30" placeholder="Search..">
@@ -251,21 +253,21 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orge5e8558">1. 用scrapy爬取FTP列表文件</a>
+<li><a href="#orgf8bdf9d">1. 用scrapy爬取FTP列表文件</a>
 <ul>
-<li><a href="#orgbd6825f">1.1. scrapy crawl ftp server</a></li>
-<li><a href="#orgf984f3f">1.2. error note</a></li>
+<li><a href="#org9ce21c8">1.1. scrapy crawl ftp server</a></li>
+<li><a href="#orgb16ceaa">1.2. error note</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orge5e8558" class="outline-2">
-<h2 id="orge5e8558"><span class="section-number-2">1</span> 用scrapy爬取FTP列表文件</h2>
+<div id="outline-container-orgf8bdf9d" class="outline-2">
+<h2 id="orgf8bdf9d"><span class="section-number-2">1</span> 用scrapy爬取FTP列表文件</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-orgbd6825f" class="outline-3">
-<h3 id="orgbd6825f"><span class="section-number-3">1.1</span> scrapy crawl ftp server</h3>
+<div id="outline-container-org9ce21c8" class="outline-3">
+<h3 id="org9ce21c8"><span class="section-number-3">1.1</span> scrapy crawl ftp server</h3>
 <div class="outline-text-3" id="text-1-1">
 <p class="verse">
 最近遇到一个ftp数据源，每天需要定期到ftp服务器登录下载文件压缩列表,官方提供的<a href="https://github.com/scrapy/scrapy/blob/master/scrapy/core/downloader/handlers/ftp.py">FTPDownloadHandler</a> 只能下载单个文件,但这里我需要下载文件目录下所有文件,这里找到一篇好<a href="https://gearheart.io/blog/crawling-ftp-server-with-scrapy/">文章</a> ,详细的讲述了如何重写scrapy所支持的HTTP,HTTPS,FTP等下载Handler.由于作者从单个FTP文件下载，到文件夹内全部文件下载都做了详细的阐述，这里就贴出我的实现代码吧，做了些许修改<br />
@@ -442,8 +444,8 @@ class MedisumSpider(CrawlSpider):
 </div>
 </div>
 
-<div id="outline-container-orgf984f3f" class="outline-3">
-<h3 id="orgf984f3f"><span class="section-number-3">1.2</span> error note</h3>
+<div id="outline-container-orgb16ceaa" class="outline-3">
+<h3 id="orgb16ceaa"><span class="section-number-3">1.2</span> error note</h3>
 <div class="outline-text-3" id="text-1-2">
 <ol class="org-ol">
 <li>NotImplementedError
@@ -463,8 +465,6 @@ parse()函数得存在</li>
 </p>
 <script src="https://www.manue1.site/css/jquery-2.1.3.min.js"></script>
 <script src="https://www.manue1.site/css/main.js"></script>
-<!-- <script src="http://www.langdebuqing.com/css/jquery-2.1.3.min.js"></script>
-     <script src="http://www.langdebuqing.com/css/main.js"></script> -->
 </div>
 </body>
 </html>

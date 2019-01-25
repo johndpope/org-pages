@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-01-25 Fri 12:37 -->
+<!-- 2019-01-25 Fri 12:50 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>python gevent 学习</title>
@@ -181,7 +181,7 @@
   /*]]>*/-->
 </style>
 <link rel="stylesheet" type="text/css" href="https://www.manue1.site/css/style.css" />
-<link rel="shortcut icon" href="https://www.manue1.site/images/hack_favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="https://www.manue1.site/images/favicon.ico" type="image/x-icon" />
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -234,8 +234,10 @@ for the JavaScript code in this tag.
 <div id="navbar">
     <ul>
         <li id="site-master"><a href="https://www.manue1.site/">Manue1's Journal</a></li>
-        <li><a class="navbar-item" href="https://www.manue1.site/write.html">All Posts</a> </li>
+        <li><a class="navbar-item" href="https://www.manue1.site/q&a.html">Q&A</a> </li>
+        <li><a class="navbar-item" href="https://www.manue1.site/write.html">Posts</a> </li>
         <li><a class="navbar-item" href="https://www.manue1.site/link.html">Links</a> </li>
+        <li><a class="navbar-item" href="https://www.manue1.site/read.html">Read</a> </li>
         <li class="search">
             <form action="http://google.com/search" method="get" accept-charset="utf-8">
                 <input type="search" id="search" name="q" autocomplete="off" maxlength="30" placeholder="Search..">
@@ -251,48 +253,48 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org85d1a83">1. 核心部分</a>
+<li><a href="#org0401ed6">1. 核心部分</a>
 <ul>
-<li><a href="#org34d4359">1.1. greenlets</a></li>
-<li><a href="#org2e2c584">1.2. 同步与异步</a></li>
-<li><a href="#orge64e6c1">1.3. 确定性</a></li>
-<li><a href="#org2e11993">1.4. 异常处理</a></li>
-<li><a href="#orgc194e32">1.5. 程序停止</a></li>
-<li><a href="#org57daf55">1.6. 超时</a></li>
-<li><a href="#org17d91e9">1.7. 猴子补丁</a></li>
+<li><a href="#orgb275d46">1.1. greenlets</a></li>
+<li><a href="#org7165a99">1.2. 同步与异步</a></li>
+<li><a href="#orga363793">1.3. 确定性</a></li>
+<li><a href="#org2664c54">1.4. 异常处理</a></li>
+<li><a href="#org398e261">1.5. 程序停止</a></li>
+<li><a href="#orga9e4bf3">1.6. 超时</a></li>
+<li><a href="#org1c9dbbe">1.7. 猴子补丁</a></li>
 </ul>
 </li>
-<li><a href="#org01b6414">2. 数据结构</a>
+<li><a href="#org1703529">2. 数据结构</a>
 <ul>
-<li><a href="#org2060902">2.1. 事件</a></li>
-<li><a href="#orgc8a0184">2.2. 队列</a></li>
-<li><a href="#orgae8564f">2.3. 组和池</a></li>
-<li><a href="#org8ae4a74">2.4. 锁和信号量</a></li>
-<li><a href="#org6edce0f">2.5. 线程局部变量</a></li>
-<li><a href="#org01d1756">2.6. 子进程</a></li>
-<li><a href="#org26d3bbf">2.7. Actors</a></li>
+<li><a href="#orgc0c914e">2.1. 事件</a></li>
+<li><a href="#orgc4a5b3d">2.2. 队列</a></li>
+<li><a href="#org18f4970">2.3. 组和池</a></li>
+<li><a href="#org8cc7594">2.4. 锁和信号量</a></li>
+<li><a href="#orga208ec5">2.5. 线程局部变量</a></li>
+<li><a href="#org960a40a">2.6. 子进程</a></li>
+<li><a href="#orgc04b5fa">2.7. Actors</a></li>
 </ul>
 </li>
-<li><a href="#org7e09a07">3. 应用</a>
+<li><a href="#org92eff60">3. 应用</a>
 <ul>
-<li><a href="#org6fa8744">3.1. Gevent ZeroMQ</a></li>
-<li><a href="#org2889670">3.2. 简单server</a></li>
-<li><a href="#orgb4f76ae">3.3. WSGI Servers</a></li>
-<li><a href="#org6a32f6b">3.4. 流式server</a></li>
-<li><a href="#org24efc58">3.5. Long Polling</a></li>
-<li><a href="#org3874b49">3.6. Websockets</a></li>
-<li><a href="#org79e7232">3.7. 聊天server</a></li>
+<li><a href="#orgbfaebb0">3.1. Gevent ZeroMQ</a></li>
+<li><a href="#org5e0bf20">3.2. 简单server</a></li>
+<li><a href="#org17a66c7">3.3. WSGI Servers</a></li>
+<li><a href="#org358b932">3.4. 流式server</a></li>
+<li><a href="#orgb211257">3.5. Long Polling</a></li>
+<li><a href="#org60c2f8c">3.6. Websockets</a></li>
+<li><a href="#orgb284243">3.7. 聊天server</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org85d1a83" class="outline-2">
-<h2 id="org85d1a83"><span class="section-number-2">1</span> 核心部分</h2>
+<div id="outline-container-org0401ed6" class="outline-2">
+<h2 id="org0401ed6"><span class="section-number-2">1</span> 核心部分</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org34d4359" class="outline-3">
-<h3 id="org34d4359"><span class="section-number-3">1.1</span> greenlets</h3>
+<div id="outline-container-orgb275d46" class="outline-3">
+<h3 id="orgb275d46"><span class="section-number-3">1.1</span> greenlets</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 在gevent中用到的主要模式是Greenlet, 它是以C扩展模块形式接入Python的轻量级协程。 Greenlet全部运行在
@@ -368,8 +370,8 @@ gevent.joinall([
 </div>
 </div>
 </div>
-<div id="outline-container-org2e2c584" class="outline-3">
-<h3 id="org2e2c584"><span class="section-number-3">1.2</span> 同步与异步</h3>
+<div id="outline-container-org7165a99" class="outline-3">
+<h3 id="org7165a99"><span class="section-number-3">1.2</span> 同步与异步</h3>
 <div class="outline-text-3" id="text-1-2">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #9d0006;">import</span> time
@@ -475,8 +477,8 @@ asynchronous()
 </div>
 </div>
 
-<div id="outline-container-orge64e6c1" class="outline-3">
-<h3 id="orge64e6c1"><span class="section-number-3">1.3</span> 确定性</h3>
+<div id="outline-container-orga363793" class="outline-3">
+<h3 id="orga363793"><span class="section-number-3">1.3</span> 确定性</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 greenlet具有确定性。在相同配置相同输入的情况下，它们总是会产生相同的输出
@@ -523,8 +525,8 @@ greenlet具有确定性。在相同配置相同输入的情况下，它们总是
 </p>
 </div>
 </div>
-<div id="outline-container-org2e11993" class="outline-3">
-<h3 id="org2e11993"><span class="section-number-3">1.4</span> 异常处理</h3>
+<div id="outline-container-org2664c54" class="outline-3">
+<h3 id="org2664c54"><span class="section-number-3">1.4</span> 异常处理</h3>
 <div class="outline-text-3" id="text-1-4">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #9d0006;">import</span> gevent
@@ -554,8 +556,8 @@ greenlet具有确定性。在相同配置相同输入的情况下，它们总是
 </div>
 </div>
 </div>
-<div id="outline-container-orgc194e32" class="outline-3">
-<h3 id="orgc194e32"><span class="section-number-3">1.5</span> 程序停止</h3>
+<div id="outline-container-org398e261" class="outline-3">
+<h3 id="org398e261"><span class="section-number-3">1.5</span> 程序停止</h3>
 <div class="outline-text-3" id="text-1-5">
 <p>
 当主程序(main program)收到一个SIGQUIT信号时，不能成功做yield操作的 Greenlet可能会令意外地挂起程序的
@@ -580,8 +582,8 @@ greenlet具有确定性。在相同配置相同输入的情况下，它们总是
 </div>
 </div>
 
-<div id="outline-container-org57daf55" class="outline-3">
-<h3 id="org57daf55"><span class="section-number-3">1.6</span> 超时</h3>
+<div id="outline-container-orga9e4bf3" class="outline-3">
+<h3 id="orga9e4bf3"><span class="section-number-3">1.6</span> 超时</h3>
 <div class="outline-text-3" id="text-1-6">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #9d0006;">import</span> gevent
@@ -619,8 +621,8 @@ greenlet具有确定性。在相同配置相同输入的情况下，它们总是
 </div>
 </div>
 </div>
-<div id="outline-container-org17d91e9" class="outline-3">
-<h3 id="org17d91e9"><span class="section-number-3">1.7</span> 猴子补丁</h3>
+<div id="outline-container-org1c9dbbe" class="outline-3">
+<h3 id="org1c9dbbe"><span class="section-number-3">1.7</span> 猴子补丁</h3>
 <div class="outline-text-3" id="text-1-7">
 <p>
 在极端情况下当一个库需要修改Python本身的基础行为的时候，猴子补丁就派上用场了。在这种情况下，gevent能够修改标准库里面
@@ -640,12 +642,12 @@ gevent.monkey.patch<sub>all</sub>()，可以使得redis的绑定协作式的调�
 </div>
 </div>
 
-<div id="outline-container-org01b6414" class="outline-2">
-<h2 id="org01b6414"><span class="section-number-2">2</span> 数据结构</h2>
+<div id="outline-container-org1703529" class="outline-2">
+<h2 id="org1703529"><span class="section-number-2">2</span> 数据结构</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org2060902" class="outline-3">
-<h3 id="org2060902"><span class="section-number-3">2.1</span> 事件</h3>
+<div id="outline-container-orgc0c914e" class="outline-3">
+<h3 id="orgc0c914e"><span class="section-number-3">2.1</span> 事件</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 协程间的通信
@@ -744,8 +746,8 @@ gevent.joinall([
 </div>
 </div>
 
-<div id="outline-container-orgc8a0184" class="outline-3">
-<h3 id="orgc8a0184"><span class="section-number-3">2.2</span> 队列</h3>
+<div id="outline-container-orgc4a5b3d" class="outline-3">
+<h3 id="orgc4a5b3d"><span class="section-number-3">2.2</span> 队列</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 如果一个Greenlet从队列中取出一项，此项就不会被同时执行的其它Greenlet再取到了
@@ -811,8 +813,8 @@ gevent.joinall([
 </div>
 </div>
 
-<div id="outline-container-orgae8564f" class="outline-3">
-<h3 id="orgae8564f"><span class="section-number-3">2.3</span> 组和池</h3>
+<div id="outline-container-org18f4970" class="outline-3">
+<h3 id="org18f4970"><span class="section-number-3">2.3</span> 组和池</h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
 组(group)是一个运行中greenlet的集合，集合中的greenlet像一个组一样会被共同管理和调度。
@@ -913,8 +915,8 @@ pool.<span style="color: #af3a03;">map</span>(hello_from, <span style="color: #a
 </div>
 </div>
 
-<div id="outline-container-org8ae4a74" class="outline-3">
-<h3 id="org8ae4a74"><span class="section-number-3">2.4</span> 锁和信号量</h3>
+<div id="outline-container-org8cc7594" class="outline-3">
+<h3 id="org8cc7594"><span class="section-number-3">2.4</span> 锁和信号量</h3>
 <div class="outline-text-3" id="text-2-4">
 <p>
 信号量是一个允许greenlet相互合作，限制并发访问或运行的低层次的同步原语
@@ -965,8 +967,8 @@ pool.<span style="color: #af3a03;">map</span>(worker2, <span style="color: #af3a
 </div>
 </div>
 
-<div id="outline-container-org6edce0f" class="outline-3">
-<h3 id="org6edce0f"><span class="section-number-3">2.5</span> 线程局部变量</h3>
+<div id="outline-container-orga208ec5" class="outline-3">
+<h3 id="orga208ec5"><span class="section-number-3">2.5</span> 线程局部变量</h3>
 <div class="outline-text-3" id="text-2-5">
 <p>
 Gevent也允许你指定局部于greenlet上下文的数据。在内部，它被实现为以greenlet的getcurrent()为键，在一个私有命名空间寻址的全局查找。
@@ -1061,8 +1063,8 @@ Flask系统比这个例子复杂一点，然而使用线程局部变量作为局
 </div>
 </div>
 
-<div id="outline-container-org01d1756" class="outline-3">
-<h3 id="org01d1756"><span class="section-number-3">2.6</span> 子进程</h3>
+<div id="outline-container-org960a40a" class="outline-3">
+<h3 id="org960a40a"><span class="section-number-3">2.6</span> 子进程</h3>
 <div class="outline-text-3" id="text-2-6">
 <p>
 自gevent 1.0起，gevent.subprocess，一个Python subprocess模块的修补版本已经添加。它支持协作式的等待子进程。
@@ -1174,8 +1176,8 @@ gevent.joinall([g1, g2], timeout=1)
 </div>
 </div>
 
-<div id="outline-container-org26d3bbf" class="outline-3">
-<h3 id="org26d3bbf"><span class="section-number-3">2.7</span> Actors</h3>
+<div id="outline-container-orgc04b5fa" class="outline-3">
+<h3 id="orgc04b5fa"><span class="section-number-3">2.7</span> Actors</h3>
 <div class="outline-text-3" id="text-2-7">
 <p>
 actor模型是一个由于Erlang变得普及的 <b>更高层的并发模型</b> 。
@@ -1238,30 +1240,30 @@ gevent.joinall([ping, pong])
 </div>
 </div>
 
-<div id="outline-container-org7e09a07" class="outline-2">
-<h2 id="org7e09a07"><span class="section-number-2">3</span> 应用</h2>
+<div id="outline-container-org92eff60" class="outline-2">
+<h2 id="org92eff60"><span class="section-number-2">3</span> 应用</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org6fa8744" class="outline-3">
-<h3 id="org6fa8744"><span class="section-number-3">3.1</span> Gevent ZeroMQ</h3>
+<div id="outline-container-orgbfaebb0" class="outline-3">
+<h3 id="orgbfaebb0"><span class="section-number-3">3.1</span> Gevent ZeroMQ</h3>
 </div>
-<div id="outline-container-org2889670" class="outline-3">
-<h3 id="org2889670"><span class="section-number-3">3.2</span> 简单server</h3>
+<div id="outline-container-org5e0bf20" class="outline-3">
+<h3 id="org5e0bf20"><span class="section-number-3">3.2</span> 简单server</h3>
 </div>
-<div id="outline-container-orgb4f76ae" class="outline-3">
-<h3 id="orgb4f76ae"><span class="section-number-3">3.3</span> WSGI Servers</h3>
+<div id="outline-container-org17a66c7" class="outline-3">
+<h3 id="org17a66c7"><span class="section-number-3">3.3</span> WSGI Servers</h3>
 </div>
-<div id="outline-container-org6a32f6b" class="outline-3">
-<h3 id="org6a32f6b"><span class="section-number-3">3.4</span> 流式server</h3>
+<div id="outline-container-org358b932" class="outline-3">
+<h3 id="org358b932"><span class="section-number-3">3.4</span> 流式server</h3>
 </div>
-<div id="outline-container-org24efc58" class="outline-3">
-<h3 id="org24efc58"><span class="section-number-3">3.5</span> Long Polling</h3>
+<div id="outline-container-orgb211257" class="outline-3">
+<h3 id="orgb211257"><span class="section-number-3">3.5</span> Long Polling</h3>
 </div>
-<div id="outline-container-org3874b49" class="outline-3">
-<h3 id="org3874b49"><span class="section-number-3">3.6</span> Websockets</h3>
+<div id="outline-container-org60c2f8c" class="outline-3">
+<h3 id="org60c2f8c"><span class="section-number-3">3.6</span> Websockets</h3>
 </div>
-<div id="outline-container-org79e7232" class="outline-3">
-<h3 id="org79e7232"><span class="section-number-3">3.7</span> 聊天server</h3>
+<div id="outline-container-orgb284243" class="outline-3">
+<h3 id="orgb284243"><span class="section-number-3">3.7</span> 聊天server</h3>
 </div>
 </div>
 </div>
@@ -1273,8 +1275,6 @@ gevent.joinall([ping, pong])
 </p>
 <script src="https://www.manue1.site/css/jquery-2.1.3.min.js"></script>
 <script src="https://www.manue1.site/css/main.js"></script>
-<!-- <script src="http://www.langdebuqing.com/css/jquery-2.1.3.min.js"></script>
-     <script src="http://www.langdebuqing.com/css/main.js"></script> -->
 </div>
 </body>
 </html>

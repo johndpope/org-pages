@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-01-25 Fri 12:37 -->
+<!-- 2019-01-25 Fri 12:50 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>kyoto Cabinet &amp; Tycoon kv 型离线数据库</title>
@@ -181,7 +181,7 @@
   /*]]>*/-->
 </style>
 <link rel="stylesheet" type="text/css" href="https://www.manue1.site/css/style.css" />
-<link rel="shortcut icon" href="https://www.manue1.site/images/hack_favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="https://www.manue1.site/images/favicon.ico" type="image/x-icon" />
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -234,8 +234,10 @@ for the JavaScript code in this tag.
 <div id="navbar">
     <ul>
         <li id="site-master"><a href="https://www.manue1.site/">Manue1's Journal</a></li>
-        <li><a class="navbar-item" href="https://www.manue1.site/write.html">All Posts</a> </li>
+        <li><a class="navbar-item" href="https://www.manue1.site/q&a.html">Q&A</a> </li>
+        <li><a class="navbar-item" href="https://www.manue1.site/write.html">Posts</a> </li>
         <li><a class="navbar-item" href="https://www.manue1.site/link.html">Links</a> </li>
+        <li><a class="navbar-item" href="https://www.manue1.site/read.html">Read</a> </li>
         <li class="search">
             <form action="http://google.com/search" method="get" accept-charset="utf-8">
                 <input type="search" id="search" name="q" autocomplete="off" maxlength="30" placeholder="Search..">
@@ -251,10 +253,10 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orga9a190b">1. install cabinet &amp; tycoon</a></li>
-<li><a href="#orge69faae">2. tycoon 服务端</a></li>
-<li><a href="#orgde050fc">3. tycoon 客户端</a></li>
-<li><a href="#org661a067">4. hot backup</a></li>
+<li><a href="#org0fe2c4f">1. install cabinet &amp; tycoon</a></li>
+<li><a href="#org3dec3a2">2. tycoon 服务端</a></li>
+<li><a href="#org7930bdf">3. tycoon 客户端</a></li>
+<li><a href="#orge423678">4. hot backup</a></li>
 </ul>
 </div>
 </div>
@@ -300,8 +302,8 @@ cabinet数据落地的存储类型有两种:
 </blockquote></li>
 </ul>
 
-<div id="outline-container-orga9a190b" class="outline-2">
-<h2 id="orga9a190b"><span class="section-number-2">1</span> install cabinet &amp; tycoon</h2>
+<div id="outline-container-org0fe2c4f" class="outline-2">
+<h2 id="org0fe2c4f"><span class="section-number-2">1</span> install cabinet &amp; tycoon</h2>
 <div class="outline-text-2" id="text-1">
 <blockquote>
 <ol class="org-ol">
@@ -361,8 +363,8 @@ rm kyototycoon* -rf
 </div>
 </div>
 
-<div id="outline-container-orge69faae" class="outline-2">
-<h2 id="orge69faae"><span class="section-number-2">2</span> tycoon 服务端</h2>
+<div id="outline-container-org3dec3a2" class="outline-2">
+<h2 id="org3dec3a2"><span class="section-number-2">2</span> tycoon 服务端</h2>
 <div class="outline-text-2" id="text-2">
 <blockquote>
 <p>
@@ -433,8 +435,8 @@ ktserver -port 2000 \
 </blockquote>
 </div>
 </div>
-<div id="outline-container-orgde050fc" class="outline-2">
-<h2 id="orgde050fc"><span class="section-number-2">3</span> tycoon 客户端</h2>
+<div id="outline-container-org7930bdf" class="outline-2">
+<h2 id="org7930bdf"><span class="section-number-2">3</span> tycoon 客户端</h2>
 <div class="outline-text-2" id="text-3">
 <blockquote>
 <p>
@@ -476,8 +478,8 @@ ktremotemgr 作为一款连接kt server的客户端工具,下面给出简单示�
 </div>
 </div>
 
-<div id="outline-container-org661a067" class="outline-2">
-<h2 id="org661a067"><span class="section-number-2">4</span> hot backup</h2>
+<div id="outline-container-orge423678" class="outline-2">
+<h2 id="orge423678"><span class="section-number-2">4</span> hot backup</h2>
 <div class="outline-text-2" id="text-4">
 <blockquote>
 <p>
@@ -547,8 +549,6 @@ kttimedmgr recover -ts $1 /root/data/malfile.kch /var/log/backup_update_log
 </p>
 <script src="https://www.manue1.site/css/jquery-2.1.3.min.js"></script>
 <script src="https://www.manue1.site/css/main.js"></script>
-<!-- <script src="http://www.langdebuqing.com/css/jquery-2.1.3.min.js"></script>
-     <script src="http://www.langdebuqing.com/css/main.js"></script> -->
 </div>
 </body>
 </html>

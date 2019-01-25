@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-01-25 Fri 12:37 -->
+<!-- 2019-01-25 Fri 12:51 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>hive 功能特性</title>
@@ -181,7 +181,7 @@
   /*]]>*/-->
 </style>
 <link rel="stylesheet" type="text/css" href="https://www.manue1.site/css/style.css" />
-<link rel="shortcut icon" href="https://www.manue1.site/images/hack_favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="https://www.manue1.site/images/favicon.ico" type="image/x-icon" />
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -234,8 +234,10 @@ for the JavaScript code in this tag.
 <div id="navbar">
     <ul>
         <li id="site-master"><a href="https://www.manue1.site/">Manue1's Journal</a></li>
-        <li><a class="navbar-item" href="https://www.manue1.site/write.html">All Posts</a> </li>
+        <li><a class="navbar-item" href="https://www.manue1.site/q&a.html">Q&A</a> </li>
+        <li><a class="navbar-item" href="https://www.manue1.site/write.html">Posts</a> </li>
         <li><a class="navbar-item" href="https://www.manue1.site/link.html">Links</a> </li>
+        <li><a class="navbar-item" href="https://www.manue1.site/read.html">Read</a> </li>
         <li class="search">
             <form action="http://google.com/search" method="get" accept-charset="utf-8">
                 <input type="search" id="search" name="q" autocomplete="off" maxlength="30" placeholder="Search..">
@@ -251,15 +253,15 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org3ea9d68">1. hive 基础</a></li>
-<li><a href="#org9736b78">2. hive client 使用</a>
+<li><a href="#orgfd87afc">1. hive 基础</a></li>
+<li><a href="#orgb60235f">2. hive client 使用</a>
 <ul>
-<li><a href="#org4f5bc5d">2.1. 清洗数据</a></li>
-<li><a href="#org31a9d26">2.2. 建表导入数据</a></li>
-<li><a href="#org958729e">2.3. python UDF实现</a></li>
+<li><a href="#org3a85f8d">2.1. 清洗数据</a></li>
+<li><a href="#org4e34ca1">2.2. 建表导入数据</a></li>
+<li><a href="#org4dfd336">2.3. python UDF实现</a></li>
 </ul>
 </li>
-<li><a href="#org11f32c8">3. hive server使用</a></li>
+<li><a href="#orge67a8b1">3. hive server使用</a></li>
 </ul>
 </div>
 </div>
@@ -270,8 +272,8 @@ Hive是基于Hadoop分布式文件系统的，它的数据存储在Hadoop分布�
 在的目录中
 </p>
 
-<div id="outline-container-org3ea9d68" class="outline-2">
-<h2 id="org3ea9d68"><span class="section-number-2">1</span> hive 基础</h2>
+<div id="outline-container-orgfd87afc" class="outline-2">
+<h2 id="orgfd87afc"><span class="section-number-2">1</span> hive 基础</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li><p>
@@ -602,8 +604,8 @@ Parquet是一种支持嵌套结构的存储格式，并且使用了列式存储�
 </div>
 </div>
 
-<div id="outline-container-org9736b78" class="outline-2">
-<h2 id="org9736b78"><span class="section-number-2">2</span> hive client 使用</h2>
+<div id="outline-container-orgb60235f" class="outline-2">
+<h2 id="orgb60235f"><span class="section-number-2">2</span> hive client 使用</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 测试集群16G内存，三个节点,选<a href="http://netsg.cs.sfu.ca/youtubedata/">YouTube视频统计与社交网络</a>作为数据集
@@ -611,8 +613,8 @@ Parquet是一种支持嵌套结构的存储格式，并且使用了列式存储�
 </div>
 
 
-<div id="outline-container-org4f5bc5d" class="outline-3">
-<h3 id="org4f5bc5d"><span class="section-number-3">2.1</span> 清洗数据</h3>
+<div id="outline-container-org3a85f8d" class="outline-3">
+<h3 id="org3a85f8d"><span class="section-number-3">2.1</span> 清洗数据</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 数据字段都是以 <code>\t</code> 分割，一个字段内有多个值的统一 <code>&amp;</code> 分割 
@@ -756,8 +758,8 @@ Parquet是一种支持嵌套结构的存储格式，并且使用了列式存储�
 </table>
 </div>
 </div>
-<div id="outline-container-org31a9d26" class="outline-3">
-<h3 id="org31a9d26"><span class="section-number-3">2.2</span> 建表导入数据</h3>
+<div id="outline-container-org4e34ca1" class="outline-3">
+<h3 id="org4e34ca1"><span class="section-number-3">2.2</span> 建表导入数据</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 首先测试数据文件上传hdfs <code>/hadoop_data/</code> 下
@@ -934,8 +936,8 @@ insert into table user<sub>orc</sub> select * from user<sub>text</sub>;
 </div>
 </div>
 
-<div id="outline-container-org958729e" class="outline-3">
-<h3 id="org958729e"><span class="section-number-3">2.3</span> python UDF实现</h3>
+<div id="outline-container-org4dfd336" class="outline-3">
+<h3 id="org4dfd336"><span class="section-number-3">2.3</span> python UDF实现</h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
 在内置函数无法满足当前业务需求的时候,Hive允许用户自定义一些函数，用于扩展 HiveQL 的功能，这类函数叫做 UDF（用户自定义函数）
@@ -978,8 +980,8 @@ group by user_id, food_type;
 </div>
 </div>
 
-<div id="outline-container-org11f32c8" class="outline-2">
-<h2 id="org11f32c8"><span class="section-number-2">3</span> hive server使用</h2>
+<div id="outline-container-orge67a8b1" class="outline-2">
+<h2 id="orge67a8b1"><span class="section-number-2">3</span> hive server使用</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 python的pyhive模块 通过thrift方式连接hive,实现查询和取回结果的操作
@@ -1035,8 +1037,6 @@ print cursor.fetchall()
 </p>
 <script src="https://www.manue1.site/css/jquery-2.1.3.min.js"></script>
 <script src="https://www.manue1.site/css/main.js"></script>
-<!-- <script src="http://www.langdebuqing.com/css/jquery-2.1.3.min.js"></script>
-     <script src="http://www.langdebuqing.com/css/main.js"></script> -->
 </div>
 </body>
 </html>
