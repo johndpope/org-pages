@@ -1,11 +1,6 @@
-#+TITLE:  manue1
-
------
 #+BEGIN_CENTER
 On the Internet, nobody knows you're a dog. 
 #+END_CENTER
------
-\\
 
 #+BEGIN_CENTER
 #+ATTR_HTML: :width 30% :height 30% 

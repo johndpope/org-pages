@@ -56,22 +56,15 @@
 
    - State "ABORT"      from "TODO"       [2018-12-11 Tue 16:41]
 ** TODO [[file:note/auto-stack.org][量化交易]]
-** TODO [[file:note/kafka.org][kafka]] 
-
 ** TODO [[file:note/mysql.org][mysql]] 
-
 ** TODO [[file:note/note-disk_mount.org][磁盘管理]]
-
 ** TODO [[file:note/note-emacs.org][emacs]] 
 
 ** TODO [[file:note/note-git.org][git]] 
 
 ** TODO [[file:note/note-jvm.org][jvm理解]] 
-
 ** TODO [[file:note/note-options.org][对冲基金]] 
-
 ** TODO [[file:note/note-redis.org][redis]] 
-
 ** TODO [[file:note/note-scrapy-ftp.org][scrapy对ftp站点遍历下载]]
 ** TODO [[file:note/note-spark_use.org][spark]]
    
@@ -80,5 +73,4 @@
 ** TODO [[file:note/note-wx-bot.org][微信机器人]] 
 
 ** TODO [[file:note/nginx.org][nginx]] 
-** TODO [[file:note/org-mode.org][org-mode格式排版]] 
    
