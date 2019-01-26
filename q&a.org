@@ -1,5 +1,12 @@
 #+TITLE: Question & Answer
 * Question & Answer
+** DONE [2019-01-26 Sat] [[file:note/user-help.org][telegram install for android and iphone]]
+   CLOSED: [2019-01-27 Sun 00:02]
+   - State "DONE"       from "TODO"       [2019-01-27 Sun 00:02]
+   #+BEGIN_QUOTE
+   SCHEDULED: <2019-01-26 Sat 21:21>
+
+   #+END_QUOTE
 ** TODO [2019-01-24 Thu] 查找收集新闻订阅源
    #+BEGIN_QUOTE
    SCHEDULED: <2019-01-27 Sun 11:42>

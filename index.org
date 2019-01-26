@@ -8,11 +8,29 @@ On the Internet, nobody knows you're a dog.
 #+END_CENTER
 
 
+*ABOUT*
+
+#+BEGIN_QUOTE
+
+I'am manue1
+
+1. emacs nerd
+2. not single
+
+NOTE WELL! Please don't use a voice call unless you know me very well.
+
+E-mail & XMPP: manue1 [at] foxmail.com 
+
+IRC: manue1sec @ FreeNode
+
+Telegram: manue1sec
+#+END_QUOTE
+
 *SHARE*
 
 #+BEGIN_QUOTE
 
-telegram channel: @chinasec  [[https://t.me/proxy?server=139.180.192.255&port=443&secret=62b1466f8b1860fd9d2c80f5585971c6][mtproxy sponsor]]
+telegram channel:  [[https://t.me/chinasec][@chinasec]] (if you need proxy -> [[https://t.me/proxy?server=139.180.192.255&port=443&secret=62b1466f8b1860fd9d2c80f5585971c6][mtproxy sponsor]])
 
 #+END_QUOTE
 

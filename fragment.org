@@ -1,6 +1,10 @@
 #+TITLE: Knowledge Fragment
 
 * Knowledge Fragment
+- [2019-01-25 Fri] 
+  #+BEGIN_QUOTE
+  勒维恩说，“如果一首歌既不是新歌也不会过时，那它就是民谣”  -- 科恩兄弟
+  #+END_QUOTE
 - [2019-01-24 Thu] 
   #+BEGIN_QUOTE
   On the Internet, nobody knows you're a dog. 

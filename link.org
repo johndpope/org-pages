@@ -1,7 +1,43 @@
 #+TITLE: Link notes
 * Link notes
 
-** TODO [2019-01-25 Fri] favicon.io 在线生成网站
+** TODO [2019-01-26 Sat] 华尔街见闻
+  #+BEGIN_QUOTE
+  https://wallstreetcn.com/live/global 
+
+  SCHEDULED:<2019-01-26 Sat 18:49>
+  
+  #+END_QUOTE
+
+** TODO [2019-01-26 Sat] 电影首发站 更新爬虫
+  #+BEGIN_QUOTE
+  https://www.dysfz.tv/ 
+
+  SCHEDULED:<2019-01-26 Sat 17:06>
+  
+  #+END_QUOTE
+** TODO [2019-01-25 Fri] telegram bots create
+  #+BEGIN_QUOTE
+  https://yangsoon.github.io/2017/11/21/telegram-bots-for-developers/ 
+
+  https://yangsoon.github.io/2018/04/14/%E7%94%A8aiotg%E5%BC%80%E5%8F%91%E4%B8%80%E4%B8%AAtelegram%E7%88%AC%E8%99%AB%E6%9C%BA%E5%99%A8%E4%BA%BA/?utm_medium=hao.caibaojian.com&utm_source=hao.caibaojian.com
+  SCHEDULED:<2019-01-26 Sat 21:34>
+  
+  #+END_QUOTE
+
+** DONE [2019-01-25 Fri]  这哥们读书有点多啊，啃一本算法导论都得三个月吧。
+   CLOSED: [2019-01-25 Fri 19:57]
+   - State "DONE"       from "TODO"       [2019-01-25 Fri 19:57]
+  #+BEGIN_QUOTE
+  https://wdxtub.com/1997/09/11/booklist-page/ 
+
+  SCHEDULED:<2019-01-25 Fri 19:34>
+  
+  #+END_QUOTE
+
+** DONE [2019-01-25 Fri] favicon.io 在线生成网站
+   CLOSED: [2019-01-25 Fri 19:55]
+   - State "DONE"       from "TODO"       [2019-01-25 Fri 19:55]
   #+BEGIN_QUOTE
 
   https://favicon.io/favicon-generator/ 
@@ -274,37 +310,39 @@
 ** DONE 端口转发
    CLOSED: [2019-01-23 Wed 17:48] SCHEDULED: <2019-01-23 Wed>
    - State "DONE"       from "TODO"       [2019-01-23 Wed 17:48]
-  #+BEGIN_QUOTE
-  https://mp.weixin.qq.com/s/8HeeDC5x5xozElN8GzQLLw 
 
-  #+ATTR_HTML: :width 60% :height 60% 
-  [[file:images/screenshot/20190123165958.png]]
+#+BEGIN_QUOTE
+
+   https://mp.weixin.qq.com/s/8HeeDC5x5xozElN8GzQLLw 
+
+   #+ATTR_HTML: :width 60% :height 60% 
+   [[file:images/screenshot/20190123165958.png]]
   
-  *三种端口转发的方法,socat,iptables,ssh*
+   *三种端口转发的方法,socat,iptables,ssh*
   
-  socat是一个很强大的socket工具，这里我们拿来做端口转向，需要在B机器上运行：
+   socat是一个很强大的socket工具，这里我们拿来做端口转向，需要在B机器上运行：
 
-  : socat -d -d TCP4-LISTEN:8080,reuseaddr,fork,su=nobody TCP4:c_ip:80
+   : socat -d -d TCP4-LISTEN:8080,reuseaddr,fork,su=nobody TCP4:c_ip:80
 
-  这样，我们通过A访问B的8080端口的时候，就会访问到C的80端口了，如图上半部分所示
+   这样，我们通过A访问B的8080端口的时候，就会访问到C的80端口了，如图上半部分所示
 
-  iptables是大名鼎鼎的linux下的防火墙，也可以做端口转向，在B机器上运行：
+   iptables是大名鼎鼎的linux下的防火墙，也可以做端口转向，在B机器上运行：
   
-  : iptables -t nat -A PREROUTING -d b_ip -p tcp --dport 80 -j DNAT --to-destination c_ip:8080
+   : iptables -t nat -A PREROUTING -d b_ip -p tcp --dport 80 -j DNAT --to-destination c_ip:8080
  
-  : iptables -t nat -A POSTROUTING -d c_ip -p tcp --dport 8080 -j SNAT --to--source b_ip
+   : iptables -t nat -A POSTROUTING -d c_ip -p tcp --dport 8080 -j SNAT --to--source b_ip
 
-  ssh就不多说了，对应的场景是图上最下面的部分，需要在B上ssh登录C，中间创建一个转发隧道：
+   ssh就不多说了，对应的场景是图上最下面的部分，需要在B上ssh登录C，中间创建一个转发隧道：
 
-  : ssh -gfNL 8080:d_ip:80 root@c_ip
-  
-  
+   : ssh -gfNL 8080:d_ip:80 root@c_ip
 
+#+END_QUOTE
 
 ** DONE pyim 拼音输入法
    CLOSED: [2019-01-18 Fri 11:11]
    - State "DONE"       from "TODO"       [2019-01-18 Fri 11:11]
   #+BEGIN_QUOTE
+  
   https://github.com/tumashu/pyim#org4a82653 
 
   SCHEDULED:<2019-01-17 Thu 14:20>

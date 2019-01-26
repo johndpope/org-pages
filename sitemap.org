@@ -53,5 +53,6 @@
   - [[file:note/note-wx-bot.org][微信机器人]]
   - [[file:note/note-options.org][期货 期权 及其衍生产品]]
   - [[file:note/note-scrapy-ftp.org][用scrapy爬取FTP列表文件]]
+  - [[file:note/user-help.org][用户使用帮助]]
   - [[file:note/note-disk_mount.org][磁盘挂载那些事]]
   - [[file:note/note-lxf-python.org][读廖雪峰python文档记录]]
