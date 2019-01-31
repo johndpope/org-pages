@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-01-25 Fri 12:51 -->
+<!-- 2019-01-31 Thu 18:55 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Bug List</title>
@@ -255,7 +255,11 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#orgc796c49">1. Bug List</a>
 <ul>
-<li><a href="#orgd4069e1">1.1. <span class="done DONE">DONE</span> mac install Mysql-python</a></li>
+<li><a href="#org1944cb5">1.1. <span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-01-31 Thu] </span></span> ascii error</a></li>
+<li><a href="#org009587e">1.2. <span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-01-28 Mon] </span></span> redis服务器无密码被黑客利用</a></li>
+<li><a href="#org9ee264a">1.3. <span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-01-28 Mon] </span></span> movies<sub>share</sub> 存在云盘链接无法抓取问题</a></li>
+<li><a href="#orgb820c1d">1.4. <span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-01-28 Mon] </span></span> movies<sub>share</sub> 部分资源无法爬取</a></li>
+<li><a href="#orgd4069e1">1.5. <span class="done DONE">DONE</span> mac install Mysql-python</a></li>
 </ul>
 </li>
 </ul>
@@ -266,9 +270,124 @@ for the JavaScript code in this tag.
 <h2 id="orgc796c49"><span class="section-number-2">1</span> Bug List</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-orgd4069e1" class="outline-3">
-<h3 id="orgd4069e1"><span class="section-number-3">1.1</span> <span class="done DONE">DONE</span> mac install Mysql-python</h3>
+<div id="outline-container-org1944cb5" class="outline-3">
+<h3 id="org1944cb5"><span class="section-number-3">1.1</span> <span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-01-31 Thu] </span></span> ascii error</h3>
 <div class="outline-text-3" id="text-1-1">
+<blockquote>
+<p>
+SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-01-31 Thu 18:12&gt;</span></span>
+</p>
+
+<pre class="example">
+name=urllib2.quote(source['name'].encode('utf-8')))
+UnicodeEncodeError: 'ascii' codec can't encode character u'\xa0' in position 47: ordinal not in range(128)
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #af3a03;">reload</span>(sys)
+sys.setdefaultencoding(<span style="color: #79740e;">"utf-8"</span>)
+</pre>
+</div>
+
+<p>
+  参考链接：
+<a href="https://www.saltycrane.com/blog/2008/11/python-unicodeencodeerror-ascii-codec-cant-encode-character/">https://www.saltycrane.com/blog/2008/11/python-unicodeencodeerror-ascii-codec-cant-encode-character/</a>
+</p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-org009587e" class="outline-3">
+<h3 id="org009587e"><span class="section-number-3">1.2</span> <span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-01-28 Mon] </span></span> redis服务器无密码被黑客利用</h3>
+<div class="outline-text-3" id="text-1-2">
+<ul class="org-ul">
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-01-28 Mon 18:20]</span></span></li>
+</ul>
+<blockquote>
+<p>
+SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-01-28 Mon 13:59&gt;</span></span>
+</p>
+
+
+<div class="figure">
+<p><img src="images/screenshot/20190128135859.png" alt="20190128135859.png" width="60%" height="60%" />
+</p>
+</div>
+
+<p>
+还好我是docker镜像 ^_^ 
+</p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-org9ee264a" class="outline-3">
+<h3 id="org9ee264a"><span class="section-number-3">1.3</span> <span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-01-28 Mon] </span></span> movies<sub>share</sub> 存在云盘链接无法抓取问题</h3>
+<div class="outline-text-3" id="text-1-3">
+<ul class="org-ul">
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-01-28 Mon 21:00]</span></span></li>
+</ul>
+<blockquote>
+<p>
+SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-01-28 Mon 10:23&gt;</span></span>
+</p>
+
+<p>
+<a href="https://www.dysfz.tv/movie24974.html">https://www.dysfz.tv/movie24974.html</a>
+</p>
+
+<p>
+修改为判断标签内存在baiduyun
+</p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-orgb820c1d" class="outline-3">
+<h3 id="orgb820c1d"><span class="section-number-3">1.4</span> <span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-01-28 Mon] </span></span> movies<sub>share</sub> 部分资源无法爬取</h3>
+<div class="outline-text-3" id="text-1-4">
+<ul class="org-ul">
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-01-28 Mon 16:19]</span></span></li>
+</ul>
+<blockquote>
+<p>
+SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-01-30 Wed 01:42&gt;</span></span>
+</p>
+
+<ol class="org-ol">
+<li><p>
+部分页面影片描述内容存在&amp; #等字符需要转成url string 
+</p>
+
+<p>
+urllib2.quote(html) fixed
+</p></li>
+
+<li><p>
+<code>E01~E33视频</code> 页面存在中英文半角全角混杂字符
+</p>
+
+<p>
+对utf-8 而言，半角全角对所有中文字都是一样的，而对于英文和标点以及特殊符号的编码值是不一样的
+</p>
+
+<p>
+这里是 <code>～</code> 惹的祸
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #076678;">table</span> = {
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #af3a03;">ord</span>(f): <span style="color: #af3a03;">ord</span>(t)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">for</span> f, t <span style="color: #9d0006;">in</span> <span style="color: #af3a03;">zip</span>(u<span style="color: #79740e;">'&#65292;&#12290;&#65281;&#65311;&#12304;&#12305;&#65288;&#65289;&#65285;&#65283;&#65312;&#65286;&#65297;&#65298;&#65299;&#65300;&#65301;&#65302;&#65303;&#65304;&#65305;&#65296;&#65374;'</span>, u<span style="color: #79740e;">',.!?[]()%#@&amp;1234567890~'</span>)
+}
+<span style="color: #076678;">t</span> = u<span style="color: #79740e;">'&#20013;&#22269;&#65292;&#20013;&#25991;&#65292;&#26631;&#28857;&#31526;&#21495;&#65281;&#20320;&#22909;&#65311;&#65297;&#65298;&#65299;&#65300;&#65301;&#65312;&#65283;&#12304;&#12305;+=-&#65288;&#65289;&#65374;'</span>
+<span style="color: #076678;">t2</span> = t.translate(table)
+</pre>
+</div></li>
+</ol>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-orgd4069e1" class="outline-3">
+<h3 id="orgd4069e1"><span class="section-number-3">1.5</span> <span class="done DONE">DONE</span> mac install Mysql-python</h3>
+<div class="outline-text-3" id="text-1-5">
 <ul class="org-ul">
 <li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-28 Fri 19:00]</span></span></li>
 </ul>
