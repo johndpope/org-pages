@@ -1,27 +1,211 @@
 #+TITLE: Link notes
 * Link notes
 
-** TODO [2019-01-26 Sat] 华尔街见闻
+** DONE [2019-01-30 Wed] bt之家 影视bt资源爬虫 www.415.net
+   CLOSED: [2019-01-31 Thu 18:56]
+   - State "DONE"       from "TODO"       [2019-01-31 Thu 18:56]
   #+BEGIN_QUOTE
-  https://wallstreetcn.com/live/global 
+  http://www.btbtt03.com/ 
 
-  SCHEDULED:<2019-01-26 Sat 18:49>
+  SCHEDULED:<2019-01-30 Wed 19:51>
+  资源有首页电影更新、福利韩国主播、图片可爬取,目前只需要电影！
+
+  下载链接需要js点击触发查看弹窗获取地址,这里比较简单的是，抓包很容易发现下载地址格式都一致，就是aid不一致
+
+  而且aid第一次访问就可以获取到，掩耳盗铃！
+
+  http://www.btbtt03.com/attach-dialog-fid-1-aid-93142-ajax-1-ajax-1.htm
+  http://www.btbtt03.com/attach-dialog-fid-1-aid-93060-ajax-1.htm
+
+  http://www.btbtt03.com/attach-download-fid-1-aid-93142.htm
+  http://www.btbtt03.com/attach-download-fid-1-aid-93060.htm
+
+  http://www.btbtt03.com/attach-download-fid-1-aid-92987.htm
+  
   
   #+END_QUOTE
 
-** TODO [2019-01-26 Sat] 电影首发站 更新爬虫
+** DONE [2019-01-30 Wed] 电影资源 mp4ba 资源爬虫开发
+   CLOSED: [2019-01-30 Wed 17:46]
+   - State "DONE"       from "TODO"       [2019-01-30 Wed 17:46]
+  #+BEGIN_QUOTE
+  http://www.mp4ba.com/ 
+
+  SCHEDULED:<2019-01-30 Wed 17:46>
+  
+  #+END_QUOTE
+
+** TODO [2019-01-28 Mon] hls.js 
+  #+BEGIN_QUOTE
+  https://video-dev.github.io/hls.js/demo/ 
+
+  SCHEDULED:<2019-02-17 Sun 21:49>
+  
+  #+END_QUOTE
+
+** TODO [2019-01-28 Mon] baike789 资源 爬虫
+  #+BEGIN_QUOTE
+  http://www.baike789.com/ 
+
+  SCHEDULED:<2019-02-02 Sat 19:30>
+  
+  #+END_QUOTE
+
+** TODO [2019-01-28 Mon] 记录 Mac 下终端走代理的方法
+  #+BEGIN_QUOTE
+  https://www.xbug.me/post/2018-04-18-make-Terminal-use-proxy.html 
+
+  SCHEDULED:<2019-01-30 Wed 14:50>
+  
+  #+END_QUOTE
+
+** TODO [2019-01-28 Mon] 电影天堂 爬虫
+  #+BEGIN_QUOTE
+  https://www.dytt8.net/ 
+
+  SCHEDULED:<2019-02-17 Sun 12:51>
+  
+  只能首页爬去 2019新片精品 和 迅雷电影资源模块
+  
+  #+END_QUOTE
+
+** TODO [2019-01-28 Mon] 我的小书屋首页数据每天更新 爬取
+  #+BEGIN_QUOTE
+  http://www.shuwu.mobi/26039.html 
+
+  SCHEDULED:<2019-02-01 Fri 12:22>
+  
+  #+END_QUOTE
+
+** TODO [2019-01-28 Mon] BT部落天堂首页每天更新资源可爬取
+  #+BEGIN_QUOTE
+  http://www.btbuluo.com/ 
+
+  SCHEDULED:<2019-01-31 Thu 12:18>
+  
+  #+END_QUOTE
+
+** TODO [2019-01-28 Mon] 每日一文 爬虫
+  #+BEGIN_QUOTE
+  https://meiriyiwen.com/ 
+
+  SCHEDULED:<2019-02-01 Fri 01:21>
+  
+  #+END_QUOTE
+
+** TODO [2019-01-27 Sun] m3u8 测试源可爬
+  #+BEGIN_QUOTE
+  http://www.jktso.com/ 
+
+  SCHEDULED:<2019-02-06 Wed 16:39>
+  
+  #+END_QUOTE
+
+** TODO [2019-01-27 Sun] 小森林导航 部分资源可以爬
+   SCHEDULED: <2019-02-02 Sat>
+  #+BEGIN_QUOTE
+  http://hao.xsldh.com/ 
+
+  
+  #+END_QUOTE
+
+** TODO [#B] [2019-01-26 Sat] 华尔街见闻
+   SCHEDULED: <2019-01-31 Thu>
+  #+BEGIN_QUOTE
+  https://wallstreetcn.com/live/global 
+
+  
+  #+END_QUOTE
+
+** DONE [2019-01-26 Sat] 电影首发站 更新爬虫
+   CLOSED: [2019-01-28 Mon 01:44]
+   - State "DONE"       from "TODO"       [2019-01-28 Mon 01:44]
   #+BEGIN_QUOTE
   https://www.dysfz.tv/ 
 
   SCHEDULED:<2019-01-26 Sat 17:06>
   
   #+END_QUOTE
-** TODO [2019-01-25 Fri] telegram bots create
+** DONE [2019-01-25 Fri] telegram bots create
+   CLOSED: [2019-01-28 Mon 01:45]
+   - State "DONE"       from "TODO"       [2019-01-28 Mon 01:45]
   #+BEGIN_QUOTE
   https://yangsoon.github.io/2017/11/21/telegram-bots-for-developers/ 
 
   https://yangsoon.github.io/2018/04/14/%E7%94%A8aiotg%E5%BC%80%E5%8F%91%E4%B8%80%E4%B8%AAtelegram%E7%88%AC%E8%99%AB%E6%9C%BA%E5%99%A8%E4%BA%BA/?utm_medium=hao.caibaojian.com&utm_source=hao.caibaojian.com
   SCHEDULED:<2019-01-26 Sat 21:34>
+
+  
+  telegram有两种api，一种是bot api，一种是telegram api.
+  bot api是基于http访问，telegram api是基于mtproto访问，访问需要加密，
+
+  
+
+1. *创建一个bot*
+
+  访问 =https://telegram.me/botfather=
+
+  /newbot 
+
+  Alright, a new bot. How are we going to call it? Please choose a name for your bot.
+2. *通过bot发送消息到channel*
+   
+   =https://api.telegram.org/bot%s/sendMessage?chat_id=@%s&parse_mode=Markdown&text=%s" % (
+   bot_id, chat_id, content)=
+   
+   Telegram 是藉由下列請求傳送訊息給使用者 GET 
+
+   chat_id
+
+   群組 (Group) 為負數 (例如 -79897268)
+
+   超級群組 (Supergroup) 為負數 (例如 -1001033293696) 或是 @頻道名
+
+   私訊 (Private) 為正數 (例如 109780439)
+
+   頻道 (Channel) 為 @頻道名 (例如 @Telegram)
+
+   *parse_mode* 此為選擇性參數，未設定則為純文字 皆不支援複合使用 (像是 <b><i>重要</i></b>)
+
+   Markdown 可以用 [連結](url), *粗體*, _斜體_, `等寬字`, ```程式碼 (等寬區塊)``` 
+   
+   HTML 同一般 HTML 用法，支援 b, strong, i, em, a, code, pre 非標籤的 <, >, &, " 需要HTML entity後使用
+
+   text 傳送訊息的內容
+
+   bot_id为注册机器人后返回的内容，chat_id 如chinasrc 频道id，content为需要发送的格式化内容
+   
+3. telegram bot 内容格式化语法   
+
+   https://core.telegram.org/bots/api#html-style
+
+   换行符 :  %0A （要么 \n）和 %0D%0A （要么 \r\n）
+
+   HTML URL 编码 \t = %09  #=%23
+   
+
+   http://www.w3school.com.cn/tags/html_ref_urlencode.html
+
+   
+   Transform  normal string into  URL string in python (%20 to space etc)
+   
+   #+BEGIN_SRC python
+   import urllib2
+
+   html = '#兼具破案和搞笑一体的剧集《神烦警探》最近命<123>'
+
+   urllib2.quote(html)
+
+   # '%23%E5%85%BC%E5%85%B7%E7%A0%B4%E6%A1%88%E5%'
+   #+END_SRC
+
+
+   
+   
+   
+    
+
+    
   
   #+END_QUOTE
 
@@ -56,10 +240,10 @@
   #+END_QUOTE
 
 ** TODO [2019-01-23 Wed] Jinja2 模板语言
+   SCHEDULED: <2019-01-30 Wed>
   #+BEGIN_QUOTE
   https://www.kancloud.cn/manual/jinja2/70423 
 
-  SCHEDULED:<2019-01-28 Mon 12:17>
   
   #+END_QUOTE
 
@@ -97,11 +281,11 @@
   #+END_QUOTE
 
 ** TODO [2019-01-18 Fri] common lisp 简体中文
+   SCHEDULED: <2019-01-30 Wed>
 
   #+BEGIN_QUOTE
   https://acl.readthedocs.io/en/latest/zhCN/index.html 
 
-  SCHEDULED:<2019-01-28 Mon 11:39>
   
   #+END_QUOTE
 
@@ -381,7 +565,9 @@
   
   #+END_QUOTE
 
-** TODO A Screencast Video About Advanced Featurs of Emacs Org Mode
+** DONE A Screencast Video About Advanced Featurs of Emacs Org Mode
+   CLOSED: [2019-01-28 Mon 01:46]
+   - State "DONE"       from "TODO"       [2019-01-28 Mon 01:46]
   #+BEGIN_QUOTE
   https://karl-voit.at/2018/12/08/niklas-carlsson-video/ 
 
@@ -389,7 +575,9 @@
   
   #+END_QUOTE
 
-** TODO emacs learn video list
+** DONE emacs learn video list
+   CLOSED: [2019-01-28 Mon 01:46]
+   - State "DONE"       from "TODO"       [2019-01-28 Mon 01:46]
   #+BEGIN_QUOTE
   http://emacslife.com/videos.html 
 

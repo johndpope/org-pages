@@ -1,6 +1,80 @@
 #+TITLE: Bug List
 
 * Bug List
+** DONE [2019-01-31 Thu] ascii error
+   CLOSED: [2019-01-31 Thu 18:56]
+   - State "DONE"       from "TODO"       [2019-01-31 Thu 18:56]
+   #+BEGIN_QUOTE
+   SCHEDULED: <2019-01-31 Thu 18:12>
+   
+   爬虫爬取部分页面内容出现的报错问题:
+
+   报错信息如下
+   #+BEGIN_SRC 
+       name=urllib2.quote(source['name'].encode('utf-8')))
+       UnicodeEncodeError: 'ascii' codec can't encode character u'\xa0' in position 47: ordinal not in range(128)
+   #+END_SRC
+
+   处理方案
+   #+BEGIN_SRC python
+   reload(sys)
+   sys.setdefaultencoding("utf-8")
+   #+END_SRC
+
+   参考链接：
+ https://www.saltycrane.com/blog/2008/11/python-unicodeencodeerror-ascii-codec-cant-encode-character/
+ 
+   #+END_QUOTE
+** DONE [2019-01-28 Mon] redis服务器无密码被黑客利用
+   CLOSED: [2019-01-28 Mon 18:20]
+   - State "DONE"       from "TODO"       [2019-01-28 Mon 18:20]
+   #+BEGIN_QUOTE
+   SCHEDULED: <2019-01-28 Mon 13:59>
+
+   #+ATTR_HTML: :width 60% :height 60% 
+   [[file:images/screenshot/20190128135859.png]]
+
+   还好我是docker镜像 ^_^ 
+
+   #+END_QUOTE
+** DONE [2019-01-28 Mon] movies_share 存在云盘链接无法抓取问题
+   CLOSED: [2019-01-28 Mon 21:00]
+   - State "DONE"       from "TODO"       [2019-01-28 Mon 21:00]
+   #+BEGIN_QUOTE
+   SCHEDULED: <2019-01-28 Mon 10:23>
+   
+   https://www.dysfz.tv/movie24974.html
+
+   修改为判断标签内存在baiduyun
+
+   #+END_QUOTE
+** DONE [2019-01-28 Mon] movies_share 部分资源无法爬取
+   CLOSED: [2019-01-28 Mon 16:19]
+   - State "DONE"       from "TODO"       [2019-01-28 Mon 16:19]
+   #+BEGIN_QUOTE
+   SCHEDULED: <2019-01-30 Wed 01:42>
+ 
+   1. 部分页面影片描述内容存在& #等字符需要转成url string 
+   
+      urllib2.quote(html) fixed
+
+   2. =E01~E33视频= 页面存在中英文半角全角混杂字符
+
+      对utf-8 而言，半角全角对所有中文字都是一样的，而对于英文和标点以及特殊符号的编码值是不一样的
+
+      这里是 =～= 惹的祸
+      
+      #+BEGIN_SRC python
+      table = {
+          ord(f): ord(t)
+          for f, t in zip(u'，。！？【】（）％＃＠＆１２３４５６７８９０～', u',.!?[]()%#@&1234567890~')
+      }
+      t = u'中国，中文，标点符号！你好？１２３４５＠＃【】+=-（）～'
+      t2 = t.translate(table)
+      #+END_SRC
+
+
+   #+END_QUOTE
 ** DONE mac install Mysql-python
    CLOSED: [2018-12-28 Fri 19:00]
    - State "DONE"       from "TODO"       [2018-12-28 Fri 19:00]

@@ -1,5 +1,52 @@
 #+TITLE: Question & Answer
 * Question & Answer
+** DONE [2019-01-28 Mon] redis 配置
+   CLOSED: [2019-01-28 Mon 14:50]
+   - State "DONE"       from "TODO"       [2019-01-28 Mon 14:50]
+   #+BEGIN_QUOTE
+   SCHEDULED: <2019-01-28 Mon 11:40>
+
+   http://blog.fens.me/linux-redis-install/
+
+*ubuntu*   
+
+#安装Redis服务器端
+  
+1. ~ sudo apt-get install redis-server
+
+安装完成后，Redis服务器会自动启动
+
+2. 默认情况下，访问Redis服务器是不需要密码的，为了增加安全性我们需要设置Redis服务器的访问密码。设置访问密码为redisredis。
+
+用vi打开Redis服务器的配置文件redis.conf
+
+~ sudo vi /etc/redis/redis.conf
+
+#取消注释requirepass  =requirepass redisredis=
+
+3. 让Redis服务器被远程访问
+
+默认情况下，Redis服务器不允许远程访问，只允许本机访问，所以我们需要设置打开远程访问的功能。
+
+用vi打开Redis服务器的配置文件redis.conf
+
+~ sudo vi /etc/redis/redis.conf
+
+#注释bind  #bind 127.0.0.1
+
+*mac*
+
+1. brew install redis
+
+2. sudo vim  /usr/local/etc/redis.conf
+   
+   =requirepas xxxpasswd=
+
+3. redis-server /usr/local/etc/redis.conf >/dev/null &
+
+   
+ 
+   #+END_QUOTE
 ** DONE [2019-01-26 Sat] [[file:note/user-help.org][telegram install for android and iphone]]
    CLOSED: [2019-01-27 Sun 00:02]
    - State "DONE"       from "TODO"       [2019-01-27 Sun 00:02]
@@ -7,7 +54,10 @@
    SCHEDULED: <2019-01-26 Sat 21:21>
 
    #+END_QUOTE
-** TODO [2019-01-24 Thu] 查找收集新闻订阅源
+** DONE [2019-01-24 Thu] 查找收集新闻订阅源
+   CLOSED: [2019-01-28 Mon 01:45]
+   - State "DONE"       from "TODO"       [2019-01-28 Mon 01:45] \\
+     华尔街实时资讯
    #+BEGIN_QUOTE
    SCHEDULED: <2019-01-27 Sun 11:42>
  
