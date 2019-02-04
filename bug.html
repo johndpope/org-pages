@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-01-31 Thu 18:55 -->
+<!-- 2019-02-04 Mon 23:47 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Bug List</title>
@@ -255,7 +255,7 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#orgc796c49">1. Bug List</a>
 <ul>
-<li><a href="#org1944cb5">1.1. <span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-01-31 Thu] </span></span> ascii error</a></li>
+<li><a href="#org1944cb5">1.1. <span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-01-31 Thu] </span></span> ascii error</a></li>
 <li><a href="#org009587e">1.2. <span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-01-28 Mon] </span></span> redis服务器无密码被黑客利用</a></li>
 <li><a href="#org9ee264a">1.3. <span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-01-28 Mon] </span></span> movies<sub>share</sub> 存在云盘链接无法抓取问题</a></li>
 <li><a href="#orgb820c1d">1.4. <span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-01-28 Mon] </span></span> movies<sub>share</sub> 部分资源无法爬取</a></li>
@@ -271,18 +271,31 @@ for the JavaScript code in this tag.
 <div class="outline-text-2" id="text-1">
 </div>
 <div id="outline-container-org1944cb5" class="outline-3">
-<h3 id="org1944cb5"><span class="section-number-3">1.1</span> <span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-01-31 Thu] </span></span> ascii error</h3>
+<h3 id="org1944cb5"><span class="section-number-3">1.1</span> <span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-01-31 Thu] </span></span> ascii error</h3>
 <div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-01-31 Thu 18:56]</span></span></li>
+</ul>
 <blockquote>
 <p>
 SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-01-31 Thu 18:12&gt;</span></span>
 </p>
 
+<p>
+爬虫爬取部分页面内容出现的报错问题:
+</p>
+
+<p>
+报错信息如下
+</p>
 <pre class="example">
 name=urllib2.quote(source['name'].encode('utf-8')))
 UnicodeEncodeError: 'ascii' codec can't encode character u'\xa0' in position 47: ordinal not in range(128)
 </pre>
 
+<p>
+处理方案
+</p>
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #af3a03;">reload</span>(sys)
 sys.setdefaultencoding(<span style="color: #79740e;">"utf-8"</span>)
