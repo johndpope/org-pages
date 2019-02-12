@@ -39,6 +39,7 @@
   - [[file:note/mysql.org][mysql note]]
   - [[file:note/note-linux-centos.org][note-linux-centos]]
   - [[file:note/python-gevent.org][python gevent 学习]]
+  - [[file:note/python-flask.org][python-flask]]
   - [[file:note/rabbitmq.org][rabbitmq 使用中的一些记录]]
   - [[file:note/note-redis.org][redis 使用]]
   - [[file:note/note-spark_use.org][spark 学习]]

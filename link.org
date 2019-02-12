@@ -1,6 +1,162 @@
 #+TITLE: Link notes
 * Link notes
 
+** TODO [2019-02-01 Fri] 影视资源网站汇总
+
+
+  #+BEGIN_QUOTE
+  chrome-extension://jinjaccalgkegednnccohejagnlnfdag/options/index.html#scripts/2 
+
+  SCHEDULED:<2019-02-01 Fri 14:49>
+  
+  #+BEGIN_SRC python
+  {
+             "name": "公网资源",
+             "sites": {
+                 "云播网": {
+                     "title": "http://www.yunbowang.cn/index.php?m=vod-search&wd=",
+                     "selector": "div.container div.col-xs-7"
+                 },
+                 "胖鸟电影": {
+
+                     "title": "http://www.pniao.com/Mov/so/",
+                     "selector": "div.mainContainer div.movieFlag.eachOne"
+                 },
+                 "迷你MP4": {
+                     "title": "http://www.minimp4.com/search?q=",
+                     "selector": "div.container div.col-xs-7"
+                 },
+                 "蓝光网": {
+                     "title": "http://www.languang.co/?s=",
+                     "selector": "div.mi_cont li"
+                 },
+######
+                 "中国高清网": {
+                     "title": "http://gaoqing.la/?s=",
+                     "selector": "div.mainleft div.post_hover"
+                 },
+                 "人人美剧": {
+                     "title": "http://www.yyetss.com/Search/index/s_keys/",
+                     "selector": "div.row div.col-xs-3"
+                 },
+                 "天天美剧": {
+                     "title": "http://www.ttmeiju.vip/index.php/search/index.html?keyword=",
+                     "selector": "table.latesttable tr.Scontent1"
+                 },
+                 "爱美剧": {
+                     "title": "https://22v.net/search/",
+                     "selector": "div.movie span"
+                 },
+                 "天天看美剧": {
+                     "title": "http://www.msj1.com/?s=",
+                     "selector": "div.cat_list div.art_show_top"
+                 },
+                 "美剧粉": {
+                     "title": "http://www.itvfans.com/?s=",
+                     "selector": "#main-wrap-left div.home-blog-entry-text"
+                 },
+                 "BT吧": {
+                     "title": "http://www.btba.com.cn/search?keyword=",
+                     "selector": "div.left li"
+                 },
+                 "BT蚂蚁": {
+                     "title": "https://www.btmyi.com/search.html?kw=",
+                     "selector": "div.row h5.item-title"
+                 },
+                 "BT天堂": {
+                     "title": "http://www.bttt.la/s.php?q=",
+                     "selector": "div.ml div.title"
+                 },
+                 "BT之家": {
+                     "title": "http://www.btbtt.co/search-index-keyword-",
+                     "selector": "#threadlist table"
+                 },
+                 "RARBT": {
+                     "title": "http://www.rarbt.com/index.php/search/index.html?search=",
+                     "selector": "div.ml div.title"
+                 },
+                 "查片源": {
+                     "title": "https://www.chapianyuan.com/?keyword=",
+                     "selector": "div.block li"
+                 },
+                 "磁力猫": {
+                     "title": "http://www.cilimao.me/search?word=",
+                     "selector": "#Search__content_left___2MajJ div.MovieCard__content___3kv1W"
+                 },
+                 "磁力站": {
+                     "title": "http://oabt004.com/index/index?c=&k=",
+                     "selector": "div.link-list-wrapper ul.link-list"
+                 },
+                 "光影资源": {
+                     "title": "http://www.etdown.net/index.php?keyword=",
+                     "selector": "tbody.list_4 tr"
+                 },
+                 "我爱P2P": {
+                     "title": "http://www.woaip2p.net/topic/list?categoryId=0&title=",
+                     "selector": "tbody td.word-break"
+                 },
+                 "小浣熊下载": {
+                     "title": "https://www.xiaohx.org/search?key=",
+                     "selector": "div.search_right li"
+                 },
+                 "一站搜": {
+                     "title": "http://v.yizhansou.com/search?kw=",
+                     "selector": "table td.st"
+                 },
+                 "1337X": {
+                     "title": "https://1337x.to/search/",
+                     "selector": "table.table-list.table.table-responsive.table-striped td.coll-1.name"
+                 },
+                 "BT-Scene": {
+                     "title": "https://bt-scene.cc/results_.php?q=",
+                     "selector": "table.tor td.tname"
+                 },
+                 "iDope": {
+                     "title": "https://idope.se/torrent-list/",
+                     "selector": "#div2child div.resultdiv"
+                 },
+                 "ISOHunt": {
+                     "title": "https://isohunt2.net/torrent/?ihq=",
+                     "selector": "#serps td.title-row"
+                 },
+                 "KickAss": {
+                     "title": "https://katcr.co/katsearch/page/1/",
+                     "selector": "div.table--responsive_vertical div.torrents_table__torrent_name"
+                 },
+                 "
+                 "RARBG": {
+                     "title": "http://rarbg.is/torrents.php?search=",
+                     "selector": "table.lista2t tr.lista2"
+                 },
+                 "WorldWide": {
+                     "title": "https://worldwidetorrents.me/torrents-search.php?search=",
+                     "selector": "div.w3-responsive td.w3-jose"
+                 },
+                 "Zooqle": {
+                     "title": "https://zooqle.com/search?q=",
+                     "selector": "div.panel-body a.small"
+                 },
+             }
+
+  #+END_SRC
+  
+  #+END_QUOTE
+
+  ** TODO [2019-01-31 Thu] 666ys 百度云资源爬取
+  #+BEGIN_QUOTE
+  http://www.dygang.net/ys/ 
+
+  豆瓣API 通过影片名称查豆瓣电影信息
+
+  https://api.douban.com/v2/movie/search?q=name
+
+  搜索电影《神秘巨星》：
+
+  https://api.douban.com/v2/movie/search?q=神秘巨星&start=0&count=10
+  SCHEDULED:<2019-01-31 Thu 21:02>
+  
+  #+END_QUOTE
+
 ** DONE [2019-01-30 Wed] bt之家 影视bt资源爬虫 www.415.net
    CLOSED: [2019-01-31 Thu 18:56]
    - State "DONE"       from "TODO"       [2019-01-31 Thu 18:56]
@@ -40,14 +196,6 @@
   https://video-dev.github.io/hls.js/demo/ 
 
   SCHEDULED:<2019-02-17 Sun 21:49>
-  
-  #+END_QUOTE
-
-** TODO [2019-01-28 Mon] baike789 资源 爬虫
-  #+BEGIN_QUOTE
-  http://www.baike789.com/ 
-
-  SCHEDULED:<2019-02-02 Sat 19:30>
   
   #+END_QUOTE
 
@@ -186,6 +334,9 @@
 
    http://www.w3school.com.cn/tags/html_ref_urlencode.html
 
+   <	%3c
+   >	%3e
+   &	%26
    
    Transform  normal string into  URL string in python (%20 to space etc)
    
@@ -430,7 +581,7 @@
   
   #+END_QUOTE
 
-** DONE mac 系统文件过大
+** DONE mac 系统文件过大 磁盘清理
    CLOSED: [2019-01-11 Fri 11:11]
 
    - State "DONE"       from "TODO"       [2019-01-11 Fri 11:11]
@@ -442,6 +593,10 @@
   1. 清理应用缓存文件（8G）
   
      rm -rf ~/Library/Caches/*
+
+  2. find top 50 
+     
+     alias find_large50="sudo du -a / | sort -n -r | head -n 50"
 
 
      

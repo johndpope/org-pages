@@ -1,7 +1,7 @@
 #+TITLE: Writing List
 
 * Writing List
-** DONE <2019-01-23 Wed 17:50> [[file:note/note-iptables.org][iptables笔记]]
+** TODO <2019-02-12 Tue 21:55> [[file:note/python-flask.org][python flask 知识点梳理]]** DONE <2019-01-23 Wed 17:50> [[file:note/note-iptables.org][iptables笔记]]
    CLOSED: [2019-01-23 Wed 17:53]
 
    - State "DONE"       from "TODO"       [2019-01-23 Wed 17:53]

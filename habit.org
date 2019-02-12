@@ -58,10 +58,12 @@ SCHEDULED: <2019-01-23 Wed .+1d>
 [2019-01-23 Wed 18:21]
 
 * TODO emotional control
-SCHEDULED: <2019-01-29 Tue .+1d>
+SCHEDULED: <2019-02-07 Thu .+1d>
 :PROPERTIES:
-:LAST_REPEAT: [2019-01-28 Mon 21:00]
+:LAST_REPEAT: [2019-02-06 Wed 22:26]
 :END:
+- State "UNDO"       from "TODO"       [2019-02-06 Wed 22:26] \\
+  why
 - State "DONE"       from "TODO"       [2019-01-28 Mon 21:00]
 - State "DONE"       from "TODO"       [2019-01-25 Fri 11:49]
 - State "UNDO"       from "TODO"       [2019-01-23 Wed 10:44] \\
