@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-02-12 Tue 21:54 -->
+<!-- 2019-02-13 Wed 15:42 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -256,7 +256,7 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#orgec7d537">1.1. url详解：</a></li>
 <li><a href="#org4438711">1.2. web服务器和应用服务器以及web应用框架</a></li>
-<li><a href="#org36f76ee">1.3. config</a></li>
+<li><a href="#org9089e1f">1.3. flask config</a></li>
 <li><a href="#org5d6b234">1.4. 自定义URL转换器</a></li>
 <li><a href="#orgcda030b">1.5. DEBUG模式</a></li>
 <li><a href="#orgafce779">1.6. 重定向</a></li>
@@ -282,19 +282,15 @@ for the JavaScript code in this tag.
 </ul>
 </li>
 <li><a href="#org0cf0ab0">1.12. SQLALchemy学习</a></li>
-<li><a href="#org4552ba8">1.13. Flask-SQLAlchemy笔记</a></li>
-<li><a href="#org2411b46">1.14. alembic笔记</a></li>
-<li><a href="#orgd8b8436">1.15. flask<sub>script笔记</sub></a></li>
-<li><a href="#org5361f41">1.16. flask<sub>migrate笔记</sub></a></li>
-<li><a href="#org0d77f69">1.17. WTForms笔记</a></li>
-<li><a href="#org1ef27ef">1.18. 文件上传笔记</a></li>
-<li><a href="#orgc403a78">1.19. cookie笔记：</a></li>
+<li><a href="#org2411b46">1.13. alembic笔记</a></li>
+<li><a href="#orgd8b8436">1.14. flask<sub>script笔记</sub></a></li>
+<li><a href="#org5361f41">1.15. flask<sub>migrate笔记</sub></a></li>
+<li><a href="#org0d77f69">1.16. WTForms笔记</a></li>
+<li><a href="#org1ef27ef">1.17. 文件上传笔记</a></li>
+<li><a href="#orgc403a78">1.18. cookie笔记：</a></li>
+<li><a href="#orgb0685ed">1.19. session</a></li>
 <li><a href="#org519ba71">1.20. signal 信号笔记：</a></li>
-<li><a href="#org12c6293">1.21. Flask-Restful笔记</a>
-<ul>
-<li><a href="#org0f84b6e">1.21.1. Flask-restful笔记2：</a></li>
-</ul>
-</li>
+<li><a href="#org12c6293">1.21. Flask-Restful笔记</a></li>
 <li><a href="#orgbf7e0ef">1.22. Redis笔记：</a></li>
 <li><a href="#org4f9838b">1.23. 上下文</a></li>
 </ul>
@@ -309,6 +305,7 @@ for the JavaScript code in this tag.
 <div id="outline-container-orgec7d537" class="outline-3">
 <h3 id="orgec7d537"><span class="section-number-3">1.1</span> url详解：</h3>
 <div class="outline-text-3" id="text-1-1">
+<blockquote>
 <p>
 URL是Uniform Resource Locator的简写，统一资源定位符。
 </p>
@@ -368,12 +365,14 @@ url唯一：在定义url的时候，一定要记得在最后加一个斜杠。
 
 <li>在 <code>Flask</code> 中， <code>route</code> 方法，默认将只能使用 <code>GET</code> 的方式请求这个url，如果想要设置自己的请求方式，那么应该传递一个 <code>methods</code> 参数。</li>
 </ol>
+</blockquote>
 </div>
 </div>
 
 <div id="outline-container-org4438711" class="outline-3">
 <h3 id="org4438711"><span class="section-number-3">1.2</span> web服务器和应用服务器以及web应用框架</h3>
 <div class="outline-text-3" id="text-1-2">
+<blockquote>
 <p>
 web服务器：
 </p>
@@ -403,11 +402,14 @@ web应用框架：
 <p><img src="../images/screenshot/20190212165856.png" alt="20190212165856.png" width="60%" height="60%" />
 </p>
 </div>
+</blockquote>
 </div>
 </div>
-<div id="outline-container-org36f76ee" class="outline-3">
-<h3 id="org36f76ee"><span class="section-number-3">1.3</span> config</h3>
+
+<div id="outline-container-org9089e1f" class="outline-3">
+<h3 id="org9089e1f"><span class="section-number-3">1.3</span> flask config</h3>
 <div class="outline-text-3" id="text-1-3">
+<blockquote>
 <p>
 使用 <code>app.config.from_object</code> 的方式加载配置文件：
 </p>
@@ -427,11 +429,14 @@ web应用框架：
 <li>这种方式，加载配置文件，不局限于只能使用 <code>py</code> 文件，普通的 <code>txt</code> 文件同样也适合。</li>
 <li>这种方式，可以传递 <code>silent=True</code> ，那么这个静态文件没有找到的时候，不会抛出异常。</li>
 </ol>
+</blockquote>
 </div>
 </div>
+
 <div id="outline-container-org5d6b234" class="outline-3">
 <h3 id="org5d6b234"><span class="section-number-3">1.4</span> 自定义URL转换器</h3>
 <div class="outline-text-3" id="text-1-4">
+<blockquote>
 <p>
 自定义URL转换器的方式：
 </p>
@@ -444,7 +449,7 @@ web应用框架：
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #076678;">app.url_map.converters</span>[<span style="color: #79740e;">'tel'</span>] = TelephoneConverter
+<pre class="src src-python"><span style="color: #eab700;">app.url_map.converters</span>[<span style="color: #3e999f;">'tel'</span>] = TelephoneConverter
 </pre>
 </div></li>
 </ol>
@@ -464,11 +469,13 @@ web应用框架：
 <p>
 这个方法的返回值，将会在调用url<sub>for函数的时候生成符合要求的URL形式</sub>。
 </p>
+</blockquote>
 </div>
 </div>
 <div id="outline-container-orgcda030b" class="outline-3">
 <h3 id="orgcda030b"><span class="section-number-3">1.5</span> DEBUG模式</h3>
 <div class="outline-text-3" id="text-1-5">
+<blockquote>
 <p>
 为什么需要开启DEBUG模式：
 </p>
@@ -497,11 +504,13 @@ PIN码：
 <p>
 如果想要在网页上调试代码，那么应该输入 <code>PIN</code> 码。
 </p>
+</blockquote>
 </div>
 </div>
 <div id="outline-container-orgafce779" class="outline-3">
 <h3 id="orgafce779"><span class="section-number-3">1.6</span> 重定向</h3>
 <div class="outline-text-3" id="text-1-6">
+<blockquote>
 <p>
 重定向分为永久性重定向和暂时性重定向，在页面上体现的操作就是浏览器会从一个页面自动跳转到另外一个页面。
 比如用户访问了一个需要权限的页面，但是该用户当前并没有登录，因此我们应该给他重定向到登录页面。
@@ -538,28 +547,35 @@ flask中重定向：
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #9d0006;">from</span> flask <span style="color: #9d0006;">import</span> Flask,request,redirect,url_for
+<pre class="src src-python"><span style="color: #718c00;">from</span> flask <span style="color: #718c00;">import</span> Flask,request,redirect,url_for
 
-<span style="color: #076678;">app</span> = Flask(<span style="color: #af3a03;">__name__</span>)
+<span style="color: #eab700;">app</span> = Flask(<span style="color: #8959a8;">__name__</span>)
 
-<span style="color: #8f3f71;">@app.route</span>(<span style="color: #79740e;">'/login/'</span>)
-<span style="color: #9d0006;">def</span> <span style="color: #b57614;">login</span>():
-<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> <span style="color: #79740e;">'&#36825;&#26159;&#30331;&#24405;&#39029;&#38754;'</span>
+<span style="color: #4271ae;">@app.route</span>(<span style="color: #3e999f;">'/login/'</span>)
+<span style="color: #718c00;">def</span> <span style="color: #f5871f;">login</span>():
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">return</span> <span style="color: #3e999f;">'&#36825;&#26159;&#30331;&#24405;&#39029;&#38754;'</span>
 
-<span style="color: #8f3f71;">@app.route</span>(<span style="color: #79740e;">'/profile/'</span>)
-<span style="color: #9d0006;">def</span> <span style="color: #b57614;">profile</span>():
-<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">if</span> request.args.get(<span style="color: #79740e;">'name'</span>):
-<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> <span style="color: #79740e;">'&#20010;&#20154;&#20013;&#24515;&#39029;&#38754;'</span>
-<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">else</span>:
-<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #a89984;"># </span><span style="color: #a89984;">redirect &#37325;&#23450;&#21521;</span>
-<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> redirect(url_for(<span style="color: #79740e;">'login'</span>))
+<span style="color: #4271ae;">@app.route</span>(<span style="color: #3e999f;">'/profile/'</span>)
+<span style="color: #718c00;">def</span> <span style="color: #f5871f;">profile</span>():
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">if</span> request.args.get(<span style="color: #3e999f;">'name'</span>):
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">return</span> <span style="color: #3e999f;">'&#20010;&#20154;&#20013;&#24515;&#39029;&#38754;'</span>
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">else</span>:
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">redirect &#37325;&#23450;&#21521;</span>
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">return</span> redirect(url_for(<span style="color: #3e999f;">'login'</span>))
 </pre>
 </div>
+</blockquote>
 </div>
 </div>
+
 <div id="outline-container-orgd097ff7" class="outline-3">
 <h3 id="orgd097ff7"><span class="section-number-3">1.7</span> response</h3>
 <div class="outline-text-3" id="text-1-7">
+<blockquote>
+<p>
+
+</p>
+
 <p>
 视图函数中可以返回哪些值：
 </p>
@@ -581,11 +597,13 @@ flask中重定向：
 <li>指定 <code>app.response_class</code> 为你自定义的 <code>Response</code> 对象。</li>
 <li>如果视图函数返回的数据，不是字符串，也不是元组，也不是Response对象，那么就会将返回值传给 <code>force_type</code> ，然后再将 <code>force_type</code> 的返回值返回给前端。</li>
 </ol>
+</blockquote>
 </div>
 </div>
 <div id="outline-container-orgcf4593f" class="outline-3">
 <h3 id="orgcf4593f"><span class="section-number-3">1.8</span> url<sub>for</sub></h3>
 <div class="outline-text-3" id="text-1-8">
+<blockquote>
 <p>
 <code>url_for</code> 的基本使用：
 </p>
@@ -597,10 +615,10 @@ flask中重定向：
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #8f3f71;">@app.route</span>(<span style="color: #79740e;">'/post/list/&lt;page&gt;/'</span>)
-<span style="color: #9d0006;">def</span> <span style="color: #b57614;">my_list</span>(page):
-<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> <span style="color: #79740e;">'my list'</span>
-<span style="color: #9d0006;">print</span>(url_for(<span style="color: #79740e;">'my_list'</span>,page=1,count=2))
+<pre class="src src-python"><span style="color: #4271ae;">@app.route</span>(<span style="color: #3e999f;">'/post/list/&lt;page&gt;/'</span>)
+<span style="color: #718c00;">def</span> <span style="color: #f5871f;">my_list</span>(page):
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">return</span> <span style="color: #3e999f;">'my list'</span>
+<span style="color: #718c00;">print</span>(url_for(<span style="color: #3e999f;">'my_list'</span>,page=1,count=2))
 </pre>
 </div>
 
@@ -613,9 +631,9 @@ flask中重定向：
 <code>url_for</code> 会自动的处理那些特殊的字符，不需要手动去处理。
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #076678;">url</span> = url_for(<span style="color: #79740e;">'login'</span>,<span style="color: #af3a03;">next</span>=<span style="color: #79740e;">'/'</span>)
-<span style="color: #a89984;"># </span><span style="color: #a89984;">&#20250;&#33258;&#21160;&#30340;&#23558;/&#32534;&#30721;&#65292;&#19981;&#38656;&#35201;&#25163;&#21160;&#21435;&#22788;&#29702;&#12290;</span>
-<span style="color: #a89984;"># </span><span style="color: #a89984;">url=/login/?next=%2F</span>
+<pre class="src src-python"><span style="color: #eab700;">url</span> = url_for(<span style="color: #3e999f;">'login'</span>,<span style="color: #8959a8;">next</span>=<span style="color: #3e999f;">'/'</span>)
+<span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">&#20250;&#33258;&#21160;&#30340;&#23558;/&#32534;&#30721;&#65292;&#19981;&#38656;&#35201;&#25163;&#21160;&#21435;&#22788;&#29702;&#12290;</span>
+<span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">url=/login/?next=%2F</span>
 </pre>
 </div></li>
 </ol>
@@ -623,12 +641,14 @@ flask中重定向：
 <p>
 强烈建议以后在使用url的时候，使用 <code>url_for</code> 来反转url。
 </p>
+</blockquote>
 </div>
 </div>
 
 <div id="outline-container-org2907b3c" class="outline-3">
 <h3 id="org2907b3c"><span class="section-number-3">1.9</span> URL与视图函数的映射</h3>
 <div class="outline-text-3" id="text-1-9">
+<blockquote>
 <p>
 传递参数：
 </p>
@@ -652,12 +672,12 @@ flask中重定向：
 <code>any</code> 数据类型可以在一个 <code>url</code> 中指定多个路径。例如：
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #8f3f71;">@app.route</span>(<span style="color: #79740e;">'/&lt;any(blog,article):url_path&gt;/&lt;id&gt;/'</span>)
-<span style="color: #9d0006;">def</span> <span style="color: #b57614;">detail</span>(url_path, <span style="color: #af3a03;">id</span>):
-<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">if</span> url_path == <span style="color: #79740e;">'blog'</span>:
-<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> <span style="color: #79740e;">'&#21338;&#23458;&#35814;&#24773;&#65306;%s'</span> % <span style="color: #af3a03;">id</span>
-<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">else</span>:
-<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> <span style="color: #79740e;">'&#21338;&#23458;&#35814;&#24773;&#65306;%s'</span> % <span style="color: #af3a03;">id</span>
+<pre class="src src-python"><span style="color: #4271ae;">@app.route</span>(<span style="color: #3e999f;">'/&lt;any(blog,article):url_path&gt;/&lt;id&gt;/'</span>)
+<span style="color: #718c00;">def</span> <span style="color: #f5871f;">detail</span>(url_path, <span style="color: #8959a8;">id</span>):
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">if</span> url_path == <span style="color: #3e999f;">'blog'</span>:
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">return</span> <span style="color: #3e999f;">'&#21338;&#23458;&#35814;&#24773;&#65306;%s'</span> % <span style="color: #8959a8;">id</span>
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">else</span>:
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">return</span> <span style="color: #3e999f;">'&#21338;&#23458;&#35814;&#24773;&#65306;%s'</span> % <span style="color: #8959a8;">id</span>
 </pre>
 </div></li>
 </ol>
@@ -673,19 +693,21 @@ flask中重定向：
 第二种：使用查询字符串的方式，就是通过 <code>?key=value</code> 的形式传递的。
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #8f3f71;">@app.route</span>(<span style="color: #79740e;">'/d/'</span>)
-<span style="color: #9d0006;">def</span> <span style="color: #b57614;">d</span>():
-<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">wd</span> = request.args.get(<span style="color: #79740e;">'wd'</span>)
-<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> <span style="color: #79740e;">'&#24744;&#36890;&#36807;&#26597;&#35810;&#23383;&#31526;&#20018;&#30340;&#26041;&#24335;&#20256;&#36882;&#30340;&#21442;&#25968;&#26159;&#65306;%s'</span> % wd
+<pre class="src src-python"><span style="color: #4271ae;">@app.route</span>(<span style="color: #3e999f;">'/d/'</span>)
+<span style="color: #718c00;">def</span> <span style="color: #f5871f;">d</span>():
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">wd</span> = request.args.get(<span style="color: #3e999f;">'wd'</span>)
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">return</span> <span style="color: #3e999f;">'&#24744;&#36890;&#36807;&#26597;&#35810;&#23383;&#31526;&#20018;&#30340;&#26041;&#24335;&#20256;&#36882;&#30340;&#21442;&#25968;&#26159;&#65306;%s'</span> % wd
 </pre>
 </div></li>
 <li>如果你的这个页面的想要做 <code>SEO</code> 优化，就是被搜索引擎搜索到，那么推荐使用第一种形式（path的形式）。如果不在乎搜索引擎优化，那么就可以使用第二种（查询字符串的形式）。</li>
 </ol>
+</blockquote>
 </div>
 </div>
 <div id="outline-container-org9937379" class="outline-3">
 <h3 id="org9937379"><span class="section-number-3">1.10</span> template</h3>
 <div class="outline-text-3" id="text-1-10">
+<blockquote>
 <ol class="org-ol">
 <li>在渲染模版的时候，默认会从项目根目录下的 <code>templates</code> 目录下查找模版。</li>
 <li>如果不想把模版文件放在 <code>templates</code> 目录下，那么可以在 <code>Flask</code> 初始化的时候指定 <code>template_folder</code> 来指定模版的路径。</li>
@@ -698,7 +720,9 @@ flask中重定向：
 模版中的 <code>url_for</code> 跟我们后台视图函数中的 <code>url_for</code> 使用起来基本是一模一样的。也是传递视图函数的名字，也可以传递参数。
 使用的时候，需要在 <code>url_for</code> 左右两边加上一个 <code>{{ url_for('func') }}</code> 
 </p>
+</blockquote>
 </div>
+
 
 <div id="outline-container-orgdbcbf81" class="outline-4">
 <h4 id="orgdbcbf81"><span class="section-number-4">1.10.1</span> template过滤器</h4>
@@ -807,15 +831,15 @@ format(value,*arags,**kwargs)：格式化字符串。例如以下代码：
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #8f3f71;">@app.template_filter</span>(<span style="color: #79740e;">'cut'</span>)
-<span style="color: #9d0006;">def</span> <span style="color: #b57614;">cut</span>(value):
-<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">value</span> = value.replace(<span style="color: #79740e;">"hello"</span>,<span style="color: #79740e;">''</span>)
-<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> value
+<pre class="src src-python"><span style="color: #4271ae;">@app.template_filter</span>(<span style="color: #3e999f;">'cut'</span>)
+<span style="color: #718c00;">def</span> <span style="color: #f5871f;">cut</span>(value):
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">value</span> = value.replace(<span style="color: #3e999f;">"hello"</span>,<span style="color: #3e999f;">''</span>)
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">return</span> value
 </pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-html">&lt;<span style="color: #b57614;">p</span>&gt;{{ article|cut }}&lt;/<span style="color: #b57614;">p</span>&gt;
+<pre class="src src-html">&lt;<span style="color: #f5871f;">p</span>&gt;{{ article|cut }}&lt;/<span style="color: #f5871f;">p</span>&gt;
 </pre>
 </div>
 </div>
@@ -852,9 +876,9 @@ format(value,*arags,**kwargs)：格式化字符串。例如以下代码：
 </p>
 
 <div class="org-src-container">
-<pre class="src src-html">{% macro input(name, <span style="color: #076678;">value</span>='', <span style="color: #076678;">type</span>='text') %}
-&lt;<span style="color: #b57614;">input</span> <span style="color: #076678;">type</span>=<span style="color: #79740e;">"{{ </span><span style="color: #000000; background-color: #ff00ff;">type</span><span style="color: #79740e;"> }}"</span> <span style="color: #076678;">name</span>=<span style="color: #79740e;">"{{ </span><span style="color: #000000; background-color: #ff00ff;">name</span><span style="color: #79740e;"> }}"</span> <span style="color: #076678;">value</span>=<span style="color: #79740e;">"{{</span>
-<span style="color: #000000; background-color: #ff00ff;">value</span><span style="color: #79740e;"> }}"</span>&gt;
+<pre class="src src-html">{% macro input(name, <span style="color: #eab700;">value</span>='', <span style="color: #eab700;">type</span>='text') %}
+&lt;<span style="color: #f5871f;">input</span> <span style="color: #eab700;">type</span>=<span style="color: #3e999f;">"{{ </span><span style="color: #000000; background-color: #ff00ff;">type</span><span style="color: #3e999f;"> }}"</span> <span style="color: #eab700;">name</span>=<span style="color: #3e999f;">"{{ </span><span style="color: #000000; background-color: #ff00ff;">name</span><span style="color: #3e999f;"> }}"</span> <span style="color: #eab700;">value</span>=<span style="color: #3e999f;">"{{</span>
+<span style="color: #000000; background-color: #ff00ff;">value</span><span style="color: #3e999f;"> }}"</span>&gt;
 {% endmacro %}
 </pre>
 </div></li>
@@ -864,8 +888,8 @@ format(value,*arags,**kwargs)：格式化字符串。例如以下代码：
 </p>
 
 <div class="org-src-container">
-<pre class="src src-html">&lt;<span style="color: #b57614;">p</span>&gt;{{ input('username') }}&lt;/<span style="color: #b57614;">p</span>&gt;
-&lt;<span style="color: #000000; background-color: #ff00ff;">p</span>&gt;{{ input('password', <span style="color: #076678;">type</span>='password') }}&lt;/<span style="color: #b57614;">p</span>&gt;
+<pre class="src src-html">&lt;<span style="color: #f5871f;">p</span>&gt;{{ input('username') }}&lt;/<span style="color: #f5871f;">p</span>&gt;
+&lt;<span style="color: #000000; background-color: #ff00ff;">p</span>&gt;{{ input('password', <span style="color: #eab700;">type</span>='password') }}&lt;/<span style="color: #f5871f;">p</span>&gt;
 </pre>
 </div></li>
 </ol>
@@ -903,8 +927,8 @@ format(value,*arags,**kwargs)：格式化字符串。例如以下代码：
 </p>
 
 <div class="org-src-container">
-<pre class="src src-html">{% set <span style="color: #076678;">username</span>='&#30693;&#20102;&#35838;&#22530;' %}
-&lt;<span style="color: #b57614;">p</span>&gt;&#29992;&#25143;&#21517;&#65306;{{ username }}&lt;/<span style="color: #b57614;">p</span>&gt;
+<pre class="src src-html">{% set <span style="color: #eab700;">username</span>='&#30693;&#20102;&#35838;&#22530;' %}
+&lt;<span style="color: #f5871f;">p</span>&gt;&#29992;&#25143;&#21517;&#65306;{{ username }}&lt;/<span style="color: #f5871f;">p</span>&gt;
 </pre>
 </div>
 <p>
@@ -918,7 +942,7 @@ format(value,*arags,**kwargs)：格式化字符串。例如以下代码：
 
 <div class="org-src-container">
 <pre class="src src-html">{% with classroom = 'zhiliao1&#29677;' %}
-&lt;<span style="color: #b57614;">p</span>&gt;&#29677;&#32423;&#65306;{{ classroom }}&lt;/<span style="color: #b57614;">p</span>&gt;
+&lt;<span style="color: #f5871f;">p</span>&gt;&#29677;&#32423;&#65306;{{ classroom }}&lt;/<span style="color: #f5871f;">p</span>&gt;
 {% endwith %}
 </pre>
 </div>
@@ -930,7 +954,7 @@ format(value,*arags,**kwargs)：格式化字符串。例如以下代码：
 <div class="org-src-container">
 <pre class="src src-html">{% with %}
     {<span style="color: #000000; background-color: #ff00ff;">%</span> set classroom = 'zhiliao1&#29677;' %}
-    &lt;<span style="color: #b57614;">p</span>&gt;&#29677;&#32423;&#65306;{{ classroom }}&lt;/<span style="color: #b57614;">p</span>&gt;
+    &lt;<span style="color: #f5871f;">p</span>&gt;&#29677;&#32423;&#65306;{{ classroom }}&lt;/<span style="color: #f5871f;">p</span>&gt;
 {% endwith %}
 </pre>
 </div>
@@ -945,7 +969,7 @@ format(value,*arags,**kwargs)：格式化字符串。例如以下代码：
 </p>
 
 <div class="org-src-container">
-<pre class="src src-html">{{ url_for(<span style="color: #79740e;">"static"</span>,filename='xxx') }}
+<pre class="src src-html">{{ url_for(<span style="color: #3e999f;">"static"</span>,filename='xxx') }}
 </pre>
 </div>
 <p>
@@ -1010,7 +1034,7 @@ block语法：
 </p>
 <div class="org-src-container">
 <pre class="src src-html">{% block body_block %}
-        &lt;<span style="color: #b57614;">p</span> <span style="color: #076678;">style</span>=<span style="color: #79740e;">"background: red;"</span>&gt;&#36825;&#26159;&#29238;&#27169;&#26495;&#20013;&#30340;&#20195;&#30721;&lt;/<span style="color: #b57614;">p</span>&gt;
+        &lt;<span style="color: #f5871f;">p</span> <span style="color: #eab700;">style</span>=<span style="color: #3e999f;">"background: red;"</span>&gt;&#36825;&#26159;&#29238;&#27169;&#26495;&#20013;&#30340;&#20195;&#30721;&lt;/<span style="color: #f5871f;">p</span>&gt;
     {% endblock %}
 </pre>
 </div>
@@ -1040,7 +1064,7 @@ block语法：
 
 {<span style="color: #000000; background-color: #ff00ff;">%</span> block body_block %}
     {{ self.title() }}
-    &lt;<span style="color: #b57614;">p</span> <span style="color: #076678;">style</span>=<span style="color: #79740e;">"background: green;"</span>&gt;&#25105;&#26159;&#23376;&#27169;&#26495;&#20013;&#30340;&#20195;&#30721;&lt;/<span style="color: #b57614;">p</span>&gt;
+    &lt;<span style="color: #f5871f;">p</span> <span style="color: #eab700;">style</span>=<span style="color: #3e999f;">"background: green;"</span>&gt;&#25105;&#26159;&#23376;&#27169;&#26495;&#20013;&#30340;&#20195;&#30721;&lt;/<span style="color: #f5871f;">p</span>&gt;
 {% endblock %}
 </pre>
 </div>
@@ -1060,6 +1084,7 @@ block语法：
 <div id="outline-container-org8abb3e3" class="outline-3">
 <h3 id="org8abb3e3"><span class="section-number-3">1.11</span> 高级视图</h3>
 <div class="outline-text-3" id="text-1-11">
+<blockquote>
 <p>
 <code>add_url_rule(rule,endpoint=None,view_func=None)</code> 
 </p>
@@ -1072,12 +1097,14 @@ block语法：
 <code>app.route(rule,**options)</code> 装饰器：
 这个装饰器底层，其实也是使用 <code>add_url_rule</code> 来实现url与视图函数映射的。
 </p>
+</blockquote>
 </div>
 
 
 <div id="outline-container-org046a7b0" class="outline-4">
 <h4 id="org046a7b0"><span class="section-number-4">1.11.1</span> 类视图：</h4>
 <div class="outline-text-4" id="text-1-11-1">
+<blockquote>
 <p>
 <b>标准类视图</b> ：
 </p>
@@ -1107,6 +1134,7 @@ block语法：
 <li>如果使用的是函数视图，那么自己定义的装饰器必须放在 <code>app.route</code> 下面。否则这个装饰器就起不到任何作用。</li>
 <li>类视图的装饰器，需要重写类视图的一个类属性 <code>decorators</code> ，这个类属性是一个列表或者元组都可以，里面装的就是所有的装饰器。</li>
 </ol>
+</blockquote>
 </div>
 </div>
 
@@ -1114,6 +1142,7 @@ block语法：
 <div id="outline-container-orga2d05bf" class="outline-4">
 <h4 id="orga2d05bf"><span class="section-number-4">1.11.2</span> 蓝图：</h4>
 <div class="outline-text-4" id="text-1-11-2">
+<blockquote>
 <ol class="org-ol">
 <li>蓝图的作用就是让我们的Flask项目更加模块化，结构更加清晰。可以将相同模块的视图函数放在同一个蓝图下，同一个文件中，方便管理。</li>
 <li>基本语法：
@@ -1123,15 +1152,15 @@ block语法：
 在蓝图文件中导入Blueprint：
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #9d0006;">from</span> flask <span style="color: #9d0006;">import</span> Blueprint
-<span style="color: #076678;">user_bp</span> = Blueprint(<span style="color: #79740e;">'user'</span>,<span style="color: #af3a03;">__name__</span>)
+<pre class="src src-python"><span style="color: #718c00;">from</span> flask <span style="color: #718c00;">import</span> Blueprint
+<span style="color: #eab700;">user_bp</span> = Blueprint(<span style="color: #3e999f;">'user'</span>,<span style="color: #8959a8;">__name__</span>)
 </pre>
 </div></li>
 <li><p>
 在主app文件中注册蓝图：
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #9d0006;">from</span> blueprints.user <span style="color: #9d0006;">import</span> user_bp
+<pre class="src src-python"><span style="color: #718c00;">from</span> blueprints.user <span style="color: #718c00;">import</span> user_bp
 app.regist_blueprint(user_bp)
 </pre>
 </div></li>
@@ -1140,7 +1169,7 @@ app.regist_blueprint(user_bp)
 如果想要某个蓝图下的所有url都有一个url前缀，那么可以在定义蓝图的时候，指定url<sub>prefix参数</sub>：
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #076678;">user_bp</span> = Blueprint(<span style="color: #79740e;">'user'</span>,<span style="color: #af3a03;">__name__</span>,url_prefix=<span style="color: #79740e;">'/user/'</span>)
+<pre class="src src-python"><span style="color: #eab700;">user_bp</span> = Blueprint(<span style="color: #3e999f;">'user'</span>,<span style="color: #8959a8;">__name__</span>,url_prefix=<span style="color: #3e999f;">'/user/'</span>)
 </pre>
 </div>
 <p>
@@ -1156,7 +1185,7 @@ app.regist_blueprint(user_bp)
 并且蓝图中指定的路径可以为相对路径，相对的是当前这个蓝图文件所在的目录。比如：
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #076678;">news_bp</span> = Blueprint(<span style="color: #79740e;">'news'</span>,<span style="color: #af3a03;">__name__</span>,url_prefix=<span style="color: #79740e;">'/news'</span>,template_folder=<span style="color: #79740e;">'zhiliao'</span>)
+<pre class="src src-python"><span style="color: #eab700;">news_bp</span> = Blueprint(<span style="color: #3e999f;">'news'</span>,<span style="color: #8959a8;">__name__</span>,url_prefix=<span style="color: #3e999f;">'/news'</span>,template_folder=<span style="color: #3e999f;">'zhiliao'</span>)
 </pre>
 </div>
 <p>
@@ -1190,7 +1219,7 @@ app.regist_blueprint(user_bp)
 需要在主app文件中，需要配置app.config的SERVER<sub>NAME参数</sub>。例如：
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #076678;">app.config</span>[<span style="color: #79740e;">'SERVER_NAME'</span>] = <span style="color: #79740e;">'jd.com:5000'</span>
+<pre class="src src-python"><span style="color: #eab700;">app.config</span>[<span style="color: #3e999f;">'SERVER_NAME'</span>] = <span style="color: #3e999f;">'jd.com:5000'</span>
 </pre>
 </div>
 <ul class="org-ul">
@@ -1209,6 +1238,7 @@ app.regist_blueprint(user_bp)
 域名和子域名都需要做映射。
 </p></li>
 </ol>
+</blockquote>
 </div>
 </div>
 </div>
@@ -1216,35 +1246,44 @@ app.regist_blueprint(user_bp)
 <div id="outline-container-org0cf0ab0" class="outline-3">
 <h3 id="org0cf0ab0"><span class="section-number-3">1.12</span> SQLALchemy学习</h3>
 <div class="outline-text-3" id="text-1-12">
+<blockquote>
 <p>
-### 使用SQLAlchemy去连接数据库：
+<b>使用SQLAlchemy去连接数据库</b>
+</p>
+
+<p>
 使用SQLALchemy去连接数据库，需要使用一些配置信息，然后将他们组合成满足条件的字符串：
-```python
-HOSTNAME = '127.0.0.1'
-PORT = '3306'
-DATABASE = 'first<sub>sqlalchemy</sub>'
-USERNAME = 'root'
-PASSWORD = 'root'
 </p>
 
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #eab700;">HOSTNAME</span> = <span style="color: #3e999f;">'127.0.0.1'</span>
+<span style="color: #eab700;">PORT</span> = <span style="color: #3e999f;">'3306'</span>
+<span style="color: #eab700;">DATABASE</span> = <span style="color: #3e999f;">'first_sqlalchemy'</span>
+<span style="color: #eab700;">USERNAME</span> = <span style="color: #3e999f;">'root'</span>
+<span style="color: #eab700;">PASSWORD</span> = <span style="color: #3e999f;">'root'</span>
+
+<span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">dialect+driver://username:password@host:port/database</span>
+<span style="color: #eab700;">DB_URI</span> = <span style="color: #3e999f;">"mysql+pymysql://{username}:{password}@{host}:{port}/{db}?charset=utf8"</span>.<span style="color: #8959a8;">format</span>(username=USERNAME,password=PASSWORD,host=HOSTNAME,port=PORT,db=DATABASE)
+</pre>
+</div>
+
 <p>
-DB<sub>URI</sub> = "mysql+pymysql://{username}:{password}@{host}:{port}/{db}?charset=utf8".format(username=USERNAME,password=PASSWORD,host=HOSTNAME,port=PORT,db=DATABASE)
-```
-然后使用`create<sub>engine</sub>`创建一个引擎`engine`，然后再调用这个引擎的`connect`方法，就可以得到这个对象，然后就可以通过这个对象对数据库进行操作了：
-```python
-engine = create<sub>engine</sub>(DB<sub>URI</sub>)
+然后使用 <code>create_engine</code> 创建一个引擎 <code>engine</code> ，然后再调用这个引擎的 <code>connect</code> 方法，就可以得到这个对象，然后就可以通过这个对象对数据库进行操作了：
 </p>
 
-<p>
-conn = engine.connect()
-result = conn.execute('select 1')
-print(result.fetchone())
-```
-</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #eab700;">engine</span> = create_engine(DB_URI)
 
+<span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">&#21028;&#26029;&#26159;&#21542;&#36830;&#25509;&#25104;&#21151;</span>
+<span style="color: #eab700;">conn</span> = engine.connect()
+<span style="color: #eab700;">result</span> = conn.execute(<span style="color: #3e999f;">'select 1'</span>)
+<span style="color: #718c00;">print</span>(result.fetchone())
+
+</pre>
+</div>
 
 <p>
-### ORM介绍：
+<b>ORM介绍</b> ：
 </p>
 <ol class="org-ol">
 <li>ORM：Object Relationship Mapping</li>
@@ -1252,116 +1291,134 @@ print(result.fetchone())
 </ol>
 
 <p>
-### 将ORM模型映射到数据库中：
-</p>
-<ol class="org-ol">
-<li>用`declarative<sub>base</sub>`根据`engine`创建一个ORM基类。
-```python
-from sqlalchemy.ext.declarative import declarative<sub>base</sub>
-engine = create<sub>engine</sub>(DB<sub>URI</sub>)
-Base = declarative<sub>base</sub>(engine)
-```</li>
-<li>用这个`Base`类作为基类来写自己的ORM类。要定义`_<sub>tablename</sub>__`类属性，来指定这个模型映射到数据库中的表名。
-```python
-class Person(Base):
-    <span class="underline"><span class="underline">tablename</span></span> = 'person'
-```</li>
-<li><p>
-创建属性来映射到表中的字段，所有需要映射到表中的属性都应该为Column类型：
-```python
-class Person(Base):
-    <span class="underline"><span class="underline">tablename</span></span> = 'person'
+<b>将ORM模型映射到数据库中</b> ：
 </p>
 
-<p>
-    id = Column(Integer,primary<sub>key</sub>=True,autoincrement=True)
-    name = Column(String(50))
-    age = Column(Integer)
-```
-</p></li>
-<li>使用`Base.metadata.create<sub>all</sub>()`来将模型映射到数据库中。</li>
-<li>一旦使用`Base.metadata.create<sub>all</sub>()`将模型映射到数据库中后，即使改变了模型的字段，也不会重新映射了。</li>
+<ol class="org-ol">
+<li><p>
+用 <code>declarative_base</code> 根据 <code>engine</code> 创建一个ORM基类。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #718c00;">from</span> sqlalchemy.ext.declarative <span style="color: #718c00;">import</span> declarative_base
+<span style="color: #eab700;">engine</span> = create_engine(DB_URI)
+<span style="color: #eab700;">Base</span> = declarative_base(engine)
+</pre>
+</div></li>
+
+<li><p>
+用这个 <code>Base</code> 类作为基类来写自己的ORM类。要定义 <code>__tablename__</code> 类属性，来指定这个模型映射到数据库中的表名。
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #718c00;">class</span> <span style="color: #4271ae;">Person</span>(Base):
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">__tablename__</span> = <span style="color: #3e999f;">'person'</span>
+</pre>
+</div></li>
+<li><p>
+创建属性来映射到表中的字段，所有需要映射到表中的属性都应该为Column类型：
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #718c00;">class</span> <span style="color: #4271ae;">Person</span>(Base):
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">__tablename__</span> = <span style="color: #3e999f;">'person'</span>
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">2. &#22312;&#36825;&#20010;ORM&#27169;&#22411;&#20013;&#21019;&#24314;&#19968;&#20123;&#23646;&#24615;&#65292;&#26469;&#36319;&#34920;&#20013;&#30340;&#23383;&#27573;&#36827;&#34892;&#19968;&#19968;&#26144;&#23556;&#12290;&#36825;&#20123;&#23646;&#24615;&#24517;&#39035;&#26159;sqlalchemy&#32473;&#25105;&#20204;&#25552;&#20379;&#22909;&#30340;&#25968;&#25454;&#31867;&#22411;&#12290;</span>
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8959a8;">id</span> = Column(Integer,primary_key=<span style="color: #4271ae;">True</span>,autoincrement=<span style="color: #4271ae;">True</span>)
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">name</span> = Column(String(50))
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">age</span> = Column(Integer)
+</pre>
+</div></li>
+<li>使用 <code>Base.metadata.create_all()</code> 来将模型映射到数据库中。</li>
+<li>一旦使用 <code>Base.metadata.create_all()</code> 将模型映射到数据库中后，即使改变了模型的字段，也不会重新映射了。</li>
 </ol>
 
 <p>
-### 用session做数据的增删改查操作：
-</p>
-<ol class="org-ol">
-<li><p>
-构建session对象：所有和数据库的ORM操作都必须通过一个叫做`session`的会话对象来实现，通过以下代码来获取会话对象：
-```python
-from sqlalchemy.orm import sessionmaker
+<b>用session做数据的增删改查操作</b> ：
 </p>
 
-<p>
-engine = create<sub>engine</sub>(DB<sub>URI</sub>)
-session = sessionmaker(engine)()
-```
-</p></li>
+<ol class="org-ol">
+<li><p>
+构建session对象：所有和数据库的ORM操作都必须通过一个叫做 <code>session</code> 的会话对象来实现，通过以下代码来获取会话对象：
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #718c00;">from</span> sqlalchemy.orm <span style="color: #718c00;">import</span> sessionmaker
+
+<span style="color: #eab700;">engine</span> = create_engine(DB_URI)
+<span style="color: #eab700;">session</span> = sessionmaker(engine)()
+</pre>
+</div></li>
 <li>添加对象：
 <ul class="org-ul">
-<li>创建对象，也即创建一条数据：
-```python
-p = Person(name='zhiliao',age=18,country='china')
-```</li>
-<li>将这个对象添加到`session`会话对象中：
-```python
+<li><p>
+创建对象，也即创建一条数据：
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #eab700;">p</span> = Person(name=<span style="color: #3e999f;">'zhiliao'</span>,age=18,country=<span style="color: #3e999f;">'china'</span>)
+</pre>
+</div></li>
+<li><p>
+将这个对象添加到 <code>session</code> 会话对象中：
+</p>
+<pre class="example">
 session.add(p)
-```</li>
-<li>将session中的对象做commit操作（提交）：
-```python
+
+</pre></li>
+<li><p>
+将session中的对象做commit操作（提交）：
+</p>
+<pre class="example">
 session.commit()
-```</li>
-<li>一次性添加多条数据：
-```python
-p1 = Person(name='zhiliao1',age=19,country='china')
-p2 = Person(name='zhiliao2',age=20,country='china')
-session.add<sub>all</sub>([p1,p2])
+
+</pre></li>
+<li><p>
+一次性添加多条数据：
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #eab700;">p1</span> = Person(name=<span style="color: #3e999f;">'zhiliao1'</span>,age=19,country=<span style="color: #3e999f;">'china'</span>)
+<span style="color: #eab700;">p2</span> = Person(name=<span style="color: #3e999f;">'zhiliao2'</span>,age=20,country=<span style="color: #3e999f;">'china'</span>)
+session.add_all([p1,p2])
 session.commit()
-```</li>
+</pre>
+</div></li>
 </ul></li>
 <li><p>
 查找对象：
-```python
 </p>
-
-<p>
-all<sub>person</sub> = session.query(Person).all()
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span><span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">&#26597;&#25214;&#26576;&#20010;&#27169;&#22411;&#23545;&#24212;&#30340;&#37027;&#20010;&#34920;&#20013;&#25152;&#26377;&#30340;&#25968;&#25454;&#65306;</span>
+<span style="color: #eab700;">all_person</span> = session.query(Person).<span style="color: #8959a8;">all</span>()
+<span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">&#20351;&#29992;filter_by&#26469;&#20570;&#26465;&#20214;&#26597;&#35810;</span>
+<span style="color: #eab700;">all_person</span> = session.query(Person).filter_by(name=<span style="color: #3e999f;">'zhiliao'</span>).<span style="color: #8959a8;">all</span>()
+<span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">&#20351;&#29992;filter&#26469;&#20570;&#26465;&#20214;&#26597;&#35810;</span>
+<span style="color: #eab700;">all_person</span> = session.query(Person).<span style="color: #8959a8;">filter</span>(Person.name==<span style="color: #3e999f;">'zhiliao'</span>).<span style="color: #8959a8;">all</span>()
+<span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">&#20351;&#29992;get&#26041;&#27861;&#26597;&#25214;&#25968;&#25454;&#65292;get&#26041;&#27861;&#26159;&#26681;&#25454;id&#26469;&#26597;&#25214;&#30340;&#65292;&#21482;&#20250;&#36820;&#22238;&#19968;&#26465;&#25968;&#25454;&#25110;&#32773;None</span>
+<span style="color: #eab700;">person</span> = session.query(Person).get(primary_key)
+<span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">&#20351;&#29992;first&#26041;&#27861;&#33719;&#21462;&#32467;&#26524;&#38598;&#20013;&#30340;&#31532;&#19968;&#26465;&#25968;&#25454;</span>
+<span style="color: #eab700;">person</span> = session.query(Person).first()
+</pre>
+</div></li>
+<li><p>
+修改对象：首先从数据库中查找对象，然后将这条数据修改为你想要的数据，最后做commit操作就可以修改数据了。
 </p>
-
-<p>
-all<sub>person</sub> = session.query(Person).filter<sub>by</sub>(name='zhiliao').all()
-</p>
-
-<p>
-all<sub>person</sub> = session.query(Person).filter(Person.name=='zhiliao').all()
-</p>
-
-<p>
-person = session.query(Person).get(primary<sub>key</sub>)
-</p>
-
-<p>
-person = session.query(Person).first()
-```
-</p></li>
-<li>修改对象：首先从数据库中查找对象，然后将这条数据修改为你想要的数据，最后做commit操作就可以修改数据了。
-```python
-person = session.query(Person).first()
-person.name = 'ketang'
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #eab700;">person</span> = session.query(Person).first()
+<span style="color: #eab700;">person.name</span> = <span style="color: #3e999f;">'ketang'</span>
 session.commit()
-```</li>
-<li>删除对象：将需要删除的数据从数据库中查找出来，然后使用`session.delete`方法将这条数据从session中删除，最后做commit操作就可以了。
-```python
-person = session.query(Person).first()
+</pre>
+</div></li>
+<li><p>
+删除对象：将需要删除的数据从数据库中查找出来，然后使用 <code>session.delete</code> 方法将这条数据从session中删除，最后做commit操作就可以了。
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #eab700;">person</span> = session.query(Person).first()
 session.delete(person)
 session.commit()
-```</li>
+</pre>
+</div></li>
 </ol>
 
 <p>
-### SQLAlchemy常用数据类型：
+<b>SQLAlchemy常用数据类型</b> 
 </p>
+
 <ol class="org-ol">
 <li>Integer：整形，映射到数据库中是int类型。</li>
 <li>Float：浮点类型，映射到数据库中是float类型。他占据的32位。</li>
@@ -1371,221 +1428,236 @@ session.commit()
 <li>DECIMAL：定点类型。是专门为了解决浮点类型精度丢失的问题的。在存储钱相关的字段的时候建议大家都使用这个数据类型。并且这个类型使用的时候需要传递两个参数，第一个参数是用来标记这个字段总能能存储多少个数字，第二个参数表示小数点后有多少位。</li>
 <li><p>
 Enum：枚举类型。指定某个字段只能是枚举中指定的几个值，不能为其他值。在ORM模型中，使用Enum来作为枚举，示例代码如下：
-```python
-class Article(Base):
-    <span class="underline"><span class="underline">tablename</span></span> = 'article'
-    id = Column(Integer,primary<sub>key</sub>=True,autoincrement=True)
-    tag = Column(Enum("python",'flask','django'))
-```
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #718c00;">class</span> <span style="color: #4271ae;">Article</span>(Base):
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">__tablename__</span> = <span style="color: #3e999f;">'article'</span>
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8959a8;">id</span> = Column(Integer,primary_key=<span style="color: #4271ae;">True</span>,autoincrement=<span style="color: #4271ae;">True</span>)
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">tag</span> = Column(Enum(<span style="color: #3e999f;">"python"</span>,<span style="color: #3e999f;">'flask'</span>,<span style="color: #3e999f;">'django'</span>))
+</pre>
+</div>
+<p>
 在Python3中，已经内置了enum这个枚举的模块，我们也可以使用这个模块去定义相关的字段。示例代码如下：
-```python
-class TagEnum(enum.Enum):
-    python = "python"
-    flask = "flask"
-    django = "django"
 </p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #718c00;">class</span> <span style="color: #4271ae;">TagEnum</span>(enum.Enum):
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">python</span> = <span style="color: #3e999f;">"python"</span>
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">flask</span> = <span style="color: #3e999f;">"flask"</span>
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">django</span> = <span style="color: #3e999f;">"django"</span>
 
-<p>
-class Article(Base):
-    <span class="underline"><span class="underline">tablename</span></span> = 'article'
-    id = Column(Integer,primary<sub>key</sub>=True,autoincrement=True)
-    tag = Column(Enum(TagEnum))
-</p>
+<span style="color: #718c00;">class</span> <span style="color: #4271ae;">Article</span>(Base):
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">__tablename__</span> = <span style="color: #3e999f;">'article'</span>
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8959a8;">id</span> = Column(Integer,primary_key=<span style="color: #4271ae;">True</span>,autoincrement=<span style="color: #4271ae;">True</span>)
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">tag</span> = Column(Enum(TagEnum))
 
-<p>
-article = Article(tag=TagEnum.flask)
-```
-</p></li>
+<span style="color: #eab700;">article</span> = Article(tag=TagEnum.flask)
+
+</pre>
+</div></li>
 <li><p>
-Date：存储时间，只能存储年月日。映射到数据库中是date类型。在Python代码中，可以使用`datetime.date`来指定。示例代码如下：
-```python
-class Article(Base):
-    <span class="underline"><span class="underline">tablename</span></span> = 'article'
-    id = Column(Integer,primary<sub>key</sub>=True,autoincrement=True)
-    create<sub>time</sub> = Column(Date)
+Date：存储时间，只能存储年月日。映射到数据库中是date类型。在Python代码中，可以使用 <code>datetime.date</code> 来指定。示例代码如下：
 </p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #718c00;">class</span> <span style="color: #4271ae;">Article</span>(Base):
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">__tablename__</span> = <span style="color: #3e999f;">'article'</span>
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8959a8;">id</span> = Column(Integer,primary_key=<span style="color: #4271ae;">True</span>,autoincrement=<span style="color: #4271ae;">True</span>)
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">create_time</span> = Column(Date)
 
-<p>
-article = Article(create<sub>time</sub>=date(2017,10,10))
-```
-</p></li>
+<span style="color: #eab700;">article</span> = Article(create_time=date(2017,10,10))
+</pre>
+</div></li>
 <li><p>
-DateTime：存储时间，可以存储年月日时分秒毫秒等。映射到数据库中也是datetime类型。在Python代码中，可以使用`datetime.datetime`来指定。示例代码如下：
-```python
-class Article(Base):
-    <span class="underline"><span class="underline">tablename</span></span> = 'article'
-    id = Column(Integer,primary<sub>key</sub>=True,autoincrement=True)
-    create<sub>time</sub> = Column(DateTime)
+DateTime：存储时间，可以存储年月日时分秒毫秒等。映射到数据库中也是datetime类型。在Python代码中，可以使用 <code>datetime.datetime</code> 来指定。示例代码如下：
 </p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #718c00;">class</span> <span style="color: #4271ae;">Article</span>(Base):
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">__tablename__</span> = <span style="color: #3e999f;">'article'</span>
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8959a8;">id</span> = Column(Integer,primary_key=<span style="color: #4271ae;">True</span>,autoincrement=<span style="color: #4271ae;">True</span>)
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">create_time</span> = Column(DateTime)
 
-<p>
-article = Article(create<sub>time</sub>=datetime(2011,11,11,11,11,11))
-```
-</p></li>
+<span style="color: #eab700;">article</span> = Article(create_time=datetime(2011,11,11,11,11,11))
+</pre>
+</div></li>
 <li><p>
-Time：存储时间，可以存储时分秒。映射到数据库中也是time类型。在Python代码中，可以使用`datetime.time`来至此那个。示例代码如下：
-```python
-class Article(Base):
-    <span class="underline"><span class="underline">tablename</span></span> = 'article'
-    id = Column(Integer,primary<sub>key</sub>=True,autoincrement=True)
-    create<sub>time</sub> = Column(Time)
+Time：存储时间，可以存储时分秒。映射到数据库中也是time类型。在Python代码中，可以使用 ~ datetime.time ~ 来至此那个。示例代码如下：
 </p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #718c00;">class</span> <span style="color: #4271ae;">Article</span>(Base):
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">__tablename__</span> = <span style="color: #3e999f;">'article'</span>
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8959a8;">id</span> = Column(Integer,primary_key=<span style="color: #4271ae;">True</span>,autoincrement=<span style="color: #4271ae;">True</span>)
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">create_time</span> = Column(Time)
 
-<p>
-article = Article(create<sub>time</sub>=time(hour=11,minute=11,second=11))
-```
-</p></li>
+<span style="color: #eab700;">article</span> = Article(create_time=time(hour=11,minute=11,second=11))
+</pre>
+</div></li>
 <li>Text：存储长字符串。一般可以存储6W多个字符。如果超出了这个范围，可以使用LONGTEXT类型。映射到数据库中就是text类型。</li>
 <li>LONGTEXT：长文本类型，映射到数据库中是longtext类型。</li>
 </ol>
 
 
 <p>
-### Column常用参数：
+<b>Column常用参数</b> 
 </p>
+
 <ol class="org-ol">
 <li>primary<sub>key</sub>：设置某个字段为主键。</li>
 <li>autoincrement：设置这个字段为自动增长的。</li>
 <li>default：设置某个字段的默认值。在发表时间这些字段上面经常用。</li>
 <li>nullable：指定某个字段是否为空。默认值是True，就是可以为空。</li>
 <li>unique：指定某个字段的值是否唯一。默认是False。</li>
-<li>onupdate：在数据更新的时候会调用这个参数指定的值或者函数。在第一次插入这条数据的时候，不会用onupdate的值，只会使用default的值。常用的就是`update<sub>time</sub>`（每次更新数据的时候都要更新的值）。</li>
-<li>name：指定ORM模型中某个属性映射到表中的字段名。如果不指定，那么会使用这个属性的名字来作为字段名。如果指定了，就会使用指定的这个值作为参数。这个参数也可以当作位置参数，在第1个参数来指定。
-```python
+<li>onupdate：在数据更新的时候会调用这个参数指定的值或者函数。在第一次插入这条数据的时候，不会用onupdate的值，只会使用default的值。常用的就是 ~ update<sub>time</sub> ~ （每次更新数据的时候都要更新的值）。</li>
+<li><p>
+name：指定ORM模型中某个属性映射到表中的字段名。如果不指定，那么会使用这个属性的名字来作为字段名。如果指定了，就会使用指定的这个值作为参数。这个参数也可以当作位置参数，在第1个参数来指定。
+</p>
+<pre class="example">
 title = Column(String(50),name='title',nullable=False)
-title = Column('my<sub>title</sub>',String(50),nullable=False)
-```</li>
+title = Column('my_title',String(50),nullable=False)
+</pre></li>
 </ol>
 
 <p>
-### query可用参数：
+<b>query可用参数</b>
 </p>
+
 <ol class="org-ol">
 <li>模型对象。指定查找这个模型中所有的对象。</li>
 <li>模型中的属性。可以指定只查找某个模型的其中几个属性。</li>
-<li><p>
-聚合函数。
-</p>
+<li>聚合函数。
 <ul class="org-ul">
 <li>func.count：统计行的数量。</li>
 <li>func.avg：求平均值。</li>
 <li>func.max：求最大值。</li>
 <li>func.min：求最小值。</li>
-<li>func.sum：求和。</li>
-</ul>
-<p>
-`func`上，其实没有任何聚合函数。但是因为他底层做了一些魔术，只要mysql中有的聚合函数，都可以通过func调用。
-</p></li>
+<li>func.sum：求和。
+<code>func</code> 上，其实没有任何聚合函数。但是因为他底层做了一些魔术，只要mysql中有的聚合函数，都可以通过func调用。</li>
+</ul></li>
 </ol>
 
 <p>
-### filter过滤条件：
+<b>filter过滤条件</b>
+</p>
+
+<p>
 过滤是数据提取的一个很重要的功能，以下对一些常用的过滤条件进行解释，并且这些过滤条件都是只能通过filter方法实现的：
 </p>
 <ol class="org-ol">
-<li>equals：
-```python
-article = session.query(Article).filter(Article.title == "title0").first()
-print(article)
-```</li>
-<li>not equals:
-```python
+<li><p>
+equals：
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #eab700;">article</span> = session.query(Article).<span style="color: #8959a8;">filter</span>(Article.title == <span style="color: #3e999f;">"title0"</span>).first()
+<span style="color: #718c00;">print</span>(article)
+</pre>
+</div></li>
+<li><p>
+not equals:
+</p>
+<pre class="example">
 query.filter(User.name != 'ed')
-```</li>
-<li>like：
-```python
+
+</pre></li>
+<li><p>
+like：
+</p>
+<pre class="example">
 query.filter(User.name.like('%ed%'))
-```</li>
+
+</pre></li>
 
 <li><p>
 in：
-```python
-query.filter(User.name.in<sub>(['ed','wendy','jack'])</sub>)
 </p>
+<div class="org-src-container">
+<pre class="src src-python">query.<span style="color: #8959a8;">filter</span>(User.name.in_([<span style="color: #3e999f;">'ed'</span>,<span style="color: #3e999f;">'wendy'</span>,<span style="color: #3e999f;">'jack'</span>]))
+<span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">&#21516;&#26102;&#65292;in&#20063;&#21487;&#20197;&#20316;&#29992;&#20110;&#19968;&#20010;Query</span>
+query.<span style="color: #8959a8;">filter</span>(User.name.in_(session.query(User.name).<span style="color: #8959a8;">filter</span>(User.name.like(<span style="color: #3e999f;">'%ed%'</span>))))
+</pre>
+</div></li>
 
-<p>
-query.filter(User.name.in_(session.query(User.name).filter(User.name.like('%ed%'))))
-```
-</p></li>
-
-<li>not in：
-```python
-query.filter(~User.name.in<sub>(['ed','wendy','jack'])</sub>)
-```</li>
+<li><p>
+not in：
+</p>
+<div class="org-src-container">
+<pre class="src src-python">query.<span style="color: #8959a8;">filter</span>(~User.name.in_([<span style="color: #3e999f;">'ed'</span>,<span style="color: #3e999f;">'wendy'</span>,<span style="color: #3e999f;">'jack'</span>]))
+</pre>
+</div></li>
 <li><p>
 is null：
-```python
-query.filter(User.name==None)
 </p>
-
-<p>
-query.filter(User.name.is<sub>(None)</sub>)
-```
-</p></li>
+<div class="org-src-container">
+<pre class="src src-python">query.<span style="color: #8959a8;">filter</span>(User.name==<span style="color: #4271ae;">None</span>)
+<span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">&#25110;&#32773;&#26159;</span>
+query.<span style="color: #8959a8;">filter</span>(User.name.is_(<span style="color: #4271ae;">None</span>))
+</pre>
+</div></li>
 
 <li><p>
 is not null:
-```python
-query.filter(User.name != None)
 </p>
-
-<p>
-query.filter(User.name.isnot(None))
-```
-</p></li>
+<div class="org-src-container">
+<pre class="src src-python">query.<span style="color: #8959a8;">filter</span>(User.name != <span style="color: #4271ae;">None</span>)
+<span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">&#25110;&#32773;&#26159;</span>
+query.<span style="color: #8959a8;">filter</span>(User.name.isnot(<span style="color: #4271ae;">None</span>))
+</pre>
+</div></li>
 
 <li><p>
 and：
-```python
-from sqlalchemy import and_
-query.filter(and<sub>(User.name=='ed',User.fullname=='Ed Jones')</sub>)
 </p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #718c00;">from</span> sqlalchemy <span style="color: #718c00;">import</span> and_
+query.<span style="color: #8959a8;">filter</span>(and_(User.name==<span style="color: #3e999f;">'ed'</span>,User.fullname==<span style="color: #3e999f;">'Ed Jones'</span>))
+<span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">&#25110;&#32773;&#26159;&#20256;&#36882;&#22810;&#20010;&#21442;&#25968;</span>
+query.<span style="color: #8959a8;">filter</span>(User.name==<span style="color: #3e999f;">'ed'</span>,User.fullname==<span style="color: #3e999f;">'Ed Jones'</span>)
+<span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">&#25110;&#32773;&#26159;&#36890;&#36807;&#22810;&#27425;filter&#25805;&#20316;</span>
+query.<span style="color: #8959a8;">filter</span>(User.name==<span style="color: #3e999f;">'ed'</span>).<span style="color: #8959a8;">filter</span>(User.fullname==<span style="color: #3e999f;">'Ed Jones'</span>)
+</pre>
+</div></li>
 
-<p>
-query.filter(User.name=='ed',User.fullname=='Ed Jones')
+<li><p>
+or：
 </p>
+<pre class="example">
+from sqlalchemy import or_  query.filter(or_(User.name=='ed',User.name=='wendy'))
 
-<p>
-query.filter(User.name=='ed').filter(User.fullname=='Ed Jones')
-```
-</p></li>
-
-<li>or：
-```python
-from sqlalchemy import or_  query.filter(or<sub>(User.name=='ed',User.name=='wendy')</sub>)
-```</li>
+</pre></li>
 </ol>
 
 <p>
 如果想要查看orm底层转换的sql语句，可以在filter方法后面不要再执行任何方法直接打印就可以看到了。比如：
-    ```python
-        articles = session.query(Article).filter(or<sub>(Article.title=='abc',Article.content=='abc')</sub>)
-        print(articles)
-    ```
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #eab700;">articles</span> = session.query(Article).<span style="color: #8959a8;">filter</span>(or_(Article.title==<span style="color: #3e999f;">'abc'</span>,Article.content==<span style="color: #3e999f;">'abc'</span>))
+<span style="color: #718c00;">print</span>(articles)
+</pre>
+</div>
+
+<p>
+<b>外键</b> ：
 </p>
 
 <p>
-### 外键：
 使用SQLAlchemy创建外键非常简单。在从表中增加一个字段，指定这个字段外键的是哪个表的哪个字段就可以了。从表中外键的字段，必须和父表的主键字段类型保持一致。
 示例代码如下：
-```python
-class User(Base):
-    <span class="underline"><span class="underline">tablename</span></span> = 'user'
-    id = Column(Integer,primary<sub>key</sub>=True,autoincrement=True)
-    username = Column(String(50),nullable=False)
 </p>
+<div class="org-src-container">
+<pre class="src src-python">
+<span style="color: #718c00;">class</span> <span style="color: #4271ae;">User</span>(Base):
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">__tablename__</span> = <span style="color: #3e999f;">'user'</span>
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8959a8;">id</span> = Column(Integer,primary_key=<span style="color: #4271ae;">True</span>,autoincrement=<span style="color: #4271ae;">True</span>)
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">username</span> = Column(String(50),nullable=<span style="color: #4271ae;">False</span>)
+
+<span style="color: #718c00;">class</span> <span style="color: #4271ae;">Article</span>(Base):
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">__tablename__</span> = <span style="color: #3e999f;">'article'</span>
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8959a8;">id</span> = Column(Integer,primary_key=<span style="color: #4271ae;">True</span>,autoincrement=<span style="color: #4271ae;">True</span>)
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">title</span> = Column(String(50),nullable=<span style="color: #4271ae;">False</span>)
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">content</span> = Column(Text,nullable=<span style="color: #4271ae;">False</span>)
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">uid</span> = Column(Integer,ForeignKey(<span style="color: #3e999f;">"user.id"</span>))
+
+</pre>
+</div>
 
 <p>
-class Article(Base):
-    <span class="underline"><span class="underline">tablename</span></span> = 'article'
-    id = Column(Integer,primary<sub>key</sub>=True,autoincrement=True)
-    title = Column(String(50),nullable=False)
-    content = Column(Text,nullable=False)
-</p>
-
-<p>
-    uid = Column(Integer,ForeignKey("user.id"))
-```
 外键约束有以下几项： 
 </p>
 <ol class="org-ol">
@@ -1596,94 +1668,96 @@ class Article(Base):
 </ol>
 
 <p>
-### ORM关系以及一对多：
-mysql级别的外键，还不够ORM，必须拿到一个表的外键，然后通过这个外键再去另外一张表中查找，这样太麻烦了。SQLAlchemy提供了一个`relationship`，这个类可以定义属性，以后在访问相关联的表的时候就直接可以通过属性访问的方式就可以访问得到了。示例代码：
-```python
-class User(Base):
-    <span class="underline"><span class="underline">tablename</span></span> = 'user'
-    id = Column(Integer,primary<sub>key</sub>=True,autoincrement=True)
-    username = Column(String(50),nullable=False)
+<b>ORM关系以及一对多</b> ：
 </p>
 
 <p>
-def _<sub>repr</sub>_<sub>(self)</sub>:
-    return "&lt;User(username:%s)&gt;" % self.username
+mysql级别的外键，还不够ORM，必须拿到一个表的外键，然后通过这个外键再去另外一张表中查找，这样太麻烦了。SQLAlchemy提供了一个 <code>relationship</code> ，这个类可以定义属性，以后在访问相关联的表的时候就直接可以通过属性访问的方式就可以访问得到了。示例代码：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #718c00;">class</span> <span style="color: #4271ae;">User</span>(Base):
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">__tablename__</span> = <span style="color: #3e999f;">'user'</span>
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8959a8;">id</span> = Column(Integer,primary_key=<span style="color: #4271ae;">True</span>,autoincrement=<span style="color: #4271ae;">True</span>)
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">username</span> = Column(String(50),nullable=<span style="color: #4271ae;">False</span>)
+
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">articles = relationship("Article")</span>
+
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">def</span> <span style="color: #f5871f;">__repr__</span>(<span style="color: #718c00;">self</span>):
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">return</span> <span style="color: #3e999f;">"&lt;User(username:%s)&gt;"</span> % <span style="color: #718c00;">self</span>.username
+
+<span style="color: #718c00;">class</span> <span style="color: #4271ae;">Article</span>(Base):
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">__tablename__</span> = <span style="color: #3e999f;">'article'</span>
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8959a8;">id</span> = Column(Integer,primary_key=<span style="color: #4271ae;">True</span>,autoincrement=<span style="color: #4271ae;">True</span>)
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">title</span> = Column(String(50),nullable=<span style="color: #4271ae;">False</span>)
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">content</span> = Column(Text,nullable=<span style="color: #4271ae;">False</span>)
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">uid</span> = Column(Integer,ForeignKey(<span style="color: #3e999f;">"user.id"</span>))
+
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">author</span> = relationship(<span style="color: #3e999f;">"User"</span>,backref=<span style="color: #3e999f;">"articles"</span>)
+
+</pre>
+</div>
+<p>
+另外，可以通过 <code>backref</code> 来指定反向访问的属性名称。articles是有多个。他们之间的关系是一个一对多的关系。
 </p>
 
 <p>
-class Article(Base):
-    <span class="underline"><span class="underline">tablename</span></span> = 'article'
-    id = Column(Integer,primary<sub>key</sub>=True,autoincrement=True)
-    title = Column(String(50),nullable=False)
-    content = Column(Text,nullable=False)
-    uid = Column(Integer,ForeignKey("user.id"))
+<b>一对一的关系</b> ：
 </p>
 
 <p>
-    author = relationship("User",backref="articles")
-```
-另外，可以通过`backref`来指定反向访问的属性名称。articles是有多个。他们之间的关系是一个一对多的关系。
+在sqlalchemy中，如果想要将两个模型映射成一对一的关系，那么应该在父模型中，指定引用的时候，要传递一个 <code>uselist=False</code> 这个参数进去。就是告诉父模型，以后引用这个从模型的时候，不再是一个列表了，而是一个对象了。示例代码如下：
 </p>
 
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #718c00;">class</span> <span style="color: #4271ae;">User</span>(Base):
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">__tablename__</span> = <span style="color: #3e999f;">'user'</span>
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8959a8;">id</span> = Column(Integer,primary_key=<span style="color: #4271ae;">True</span>,autoincrement=<span style="color: #4271ae;">True</span>)
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">username</span> = Column(String(50),nullable=<span style="color: #4271ae;">False</span>)
+
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">extend</span> = relationship(<span style="color: #3e999f;">"UserExtend"</span>,uselist=<span style="color: #4271ae;">False</span>)
+
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">def</span> <span style="color: #f5871f;">__repr__</span>(<span style="color: #718c00;">self</span>):
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">return</span> <span style="color: #3e999f;">"&lt;User(username:%s)&gt;"</span> % <span style="color: #718c00;">self</span>.username
+
+<span style="color: #718c00;">class</span> <span style="color: #4271ae;">UserExtend</span>(Base):
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">__tablename__</span> = <span style="color: #3e999f;">'user_extend'</span>
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8959a8;">id</span> = Column(Integer, primary_key=<span style="color: #4271ae;">True</span>, autoincrement=<span style="color: #4271ae;">True</span>)
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">school</span> = Column(String(50))
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">uid</span> = Column(Integer,ForeignKey(<span style="color: #3e999f;">"user.id"</span>))
+
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">user</span> = relationship(<span style="color: #3e999f;">"User"</span>,backref=<span style="color: #3e999f;">"extend"</span>)
+
+</pre>
+</div>
 <p>
-### 一对一的关系：
-在sqlalchemy中，如果想要将两个模型映射成一对一的关系，那么应该在父模型中，指定引用的时候，要传递一个`uselist=False`这个参数进去。就是告诉父模型，以后引用这个从模型的时候，不再是一个列表了，而是一个对象了。示例代码如下：
-```python
-class User(Base):
-    <span class="underline"><span class="underline">tablename</span></span> = 'user'
-    id = Column(Integer,primary<sub>key</sub>=True,autoincrement=True)
-    username = Column(String(50),nullable=False)
+当然，也可以借助 <code>sqlalchemy.orm.backref</code> 来简化代码：
 </p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #718c00;">class</span> <span style="color: #4271ae;">User</span>(Base):
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">__tablename__</span> = <span style="color: #3e999f;">'user'</span>
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8959a8;">id</span> = Column(Integer,primary_key=<span style="color: #4271ae;">True</span>,autoincrement=<span style="color: #4271ae;">True</span>)
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">username</span> = Column(String(50),nullable=<span style="color: #4271ae;">False</span>)
+
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">extend = relationship("UserExtend",uselist=False)</span>
+
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">def</span> <span style="color: #f5871f;">__repr__</span>(<span style="color: #718c00;">self</span>):
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">return</span> <span style="color: #3e999f;">"&lt;User(username:%s)&gt;"</span> % <span style="color: #718c00;">self</span>.username
+
+<span style="color: #718c00;">class</span> <span style="color: #4271ae;">UserExtend</span>(Base):
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">__tablename__</span> = <span style="color: #3e999f;">'user_extend'</span>
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8959a8;">id</span> = Column(Integer, primary_key=<span style="color: #4271ae;">True</span>, autoincrement=<span style="color: #4271ae;">True</span>)
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">school</span> = Column(String(50))
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">uid</span> = Column(Integer,ForeignKey(<span style="color: #3e999f;">"user.id"</span>))
+
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">user</span> = relationship(<span style="color: #3e999f;">"User"</span>,backref=backref(<span style="color: #3e999f;">"extend"</span>,uselist=<span style="color: #4271ae;">False</span>))
+</pre>
+</div>
 
 <p>
-extend = relationship("UserExtend",uselist=False)
+<b>多对多的关系</b> ：
 </p>
 
-<p>
-def _<sub>repr</sub>_<sub>(self)</sub>:
-    return "&lt;User(username:%s)&gt;" % self.username
-</p>
-
-<p>
-class UserExtend(Base):
-    <span class="underline"><span class="underline">tablename</span></span> = 'user<sub>extend</sub>'
-    id = Column(Integer, primary<sub>key</sub>=True, autoincrement=True)
-    school = Column(String(50))
-    uid = Column(Integer,ForeignKey("user.id"))
-</p>
-
-<p>
-    user = relationship("User",backref="extend")
-```
-当然，也可以借助`sqlalchemy.orm.backref`来简化代码：
-```python
-class User(Base):
-    <span class="underline"><span class="underline">tablename</span></span> = 'user'
-    id = Column(Integer,primary<sub>key</sub>=True,autoincrement=True)
-    username = Column(String(50),nullable=False)
-</p>
-
-<p>
-def _<sub>repr</sub>_<sub>(self)</sub>:
-    return "&lt;User(username:%s)&gt;" % self.username
-</p>
-
-<p>
-class UserExtend(Base):
-    <span class="underline"><span class="underline">tablename</span></span> = 'user<sub>extend</sub>'
-    id = Column(Integer, primary<sub>key</sub>=True, autoincrement=True)
-    school = Column(String(50))
-    uid = Column(Integer,ForeignKey("user.id"))
-</p>
-
-<p>
-    user = relationship("User",backref=backref("extend",uselist=False))
-```
-</p>
-
-<p>
-### 多对多的关系：
-</p>
 <ol class="org-ol">
 <li>多对多的关系需要通过一张中间表来绑定他们之间的关系。</li>
 <li>先把两个需要做多对多的模型定义出来</li>
@@ -1693,8 +1767,11 @@ class UserExtend(Base):
 
 
 <p>
-### ORM层面的删除数据：
-ORM层面删除数据，会无视mysql级别的外键约束。直接会将对应的数据删除，然后将从表中的那个外键设置为NULL。如果想要避免这种行为，应该将从表中的外键的`nullable=False`。
+<b>ORM层面的删除数据</b> ：
+</p>
+
+<p>
+ORM层面删除数据，会无视mysql级别的外键约束。直接会将对应的数据删除，然后将从表中的那个外键设置为NULL。如果想要避免这种行为，应该将从表中的外键的 <code>nullable=False</code> 。
 在SQLAlchemy，只要将一个数据添加到session中，和他相关联的数据都可以一起存入到数据库中了。这些是怎么设置的呢？其实是通过relationship的时候，有一个关键字参数cascade可以设置这些属性： 
 </p>
 <ol class="org-ol">
@@ -1708,7 +1785,7 @@ ORM层面删除数据，会无视mysql级别的外键约束。直接会将对应
 
 
 <p>
-### 排序：
+<b>排序</b> ：
 </p>
 <ol class="org-ol">
 <li>order<sub>by</sub>：可以指定根据这个表中的某个字段进行排序，如果在前面加了一个-，代表的是降序排序。</li>
@@ -1730,54 +1807,69 @@ ORM层面删除数据，会无视mysql级别的外键约束。直接会将对应
 <p>
 即可让文章使用标题来进行排序。
 </p></li>
-<li>正序排序与倒序排序：默认是使用正序排序。如果需要使用倒序排序，那么可以使用这个字段的`desc()`方法，或者是在排序的时候使用这个字段的字符串名字，然后在前面加一个负号。</li>
+<li>正序排序与倒序排序：默认是使用正序排序。如果需要使用倒序排序，那么可以使用这个字段的 <code>desc()</code> 方法，或者是在排序的时候使用这个字段的字符串名字，然后在前面加一个负号。</li>
 </ol>
 
 <p>
-### limit、offset和切片操作：
+<b>limit、offset和切片操作</b> ：
 </p>
+
 <ol class="org-ol">
 <li>limit：可以限制每次查询的时候只查询几条数据。</li>
 <li>offset：可以限制查找数据的时候过滤掉前面多少条。</li>
-<li>切片：可以对Query对象使用切片操作，来获取想要的数据。可以使用`slice(start,stop)`方法来做切片操作。也可以使用`[start:stop]`的方式来进行切片操作。一般在实际开发中，中括号的形式是用得比较多的。希望大家一定要掌握。示例代码如下：</li>
+<li>切片：可以对Query对象使用切片操作，来获取想要的数据。可以使用 <code>slice(start,stop)</code> 方法来做切片操作。也可以使用 <code>[start:stop]</code> 的方式来进行切片操作。一般在实际开发中，中括号的形式是用得比较多的。希望大家一定要掌握。示例代码如下：</li>
 </ol>
+
+<pre class="example">
+articles = session.query(Article).order_by(Article.id.desc())[0:10]
+
+</pre>
+
 <p>
-```python
-articles = session.query(Article).order<sub>by</sub>(Article.id.desc())[0:10]
-```
+<b>懒加载</b> ：
 </p>
 
 <p>
-### 懒加载：
 在一对多，或者多对多的时候，如果想要获取多的这一部分的数据的时候，往往能通过一个属性就可以全部获取了。比如有一个作者，想要或者这个作者的所有文章，那么可以通过user.articles就可以获取所有的。但有时候我们不想获取所有的数据，比如只想获取这个作者今天发表的文章，那么这时候我们可以给relationship传递一个lazy='dynamic'，以后通过user.articles获取到的就不是一个列表，而是一个AppenderQuery对象了。这样就可以对这个对象再进行一层过滤和排序等操作。
-通过`lazy='dynamic'`，获取出来的多的那一部分的数据，就是一个`AppenderQuery`对象了。这种对象既可以添加新数据，也可以跟`Query`一样，可以再进行一层过滤。
-总而言之一句话：如果你在获取数据的时候，想要对多的那一边的数据再进行一层过滤，那么这时候就可以考虑使用`lazy='dynamic'`。
+通过 <code>lazy='dynamic'</code> ，获取出来的多的那一部分的数据，就是一个 <code>AppenderQuery</code> 对象了。这种对象既可以添加新数据，也可以跟 <code>Query</code> 一样，可以再进行一层过滤。
+总而言之一句话：如果你在获取数据的时候，想要对多的那一边的数据再进行一层过滤，那么这时候就可以考虑使用 <code>lazy='dynamic'</code> 。
 lazy可用的选项：
 </p>
+
 <ol class="org-ol">
-<li>`select`：这个是默认选项。还是拿`user.articles`的例子来讲。如果你没有访问`user.articles`这个属性，那么sqlalchemy就不会从数据库中查找文章。一旦你访问了这个属性，那么sqlalchemy就会立马从数据库中查找所有的文章，并把查找出来的数据组装成一个列表返回。这也是懒加载。</li>
-<li>`dynamic`：这个就是我们刚刚讲的。就是在访问`user.articles`的时候返回回来的不是一个列表，而是`AppenderQuery`对象。</li>
+<li><code>select</code> ：这个是默认选项。还是拿 <code>user.articles</code> 的例子来讲。如果你没有访问 <code>user.articles</code> 这个属性，那么sqlalchemy就不会从数据库中查找文章。一旦你访问了这个属性，那么sqlalchemy就会立马从数据库中查找所有的文章，并把查找出来的数据组装成一个列表返回。这也是懒加载。</li>
+<li><code>dynamic</code> ：这个就是我们刚刚讲的。就是在访问 <code>user.articles</code> 的时候返回回来的不是一个列表，而是 <code>AppenderQuery</code> 对象。</li>
 </ol>
 
 
 <p>
-### group<sub>by</sub>：
+<b>group<sub>by</sub></b>
+</p>
+
+<p>
 根据某个字段进行分组。比如想要根据性别进行分组，来统计每个分组分别有多少人，那么可以使用以下代码来完成：
-```python
-session.query(User.gender,func.count(User.id)).group<sub>by</sub>(User.gender).all()
-```
+</p>
+
+<pre class="example">
+session.query(User.gender,func.count(User.id)).group_by(User.gender).all()
+
+</pre>
+
+<p>
+<b>having</b>
 </p>
 
 <p>
-### having：
 having是对查找结果进一步过滤。比如只想要看未成年人的数量，那么可以首先对年龄进行分组统计人数，然后再对分组进行having过滤。示例代码如下：
-```python
-result = session.query(User.age,func.count(User.id)).group<sub>by</sub>(User.age).having(User.age &gt;= 18).all()
-```
 </p>
 
+<pre class="example">
+result = session.query(User.age,func.count(User.id)).group_by(User.age).having(User.age &gt;= 18).all()
+
+</pre>
+
 <p>
-### join：
+<b>join</b>
 </p>
 <ol class="org-ol">
 <li>join分为left join（左外连接）和right join（右外连接）以及内连接（等值连接）。</li>
@@ -1787,107 +1879,134 @@ result = session.query(User.age,func.count(User.id)).group<sub>by</sub>(User.age
 </ol>
 <p>
 比如现在要实现一个功能，要查找所有用户，按照发表文章的数量来进行排序。示例代码如下：
-```python
-result = session.query(User,func.count(Article.id)).join(Article).group<sub>by</sub>(User.id).order<sub>by</sub>(func.count(Article.id).desc()).all()
-```
+</p>
+
+<pre class="example">
+result = session.query(User,func.count(Article.id)).join(Article).group_by(User.id).order_by(func.count(Article.id).desc()).all()
+
+</pre>
+
+<p>
+<b>subquery</b>
 </p>
 
 <p>
-### subquery：
 子查询可以让多个查询变成一个查询，只要查找一次数据库，性能相对来讲更加高效一点。不用写多个sql语句就可以实现一些复杂的查询。那么在sqlalchemy中，要实现一个子查询，应该使用以下几个步骤：
 </p>
 <ol class="org-ol">
-<li>将子查询按照传统的方式写好查询代码，然后在`query`对象后面执行`subquery`方法，将这个查询变成一个子查询。</li>
-<li>在子查询中，将以后需要用到的字段通过`label`方法，取个别名。</li>
-<li>在父查询中，如果想要使用子查询的字段，那么可以通过子查询的返回值上的`c`属性拿到。</li>
+<li>将子查询按照传统的方式写好查询代码，然后在 <code>query</code> 对象后面执行 <code>subquery</code> 方法，将这个查询变成一个子查询。</li>
+<li>在子查询中，将以后需要用到的字段通过 <code>label</code> 方法，取个别名。</li>
+<li>在父查询中，如果想要使用子查询的字段，那么可以通过子查询的返回值上的 <code>c</code> 属性拿到。</li>
 </ol>
 <p>
 整体的示例代码如下：
-```python
+</p>
+
+<pre class="example">
 stmt = session.query(User.city.label("city"),User.age.label("age")).filter(User.username=='李A').subquery()
 result = session.query(User).filter(User.city==stmt.c.city,User.age==stmt.c.age).all()
-```
-</p>
-</div>
-</div>
-<div id="outline-container-org4552ba8" class="outline-3">
-<h3 id="org4552ba8"><span class="section-number-3">1.13</span> Flask-SQLAlchemy笔记</h3>
-<div class="outline-text-3" id="text-1-13">
+
+</pre>
+
 <p>
-### 安装：
-```shell
-pip install flask-sqlalchemy
-```
+<b>Flask-SQLAlchemy笔记</b>
 </p>
 
 <p>
-### 数据库连接：
+安装：
 </p>
+
+<pre class="example">
+pip install flask-sqlalchemy
+
+</pre>
+
+<p>
+数据库连接：
+</p>
+
 <ol class="org-ol">
 <li>跟sqlalchemy一样，定义好数据库连接字符串DB<sub>URI</sub>。</li>
-<li>将这个定义好的数据库连接字符串DB<sub>URI</sub>，通过`SQLALCHEMY<sub>DATABASE</sub><sub>URI</sub>`这个键放到`app.config`中。示例代码：`app.config["SQLALCHEMY<sub>DATABASE</sub><sub>URI</sub>"] = DB<sub>URI</sub>`.</li>
-<li>使用`flask<sub>sqlalchemy.SQLAlchemy</sub>`这个类定义一个对象，并将`app`传入进去。示例代码：`db = SQLAlchemy(app)`。</li>
+<li>将这个定义好的数据库连接字符串DB<sub>URI</sub>，通过 <code>SQLALCHEMY_DATABASE_URI</code> 这个键放到 <code>app.config</code> 中。示例代码： <code>app.config["SQLALCHEMY_DATABASE_URI"] = DB_URI</code> .</li>
+<li>使用 <code>flask_sqlalchemy.SQLAlchemy</code> 这个类定义一个对象，并将 <code>app</code> 传入进去。示例代码： <code>db = SQLAlchemy(app)</code> 。</li>
 </ol>
 
 <p>
-### 创建ORM模型：
+创建ORM模型：
 </p>
+
 <ol class="org-ol">
-<li>还是跟使用sqlalchemy一样，定义模型。现在不再是需要使用`delarative<sub>base</sub>`来创建一个基类。而是使用`db.Model`来作为基类。</li>
-<li>在模型类中，`Column`、`String`、`Integer`以及`relationship`等，都不需要导入了，直接使用`db`下面相应的属性名就可以了。</li>
-<li>在定义模型的时候，可以不写`_<sub>tablename</sub>__`，那么`flask<sub>sqlalchemy</sub>`会默认使用当前的模型的名字转换成小写来作为表的名字，并且如果这个模型的名字使用了多个单词并且使用了驼峰命名法，那么会在多个单词之间使用下划线来进行连接。**虽然flask<sub>sqlalchemy给我们提供了这个特性</sub>，但是不推荐使用。因为明言胜于暗喻**</li>
+<li>还是跟使用sqlalchemy一样，定义模型。现在不再是需要使用 <code>delarative_base</code> 来创建一个基类。而是使用 <code>db.Model</code> 来作为基类。</li>
+<li>在模型类中， <code>Column</code> 、 <code>String</code> 、 <code>Integer</code> 以及 <code>relationship</code> 等，都不需要导入了，直接使用 <code>db</code> 下面相应的属性名就可以了。</li>
+<li>在定义模型的时候，可以不写 <code>__tablename__</code> ，那么 <code>flask_sqlalchemy</code> 会默认使用当前的模型的名字转换成小写来作为表的名字，并且如果这个模型的名字使用了多个单词并且使用了驼峰命名法，那么会在多个单词之间使用下划线来进行连接。**虽然flask<sub>sqlalchemy给我们提供了这个特性</sub>，但是不推荐使用。因为明言胜于暗喻**</li>
 </ol>
 
 <p>
-### 将ORM模型映射到数据库：
+将ORM模型映射到数据库：
 </p>
+
 <ol class="org-ol">
 <li>db.drop<sub>all</sub>()</li>
 <li>db.create<sub>all</sub>()</li>
 </ol>
 
 <p>
-### 使用session：
-以后session也不需要使用`sessionmaker`来创建了。直接使用`db.session`就可以了。操作这个session的时候就跟之前的`sqlalchemy`的`session`是iyimoyiyang的。
+使用session：
 </p>
 
 <p>
-### 查询数据：
-如果查找数据只是查找一个模型上的数据，那么可以通过`模型.query`的方式进行查找。`query`就跟之前的sqlalchemy中的query方法是一样用的。示例代码如下：
-```python
-users = User.query.order<sub>by</sub>(User.id.desc()).all()
-print(users)
-```
+以后session也不需要使用 <code>sessionmaker</code> 来创建了。直接使用 <code>db.session</code> 就可以了。操作这个session的时候就跟之前的 <code>sqlalchemy</code> 的 <code>session</code> 是iyimoyiyang的。
 </p>
+
+<p>
+查询数据：
+</p>
+
+<p>
+如果查找数据只是查找一个模型上的数据，那么可以通过 <code>模型.query</code> 的方式进行查找。 <code>query</code> 就跟之前的sqlalchemy中的query方法是一样用的。示例代码如下：
+</p>
+
+<pre class="example">
+users = User.query.order_by(User.id.desc()).all()
+print(users)
+
+</pre>
+</blockquote>
 </div>
 </div>
 <div id="outline-container-org2411b46" class="outline-3">
-<h3 id="org2411b46"><span class="section-number-3">1.14</span> alembic笔记</h3>
-<div class="outline-text-3" id="text-1-14">
+<h3 id="org2411b46"><span class="section-number-3">1.13</span> alembic笔记</h3>
+<div class="outline-text-3" id="text-1-13">
+<blockquote>
 <p>
-使用alembic的步骤：
+<b>使用alembic的步骤</b> ：
 </p>
+
 <ol class="org-ol">
 <li>定义好自己的模型。</li>
-<li>使用alembic创建一个仓库：`alembic init [仓库的名字，推荐使用alembic]`。</li>
+<li>使用alembic创建一个仓库： <code>alembic init [仓库的名字，推荐使用alembic]</code> 。</li>
 <li>修改配置文件：
 <ul class="org-ul">
-<li>在`alembic.ini`中，给`sqlalchemy.url`设置数据库的连接方式。这个连接方式跟sqlalchemy的方式一样的。</li>
-<li>在`alembic/env.py`中的`target<sub>metadata</sub>`设置模型的`Base.metadata`。但是要导入`models`，需要将models所在的路径添加到这个文件中。示例代码如下：
-```python
-import sys,os
-sys.path.append(os.path.dirname(os.path.dirname(<span class="underline"><span class="underline">file</span></span>)))
-```</li>
+<li>在 <code>alembic.ini</code> 中，给 <code>sqlalchemy.url</code> 设置数据库的连接方式。这个连接方式跟sqlalchemy的方式一样的。</li>
+<li><p>
+在 <code>alembic/env.py</code> 中的 <code>target_metadata</code> 设置模型的 <code>Base.metadata</code> 。但是要导入 <code>models</code> ，需要将models所在的路径添加到这个文件中。示例代码如下：
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #718c00;">import</span> sys,os
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+</pre>
+</div></li>
 </ul></li>
-<li>将ORM模型生成迁移脚本：`alembic revision &#x2013;autogenerate -m 'message'`。</li>
-<li>将生成的脚本映射到数据库中：`alembic upgrade head`。</li>
+<li>将ORM模型生成迁移脚本： <code>alembic revision --autogenerate -m 'message'</code> 。</li>
+<li>将生成的脚本映射到数据库中： <code>alembic upgrade head</code> 。</li>
 <li>以后如果修改了模型，重复4、5步骤。</li>
 <li>注意事项：在终端中，如果想要使用alembic，则需要首先进入到安装了alembic的虚拟环境中，不然就找不到这个命令。</li>
 </ol>
 
 <p>
-### 常用命令：
+<b>常用命令</b>
 </p>
+
 <ol class="org-ol">
 <li>init：创建一个alembic仓库。</li>
 <li>revision：创建一个新的版本文件。</li>
@@ -1902,8 +2021,9 @@ sys.path.append(os.path.dirname(os.path.dirname(<span class="underline"><span cl
 </ol>
 
 <p>
-### 经典错误：
+<b>经典错误</b>
 </p>
+
 <ol class="org-ol">
 <li>FAILED: Target database is not up to date.
 <ul class="org-ul">
@@ -1915,19 +2035,22 @@ sys.path.append(os.path.dirname(os.path.dirname(<span class="underline"><span cl
 <li>原因：数据库中存的版本号不在迁移脚本文件中</li>
 <li>解决办法：删除数据库的alembic<sub>version表中的数据</sub>，重新执行alembic upgrade head</li>
 </ul></li>
-<li>执行`upgrade head`时报某个表已经存在的错误：
+<li>执行 <code>upgrade head</code> 时报某个表已经存在的错误：
 <ul class="org-ul">
 <li>原因：执行这个命令的时候，会执行所有的迁移脚本，因为数据库中已经存在了这个表。然后迁移脚本中又包含了创建表的代码。</li>
 <li>解决办法：（1）删除versions中所有的迁移文件。（2）修改迁移脚本中创建表的代码。</li>
 </ul></li>
 </ol>
+</blockquote>
 </div>
 </div>
+
 <div id="outline-container-orgd8b8436" class="outline-3">
-<h3 id="orgd8b8436"><span class="section-number-3">1.15</span> flask<sub>script笔记</sub></h3>
-<div class="outline-text-3" id="text-1-15">
+<h3 id="orgd8b8436"><span class="section-number-3">1.14</span> flask<sub>script笔记</sub></h3>
+<div class="outline-text-3" id="text-1-14">
+<blockquote>
 <p>
-Flask-Script的作用是可以通过命令行的形式来操作Flask。例如通过命令跑一个开发版本的服务器、设置数据库，定时任务等。要使用Flask-Script，可以通过`pip install flask-script`安装最新版本。
+Flask-Script的作用是可以通过命令行的形式来操作Flask。例如通过命令跑一个开发版本的服务器、设置数据库，定时任务等。要使用Flask-Script，可以通过 <code>pip install flask-script</code> 安装最新版本。
 </p>
 
 <p>
@@ -1935,115 +2058,116 @@ Flask-Script的作用是可以通过命令行的形式来操作Flask。例如通
 </p>
 <ol class="org-ol">
 <li><p>
-使用`manage.commad`：这个方法是用来添加那些不需要传递参数的命令。示例代码如下：
-```python
-manager = Manager(app)
-manager.add<sub>command</sub>("db",db<sub>manager</sub>)
+使用 <code>manage.commad</code> ：这个方法是用来添加那些不需要传递参数的命令。示例代码如下：
 </p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #eab700;">manager</span> = Manager(app)
+manager.add_command(<span style="color: #3e999f;">"db"</span>,db_manager)
 
-<p>
-@manager.command
-def greet():
-    print('你好')
-```
-</p></li>
-<li>`使用manage.option`：这个方法是用来添加那些需要传递参数的命令。有几个参数就需要写几个`option`。示例代码如下：
-```python
-@manager.option("-u","&#x2013;username",dest="username")
-@manager.option("-e","&#x2013;email",dest="email")
-def add<sub>user</sub>(username,email):
-    user = BackendUser(username=username,email=email)
-    db.session.add(user)
-    db.session.commit()
-```</li>
+<span style="color: #4271ae;">@manager.command</span>
+<span style="color: #718c00;">def</span> <span style="color: #f5871f;">greet</span>():
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">print</span>(<span style="color: #3e999f;">'&#20320;&#22909;'</span>)
 
-<li>如果有一些命令是针对某个功能的。比如有一堆命令是针对ORM与表映射的，那么可以将这些命令单独放在一个文件中方便管理。也是使用`Manager`的对象来添加。然后到主manage文件中，通过`manager.add<sub>command</sub>`来添加。示例代码如下：</li>
+</pre>
+</div></li>
+<li><p>
+<code>使用manage.option</code> ：这个方法是用来添加那些需要传递参数的命令。有几个参数就需要写几个 <code>option</code> 。示例代码如下：
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #4271ae;">@manager.option</span>(<span style="color: #3e999f;">"-u"</span>,<span style="color: #3e999f;">"--username"</span>,dest=<span style="color: #3e999f;">"username"</span>)
+<span style="color: #4271ae;">@manager.option</span>(<span style="color: #3e999f;">"-e"</span>,<span style="color: #3e999f;">"--email"</span>,dest=<span style="color: #3e999f;">"email"</span>)
+<span style="color: #718c00;">def</span> <span style="color: #f5871f;">add_user</span>(username,email):
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">user</span> = BackendUser(username=username,email=email)
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   db.session.add(user)
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   db.session.commit()
+
+</pre>
+</div></li>
+
+<li>如果有一些命令是针对某个功能的。比如有一堆命令是针对ORM与表映射的，那么可以将这些命令单独放在一个文件中方便管理。也是使用 <code>Manager</code> 的对象来添加。然后到主manage文件中，通过 <code>manager.add_command</code> 来添加。示例代码如下：</li>
 </ol>
 <p>
 db<sub>script.py</sub>
-```python
-from flask<sub>script</sub> import Manager
 </p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #718c00;">from</span> flask_script <span style="color: #718c00;">import</span> Manager
 
-<p>
-db<sub>manager</sub> = Manager()
-</p>
+<span style="color: #eab700;">db_manager</span> = Manager()
 
-<p>
-@db<sub>manager.command</sub>
-def init():
-    print('迁移仓库创建完毕！')
-</p>
+<span style="color: #4271ae;">@db_manager.command</span>
+<span style="color: #718c00;">def</span> <span style="color: #f5871f;">init</span>():
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">print</span>(<span style="color: #3e999f;">'&#36801;&#31227;&#20179;&#24211;&#21019;&#24314;&#23436;&#27605;&#65281;'</span>)
 
-<p>
-@db<sub>manager.command</sub>
-def revision():
-    print('迁移脚本生成成功！')
-</p>
+<span style="color: #4271ae;">@db_manager.command</span>
+<span style="color: #718c00;">def</span> <span style="color: #f5871f;">revision</span>():
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">print</span>(<span style="color: #3e999f;">'&#36801;&#31227;&#33050;&#26412;&#29983;&#25104;&#25104;&#21151;&#65281;'</span>)
 
-<p>
-@db<sub>manager.command</sub>
-def upgrade():
-    print('脚本映射到数据库成功！')
-```
-</p>
+<span style="color: #4271ae;">@db_manager.command</span>
+<span style="color: #718c00;">def</span> <span style="color: #f5871f;">upgrade</span>():
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">print</span>(<span style="color: #3e999f;">'&#33050;&#26412;&#26144;&#23556;&#21040;&#25968;&#25454;&#24211;&#25104;&#21151;&#65281;'</span>)
+</pre>
+</div>
 
 <p>
 manage.py
-```python
-from db<sub>script</sub> import db<sub>manager</sub>
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #718c00;">from</span> db_script <span style="color: #718c00;">import</span> db_manager
+
+<span style="color: #eab700;">manager</span> = Manager(app)
+manager.add_command(<span style="color: #3e999f;">"db"</span>,db_manager)
+</pre>
+</div>
+</blockquote>
+</div>
+</div>
+
+<div id="outline-container-org5361f41" class="outline-3">
+<h3 id="org5361f41"><span class="section-number-3">1.15</span> flask<sub>migrate笔记</sub></h3>
+<div class="outline-text-3" id="text-1-15">
+<blockquote>
+<p>
+
 </p>
 
-<p>
-manager = Manager(app)
-manager.add<sub>command</sub>("db",db<sub>manager</sub>)
-```
-</p>
-</div>
-</div>
-<div id="outline-container-org5361f41" class="outline-3">
-<h3 id="org5361f41"><span class="section-number-3">1.16</span> flask<sub>migrate笔记</sub></h3>
-<div class="outline-text-3" id="text-1-16">
 <p>
 在实际的开发环境中，经常会发生数据库修改的行为。一般我们修改数据库不会直接手动的去修改，而是去修改ORM对应的模型，然后再把模型映射到数据库中。这时候如果有一个工具能专门做这种事情，就显得非常有用了，而flask-migrate就是做这个事情的。flask-migrate是基于Alembic进行的一个封装，并集成到Flask中，而所有的迁移操作其实都是Alembic做的，他能跟踪模型的变化，并将变化映射到数据库中。
 </p>
 
 <p>
-### 安装：
+安装：
+</p>
+
+<p>
 pip install flask-migrate
 </p>
 
 
 <p>
-### 在manage.py中的代码：
-```python
-from flask<sub>script</sub> import Manager
-from zhiliao import app
-from exts import db
-from flask<sub>migrate</sub> import Migrate,MigrateCommand
+在manage.py中的代码：
 </p>
 
-<p>
-manager = Manager(app)
-</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #718c00;">from</span> flask_script <span style="color: #718c00;">import</span> Manager
+<span style="color: #718c00;">from</span> zhiliao <span style="color: #718c00;">import</span> app
+<span style="color: #718c00;">from</span> exts <span style="color: #718c00;">import</span> db
+<span style="color: #718c00;">from</span> flask_migrate <span style="color: #718c00;">import</span> Migrate,MigrateCommand
 
-<p>
+<span style="color: #eab700;">manager</span> = Manager(app)
+
+<span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">&#29992;&#26469;&#32465;&#23450;app&#21644;db&#21040;flask_migrate&#30340;</span>
 Migrate(app,db)
-</p>
+<span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">&#28155;&#21152;Migrate&#30340;&#25152;&#26377;&#23376;&#21629;&#20196;&#21040;db&#19979;</span>
+manager.add_command(<span style="color: #3e999f;">"db"</span>,MigrateCommand)
+
+
+<span style="color: #718c00;">if</span> <span style="color: #8959a8;">__name__</span> == <span style="color: #3e999f;">'__main__'</span>:
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   manager.run()
+</pre>
+</div>
 
 <p>
-manager.add<sub>command</sub>("db",MigrateCommand)
-</p>
-
-
-<p>
-if <span class="underline"><span class="underline">name</span></span> == '<span class="underline"><span class="underline">main</span></span>':
-    manager.run()
-```
-</p>
-
-<p>
-### flask<sub>migrate常用命令</sub>：
+flask<sub>migrate常用命令</sub>：
 </p>
 <ol class="org-ol">
 <li>初始化一个环境：python manage.py db init</li>
@@ -2051,18 +2175,20 @@ if <span class="underline"><span class="underline">name</span></span> == '<span 
 <li>将迁移脚本映射到数据库中：python manage.py db upgrade</li>
 <li>更多命令：python manage.py db &#x2013;help</li>
 </ol>
+</blockquote>
 </div>
 </div>
 <div id="outline-container-org0d77f69" class="outline-3">
-<h3 id="org0d77f69"><span class="section-number-3">1.17</span> WTForms笔记</h3>
-<div class="outline-text-3" id="text-1-17">
+<h3 id="org0d77f69"><span class="section-number-3">1.16</span> WTForms笔记</h3>
+<div class="outline-text-3" id="text-1-16">
 <p>
 这个库一般有两个作用。第一个就是做表单验证，把用户提交上来的数据进行验证是否合法。第二个就是做模版渲染。
 </p>
 
 <p>
-### 做表单验证：
+<b>做表单验证</b>
 </p>
+
 <ol class="org-ol">
 <li>自定义一个表单类，继承自wtforms.Form类。</li>
 <li>定义好需要验证的字段，字段的名字必须和模版中那些需要验证的input标签的name属性值保持一致。</li>
@@ -2073,26 +2199,34 @@ if <span class="underline"><span class="underline">name</span></span> == '<span 
 <p>
 示例代码如下：
 ReistForm类的代码：
-```python
-class RegistForm(Form):
-    username = StringField(validators=[Length(min=3,max=10,message='用户名长度必须在3到10位之间')])
-    password = StringField(validators=[Length(min=6,max=10)])
-    password<sub>repeat</sub> = StringField(validators=[Length(min=6,max=10),EqualTo("password")])
-```
-视图函数中的代码：
-```python
-form = RegistForm(request.form)
-if form.validate():
-    return "success"
-else:
-    print(form.errors)
-    return "fail"
-```
 </p>
-
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #718c00;">class</span> <span style="color: #4271ae;">RegistForm</span>(Form):
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">username</span> = StringField(validators=[Length(<span style="color: #8959a8;">min</span>=3,<span style="color: #8959a8;">max</span>=10,message=<span style="color: #3e999f;">'&#29992;&#25143;&#21517;&#38271;&#24230;&#24517;&#39035;&#22312;3&#21040;10&#20301;&#20043;&#38388;'</span>)])
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">password</span> = StringField(validators=[Length(<span style="color: #8959a8;">min</span>=6,<span style="color: #8959a8;">max</span>=10)])
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">password_repeat</span> = StringField(validators=[Length(<span style="color: #8959a8;">min</span>=6,<span style="color: #8959a8;">max</span>=10),EqualTo(<span style="color: #3e999f;">"password"</span>)])
+</pre>
+</div>
 
 <p>
-### 常用的验证器：
+<b>视图函数中的代码</b>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #eab700;">form</span> = RegistForm(request.form)
+<span style="color: #718c00;">if</span> form.validate():
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">return</span> <span style="color: #3e999f;">"success"</span>
+<span style="color: #718c00;">else</span>:
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">print</span>(form.errors)
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">return</span> <span style="color: #3e999f;">"fail"</span>
+</pre>
+</div>
+
+<p>
+<b>常用的验证器</b>
+</p>
+
+<p>
 数据发送过来，经过表单验证，因此需要验证器来进行验证，以下对一些常用的内置验证器进行讲解：
 </p>
 <ol class="org-ol">
@@ -2107,89 +2241,94 @@ else:
 </ol>
 
 <p>
-### 自定义验证器：
-如果想要对表单中的某个字段进行更细化的验证，那么可以针对这个字段进行单独的验证。步骤如下：
-</p>
-<ol class="org-ol">
-<li>定义一个方法，方法的名字规则是：`validate<sub>字段名</sub>(self,filed)`。</li>
-<li>在方法中，使用`field.data`可以获取到这个字段的具体的值。</li>
-<li>如果数据满足条件，那么可以什么都不做。如果验证失败，那么应该抛出一个`wtforms.validators.ValidationError`的异常，并且把验证失败的信息传到这个异常类中。</li>
-</ol>
-<p>
-示例代码：
-```python
-captcha = StringField(validators=[Length(4,4)])
+<b>自定义验证器</b>
 </p>
 
 <p>
-    def validate<sub>captcha</sub>(self,field):
-        if field.data != '1234':
-            raise ValidationError('验证码错误！')
-```
+如果想要对表单中的某个字段进行更细化的验证，那么可以针对这个字段进行单独的验证。步骤如下：
 </p>
+<ol class="org-ol">
+<li>定义一个方法，方法的名字规则是： <code>validate_字段名(self,filed)</code> 。</li>
+<li>在方法中，使用 <code>field.data</code> 可以获取到这个字段的具体的值。</li>
+<li>如果数据满足条件，那么可以什么都不做。如果验证失败，那么应该抛出一个 <code>wtforms.validators.ValidationError</code> 的异常，并且把验证失败的信息传到这个异常类中。</li>
+</ol>
+
+<p>
+示例代码：
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #eab700;">captcha</span> = StringField(validators=[Length(4,4)])
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">1234</span>
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">def</span> <span style="color: #f5871f;">validate_captcha</span>(<span style="color: #718c00;">self</span>,field):
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">if</span> field.data != <span style="color: #3e999f;">'1234'</span>:
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">raise</span> ValidationError(<span style="color: #3e999f;">'&#39564;&#35777;&#30721;&#38169;&#35823;&#65281;'</span>)
+</pre>
+</div>
 </div>
 </div>
 
 <div id="outline-container-org1ef27ef" class="outline-3">
-<h3 id="org1ef27ef"><span class="section-number-3">1.18</span> 文件上传笔记</h3>
-<div class="outline-text-3" id="text-1-18">
-<ol class="org-ol">
-<li>在模版中，form表单中，需要指定`encotype='multipart/form-data'`才能上传文件。</li>
-<li>在后台如果想要获取上传的文件，那么应该使用`request.files.get('avatar')`来获取。</li>
-<li>保存文件之前，先要使用`werkzeug.utils.secure<sub>filename</sub>`来对上传上来的文件名进行一个过滤。这样才能保证不会有安全问题。</li>
-<li>获取到上传上来的文件后，使用`avatar.save(路径)`方法来保存文件。、</li>
-<li>从服务器上读取文件，应该定义一个url与视图函数，来获取指定的文件。在这个视图函数中，使用`send<sub>from</sub><sub>directory</sub>(文件的目录,文件名)`来获取。</li>
-</ol>
-<p>
+<h3 id="org1ef27ef"><span class="section-number-3">1.17</span> 文件上传笔记</h3>
+<div class="outline-text-3" id="text-1-17">
+<pre class="example">
+1. 在模版中，form表单中，需要指定 ~encotype='multipart/form-data'~ 才能上传文件。
+2. 在后台如果想要获取上传的文件，那么应该使用 ~request.files.get('avatar')~ 来获取。
+3. 保存文件之前，先要使用 ~werkzeug.utils.secure_filename~ 来对上传上来的文件名进行一个过滤。这样才能保证不会有安全问题。 
+4. 获取到上传上来的文件后，使用 ~avatar.save(路径)~ 方法来保存文件。、
+5. 从服务器上读取文件，应该定义一个url与视图函数，来获取指定的文件。在这个视图函数中，使用 ~send_from_directory(文件的目录,文件名)~ 来获取。
 示例代码如下：
-```python
-@app.route('<i>upload</i>',methods=['GET','POST'])
+#+BEGIN_SRC python
+@app.route('/upload/',methods=['GET','POST'])
 def upload():
     if request.method == 'GET':
-        return render<sub>template</sub>('upload.html')
+        return render_template('upload.html')
     else:
-</p>
+        # 获取描述信息
+        desc = request.form.get("desc")
+        avatar = request.files.get("avatar")
+        filename = secure_filename(avatar.filename)
+        avatar.save(os.path.join(UPLOAD_PATH,filename))
+        print(desc)
+        return '文件上传成功'
 
-<p>
-desc = request.form.get("desc")
-avatar = request.files.get("avatar")
-filename = secure<sub>filename</sub>(avatar.filename)
-avatar.save(os.path.join(UPLOAD<sub>PATH,filename</sub>))
-print(desc)
-return '文件上传成功'
-</p>
-
-<p>
-@app.route('<i>images/&lt;filename&gt;</i>')
-def get<sub>image</sub>(filename):
-    return send<sub>from</sub><sub>directory</sub>(UPLOAD<sub>PATH,filename</sub>)
-```
-</p>
+@app.route('/images/&lt;filename&gt;/')
+def get_image(filename):
+    return send_from_directory(UPLOAD_PATH,filename)
+</pre>
 
 
 <p>
-### 对上传文件使用表单验证：
+<b>对上传文件使用表单验证</b>
 </p>
+
 <ol class="org-ol">
-<li>定义表单的时候，对文件的字段，需要采用`FileField`这个类型。</li>
-<li>验证器应该从`flask<sub>wtf.file</sub>`中导入。`flask<sub>wtf.file.FileRequired</sub>`是用来验证文件上传是否为空。`flask<sub>wtf.file.FileAllowed</sub>`用来验证上传的文件的后缀名。</li>
-<li>在视图文件中，使用`from werkzeug.datastructures import CombinedMultiDict`来把`request.form`与`request.files`来进行合并。再传给表单来验证。</li>
+<li>定义表单的时候，对文件的字段，需要采用 <code>FileField</code> 这个类型。</li>
+<li>验证器应该从 <code>flask_wtf.file</code> 中导入。 <code>flask_wtf.file.FileRequired</code> 是用来验证文件上传是否为空。 <code>flask_wtf.file.FileAllowed</code> 用来验证上传的文件的后缀名。</li>
+<li>在视图文件中，使用 ~ from werkzeug.datastructures import CombinedMultiDict ~ 来把 <code>request.form</code> 与 <code>request.files</code> 来进行合并。再传给表单来验证。</li>
 </ol>
 <p>
 示例代码如下：
-```python
-from werkzeug.datastructures import CombinedMultiDict
-form = UploadForm(CombinedMultiDict([request.form,request.files]))
-```
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #718c00;">from</span> werkzeug.datastructures <span style="color: #718c00;">import</span> CombinedMultiDict
+<span style="color: #eab700;">form</span> = UploadForm(CombinedMultiDict([request.form,request.files]))
+</pre>
+</div>
+<p>
+#+END<sub>SRC</sub>
 </p>
 </div>
 </div>
 
 <div id="outline-container-orgc403a78" class="outline-3">
-<h3 id="orgc403a78"><span class="section-number-3">1.19</span> cookie笔记：</h3>
-<div class="outline-text-3" id="text-1-19">
+<h3 id="orgc403a78"><span class="section-number-3">1.18</span> cookie笔记：</h3>
+<div class="outline-text-3" id="text-1-18">
+<blockquote>
 <p>
-### 什么是cookie：
+什么是cookie
+</p>
+
+<p>
 在网站中，http请求是无状态的。也就是说即使第一次和服务器连接后并且登录成功后，第二次请求服务器依然不能知道当前请求是哪个用户。cookie的出现就是为了解决这个问题，第一次登录后服务器返回一些数据（cookie）给浏览器，然后浏览器保存在本地，当该用户发送第二次请求的时候，就会自动的把上次请求存储的cookie数据自动的携带给服务器，服务器通过浏览器携带的数据就能判断当前用户是哪个了。cookie存储的数据量有限，不同的浏览器有不同的存储大小，但一般不超过4KB。因此使用cookie只能存储一些小量的数据。
 </p>
 <ol class="org-ol">
@@ -2198,10 +2337,11 @@ form = UploadForm(CombinedMultiDict([request.form,request.files]))
 </ol>
 
 <p>
-### flask操作cookie：
+flask操作cookie
 </p>
+
 <ol class="org-ol">
-<li>设置cookie：设置cookie是应该在Response的对象上设置。`flask.Response`对象有一个`set<sub>cookie</sub>`方法，可以通过这个方法来设置`cookie`信息。</li>
+<li>设置cookie：设置cookie是应该在Response的对象上设置。 <code>flask.Response</code> 对象有一个 <code>set_cookie</code> 方法，可以通过这个方法来设置 <code>cookie</code> 信息。</li>
 </ol>
 <p>
 在Chrome浏览器中查看cookie的方式：
@@ -2212,7 +2352,7 @@ form = UploadForm(CombinedMultiDict([request.form,request.files]))
 <li>在Chrome的设置界面-&gt;高级设置-&gt;内容设置-&gt;所有cookie-&gt;找到当前域名下的cookie。</li>
 </ul>
 <ol class="org-ol">
-<li>删除cookie：通过`Response.delete<sub>cookie</sub>`，指定cookie的key，就可以删除cookie了。</li>
+<li>删除cookie：通过 <code>Response.delete_cookie</code> ，指定cookie的key，就可以删除cookie了。</li>
 <li>设置cookie的有效期：
 <ul class="org-ul">
 <li>max<sub>age</sub>：以秒为单位，距离现在多少秒后cookie会过期。</li>
@@ -2224,30 +2364,34 @@ form = UploadForm(CombinedMultiDict([request.form,request.files]))
 </ol>
 <p>
 示例代码：
-```python
-@app.route('/')
-def hello<sub>world</sub>():
-    resp = Response("知了课堂")
-    expires = datetime(year=2017,month=12,day=11,hour=16,minute=0,second=0)
 </p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #4271ae;">@app.route</span>(<span style="color: #3e999f;">'/'</span>)
+<span style="color: #718c00;">def</span> <span style="color: #f5871f;">hello_world</span>():
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">resp</span> = Response(<span style="color: #3e999f;">"&#30693;&#20102;&#35838;&#22530;"</span>)
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">expires</span> = datetime(year=2017,month=12,day=11,hour=16,minute=0,second=0)
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">&#20351;&#29992;expires&#21442;&#25968;&#65292;&#23601;&#24517;&#39035;&#20351;&#29992;&#26684;&#26519;&#23612;&#27835;&#26102;&#38388;</span>
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">&#35201;&#30456;&#23545;&#21271;&#20140;&#26102;&#38388;&#23569;8&#20010;&#23567;&#26102;</span>
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">expires</span> = datetime.now() + timedelta(days=30,hours=16)
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">&#22312;&#26032;&#29256;&#26412;&#30340;http&#21327;&#35758;&#20013;&#65292;expires&#21442;&#25968;&#35270;&#20026;&#34987;&#24223;&#24323;</span>
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">max_age&#65292;&#22312;IE8&#19968;&#19979;&#30340;&#27983;&#35272;&#22120;&#20013;&#26159;&#19981;&#25903;&#25345;&#30340;</span>
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">resp.set_cookie('username','zhiliao',expires=expires,max_age=60)</span>
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   resp.set_cookie(<span style="color: #3e999f;">'username'</span>,<span style="color: #3e999f;">'zhiliao'</span>)
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">return</span> resp
+</pre>
+</div>
 
-<p>
-expires = datetime.now() + timedelta(days=30,hours=16)
-</p>
-
-<p>
-    resp.set<sub>cookie</sub>('username','zhiliao')
-    return resp
-```
-</p>
 <ol class="org-ol">
-<li>设置cookie的有效域名：cookie默认是只能在主域名下使用。如果想要在子域名下使用，那么应该给`set<sub>cookie</sub>`传递一个`domain='.hy.com'`，这样其他子域名才能访问到这个cookie信息。</li>
+<li>设置cookie的有效域名：cookie默认是只能在主域名下使用。如果想要在子域名下使用，那么应该给 <code>set_cookie</code> 传递一个 <code>domain='.hy.com'</code> ，这样其他子域名才能访问到这个cookie信息。</li>
 </ol>
+</blockquote>
+</div>
+</div>
 
-
-<p>
-### session：
-</p>
+<div id="outline-container-orgb0685ed" class="outline-3">
+<h3 id="orgb0685ed"><span class="section-number-3">1.19</span> session</h3>
+<div class="outline-text-3" id="text-1-19">
+<blockquote>
 <ol class="org-ol">
 <li>session的基本概念：session和cookie的作用有点类似，都是为了存储用户相关的信息。不同的是，cookie是存储在本地浏览器，session是一个思路、一个概念、一个服务器存储授权信息的解决方案，不同的服务器，不同的框架，不同的语言有不同的实现。虽然实现不一样，但是他们的目的都是服务器为了方便存储数据的。session的出现，是为了解决cookie存储数据不安全的问题的。</li>
 <li>session与cookie的结合使用：
@@ -2262,22 +2406,23 @@ expires = datetime.now() + timedelta(days=30,hours=16)
 ### flask操作session：
 </p>
 <ol class="org-ol">
-<li>设置session：通过`flask.session`就可以操作session了。操作`session`就跟操作字典是一样的。`session['username']='zhiliao'`。</li>
-<li>获取session：也是类似字典，`session.get(key)`。</li>
+<li>设置session：通过 <code>flask.session</code> 就可以操作session了。操作 <code>session</code> 就跟操作字典是一样的。 <code>session['username']='zhiliao'</code> 。</li>
+<li>获取session：也是类似字典， <code>session.get(key)</code> 。</li>
 <li>删除session中的值：也是类似字典。可以有三种方式删除session中的值。
 <ul class="org-ul">
-<li>`session.pop(key)`。</li>
-<li>`del session[key]`。</li>
-<li>`session.clear()`：删除session中所有的值。</li>
+<li><code>session.pop(key)</code> 。</li>
+<li><code>del session[key]</code> 。</li>
+<li><code>session.clear()</code> ：删除session中所有的值。</li>
 </ul></li>
-<li>设置session的有效期：如果没有设置session的有效期。那么默认就是浏览器关闭后过期。如果设置session.permanent=True，那么就会默认在31天后过期。如果不想在31天后过期，那么可以设置`app.config['PERMANENT<sub>SESSION</sub><sub>LIFETIME</sub>'] = timedelta(hour=2)`在两个小时后过期。</li>
+<li>设置session的有效期：如果没有设置session的有效期。那么默认就是浏览器关闭后过期。如果设置session.permanent=True，那么就会默认在31天后过期。如果不想在31天后过期，那么可以设置 <code>app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(hour=2)</code> 在两个小时后过期。</li>
 </ol>
+</blockquote>
 </div>
 </div>
-
 <div id="outline-container-org519ba71" class="outline-3">
 <h3 id="org519ba71"><span class="section-number-3">1.20</span> signal 信号笔记：</h3>
 <div class="outline-text-3" id="text-1-20">
+<blockquote>
 <p>
 使用信号分为3步，第一是定义一个信号，第二是监听一个信号，第三是发送一个信号。以下将对这三步进行讲解：
 </p>
@@ -2285,33 +2430,36 @@ expires = datetime.now() + timedelta(days=30,hours=16)
 <ol class="org-ol">
 <li><p>
 定义信号：定义信号需要使用到blinker这个包的Namespace类来创建一个命名空间。比如定义一个在访问了某个视图函数的时候的信号。示例代码如下：
-```python
 </p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">Namespace&#30340;&#20316;&#29992;&#65306;&#20026;&#20102;&#38450;&#27490;&#22810;&#20154;&#24320;&#21457;&#30340;&#26102;&#20505;&#65292;&#20449;&#21495;&#21517;&#23383;&#20914;&#31361;&#30340;&#38382;&#39064;</span>
+<span style="color: #718c00;">from</span> blinker <span style="color: #718c00;">import</span> Namespace
 
-<p>
-from blinker import Namespace
+<span style="color: #eab700;">mysignal</span> = Namespace()
+<span style="color: #eab700;">visit_signal</span> = mysignal.signal(<span style="color: #3e999f;">'visit-signal'</span>)
+</pre>
+</div></li>
+<li><p>
+监听信号：监听信号使用singal对象的connect方法，在这个方法中需要传递一个函数，用来接收以后监听到这个信号该做的事情。示例代码如下：
 </p>
-
-<p>
-mysignal = Namespace()
-visit<sub>signal</sub> = mysignal.signal('visit-signal')
-```
-</p></li>
-<li>监听信号：监听信号使用singal对象的connect方法，在这个方法中需要传递一个函数，用来接收以后监听到这个信号该做的事情。示例代码如下：
-```python
-def visit<sub>func</sub>(sender,username):
-    print(sender)
-    print(username)
-mysignal.connect(visit<sub>func</sub>)
-```</li>
-<li>发送信号：发送信号使用singal对象的send方法，这个方法可以传递一些其他参数过去。示例代码如下：
-```python
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #718c00;">def</span> <span style="color: #f5871f;">visit_func</span>(sender,username):
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">print</span>(sender)
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">print</span>(username)
+mysignal.connect(visit_func)
+</pre>
+</div></li>
+<li><p>
+发送信号：发送信号使用singal对象的send方法，这个方法可以传递一些其他参数过去。示例代码如下：
+</p>
+<pre class="example">
 mysignal.send(username='zhiliao')
-```</li>
+
+</pre></li>
 </ol>
 
 <p>
-### Flask内置的信号：
+<b>Flask内置的信号</b>
 </p>
 <ol class="org-ol">
 <li>template<sub>rendered</sub>：模版渲染完成后的信号。</li>
@@ -2323,54 +2471,72 @@ mysignal.send(username='zhiliao')
 <li>appcontext<sub>tearing</sub><sub>down</sub>：app上下文被销毁的信号。</li>
 <li>appcontext<sub>pushed</sub>：app上下文被推入到栈上的信号。</li>
 <li>appcontext<sub>popped</sub>：app上下文被推出栈中的信号</li>
-<li>message<sub>flashed</sub>：调用了Flask的`flashed`方法的信号。</li>
+<li>message<sub>flashed</sub>：调用了Flask的 <code>flashed</code> 方法的信号。</li>
 </ol>
+</blockquote>
 </div>
 </div>
 <div id="outline-container-org12c6293" class="outline-3">
 <h3 id="org12c6293"><span class="section-number-3">1.21</span> Flask-Restful笔记</h3>
 <div class="outline-text-3" id="text-1-21">
+<blockquote>
 <p>
-### 安装：
+
+</p>
+
+<p>
+安装：
+</p>
+
+<p>
 Flask-Restful需要在Flask 0.8以上的版本，在Python2.6或者Python3.3上运行。通过pip install flask-restful即可安装。
 </p>
 
 <p>
-### 基本使用：
+基本使用：
 </p>
+
 <ol class="org-ol">
-<li>从`flask<sub>restful</sub>`中导入`Api`，来创建一个`api`对象。</li>
-<li>写一个视图函数，让他继承自`Resource`，然后在这个里面，使用你想要的请求方式来定义相应的方法，比如你想要将这个视图只能采用`post`请求，那么就定义一个`post`方法。</li>
-<li>使用`api.add<sub>resource</sub>`来添加视图与`url`。</li>
+<li>从 <code>flask_restful</code> 中导入 <code>Api</code> ，来创建一个 <code>api</code> 对象。</li>
+<li>写一个视图函数，让他继承自 <code>Resource</code> ，然后在这个里面，使用你想要的请求方式来定义相应的方法，比如你想要将这个视图只能采用 <code>post</code> 请求，那么就定义一个 <code>post</code> 方法。</li>
+<li>使用 <code>api.add_resource</code> 来添加视图与 <code>url</code> 。</li>
 </ol>
 <p>
 示例代码如下：
-```python
-class LoginView(Resource):
-    def post(self,username=None):
-        return {"username":"zhiliao"}
 </p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #718c00;">class</span> <span style="color: #4271ae;">LoginView</span>(Resource):
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">def</span> <span style="color: #f5871f;">post</span>(<span style="color: #718c00;">self</span>,username=<span style="color: #4271ae;">None</span>):
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">return</span> {<span style="color: #3e999f;">"username"</span>:<span style="color: #3e999f;">"zhiliao"</span>}
+
+api.add_resource(LoginView,<span style="color: #3e999f;">'/login/&lt;username&gt;/'</span>,<span style="color: #3e999f;">'/regist/'</span>)
+</pre>
+</div>
 
 <p>
-api.add<sub>resource</sub>(LoginView,'<i>login/&lt;username&gt;</i>','<i>regist</i>')
-```
 注意事项：
 </p>
 <ul class="org-ul">
-<li>如果你想返回json数据，那么就使用flask<sub>restful</sub>，如果你是想渲染模版，那么还是采用之前的方式，就是`app.route`的方式。</li>
+<li>如果你想返回json数据，那么就使用flask<sub>restful</sub>，如果你是想渲染模版，那么还是采用之前的方式，就是 <code>app.route</code> 的方式。</li>
 <li>url还是跟之前的一样，可以传递参数。也跟之前的不一样，可以指定多个url。</li>
 <li>endpoint是用来给url<sub>for反转url的时候指定的</sub>。如果不写endpoint，那么将会使用视图的名字的小写来作为endpoint。</li>
 </ul>
 
 
 <p>
-### 参数验证：
+参数验证：
+</p>
+
+<p>
 Flask-Restful插件提供了类似WTForms来验证提交的数据是否合法的包，叫做reqparse。以下是基本用法：
-    ```python
-    parser = reqparse.RequestParser()
-    parser.add<sub>argument</sub>('username',type=str,help='请输入用户名')
-    args = parser.parse<sub>args</sub>()
-    ```
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #eab700;">parser</span> = reqparse.RequestParser()
+parser.add_argument(<span style="color: #3e999f;">'username'</span>,<span style="color: #8959a8;">type</span>=<span style="color: #8959a8;">str</span>,<span style="color: #8959a8;">help</span>=<span style="color: #3e999f;">'&#35831;&#36755;&#20837;&#29992;&#25143;&#21517;'</span>)
+<span style="color: #eab700;">args</span> = parser.parse_args()
+</pre>
+</div>
+<p>
 add<sub>argument可以指定这个字段的名字</sub>，这个字段的数据类型等。以下将对这个方法的一些参数做详细讲解： 
 </p>
 <ol class="org-ol">
@@ -2389,122 +2555,128 @@ add<sub>argument可以指定这个字段的名字</sub>，这个字段的数据�
 <li>regex：正则表达式。</li>
 <li>date：将这个字符串转换为datetime.date数据类型。如果转换不成功，则会抛出一个异常。</li>
 </ol>
-</div>
-<div id="outline-container-org0f84b6e" class="outline-4">
-<h4 id="org0f84b6e"><span class="section-number-4">1.21.1</span> Flask-restful笔记2：</h4>
-<div class="outline-text-4" id="text-1-21-1">
-<p>
-对于一个视图函数，你可以指定好一些字段用于返回。以后可以使用ORM模型或者自定义的模型的时候，他会自动的获取模型中的相应的字段，生成json数据，然后再返回给客户端。这其中需要导入flask<sub>restful.marshal</sub><sub>with装饰器</sub>。并且需要写一个字典，来指示需要返回的字段，以及该字段的数据类型。示例代码如下：
-```python
-class ProfileView(Resource):
-    resource<sub>fields</sub> = {
-        'username': fields.String,
-        'age': fields.Integer,
-        'school': fields.String
-    }
-</p>
+
 
 <p>
-    @marshal<sub>with</sub>(resource<sub>fields</sub>)
-    def get(self,user<sub>id</sub>):
-        user = User.query.get(user<sub>id</sub>)
-        return user
-```
+对于一个视图函数，你可以指定好一些字段用于返回。以后可以使用ORM模型或者自定义的模型的时候，他会自动的获取模型中的相应的字段，生成json数据，然后再返回给客户端。这其中需要导入flask<sub>restful.marshal</sub><sub>with装饰器</sub>。并且需要写一个字典，来指示需要返回的字段，以及该字段的数据类型。示例代码如下：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #718c00;">class</span> <span style="color: #4271ae;">ProfileView</span>(Resource):
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">resource_fields</span> = {
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #3e999f;">'username'</span>: fields.String,
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #3e999f;">'age'</span>: fields.Integer,
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #3e999f;">'school'</span>: fields.String
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   }
+
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #4271ae;">@marshal_with</span>(resource_fields)
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">def</span> <span style="color: #f5871f;">get</span>(<span style="color: #718c00;">self</span>,user_id):
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">user</span> = User.query.get(user_id)
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">return</span> user
+
+</pre>
+</div>
+
+<p>
 在get方法中，返回user的时候，flask<sub>restful会自动的读取user模型上的username以及age还有school属性</sub>。组装成一个json格式的字符串返回给客户端。
 </p>
 
 <p>
-### 重命名属性：
+重命名属性：
 </p>
 
 <p>
 很多时候你面向公众的字段名称是不同于内部的属性名。使用 attribute可以配置这种映射。比如现在想要返回user.school中的值，但是在返回给外面的时候，想以education返回回去，那么可以这样写：
-```python
-resource<sub>fields</sub> = {
-    'education': fields.String(attribute='school')
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #eab700;">resource_fields</span> = {
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #3e999f;">'education'</span>: fields.String(attribute=<span style="color: #3e999f;">'school'</span>)
 }
-```
-</p>
-
-<p>
-### 默认值：
-在返回一些字段的时候，有时候可能没有值，那么这时候可以在指定fields的时候给定一个默认值，示例代码如下：
-```python
-resource<sub>fields</sub> = {
-    'age': fields.Integer(default=18)
-}
-```
-</p>
-
-<p>
-### 复杂结构：
-有时候想要在返回的数据格式中，形成比较复杂的结构。那么可以使用一些特殊的字段来实现。比如要在一个字段中放置一个列表，那么可以使用fields.List，比如在一个字段下面又是一个字典，那么可以使用fields.Nested。以下将讲解下复杂结构的用法：
-```python
-class ArticleView(Resource):
-</p>
-
-<p>
-resource<sub>fields</sub> = {
-    'aritlce<sub>title</sub>':fields.String(attribute='title'),
-    'content':fields.String,
-    'author': fields.Nested({
-        'username': fields.String,
-        'email': fields.String
-    }),
-    'tags': fields.List(fields.Nested({
-        'id': fields.Integer,
-        'name': fields.String
-    })),
-    'read<sub>count</sub>': fields.Integer(default=80)
-}
-</p>
-
-<p>
-    @marshal<sub>with</sub>(resource<sub>fields</sub>)
-    def get(self,article<sub>id</sub>):
-        article = Article.query.get(article<sub>id</sub>)
-        return article
-```
-</p>
-
-
-<p>
-### Flask-restful注意事项：
-</p>
-<ol class="org-ol">
-<li>在蓝图中，如果使用`flask-restful`，那么在创建`Api`对象的时候，就不要再使用`app`了，而是使用蓝图。</li>
-<li>如果在`flask-restful`的视图中想要返回`html`代码，或者是模版，那么就应该使用`api.representation`这个装饰器来定义一个函数，在这个函数中，应该对`html`代码进行一个封装，再返回。示例代码如下：</li>
-</ol>
-<p>
-```python
-@api.representation('text/html')
-def output<sub>html</sub>(data,code,headers):
-    print(data)
-</p>
-
-<p>
-resp = make<sub>response</sub>(data)
-return resp
-</p>
-
-<p>
-class ListView(Resource):
-    def get(self):
-        return render<sub>template</sub>('index.html')
-api.add<sub>resource</sub>(ListView,'<i>list</i>',endpoint='list')
-```
-</p>
+</pre>
 </div>
+
+<p>
+默认值：
+</p>
+
+<p>
+在返回一些字段的时候，有时候可能没有值，那么这时候可以在指定fields的时候给定一个默认值，示例代码如下：
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #eab700;">resource_fields</span> = {
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #3e999f;">'age'</span>: fields.Integer(default=18)
+}
+</pre>
+</div>
+
+<p>
+复杂结构：
+</p>
+
+<p>
+有时候想要在返回的数据格式中，形成比较复杂的结构。那么可以使用一些特殊的字段来实现。比如要在一个字段中放置一个列表，那么可以使用fields.List，比如在一个字段下面又是一个字典，那么可以使用fields.Nested。以下将讲解下复杂结构的用法：
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #718c00;">class</span> <span style="color: #4271ae;">ArticleView</span>(Resource):
+
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">resource_fields</span> = {
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #3e999f;">'aritlce_title'</span>:fields.String(attribute=<span style="color: #3e999f;">'title'</span>),
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #3e999f;">'content'</span>:fields.String,
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #3e999f;">'author'</span>: fields.Nested({
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #3e999f;">'username'</span>: fields.String,
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #3e999f;">'email'</span>: fields.String
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   }),
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #3e999f;">'tags'</span>: fields.List(fields.Nested({
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #3e999f;">'id'</span>: fields.Integer,
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #3e999f;">'name'</span>: fields.String
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   })),
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #3e999f;">'read_count'</span>: fields.Integer(default=80)
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   }
+
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #4271ae;">@marshal_with</span>(resource_fields)
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">def</span> <span style="color: #f5871f;">get</span>(<span style="color: #718c00;">self</span>,article_id):
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">article</span> = Article.query.get(article_id)
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">return</span> article
+</pre>
+</div>
+
+
+<p>
+Flask-restful注意事项：
+</p>
+
+<ol class="org-ol">
+<li>在蓝图中，如果使用 <code>flask-restful</code> ，那么在创建 <code>Api</code> 对象的时候，就不要再使用 <code>app</code> 了，而是使用蓝图。</li>
+<li>如果在 <code>flask-restful</code> 的视图中想要返回 <code>html</code> 代码，或者是模版，那么就应该使用 <code>api.representation</code> 这个装饰器来定义一个函数，在这个函数中，应该对 <code>html</code> 代码进行一个封装，再返回。示例代码如下：</li>
+</ol>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #4271ae;">@api.representation</span>(<span style="color: #3e999f;">'text/html'</span>)
+<span style="color: #718c00;">def</span> <span style="color: #f5871f;">output_html</span>(data,code,headers):
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">print</span>(data)
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">&#22312;representation&#35013;&#39280;&#30340;&#20989;&#25968;&#20013;&#65292;&#24517;&#39035;&#36820;&#22238;&#19968;&#20010;Response&#23545;&#35937;</span>
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">resp</span> = make_response(data)
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">return</span> resp
+
+<span style="color: #718c00;">class</span> <span style="color: #4271ae;">ListView</span>(Resource):
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">def</span> <span style="color: #f5871f;">get</span>(<span style="color: #718c00;">self</span>):
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">return</span> render_template(<span style="color: #3e999f;">'index.html'</span>)
+api.add_resource(ListView,<span style="color: #3e999f;">'/list/'</span>,endpoint=<span style="color: #3e999f;">'list'</span>)
+</pre>
+</div>
+</blockquote>
 </div>
 </div>
 <div id="outline-container-orgbf7e0ef" class="outline-3">
 <h3 id="orgbf7e0ef"><span class="section-number-3">1.22</span> Redis笔记：</h3>
 <div class="outline-text-3" id="text-1-22">
 <p>
-### RDB同步机制：
+<b>RDB同步机制</b>
 </p>
+
 <ol class="org-ol">
-<li>开启和关闭：默认情况下是开启了。如果想关闭，那么注释掉`redis.conf`文件中的所有`save`选项就可以了。</li>
+<li>开启和关闭：默认情况下是开启了。如果想关闭，那么注释掉 <code>redis.conf</code> 文件中的所有 <code>save</code> 选项就可以了。</li>
 <li>同步机制：
 <ul class="org-ul">
 <li>save 900 1：如果在900s以内发生了1次数据更新操作，那么就会做一次同步操作。</li>
@@ -2512,7 +2684,7 @@ api.add<sub>resource</sub>(ListView,'<i>list</i>',endpoint='list')
 <li>save 60 10000：如果在60s以内发生了10000数据更新操作，那么就会做一次同步操作。</li>
 </ul></li>
 <li>存储内容：具体的值，而是命令。并且是经过压缩后存储进去的。</li>
-<li>存储路径：根据`redis.conf`下的`dir`以及`rdbfilename`来指定的。默认是`/var/lib/redis/dump.rdb`。</li>
+<li>存储路径：根据 <code>redis.conf</code> 下的 <code>dir</code> 以及 <code>rdbfilename</code> 来指定的。默认是 <code>/var/lib/redis/dump.rdb</code> 。</li>
 <li>优点：
 <ul class="org-ul">
 <li>存储数据到文件中会进行压缩，文件体积比aof小。</li>
@@ -2527,10 +2699,11 @@ api.add<sub>resource</sub>(ListView,'<i>list</i>',endpoint='list')
 </ol>
 
 <p>
-### AOF同步机制：
+<b>AOF同步机制</b>
 </p>
+
 <ol class="org-ol">
-<li>开启和关闭：默认是关闭的。如果想要开启，那么修改redis.conf中的`appendonly yes`就可以了</li>
+<li>开启和关闭：默认是关闭的。如果想要开启，那么修改redis.conf中的 <code>appendonly yes</code> 就可以了</li>
 <li>同步机制：
 <ul class="org-ul">
 <li>appendfsync always：每次有数据更新操作，都会同步到文件中。</li>
@@ -2538,7 +2711,7 @@ api.add<sub>resource</sub>(ListView,'<i>list</i>',endpoint='list')
 <li>appendfsync no：使用操作系统的方式进行更新。普遍是30s更新一次。</li>
 </ul></li>
 <li>存储内容：存储的是具体的命令。不会进行压缩。</li>
-<li>存储路径：根据`redis.conf`下的`dir`以及`appendfilename`来指定的。默认是`/var/lib/redis/appendonly.aof`。</li>
+<li>存储路径：根据 <code>redis.conf</code> 下的 <code>dir</code> 以及 <code>appendfilename</code> 来指定的。默认是 <code>/var/lib/redis/appendonly.aof</code> 。</li>
 <li>优点：
 <ul class="org-ul">
 <li>AOF的策略是每秒钟或者每次发生写操作的时候都会同步，因此即使服务器故障，最多只会丢失1秒的数据。</li>
@@ -2554,45 +2727,46 @@ api.add<sub>resource</sub>(ListView,'<i>list</i>',endpoint='list')
 </ol>
 
 <p>
-### 给redis指定密码：
+<b>给redis指定密码</b>
 </p>
+
 <ol class="org-ol">
-<li>设置密码：在`reids.conf`配置文件中，将`requirepass pasword`取消注释，并且指定你想设置的密码。</li>
+<li>设置密码：在 <code>reids.conf</code> 配置文件中，将 <code>requirepass pasword</code> 取消注释，并且指定你想设置的密码。</li>
 <li>使用密码连接reids：
 <ul class="org-ul">
-<li>先登录上去，然后再使用`autho password`命令进行授权。</li>
-<li>在连接的时候，通过`-a`参数指定密码进行连接。</li>
+<li>先登录上去，然后再使用 <code>autho password</code> 命令进行授权。</li>
+<li>在连接的时候，通过 <code>-a</code> 参数指定密码进行连接。</li>
 </ul></li>
 </ol>
-
-<p>
-### 其他机器连接redis：
-如果想要让其他机器连接本机的redis服务器，那么应该在`redis.conf`配置文件中，指定`bind 本机的ip地址`。这样别的机器就能连接成功。不像是网上说的，要指定对方的ip地址。
-</p>
 </div>
 </div>
-
-
-
-
 
 <div id="outline-container-org4f9838b" class="outline-3">
 <h3 id="org4f9838b"><span class="section-number-3">1.23</span> 上下文</h3>
 <div class="outline-text-3" id="text-1-23">
 <p>
-### Local对象：
-在`Flask`中，类似于`request`的对象，其实是绑定到了一个`werkzeug.local.Local`对象上。这样，即使是同一个对象，那么在多个线程中都是隔离的。类似的对象还有`session`以及`g`对象。
+<b>Local对象</b>
 </p>
 
 <p>
-### Thread Local对象：
-只要满足绑定到这个对象上的属性，在每个线程中都是隔离的，那么他就叫做`Thread Local`对象。
+在 <code>Flask</code> 中，类似于 <code>request</code> 的对象，其实是绑定到了一个 <code>werkzeug.local.Local</code> 对象上。这样，即使是同一个对象，那么在多个线程中都是隔离的。类似的对象还有 <code>session</code> 以及 <code>g</code> 对象。
+</p>
+
+<p>
+<b>Thread Local对象</b>
+</p>
+
+<p>
+只要满足绑定到这个对象上的属性，在每个线程中都是隔离的，那么他就叫做 <code>Thread Local</code> 对象。
 </p>
 
 
 <p>
-### 应用上下文和请求上下文：
-应用上下文和请求上下文都是存放到一个`LocalStack`的栈中。和应用app相关的操作就必须要用到应用上下文，比如通过`current<sub>app</sub>`获取当前的这个`app`。和请求相关的操作就必须用到请求上下文，比如使用`url<sub>for</sub>`反转视图函数。
+<b>应用上下文和请求上下文</b>
+</p>
+
+<p>
+应用上下文和请求上下文都是存放到一个 <code>LocalStack</code> 的栈中。和应用app相关的操作就必须要用到应用上下文，比如通过 <code>current_app</code> 获取当前的这个 <code>app</code> 。和请求相关的操作就必须用到请求上下文，比如使用 <code>url_for</code> 反转视图函数。
 </p>
 <ol class="org-ol">
 <li>在视图函数中，不用担心上下文的问题。因为视图函数要执行，那么肯定是通过访问url的方式执行的，那么这种情况下，Flask底层就已经自动的帮我们把请求上下文和应用上下文都推入到了相应的栈中。</li>
@@ -2600,30 +2774,31 @@ api.add<sub>resource</sub>(ListView,'<i>list</i>',endpoint='list')
 <ul class="org-ul">
 <li><p>
 手动推入app上下文：
-```python
 </p>
-
-<p>
-app<sub>context</sub> = app.app<sub>context</sub>()
-app<sub>context.push</sub>()
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">&#31532;&#19968;&#31181;&#26041;&#24335;&#65306;</span>
+<span style="color: #eab700;">app_context</span> = app.app_context()
+app_context.push()
+<span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">&#31532;&#20108;&#31181;&#26041;&#24335;&#65306;</span>
+<span style="color: #718c00;">with</span> app.app_context():
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">print</span>(current_app)
+</pre>
+</div></li>
+<li><p>
+手动推入请求上下文：推入请求上下文到栈中，会首先判断有没有应用上下文，如果没有那么就会先推入应用上下文到栈中，然后再推入请求上下文到栈中：
 </p>
-
-<p>
-with app.app<sub>context</sub>():
-    print(current<sub>app</sub>)
-```
-</p></li>
-<li>手动推入请求上下文：推入请求上下文到栈中，会首先判断有没有应用上下文，如果没有那么就会先推入应用上下文到栈中，然后再推入请求上下文到栈中：
-```python
-with app.test<sub>request</sub><sub>context</sub>():
-    print(url<sub>for</sub>('my<sub>list</sub>'))
-```</li>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #718c00;">with</span> app.test_request_context():
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">print</span>(url_for(<span style="color: #3e999f;">'my_list'</span>))
+</pre>
+</div></li>
 </ul></li>
 </ol>
 
 <p>
-### 为什么上下文需要放在栈中：
+<b>为什么上下文需要放在栈中</b>
 </p>
+
 <ol class="org-ol">
 <li>应用上下文：Flask底层是基于werkzeug，werkzeug是可以包含多个app的，所以这时候用一个栈来保存。如果你在使用app1，那么app1应该是要在栈的顶部，如果用完了app1，那么app1应该从栈中删除。方便其他代码使用下面的app。</li>
 <li>如果在写测试代码，或者离线脚本的时候，我们有时候可能需要创建多个请求上下文，这时候就需要存放到一个栈中了。使用哪个请求上下文的时候，就把对应的请求上下文放到栈的顶部，用完了就要把这个请求上下文从栈中移除掉。</li>
@@ -2631,34 +2806,42 @@ with app.test<sub>request</sub><sub>context</sub>():
 
 
 <p>
-### 保存全局对象的g对象：
+<b>保存全局对象的g对象</b>
+</p>
+
+<p>
 g对象是在整个Flask应用运行期间都是可以使用的。并且他也是跟request一样，是线程隔离的。这个对象是专门用来存储开发者自己定义的一些数据，方便在整个Flask程序中都可以使用。一般使用就是，将一些经常会用到的数据绑定到上面，以后就直接从g上面取就可以了，而不需要通过传参的形式，这样更加方便。
 </p>
 
 
 <p>
-### 常用的钩子函数：
+<b>常用的钩子函数</b>
+</p>
+
+<p>
 在Flask中钩子函数是使用特定的装饰器装饰的函数。为什么叫做钩子函数呢，是因为钩子函数可以在正常执行的代码中，插入一段自己想要执行的代码。那么这种函数就叫做钩子函数。（hook）
 </p>
 <ol class="org-ol">
-<li>`before<sub>first</sub><sub>request</sub>`：Flask项目第一次部署后会执行的钩子函数。</li>
-<li>`before<sub>request</sub>`：请求已经到达了Flask，但是还没有进入到具体的视图函数之前调用。一般这个就是在视图函数之前，我们可以把一些后面需要用到的数据先处理好，方便视图函数使用。</li>
-<li>`context<sub>processor</sub>`：使用这个钩子函数，必须返回一个字典。这个字典中的值在所有模版中都可以使用。这个钩子函数的函数是，如果一些在很多模版中都要用到的变量，那么就可以使用这个钩子函数来返回，而不用在每个视图函数中的`render<sub>template</sub>`中去写，这样可以让代码更加简洁和好维护。</li>
-<li>`errorhandler`：在发生一些异常的时候，比如404错误，比如500错误。那么如果想要优雅的处理这些错误，就可以使用`errorhandler`来出来。需要注意几点：
+<li><code>before_first_request</code> ：Flask项目第一次部署后会执行的钩子函数。</li>
+<li><code>before_request</code> ：请求已经到达了Flask，但是还没有进入到具体的视图函数之前调用。一般这个就是在视图函数之前，我们可以把一些后面需要用到的数据先处理好，方便视图函数使用。</li>
+<li><code>context_processor</code> ：使用这个钩子函数，必须返回一个字典。这个字典中的值在所有模版中都可以使用。这个钩子函数的函数是，如果一些在很多模版中都要用到的变量，那么就可以使用这个钩子函数来返回，而不用在每个视图函数中的 <code>render_template</code> 中去写，这样可以让代码更加简洁和好维护。</li>
+<li><code>errorhandler</code> ：在发生一些异常的时候，比如404错误，比如500错误。那么如果想要优雅的处理这些错误，就可以使用 ~ errorhandler ~ 来出来。需要注意几点：
 <ul class="org-ul">
 <li>在errorhandler装饰的钩子函数下，记得要返回相应的状态码。</li>
 <li>在errorhandler装饰的钩子函数中，必须要写一个参数，来接收错误的信息，如果没有参数，就会直接报错。</li>
-<li>使用`flask.abort`可以手动的抛出相应的错误，比如开发者在发现参数不正确的时候可以自己手动的抛出一个400错误。</li>
+<li>使用 <code>flask.abort</code> 可以手动的抛出相应的错误，比如开发者在发现参数不正确的时候可以自己手动的抛出一个400错误。</li>
 </ul></li>
 </ol>
 <p>
 示例代码如下：
-```python
-@app.errorhandler(404)
-def page<sub>not</sub><sub>found</sub>(error):
-    return render<sub>template</sub>('404.html'),404
-```
 </p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #4271ae;">@app.errorhandler</span>(404)
+<span style="color: #718c00;">def</span> <span style="color: #f5871f;">page_not_found</span>(error):
+<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">return</span> render_template(<span style="color: #3e999f;">'404.html'</span>),404
+</pre>
+</div>
 </div>
 </div>
 </div>
