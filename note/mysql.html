@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-01-25 Fri 12:51 -->
+<!-- 2019-02-20 Wed 14:02 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>mysql note</title>
@@ -256,7 +256,8 @@ for the JavaScript code in this tag.
 <li><a href="#orgd0a5b26">1. note-Mysql</a>
 <ul>
 <li><a href="#org6db15f1">1.1. install mysql</a></li>
-<li><a href="#orgf108e87">1.2. commands</a></li>
+<li><a href="#org35fd31c">1.2. install for mac</a></li>
+<li><a href="#orgf108e87">1.3. commands</a></li>
 </ul>
 </li>
 <li><a href="#orga9f59f6">2. q &amp; a</a>
@@ -407,9 +408,69 @@ lower_case_table_names=1
 </div>
 </div>
 
-<div id="outline-container-orgf108e87" class="outline-3">
-<h3 id="orgf108e87"><span class="section-number-3">1.2</span> commands</h3>
+<div id="outline-container-org35fd31c" class="outline-3">
+<h3 id="org35fd31c"><span class="section-number-3">1.2</span> install for mac</h3>
 <div class="outline-text-3" id="text-1-2">
+<blockquote>
+<p>
+
+</p>
+
+<p>
+brew install mysql 
+</p>
+
+<pre class="example">
+==&gt; Caveats
+We've installed your MySQL database without a root password. To secure it run:
+    mysql_secure_installation
+
+MySQL is configured to only allow connections from localhost by default
+
+To connect run:
+    mysql -uroot
+
+To have launchd start mysql now and restart at login:
+  brew services start mysql
+Or, if you don't want/need a background service you can just run:
+  mysql.server start
+==&gt; Summary
+🍺  /usr/local/Cellar/mysql/8.0.15: 267 files, 234.6MB
+
+</pre>
+
+<p>
+第一次安装好mysql后会提示使用  <code>mysql_secure_installation</code> 设置root密码
+</p>
+
+<p>
+重置root密码过程中遇到一个<a href="https://stackoverflow.com/questions/43846950/column-count-of-mysql-user-is-wrong-expected-42-found-44-the-table-is-probabl">error</a> 使用 <code>mysql_upgrade --force -uroot -p</code> 处理
+</p>
+
+<p>
+创建用户
+</p>
+
+<pre class="example">
+CREATE USER 'manue1'@'localhost' IDENTIFIED BY 'manue1mysql'
+
+</pre>
+
+<p>
+授权所有库
+</p>
+
+<pre class="example">
+grant all privileges on *.* to 'manue1'@'localhost';
+flush privileges;
+
+</pre>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-orgf108e87" class="outline-3">
+<h3 id="orgf108e87"><span class="section-number-3">1.3</span> commands</h3>
+<div class="outline-text-3" id="text-1-3">
 <ol class="org-ol">
 <li><p>
 终端登录
@@ -428,6 +489,7 @@ mysql -u manue1 -p qweO1\!k -h 8.8.8.8
 </div>
 </div>
 </div>
+
 
 <div id="outline-container-orga9f59f6" class="outline-2">
 <h2 id="orga9f59f6"><span class="section-number-2">2</span> q &amp; a</h2>

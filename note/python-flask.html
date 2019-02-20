@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-02-13 Wed 15:42 -->
+<!-- 2019-02-20 Wed 14:02 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>&lrm;</title>
+<title>flask 使用笔记</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="manue1" />
 <style type="text/css">
@@ -248,11 +248,12 @@ for the JavaScript code in this tag.
 </div>
 </div>
 <div id="content">
+<h1 class="title">flask 使用笔记</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgbdc3595">1. flask学习</a>
+<li><a href="#org6ec007a">1. flask 使用笔记</a>
 <ul>
 <li><a href="#orgec7d537">1.1. url详解：</a></li>
 <li><a href="#org4438711">1.2. web服务器和应用服务器以及web应用框架</a></li>
@@ -298,8 +299,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgbdc3595" class="outline-2">
-<h2 id="orgbdc3595"><span class="section-number-2">1</span> flask学习</h2>
+<div id="outline-container-org6ec007a" class="outline-2">
+<h2 id="org6ec007a"><span class="section-number-2">1</span> flask 使用笔记</h2>
 <div class="outline-text-2" id="text-1">
 </div>
 <div id="outline-container-orgec7d537" class="outline-3">
@@ -449,7 +450,7 @@ web应用框架：
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #eab700;">app.url_map.converters</span>[<span style="color: #3e999f;">'tel'</span>] = TelephoneConverter
+<pre class="src src-python"><span style="color: #076678;">app.url_map.converters</span>[<span style="color: #79740e;">'tel'</span>] = TelephoneConverter
 </pre>
 </div></li>
 </ol>
@@ -547,21 +548,21 @@ flask中重定向：
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #718c00;">from</span> flask <span style="color: #718c00;">import</span> Flask,request,redirect,url_for
+<pre class="src src-python"><span style="color: #9d0006;">from</span> flask <span style="color: #9d0006;">import</span> Flask,request,redirect,url_for
 
-<span style="color: #eab700;">app</span> = Flask(<span style="color: #8959a8;">__name__</span>)
+<span style="color: #076678;">app</span> = Flask(<span style="color: #af3a03;">__name__</span>)
 
-<span style="color: #4271ae;">@app.route</span>(<span style="color: #3e999f;">'/login/'</span>)
-<span style="color: #718c00;">def</span> <span style="color: #f5871f;">login</span>():
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">return</span> <span style="color: #3e999f;">'&#36825;&#26159;&#30331;&#24405;&#39029;&#38754;'</span>
+<span style="color: #8f3f71;">@app.route</span>(<span style="color: #79740e;">'/login/'</span>)
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">login</span>():
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> <span style="color: #79740e;">'&#36825;&#26159;&#30331;&#24405;&#39029;&#38754;'</span>
 
-<span style="color: #4271ae;">@app.route</span>(<span style="color: #3e999f;">'/profile/'</span>)
-<span style="color: #718c00;">def</span> <span style="color: #f5871f;">profile</span>():
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">if</span> request.args.get(<span style="color: #3e999f;">'name'</span>):
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">return</span> <span style="color: #3e999f;">'&#20010;&#20154;&#20013;&#24515;&#39029;&#38754;'</span>
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">else</span>:
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">redirect &#37325;&#23450;&#21521;</span>
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">return</span> redirect(url_for(<span style="color: #3e999f;">'login'</span>))
+<span style="color: #8f3f71;">@app.route</span>(<span style="color: #79740e;">'/profile/'</span>)
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">profile</span>():
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">if</span> request.args.get(<span style="color: #79740e;">'name'</span>):
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> <span style="color: #79740e;">'&#20010;&#20154;&#20013;&#24515;&#39029;&#38754;'</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">else</span>:
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #a89984;"># </span><span style="color: #a89984;">redirect &#37325;&#23450;&#21521;</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> redirect(url_for(<span style="color: #79740e;">'login'</span>))
 </pre>
 </div>
 </blockquote>
@@ -615,10 +616,10 @@ flask中重定向：
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #4271ae;">@app.route</span>(<span style="color: #3e999f;">'/post/list/&lt;page&gt;/'</span>)
-<span style="color: #718c00;">def</span> <span style="color: #f5871f;">my_list</span>(page):
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">return</span> <span style="color: #3e999f;">'my list'</span>
-<span style="color: #718c00;">print</span>(url_for(<span style="color: #3e999f;">'my_list'</span>,page=1,count=2))
+<pre class="src src-python"><span style="color: #8f3f71;">@app.route</span>(<span style="color: #79740e;">'/post/list/&lt;page&gt;/'</span>)
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">my_list</span>(page):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> <span style="color: #79740e;">'my list'</span>
+<span style="color: #9d0006;">print</span>(url_for(<span style="color: #79740e;">'my_list'</span>,page=1,count=2))
 </pre>
 </div>
 
@@ -631,9 +632,9 @@ flask中重定向：
 <code>url_for</code> 会自动的处理那些特殊的字符，不需要手动去处理。
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #eab700;">url</span> = url_for(<span style="color: #3e999f;">'login'</span>,<span style="color: #8959a8;">next</span>=<span style="color: #3e999f;">'/'</span>)
-<span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">&#20250;&#33258;&#21160;&#30340;&#23558;/&#32534;&#30721;&#65292;&#19981;&#38656;&#35201;&#25163;&#21160;&#21435;&#22788;&#29702;&#12290;</span>
-<span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">url=/login/?next=%2F</span>
+<pre class="src src-python"><span style="color: #076678;">url</span> = url_for(<span style="color: #79740e;">'login'</span>,<span style="color: #af3a03;">next</span>=<span style="color: #79740e;">'/'</span>)
+<span style="color: #a89984;"># </span><span style="color: #a89984;">&#20250;&#33258;&#21160;&#30340;&#23558;/&#32534;&#30721;&#65292;&#19981;&#38656;&#35201;&#25163;&#21160;&#21435;&#22788;&#29702;&#12290;</span>
+<span style="color: #a89984;"># </span><span style="color: #a89984;">url=/login/?next=%2F</span>
 </pre>
 </div></li>
 </ol>
@@ -672,12 +673,12 @@ flask中重定向：
 <code>any</code> 数据类型可以在一个 <code>url</code> 中指定多个路径。例如：
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #4271ae;">@app.route</span>(<span style="color: #3e999f;">'/&lt;any(blog,article):url_path&gt;/&lt;id&gt;/'</span>)
-<span style="color: #718c00;">def</span> <span style="color: #f5871f;">detail</span>(url_path, <span style="color: #8959a8;">id</span>):
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">if</span> url_path == <span style="color: #3e999f;">'blog'</span>:
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">return</span> <span style="color: #3e999f;">'&#21338;&#23458;&#35814;&#24773;&#65306;%s'</span> % <span style="color: #8959a8;">id</span>
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">else</span>:
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">return</span> <span style="color: #3e999f;">'&#21338;&#23458;&#35814;&#24773;&#65306;%s'</span> % <span style="color: #8959a8;">id</span>
+<pre class="src src-python"><span style="color: #8f3f71;">@app.route</span>(<span style="color: #79740e;">'/&lt;any(blog,article):url_path&gt;/&lt;id&gt;/'</span>)
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">detail</span>(url_path, <span style="color: #af3a03;">id</span>):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">if</span> url_path == <span style="color: #79740e;">'blog'</span>:
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> <span style="color: #79740e;">'&#21338;&#23458;&#35814;&#24773;&#65306;%s'</span> % <span style="color: #af3a03;">id</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">else</span>:
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> <span style="color: #79740e;">'&#21338;&#23458;&#35814;&#24773;&#65306;%s'</span> % <span style="color: #af3a03;">id</span>
 </pre>
 </div></li>
 </ol>
@@ -693,10 +694,10 @@ flask中重定向：
 第二种：使用查询字符串的方式，就是通过 <code>?key=value</code> 的形式传递的。
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #4271ae;">@app.route</span>(<span style="color: #3e999f;">'/d/'</span>)
-<span style="color: #718c00;">def</span> <span style="color: #f5871f;">d</span>():
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">wd</span> = request.args.get(<span style="color: #3e999f;">'wd'</span>)
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">return</span> <span style="color: #3e999f;">'&#24744;&#36890;&#36807;&#26597;&#35810;&#23383;&#31526;&#20018;&#30340;&#26041;&#24335;&#20256;&#36882;&#30340;&#21442;&#25968;&#26159;&#65306;%s'</span> % wd
+<pre class="src src-python"><span style="color: #8f3f71;">@app.route</span>(<span style="color: #79740e;">'/d/'</span>)
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">d</span>():
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">wd</span> = request.args.get(<span style="color: #79740e;">'wd'</span>)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> <span style="color: #79740e;">'&#24744;&#36890;&#36807;&#26597;&#35810;&#23383;&#31526;&#20018;&#30340;&#26041;&#24335;&#20256;&#36882;&#30340;&#21442;&#25968;&#26159;&#65306;%s'</span> % wd
 </pre>
 </div></li>
 <li>如果你的这个页面的想要做 <code>SEO</code> 优化，就是被搜索引擎搜索到，那么推荐使用第一种形式（path的形式）。如果不在乎搜索引擎优化，那么就可以使用第二种（查询字符串的形式）。</li>
@@ -831,15 +832,15 @@ format(value,*arags,**kwargs)：格式化字符串。例如以下代码：
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #4271ae;">@app.template_filter</span>(<span style="color: #3e999f;">'cut'</span>)
-<span style="color: #718c00;">def</span> <span style="color: #f5871f;">cut</span>(value):
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">value</span> = value.replace(<span style="color: #3e999f;">"hello"</span>,<span style="color: #3e999f;">''</span>)
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">return</span> value
+<pre class="src src-python"><span style="color: #8f3f71;">@app.template_filter</span>(<span style="color: #79740e;">'cut'</span>)
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">cut</span>(value):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">value</span> = value.replace(<span style="color: #79740e;">"hello"</span>,<span style="color: #79740e;">''</span>)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> value
 </pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-html">&lt;<span style="color: #f5871f;">p</span>&gt;{{ article|cut }}&lt;/<span style="color: #f5871f;">p</span>&gt;
+<pre class="src src-html">&lt;<span style="color: #b57614;">p</span>&gt;{{ article|cut }}&lt;/<span style="color: #b57614;">p</span>&gt;
 </pre>
 </div>
 </div>
@@ -876,9 +877,9 @@ format(value,*arags,**kwargs)：格式化字符串。例如以下代码：
 </p>
 
 <div class="org-src-container">
-<pre class="src src-html">{% macro input(name, <span style="color: #eab700;">value</span>='', <span style="color: #eab700;">type</span>='text') %}
-&lt;<span style="color: #f5871f;">input</span> <span style="color: #eab700;">type</span>=<span style="color: #3e999f;">"{{ </span><span style="color: #000000; background-color: #ff00ff;">type</span><span style="color: #3e999f;"> }}"</span> <span style="color: #eab700;">name</span>=<span style="color: #3e999f;">"{{ </span><span style="color: #000000; background-color: #ff00ff;">name</span><span style="color: #3e999f;"> }}"</span> <span style="color: #eab700;">value</span>=<span style="color: #3e999f;">"{{</span>
-<span style="color: #000000; background-color: #ff00ff;">value</span><span style="color: #3e999f;"> }}"</span>&gt;
+<pre class="src src-html">{% macro input(name, <span style="color: #076678;">value</span>='', <span style="color: #076678;">type</span>='text') %}
+&lt;<span style="color: #b57614;">input</span> <span style="color: #076678;">type</span>=<span style="color: #79740e;">"{{ </span><span style="color: #000000; background-color: #ff00ff;">type</span><span style="color: #79740e;"> }}"</span> <span style="color: #076678;">name</span>=<span style="color: #79740e;">"{{ </span><span style="color: #000000; background-color: #ff00ff;">name</span><span style="color: #79740e;"> }}"</span> <span style="color: #076678;">value</span>=<span style="color: #79740e;">"{{</span>
+<span style="color: #000000; background-color: #ff00ff;">value</span><span style="color: #79740e;"> }}"</span>&gt;
 {% endmacro %}
 </pre>
 </div></li>
@@ -888,8 +889,8 @@ format(value,*arags,**kwargs)：格式化字符串。例如以下代码：
 </p>
 
 <div class="org-src-container">
-<pre class="src src-html">&lt;<span style="color: #f5871f;">p</span>&gt;{{ input('username') }}&lt;/<span style="color: #f5871f;">p</span>&gt;
-&lt;<span style="color: #000000; background-color: #ff00ff;">p</span>&gt;{{ input('password', <span style="color: #eab700;">type</span>='password') }}&lt;/<span style="color: #f5871f;">p</span>&gt;
+<pre class="src src-html">&lt;<span style="color: #b57614;">p</span>&gt;{{ input('username') }}&lt;/<span style="color: #b57614;">p</span>&gt;
+&lt;<span style="color: #000000; background-color: #ff00ff;">p</span>&gt;{{ input('password', <span style="color: #076678;">type</span>='password') }}&lt;/<span style="color: #b57614;">p</span>&gt;
 </pre>
 </div></li>
 </ol>
@@ -927,8 +928,8 @@ format(value,*arags,**kwargs)：格式化字符串。例如以下代码：
 </p>
 
 <div class="org-src-container">
-<pre class="src src-html">{% set <span style="color: #eab700;">username</span>='&#30693;&#20102;&#35838;&#22530;' %}
-&lt;<span style="color: #f5871f;">p</span>&gt;&#29992;&#25143;&#21517;&#65306;{{ username }}&lt;/<span style="color: #f5871f;">p</span>&gt;
+<pre class="src src-html">{% set <span style="color: #076678;">username</span>='&#30693;&#20102;&#35838;&#22530;' %}
+&lt;<span style="color: #b57614;">p</span>&gt;&#29992;&#25143;&#21517;&#65306;{{ username }}&lt;/<span style="color: #b57614;">p</span>&gt;
 </pre>
 </div>
 <p>
@@ -942,7 +943,7 @@ format(value,*arags,**kwargs)：格式化字符串。例如以下代码：
 
 <div class="org-src-container">
 <pre class="src src-html">{% with classroom = 'zhiliao1&#29677;' %}
-&lt;<span style="color: #f5871f;">p</span>&gt;&#29677;&#32423;&#65306;{{ classroom }}&lt;/<span style="color: #f5871f;">p</span>&gt;
+&lt;<span style="color: #b57614;">p</span>&gt;&#29677;&#32423;&#65306;{{ classroom }}&lt;/<span style="color: #b57614;">p</span>&gt;
 {% endwith %}
 </pre>
 </div>
@@ -954,7 +955,7 @@ format(value,*arags,**kwargs)：格式化字符串。例如以下代码：
 <div class="org-src-container">
 <pre class="src src-html">{% with %}
     {<span style="color: #000000; background-color: #ff00ff;">%</span> set classroom = 'zhiliao1&#29677;' %}
-    &lt;<span style="color: #f5871f;">p</span>&gt;&#29677;&#32423;&#65306;{{ classroom }}&lt;/<span style="color: #f5871f;">p</span>&gt;
+    &lt;<span style="color: #b57614;">p</span>&gt;&#29677;&#32423;&#65306;{{ classroom }}&lt;/<span style="color: #b57614;">p</span>&gt;
 {% endwith %}
 </pre>
 </div>
@@ -969,7 +970,7 @@ format(value,*arags,**kwargs)：格式化字符串。例如以下代码：
 </p>
 
 <div class="org-src-container">
-<pre class="src src-html">{{ url_for(<span style="color: #3e999f;">"static"</span>,filename='xxx') }}
+<pre class="src src-html">{{ url_for(<span style="color: #79740e;">"static"</span>,filename='xxx') }}
 </pre>
 </div>
 <p>
@@ -1034,7 +1035,7 @@ block语法：
 </p>
 <div class="org-src-container">
 <pre class="src src-html">{% block body_block %}
-        &lt;<span style="color: #f5871f;">p</span> <span style="color: #eab700;">style</span>=<span style="color: #3e999f;">"background: red;"</span>&gt;&#36825;&#26159;&#29238;&#27169;&#26495;&#20013;&#30340;&#20195;&#30721;&lt;/<span style="color: #f5871f;">p</span>&gt;
+        &lt;<span style="color: #b57614;">p</span> <span style="color: #076678;">style</span>=<span style="color: #79740e;">"background: red;"</span>&gt;&#36825;&#26159;&#29238;&#27169;&#26495;&#20013;&#30340;&#20195;&#30721;&lt;/<span style="color: #b57614;">p</span>&gt;
     {% endblock %}
 </pre>
 </div>
@@ -1064,7 +1065,7 @@ block语法：
 
 {<span style="color: #000000; background-color: #ff00ff;">%</span> block body_block %}
     {{ self.title() }}
-    &lt;<span style="color: #f5871f;">p</span> <span style="color: #eab700;">style</span>=<span style="color: #3e999f;">"background: green;"</span>&gt;&#25105;&#26159;&#23376;&#27169;&#26495;&#20013;&#30340;&#20195;&#30721;&lt;/<span style="color: #f5871f;">p</span>&gt;
+    &lt;<span style="color: #b57614;">p</span> <span style="color: #076678;">style</span>=<span style="color: #79740e;">"background: green;"</span>&gt;&#25105;&#26159;&#23376;&#27169;&#26495;&#20013;&#30340;&#20195;&#30721;&lt;/<span style="color: #b57614;">p</span>&gt;
 {% endblock %}
 </pre>
 </div>
@@ -1152,15 +1153,15 @@ block语法：
 在蓝图文件中导入Blueprint：
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #718c00;">from</span> flask <span style="color: #718c00;">import</span> Blueprint
-<span style="color: #eab700;">user_bp</span> = Blueprint(<span style="color: #3e999f;">'user'</span>,<span style="color: #8959a8;">__name__</span>)
+<pre class="src src-python"><span style="color: #9d0006;">from</span> flask <span style="color: #9d0006;">import</span> Blueprint
+<span style="color: #076678;">user_bp</span> = Blueprint(<span style="color: #79740e;">'user'</span>,<span style="color: #af3a03;">__name__</span>)
 </pre>
 </div></li>
 <li><p>
 在主app文件中注册蓝图：
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #718c00;">from</span> blueprints.user <span style="color: #718c00;">import</span> user_bp
+<pre class="src src-python"><span style="color: #9d0006;">from</span> blueprints.user <span style="color: #9d0006;">import</span> user_bp
 app.regist_blueprint(user_bp)
 </pre>
 </div></li>
@@ -1169,7 +1170,7 @@ app.regist_blueprint(user_bp)
 如果想要某个蓝图下的所有url都有一个url前缀，那么可以在定义蓝图的时候，指定url<sub>prefix参数</sub>：
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #eab700;">user_bp</span> = Blueprint(<span style="color: #3e999f;">'user'</span>,<span style="color: #8959a8;">__name__</span>,url_prefix=<span style="color: #3e999f;">'/user/'</span>)
+<pre class="src src-python"><span style="color: #076678;">user_bp</span> = Blueprint(<span style="color: #79740e;">'user'</span>,<span style="color: #af3a03;">__name__</span>,url_prefix=<span style="color: #79740e;">'/user/'</span>)
 </pre>
 </div>
 <p>
@@ -1185,7 +1186,7 @@ app.regist_blueprint(user_bp)
 并且蓝图中指定的路径可以为相对路径，相对的是当前这个蓝图文件所在的目录。比如：
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #eab700;">news_bp</span> = Blueprint(<span style="color: #3e999f;">'news'</span>,<span style="color: #8959a8;">__name__</span>,url_prefix=<span style="color: #3e999f;">'/news'</span>,template_folder=<span style="color: #3e999f;">'zhiliao'</span>)
+<pre class="src src-python"><span style="color: #076678;">news_bp</span> = Blueprint(<span style="color: #79740e;">'news'</span>,<span style="color: #af3a03;">__name__</span>,url_prefix=<span style="color: #79740e;">'/news'</span>,template_folder=<span style="color: #79740e;">'zhiliao'</span>)
 </pre>
 </div>
 <p>
@@ -1219,7 +1220,7 @@ app.regist_blueprint(user_bp)
 需要在主app文件中，需要配置app.config的SERVER<sub>NAME参数</sub>。例如：
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #eab700;">app.config</span>[<span style="color: #3e999f;">'SERVER_NAME'</span>] = <span style="color: #3e999f;">'jd.com:5000'</span>
+<pre class="src src-python"><span style="color: #076678;">app.config</span>[<span style="color: #79740e;">'SERVER_NAME'</span>] = <span style="color: #79740e;">'jd.com:5000'</span>
 </pre>
 </div>
 <ul class="org-ul">
@@ -1256,14 +1257,14 @@ app.regist_blueprint(user_bp)
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #eab700;">HOSTNAME</span> = <span style="color: #3e999f;">'127.0.0.1'</span>
-<span style="color: #eab700;">PORT</span> = <span style="color: #3e999f;">'3306'</span>
-<span style="color: #eab700;">DATABASE</span> = <span style="color: #3e999f;">'first_sqlalchemy'</span>
-<span style="color: #eab700;">USERNAME</span> = <span style="color: #3e999f;">'root'</span>
-<span style="color: #eab700;">PASSWORD</span> = <span style="color: #3e999f;">'root'</span>
+<pre class="src src-python"><span style="color: #076678;">HOSTNAME</span> = <span style="color: #79740e;">'127.0.0.1'</span>
+<span style="color: #076678;">PORT</span> = <span style="color: #79740e;">'3306'</span>
+<span style="color: #076678;">DATABASE</span> = <span style="color: #79740e;">'first_sqlalchemy'</span>
+<span style="color: #076678;">USERNAME</span> = <span style="color: #79740e;">'root'</span>
+<span style="color: #076678;">PASSWORD</span> = <span style="color: #79740e;">'root'</span>
 
-<span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">dialect+driver://username:password@host:port/database</span>
-<span style="color: #eab700;">DB_URI</span> = <span style="color: #3e999f;">"mysql+pymysql://{username}:{password}@{host}:{port}/{db}?charset=utf8"</span>.<span style="color: #8959a8;">format</span>(username=USERNAME,password=PASSWORD,host=HOSTNAME,port=PORT,db=DATABASE)
+<span style="color: #a89984;"># </span><span style="color: #a89984;">dialect+driver://username:password@host:port/database</span>
+<span style="color: #076678;">DB_URI</span> = <span style="color: #79740e;">"mysql+pymysql://{username}:{password}@{host}:{port}/{db}?charset=utf8"</span>.<span style="color: #af3a03;">format</span>(username=USERNAME,password=PASSWORD,host=HOSTNAME,port=PORT,db=DATABASE)
 </pre>
 </div>
 
@@ -1272,12 +1273,12 @@ app.regist_blueprint(user_bp)
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #eab700;">engine</span> = create_engine(DB_URI)
+<pre class="src src-python"><span style="color: #076678;">engine</span> = create_engine(DB_URI)
 
-<span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">&#21028;&#26029;&#26159;&#21542;&#36830;&#25509;&#25104;&#21151;</span>
-<span style="color: #eab700;">conn</span> = engine.connect()
-<span style="color: #eab700;">result</span> = conn.execute(<span style="color: #3e999f;">'select 1'</span>)
-<span style="color: #718c00;">print</span>(result.fetchone())
+<span style="color: #a89984;"># </span><span style="color: #a89984;">&#21028;&#26029;&#26159;&#21542;&#36830;&#25509;&#25104;&#21151;</span>
+<span style="color: #076678;">conn</span> = engine.connect()
+<span style="color: #076678;">result</span> = conn.execute(<span style="color: #79740e;">'select 1'</span>)
+<span style="color: #9d0006;">print</span>(result.fetchone())
 
 </pre>
 </div>
@@ -1300,9 +1301,9 @@ app.regist_blueprint(user_bp)
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #718c00;">from</span> sqlalchemy.ext.declarative <span style="color: #718c00;">import</span> declarative_base
-<span style="color: #eab700;">engine</span> = create_engine(DB_URI)
-<span style="color: #eab700;">Base</span> = declarative_base(engine)
+<pre class="src src-python"><span style="color: #9d0006;">from</span> sqlalchemy.ext.declarative <span style="color: #9d0006;">import</span> declarative_base
+<span style="color: #076678;">engine</span> = create_engine(DB_URI)
+<span style="color: #076678;">Base</span> = declarative_base(engine)
 </pre>
 </div></li>
 
@@ -1310,20 +1311,20 @@ app.regist_blueprint(user_bp)
 用这个 <code>Base</code> 类作为基类来写自己的ORM类。要定义 <code>__tablename__</code> 类属性，来指定这个模型映射到数据库中的表名。
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #718c00;">class</span> <span style="color: #4271ae;">Person</span>(Base):
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">__tablename__</span> = <span style="color: #3e999f;">'person'</span>
+<pre class="src src-python"><span style="color: #9d0006;">class</span> <span style="color: #8f3f71;">Person</span>(Base):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">__tablename__</span> = <span style="color: #79740e;">'person'</span>
 </pre>
 </div></li>
 <li><p>
 创建属性来映射到表中的字段，所有需要映射到表中的属性都应该为Column类型：
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #718c00;">class</span> <span style="color: #4271ae;">Person</span>(Base):
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">__tablename__</span> = <span style="color: #3e999f;">'person'</span>
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">2. &#22312;&#36825;&#20010;ORM&#27169;&#22411;&#20013;&#21019;&#24314;&#19968;&#20123;&#23646;&#24615;&#65292;&#26469;&#36319;&#34920;&#20013;&#30340;&#23383;&#27573;&#36827;&#34892;&#19968;&#19968;&#26144;&#23556;&#12290;&#36825;&#20123;&#23646;&#24615;&#24517;&#39035;&#26159;sqlalchemy&#32473;&#25105;&#20204;&#25552;&#20379;&#22909;&#30340;&#25968;&#25454;&#31867;&#22411;&#12290;</span>
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8959a8;">id</span> = Column(Integer,primary_key=<span style="color: #4271ae;">True</span>,autoincrement=<span style="color: #4271ae;">True</span>)
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">name</span> = Column(String(50))
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">age</span> = Column(Integer)
+<pre class="src src-python"><span style="color: #9d0006;">class</span> <span style="color: #8f3f71;">Person</span>(Base):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">__tablename__</span> = <span style="color: #79740e;">'person'</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #a89984;"># </span><span style="color: #a89984;">2. &#22312;&#36825;&#20010;ORM&#27169;&#22411;&#20013;&#21019;&#24314;&#19968;&#20123;&#23646;&#24615;&#65292;&#26469;&#36319;&#34920;&#20013;&#30340;&#23383;&#27573;&#36827;&#34892;&#19968;&#19968;&#26144;&#23556;&#12290;&#36825;&#20123;&#23646;&#24615;&#24517;&#39035;&#26159;sqlalchemy&#32473;&#25105;&#20204;&#25552;&#20379;&#22909;&#30340;&#25968;&#25454;&#31867;&#22411;&#12290;</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #af3a03;">id</span> = Column(Integer,primary_key=<span style="color: #8f3f71;">True</span>,autoincrement=<span style="color: #8f3f71;">True</span>)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">name</span> = Column(String(50))
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">age</span> = Column(Integer)
 </pre>
 </div></li>
 <li>使用 <code>Base.metadata.create_all()</code> 来将模型映射到数据库中。</li>
@@ -1339,10 +1340,10 @@ app.regist_blueprint(user_bp)
 构建session对象：所有和数据库的ORM操作都必须通过一个叫做 <code>session</code> 的会话对象来实现，通过以下代码来获取会话对象：
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #718c00;">from</span> sqlalchemy.orm <span style="color: #718c00;">import</span> sessionmaker
+<pre class="src src-python"><span style="color: #9d0006;">from</span> sqlalchemy.orm <span style="color: #9d0006;">import</span> sessionmaker
 
-<span style="color: #eab700;">engine</span> = create_engine(DB_URI)
-<span style="color: #eab700;">session</span> = sessionmaker(engine)()
+<span style="color: #076678;">engine</span> = create_engine(DB_URI)
+<span style="color: #076678;">session</span> = sessionmaker(engine)()
 </pre>
 </div></li>
 <li>添加对象：
@@ -1351,7 +1352,7 @@ app.regist_blueprint(user_bp)
 创建对象，也即创建一条数据：
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #eab700;">p</span> = Person(name=<span style="color: #3e999f;">'zhiliao'</span>,age=18,country=<span style="color: #3e999f;">'china'</span>)
+<pre class="src src-python"><span style="color: #076678;">p</span> = Person(name=<span style="color: #79740e;">'zhiliao'</span>,age=18,country=<span style="color: #79740e;">'china'</span>)
 </pre>
 </div></li>
 <li><p>
@@ -1372,8 +1373,8 @@ session.commit()
 一次性添加多条数据：
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #eab700;">p1</span> = Person(name=<span style="color: #3e999f;">'zhiliao1'</span>,age=19,country=<span style="color: #3e999f;">'china'</span>)
-<span style="color: #eab700;">p2</span> = Person(name=<span style="color: #3e999f;">'zhiliao2'</span>,age=20,country=<span style="color: #3e999f;">'china'</span>)
+<pre class="src src-python"><span style="color: #076678;">p1</span> = Person(name=<span style="color: #79740e;">'zhiliao1'</span>,age=19,country=<span style="color: #79740e;">'china'</span>)
+<span style="color: #076678;">p2</span> = Person(name=<span style="color: #79740e;">'zhiliao2'</span>,age=20,country=<span style="color: #79740e;">'china'</span>)
 session.add_all([p1,p2])
 session.commit()
 </pre>
@@ -1383,24 +1384,24 @@ session.commit()
 查找对象：
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span><span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">&#26597;&#25214;&#26576;&#20010;&#27169;&#22411;&#23545;&#24212;&#30340;&#37027;&#20010;&#34920;&#20013;&#25152;&#26377;&#30340;&#25968;&#25454;&#65306;</span>
-<span style="color: #eab700;">all_person</span> = session.query(Person).<span style="color: #8959a8;">all</span>()
-<span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">&#20351;&#29992;filter_by&#26469;&#20570;&#26465;&#20214;&#26597;&#35810;</span>
-<span style="color: #eab700;">all_person</span> = session.query(Person).filter_by(name=<span style="color: #3e999f;">'zhiliao'</span>).<span style="color: #8959a8;">all</span>()
-<span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">&#20351;&#29992;filter&#26469;&#20570;&#26465;&#20214;&#26597;&#35810;</span>
-<span style="color: #eab700;">all_person</span> = session.query(Person).<span style="color: #8959a8;">filter</span>(Person.name==<span style="color: #3e999f;">'zhiliao'</span>).<span style="color: #8959a8;">all</span>()
-<span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">&#20351;&#29992;get&#26041;&#27861;&#26597;&#25214;&#25968;&#25454;&#65292;get&#26041;&#27861;&#26159;&#26681;&#25454;id&#26469;&#26597;&#25214;&#30340;&#65292;&#21482;&#20250;&#36820;&#22238;&#19968;&#26465;&#25968;&#25454;&#25110;&#32773;None</span>
-<span style="color: #eab700;">person</span> = session.query(Person).get(primary_key)
-<span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">&#20351;&#29992;first&#26041;&#27861;&#33719;&#21462;&#32467;&#26524;&#38598;&#20013;&#30340;&#31532;&#19968;&#26465;&#25968;&#25454;</span>
-<span style="color: #eab700;">person</span> = session.query(Person).first()
+<pre class="src src-python"><span style="background-color: #ebdbb2;"> </span><span style="color: #a89984;"># </span><span style="color: #a89984;">&#26597;&#25214;&#26576;&#20010;&#27169;&#22411;&#23545;&#24212;&#30340;&#37027;&#20010;&#34920;&#20013;&#25152;&#26377;&#30340;&#25968;&#25454;&#65306;</span>
+<span style="color: #076678;">all_person</span> = session.query(Person).<span style="color: #af3a03;">all</span>()
+<span style="color: #a89984;"># </span><span style="color: #a89984;">&#20351;&#29992;filter_by&#26469;&#20570;&#26465;&#20214;&#26597;&#35810;</span>
+<span style="color: #076678;">all_person</span> = session.query(Person).filter_by(name=<span style="color: #79740e;">'zhiliao'</span>).<span style="color: #af3a03;">all</span>()
+<span style="color: #a89984;"># </span><span style="color: #a89984;">&#20351;&#29992;filter&#26469;&#20570;&#26465;&#20214;&#26597;&#35810;</span>
+<span style="color: #076678;">all_person</span> = session.query(Person).<span style="color: #af3a03;">filter</span>(Person.name==<span style="color: #79740e;">'zhiliao'</span>).<span style="color: #af3a03;">all</span>()
+<span style="color: #a89984;"># </span><span style="color: #a89984;">&#20351;&#29992;get&#26041;&#27861;&#26597;&#25214;&#25968;&#25454;&#65292;get&#26041;&#27861;&#26159;&#26681;&#25454;id&#26469;&#26597;&#25214;&#30340;&#65292;&#21482;&#20250;&#36820;&#22238;&#19968;&#26465;&#25968;&#25454;&#25110;&#32773;None</span>
+<span style="color: #076678;">person</span> = session.query(Person).get(primary_key)
+<span style="color: #a89984;"># </span><span style="color: #a89984;">&#20351;&#29992;first&#26041;&#27861;&#33719;&#21462;&#32467;&#26524;&#38598;&#20013;&#30340;&#31532;&#19968;&#26465;&#25968;&#25454;</span>
+<span style="color: #076678;">person</span> = session.query(Person).first()
 </pre>
 </div></li>
 <li><p>
 修改对象：首先从数据库中查找对象，然后将这条数据修改为你想要的数据，最后做commit操作就可以修改数据了。
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #eab700;">person</span> = session.query(Person).first()
-<span style="color: #eab700;">person.name</span> = <span style="color: #3e999f;">'ketang'</span>
+<pre class="src src-python"><span style="color: #076678;">person</span> = session.query(Person).first()
+<span style="color: #076678;">person.name</span> = <span style="color: #79740e;">'ketang'</span>
 session.commit()
 </pre>
 </div></li>
@@ -1408,7 +1409,7 @@ session.commit()
 删除对象：将需要删除的数据从数据库中查找出来，然后使用 <code>session.delete</code> 方法将这条数据从session中删除，最后做commit操作就可以了。
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #eab700;">person</span> = session.query(Person).first()
+<pre class="src src-python"><span style="color: #076678;">person</span> = session.query(Person).first()
 session.delete(person)
 session.commit()
 </pre>
@@ -1430,27 +1431,27 @@ session.commit()
 Enum：枚举类型。指定某个字段只能是枚举中指定的几个值，不能为其他值。在ORM模型中，使用Enum来作为枚举，示例代码如下：
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #718c00;">class</span> <span style="color: #4271ae;">Article</span>(Base):
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">__tablename__</span> = <span style="color: #3e999f;">'article'</span>
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8959a8;">id</span> = Column(Integer,primary_key=<span style="color: #4271ae;">True</span>,autoincrement=<span style="color: #4271ae;">True</span>)
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">tag</span> = Column(Enum(<span style="color: #3e999f;">"python"</span>,<span style="color: #3e999f;">'flask'</span>,<span style="color: #3e999f;">'django'</span>))
+<pre class="src src-python"><span style="color: #9d0006;">class</span> <span style="color: #8f3f71;">Article</span>(Base):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">__tablename__</span> = <span style="color: #79740e;">'article'</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #af3a03;">id</span> = Column(Integer,primary_key=<span style="color: #8f3f71;">True</span>,autoincrement=<span style="color: #8f3f71;">True</span>)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">tag</span> = Column(Enum(<span style="color: #79740e;">"python"</span>,<span style="color: #79740e;">'flask'</span>,<span style="color: #79740e;">'django'</span>))
 </pre>
 </div>
 <p>
 在Python3中，已经内置了enum这个枚举的模块，我们也可以使用这个模块去定义相关的字段。示例代码如下：
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #718c00;">class</span> <span style="color: #4271ae;">TagEnum</span>(enum.Enum):
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">python</span> = <span style="color: #3e999f;">"python"</span>
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">flask</span> = <span style="color: #3e999f;">"flask"</span>
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">django</span> = <span style="color: #3e999f;">"django"</span>
+<pre class="src src-python"><span style="color: #9d0006;">class</span> <span style="color: #8f3f71;">TagEnum</span>(enum.Enum):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">python</span> = <span style="color: #79740e;">"python"</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">flask</span> = <span style="color: #79740e;">"flask"</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">django</span> = <span style="color: #79740e;">"django"</span>
 
-<span style="color: #718c00;">class</span> <span style="color: #4271ae;">Article</span>(Base):
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">__tablename__</span> = <span style="color: #3e999f;">'article'</span>
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8959a8;">id</span> = Column(Integer,primary_key=<span style="color: #4271ae;">True</span>,autoincrement=<span style="color: #4271ae;">True</span>)
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">tag</span> = Column(Enum(TagEnum))
+<span style="color: #9d0006;">class</span> <span style="color: #8f3f71;">Article</span>(Base):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">__tablename__</span> = <span style="color: #79740e;">'article'</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #af3a03;">id</span> = Column(Integer,primary_key=<span style="color: #8f3f71;">True</span>,autoincrement=<span style="color: #8f3f71;">True</span>)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">tag</span> = Column(Enum(TagEnum))
 
-<span style="color: #eab700;">article</span> = Article(tag=TagEnum.flask)
+<span style="color: #076678;">article</span> = Article(tag=TagEnum.flask)
 
 </pre>
 </div></li>
@@ -1458,36 +1459,36 @@ Enum：枚举类型。指定某个字段只能是枚举中指定的几个值，�
 Date：存储时间，只能存储年月日。映射到数据库中是date类型。在Python代码中，可以使用 <code>datetime.date</code> 来指定。示例代码如下：
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #718c00;">class</span> <span style="color: #4271ae;">Article</span>(Base):
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">__tablename__</span> = <span style="color: #3e999f;">'article'</span>
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8959a8;">id</span> = Column(Integer,primary_key=<span style="color: #4271ae;">True</span>,autoincrement=<span style="color: #4271ae;">True</span>)
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">create_time</span> = Column(Date)
+<pre class="src src-python"><span style="color: #9d0006;">class</span> <span style="color: #8f3f71;">Article</span>(Base):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">__tablename__</span> = <span style="color: #79740e;">'article'</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #af3a03;">id</span> = Column(Integer,primary_key=<span style="color: #8f3f71;">True</span>,autoincrement=<span style="color: #8f3f71;">True</span>)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">create_time</span> = Column(Date)
 
-<span style="color: #eab700;">article</span> = Article(create_time=date(2017,10,10))
+<span style="color: #076678;">article</span> = Article(create_time=date(2017,10,10))
 </pre>
 </div></li>
 <li><p>
 DateTime：存储时间，可以存储年月日时分秒毫秒等。映射到数据库中也是datetime类型。在Python代码中，可以使用 <code>datetime.datetime</code> 来指定。示例代码如下：
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #718c00;">class</span> <span style="color: #4271ae;">Article</span>(Base):
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">__tablename__</span> = <span style="color: #3e999f;">'article'</span>
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8959a8;">id</span> = Column(Integer,primary_key=<span style="color: #4271ae;">True</span>,autoincrement=<span style="color: #4271ae;">True</span>)
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">create_time</span> = Column(DateTime)
+<pre class="src src-python"><span style="color: #9d0006;">class</span> <span style="color: #8f3f71;">Article</span>(Base):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">__tablename__</span> = <span style="color: #79740e;">'article'</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #af3a03;">id</span> = Column(Integer,primary_key=<span style="color: #8f3f71;">True</span>,autoincrement=<span style="color: #8f3f71;">True</span>)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">create_time</span> = Column(DateTime)
 
-<span style="color: #eab700;">article</span> = Article(create_time=datetime(2011,11,11,11,11,11))
+<span style="color: #076678;">article</span> = Article(create_time=datetime(2011,11,11,11,11,11))
 </pre>
 </div></li>
 <li><p>
 Time：存储时间，可以存储时分秒。映射到数据库中也是time类型。在Python代码中，可以使用 ~ datetime.time ~ 来至此那个。示例代码如下：
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #718c00;">class</span> <span style="color: #4271ae;">Article</span>(Base):
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">__tablename__</span> = <span style="color: #3e999f;">'article'</span>
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8959a8;">id</span> = Column(Integer,primary_key=<span style="color: #4271ae;">True</span>,autoincrement=<span style="color: #4271ae;">True</span>)
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">create_time</span> = Column(Time)
+<pre class="src src-python"><span style="color: #9d0006;">class</span> <span style="color: #8f3f71;">Article</span>(Base):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">__tablename__</span> = <span style="color: #79740e;">'article'</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #af3a03;">id</span> = Column(Integer,primary_key=<span style="color: #8f3f71;">True</span>,autoincrement=<span style="color: #8f3f71;">True</span>)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">create_time</span> = Column(Time)
 
-<span style="color: #eab700;">article</span> = Article(create_time=time(hour=11,minute=11,second=11))
+<span style="color: #076678;">article</span> = Article(create_time=time(hour=11,minute=11,second=11))
 </pre>
 </div></li>
 <li>Text：存储长字符串。一般可以存储6W多个字符。如果超出了这个范围，可以使用LONGTEXT类型。映射到数据库中就是text类型。</li>
@@ -1545,8 +1546,8 @@ title = Column('my_title',String(50),nullable=False)
 equals：
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #eab700;">article</span> = session.query(Article).<span style="color: #8959a8;">filter</span>(Article.title == <span style="color: #3e999f;">"title0"</span>).first()
-<span style="color: #718c00;">print</span>(article)
+<pre class="src src-python"><span style="color: #076678;">article</span> = session.query(Article).<span style="color: #af3a03;">filter</span>(Article.title == <span style="color: #79740e;">"title0"</span>).first()
+<span style="color: #9d0006;">print</span>(article)
 </pre>
 </div></li>
 <li><p>
@@ -1568,9 +1569,9 @@ query.filter(User.name.like('%ed%'))
 in：
 </p>
 <div class="org-src-container">
-<pre class="src src-python">query.<span style="color: #8959a8;">filter</span>(User.name.in_([<span style="color: #3e999f;">'ed'</span>,<span style="color: #3e999f;">'wendy'</span>,<span style="color: #3e999f;">'jack'</span>]))
-<span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">&#21516;&#26102;&#65292;in&#20063;&#21487;&#20197;&#20316;&#29992;&#20110;&#19968;&#20010;Query</span>
-query.<span style="color: #8959a8;">filter</span>(User.name.in_(session.query(User.name).<span style="color: #8959a8;">filter</span>(User.name.like(<span style="color: #3e999f;">'%ed%'</span>))))
+<pre class="src src-python">query.<span style="color: #af3a03;">filter</span>(User.name.in_([<span style="color: #79740e;">'ed'</span>,<span style="color: #79740e;">'wendy'</span>,<span style="color: #79740e;">'jack'</span>]))
+<span style="color: #a89984;"># </span><span style="color: #a89984;">&#21516;&#26102;&#65292;in&#20063;&#21487;&#20197;&#20316;&#29992;&#20110;&#19968;&#20010;Query</span>
+query.<span style="color: #af3a03;">filter</span>(User.name.in_(session.query(User.name).<span style="color: #af3a03;">filter</span>(User.name.like(<span style="color: #79740e;">'%ed%'</span>))))
 </pre>
 </div></li>
 
@@ -1578,16 +1579,16 @@ query.<span style="color: #8959a8;">filter</span>(User.name.in_(session.query(Us
 not in：
 </p>
 <div class="org-src-container">
-<pre class="src src-python">query.<span style="color: #8959a8;">filter</span>(~User.name.in_([<span style="color: #3e999f;">'ed'</span>,<span style="color: #3e999f;">'wendy'</span>,<span style="color: #3e999f;">'jack'</span>]))
+<pre class="src src-python">query.<span style="color: #af3a03;">filter</span>(~User.name.in_([<span style="color: #79740e;">'ed'</span>,<span style="color: #79740e;">'wendy'</span>,<span style="color: #79740e;">'jack'</span>]))
 </pre>
 </div></li>
 <li><p>
 is null：
 </p>
 <div class="org-src-container">
-<pre class="src src-python">query.<span style="color: #8959a8;">filter</span>(User.name==<span style="color: #4271ae;">None</span>)
-<span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">&#25110;&#32773;&#26159;</span>
-query.<span style="color: #8959a8;">filter</span>(User.name.is_(<span style="color: #4271ae;">None</span>))
+<pre class="src src-python">query.<span style="color: #af3a03;">filter</span>(User.name==<span style="color: #8f3f71;">None</span>)
+<span style="color: #a89984;"># </span><span style="color: #a89984;">&#25110;&#32773;&#26159;</span>
+query.<span style="color: #af3a03;">filter</span>(User.name.is_(<span style="color: #8f3f71;">None</span>))
 </pre>
 </div></li>
 
@@ -1595,9 +1596,9 @@ query.<span style="color: #8959a8;">filter</span>(User.name.is_(<span style="col
 is not null:
 </p>
 <div class="org-src-container">
-<pre class="src src-python">query.<span style="color: #8959a8;">filter</span>(User.name != <span style="color: #4271ae;">None</span>)
-<span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">&#25110;&#32773;&#26159;</span>
-query.<span style="color: #8959a8;">filter</span>(User.name.isnot(<span style="color: #4271ae;">None</span>))
+<pre class="src src-python">query.<span style="color: #af3a03;">filter</span>(User.name != <span style="color: #8f3f71;">None</span>)
+<span style="color: #a89984;"># </span><span style="color: #a89984;">&#25110;&#32773;&#26159;</span>
+query.<span style="color: #af3a03;">filter</span>(User.name.isnot(<span style="color: #8f3f71;">None</span>))
 </pre>
 </div></li>
 
@@ -1605,12 +1606,12 @@ query.<span style="color: #8959a8;">filter</span>(User.name.isnot(<span style="c
 and：
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #718c00;">from</span> sqlalchemy <span style="color: #718c00;">import</span> and_
-query.<span style="color: #8959a8;">filter</span>(and_(User.name==<span style="color: #3e999f;">'ed'</span>,User.fullname==<span style="color: #3e999f;">'Ed Jones'</span>))
-<span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">&#25110;&#32773;&#26159;&#20256;&#36882;&#22810;&#20010;&#21442;&#25968;</span>
-query.<span style="color: #8959a8;">filter</span>(User.name==<span style="color: #3e999f;">'ed'</span>,User.fullname==<span style="color: #3e999f;">'Ed Jones'</span>)
-<span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">&#25110;&#32773;&#26159;&#36890;&#36807;&#22810;&#27425;filter&#25805;&#20316;</span>
-query.<span style="color: #8959a8;">filter</span>(User.name==<span style="color: #3e999f;">'ed'</span>).<span style="color: #8959a8;">filter</span>(User.fullname==<span style="color: #3e999f;">'Ed Jones'</span>)
+<pre class="src src-python"><span style="color: #9d0006;">from</span> sqlalchemy <span style="color: #9d0006;">import</span> and_
+query.<span style="color: #af3a03;">filter</span>(and_(User.name==<span style="color: #79740e;">'ed'</span>,User.fullname==<span style="color: #79740e;">'Ed Jones'</span>))
+<span style="color: #a89984;"># </span><span style="color: #a89984;">&#25110;&#32773;&#26159;&#20256;&#36882;&#22810;&#20010;&#21442;&#25968;</span>
+query.<span style="color: #af3a03;">filter</span>(User.name==<span style="color: #79740e;">'ed'</span>,User.fullname==<span style="color: #79740e;">'Ed Jones'</span>)
+<span style="color: #a89984;"># </span><span style="color: #a89984;">&#25110;&#32773;&#26159;&#36890;&#36807;&#22810;&#27425;filter&#25805;&#20316;</span>
+query.<span style="color: #af3a03;">filter</span>(User.name==<span style="color: #79740e;">'ed'</span>).<span style="color: #af3a03;">filter</span>(User.fullname==<span style="color: #79740e;">'Ed Jones'</span>)
 </pre>
 </div></li>
 
@@ -1627,8 +1628,8 @@ from sqlalchemy import or_  query.filter(or_(User.name=='ed',User.name=='wendy')
 如果想要查看orm底层转换的sql语句，可以在filter方法后面不要再执行任何方法直接打印就可以看到了。比如：
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #eab700;">articles</span> = session.query(Article).<span style="color: #8959a8;">filter</span>(or_(Article.title==<span style="color: #3e999f;">'abc'</span>,Article.content==<span style="color: #3e999f;">'abc'</span>))
-<span style="color: #718c00;">print</span>(articles)
+<pre class="src src-python"><span style="color: #076678;">articles</span> = session.query(Article).<span style="color: #af3a03;">filter</span>(or_(Article.title==<span style="color: #79740e;">'abc'</span>,Article.content==<span style="color: #79740e;">'abc'</span>))
+<span style="color: #9d0006;">print</span>(articles)
 </pre>
 </div>
 
@@ -1642,17 +1643,17 @@ from sqlalchemy import or_  query.filter(or_(User.name=='ed',User.name=='wendy')
 </p>
 <div class="org-src-container">
 <pre class="src src-python">
-<span style="color: #718c00;">class</span> <span style="color: #4271ae;">User</span>(Base):
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">__tablename__</span> = <span style="color: #3e999f;">'user'</span>
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8959a8;">id</span> = Column(Integer,primary_key=<span style="color: #4271ae;">True</span>,autoincrement=<span style="color: #4271ae;">True</span>)
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">username</span> = Column(String(50),nullable=<span style="color: #4271ae;">False</span>)
+<span style="color: #9d0006;">class</span> <span style="color: #8f3f71;">User</span>(Base):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">__tablename__</span> = <span style="color: #79740e;">'user'</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #af3a03;">id</span> = Column(Integer,primary_key=<span style="color: #8f3f71;">True</span>,autoincrement=<span style="color: #8f3f71;">True</span>)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">username</span> = Column(String(50),nullable=<span style="color: #8f3f71;">False</span>)
 
-<span style="color: #718c00;">class</span> <span style="color: #4271ae;">Article</span>(Base):
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">__tablename__</span> = <span style="color: #3e999f;">'article'</span>
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8959a8;">id</span> = Column(Integer,primary_key=<span style="color: #4271ae;">True</span>,autoincrement=<span style="color: #4271ae;">True</span>)
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">title</span> = Column(String(50),nullable=<span style="color: #4271ae;">False</span>)
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">content</span> = Column(Text,nullable=<span style="color: #4271ae;">False</span>)
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">uid</span> = Column(Integer,ForeignKey(<span style="color: #3e999f;">"user.id"</span>))
+<span style="color: #9d0006;">class</span> <span style="color: #8f3f71;">Article</span>(Base):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">__tablename__</span> = <span style="color: #79740e;">'article'</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #af3a03;">id</span> = Column(Integer,primary_key=<span style="color: #8f3f71;">True</span>,autoincrement=<span style="color: #8f3f71;">True</span>)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">title</span> = Column(String(50),nullable=<span style="color: #8f3f71;">False</span>)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">content</span> = Column(Text,nullable=<span style="color: #8f3f71;">False</span>)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">uid</span> = Column(Integer,ForeignKey(<span style="color: #79740e;">"user.id"</span>))
 
 </pre>
 </div>
@@ -1676,24 +1677,24 @@ mysql级别的外键，还不够ORM，必须拿到一个表的外键，然后通
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #718c00;">class</span> <span style="color: #4271ae;">User</span>(Base):
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">__tablename__</span> = <span style="color: #3e999f;">'user'</span>
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8959a8;">id</span> = Column(Integer,primary_key=<span style="color: #4271ae;">True</span>,autoincrement=<span style="color: #4271ae;">True</span>)
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">username</span> = Column(String(50),nullable=<span style="color: #4271ae;">False</span>)
+<pre class="src src-python"><span style="color: #9d0006;">class</span> <span style="color: #8f3f71;">User</span>(Base):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">__tablename__</span> = <span style="color: #79740e;">'user'</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #af3a03;">id</span> = Column(Integer,primary_key=<span style="color: #8f3f71;">True</span>,autoincrement=<span style="color: #8f3f71;">True</span>)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">username</span> = Column(String(50),nullable=<span style="color: #8f3f71;">False</span>)
 
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">articles = relationship("Article")</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #a89984;"># </span><span style="color: #a89984;">articles = relationship("Article")</span>
 
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">def</span> <span style="color: #f5871f;">__repr__</span>(<span style="color: #718c00;">self</span>):
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">return</span> <span style="color: #3e999f;">"&lt;User(username:%s)&gt;"</span> % <span style="color: #718c00;">self</span>.username
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">def</span> <span style="color: #b57614;">__repr__</span>(<span style="color: #9d0006;">self</span>):
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> <span style="color: #79740e;">"&lt;User(username:%s)&gt;"</span> % <span style="color: #9d0006;">self</span>.username
 
-<span style="color: #718c00;">class</span> <span style="color: #4271ae;">Article</span>(Base):
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">__tablename__</span> = <span style="color: #3e999f;">'article'</span>
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8959a8;">id</span> = Column(Integer,primary_key=<span style="color: #4271ae;">True</span>,autoincrement=<span style="color: #4271ae;">True</span>)
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">title</span> = Column(String(50),nullable=<span style="color: #4271ae;">False</span>)
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">content</span> = Column(Text,nullable=<span style="color: #4271ae;">False</span>)
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">uid</span> = Column(Integer,ForeignKey(<span style="color: #3e999f;">"user.id"</span>))
+<span style="color: #9d0006;">class</span> <span style="color: #8f3f71;">Article</span>(Base):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">__tablename__</span> = <span style="color: #79740e;">'article'</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #af3a03;">id</span> = Column(Integer,primary_key=<span style="color: #8f3f71;">True</span>,autoincrement=<span style="color: #8f3f71;">True</span>)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">title</span> = Column(String(50),nullable=<span style="color: #8f3f71;">False</span>)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">content</span> = Column(Text,nullable=<span style="color: #8f3f71;">False</span>)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">uid</span> = Column(Integer,ForeignKey(<span style="color: #79740e;">"user.id"</span>))
 
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">author</span> = relationship(<span style="color: #3e999f;">"User"</span>,backref=<span style="color: #3e999f;">"articles"</span>)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">author</span> = relationship(<span style="color: #79740e;">"User"</span>,backref=<span style="color: #79740e;">"articles"</span>)
 
 </pre>
 </div>
@@ -1710,23 +1711,23 @@ mysql级别的外键，还不够ORM，必须拿到一个表的外键，然后通
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #718c00;">class</span> <span style="color: #4271ae;">User</span>(Base):
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">__tablename__</span> = <span style="color: #3e999f;">'user'</span>
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8959a8;">id</span> = Column(Integer,primary_key=<span style="color: #4271ae;">True</span>,autoincrement=<span style="color: #4271ae;">True</span>)
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">username</span> = Column(String(50),nullable=<span style="color: #4271ae;">False</span>)
+<pre class="src src-python"><span style="color: #9d0006;">class</span> <span style="color: #8f3f71;">User</span>(Base):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">__tablename__</span> = <span style="color: #79740e;">'user'</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #af3a03;">id</span> = Column(Integer,primary_key=<span style="color: #8f3f71;">True</span>,autoincrement=<span style="color: #8f3f71;">True</span>)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">username</span> = Column(String(50),nullable=<span style="color: #8f3f71;">False</span>)
 
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">extend</span> = relationship(<span style="color: #3e999f;">"UserExtend"</span>,uselist=<span style="color: #4271ae;">False</span>)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">extend</span> = relationship(<span style="color: #79740e;">"UserExtend"</span>,uselist=<span style="color: #8f3f71;">False</span>)
 
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">def</span> <span style="color: #f5871f;">__repr__</span>(<span style="color: #718c00;">self</span>):
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">return</span> <span style="color: #3e999f;">"&lt;User(username:%s)&gt;"</span> % <span style="color: #718c00;">self</span>.username
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">def</span> <span style="color: #b57614;">__repr__</span>(<span style="color: #9d0006;">self</span>):
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> <span style="color: #79740e;">"&lt;User(username:%s)&gt;"</span> % <span style="color: #9d0006;">self</span>.username
 
-<span style="color: #718c00;">class</span> <span style="color: #4271ae;">UserExtend</span>(Base):
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">__tablename__</span> = <span style="color: #3e999f;">'user_extend'</span>
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8959a8;">id</span> = Column(Integer, primary_key=<span style="color: #4271ae;">True</span>, autoincrement=<span style="color: #4271ae;">True</span>)
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">school</span> = Column(String(50))
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">uid</span> = Column(Integer,ForeignKey(<span style="color: #3e999f;">"user.id"</span>))
+<span style="color: #9d0006;">class</span> <span style="color: #8f3f71;">UserExtend</span>(Base):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">__tablename__</span> = <span style="color: #79740e;">'user_extend'</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #af3a03;">id</span> = Column(Integer, primary_key=<span style="color: #8f3f71;">True</span>, autoincrement=<span style="color: #8f3f71;">True</span>)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">school</span> = Column(String(50))
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">uid</span> = Column(Integer,ForeignKey(<span style="color: #79740e;">"user.id"</span>))
 
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">user</span> = relationship(<span style="color: #3e999f;">"User"</span>,backref=<span style="color: #3e999f;">"extend"</span>)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">user</span> = relationship(<span style="color: #79740e;">"User"</span>,backref=<span style="color: #79740e;">"extend"</span>)
 
 </pre>
 </div>
@@ -1734,23 +1735,23 @@ mysql级别的外键，还不够ORM，必须拿到一个表的外键，然后通
 当然，也可以借助 <code>sqlalchemy.orm.backref</code> 来简化代码：
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #718c00;">class</span> <span style="color: #4271ae;">User</span>(Base):
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">__tablename__</span> = <span style="color: #3e999f;">'user'</span>
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8959a8;">id</span> = Column(Integer,primary_key=<span style="color: #4271ae;">True</span>,autoincrement=<span style="color: #4271ae;">True</span>)
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">username</span> = Column(String(50),nullable=<span style="color: #4271ae;">False</span>)
+<pre class="src src-python"><span style="color: #9d0006;">class</span> <span style="color: #8f3f71;">User</span>(Base):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">__tablename__</span> = <span style="color: #79740e;">'user'</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #af3a03;">id</span> = Column(Integer,primary_key=<span style="color: #8f3f71;">True</span>,autoincrement=<span style="color: #8f3f71;">True</span>)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">username</span> = Column(String(50),nullable=<span style="color: #8f3f71;">False</span>)
 
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">extend = relationship("UserExtend",uselist=False)</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #a89984;"># </span><span style="color: #a89984;">extend = relationship("UserExtend",uselist=False)</span>
 
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">def</span> <span style="color: #f5871f;">__repr__</span>(<span style="color: #718c00;">self</span>):
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">return</span> <span style="color: #3e999f;">"&lt;User(username:%s)&gt;"</span> % <span style="color: #718c00;">self</span>.username
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">def</span> <span style="color: #b57614;">__repr__</span>(<span style="color: #9d0006;">self</span>):
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> <span style="color: #79740e;">"&lt;User(username:%s)&gt;"</span> % <span style="color: #9d0006;">self</span>.username
 
-<span style="color: #718c00;">class</span> <span style="color: #4271ae;">UserExtend</span>(Base):
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">__tablename__</span> = <span style="color: #3e999f;">'user_extend'</span>
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8959a8;">id</span> = Column(Integer, primary_key=<span style="color: #4271ae;">True</span>, autoincrement=<span style="color: #4271ae;">True</span>)
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">school</span> = Column(String(50))
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">uid</span> = Column(Integer,ForeignKey(<span style="color: #3e999f;">"user.id"</span>))
+<span style="color: #9d0006;">class</span> <span style="color: #8f3f71;">UserExtend</span>(Base):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">__tablename__</span> = <span style="color: #79740e;">'user_extend'</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #af3a03;">id</span> = Column(Integer, primary_key=<span style="color: #8f3f71;">True</span>, autoincrement=<span style="color: #8f3f71;">True</span>)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">school</span> = Column(String(50))
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">uid</span> = Column(Integer,ForeignKey(<span style="color: #79740e;">"user.id"</span>))
 
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">user</span> = relationship(<span style="color: #3e999f;">"User"</span>,backref=backref(<span style="color: #3e999f;">"extend"</span>,uselist=<span style="color: #4271ae;">False</span>))
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">user</span> = relationship(<span style="color: #79740e;">"User"</span>,backref=backref(<span style="color: #79740e;">"extend"</span>,uselist=<span style="color: #8f3f71;">False</span>))
 </pre>
 </div>
 
@@ -1992,7 +1993,7 @@ print(users)
 在 <code>alembic/env.py</code> 中的 <code>target_metadata</code> 设置模型的 <code>Base.metadata</code> 。但是要导入 <code>models</code> ，需要将models所在的路径添加到这个文件中。示例代码如下：
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #718c00;">import</span> sys,os
+<pre class="src src-python"><span style="color: #9d0006;">import</span> sys,os
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 </pre>
 </div></li>
@@ -2061,12 +2062,12 @@ Flask-Script的作用是可以通过命令行的形式来操作Flask。例如通
 使用 <code>manage.commad</code> ：这个方法是用来添加那些不需要传递参数的命令。示例代码如下：
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #eab700;">manager</span> = Manager(app)
-manager.add_command(<span style="color: #3e999f;">"db"</span>,db_manager)
+<pre class="src src-python"><span style="color: #076678;">manager</span> = Manager(app)
+manager.add_command(<span style="color: #79740e;">"db"</span>,db_manager)
 
-<span style="color: #4271ae;">@manager.command</span>
-<span style="color: #718c00;">def</span> <span style="color: #f5871f;">greet</span>():
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">print</span>(<span style="color: #3e999f;">'&#20320;&#22909;'</span>)
+<span style="color: #8f3f71;">@manager.command</span>
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">greet</span>():
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span>(<span style="color: #79740e;">'&#20320;&#22909;'</span>)
 
 </pre>
 </div></li>
@@ -2074,12 +2075,12 @@ manager.add_command(<span style="color: #3e999f;">"db"</span>,db_manager)
 <code>使用manage.option</code> ：这个方法是用来添加那些需要传递参数的命令。有几个参数就需要写几个 <code>option</code> 。示例代码如下：
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #4271ae;">@manager.option</span>(<span style="color: #3e999f;">"-u"</span>,<span style="color: #3e999f;">"--username"</span>,dest=<span style="color: #3e999f;">"username"</span>)
-<span style="color: #4271ae;">@manager.option</span>(<span style="color: #3e999f;">"-e"</span>,<span style="color: #3e999f;">"--email"</span>,dest=<span style="color: #3e999f;">"email"</span>)
-<span style="color: #718c00;">def</span> <span style="color: #f5871f;">add_user</span>(username,email):
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">user</span> = BackendUser(username=username,email=email)
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   db.session.add(user)
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   db.session.commit()
+<pre class="src src-python"><span style="color: #8f3f71;">@manager.option</span>(<span style="color: #79740e;">"-u"</span>,<span style="color: #79740e;">"--username"</span>,dest=<span style="color: #79740e;">"username"</span>)
+<span style="color: #8f3f71;">@manager.option</span>(<span style="color: #79740e;">"-e"</span>,<span style="color: #79740e;">"--email"</span>,dest=<span style="color: #79740e;">"email"</span>)
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">add_user</span>(username,email):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">user</span> = BackendUser(username=username,email=email)
+<span style="background-color: #ebdbb2;"> </span>   db.session.add(user)
+<span style="background-color: #ebdbb2;"> </span>   db.session.commit()
 
 </pre>
 </div></li>
@@ -2090,21 +2091,21 @@ manager.add_command(<span style="color: #3e999f;">"db"</span>,db_manager)
 db<sub>script.py</sub>
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #718c00;">from</span> flask_script <span style="color: #718c00;">import</span> Manager
+<pre class="src src-python"><span style="color: #9d0006;">from</span> flask_script <span style="color: #9d0006;">import</span> Manager
 
-<span style="color: #eab700;">db_manager</span> = Manager()
+<span style="color: #076678;">db_manager</span> = Manager()
 
-<span style="color: #4271ae;">@db_manager.command</span>
-<span style="color: #718c00;">def</span> <span style="color: #f5871f;">init</span>():
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">print</span>(<span style="color: #3e999f;">'&#36801;&#31227;&#20179;&#24211;&#21019;&#24314;&#23436;&#27605;&#65281;'</span>)
+<span style="color: #8f3f71;">@db_manager.command</span>
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">init</span>():
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span>(<span style="color: #79740e;">'&#36801;&#31227;&#20179;&#24211;&#21019;&#24314;&#23436;&#27605;&#65281;'</span>)
 
-<span style="color: #4271ae;">@db_manager.command</span>
-<span style="color: #718c00;">def</span> <span style="color: #f5871f;">revision</span>():
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">print</span>(<span style="color: #3e999f;">'&#36801;&#31227;&#33050;&#26412;&#29983;&#25104;&#25104;&#21151;&#65281;'</span>)
+<span style="color: #8f3f71;">@db_manager.command</span>
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">revision</span>():
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span>(<span style="color: #79740e;">'&#36801;&#31227;&#33050;&#26412;&#29983;&#25104;&#25104;&#21151;&#65281;'</span>)
 
-<span style="color: #4271ae;">@db_manager.command</span>
-<span style="color: #718c00;">def</span> <span style="color: #f5871f;">upgrade</span>():
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">print</span>(<span style="color: #3e999f;">'&#33050;&#26412;&#26144;&#23556;&#21040;&#25968;&#25454;&#24211;&#25104;&#21151;&#65281;'</span>)
+<span style="color: #8f3f71;">@db_manager.command</span>
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">upgrade</span>():
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span>(<span style="color: #79740e;">'&#33050;&#26412;&#26144;&#23556;&#21040;&#25968;&#25454;&#24211;&#25104;&#21151;&#65281;'</span>)
 </pre>
 </div>
 
@@ -2112,10 +2113,10 @@ db<sub>script.py</sub>
 manage.py
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #718c00;">from</span> db_script <span style="color: #718c00;">import</span> db_manager
+<pre class="src src-python"><span style="color: #9d0006;">from</span> db_script <span style="color: #9d0006;">import</span> db_manager
 
-<span style="color: #eab700;">manager</span> = Manager(app)
-manager.add_command(<span style="color: #3e999f;">"db"</span>,db_manager)
+<span style="color: #076678;">manager</span> = Manager(app)
+manager.add_command(<span style="color: #79740e;">"db"</span>,db_manager)
 </pre>
 </div>
 </blockquote>
@@ -2148,21 +2149,21 @@ pip install flask-migrate
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #718c00;">from</span> flask_script <span style="color: #718c00;">import</span> Manager
-<span style="color: #718c00;">from</span> zhiliao <span style="color: #718c00;">import</span> app
-<span style="color: #718c00;">from</span> exts <span style="color: #718c00;">import</span> db
-<span style="color: #718c00;">from</span> flask_migrate <span style="color: #718c00;">import</span> Migrate,MigrateCommand
+<pre class="src src-python"><span style="color: #9d0006;">from</span> flask_script <span style="color: #9d0006;">import</span> Manager
+<span style="color: #9d0006;">from</span> zhiliao <span style="color: #9d0006;">import</span> app
+<span style="color: #9d0006;">from</span> exts <span style="color: #9d0006;">import</span> db
+<span style="color: #9d0006;">from</span> flask_migrate <span style="color: #9d0006;">import</span> Migrate,MigrateCommand
 
-<span style="color: #eab700;">manager</span> = Manager(app)
+<span style="color: #076678;">manager</span> = Manager(app)
 
-<span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">&#29992;&#26469;&#32465;&#23450;app&#21644;db&#21040;flask_migrate&#30340;</span>
+<span style="color: #a89984;"># </span><span style="color: #a89984;">&#29992;&#26469;&#32465;&#23450;app&#21644;db&#21040;flask_migrate&#30340;</span>
 Migrate(app,db)
-<span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">&#28155;&#21152;Migrate&#30340;&#25152;&#26377;&#23376;&#21629;&#20196;&#21040;db&#19979;</span>
-manager.add_command(<span style="color: #3e999f;">"db"</span>,MigrateCommand)
+<span style="color: #a89984;"># </span><span style="color: #a89984;">&#28155;&#21152;Migrate&#30340;&#25152;&#26377;&#23376;&#21629;&#20196;&#21040;db&#19979;</span>
+manager.add_command(<span style="color: #79740e;">"db"</span>,MigrateCommand)
 
 
-<span style="color: #718c00;">if</span> <span style="color: #8959a8;">__name__</span> == <span style="color: #3e999f;">'__main__'</span>:
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   manager.run()
+<span style="color: #9d0006;">if</span> <span style="color: #af3a03;">__name__</span> == <span style="color: #79740e;">'__main__'</span>:
+<span style="background-color: #ebdbb2;"> </span>   manager.run()
 </pre>
 </div>
 
@@ -2201,10 +2202,10 @@ flask<sub>migrate常用命令</sub>：
 ReistForm类的代码：
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #718c00;">class</span> <span style="color: #4271ae;">RegistForm</span>(Form):
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">username</span> = StringField(validators=[Length(<span style="color: #8959a8;">min</span>=3,<span style="color: #8959a8;">max</span>=10,message=<span style="color: #3e999f;">'&#29992;&#25143;&#21517;&#38271;&#24230;&#24517;&#39035;&#22312;3&#21040;10&#20301;&#20043;&#38388;'</span>)])
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">password</span> = StringField(validators=[Length(<span style="color: #8959a8;">min</span>=6,<span style="color: #8959a8;">max</span>=10)])
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">password_repeat</span> = StringField(validators=[Length(<span style="color: #8959a8;">min</span>=6,<span style="color: #8959a8;">max</span>=10),EqualTo(<span style="color: #3e999f;">"password"</span>)])
+<pre class="src src-python"><span style="color: #9d0006;">class</span> <span style="color: #8f3f71;">RegistForm</span>(Form):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">username</span> = StringField(validators=[Length(<span style="color: #af3a03;">min</span>=3,<span style="color: #af3a03;">max</span>=10,message=<span style="color: #79740e;">'&#29992;&#25143;&#21517;&#38271;&#24230;&#24517;&#39035;&#22312;3&#21040;10&#20301;&#20043;&#38388;'</span>)])
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">password</span> = StringField(validators=[Length(<span style="color: #af3a03;">min</span>=6,<span style="color: #af3a03;">max</span>=10)])
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">password_repeat</span> = StringField(validators=[Length(<span style="color: #af3a03;">min</span>=6,<span style="color: #af3a03;">max</span>=10),EqualTo(<span style="color: #79740e;">"password"</span>)])
 </pre>
 </div>
 
@@ -2213,12 +2214,12 @@ ReistForm类的代码：
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #eab700;">form</span> = RegistForm(request.form)
-<span style="color: #718c00;">if</span> form.validate():
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">return</span> <span style="color: #3e999f;">"success"</span>
-<span style="color: #718c00;">else</span>:
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">print</span>(form.errors)
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">return</span> <span style="color: #3e999f;">"fail"</span>
+<pre class="src src-python"><span style="color: #076678;">form</span> = RegistForm(request.form)
+<span style="color: #9d0006;">if</span> form.validate():
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> <span style="color: #79740e;">"success"</span>
+<span style="color: #9d0006;">else</span>:
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span>(form.errors)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> <span style="color: #79740e;">"fail"</span>
 </pre>
 </div>
 
@@ -2257,11 +2258,11 @@ ReistForm类的代码：
 示例代码：
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #eab700;">captcha</span> = StringField(validators=[Length(4,4)])
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">1234</span>
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">def</span> <span style="color: #f5871f;">validate_captcha</span>(<span style="color: #718c00;">self</span>,field):
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">if</span> field.data != <span style="color: #3e999f;">'1234'</span>:
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">raise</span> ValidationError(<span style="color: #3e999f;">'&#39564;&#35777;&#30721;&#38169;&#35823;&#65281;'</span>)
+<pre class="src src-python"><span style="color: #076678;">captcha</span> = StringField(validators=[Length(4,4)])
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #a89984;"># </span><span style="color: #a89984;">1234</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">def</span> <span style="color: #b57614;">validate_captcha</span>(<span style="color: #9d0006;">self</span>,field):
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">if</span> field.data != <span style="color: #79740e;">'1234'</span>:
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">raise</span> ValidationError(<span style="color: #79740e;">'&#39564;&#35777;&#30721;&#38169;&#35823;&#65281;'</span>)
 </pre>
 </div>
 </div>
@@ -2310,8 +2311,8 @@ def get_image(filename):
 示例代码如下：
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #718c00;">from</span> werkzeug.datastructures <span style="color: #718c00;">import</span> CombinedMultiDict
-<span style="color: #eab700;">form</span> = UploadForm(CombinedMultiDict([request.form,request.files]))
+<pre class="src src-python"><span style="color: #9d0006;">from</span> werkzeug.datastructures <span style="color: #9d0006;">import</span> CombinedMultiDict
+<span style="color: #076678;">form</span> = UploadForm(CombinedMultiDict([request.form,request.files]))
 </pre>
 </div>
 <p>
@@ -2366,18 +2367,18 @@ flask操作cookie
 示例代码：
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #4271ae;">@app.route</span>(<span style="color: #3e999f;">'/'</span>)
-<span style="color: #718c00;">def</span> <span style="color: #f5871f;">hello_world</span>():
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">resp</span> = Response(<span style="color: #3e999f;">"&#30693;&#20102;&#35838;&#22530;"</span>)
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">expires</span> = datetime(year=2017,month=12,day=11,hour=16,minute=0,second=0)
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">&#20351;&#29992;expires&#21442;&#25968;&#65292;&#23601;&#24517;&#39035;&#20351;&#29992;&#26684;&#26519;&#23612;&#27835;&#26102;&#38388;</span>
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">&#35201;&#30456;&#23545;&#21271;&#20140;&#26102;&#38388;&#23569;8&#20010;&#23567;&#26102;</span>
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">expires</span> = datetime.now() + timedelta(days=30,hours=16)
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">&#22312;&#26032;&#29256;&#26412;&#30340;http&#21327;&#35758;&#20013;&#65292;expires&#21442;&#25968;&#35270;&#20026;&#34987;&#24223;&#24323;</span>
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">max_age&#65292;&#22312;IE8&#19968;&#19979;&#30340;&#27983;&#35272;&#22120;&#20013;&#26159;&#19981;&#25903;&#25345;&#30340;</span>
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">resp.set_cookie('username','zhiliao',expires=expires,max_age=60)</span>
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   resp.set_cookie(<span style="color: #3e999f;">'username'</span>,<span style="color: #3e999f;">'zhiliao'</span>)
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">return</span> resp
+<pre class="src src-python"><span style="color: #8f3f71;">@app.route</span>(<span style="color: #79740e;">'/'</span>)
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">hello_world</span>():
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">resp</span> = Response(<span style="color: #79740e;">"&#30693;&#20102;&#35838;&#22530;"</span>)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">expires</span> = datetime(year=2017,month=12,day=11,hour=16,minute=0,second=0)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #a89984;"># </span><span style="color: #a89984;">&#20351;&#29992;expires&#21442;&#25968;&#65292;&#23601;&#24517;&#39035;&#20351;&#29992;&#26684;&#26519;&#23612;&#27835;&#26102;&#38388;</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #a89984;"># </span><span style="color: #a89984;">&#35201;&#30456;&#23545;&#21271;&#20140;&#26102;&#38388;&#23569;8&#20010;&#23567;&#26102;</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">expires</span> = datetime.now() + timedelta(days=30,hours=16)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #a89984;"># </span><span style="color: #a89984;">&#22312;&#26032;&#29256;&#26412;&#30340;http&#21327;&#35758;&#20013;&#65292;expires&#21442;&#25968;&#35270;&#20026;&#34987;&#24223;&#24323;</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #a89984;"># </span><span style="color: #a89984;">max_age&#65292;&#22312;IE8&#19968;&#19979;&#30340;&#27983;&#35272;&#22120;&#20013;&#26159;&#19981;&#25903;&#25345;&#30340;</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #a89984;"># </span><span style="color: #a89984;">resp.set_cookie('username','zhiliao',expires=expires,max_age=60)</span>
+<span style="background-color: #ebdbb2;"> </span>   resp.set_cookie(<span style="color: #79740e;">'username'</span>,<span style="color: #79740e;">'zhiliao'</span>)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> resp
 </pre>
 </div>
 
@@ -2432,20 +2433,20 @@ flask操作cookie
 定义信号：定义信号需要使用到blinker这个包的Namespace类来创建一个命名空间。比如定义一个在访问了某个视图函数的时候的信号。示例代码如下：
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">Namespace&#30340;&#20316;&#29992;&#65306;&#20026;&#20102;&#38450;&#27490;&#22810;&#20154;&#24320;&#21457;&#30340;&#26102;&#20505;&#65292;&#20449;&#21495;&#21517;&#23383;&#20914;&#31361;&#30340;&#38382;&#39064;</span>
-<span style="color: #718c00;">from</span> blinker <span style="color: #718c00;">import</span> Namespace
+<pre class="src src-python"><span style="color: #a89984;"># </span><span style="color: #a89984;">Namespace&#30340;&#20316;&#29992;&#65306;&#20026;&#20102;&#38450;&#27490;&#22810;&#20154;&#24320;&#21457;&#30340;&#26102;&#20505;&#65292;&#20449;&#21495;&#21517;&#23383;&#20914;&#31361;&#30340;&#38382;&#39064;</span>
+<span style="color: #9d0006;">from</span> blinker <span style="color: #9d0006;">import</span> Namespace
 
-<span style="color: #eab700;">mysignal</span> = Namespace()
-<span style="color: #eab700;">visit_signal</span> = mysignal.signal(<span style="color: #3e999f;">'visit-signal'</span>)
+<span style="color: #076678;">mysignal</span> = Namespace()
+<span style="color: #076678;">visit_signal</span> = mysignal.signal(<span style="color: #79740e;">'visit-signal'</span>)
 </pre>
 </div></li>
 <li><p>
 监听信号：监听信号使用singal对象的connect方法，在这个方法中需要传递一个函数，用来接收以后监听到这个信号该做的事情。示例代码如下：
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #718c00;">def</span> <span style="color: #f5871f;">visit_func</span>(sender,username):
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">print</span>(sender)
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">print</span>(username)
+<pre class="src src-python"><span style="color: #9d0006;">def</span> <span style="color: #b57614;">visit_func</span>(sender,username):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span>(sender)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span>(username)
 mysignal.connect(visit_func)
 </pre>
 </div></li>
@@ -2505,11 +2506,11 @@ Flask-Restful需要在Flask 0.8以上的版本，在Python2.6或者Python3.3上�
 示例代码如下：
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #718c00;">class</span> <span style="color: #4271ae;">LoginView</span>(Resource):
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">def</span> <span style="color: #f5871f;">post</span>(<span style="color: #718c00;">self</span>,username=<span style="color: #4271ae;">None</span>):
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">return</span> {<span style="color: #3e999f;">"username"</span>:<span style="color: #3e999f;">"zhiliao"</span>}
+<pre class="src src-python"><span style="color: #9d0006;">class</span> <span style="color: #8f3f71;">LoginView</span>(Resource):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">def</span> <span style="color: #b57614;">post</span>(<span style="color: #9d0006;">self</span>,username=<span style="color: #8f3f71;">None</span>):
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> {<span style="color: #79740e;">"username"</span>:<span style="color: #79740e;">"zhiliao"</span>}
 
-api.add_resource(LoginView,<span style="color: #3e999f;">'/login/&lt;username&gt;/'</span>,<span style="color: #3e999f;">'/regist/'</span>)
+api.add_resource(LoginView,<span style="color: #79740e;">'/login/&lt;username&gt;/'</span>,<span style="color: #79740e;">'/regist/'</span>)
 </pre>
 </div>
 
@@ -2531,9 +2532,9 @@ api.add_resource(LoginView,<span style="color: #3e999f;">'/login/&lt;username&gt
 Flask-Restful插件提供了类似WTForms来验证提交的数据是否合法的包，叫做reqparse。以下是基本用法：
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #eab700;">parser</span> = reqparse.RequestParser()
-parser.add_argument(<span style="color: #3e999f;">'username'</span>,<span style="color: #8959a8;">type</span>=<span style="color: #8959a8;">str</span>,<span style="color: #8959a8;">help</span>=<span style="color: #3e999f;">'&#35831;&#36755;&#20837;&#29992;&#25143;&#21517;'</span>)
-<span style="color: #eab700;">args</span> = parser.parse_args()
+<pre class="src src-python"><span style="color: #076678;">parser</span> = reqparse.RequestParser()
+parser.add_argument(<span style="color: #79740e;">'username'</span>,<span style="color: #af3a03;">type</span>=<span style="color: #af3a03;">str</span>,<span style="color: #af3a03;">help</span>=<span style="color: #79740e;">'&#35831;&#36755;&#20837;&#29992;&#25143;&#21517;'</span>)
+<span style="color: #076678;">args</span> = parser.parse_args()
 </pre>
 </div>
 <p>
@@ -2562,17 +2563,17 @@ add<sub>argument可以指定这个字段的名字</sub>，这个字段的数据�
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #718c00;">class</span> <span style="color: #4271ae;">ProfileView</span>(Resource):
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">resource_fields</span> = {
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #3e999f;">'username'</span>: fields.String,
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #3e999f;">'age'</span>: fields.Integer,
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #3e999f;">'school'</span>: fields.String
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   }
+<pre class="src src-python"><span style="color: #9d0006;">class</span> <span style="color: #8f3f71;">ProfileView</span>(Resource):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">resource_fields</span> = {
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">'username'</span>: fields.String,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">'age'</span>: fields.Integer,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">'school'</span>: fields.String
+<span style="background-color: #ebdbb2;"> </span>   }
 
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #4271ae;">@marshal_with</span>(resource_fields)
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">def</span> <span style="color: #f5871f;">get</span>(<span style="color: #718c00;">self</span>,user_id):
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">user</span> = User.query.get(user_id)
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">return</span> user
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #8f3f71;">@marshal_with</span>(resource_fields)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">def</span> <span style="color: #b57614;">get</span>(<span style="color: #9d0006;">self</span>,user_id):
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">user</span> = User.query.get(user_id)
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> user
 
 </pre>
 </div>
@@ -2590,8 +2591,8 @@ add<sub>argument可以指定这个字段的名字</sub>，这个字段的数据�
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #eab700;">resource_fields</span> = {
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #3e999f;">'education'</span>: fields.String(attribute=<span style="color: #3e999f;">'school'</span>)
+<pre class="src src-python"><span style="color: #076678;">resource_fields</span> = {
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">'education'</span>: fields.String(attribute=<span style="color: #79740e;">'school'</span>)
 }
 </pre>
 </div>
@@ -2604,8 +2605,8 @@ add<sub>argument可以指定这个字段的名字</sub>，这个字段的数据�
 在返回一些字段的时候，有时候可能没有值，那么这时候可以在指定fields的时候给定一个默认值，示例代码如下：
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #eab700;">resource_fields</span> = {
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #3e999f;">'age'</span>: fields.Integer(default=18)
+<pre class="src src-python"><span style="color: #076678;">resource_fields</span> = {
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">'age'</span>: fields.Integer(default=18)
 }
 </pre>
 </div>
@@ -2618,26 +2619,26 @@ add<sub>argument可以指定这个字段的名字</sub>，这个字段的数据�
 有时候想要在返回的数据格式中，形成比较复杂的结构。那么可以使用一些特殊的字段来实现。比如要在一个字段中放置一个列表，那么可以使用fields.List，比如在一个字段下面又是一个字典，那么可以使用fields.Nested。以下将讲解下复杂结构的用法：
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #718c00;">class</span> <span style="color: #4271ae;">ArticleView</span>(Resource):
+<pre class="src src-python"><span style="color: #9d0006;">class</span> <span style="color: #8f3f71;">ArticleView</span>(Resource):
 
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">resource_fields</span> = {
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #3e999f;">'aritlce_title'</span>:fields.String(attribute=<span style="color: #3e999f;">'title'</span>),
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #3e999f;">'content'</span>:fields.String,
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #3e999f;">'author'</span>: fields.Nested({
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #3e999f;">'username'</span>: fields.String,
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #3e999f;">'email'</span>: fields.String
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   }),
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #3e999f;">'tags'</span>: fields.List(fields.Nested({
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #3e999f;">'id'</span>: fields.Integer,
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #3e999f;">'name'</span>: fields.String
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   })),
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #3e999f;">'read_count'</span>: fields.Integer(default=80)
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   }
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">resource_fields</span> = {
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">'aritlce_title'</span>:fields.String(attribute=<span style="color: #79740e;">'title'</span>),
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">'content'</span>:fields.String,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">'author'</span>: fields.Nested({
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">'username'</span>: fields.String,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">'email'</span>: fields.String
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   }),
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">'tags'</span>: fields.List(fields.Nested({
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">'id'</span>: fields.Integer,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">'name'</span>: fields.String
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   })),
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">'read_count'</span>: fields.Integer(default=80)
+<span style="background-color: #ebdbb2;"> </span>   }
 
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #4271ae;">@marshal_with</span>(resource_fields)
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">def</span> <span style="color: #f5871f;">get</span>(<span style="color: #718c00;">self</span>,article_id):
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">article</span> = Article.query.get(article_id)
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">return</span> article
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #8f3f71;">@marshal_with</span>(resource_fields)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">def</span> <span style="color: #b57614;">get</span>(<span style="color: #9d0006;">self</span>,article_id):
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">article</span> = Article.query.get(article_id)
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> article
 </pre>
 </div>
 
@@ -2652,17 +2653,17 @@ Flask-restful注意事项：
 </ol>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #4271ae;">@api.representation</span>(<span style="color: #3e999f;">'text/html'</span>)
-<span style="color: #718c00;">def</span> <span style="color: #f5871f;">output_html</span>(data,code,headers):
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">print</span>(data)
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">&#22312;representation&#35013;&#39280;&#30340;&#20989;&#25968;&#20013;&#65292;&#24517;&#39035;&#36820;&#22238;&#19968;&#20010;Response&#23545;&#35937;</span>
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #eab700;">resp</span> = make_response(data)
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">return</span> resp
+<pre class="src src-python"><span style="color: #8f3f71;">@api.representation</span>(<span style="color: #79740e;">'text/html'</span>)
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">output_html</span>(data,code,headers):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span>(data)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #a89984;"># </span><span style="color: #a89984;">&#22312;representation&#35013;&#39280;&#30340;&#20989;&#25968;&#20013;&#65292;&#24517;&#39035;&#36820;&#22238;&#19968;&#20010;Response&#23545;&#35937;</span>
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #076678;">resp</span> = make_response(data)
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> resp
 
-<span style="color: #718c00;">class</span> <span style="color: #4271ae;">ListView</span>(Resource):
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">def</span> <span style="color: #f5871f;">get</span>(<span style="color: #718c00;">self</span>):
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">return</span> render_template(<span style="color: #3e999f;">'index.html'</span>)
-api.add_resource(ListView,<span style="color: #3e999f;">'/list/'</span>,endpoint=<span style="color: #3e999f;">'list'</span>)
+<span style="color: #9d0006;">class</span> <span style="color: #8f3f71;">ListView</span>(Resource):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">def</span> <span style="color: #b57614;">get</span>(<span style="color: #9d0006;">self</span>):
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> render_template(<span style="color: #79740e;">'index.html'</span>)
+api.add_resource(ListView,<span style="color: #79740e;">'/list/'</span>,endpoint=<span style="color: #79740e;">'list'</span>)
 </pre>
 </div>
 </blockquote>
@@ -2776,20 +2777,20 @@ api.add_resource(ListView,<span style="color: #3e999f;">'/list/'</span>,endpoint
 手动推入app上下文：
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">&#31532;&#19968;&#31181;&#26041;&#24335;&#65306;</span>
-<span style="color: #eab700;">app_context</span> = app.app_context()
+<pre class="src src-python"><span style="color: #a89984;"># </span><span style="color: #a89984;">&#31532;&#19968;&#31181;&#26041;&#24335;&#65306;</span>
+<span style="color: #076678;">app_context</span> = app.app_context()
 app_context.push()
-<span style="color: #8e908c; font-style: italic;"># </span><span style="color: #8e908c; font-style: italic;">&#31532;&#20108;&#31181;&#26041;&#24335;&#65306;</span>
-<span style="color: #718c00;">with</span> app.app_context():
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">print</span>(current_app)
+<span style="color: #a89984;"># </span><span style="color: #a89984;">&#31532;&#20108;&#31181;&#26041;&#24335;&#65306;</span>
+<span style="color: #9d0006;">with</span> app.app_context():
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span>(current_app)
 </pre>
 </div></li>
 <li><p>
 手动推入请求上下文：推入请求上下文到栈中，会首先判断有没有应用上下文，如果没有那么就会先推入应用上下文到栈中，然后再推入请求上下文到栈中：
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #718c00;">with</span> app.test_request_context():
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">print</span>(url_for(<span style="color: #3e999f;">'my_list'</span>))
+<pre class="src src-python"><span style="color: #9d0006;">with</span> app.test_request_context():
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">print</span>(url_for(<span style="color: #79740e;">'my_list'</span>))
 </pre>
 </div></li>
 </ul></li>
@@ -2837,9 +2838,9 @@ g对象是在整个Flask应用运行期间都是可以使用的。并且他也�
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #4271ae;">@app.errorhandler</span>(404)
-<span style="color: #718c00;">def</span> <span style="color: #f5871f;">page_not_found</span>(error):
-<span style="color: #8e908c; background-color: #f7f7f7f7f7f7;"> </span>   <span style="color: #718c00;">return</span> render_template(<span style="color: #3e999f;">'404.html'</span>),404
+<pre class="src src-python"><span style="color: #8f3f71;">@app.errorhandler</span>(404)
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">page_not_found</span>(error):
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #9d0006;">return</span> render_template(<span style="color: #79740e;">'404.html'</span>),404
 </pre>
 </div>
 </div>
