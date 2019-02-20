@@ -24,6 +24,7 @@ a:hover {
 }
 
 #navbar {
+    font-family: Times, TimesNR, 'New Century Schoolbook', Georgia,'New York', serif
     z-index: 10;      /* 堆叠属性，数值越大越置于顶部 */
     position: absolute;
     top: 0;
@@ -41,12 +42,15 @@ a:hover {
     display: inline-block;
     line-height: 46px;
     font-weight: bold;
+    text-shadow: 0 0 6px black;
 }
 
 #navbar ul {
     list-style: none;      /* 表示列表元素前面没有圆圈、方形等 */
     min-width: 960px;      /* 当窗口宽度大于 960px 时，当窗口缩小时，该行会压缩；小于 960px 时该行不会压缩了 */
     margin: 0;
+    font-family: "Hiragino Sans GB", STHeiti, "WenQuanYi Micro Hei", sans-serif;
+    text-shadow: 0 0 6px black;
 }
 #navbar ul li {
     display: inline-block;
@@ -78,7 +82,7 @@ a:hover {
     border-radius: 8px;
     font-size: 16px;
     background-color: white;
-    background-image: url('http://www.langdebuqing.com/images/searchicon.png');
+    background-image: url('https://www.manue1.site/images/searchicon.png');
     background-position: 10px 10px;
     background-repeat: no-repeat;
     padding: 13px 0px 13px 40px;

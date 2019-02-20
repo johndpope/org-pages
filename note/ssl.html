@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-01-25 Fri 12:51 -->
+<!-- 2019-02-20 Wed 18:17 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>https站点证书配置</title>
@@ -253,9 +253,9 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orge24a777">1. 证书配置安装</a></li>
-<li><a href="#orgdf98e79">2. 证书定期更新</a></li>
-<li><a href="#org089f027">3. nginx调用证书</a></li>
+<li><a href="#org2c83d30">1. 证书配置安装</a></li>
+<li><a href="#org8acd60e">2. 证书定期更新</a></li>
+<li><a href="#org439af14">3. nginx调用证书</a></li>
 </ul>
 </div>
 </div>
@@ -277,8 +277,8 @@ let's encrypt优点:
 
 
 
-<div id="outline-container-orge24a777" class="outline-2">
-<h2 id="orge24a777"><span class="section-number-2">1</span> 证书配置安装</h2>
+<div id="outline-container-org2c83d30" class="outline-2">
+<h2 id="org2c83d30"><span class="section-number-2">1</span> 证书配置安装</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 let's encrypt 使用certbot这款软件管理电子证书，在安装certbot过程中，提示
@@ -305,8 +305,8 @@ certbot certonly --standalone -d manue1.site -d www.manue1.site -m manue1@foxmai
 </div>
 </div>
 
-<div id="outline-container-orgdf98e79" class="outline-2">
-<h2 id="orgdf98e79"><span class="section-number-2">2</span> 证书定期更新</h2>
+<div id="outline-container-org8acd60e" class="outline-2">
+<h2 id="org8acd60e"><span class="section-number-2">2</span> 证书定期更新</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 crontab 每两月更新证书信息，避免失效, <code>--pre-hook</code> 代表 执行前需要处理的任务，
@@ -320,8 +320,8 @@ crontab 每两月更新证书信息，避免失效, <code>--pre-hook</code> 代�
 </div>
 </div>
 
-<div id="outline-container-org089f027" class="outline-2">
-<h2 id="org089f027"><span class="section-number-2">3</span> nginx调用证书</h2>
+<div id="outline-container-org439af14" class="outline-2">
+<h2 id="org439af14"><span class="section-number-2">3</span> nginx调用证书</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 将所有80端口流量转发到443端口,443端口服务配上证书认证
