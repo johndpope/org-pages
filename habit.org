@@ -20,7 +20,7 @@ SCHEDULED: <2019-01-31 Thu .+1w>
 9. The Shoals of Herring (With Punch Brothers) - By Oscar Isaac
 10. The Auld Triangle - By Chris Thile, Chris Eldridge, Marcus Mumford, Justin Timberlake & Gabe Witcher
 11. The Storms Are on the Ocean - By Nancy Blake
-12. Fare Thee Well (Dink's Song) - By Oscar Isaac
+1. Fare Thee Well (Dink's Song) - By Oscar Isaac
 13. Farewell (unreleased studio version) - By Bob Dylan
 14. Green, Green Rocky Road - By Dave Van Ronk
 
@@ -58,10 +58,12 @@ SCHEDULED: <2019-01-23 Wed .+1d>
 [2019-01-23 Wed 18:21]
 
 * TODO emotional control
-SCHEDULED: <2019-02-07 Thu .+1d>
+SCHEDULED: <2019-02-21 Thu .+1d>
 :PROPERTIES:
-:LAST_REPEAT: [2019-02-06 Wed 22:26]
+:LAST_REPEAT: [2019-02-20 Wed 10:06]
 :END:
+- State "DONE"       from "TODO"       [2019-02-20 Wed 10:06] \\
+  开年继续
 - State "UNDO"       from "TODO"       [2019-02-06 Wed 22:26] \\
   why
 - State "DONE"       from "TODO"       [2019-01-28 Mon 21:00]

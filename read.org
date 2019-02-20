@@ -1,6 +1,17 @@
 #+TITLE: Reading List
 
 * Reading List
+** TODO [2019-02-18 Mon]  build-web-application-with-golang
+   :PROPERTIES:
+   :LAST_REPEAT: [2019-02-19 Tue 17:07]
+   :END:
+   - State "DONE"       from "TODO"       [2019-02-19 Tue 17:07]
+   #+BEGIN_QUOTE
+   SCHEDULED: <2019-02-20 Wed .+1d>
+  
+   https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/preface.md
+
+   #+END_QUOTE
 ** TODO [2019-01-15 Tue] A Byte of Python 
    #+BEGIN_QUOTE
    SCHEDULED: <2019-01-15 Tue .+1d>

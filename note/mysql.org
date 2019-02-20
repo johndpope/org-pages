@@ -70,6 +70,44 @@
 
         备注：为 0 时大小写敏感，为 1 时大小写不敏感，默认为 0
 
+** install for mac
+   #+BEGIN_QUOTE
+
+   brew install mysql 
+   
+   #+BEGIN_SRC 
+==> Caveats
+We've installed your MySQL database without a root password. To secure it run:
+    mysql_secure_installation
+
+MySQL is configured to only allow connections from localhost by default
+
+To connect run:
+    mysql -uroot
+
+To have launchd start mysql now and restart at login:
+  brew services start mysql
+Or, if you don't want/need a background service you can just run:
+  mysql.server start
+==> Summary
+🍺  /usr/local/Cellar/mysql/8.0.15: 267 files, 234.6MB
+   
+   #+END_SRC
+
+   第一次安装好mysql后会提示使用  =mysql_secure_installation= 设置root密码
+
+   重置root密码过程中遇到一个[[https://stackoverflow.com/questions/43846950/column-count-of-mysql-user-is-wrong-expected-42-found-44-the-table-is-probabl][error]] 使用 =mysql_upgrade --force -uroot -p= 处理
+
+   创建用户
+   
+   : CREATE USER 'manue1'@'localhost' IDENTIFIED BY 'manue1mysql'
+   
+   授权所有库
+   
+   : grant all privileges on *.* to 'manue1'@'localhost';
+   : flush privileges;
+
+   #+END_QUOTE
 ** commands
    1. 终端登录
 
@@ -78,6 +116,7 @@
       mysql -u manue1 -p qweO1\!k -h 8.8.8.8
    
    2. 
+
 
 * q & a
 ** TODO 远程主机访问权限控制失效问题 

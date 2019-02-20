@@ -24,6 +24,7 @@
 - note
   - [[file:note/note-linux-awk.org][AWK 程序设计语言]]
   - [[file:note/note-docker-learn.org][Docker能替代Vbox吗?]]
+  - [[file:note/note-go.org][Go Promodoro]]
   - [[file:note/python.org][Python Promodoro]]
   - [[file:note/note-threat_intelligence_scrapy.org][Threat Intelligence 情报收集爬虫]]
   - [[file:note/note-elasticsearch.org][elasticsearch 常用知识梳理]]

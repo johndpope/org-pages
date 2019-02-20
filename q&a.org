@@ -1,5 +1,139 @@
 #+TITLE: Question & Answer
 * Question & Answer
+** DONE [2019-02-19 Tue] org-mode 内直接运行go代码块
+   CLOSED: [2019-02-19 Tue 17:52]
+   - State "DONE"       from "TODO"       [2019-02-19 Tue 17:52]
+   #+BEGIN_QUOTE
+   SCHEDULED: <2019-02-19 Tue 17:08>
+
+   https://brantou.github.io/2017/06/12/go-source-code-block-in-org/
+
+   https://github.com/pope/ob-go
+
+   ob-go 使 Org-babel 可执行Go代码。 与解释语言可直接执行不同，Go需要先编译为可执行文件，然后运行。
+   Go代码通过 go run 命令编译和运行。 若代码中没有 main 函数，默认情况下，代码会被包裹在简单的 main 函数中。
+   若 :package 选项没设置并且代码中没有声明 package ， 则 main package 被声明。 
+   示例如下，代码被执行，执行结果被回写到 buffer 中。
+
+   找到的目录 org-plus-contrib
+
+   新建 ob-go.el , 然后把 github中代码 复制到新建的文件中
+
+   配置 org-babel-load-languages, 如下：
+
+   #+BEGIN_SRC lisp
+   (org-babel-do-load-languages
+    'org-babel-load-languages
+    '((python . t)
+      (C . t)
+      (go . t)
+      (emacs-lisp . t)
+      (shell . t)))
+   #+END_SRC
+
+ 
+   #+END_QUOTE
+** DONE [2019-02-18 Mon] config emacs for go
+   CLOSED: [2019-02-19 Tue 17:52]
+   - State "DONE"       from "TODO"       [2019-02-19 Tue 17:52]
+   #+BEGIN_QUOTE
+   SCHEDULED: <2019-02-18 Mon 21:15>
+
+   http://www.cnblogs.com/lienhua34/p/5838166.html
+
+   http://www.cnblogs.com/lienhua34/p/5839510.html
+
+   https://my.oschina.net/redhouse/blog/350337
+   
+ 
+   go get github.com/rogpeppe/godef
+
+   go get -u github.com/dougm/goflymake
+
+   1. gomode install
+      
+      https://github.com/dominikh/go-mode.el
+
+      这里介绍了emacs下go编程的常用插件
+
+   2. gocode
+      * Install auto-complete-mode
+        
+        (require 'auto-complete)
+        (ac-config-default)
+
+      * Copy emacs/go-autocomplete.el file from the gocode source distribution to a directory which is in your 'load-path' in emacs.
+
+      * Add these lines to your .emacs:
+
+        (require 'go-autocomplete)
+        (require 'auto-complete-config)
+        (ac-config-default)
+
+   3. flymake or flycheck
+
+      https://github.com/dougm/goflymake
+
+      下载go-flycheck.el 或 go-flymake.el 加载到emacs配置中
+
+      切记两者只选其一
+
+   #+END_QUOTE
+
+** TODO [2019-02-16 Sat] 配置个人邮箱服务器
+   #+BEGIN_QUOTE
+   SCHEDULED: <2019-02-26 Tue 15:22>
+ 
+   #+END_QUOTE
+** DONE [2019-02-16 Sat] install memcache in mac
+   CLOSED: [2019-02-19 Tue 17:58]
+   - State "DONE"       from "TODO"       [2019-02-19 Tue 17:58]
+   #+BEGIN_QUOTE
+   SCHEDULED: <2019-02-16 Sat 13:40>
+
+   https://www.hacksparrow.com/install-memcached-on-mac-os-x.html
+
+   : brew install memcached
+
+   Starting memcached
+
+   Memcached listens on port 11211 by default, to change it, use the -p option.
+
+   $ memcached -p 8000
+
+   To run memcached as a daemon (background process), instead of sitting at your terminal, use the -d option.
+
+   $ memcached -d -p 8000
+
+   : memcached -d 
+ 
+
+   #+END_QUOTE
+** DONE [2019-02-13 Wed] config emacs for python development
+   CLOSED: [2019-02-19 Tue 17:58]
+   - State "DONE"       from "TODO"       [2019-02-19 Tue 17:58]
+   #+BEGIN_QUOTE
+   SCHEDULED: <2019-02-13 Wed 23:15>
+ 
+   https://wdicc.com/emacs-as-python-ide/
+
+   anaconda-mode 
+
+   auto-virtualenv
+
+   elpy
+
+   flycheck
+
+   python outline
+
+   indent-tools
+
+   yasnippet 和 company , jedi
+
+   https://www.jianshu.com/p/dac96805cb10
+
+   #+END_QUOTE
 ** DONE [2019-01-28 Mon] redis 配置
    CLOSED: [2019-01-28 Mon 14:50]
    - State "DONE"       from "TODO"       [2019-01-28 Mon 14:50]
@@ -225,23 +359,51 @@
  DEADLINE: <2019-01-16 Sun 16:33>
  
   #+END_QUOTE
-** DONE virtualenv set different python 
+** DONE virtualenv set different python env for emacs 
    CLOSED: [2018-12-27 Thu 15:53]
    - State "DONE"       from "TODO"       [2018-12-27 Thu 15:53]
  #+BEGIN_QUOTE
  DEADLINE: <2018-12-27 Thu 15:41>
 
-sudo pip install virtualenv
+1. different env python install
 
-mkdir ~/opt/virtualenvs 
+ sudo pip install virtualenv
+
+ mkdir ~/opt/virtualenvs 
  
-virtualenv --python=/usr/bin/python2.6 ~/opt/virtualenvs/emacs-python
+ virtualenv --python=/usr/bin/python2.6 ~/opt/virtualenvs/emacs-python
 
-cd ~/opt/virtualenvs/emacs-python/bin
+ cd ~/opt/virtualenvs/emacs-python/bin
 
-source activate // deactivate
+ source activate // deactivate
 
-alias emacs-python-enable='source ~/opt/virtualenvs/emacs-python/bin/activate'
+ alias emacs-python='source ~/opt/virtualenvs/emacs-python/bin/activate'
+
+ python3
+ 
+ virtualenv --python=/usr/local/bin/python3  ~/opt/virtualenvs/emacs-python3
+
+ alias emacs-python3='source ~/opt/virtualenvs/emacs-python/bin/activate'
+2. config emacs
+
+   *手动修改python3* 
+
+   : M-x pyvenv-activate RET <path-to-venv>
+
+   *配置文件* 
+
+   pyvenv-workon
+
+   #+BEGIN_SRC lisp
+   (setenv "WORKON_HOME" "~/opt/virtualenvs/")
+
+   (when (require 'elpy nil t)
+     (elpy-enable)
+     (pyvenv-activate "~/opt/virtualenvs/emacs-python")
+     (setq elpy-rpc-backend "jedi")
+   )
+   #+END_SRC
+ 
 
   #+END_QUOTE
 ** UNDO how to use youdao translation in emacs
@@ -315,8 +477,6 @@ https://wdicc.com/emacs-as-python-ide/
    =c-c c-d= elpy-doc 查看函数文档
    
  
-##videos must be used with an image..so when image is clicked video starts
-[[link of the video][file:link of the image]
   #+END_QUOTE
 
 ** TODO 2019年度计划
@@ -870,3 +1030,4 @@ sudo pacman -Sy yaourt base-devel fakeroot
 
 yaourt -Syu --devel --aur
    #+END_QUOTE
+   

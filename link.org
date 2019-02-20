@@ -1,6 +1,42 @@
 #+TITLE: Link notes
 * Link notes
 
+** TODO [2019-02-18 Mon] build-web-application-with-golang
+  #+BEGIN_QUOTE
+  https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/preface.md 
+
+  SCHEDULED:<2019-02-18 Mon 18:12>
+  
+  #+END_QUOTE
+
+** DONE [2019-02-17 Sun] 短信发送平台查找便宜运营商
+   CLOSED: [2019-02-18 Mon 18:25]
+   - State "DONE"       from "TODO"       [2019-02-18 Mon 18:25]
+  #+BEGIN_QUOTE
+  https://dayu.aliyun.com/product/sms?spm=a3142.7791109.0.0.dace1fd2nLPZQZ 
+
+  SCHEDULED:<2019-02-17 Sun 02:00>
+  有点坑、阿里大于注册首冲后才发现个人用户没有企业资质的无法使用、
+  
+  #+END_QUOTE
+
+** TODO [2019-02-14 Thu] install mysql for mac
+
+  #+BEGIN_QUOTE
+  https://gist.github.com/nrollr/3f57fc15ded7dddddcc4e82fe137b58e 
+
+  SCHEDULED:<2019-02-14 Thu 15:41>
+  
+  #+END_QUOTE
+
+** TODO [2019-02-13 Wed] emacs blog
+  #+BEGIN_QUOTE
+  http://nagajamu.com/2018/11/06/resources/#emacs%E4%B9%8B%E9%AD%82 
+
+  SCHEDULED:<2019-02-13 Wed 23:44>
+  
+  #+END_QUOTE
+
 ** TODO [2019-02-01 Fri] 影视资源网站汇总
 
 
@@ -390,8 +426,9 @@
 
   #+END_QUOTE
 
-** TODO [2019-01-23 Wed] Jinja2 模板语言
-   SCHEDULED: <2019-01-30 Wed>
+** DONE [2019-01-23 Wed] Jinja2 模板语言
+   CLOSED: [2019-02-20 Wed 10:05] SCHEDULED: <2019-01-30 Wed>
+   - State "DONE"       from "TODO"       [2019-02-20 Wed 10:05]
   #+BEGIN_QUOTE
   https://www.kancloud.cn/manual/jinja2/70423 
 
