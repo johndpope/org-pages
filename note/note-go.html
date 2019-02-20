@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-02-20 Wed 14:05 -->
+<!-- 2019-02-20 Wed 14:21 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Go for web</title>
@@ -268,6 +268,7 @@ for the JavaScript code in this tag.
 <div id="outline-container-org4bb20d8" class="outline-2">
 <h2 id="org4bb20d8"><span class="section-number-2">1</span> 环境配置</h2>
 <div class="outline-text-2" id="text-1">
+<blockquote>
 <p>
 mac install
 </p>
@@ -292,12 +293,14 @@ GOPATH <code>$GOPATH/go</code> 与工作空间
 <p>
 编译应用: 在任意的目录执行如下代码go install mymath
 </p>
+</blockquote>
 </div>
 </div>
 
 <div id="outline-container-orgd5b1ced" class="outline-2">
 <h2 id="orgd5b1ced"><span class="section-number-2">2</span> go 命令</h2>
 <div class="outline-text-2" id="text-2">
+<blockquote>
 <p>
 <a href="https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/01.3.md">https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/01.3.md</a>
 </p>
@@ -375,14 +378,14 @@ go run
 编译并运行Go程序
 </p></li>
 </ul>
+</blockquote>
 </div>
 </div>
-
-
 
 <div id="outline-container-org2e9f469" class="outline-2">
 <h2 id="org2e9f469"><span class="section-number-2">3</span> go 基础</h2>
 <div class="outline-text-2" id="text-3">
+<blockquote>
 <p>
 package &lt;pkgName&gt;（在我们的例子中是package main）这一行告诉我们当前文件属于哪个包
 </p>
@@ -419,8 +422,11 @@ vname1, vname2, vname3 := v1, v2, v3
 </p>
 
 <p>
-<span class="underline">（下划线）是个特殊的变量名，任何赋予它的值都会被丢弃 
-~</span>, b := 34, 35~ 34就丢弃了
+下划线是个特殊的变量名，任何赋予它的值都会被丢弃 
+</p>
+
+<p>
+<code>_, b := 34, 35</code> 34就丢弃了
 </p></li>
 <li><p>
 常量
@@ -682,14 +688,17 @@ new返回指针
 </p></li>
 </ul></li>
 </ul>
+</blockquote>
 </div>
 </div>
+
 
 
 
 <div id="outline-container-org1aef4d2" class="outline-2">
 <h2 id="org1aef4d2"><span class="section-number-2">4</span> 流程和函数</h2>
 <div class="outline-text-2" id="text-4">
+<blockquote>
 <p>
 Go中流程控制分三大类：条件判断，循环控制和无条件跳转
 </p>
@@ -1110,14 +1119,17 @@ _操作其实是引入该包，而不直接使用包里面的函数，而是调�
 </ul></li>
 </ul></li>
 </ul>
+</blockquote>
 </div>
 </div>
+
 
 
 
 <div id="outline-container-orga65c559" class="outline-2">
 <h2 id="orga65c559"><span class="section-number-2">5</span> struct类型</h2>
 <div class="outline-text-2" id="text-5">
+<blockquote>
 <p>
 自定义类型person代表一个人的实体。这个实体拥有属性：姓名和年龄。这样的类型我们称之struct
 </p>
@@ -1194,6 +1206,7 @@ struct的匿名字段
 </pre>
 </div></li>
 </ul>
+</blockquote>
 </div>
 </div>
 </div>
