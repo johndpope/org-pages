@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-02-20 Wed 18:17 -->
+<!-- 2019-02-21 Thu 14:56 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Go for web</title>
@@ -239,7 +239,7 @@ for the JavaScript code in this tag.
         <li><a class="navbar-item" href="https://www.manue1.site/link.html">Links</a> </li>
         <li><a class="navbar-item" href="https://www.manue1.site/read.html">Read</a> </li>
         <li class="search">
-            <form action="http://google.com/search" method="get" accept-charset="utf-8">
+            <form action="https://google.com/search" method="get" accept-charset="utf-8">
                 <input type="search" id="search" name="q" autocomplete="off" maxlength="30" placeholder="Search..">
                 <input type="hidden" name="q" value="site:www.manue1.site">
             </form>
@@ -253,11 +253,14 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgef758e1">1. 环境配置</a></li>
-<li><a href="#org9f10eab">2. go 命令</a></li>
-<li><a href="#org6aebf66">3. go 基础</a></li>
-<li><a href="#orgb731df5">4. 流程和函数</a></li>
-<li><a href="#org61647e3">5. struct类型</a></li>
+<li><a href="#org70d04d0">1. 环境配置</a></li>
+<li><a href="#org02cb686">2. go 命令</a></li>
+<li><a href="#org1f2d61e">3. go 基础</a></li>
+<li><a href="#orgee63808">4. 流程和函数</a></li>
+<li><a href="#org85953b1">5. struct类型</a></li>
+<li><a href="#org5e541bb">6. 面向对象</a></li>
+<li><a href="#org78f3451">7. interface</a></li>
+<li><a href="#org3d6a8bc">8. 并发</a></li>
 </ul>
 </div>
 </div>
@@ -265,8 +268,8 @@ for the JavaScript code in this tag.
 <a href="https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/preface.md">https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/preface.md</a>
 </p>
 
-<div id="outline-container-orgef758e1" class="outline-2">
-<h2 id="orgef758e1"><span class="section-number-2">1</span> 环境配置</h2>
+<div id="outline-container-org70d04d0" class="outline-2">
+<h2 id="org70d04d0"><span class="section-number-2">1</span> 环境配置</h2>
 <div class="outline-text-2" id="text-1">
 <blockquote>
 <p>
@@ -297,8 +300,8 @@ GOPATH <code>$GOPATH/go</code> 与工作空间
 </div>
 </div>
 
-<div id="outline-container-org9f10eab" class="outline-2">
-<h2 id="org9f10eab"><span class="section-number-2">2</span> go 命令</h2>
+<div id="outline-container-org02cb686" class="outline-2">
+<h2 id="org02cb686"><span class="section-number-2">2</span> go 命令</h2>
 <div class="outline-text-2" id="text-2">
 <blockquote>
 <p>
@@ -382,8 +385,8 @@ go run
 </div>
 </div>
 
-<div id="outline-container-org6aebf66" class="outline-2">
-<h2 id="org6aebf66"><span class="section-number-2">3</span> go 基础</h2>
+<div id="outline-container-org1f2d61e" class="outline-2">
+<h2 id="org1f2d61e"><span class="section-number-2">3</span> go 基础</h2>
 <div class="outline-text-2" id="text-3">
 <blockquote>
 <p>
@@ -694,9 +697,8 @@ new返回指针
 
 
 
-
-<div id="outline-container-orgb731df5" class="outline-2">
-<h2 id="orgb731df5"><span class="section-number-2">4</span> 流程和函数</h2>
+<div id="outline-container-orgee63808" class="outline-2">
+<h2 id="orgee63808"><span class="section-number-2">4</span> 流程和函数</h2>
 <div class="outline-text-2" id="text-4">
 <blockquote>
 <p>
@@ -886,7 +888,7 @@ defer
 </p>
 
 <div class="org-src-container">
-<pre class="src src-go">unc <span style="color: #b57614;">ReadWrite</span>() bool {
+<pre class="src src-go"><span style="color: #9d0006;">func</span> <span style="color: #b57614;">ReadWrite</span>() <span style="color: #8f3f71;">bool</span> {
     file.<span style="color: #b57614;">Open</span>(<span style="color: #79740e;">"file"</span>)
     <span style="color: #9d0006;">defer</span> file.<span style="color: #b57614;">Close</span>()
     <span style="color: #9d0006;">if</span> failureX {
@@ -1124,10 +1126,8 @@ _操作其实是引入该包，而不直接使用包里面的函数，而是调�
 </div>
 
 
-
-
-<div id="outline-container-org61647e3" class="outline-2">
-<h2 id="org61647e3"><span class="section-number-2">5</span> struct类型</h2>
+<div id="outline-container-org85953b1" class="outline-2">
+<h2 id="org85953b1"><span class="section-number-2">5</span> struct类型</h2>
 <div class="outline-text-2" id="text-5">
 <blockquote>
 <p>
@@ -1209,12 +1209,1095 @@ struct的匿名字段
 </blockquote>
 </div>
 </div>
+
+<div id="outline-container-org5e541bb" class="outline-2">
+<h2 id="org5e541bb"><span class="section-number-2">6</span> 面向对象</h2>
+<div class="outline-text-2" id="text-6">
+<blockquote>
+<ul class="org-ul">
+<li><p>
+method 
+</p>
+
+<p>
+用Rob Pike的话来说就是： "A method is a function with an implicit first argument, called a receiver."
+</p>
+
+<p>
+method的概念，method是附属在一个给定的类型上的
+</p>
+
+<p>
+method的语法如下：
+</p>
+
+<p>
+<code>func (r ReceiverType) funcName(parameters) (results)</code>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-go"><span style="color: #9d0006;">package</span> main
+
+<span style="color: #9d0006;">import</span> (
+    <span style="color: #79740e;">"fmt"</span>
+    <span style="color: #79740e;">"math"</span>
+)
+
+<span style="color: #9d0006;">type</span> <span style="color: #8f3f71;">Rectangle</span> <span style="color: #9d0006;">struct</span> {
+    width, height float64
+}
+
+<span style="color: #9d0006;">type</span> <span style="color: #8f3f71;">Circle</span> <span style="color: #9d0006;">struct</span> {
+    radius float64
+}
+
+<span style="color: #9d0006;">func</span> (r <span style="color: #8f3f71;">Rectangle</span>) <span style="color: #b57614;">area</span>() <span style="color: #8f3f71;">float64</span> {
+    <span style="color: #9d0006;">return</span> r.width * r.height
+}
+
+<span style="color: #9d0006;">func</span> (c <span style="color: #8f3f71;">Circle</span>) <span style="color: #b57614;">area</span>() <span style="color: #8f3f71;">float64</span> {
+    <span style="color: #9d0006;">return</span> c.radius * c.radius * math.Pi
+}
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">main</span>() {
+    r1 := <span style="color: #8f3f71;">Rectangle</span>{12, 2}
+    r2 := <span style="color: #8f3f71;">Rectangle</span>{9, 4}
+    c1 := <span style="color: #8f3f71;">Circle</span>{10}
+    c2 := <span style="color: #8f3f71;">Circle</span>{25}
+
+    fmt.<span style="color: #b57614;">Println</span>(<span style="color: #79740e;">"Area of r1 is: "</span>, r1.<span style="color: #b57614;">area</span>())
+    fmt.<span style="color: #b57614;">Println</span>(<span style="color: #79740e;">"Area of r2 is: "</span>, r2.<span style="color: #b57614;">area</span>())
+    fmt.<span style="color: #b57614;">Println</span>(<span style="color: #79740e;">"Area of c1 is: "</span>, c1.<span style="color: #b57614;">area</span>())
+    fmt.<span style="color: #b57614;">Println</span>(<span style="color: #79740e;">"Area of c2 is: "</span>, c2.<span style="color: #b57614;">area</span>())
+}
+</pre>
+</div></li>
+</ul>
+
+
+<p>
+method里面可以访问接收者的字段
+</p>
+
+<p>
+调用method通过.访问，就像struct里面访问字段一样
+</p>
+
+<ul class="org-ul">
+<li><p>
+指针作为receiver
+</p>
+
+<p>
+为啥要使用指针而不是Box本身呢？ : 改变传入对象本身，而不是对象的copy
+</p>
+
+<p>
+如果一个method的receiver是*T,你可以在一个T类型的实例变量V上面调用这个method，而不需要&amp;V去调用这个method
+</p>
+
+<p>
+如果一个method的receiver是T，你可以在一个*T类型的变量P上面调用这个method，而不需要 *P去调用这个method
+</p>
+
+<p>
+你不用担心你是调用的指针的method还是不是指针的method，Go知道你要做的一切
+</p></li>
+
+<li><p>
+method继承
+</p>
+
+<div class="org-src-container">
+<pre class="src src-go"><span style="color: #9d0006;">package</span> main
+
+<span style="color: #9d0006;">import</span> <span style="color: #79740e;">"fmt"</span>
+
+<span style="color: #9d0006;">type</span> <span style="color: #8f3f71;">Human</span> <span style="color: #9d0006;">struct</span> {
+    name string
+    age int
+    phone string
+}
+
+<span style="color: #9d0006;">type</span> <span style="color: #8f3f71;">Student</span> <span style="color: #9d0006;">struct</span> {
+    Human <span style="color: #a89984;">//</span><span style="color: #a89984;">&#21311;&#21517;&#23383;&#27573;</span>
+    school string
+}
+
+<span style="color: #9d0006;">type</span> <span style="color: #8f3f71;">Employee</span> <span style="color: #9d0006;">struct</span> {
+    Human <span style="color: #a89984;">//</span><span style="color: #a89984;">&#21311;&#21517;&#23383;&#27573;</span>
+    company string
+}
+
+<span style="color: #a89984;">//</span><span style="color: #a89984;">&#22312;human&#19978;&#38754;&#23450;&#20041;&#20102;&#19968;&#20010;method</span>
+<span style="color: #9d0006;">func</span> (h *<span style="color: #8f3f71;">Human</span>) <span style="color: #b57614;">SayHi</span>() {
+    fmt.<span style="color: #b57614;">Printf</span>(<span style="color: #79740e;">"Hi, I am %s you can call me on %s\n"</span>, h.name, h.phone)
+}
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">main</span>() {
+    mark := <span style="color: #8f3f71;">Student</span>{<span style="color: #8f3f71;">Human</span>{<span style="color: #79740e;">"Mark"</span>, 25, <span style="color: #79740e;">"222-222-YYYY"</span>}, <span style="color: #79740e;">"MIT"</span>}
+    sam := <span style="color: #8f3f71;">Employee</span>{<span style="color: #8f3f71;">Human</span>{<span style="color: #79740e;">"Sam"</span>, 45, <span style="color: #79740e;">"111-888-XXXX"</span>}, <span style="color: #79740e;">"Golang Inc"</span>}
+
+    mark.<span style="color: #b57614;">SayHi</span>()
+    sam.<span style="color: #b57614;">SayHi</span>()
+}
+
+</pre>
+</div></li>
+
+<li><p>
+method重写
+</p>
+
+<div class="org-src-container">
+<pre class="src src-go"><span style="color: #9d0006;">package</span> main
+
+<span style="color: #9d0006;">import</span> <span style="color: #79740e;">"fmt"</span>
+
+<span style="color: #9d0006;">type</span> <span style="color: #8f3f71;">Human</span> <span style="color: #9d0006;">struct</span> {
+    name string
+    age int
+    phone string
+}
+
+<span style="color: #9d0006;">type</span> <span style="color: #8f3f71;">Student</span> <span style="color: #9d0006;">struct</span> {
+    Human <span style="color: #a89984;">//</span><span style="color: #a89984;">&#21311;&#21517;&#23383;&#27573;</span>
+    school string
+}
+
+<span style="color: #9d0006;">type</span> <span style="color: #8f3f71;">Employee</span> <span style="color: #9d0006;">struct</span> {
+    Human <span style="color: #a89984;">//</span><span style="color: #a89984;">&#21311;&#21517;&#23383;&#27573;</span>
+    company string
+}
+
+<span style="color: #a89984;">//</span><span style="color: #a89984;">Human&#23450;&#20041;method</span>
+<span style="color: #9d0006;">func</span> (h *<span style="color: #8f3f71;">Human</span>) <span style="color: #b57614;">SayHi</span>() {
+    fmt.<span style="color: #b57614;">Printf</span>(<span style="color: #79740e;">"Hi, I am %s you can call me on %s\n"</span>, h.name, h.phone)
+}
+
+<span style="color: #a89984;">//</span><span style="color: #a89984;">Employee&#30340;method&#37325;&#20889;Human&#30340;method</span>
+<span style="color: #9d0006;">func</span> (e *<span style="color: #8f3f71;">Employee</span>) <span style="color: #b57614;">SayHi</span>() {
+    fmt.<span style="color: #b57614;">Printf</span>(<span style="color: #79740e;">"Hi, I am %s, I work at %s. Call me on %s\n"</span>, e.name,
+        e.company, e.phone) <span style="color: #a89984;">//</span><span style="color: #a89984;">Yes you can split into 2 lines here.</span>
+}
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">main</span>() {
+    mark := <span style="color: #8f3f71;">Student</span>{<span style="color: #8f3f71;">Human</span>{<span style="color: #79740e;">"Mark"</span>, 25, <span style="color: #79740e;">"222-222-YYYY"</span>}, <span style="color: #79740e;">"MIT"</span>}
+    sam := <span style="color: #8f3f71;">Employee</span>{<span style="color: #8f3f71;">Human</span>{<span style="color: #79740e;">"Sam"</span>, 45, <span style="color: #79740e;">"111-888-XXXX"</span>}, <span style="color: #79740e;">"Golang Inc"</span>}
+
+    mark.<span style="color: #b57614;">SayHi</span>()
+    sam.<span style="color: #b57614;">SayHi</span>()
+}
+</pre>
+</div></li>
+</ul>
+</blockquote>
+</div>
+</div>
+
+<div id="outline-container-org78f3451" class="outline-2">
+<h2 id="org78f3451"><span class="section-number-2">7</span> interface</h2>
+<div class="outline-text-2" id="text-7">
+<blockquote>
+<ul class="org-ul">
+<li><p>
+什么是interface
+</p>
+
+<p>
+interface类型定义了一组方法，如果某个对象实现了某个接口的所有方法，则此对象就实现了此接口
+</p>
+
+<p>
+interface是一组method签名的组合，我们通过interface来定义对象的一组行为。
+</p>
+
+<p>
+比如: Student实现了三个方法：SayHi、Sing、BorrowMoney；而Employee实现了SayHi、Sing、SpendSalary
+</p>
+
+<p>
+上面这些方法的组合称为interface(被对象Student和Employee实现)。
+</p>
+
+<p>
+例如Student和Employee都实现了interface：SayHi和Sing，也就是这两个对象是该interface类型
+</p>
+
+<p>
+Employee没有实现这个interface：SayHi、Sing和BorrowMoney，因为Employee没有实现BorrowMoney这个方法
+</p></li>
+
+<li><p>
+interface值
+</p>
+
+<div class="org-src-container">
+<pre class="src src-go"><span style="color: #9d0006;">package</span> main
+
+<span style="color: #9d0006;">import</span> <span style="color: #79740e;">"fmt"</span>
+
+<span style="color: #9d0006;">type</span> <span style="color: #8f3f71;">Human</span> <span style="color: #9d0006;">struct</span> {
+    name string
+    age int
+    phone string
+}
+
+<span style="color: #9d0006;">type</span> <span style="color: #8f3f71;">Student</span> <span style="color: #9d0006;">struct</span> {
+    Human <span style="color: #a89984;">//</span><span style="color: #a89984;">&#21311;&#21517;&#23383;&#27573;</span>
+    school string
+    loan float32
+}
+
+<span style="color: #9d0006;">type</span> <span style="color: #8f3f71;">Employee</span> <span style="color: #9d0006;">struct</span> {
+    Human <span style="color: #a89984;">//</span><span style="color: #a89984;">&#21311;&#21517;&#23383;&#27573;</span>
+    company string
+    money float32
+}
+
+<span style="color: #a89984;">//</span><span style="color: #a89984;">Human&#23454;&#29616;SayHi&#26041;&#27861;</span>
+<span style="color: #9d0006;">func</span> (h <span style="color: #8f3f71;">Human</span>) <span style="color: #b57614;">SayHi</span>() {
+    fmt.<span style="color: #b57614;">Printf</span>(<span style="color: #79740e;">"Hi, I am %s you can call me on %s\n"</span>, h.name, h.phone)
+}
+
+<span style="color: #a89984;">//</span><span style="color: #a89984;">Human&#23454;&#29616;Sing&#26041;&#27861;</span>
+<span style="color: #9d0006;">func</span> (h <span style="color: #8f3f71;">Human</span>) <span style="color: #b57614;">Sing</span>(lyrics <span style="color: #8f3f71;">string</span>) {
+    fmt.<span style="color: #b57614;">Println</span>(<span style="color: #79740e;">"La la la la..."</span>, lyrics)
+}
+
+<span style="color: #a89984;">//</span><span style="color: #a89984;">Employee&#37325;&#36733;Human&#30340;SayHi&#26041;&#27861;</span>
+<span style="color: #9d0006;">func</span> (e <span style="color: #8f3f71;">Employee</span>) <span style="color: #b57614;">SayHi</span>() {
+    fmt.<span style="color: #b57614;">Printf</span>(<span style="color: #79740e;">"Hi, I am %s, I work at %s. Call me on %s\n"</span>, e.name,
+        e.company, e.phone)
+    }
+
+<span style="color: #a89984;">// </span><span style="color: #a89984;">Interface Men&#34987;Human,Student&#21644;Employee&#23454;&#29616;</span>
+<span style="color: #a89984;">// </span><span style="color: #a89984;">&#22240;&#20026;&#36825;&#19977;&#20010;&#31867;&#22411;&#37117;&#23454;&#29616;&#20102;&#36825;&#20004;&#20010;&#26041;&#27861;</span>
+<span style="color: #9d0006;">type</span> <span style="color: #8f3f71;">Men</span> <span style="color: #9d0006;">interface</span> {
+    <span style="color: #b57614;">SayHi</span>()
+    <span style="color: #b57614;">Sing</span>(lyrics string)
+}
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">main</span>() {
+    mike := <span style="color: #8f3f71;">Student</span>{<span style="color: #8f3f71;">Human</span>{<span style="color: #79740e;">"Mike"</span>, 25, <span style="color: #79740e;">"222-222-XXX"</span>}, <span style="color: #79740e;">"MIT"</span>, 0.00}
+    paul := <span style="color: #8f3f71;">Student</span>{<span style="color: #8f3f71;">Human</span>{<span style="color: #79740e;">"Paul"</span>, 26, <span style="color: #79740e;">"111-222-XXX"</span>}, <span style="color: #79740e;">"Harvard"</span>, 100}
+    sam := <span style="color: #8f3f71;">Employee</span>{<span style="color: #8f3f71;">Human</span>{<span style="color: #79740e;">"Sam"</span>, 36, <span style="color: #79740e;">"444-222-XXX"</span>}, <span style="color: #79740e;">"Golang Inc."</span>, 1000}
+    tom := <span style="color: #8f3f71;">Employee</span>{<span style="color: #8f3f71;">Human</span>{<span style="color: #79740e;">"Tom"</span>, 37, <span style="color: #79740e;">"222-444-XXX"</span>}, <span style="color: #79740e;">"Things Ltd."</span>, 5000}
+
+    <span style="color: #a89984;">//</span><span style="color: #a89984;">&#23450;&#20041;Men&#31867;&#22411;&#30340;&#21464;&#37327;i</span>
+    <span style="color: #9d0006;">var</span> i Men
+
+    <span style="color: #a89984;">//</span><span style="color: #a89984;">i&#33021;&#23384;&#20648;Student</span>
+    i = mike
+    fmt.<span style="color: #b57614;">Println</span>(<span style="color: #79740e;">"This is Mike, a Student:"</span>)
+    i.<span style="color: #b57614;">SayHi</span>()
+    i.<span style="color: #b57614;">Sing</span>(<span style="color: #79740e;">"November rain"</span>)
+
+    <span style="color: #a89984;">//</span><span style="color: #a89984;">i&#20063;&#33021;&#23384;&#20648;Employee</span>
+    i = tom
+    fmt.<span style="color: #b57614;">Println</span>(<span style="color: #79740e;">"This is tom, an Employee:"</span>)
+    i.<span style="color: #b57614;">SayHi</span>()
+    i.<span style="color: #b57614;">Sing</span>(<span style="color: #79740e;">"Born to be wild"</span>)
+
+    <span style="color: #a89984;">//</span><span style="color: #a89984;">&#23450;&#20041;&#20102;slice Men</span>
+    fmt.<span style="color: #b57614;">Println</span>(<span style="color: #79740e;">"Let's use a slice of Men and see what happens"</span>)
+    x := <span style="color: #af3a03;">make</span>([]<span style="color: #8f3f71;">Men</span>, 3)
+    <span style="color: #a89984;">//</span><span style="color: #a89984;">&#36825;&#19977;&#20010;&#37117;&#26159;&#19981;&#21516;&#31867;&#22411;&#30340;&#20803;&#32032;&#65292;&#20294;&#26159;&#20182;&#20204;&#23454;&#29616;&#20102;interface&#21516;&#19968;&#20010;&#25509;&#21475;</span>
+    x[0], x[1], x[2] = paul, sam, mike
+
+    <span style="color: #9d0006;">for</span> _, value := <span style="color: #9d0006;">range</span> <span style="color: #8f3f71;">x</span>{
+        value.<span style="color: #b57614;">SayHi</span>()
+    }
+}
+</pre>
+</div>
+
+<p>
+interface就是一组抽象方法的集合，它必须由其他非interface类型实现，而不能自我实现
+</p></li>
+
+<li><p>
+空interface
+</p>
+
+<p>
+任意的类型都实现了空interface(我们这样定义：interface{})，也就是包含0个method的interface
+</p>
+
+<p>
+空interface在我们需要存储任意类型的数值的时候相当有用，因为它可以存储任意类型的数值
+</p>
+
+<p>
+一个函数把interface{}作为参数，那么他可以接受任意类型的值作为参数，如果一个函数返回interface{},那么也就可以返回任意类型的值
+</p>
+
+<div class="org-src-container">
+<pre class="src src-go"><span style="color: #a89984;">// </span><span style="color: #a89984;">&#23450;&#20041;a&#20026;&#31354;&#25509;&#21475;</span>
+<span style="color: #9d0006;">var</span> a <span style="color: #9d0006;">interface</span>{}
+<span style="color: #9d0006;">var</span> i int = 5
+s := <span style="color: #79740e;">"Hello world"</span>
+<span style="color: #a89984;">// </span><span style="color: #a89984;">a&#21487;&#20197;&#23384;&#20648;&#20219;&#24847;&#31867;&#22411;&#30340;&#25968;&#20540;</span>
+a = i
+a = s
+</pre>
+</div></li>
+
+<li><p>
+interface函数参数
+</p>
+
+<p>
+interface的变量可以持有任意实现该interface类型的对象，这给我们编写函数(包括method)提供了一些额外的思考，
+</p>
+
+<p>
+我们是不是可以通过定义interface参数，让函数接受各种类型的参数。
+</p>
+
+<p>
+举个例子：fmt.Println是我们常用的一个函数，但是你是否注意到它可以接受任意类型的数据。打开fmt的源码文件，你会看到这样一个定义:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-go"><span style="color: #9d0006;">type</span> <span style="color: #8f3f71;">Stringer</span> <span style="color: #9d0006;">interface</span> {
+     <span style="color: #b57614;">String</span>() string
+}
+
+</pre>
+</div>
+<p>
+任何实现了String方法的类型都能作为参数被fmt.Println调用,让我们来试一试  java里的toString
+</p>
+<div class="org-src-container">
+<pre class="src src-go"><span style="color: #9d0006;">package</span> main
+<span style="color: #9d0006;">import</span> (
+    <span style="color: #79740e;">"fmt"</span>
+    <span style="color: #79740e;">"strconv"</span>
+)
+
+<span style="color: #9d0006;">type</span> <span style="color: #8f3f71;">Human</span> <span style="color: #9d0006;">struct</span> {
+    name string
+    age int
+    phone string
+}
+
+<span style="color: #a89984;">// </span><span style="color: #a89984;">&#36890;&#36807;&#36825;&#20010;&#26041;&#27861; Human &#23454;&#29616;&#20102; fmt.Stringer</span>
+<span style="color: #9d0006;">func</span> (h <span style="color: #8f3f71;">Human</span>) <span style="color: #b57614;">String</span>() <span style="color: #8f3f71;">string</span> {
+    <span style="color: #9d0006;">return</span> <span style="color: #79740e;">"&#10096;"</span>+h.name+<span style="color: #79740e;">" - "</span>+strconv.<span style="color: #b57614;">Itoa</span>(h.age)+<span style="color: #79740e;">" years -  &#9990; "</span> +h.phone+<span style="color: #79740e;">"&#10097;"</span>
+}
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">main</span>() {
+    Bob := <span style="color: #8f3f71;">Human</span>{<span style="color: #79740e;">"Bob"</span>, 39, <span style="color: #79740e;">"000-7777-XXX"</span>}
+    fmt.<span style="color: #b57614;">Println</span>(<span style="color: #79740e;">"This Human is : "</span>, Bob)
+    }
+
+</pre>
+</div></li>
+
+<li><p>
+interface变量存储的类型
+</p>
+
+<p>
+我们知道interface的变量里面可以存储任意类型的数值(该类型实现了interface)。
+那么我们怎么反向知道这个变量里面实际保存了的是哪个类型的对象呢？目前常用的有两种方法：
+</p>
+
+<ol class="org-ol">
+<li><p>
+Comma-ok断言
+</p>
+
+<p>
+value, ok = element.(T)
+</p>
+
+<p>
+如果element里面确实存储了T类型的数值，那么ok返回true，否则返回false
+</p>
+
+<div class="org-src-container">
+<pre class="src src-go"><span style="color: #9d0006;">package</span> main
+
+<span style="color: #9d0006;">import</span> (
+    <span style="color: #79740e;">"fmt"</span>
+    <span style="color: #79740e;">"strconv"</span>
+)
+
+<span style="color: #9d0006;">type</span> <span style="color: #8f3f71;">Element</span> <span style="color: #9d0006;">interface</span>{}
+<span style="color: #9d0006;">type</span> <span style="color: #8f3f71;">List</span> []<span style="color: #8f3f71;">Element</span>
+
+<span style="color: #9d0006;">type</span> <span style="color: #8f3f71;">Person</span> <span style="color: #9d0006;">struct</span> {
+    name string
+    age  int
+}
+
+<span style="color: #a89984;">//</span><span style="color: #a89984;">&#23450;&#20041;&#20102;String&#26041;&#27861;&#65292;&#23454;&#29616;&#20102;fmt.Stringer</span>
+<span style="color: #9d0006;">func</span> (p <span style="color: #8f3f71;">Person</span>) <span style="color: #b57614;">String</span>() <span style="color: #8f3f71;">string</span> {
+    <span style="color: #9d0006;">return</span> <span style="color: #79740e;">"(name: "</span> + p.name + <span style="color: #79740e;">" - age: "</span> + strconv.<span style="color: #b57614;">Itoa</span>(p.age) + <span style="color: #79740e;">" years)"</span>
+}
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">main</span>() {
+    list := <span style="color: #af3a03;">make</span>(<span style="color: #8f3f71;">List</span>, 3)
+    list[0] = 1       <span style="color: #a89984;">// </span><span style="color: #a89984;">an int</span>
+    list[1] = <span style="color: #79740e;">"Hello"</span> <span style="color: #a89984;">// </span><span style="color: #a89984;">a string</span>
+    list[2] = <span style="color: #8f3f71;">Person</span>{<span style="color: #79740e;">"Dennis"</span>, 70}
+
+    <span style="color: #9d0006;">for</span> index, element := <span style="color: #9d0006;">range</span> list {
+        <span style="color: #9d0006;">if</span> value, ok := element.(<span style="color: #8f3f71;">int</span>); ok {
+            fmt.<span style="color: #b57614;">Printf</span>(<span style="color: #79740e;">"list[%d] is an int and its value is %d\n"</span>, index, value)
+        } <span style="color: #9d0006;">else</span> <span style="color: #9d0006;">if</span> value, ok := element.(<span style="color: #8f3f71;">string</span>); ok {
+            fmt.<span style="color: #b57614;">Printf</span>(<span style="color: #79740e;">"list[%d] is a string and its value is %s\n"</span>, index, value)
+        } <span style="color: #9d0006;">else</span> <span style="color: #9d0006;">if</span> value, ok := element.(<span style="color: #8f3f71;">Person</span>); ok {
+            fmt.<span style="color: #b57614;">Printf</span>(<span style="color: #79740e;">"list[%d] is a Person and its value is %s\n"</span>, index, value)
+        } <span style="color: #9d0006;">else</span> {
+            fmt.<span style="color: #b57614;">Printf</span>(<span style="color: #79740e;">"list[%d] is of a different type\n"</span>, index)
+        }
+    }
+}
+</pre>
+</div></li>
+
+<li><p>
+switch测试
+</p>
+
+<div class="org-src-container">
+<pre class="src src-go"><span style="color: #9d0006;">package</span> main
+
+    <span style="color: #9d0006;">import</span> (
+        <span style="color: #79740e;">"fmt"</span>
+        <span style="color: #79740e;">"strconv"</span>
+    )
+
+    <span style="color: #9d0006;">type</span> <span style="color: #8f3f71;">Element</span> <span style="color: #9d0006;">interface</span>{}
+    <span style="color: #9d0006;">type</span> <span style="color: #8f3f71;">List</span> [] Element
+
+    <span style="color: #9d0006;">type</span> <span style="color: #8f3f71;">Person</span> <span style="color: #9d0006;">struct</span> {
+        name string
+        age int
+    }
+
+    <span style="color: #a89984;">//</span><span style="color: #a89984;">&#25171;&#21360;</span>
+    <span style="color: #9d0006;">func</span> (p <span style="color: #8f3f71;">Person</span>) <span style="color: #b57614;">String</span>() <span style="color: #8f3f71;">string</span> {
+        <span style="color: #9d0006;">return</span> <span style="color: #79740e;">"(name: "</span> + p.name + <span style="color: #79740e;">" - age: "</span>+strconv.<span style="color: #b57614;">Itoa</span>(p.age)+ <span style="color: #79740e;">" years)"</span>
+    }
+
+    <span style="color: #9d0006;">func</span> <span style="color: #b57614;">main</span>() {
+        list := <span style="color: #af3a03;">make</span>(<span style="color: #8f3f71;">List</span>, 3)
+        list[0] = 1 <span style="color: #a89984;">//</span><span style="color: #a89984;">an int</span>
+        list[1] = <span style="color: #79740e;">"Hello"</span> <span style="color: #a89984;">//</span><span style="color: #a89984;">a string</span>
+        list[2] = <span style="color: #8f3f71;">Person</span>{<span style="color: #79740e;">"Dennis"</span>, 70}
+
+        <span style="color: #9d0006;">for</span> index, element := <span style="color: #9d0006;">range</span> <span style="color: #8f3f71;">list</span>{
+            <span style="color: #9d0006;">switch</span> value := element.(<span style="color: #9d0006;">type</span>) {
+                <span style="color: #9d0006;">case</span> int:
+                    fmt.<span style="color: #b57614;">Printf</span>(<span style="color: #79740e;">"list[%d] is an int and its value is %d\n"</span>, index, value)
+                <span style="color: #9d0006;">case</span> string:
+                    fmt.<span style="color: #b57614;">Printf</span>(<span style="color: #79740e;">"list[%d] is a string and its value is %s\n"</span>, index, value)
+                <span style="color: #9d0006;">case</span> Person:
+                    fmt.<span style="color: #b57614;">Printf</span>(<span style="color: #79740e;">"list[%d] is a Person and its value is %s\n"</span>, index, value)
+                <span style="color: #9d0006;">default</span>:
+                    fmt.<span style="color: #b57614;">Println</span>(<span style="color: #79740e;">"list[%d] is of a different type"</span>, index)
+            }
+        }
+    }
+
+</pre>
+</div></li>
+</ol></li>
+
+<li><p>
+嵌入interface
+</p>
+
+<p>
+像我们在学习Struct时学习的匿名字段,如果一个interface1作为interface2的一个嵌入字段，那么interface2隐式的包含了interface1里面的method
+</p>
+
+<p>
+io包下面的 io.ReadWriter ，它包含了io包下面的Reader和Writer两个interface
+</p>
+
+<div class="org-src-container">
+<pre class="src src-go"><span style="color: #a89984;">// </span><span style="color: #a89984;">io.ReadWriter</span>
+<span style="color: #9d0006;">type</span> <span style="color: #8f3f71;">ReadWriter</span> <span style="color: #9d0006;">interface</span> {
+    Reader
+    Writer
+}
+
+</pre>
+</div></li>
+
+<li><p>
+反射
+</p>
+
+<p>
+所谓反射就是能检查程序在运行时的状态
+</p>
+
+<p>
+这为我们提供一种可以在运行时操作任意类型对象的能力。比如我们可以查看一个接口变量的具体类型，看看一个结构体有多少字段，如何修改某个字段的值等等
+</p>
+
+<p>
+我们一般用到的包是reflect包。如何运用reflect包，官方的这篇文章详细的讲解了reflect包的实现原理
+</p>
+
+<p>
+<a href="https://blog.golang.org/laws-of-reflection">https://blog.golang.org/laws-of-reflection</a>
+</p>
+
+<ul class="org-ul">
+<li><p>
+typeOf和ValueOf:
+</p>
+
+<p>
+在Go的反射定义中，任何接口都会由两部分组成的，一个是接口的具体类型，一个是具体类型对应的值 <code>&lt;Value,Type&gt;</code>
+</p>
+
+<p>
+比如 <code>var i int = 3</code> ，因为interface{}可以表示任何类型，所以变量i可以转为interface{}，所以可以把变量i当成一个接口
+，其中Value为变量的值3,Type变量的为类型int
+</p>
+
+<p>
+<code>reflect.TypeOf(i)</code> 可以获取任意对象的具体类型
+</p>
+
+<p>
+<code>reflect.ValueOf(i)</code> 反射获取一个对象的Value
+</p></li>
+
+<li><p>
+reflect.Value
+</p>
+
+<p>
+<b>用Inteface方法转原始类型</b>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-go">
+<span style="color: #9d0006;">type</span> <span style="color: #8f3f71;">User</span> <span style="color: #9d0006;">struct</span>{
+    Name string
+    Age int
+}
+
+
+u:= <span style="color: #8f3f71;">User</span>{<span style="color: #79740e;">"&#24352;&#19977;"</span>,20}
+t:=reflect.<span style="color: #b57614;">TypeOf</span>(u)
+
+v:=reflect.<span style="color: #b57614;">ValueOf</span>(u)
+
+
+<span style="color: #a89984;">//</span><span style="color: #a89984;">reflect.Value&#20026;&#25105;&#20204;&#25552;&#20379;&#20102;Inteface&#26041;&#27861; &#26469;&#23454;&#29616;reflect.Value&#36716;&#21407;&#22987;&#31867;&#22411;</span>
+u1:=v.<span style="color: #b57614;">Interface</span>().(<span style="color: #8f3f71;">User</span>)
+</pre>
+</div>
+
+<p>
+<b>修改字段的值</b>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-go">x:=2
+v:=reflect.<span style="color: #b57614;">ValueOf</span>(&amp;x)
+v.<span style="color: #b57614;">Elem</span>().<span style="color: #b57614;">SetInt</span>(100)
+fmt.<span style="color: #b57614;">Println</span>(x)
+</pre>
+</div></li>
+
+<li><p>
+reflect.Type
+</p>
+
+<p>
+<b>获取User类型底层类型</b>
+</p>
+
+<p>
+reflect.Type.Kind
+</p>
+
+<div class="org-src-container">
+<pre class="src src-go">t.<span style="color: #b57614;">Kind</span>()
+</pre>
+</div>
+
+<p>
+<b>遍历字段和方法</b>
+</p>
+
+<p>
+reflect.Type.NumField
+reflect.Type.Field
+reflect.Type.NumMethod
+</p>
+
+<div class="org-src-container">
+<pre class="src src-go"><span style="color: #9d0006;">for</span> i:=0;i&lt;t.<span style="color: #b57614;">NumField</span>();i++ {
+        fmt.<span style="color: #b57614;">Println</span>(t.<span style="color: #b57614;">Field</span>(i).Name)
+}
+
+<span style="color: #9d0006;">for</span> i:=0;i&lt;t.<span style="color: #b57614;">NumMethod</span>() ;i++  {
+        fmt.<span style="color: #b57614;">Println</span>(t.<span style="color: #b57614;">Method</span>(i).Name)
+}
+
+</pre>
+</div></li>
+
+<li><p>
+反射在序列化中获取struct的tag内容
+</p>
+
+<div class="org-src-container">
+<pre class="src src-go"><span style="color: #9d0006;">package</span> main
+
+<span style="color: #9d0006;">import</span> (
+    <span style="color: #79740e;">"encoding/json"</span>
+    <span style="color: #79740e;">"fmt"</span>
+    <span style="color: #79740e;">"reflect"</span>
+)
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">main</span>() {
+    <span style="color: #9d0006;">type</span> <span style="color: #8f3f71;">User</span> <span style="color: #9d0006;">struct</span> {
+        UserId   int    <span style="color: #79740e;">`json:"user_id" bson:"user_id"`</span>
+        UserName string <span style="color: #79740e;">`json:"user_name" bson:"user_name"`</span>
+    }
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">&#36755;&#20986;json&#26684;&#24335;</span>
+    u := &amp;<span style="color: #8f3f71;">User</span>{UserId: 1, UserName: <span style="color: #79740e;">"tony"</span>}
+    j, _ := json.<span style="color: #b57614;">Marshal</span>(u)
+    fmt.<span style="color: #b57614;">Println</span>(<span style="color: #b57614;">string</span>(j))
+
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">&#33719;&#21462;tag&#20013;&#30340;&#20869;&#23481;</span>
+    t := reflect.<span style="color: #b57614;">TypeOf</span>(u)
+    field := t.<span style="color: #b57614;">Elem</span>().<span style="color: #b57614;">Field</span>(0)
+    fmt.<span style="color: #b57614;">Println</span>(field.Tag.<span style="color: #b57614;">Get</span>(<span style="color: #79740e;">"json"</span>))
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">&#36755;&#20986;&#65306;user_id</span>
+    fmt.<span style="color: #b57614;">Println</span>(field.Tag.<span style="color: #b57614;">Get</span>(<span style="color: #79740e;">"bson"</span>))
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">&#36755;&#20986;&#65306;user_id</span>
+}
+</pre>
+</div>
+
+<p>
+为了在格式化成json格式时，可以选择合适的健值，在struct属性上增加tag，如果没有tag则显示：
+</p>
+
+<p>
+<code>{"UserId":1,"UserName":"tony"}</code>
+</p></li>
+</ul></li>
+</ul>
+
+
+<ul class="org-ul">
+<li>使用reflect一般分成两步
+<ol class="org-ol">
+<li><p>
+转化成reflect对象
+</p>
+<div class="org-src-container">
+<pre class="src src-go">t := reflect.<span style="color: #b57614;">TypeOf</span>(i)    <span style="color: #a89984;">//</span><span style="color: #a89984;">&#24471;&#21040;&#31867;&#22411;&#30340;&#20803;&#25968;&#25454;,&#36890;&#36807;t&#25105;&#20204;&#33021;&#33719;&#21462;&#31867;&#22411;&#23450;&#20041;&#37324;&#38754;&#30340;&#25152;&#26377;&#20803;&#32032;</span>
+v := reflect.<span style="color: #b57614;">ValueOf</span>(i)   <span style="color: #a89984;">//</span><span style="color: #a89984;">&#24471;&#21040;&#23454;&#38469;&#30340;&#20540;&#65292;&#36890;&#36807;v&#25105;&#20204;&#33719;&#21462;&#23384;&#20648;&#22312;&#37324;&#38754;&#30340;&#20540;&#65292;&#36824;&#21487;&#20197;&#21435;&#25913;&#21464;&#20540;</span>
+</pre>
+</div></li>
+<li><p>
+转化为reflect对象之后我们就可以进行一些操作了
+</p>
+
+<div class="org-src-container">
+<pre class="src src-go">tag := t.<span style="color: #b57614;">Elem</span>().<span style="color: #b57614;">Field</span>(0).Tag  <span style="color: #a89984;">//</span><span style="color: #a89984;">&#33719;&#21462;&#23450;&#20041;&#22312;struct&#37324;&#38754;&#30340;&#26631;&#31614;</span>
+name := v.<span style="color: #b57614;">Elem</span>().<span style="color: #b57614;">Field</span>(0).<span style="color: #b57614;">String</span>()  <span style="color: #a89984;">//</span><span style="color: #a89984;">&#33719;&#21462;&#23384;&#20648;&#22312;&#31532;&#19968;&#20010;&#23383;&#27573;&#37324;&#38754;&#30340;&#20540;</span>
+
+
+<span style="color: #a89984;">// </span><span style="color: #a89984;">&#20462;&#25913;&#30456;&#24212;&#30340;&#20540;</span>
+<span style="color: #9d0006;">var</span> x float64 = 3.4
+p := reflect.<span style="color: #b57614;">ValueOf</span>(&amp;x)
+v := p.<span style="color: #b57614;">Elem</span>()
+v.<span style="color: #b57614;">SetFloat</span>(7.1)
+</pre>
+</div></li>
+</ol></li>
+
+<li>反射三定律：
+
+<ol class="org-ol">
+<li>反射可以将“接口类型变量”转换为“反射类型对象”。</li>
+<li>反射可以将“反射类型对象”转换为“接口类型变量”。</li>
+<li>如果要修改“反射类型对象”，其值必须是“可写的”（settable）</li>
+</ol></li>
+</ul>
+</blockquote>
+</div>
+</div>
+
+<div id="outline-container-org3d6a8bc" class="outline-2">
+<h2 id="org3d6a8bc"><span class="section-number-2">8</span> 并发</h2>
+<div class="outline-text-2" id="text-8">
+<blockquote>
+<ul class="org-ul">
+<li><p>
+goroutine
+</p>
+
+<p>
+goroutine是通过Go的runtime管理的一个线程管理器
+</p>
+
+<p>
+goroutine说到底其实就是协程，但是它比线程更小，十几个goroutine可能体现在底层就是五六个线程
+</p>
+
+<p>
+Go语言内部帮你实现了这些goroutine之间的内存共享。执行goroutine只需极少的栈内存(大概是4~5KB)
+</p>
+
+<p>
+go关键字很方便的就实现了并发编程。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-go"><span style="color: #9d0006;">package</span> main
+
+<span style="color: #9d0006;">import</span> (
+    <span style="color: #79740e;">"fmt"</span>
+    <span style="color: #79740e;">"runtime"</span>
+)
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">say</span>(s <span style="color: #8f3f71;">string</span>) {
+    <span style="color: #9d0006;">for</span> i := 0; i &lt; 3; i++ {
+        runtime.<span style="color: #b57614;">Gosched</span>()
+        fmt.<span style="color: #b57614;">Println</span>(s)
+    }
+}
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">main</span>() {
+    <span style="color: #9d0006;">go</span> <span style="color: #b57614;">say</span>(<span style="color: #79740e;">"world"</span>) <span style="color: #a89984;">//</span><span style="color: #a89984;">&#24320;&#19968;&#20010;&#26032;&#30340;Goroutines&#25191;&#34892;</span>
+    <span style="color: #b57614;">say</span>(<span style="color: #79740e;">"hello"</span>)    <span style="color: #a89984;">//</span><span style="color: #a89984;">&#24403;&#21069;Goroutines&#25191;&#34892;</span>
+}
+</pre>
+</div>
+
+<p>
+上面的多个goroutine运行在同一个进程里面，共享内存数据，不过设计上我们要遵循：不要通过共享来通信，而要通过通信来共享
+</p>
+
+<pre class="example">
+runtime.Gosched()表示让CPU把时间片让给别人,下次某个时候继续恢复执行该goroutine。
+
+默认情况下，在Go 1.5将标识并发系统线程个数的runtime.GOMAXPROCS的初始值由1改为了运行环境的CPU核数
+</pre>
+
+<p>
+<code>runtime.GOMAXPROCS(n)</code> 置了同时运行逻辑代码的系统线程的最大数量,如果n &lt; 1，不会改变当前设置
+</p></li>
+
+<li><p>
+channels
+</p>
+
+<p>
+goroutine运行在相同的地址空间，因此访问共享内存必须做好同步
+</p>
+
+<p>
+Go提供了一个很好的通信机制channel
+</p>
+
+<p>
+可以通过channel发送或者接收值。这些值只能是特定的类型：channel类型
+</p>
+
+<p>
+定义一个channel时，也需要定义发送到channel的值的类型。注意，必须使用 <code>make</code> 创建channel
+</p>
+
+<p>
+channel通过操作符 <code>&lt;-</code> 来接收和发送数据
+</p>
+
+<div class="org-src-container">
+<pre class="src src-go">ci := <span style="color: #af3a03;">make</span>(<span style="color: #9d0006;">chan</span> <span style="color: #8f3f71;">int</span>)
+cs := <span style="color: #af3a03;">make</span>(<span style="color: #9d0006;">chan</span> <span style="color: #8f3f71;">string</span>)
+cf := <span style="color: #af3a03;">make</span>(<span style="color: #9d0006;">chan</span> <span style="color: #9d0006;">interface</span>{})
+
+ch &lt;- v    <span style="color: #a89984;">// </span><span style="color: #a89984;">&#21457;&#36865;v&#21040;channel ch.</span>
+v := &lt;-ch  <span style="color: #a89984;">// </span><span style="color: #a89984;">&#20174;ch&#20013;&#25509;&#25910;&#25968;&#25454;&#65292;&#24182;&#36171;&#20540;&#32473;v</span>
+
+</pre>
+</div>
+
+<p>
+实例：
+</p>
+<div class="org-src-container">
+<pre class="src src-go"><span style="color: #9d0006;">package</span> main
+
+<span style="color: #9d0006;">import</span> <span style="color: #79740e;">"fmt"</span>
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">sum</span>(a []<span style="color: #8f3f71;">int</span>, c <span style="color: #9d0006;">chan</span> <span style="color: #8f3f71;">int</span>) {
+    total := 0
+    <span style="color: #9d0006;">for</span> _, v := <span style="color: #9d0006;">range</span> a {
+        total += v
+    }
+    c &lt;- total  <span style="color: #a89984;">// </span><span style="color: #a89984;">send total to c</span>
+}
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">main</span>() {
+    a := []<span style="color: #8f3f71;">int</span>{7, 2, 8, -9, 4, 0}
+
+    c := <span style="color: #af3a03;">make</span>(<span style="color: #9d0006;">chan</span> <span style="color: #8f3f71;">int</span>)
+    <span style="color: #9d0006;">go</span> <span style="color: #b57614;">sum</span>(a[:<span style="color: #af3a03;">len</span>(a)/2], c)
+    <span style="color: #9d0006;">go</span> <span style="color: #b57614;">sum</span>(a[<span style="color: #af3a03;">len</span>(a)/2:], c)
+    x, y := &lt;-c, &lt;-c  <span style="color: #a89984;">// </span><span style="color: #a89984;">receive from c</span>
+
+    fmt.<span style="color: #b57614;">Println</span>(x, y, x + y)
+}
+</pre>
+</div>
+
+<p>
+默认情况下，channel接收和发送数据都是阻塞的，除非另一端已经准备好，这样就使得Goroutines同步变的更加的简单，而不需要显式的lock。
+</p>
+
+<p>
+所谓阻塞，也就是如果读取（value := &lt;-ch）它将会被阻塞，直到有数据接收。
+</p>
+
+<p>
+其次，任何发送（ch&lt;-5）将会被阻塞，直到数据被读出。非缓冲channel是在多个goroutine之间同步很棒的工具
+</p></li>
+
+<li><p>
+Buffered Channels
+</p>
+
+<p>
+Go也允许指定channel的缓冲大小，很简单，就是channel可以存储多少元素。
+</p>
+
+<p>
+<code>ch:= make(chan bool, 4)</code> ，创建了可以存储4个元素的bool 型channel。
+</p>
+
+<p>
+在这个channel 中，前4个元素可以无阻塞的写入。当写入第5个元素时，代码将会阻塞，直到其他goroutine从channel 中读取一些元素，腾出空间
+</p>
+
+<div class="org-src-container">
+<pre class="src src-go"><span style="color: #a89984;">// </span><span style="color: #a89984;">&#24403; value = 0 &#26102;&#65292;channel &#26159;&#26080;&#32531;&#20914;&#38459;&#22622;&#35835;&#20889;&#30340;&#65292;&#24403;value &gt; 0 &#26102;&#65292;channel &#26377;&#32531;&#20914;&#12289;&#26159;&#38750;&#38459;&#22622;&#30340;&#65292;&#30452;&#21040;&#20889;&#28385; value &#20010;&#20803;&#32032;&#25165;&#38459;&#22622;&#20889;&#20837;&#12290;</span>
+ch := <span style="color: #af3a03;">make</span>(<span style="color: #9d0006;">chan</span> <span style="color: #9d0006;">type</span>, value)
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-go"><span style="color: #9d0006;">package</span> main
+
+<span style="color: #9d0006;">import</span> <span style="color: #79740e;">"fmt"</span>
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">main</span>() {
+    c := <span style="color: #af3a03;">make</span>(<span style="color: #9d0006;">chan</span> <span style="color: #8f3f71;">int</span>, 2) <span style="color: #a89984;">//</span><span style="color: #a89984;">&#20462;&#25913;2&#20026;1&#23601;&#25253;&#38169;&#65292;&#20462;&#25913;2&#20026;3&#21487;&#20197;&#27491;&#24120;&#36816;&#34892;</span>
+    c &lt;- 1
+    c &lt;- 2
+    fmt.<span style="color: #b57614;">Println</span>(&lt;-c)
+    fmt.<span style="color: #b57614;">Println</span>(&lt;-c)
+}
+</pre>
+</div></li>
+
+<li><p>
+Range和Close
+</p>
+
+<div class="org-src-container">
+<pre class="src src-go"><span style="color: #9d0006;">package</span> main
+
+<span style="color: #9d0006;">import</span> (
+    <span style="color: #79740e;">"fmt"</span>
+)
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">fibonacci</span>(n <span style="color: #8f3f71;">int</span>, c <span style="color: #9d0006;">chan</span> <span style="color: #8f3f71;">int</span>) {
+    x, y := 1, 1
+    <span style="color: #9d0006;">for</span> i := 0; i &lt; n; i++ {
+        c &lt;- x
+        x, y = y, x+y
+    }
+    <span style="color: #af3a03;">close</span>(c)
+}
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">main</span>() {
+    c := <span style="color: #af3a03;">make</span>(<span style="color: #9d0006;">chan</span> <span style="color: #8f3f71;">int</span>, 10)
+    <span style="color: #9d0006;">go</span> <span style="color: #b57614;">fibonacci</span>(<span style="color: #af3a03;">cap</span>(c), c)
+    <span style="color: #9d0006;">for</span> i := <span style="color: #9d0006;">range</span> c {
+        fmt.<span style="color: #b57614;">Println</span>(i)
+    }
+}
+</pre>
+</div>
+
+<p>
+生产者通过内置函数 <code>close</code> 关闭channel
+</p>
+
+<p>
+记住应该在生产者的地方关闭channel，而不是消费的地方去关闭它，这样容易引起panic
+</p>
+
+<p>
+另外记住一点的就是channel不像文件之类的，不需要经常去关闭，只有当你确实没有任何发送数据了，或者你想显式的结束range循环之类的
+</p></li>
+
+<li><p>
+Select
+</p>
+
+<p>
+通过select可以监听channel上的数据流动
+</p>
+
+<p>
+select默认是阻塞的，只有当监听的channel中有发送或接收可以进行时才会运行，当多个channel都准备好的时候，select是随机的选择一个执行的
+</p>
+
+<div class="org-src-container">
+<pre class="src src-go"><span style="color: #9d0006;">package</span> main
+
+<span style="color: #9d0006;">import</span> <span style="color: #79740e;">"fmt"</span>
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">fibonacci</span>(c, quit <span style="color: #9d0006;">chan</span> <span style="color: #8f3f71;">int</span>) {
+    x, y := 1, 1
+    <span style="color: #9d0006;">for</span> {
+        <span style="color: #9d0006;">select</span> {
+        <span style="color: #9d0006;">case</span> c &lt;- x:
+            x, y = y, x+y
+        <span style="color: #9d0006;">case</span> &lt;-quit:
+            fmt.<span style="color: #b57614;">Println</span>(<span style="color: #79740e;">"quit"</span>)
+            <span style="color: #9d0006;">return</span>
+        }
+    }
+}
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">main</span>() {
+    c := <span style="color: #af3a03;">make</span>(<span style="color: #9d0006;">chan</span> <span style="color: #8f3f71;">int</span>)
+    quit := <span style="color: #af3a03;">make</span>(<span style="color: #9d0006;">chan</span> <span style="color: #8f3f71;">int</span>)
+    <span style="color: #9d0006;">go</span> <span style="color: #9d0006;">func</span>() {
+        <span style="color: #9d0006;">for</span> i := 0; i &lt; 10; i++ {
+            fmt.<span style="color: #b57614;">Println</span>(&lt;-c)
+        }
+        quit &lt;- 0
+    }()
+    <span style="color: #b57614;">fibonacci</span>(c, quit)
+}
+</pre>
+</div>
+
+<p>
+在select里面还有default语法，select其实就是类似switch的功能，default就是当监听的channel都没有准备好的时候，默认执行的
+</p>
+<div class="org-src-container">
+<pre class="src src-go"><span style="color: #9d0006;">select</span> {
+<span style="color: #9d0006;">case</span> i := &lt;-c:
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">use i</span>
+<span style="color: #9d0006;">default</span>:
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">&#24403;c&#38459;&#22622;&#30340;&#26102;&#20505;&#25191;&#34892;&#36825;&#37324;</span>
+}
+</pre>
+</div></li>
+
+<li><p>
+超时
+</p>
+
+<p>
+有时候会出现goroutine阻塞的情况，那么我们如何避免整个程序进入阻塞的情况呢？我们可以利用select来设置超时，通过如下的方式实现：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-go"><span style="color: #9d0006;">func</span> <span style="color: #b57614;">main</span>() {
+    c := <span style="color: #af3a03;">make</span>(<span style="color: #9d0006;">chan</span> <span style="color: #8f3f71;">int</span>)
+    o := <span style="color: #af3a03;">make</span>(<span style="color: #9d0006;">chan</span> <span style="color: #8f3f71;">bool</span>)
+    <span style="color: #9d0006;">go</span> <span style="color: #9d0006;">func</span>() {
+        <span style="color: #9d0006;">for</span> {
+            <span style="color: #9d0006;">select</span> {
+                <span style="color: #9d0006;">case</span> v := &lt;- c:
+                    <span style="color: #af3a03;">println</span>(v)
+                <span style="color: #9d0006;">case</span> &lt;- time.<span style="color: #b57614;">After</span>(5 * time.Second):
+                    <span style="color: #af3a03;">println</span>(<span style="color: #79740e;">"timeout"</span>)
+                    o &lt;- <span style="color: #8f3f71;">true</span>
+                    <span style="color: #9d0006;">break</span>
+            }
+        }
+    }()
+    &lt;- o
+}
+
+</pre>
+</div></li>
+
+<li><p>
+runtime goroutine
+</p>
+
+<p>
+runtime包中有几个处理goroutine的函数：
+</p>
+
+<ul class="org-ul">
+<li><p>
+Goexit
+</p>
+
+<p>
+退出当前执行的goroutine，但是defer函数还会继续调用
+</p></li>
+
+<li><p>
+Gosched
+</p>
+
+<p>
+让出当前goroutine的执行权限，调度器安排其他等待的任务运行，并在下次某个时候从该位置恢复执行。
+</p></li>
+
+<li><p>
+NumCPU
+</p>
+
+<p>
+返回 CPU 核数量
+</p></li>
+
+<li><p>
+NumGoroutine
+</p>
+
+<p>
+返回正在执行和排队的任务总数
+</p></li>
+
+<li><p>
+GOMAXPROCS
+</p>
+
+<p>
+用来设置可以并行计算的CPU核数的最大值，并返回之前的值。
+</p></li>
+</ul></li>
+</ul>
+</blockquote>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p>
-    <a href="">manue1</a> 搭建和维护，使用
-    <a href="https://www.gnu.org/software/emacs/">Emacs</a>
-    <a href="http://orgmode.org/">Org mode</a> 编辑和构建
+    <a href="">manue1</a> © 2006-2019 powered by
+    <a href="https://www.gnu.org/software/emacs/">emacs</a> 
+    <a href="http://orgmode.org/">org-mode</a>
 </p>
 <script src="https://www.manue1.site/css/jquery-2.1.3.min.js"></script>
 <script src="https://www.manue1.site/css/main.js"></script>
