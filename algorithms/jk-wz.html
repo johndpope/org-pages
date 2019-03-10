@@ -6,7 +6,7 @@
 <!-- 2019-03-11 Mon 01:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>期货 期权 及其衍生产品</title>
+<title>&lrm;</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="manue1" />
 <style type="text/css">
@@ -228,6 +228,28 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -248,188 +270,156 @@ for the JavaScript code in this tag.
 </div>
 </div>
 <div id="content">
-<h1 class="title">期货 期权 及其衍生产品</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org616855d">1. options,futures and other derivatives</a>
+<li><a href="#org199da17">1. 复杂度分析</a>
 <ul>
-<li><a href="#orgfeacf21">1.1. 引言</a></li>
+<li><a href="#org5fbdf34">1.1. <b>大O复杂度表示法</b></a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org616855d" class="outline-2">
-<h2 id="org616855d"><span class="section-number-2">1</span> options,futures and other derivatives</h2>
+<p>
+#+TITLE 数据结构与算法之美
+</p>
+
+<p>
+这里记录下学习王铮的数据结构与算法之美系列的笔记
+</p>
+
+<div id="outline-container-org199da17" class="outline-2">
+<h2 id="org199da17"><span class="section-number-2">1</span> 复杂度分析</h2>
 <div class="outline-text-2" id="text-1">
 <p>
-期权 期货 及其他衍生产品
+数据结构和算法是相辅相成的。数据结构是为算法服务的，算法要作用在特定的数据结构之上。 
+</p>
+
+<p>
+数据结构是静态的，它只是组织数据的一种方式
+</p>
+
+<p>
+想要学习数据结构与算法，首先要掌握一个数据结构与算法中最重要的概念——复杂度分析。
 </p>
 </div>
-<div id="outline-container-orgfeacf21" class="outline-3">
-<h3 id="orgfeacf21"><span class="section-number-3">1.1</span> 引言</h3>
+
+<div id="outline-container-org5fbdf34" class="outline-3">
+<h3 id="org5fbdf34"><span class="section-number-3">1.1</span> <b>大O复杂度表示法</b></h3>
 <div class="outline-text-3" id="text-1-1">
-<ul class="org-ul">
-<li>交易所市场
-<ul class="org-ul">
-<li>1848年 芝加哥交易所开发了最初的期货类合约</li>
-<li>1973年 芝加哥期权交易所定义期权合约,开始交易
-期权标的资产包括:外汇,期货合约以及股票和股指</li>
-<li>高频交易 算法交易
-电子交易已经成为衍生产品市场的一个重要特色</li>
-<li><p>
-2008 雷曼破产
-雷曼破产的原因:高杠杆,高风险投资以及流动性问题
+<p>
+表示代码执行时间随数据规模增长的变化趋势，所以，也叫作渐进时间复杂度(asymptotic time complexity)，简称时间复杂度
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #8f3f71;">int</span> <span style="color: #b57614;">cal</span>(<span style="color: #8f3f71;">int</span> <span style="color: #076678;">n</span>) {
+   <span style="color: #8f3f71;">int</span> <span style="color: #076678;">sum</span> = 0;
+   <span style="color: #8f3f71;">int</span> <span style="color: #076678;">i</span> = 1;
+   <span style="color: #8f3f71;">int</span> <span style="color: #076678;">j</span> = 1;
+   <span style="color: #9d0006;">for</span> (; i &lt;= n; ++i) {
+     <span style="color: #9d0006;">for</span> (; j &lt;= n; ++j) {
+     }
+   }
+ }
+</pre>
+</div>
+
+<p>
+T(n) = (2n<sup>2</sup>+2n+3)*unit<sub>time</sub>
 </p>
 
 <p>
-杠杆比率高达31:1,资产跌价3%~4%就会消耗掉这个银行的本金
+所有代码的执行时间T(n)与每行代码的执行次数n成正比
 </p>
 
 <p>
-雷曼运作过于依赖短期债务,贷款人拒绝将贷款延期,导致破产
-</p></li>
-<li>系统风险
-金融系统中,A公司破产导致B公司巨大损失破产,多米诺骨牌</li>
-</ul></li>
-<li>场外市场
-<ul class="org-ul">
-<li>中央交易对手
-同交易所的清算中心,使交易双方不需要顾虑对手的违约行为</li>
-<li><a href="http://www.bis.org">国际清算银行</a></li>
-</ul></li>
-<li>远期合约
-<ul class="org-ul">
-<li>远期合约定义
-在将来某一指定时刻以约定价格买入或卖出某一产品的合约</li>
-<li>即期合约
-立刻就要买入或卖出资产的合约</li>
-<li>一般远期合约常是金融机构于客户之间在场外的交易</li>
-<li>多头
-将来在某一时刻以约定价格买入资产的一方 称为持有多头寸,简称:多头</li>
-<li>空头
-将来在某一时刻以约定价格卖出资产的一方 称为持有空头寸,简称:空头</li>
-</ul></li>
-<li>期货合约
-<ul class="org-ul">
-<li><p>
-期货合约定义
-与远期合约类似，期货合约也是在将来某一指定时刻以约定价格买入卖出某产品的合约
+例子中的T(n) = O(2n<sup>2</sup>+2n+3)。这就是大O时间复杂度表示法
 </p>
 
 <p>
-期货合约交易是在交易所进行的
+<b>时间复杂度计算方式</b>:
 </p>
 
 <p>
-期货交易双方不一定知道交易对手
-</p></li>
-
-<li><p>
-期货的标
-期货交易的标的资产包括各种商品和金融资产
+1.只关注循环执行次数最多的一段代码
 </p>
 
 <p>
-商品包括:猪肉,羊毛,黄铜,铝  
+2.加法法则:总复杂度等于量级最大的那段代码的复杂度
 </p>
 
 <p>
-金融资产包括:股指,货币和国债
-</p></li>
-
-<li><p>
-期权合约类型
-期权产品可以分为两种基本类型:
+<b>常见时间复杂度</b>
 </p>
+
+
+<div class="figure">
+<p><img src="../images/screenshot/20190222181740.png" alt="20190222181740.png" width="60%" height="60%" />
+</p>
+</div>
+
+<p>
+非多项式(NP)量级只有两个:O(2<sup>n</sup>)和O(n!)
+</p>
+
+<p>
+当数据规模n越来越大时，非多项式量级算法的执行时间会急剧增加，求解问题的执行时间会无限增长。
+所以，非多项式时间复杂度的算法其实是非常低效的算法。因此，关于NP时间复杂度我就不展开讲了。
+我们主要来看几种常见的多项式时间复杂度
+</p>
+
 <ol class="org-ol">
-<li>看涨期权
-看涨期权的持有者有权在将来某一特定时间以某一价格卖出某种资产</li>
-<li>看跌期权
-看涨期权的持有者有权在将来某一特定时间以某一价格买入某种资产</li>
+<li><p>
+O(1)
+</p>
+
+<p>
+O(1)只是常量级时间复杂度的一种表示方法
+</p></li>
+
+<li><p>
+O(logn)、O(nlogn)
+</p>
+
+<p>
+对数阶时间复杂度非常常见，同时也是最难分析的一种时间复杂度
+</p>
+
+<p>
+例如:
+</p>
+<div class="org-src-container">
+<pre class="src src-java">i=1;
+<span style="color: #9d0006;">while</span> (i &lt;= n)  {
+    i = i * 2;
+}
+</pre>
+</div>
+
+<pre class="example">
+2^0  2^1  2^2 ... 2^x  
+
+</pre>
+
+<p>
+2<sup>x</sup> &gt; n 时结束循环,函数体执行了x次
+</p>
+
+<p>
+x = log2<sup>n</sup>
+</p>
+
+<p>
+\sqrt[n]
+</p></li>
 </ol>
-<p>
-也可以分为:
-</p>
+
+
 <ol class="org-ol">
-<li>美式期权
-是指期权持有人在到期日之前任何时间都可以选择行使期权</li>
-
-<li>欧式期权
-是指期权持有人只能在到期日可以选择行使期权</li>
-</ol></li>
-</ul></li>
-<li>交易员的种类
-<ul class="org-ul">
-<li>市场据有极强的流动性,吸引了不同类型的交易员</li>
-
-<li>交易员分类
-<ol class="org-ol">
-<li>对冲者
-来减少自己所面临的由于市场变化而产生的风险</li>
-<li>投机者
-对今后市场变量的走向下赌注</li>
-<li>套利者
-采用两个和更多互相抵消的交易来锁定盈利</li>
-</ol></li>
-</ul></li>
-<li>对冲基金类型
-<ul class="org-ul">
-<li>股票多空对冲
-组合:买入价格被市场低估的股票和卖出价格被市场高估的股票</li>
-
-<li>可转换债券套利
-进入可转换债券的多头以及标的股票的空头,并以动态形式管理标的股票的空头</li>
-
-<li>受压(高风险)债券
-买入濒临破产企业的证券</li>
-
-<li>兼并套利
-在兼并和收购消息公布后进行交易,当并购交易成功后,可以达到盈利的目的</li>
-</ul></li>
-<li>对冲者
-利用远期合约和期权来减少面临的风险
-<ol class="org-ol">
-<li>利用远期合约进行对冲
-<ul class="org-ul">
-<li><p>
-对冲背景
-A进口公司2013年5月6日得知,在2013年8月6日需要向B公司支付1000W英镑
-</p>
-
-<p>
-买入3个月远期合约:  汇率1.5538 * 1000万英镑
-</p>
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-right" />
-
-<col  class="org-right" />
-
-<col  class="org-right" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-right">汇率</th>
-<th scope="col" class="org-right">买入</th>
-<th scope="col" class="org-right">总价</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-right">1.5538</td>
-<td class="org-right">10000000</td>
-<td class="org-right">15538000</td>
-</tr>
-</tbody>
-</table></li>
-</ul></li>
-</ol></li>
-</ul>
+<li></li>
+</ol>
 </div>
 </div>
 </div>
