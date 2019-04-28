@@ -1,5 +1,94 @@
 #+TITLE: Question & Answer
 * Question & Answer
+** TODO [2019-04-28 Sun] centos yum 离线安装
+   #+BEGIN_QUOTE
+   SCHEDULED: <2019-04-28 Sun 15:48>
+
+  CentOS利用yum下载好rpm包，并离线安装
+
+  yum-config-manager --add-repo https://mirrors.ustc.edu.cn/docker-ce/linux/centos/docker-ce.repo
+
+  yum search docker-ce
+
+  yum install --downloadonly --downloaddir=/tmp/docker_repo/ docker-ce
+ 
+  1、联网安装好rpm包，并将下载好的包备好
+  #yum install --downloadonly --downloaddir=/home/samba  samba
+  其中samba 是要用yum安装的安装包，/home/samba是要存放下载的yum安装包及其依赖包的保存路径
+   
+  2、离线的机器上，在rpm所在的文件夹内，执行以下脚本
+  #rpm -Uvh --force --nodeps *.rpm
+ 
+   #+END_QUOTE
+** TODO [2019-04-27 Sat] mac 下制作win10 usb启动盘
+   #+BEGIN_QUOTE
+   SCHEDULED: <2019-04-27 Sat 02:26>
+ 
+   https://www.joshbeam.com/2017/11/23/making-a-bootable-windows-10-usb-drive-on-macos-high-sierra/
+
+   diskutil eraseDisk MS-DOS "WINDOWS10" MBR disk#
+
+   cp -rp /Volumes/CCCOMA_X64FRE_EN-US_DV9/* /Volumes/WINDOWS10/
+
+   #+END_QUOTE
+** TODO [2019-04-06 Sat] systemd 配置自启动服务
+   #+BEGIN_QUOTE
+   SCHEDULED: <2019-04-06 Sat 15:59>
+
+   #+BEGIN_SRC 
+[Unit]
+Description=Shadowsocks Server
+After=network.target
+
+[Service]
+PermissionsStartOnly=true
+ExecStart=/usr/local/bin/ssserver -c /etc/shadowsocks.json
+Restart=on-abort
+[Install]
+WantedBy=multi-user.target
+   #+END_SRC
+ 
+   #+END_QUOTE
+** TODO [2019-03-27 Wed] google/protobuf 
+   #+BEGIN_QUOTE
+   SCHEDULED: <2019-03-27 Wed 22:48>
+ 
+   #+END_QUOTE
+** TODO [2019-03-22 Fri] 系统梳理shell知识点
+   #+BEGIN_QUOTE
+   SCHEDULED: <2019-03-22 Fri 22:24>
+ 
+   #+END_QUOTE
+** TODO [2019-03-22 Fri] 寻找一款mac下好用的流程图工具
+   #+BEGIN_QUOTE
+   SCHEDULED: <2019-03-22 Fri 21:49>
+ 
+   #+END_QUOTE
+** TODO [2019-03-08 Fri] 如何将markdown转为org-mode
+   #+BEGIN_QUOTE
+   SCHEDULED: <2019-03-08 Fri 18:24>
+
+   : pandoc -f markdown -t org -o newfile.org original-file.markdown
+
+   =pandoc= 支持多种转换形式
+ 
+   #+END_QUOTE
+** TODO [2019-02-26 Tue] 通过douban sub id 获取imdb 评分
+   #+BEGIN_QUOTE
+   SCHEDULED: <2019-02-26 Tue 17:32>
+   
+   海报图片、评分、 图片信息如何展示在电报
+   #+END_QUOTE
+** TODO [2019-02-26 Tue] topk问题
+   #+BEGIN_QUOTE
+   SCHEDULED: <2019-02-28 Thu 09:54>
+ 
+   #+END_QUOTE
+** TODO [2019-02-23 Sat] 截图自动上传到图床
+   #+BEGIN_QUOTE
+   SCHEDULED: <2019-02-23 Sat 20:46>
+ 
+   #+END_QUOTE
 ** DONE [2019-02-19 Tue] org-mode 内直接运行go代码块
    CLOSED: [2019-02-19 Tue 17:52]
    - State "DONE"       from "TODO"       [2019-02-19 Tue 17:52]
@@ -480,11 +569,13 @@ https://wdicc.com/emacs-as-python-ide/
   #+END_QUOTE
 
 ** TODO 2019年度计划
-   DEADLINE: <2018-12-31 Mon>
+   SCHEDULED: <2019-03-12 Tue .+1d>
+   
    1. 每月坚持读完一本技术书籍,每天都要读书
    2. 每周坚持锻炼一次,早睡早起,避免过劳死
    3. 每周听一个专辑,看两部电影,同步更新sync
    4. 每月抽出时间出去游玩一次
+   5. 掌握一门新的语言go
 
 ** DONE how to hook pomodoro
    CLOSED: [2018-12-28 Fri 13:17]
@@ -856,10 +947,8 @@ sudo systemctl enable teamviewerd
    #+END_VERSE
 
    #+END_QUOTE
-** TODO 推荐系统引擎 apache mahout  
-   SCHEDULED: <2019-01-29 Wed>
 ** TODO org-mode 导出中文pdf文件
-   SCHEDULED: <2019-01-29 Wed>
+   SCHEDULED: <2019-04-10 Wed>
 ** DONE 如何publish的时候直接push html到发布分支? 
    CLOSED: [2019-01-11 Fri 10:05] SCHEDULED: <2019-01-19 Sat>
    - State "DONE"       from "TODO"       [2019-01-11 Fri 10:05]

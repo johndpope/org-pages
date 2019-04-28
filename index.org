@@ -1,10 +1,5 @@
 #+BEGIN_CENTER
-On the Internet, nobody knows you're a dog. 
-#+END_CENTER
-
-#+BEGIN_CENTER
-#+ATTR_HTML: :width 30% :height 30% 
-[[file:images/screenshot/20190124120204.png]]
+=On the Internet, nobody knows you're a dog.=
 #+END_CENTER
 
 

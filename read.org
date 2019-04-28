@@ -1,48 +1,60 @@
 #+TITLE: Reading List
 
 * Reading List
-** TODO [2019-02-18 Mon]  build-web-application-with-golang
+** TODO [2019-03-27 Wed]  gRPC学习
+   #+BEGIN_QUOTE
+   SCHEDULED: <2019-03-27 Wed .+1d>
+
+   http://doc.oschina.net/grpc?t=60133
+  
+   #+END_QUOTE
+** TODO [2019-01-13 Sun] [[https://facert.gitbooks.io/python-data-structure-cn/][Problem Solving with Algorithms and Data Structures using Python]] 
+   #+BEGIN_QUOTE
+   SCHEDULED: <2019-01-13 Sun .+1d>
+  
+
+   https://facert.gitbooks.io/python-data-structure-cn/
+
+   #+END_QUOTE
+
+** DONE [2019-02-18 Mon]  build-web-application-with-golang
+   CLOSED: [2019-03-11 Mon 01:27]
    :PROPERTIES:
-   :LAST_REPEAT: [2019-02-19 Tue 17:07]
+   :LAST_REPEAT: [2019-03-11 Mon 01:27]
    :END:
+   - State "DONE"       from "TODO"       [2019-03-11 Mon 01:27]
+   - State "DONE"       from "TODO"       [2019-03-11 Mon 01:27]
    - State "DONE"       from "TODO"       [2019-02-19 Tue 17:07]
    #+BEGIN_QUOTE
-   SCHEDULED: <2019-02-20 Wed .+1d>
+
+   前两章写go基础 着实不错
   
    https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/preface.md
 
    #+END_QUOTE
 ** TODO [2019-01-15 Tue] A Byte of Python 
+   SCHEDULED: <2019-03-27 Wed .+1d>
    #+BEGIN_QUOTE
-   SCHEDULED: <2019-01-15 Tue .+1d>
 
    en : https://python.swaroopch.com/
 
    cn : https://bop.mol.uno/
   
    #+END_QUOTE
-** TODO [2019-01-13 Sun] [[file:note/python-gevent.org][gevent程序员指南]]
+** DONE [2019-01-13 Sun] [[file:note/python-gevent.org][gevent程序员指南]]
+   CLOSED: [2019-03-11 Mon 01:26]
    :PROPERTIES:
-   :LAST_REPEAT: [2019-01-22 Tue 12:21]
+   :LAST_REPEAT: [2019-03-11 Mon 01:25]
    :END:
+   - State "DONE"       from "TODO"       [2019-03-11 Mon 01:26]
+   - State "DONE"       from "TODO"       [2019-03-11 Mon 01:25]
    - State "DONE"       from "TODO"       [2019-01-22 Tue 12:21]
    - State "DONE"       from "TODO"       [2019-01-15 Tue 12:39]
    - State "DONE"       from "TODO"       [2019-01-14 Mon 10:05]
    #+BEGIN_QUOTE
-   SCHEDULED: <2019-01-23 Wed .+1d>
   
 
    http://hhkbp2.github.io/gevent-tutorial/
-
-   #+END_QUOTE
-** TODO [2019-01-13 Sun] [[https://facert.gitbooks.io/python-data-structure-cn/][Problem Solving with Algorithms and Data Structures using Python]] 
-   #+BEGIN_QUOTE
-   SCHEDULED: <2019-01-13 Sun .+1d>
-  
-   #+ATTR_HTML: :width 30% :height 30% 
-   [[file:images/screenshot/20190113043046.png]]
-
-   https://facert.gitbooks.io/python-data-structure-cn/
 
    #+END_QUOTE
 ** DONE [2019-01-13 Sun] [[https://www.liaoxuefeng.com/][廖雪峰博客-python]] 
@@ -57,7 +69,7 @@
    博客内容主要时python基础,条理很清晰. 特别适合初学者学习python
    #+END_QUOTE
 ** TODO [[https://book.douban.com/subject/10432347/][算法]]  
-   SCHEDULED:<2019-02-20 Mon ++1d>
+   SCHEDULED: <2019-04-20 Sat ++1d>
    :PROPERTIES:
    :LAST_REPEAT: [2019-01-13 Sun 00:32]
    :END:
@@ -70,37 +82,37 @@
    - State "DONE"       from "TODO"       [2018-10-27 Sat 14:50]
    - State "DONE"       from "TODO"       [2018-10-26 Fri 18:46]
      
-   #+ATTR_HTML: :width 30% :height 30% 
-   [[./images/book-sf.jpg]]
-** SOMEDAY [[file:note/note-options.org][期权、期货及其衍生产品]] 
+** TODO [[file:note/note-options.org][期权、期货及其衍生产品]] 
+   SCHEDULED: <2019-04-05 Fri ++1d>
    :PROPERTIES:
    :LAST_REPEAT: [2018-12-03 Mon 16:30]
    :END:
+   - State "TODO"       from "SOMEDAY"    [2019-03-11 Mon 01:28]
    - State "DONE"       from "TODO"       [2018-12-03 Mon 16:30] \\
+     #+BEGIN_QUOTE
      一本期货教科书
-   #+ATTR_HTML: :width 30% :height 30% 
-   [[./images/book-options.jpg]]
+     #+END_QUOTE
 ** DONE [[https://book.douban.com/subject/26979890/][算法图解]] 
    CLOSED: [2018-10-27 Sat 14:35]
 
    - State "DONE"       from "TODO"       [2018-10-27 Sat 14:35]
-   #+ATTR_HTML: :width 30% :height 30% 
-   [[./images/book-sftj.jpg]]
+     #+BEGIN_QUOTE
+     很适合入门的一本算法，图解，有趣
+     #+END_QUOTE
 
-   很适合入门的一本算法，图解，有趣
 ** DONE [[https://book.douban.com/subject/5916234/][番茄工作法]] 
    CLOSED: [2017-02-20 Mon 04:47]
-   #+ATTR_HTML: :width 30% :height 30% 
-   [[./images/book-fqgzf.jpg]]
-   
+   #+BEGIN_QUOTE
    很有效的量化工作，和提高工作效率的工作法,一直强迫自己使用emacs的番茄钟细化工作
-
+   #+END_QUOTE
+   
 ** DONE [[https://book.douban.com/subject/2338699/][卡耐基人际交往心理学]]
    CLOSED: [2018-12-03 Mon 16:18]
    
    - State "DONE"       from "TODO"       [2018-12-03 Mon 16:18]
-   #+ATTR_HTML: :width 30% :height 30% 
-   [[./images/book-knj.jpg]]
+
+
+   #+BEGIN_QUOTE
 
    工作中遇到瓶颈的时候，准备找本心理学的书读读，结果读完，发现是本成功学!
    
@@ -110,7 +122,6 @@
    犯过的一些认为学要改正的蠢事
 
    能回想起来对自己有价值的内容，也记录下:
-   #+BEGIN_QUOTE
    1. 勇于承认过错
    2. 空杯心态，低调做自己
    3. 事事无须追求完美，图曾烦恼
@@ -123,16 +134,12 @@
 ** DONE [[file:note/note-jvm.org][深入理解Java虚拟机]]
    CLOSED: [2018-12-03 Mon 16:36]
    - State "DONE"       from "TODO"       [2018-12-03 Mon 16:36]
-   #+ATTR_HTML: :width 30% :height 30% 
-   [[./images/book-jvm.jpg]]
 ** TODO [[https://book.douban.com/subject/30155731/][算法之美]]
-   SCHEDULED: <2019-03-13 Sun>
+   #+BEGIN_QUOTE
+
    一本指导工作与生活的算法,将复杂的算法应用于决策生活
 
    又是一本意料之外的书,不过还可以,休闲读物
-   #+ATTR_HTML: :width 30% :height 30% 
-   [[./images/book-sfzm.jpg]]   
-   #+BEGIN_QUOTE
 1.在测试前37%样本前，不要轻易下结论
    #+END_QUOTE
 

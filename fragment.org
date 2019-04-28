@@ -1,6 +1,10 @@
 #+TITLE: Knowledge Fragment
 
 * Knowledge Fragment
+- [2019-03-11 Mon] 
+  #+BEGIN_QUOTE
+  查理·芒格曾经说的：“你需要的不是大量的行动，而是大量的耐心。 
+  #+END_QUOTE
 - [2019-01-25 Fri] 
   #+BEGIN_QUOTE
   勒维恩说，“如果一首歌既不是新歌也不会过时，那它就是民谣”  -- 科恩兄弟

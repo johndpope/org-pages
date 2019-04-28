@@ -6,12 +6,11 @@
    
      db.smrt.ensureIndex({"ip":1})
       
-   2.聚合出字段种类
+   2. 聚合出字段种类
 
      db.smrt.distinct("tags")
 
      db.all_iocs.find({"malicious_family":{$size:3}})
-   3. 
       db.ip_history_v1.find({"insert_time":{"$gte":1496357774,"$lte":1496357775}})
       db.ip_history_v1.find({"insert_time":{"$gte":1498037117,"$lte":1498037119}})
       db.ip_history_v1.find({"history":{"$elemMatch":{"source":"emergingthreats.net"}}})
@@ -21,3 +20,4 @@
       db.ip_history_v1.find({"history":{"$elemMatch":{"insertime":{"$gte":"1509840000","$lte":"1509926400"}}}})
 
       
+3. 创建用户名密码

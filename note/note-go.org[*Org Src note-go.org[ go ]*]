@@ -1,0 +1,31 @@
+package main
+
+import (
+	"fmt"
+)
+
+// MalicioustypeMap ...
+func MalicioustypeMap(args) string {
+	var malice_type = map[string]string{
+		"僵尸网络":      "0",
+		"勒索软件":      "1",
+		"KNOWN APT": "2",
+		"黑市工具":      "3",
+		"远控木马":      "4",
+		"窃密木马":      "5",
+		"网络蠕虫":      "6",
+		"流氓推广":      "7",
+		"其他事件":      "8",
+	}
+	return malice_type.Get(args)
+}
+
+func main() {
+
+	s := "其他事件"
+
+	res := MalicioustypeMap(s)
+
+	fmt.Println(res)
+
+}

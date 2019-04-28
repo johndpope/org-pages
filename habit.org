@@ -1,7 +1,40 @@
 #+TITLE: Habit 
 
+* TODO [2019-03-11 Mon] Algorithm Promodoro
+SCHEDULED: <2019-03-11 Mon .+1d>
+:PROPETIES:
+:CREATED: [2019-03-11 Mon 01:40]
+
+:STYLE: habit
+
+:REPEAT_TO_STATE: TODO
+
+:LOGGING: DONE(!)
+
+:ARCHIVE: %%s_archive::* Habits
+
+:END:
+[2019-03-11 Mon 01:40]
+
+* TODO [2019-03-11 Mon] Go Promodoro
+SCHEDULED: <2019-03-11 Mon .+1d>
+:PROPETIES:
+:CREATED: [2019-03-11 Mon 01:40]
+
+:STYLE: habit
+
+:REPEAT_TO_STATE: TODO
+
+:LOGGING: DONE(!)
+
+:ARCHIVE: %%s_archive::* Habits
+
+:END:
+[2019-03-11 Mon 01:40]
+
 * TODO [2019-01-24 Thu] 豆瓣评分9.0以上专辑聆听
-SCHEDULED: <2019-01-31 Thu .+1w>
+  SCHEDULED: <2019-03-11 Mon .+1w>
+
 :PROPERTIES:
 :LAST_REPEAT: [2019-01-24 Thu 12:54]
 :END:
@@ -42,7 +75,11 @@ SCHEDULED: <2019-01-31 Thu .+1w>
 [2019-01-24 Thu 12:53]
 
 * TODO [2019-01-23 Wed] [[file:note/python.org][Python Promodoro]]
-SCHEDULED: <2019-01-23 Wed .+1d>
+SCHEDULED: <2019-03-12 Tue .+1d>
+:PROPERTIES:
+:LAST_REPEAT: [2019-03-11 Mon 01:17]
+:END:
+- State "DONE"       from "TODO"       [2019-03-11 Mon 01:17]
 :PROPETIES:
 :CREATED: [2019-01-23 Wed 18:21]
 
@@ -58,7 +95,8 @@ SCHEDULED: <2019-01-23 Wed .+1d>
 [2019-01-23 Wed 18:21]
 
 * TODO emotional control
-SCHEDULED: <2019-02-21 Thu .+1d>
+  SCHEDULED: <2019-03-11 Sun .+1d>
+
 :PROPERTIES:
 :LAST_REPEAT: [2019-02-20 Wed 10:06]
 :END:

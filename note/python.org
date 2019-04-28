@@ -1,6 +1,22 @@
 #+TITLE: Python Promodoro
 
 * Python Promodoro
+** [2019-04-26 Fri] pip离线下载安装python包
+   #+BEGIN_QUOTE
+  1. 有网环境下载离线文件
+
+     pip  download  Pillow   -d . --trusted-host pypi.douban.com -i http://pypi.douban.com/simple
+
+  2. 无网环境使用离线文件安装包
+
+
+     $ pip install --no-index --find-links="/tmp/tranferred_packages" <package>
+ 
+
+     $ pip install --no-index --find-links="/tmp/tranferred_packages" -r requirements.txt
+
+  
+   #+END_QUOTE
 ** [2018-12-30 Sun 14:36] python Context managers
    #+BEGIN_QUOTE
    

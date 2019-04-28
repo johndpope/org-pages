@@ -1,0 +1,403 @@
+#+TITLE: 中国股市行情分析笔记
+* stock source
+** 雪球接口
+
+- 股票代码数据接口
+
+  [[https://xueqiu.com/stock/quote_order.json?page=1&size=1000&order=desc&exchange=CN&stockType=sza&orderBy=percent&column=symbol,name][深圳A股代码获取接口]]
+  
+  [[https://xueqiu.com/stock/quote_order.json?page=1&size=1000&order=desc&exchange=CN&stockType=cyb&orderBy=percent&column=symbol,name][创业板代码获取接口]]
+  
+  [[https://xueqiu.com/stock/quote_order.json?page=1&size=1000&order=desc&exchange=CN&stockType=sha&orderBy=percent&column=symbol,name][上海A股代码获取接口]]
+  
+- [[https://stock.xueqiu.com/v5/stock/quote.json?symbol=SH603880&extend=detail][单只股票实时交易接口]]
+ 
+  具体交易字段对应表如下
+
+  | symbol               |          SZ000651 |              |
+  | code                 |            000651 |              |
+  | exchange             |                SZ |              |
+  | name                 |          格力电器 |              |
+  | type                 |                11 |              |
+  | sub_type             |                 1 |              |
+  | status               |                 1 |              |
+  | current              |              40.6 | 当前价格     |
+  | currency             |               CNY |              |
+  | percent              |             -0.76 | 涨跌幅 %     |
+  | chg                  |             -0.31 | 涨跌幅       |
+  | timestamp            |     1535612643000 |              |
+  | time                 |     1535612643000 |              |
+  | lot_size             |               100 |              |
+  | tick_size            |              0.01 |              |
+  | open                 |             40.99 | 今开         |
+  | last_close           |             40.91 | 昨收         |
+  | high                 |             41.39 | 最高         |
+  | low                  |              39.9 | 最低         |
+  | avg_price            |            40.666 | 散户平均     |
+  | volume               |          48278906 | 成交量       |
+  | amount               |   1.96332474448E9 | 成交额       |
+  | turnover_rate        |              0.81 | 换手         |
+  | amplitude            |              3.64 | 振幅         |
+  | market_capital       |                2. | 总市值       |
+  | float_market_capital |  2.42374520343E11 | 流通值       |
+  | total_shares         |        6015730878 | 总股本       |
+  | float_shares         |        5969815772 | 流通股       |
+  | issue_date           |      848246400000 |              |
+  | lock_set             |              null |              |
+  | high52w              |              58.7 | 52周最高     |
+  | low52w               |             36.42 | 52周最低     |
+  | limit_up             |              45.0 | ×            |
+  | limit_down           |             36.82 | ×            |
+  | volume_ratio         |              1.21 | 量比         |
+  | eps                  |              4.28 | 每股收益     |
+  | pe_ttm               |             9.483 | 市盈率       |
+  | pe_forecast          |             9.536 | 市盈率（动） |
+  | pe_lyr               |            10.903 | 市盈率（静） |
+  | navps                |             11.79 | 每股净资产   |
+  | pb                   |             3.444 | 市净率       |
+  | dividend             |              null |              |
+  | dividend_yield       |             4.636 | 委比  %      |
+  | profit               | 2.240157620494E10 |              |
+  | profit_four          | 2.575529336861E10 |              |
+  | profit_forecast      |   2.5612400927E10 |              |
+  |                      |                   |              |
+  |                      |                   |              |
+  |                      |                   |              |
+** 东方财富网接口
+
+   [[http://nufm.dfcfw.com/EM_Finance2014NumericApplication/JS.aspx?type=CT&cmd=3001012&sty=CTBF&st=z&sr=&p=&ps=&cb=var%20pie_data=&js=(x)&token=28758b27a75f62dc3065b81f7facb365&_=1497258906443][获取主力买入排行的接口]]
+   
+   获取主力偏好的股票代码，减少股票过滤样本
+
+   1. 主力资金流向
+ 
+    http://data.eastmoney.com/zjlx/list.html
+ 
+    http://data.eastmoney.com/zjlx/detail.html
+ 
+    http://nufm.dfcfw.com/EM_Finance2014NumericApplication/JS.aspx?type=ct&st=(BalFlowNetRate)&sr=-1&p=1&ps=50&js=var FcQDTvYs={pages:(pc),date:%222014-10-22%22,data:[(x)]}&token=894050c76af8597a853f5b408b759f5d&cmd=C._AB&sty=DCFFITA&rt=51124918
+ 
+   |  0 | 股票类型 无用       |   |
+   |----+---------------------+---|
+   |  1 | 股票id              |   |
+   |  2 | 股票名称            |   |
+   |  3 | 最新价格            |   |
+   |  4 | 今日涨跌幅          |   |
+   |  5 | 今日主力净流入资金  |   |
+   |  6 | 今日主力净流入占比  |   |
+   |  7 | 今日超大单净流 资金 |   |
+   |  8 | 占比                |   |
+   |  9 | 今日大单净流入      |   |
+   | 10 | 占比                |   |
+   | 11 | 今日中单净流入      |   |
+   | 12 | 占比                |   |
+   | 13 | 今日小单净流入      |   |
+   | 14 | 占比                |   |
+   | 15 | 日期                |   |
+   | 16 | weizhi              |   |                                                  
+   2. 单只股票主力 30 日主力 大单小单占比
+     http://ff.eastmoney.com/EM_CapitalFlowInterface/api/js?type=hff&rtntype=2&acces_token=1942f5da9b46b069953c873404aad4b5&js=({data:[(x)]})&cb=var%20zlzjLsData=&check=TMLBMSPROCR&id=3003102&style=top&num=31
+     
+     2018-08-13,3068.4965,32.3%,1705.6208,17.95%,1362.8757,14.34%,-1093.2954,-11.51%,-1975.201,-20.79%,5.28,10.0%
+    |  0 | 日期            |   |
+    |----+-----------------+---|
+    |  1 | 今日 主力资金   |   |
+    |  2 | 今日 主力占比   |   |
+    |  3 | 今日 超大单资金 |   |
+    |  4 | 今日占比        |   |
+    |  5 | 今日大单资金    |   |
+    |  6 | 今日占比        |   |
+    |  7 | 今日中单        |   |
+    |  8 | 占比            |   |
+    |  9 | 今日小单        |   |
+    | 10 | 占比            |   |                              
+   3. 单股 k线 信息
+    http://pdfm2.eastmoney.com/EM_UBG_PDTI_Fast/api/js?id=3003102&TYPE=K&js=fsData((x))&rtntype=5&style=top&num=120&authorityType=fa
+    
+    2018-08-13,4.72,5.28,5.28,4.69,187158,95905294,12.29%,2.98"
+    
+   | 0 | 日期   |   |
+   |---+--------+---|
+   | 1 | 开盘   |   |
+   |---+--------+---|
+   | 2 | 收盘   |   |
+   |---+--------+---|
+   | 3 | 最高   |   |
+   | 4 | 最低   |   |
+   | 5 | 成交量 |   |
+   | 6 | 成交额 |   |
+   | 7 | 振幅   |   |
+   | 8 | 换手   |   |                                
+   4. 前三热门板块
+    http://data.eastmoney.com/bkzj/hy.html  
+   5. 单只股票所属板块跌幅
+   6. 筹码分布
+
+   http://quote.eastmoney.com/concept/sz002331.html#
+
+** 腾讯微证券
+*** stock info 
+
+**** 1
+    POST请求
+
+    https://wzq.tenpay.com/cgi-bin/stockinfo.fcgi?_=1553089507107
+    
+
+    form 
+    
+    #+BEGIN_SRC python
+    form = {
+        "scode": "300337",
+        "markets": "0",
+        "needfive": "1",
+        "needquote": "1",
+        "needfollow": "1"
+    }
+
+    #+END_SRC
+
+    #+BEGIN_SRC python
+    {
+        "retcode": "0",
+        "retmsg": "OK",
+        "has_follow": "1",
+        "market_state": "6",
+        "servertime": "1553089506",
+        "five_trans": {
+            "code": "300741",
+            "market": "0",
+            "mcbl": "0.50",
+            "mcjg1": "41.61",
+            "mcjg2": "41.62",
+            "mcjg3": "41.63",
+            "mcjg4": "41.64",
+            "mcjg5": "41.65",
+            "mcsl1": "2",
+            "mcsl2": "75",
+            "mcsl3": "33",
+            "mcsl4": "159",
+            "mcsl5": "239",
+            "mrbl": "0.50",
+            "mrjg1": "41.60",
+            "mrjg2": "41.59",
+            "mrjg3": "41.58",
+            "mrjg4": "41.57",
+            "mrjg5": "41.56",
+            "mrsl1": "116",
+            "mrsl2": "86",
+            "mrsl3": "42",
+            "mrsl4": "5",
+            "mrsl5": "60"
+        },
+        "secu_info": {
+            "market": "0",
+            "price_ceiling": "46.19",
+            "price_floor": "37.79",
+            "secu_cls": "4",
+            "secu_code": "300741",
+            "secu_name": "华宝股份",
+            "spread": "0.01",
+            "status": "0",
+            "stk_name": "华宝股份",
+            "susp_flag": "0",
+            "symbol": "sz300741",
+            "trd_ceiling": "99999999",
+            "trd_floor": "1",
+            "trd_unit": "100"
+        },
+        "secu_quote": {
+            "amplitude": "3.81",
+            "avg_price": "41.45",
+            "cje": "197120000",
+            "cjj_price": "",
+            "cjl": "4755200",
+            "code": "300741",
+            "dqj": "41.60",
+            "fall_num": "-",
+            "gxl": "",
+            "hold_num": "-",
+            "hsl": "7.72",
+            "jj_jz": "-",
+            "jkj": "42.01",
+            "lsacle": "0.58",
+            "ltz": "25.62",
+            "lyr_ratio": "21.79",
+            "market": "0",
+            "mgsy": "",
+            "npl": "27264",
+            "pbratio": "2.85",
+            "raise_num": "-",
+            "sjl": "2.85",
+            "syl": "21.79",
+            "ttm_ratio": "21.79",
+            "utime": "1553067004",
+            "wccale": "-199",
+            "week52zdj": "",
+            "week52zgj": "",
+            "weekratio": "",
+            "wpl": "20225",
+            "zde": "-0.39",
+            "zdf": "-0.93",
+            "zdj": "40.68",
+            "zf": "3.81",
+            "zgj": "42.28",
+            "zsj": "41.99",
+            "zsz": "256.21"
+        }
+    }
+    #+END_SRC
+
+
+
+
+
+
+- five_trans
+
+ 最近五个交易价格
+
+| 字段   |   内容 | 描述    |
+|--------+--------+---------|
+| code   | 300741 |         |
+| market |      0 |         |
+| mcbl   |   0.50 |         |
+| mcjg1  |  41.61 | 卖1     |
+| mcjg2  |  41.62 |         |
+| mcjg3  |  41.63 |         |
+| mcjg4  |  41.64 |         |
+| mcjg5  |  41.65 |         |
+| mcsl1  |      2 | 卖1挂单 |
+| mcsl2  |     75 |         |
+| mcsl3  |     33 |         |
+| mcsl4  |    159 |         |
+| mcsl5  |    239 |         |
+| mrbl   |   0.50 |         |
+| mrjg1  |  41.60 | 买1     |
+| mrjg2  |  41.59 |         |
+| mrjg3  |  41.58 |         |
+| mrjg4  |  41.57 |         |
+| mrjg5  |  41.56 |         |
+| mrsl1  |    116 | 买1挂单 |
+| mrsl2  |     86 |         |
+| mrsl3  |     42 |         |
+| mrsl4  |      5 |         |
+| mrsl5  |     60 |         |
+
+secu_info
+| 字段          |     内容 | 描述 |
+|---------------+----------+------|
+| market        |        0 |      |
+| price_ceiling |    46.19 |      |
+| price_floor   |    37.79 |      |
+| secu_cls      |        4 |      |
+| secu_code     |   300741 |      |
+| secu_name     | 华宝股份 |      |
+| spread        |     0.01 |      |
+| status        |        0 |      |
+| stk_name      | 华宝股份 |      |
+| susp_flag     |        0 |      |
+| symbol        | sz300741 |      |
+| trd_ceiling   | 99999999 |      |
+| trd_floor     |        1 |      |
+| trd_unit      |      100 |      |
+
+secu_quote
+| 字段      |       内容 | 描述       |
+|-----------+------------+------------|
+| amplitude |       3.81 |            |
+| avg_price |      41.45 |            |
+| cje       |  197120000 | 成交额     |
+| cjj_price |            |            |
+| cjl       |    4755200 | 成交量     |
+| code      |     300741 |            |
+| dqj       |      41.60 | 当前价格   |
+| fall_num  |          - |            |
+| gxl       |            |            |
+| hold_num  |          - |            |
+| hsl       |       7.72 | 换手率     |
+| jj_jz     |          - |            |
+| jkj       |      42.01 |            |
+| lsacle    |       0.58 | 量比       |
+| ltz       |      25.62 | 流通值  亿 |
+| lyr_ratio |      21.79 |            |
+| market    |          0 |            |
+| mgsy      |            |            |
+| npl       |      27264 | 内盘2.73万 |
+| pbratio   |       2.85 |            |
+| raise_num |          - |            |
+| sjl       |       2.85 | 市净率     |
+| syl       |      21.79 | 市盈率     |
+| ttm_ratio |      21.79 |            |
+| utime     | 1553067004 | 当前时间   |
+| wccale    |       -199 |            |
+| week52zdj |            |            |
+| week52zgj |            |            |
+| weekratio |            |            |
+| wpl       |      20225 |            |
+| zde       |      -0.39 |            |
+| zdf       |      -0.93 |            |
+| zdj       |      40.68 |            |
+| zf        |       3.81 | 振幅 %     |
+| zgj       |      42.28 |            |
+| zsj       |      41.99 |            |
+| zsz       |     256.21 | 总市值     |
+
+**** 2
+     
+     https://wzq.tenpay.com/cgi-bin/stockinfo.fcgi?_=1553093241896
+
+     #+BEGIN_SRC python
+     type                    12 
+     scode                   300741
+     markets                 0
+     #+END_SRC
+
+     #+BEGIN_SRC python
+
+
+     #+END_SRC
+
+"data": -> quotations
+
+"avg_deal_price": 41.45,
+"date": "2019-03-20",
+"ma10": -11782393.3,
+"ma20": -7211902.05,
+"ma5": -20423293.2,
+"main_inflow": -12338301.0,
+"net_capital_inflow": -28532798.0,
+"plate_net_capital_inflow": -1973596.551493,
+"price": 41.6,
+"retail_inflow": -16194497.0,
+"turnover_money": 197120000.0
+     
+** 深交所
+
+   股票列表
+   http://www.szse.cn/api/report/ShowReport?SHOWTYPE=xlsx&CATALOGID=1110&TABKEY=tab1&random=0.1086889598609524
+   
+   股权登记日信息爬取
+   
+   http://irm.cninfo.com.cn/ssessgs/S000418/index.html
+   
+   ~//table[@style="background:#A2D7FD; width:190px; margin:5px auto;"]/tbody/tr~
+** 策略
+
+实时数据获取
+
+- 换手率
+  七、换手率法选股注意事项
+
+  1、每日收盘后对换手率进行排行，观察换手率在6%以上的个股。
+  
+  2、选择流通股本数量较小的，最好在3亿以下，中小板尤佳。
+  
+  4、第二日开盘阶段量比较大排在量比排行榜前列的个股。
+
+  
+  只要围绕当前热点股、强势股来做，其收益会比做大盘股收益更佳。
+
+  1. 流通量
+     一是做为价值投资者从事长期投资，那么就要选择市盈率低，业绩增长稳定的大盘股来做；
+     二如果是单纯只想做中短线的投资者，笔者建议只做一些流通股本少的，市场上热点不断的中小盘股

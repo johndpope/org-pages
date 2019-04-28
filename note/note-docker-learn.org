@@ -84,6 +84,8 @@ Docker容器是操作系统层面上实现的虚拟化，直接复用本地主�
 
       cat xx.tar.gz | docker import - ubuntu:16.04
    3. 基于Dockerfile创建（推荐）
+
+      docker build -t name
 ** 存出和载入镜像
 
    docker save -o ubuntu-16.04.tar ubuntu:latest
@@ -194,5 +196,60 @@ Docker容器是操作系统层面上实现的虚拟化，直接复用本地主�
 * Dockerfile
   
   dockerfile 文件书写参考官方文档 ^^
+  
+- ENTRYPOINT
+
+  docker run命令指定的容器运行命令不能覆盖Dockerfile文件中ENTRYPOINT指令指定的命令，
+  反而被当做参数传递给ENTRYPOINT指令指定的命令
+
+- --net=host
+
+  Docker中的host模式指定是容器与主机享受相同的network namespace，
+  在这种情况下，我们访问主机端口就能访问我们的容器。比如说我们运行tomcat容器并且用
+  --network=host 来指定我们的网络模式为host，
+  这样我们访问本机的8080端口就能访问到我们的tomcat容器
    
-         
+* docker 部署 python项目
+
+- centos7 导出导入
+
+  docker save -o centos-7.4.1708.tar centos:7.4.1708
+
+  docker load --input centos-7.4.1708.tar
+
+- 创建镜像
+
+  sh start.sh
+
+  #+BEGIN_SRC bash
+  # 输入参数 dev|qa
+  if [ $# != 1 ] ; then
+      echo "USAGE: $0 env"
+      exit 1;
+  fi
+
+  tagname="report-parse:"$1
+
+
+  # build docker
+  docker build -t $tagname .
+
+  # docker run -P -it --rm report-parse:$1  /bin/bash
+  docker run -p 8090:8090 -p 9090:9090  -d --rm  $tagname 
+  #+END_SRC
+
+- 启动容器
+  
+  docker run -d --rm ubuntu /bin/bash
+
+  进入容器
+
+  docker exec -ti 24c /bin/bash 
+
+- 日志
+  
+  docker logs -f 8f5  输出到屏幕
+
+- docker 数据卷迁移
+  
+  docker run -itd --name volume  -v ~/Desktop/11ju_docker/docker_repo:/tmp/docker_repo 9f26 /bin/bash

@@ -1,31 +1,446 @@
 #+TITLE: Link notes
 * Link notes
 
+** TODO [2019-04-06 Sat] ubuntu服务器上使用Chrome Headless
+  #+BEGIN_QUOTE
+  https://jiayi.space/post/zai-ubuntufu-wu-qi-shang-shi-yong-chrome-headless 
+
+  SCHEDULED:<2019-04-06 Sat 17:21>
+  
+  #+END_QUOTE
+
+** TODO [2019-03-27 Wed] Ceph 分布式存储系统
+  #+BEGIN_QUOTE
+  https://blog.csdn.net/uxiAD7442KMy1X86DtM3/article/details/81059215 
+
+  SCHEDULED:<2019-03-27 Wed 23:04>
+  
+  #+END_QUOTE
+
+** TODO [2019-03-24 Sun] org-mode 代码块嵌套
+  #+BEGIN_QUOTE
+  https://brantou.github.io/2017/04/01/babel-intro/ 
+
+  SCHEDULED:<2019-03-24 Sun 02:11>
+  
+
+- 函数调用
+
+
+#+NAME: m
+#+BEGIN_SRC  go
+  func min(a, b int) int {
+    if a > b {
+      return b
+    } else {
+      return a
+    }
+  }
+#+END_SRC
+#+NAME: get-min
+#+BEGIN_SRC go :var a=2 b=1 :imports "fmt" :noweb strip-export
+<<m>>
+func main() {
+  fmt.Println(min(a,b))
+}
+#+END_SRC
+
+#+RESULTS: get-min
+: 1
+
+#+call: get-min(12,11)
+
+#+RESULTS:
+: 11
+
+
+多参数
+#+NAME: sum
+#+BEGIN_SRC go :imports "fmt" :var a=12 b=13
+  fmt.Println(a+b)
+#+END_SRC
+#+call: sum(a=22,b=23)
+
+#+RESULTS:
+: 45
+  #+END_QUOTE
+
+** TODO [2019-03-18 Mon] 磁力链自动下载
+  #+BEGIN_QUOTE
+  magnet:?xt=urn:btih:63DBE97B472DE27DD78FC1B7E7823729C0ED27C2
+
+  magnet:?xt=urn:btih:01F0A1C8DD91BD8B13E5FB5D825CBB9760FC2017
+
+  SCHEDULED:<2019-03-18 Mon 04:17>
+  
+  #+END_QUOTE
+
+** TODO [2019-03-18 Mon] Mac 上安装 Appium 详解
+  #+BEGIN_QUOTE
+  https://www.jianshu.com/p/4d2770f90bed 
+
+  SCHEDULED:<2019-03-18 Mon 01:17>
+
+  #+BEGIN_SRC python
+  {
+      "platformName": "Android",
+      "deviceName": "emulator-5554",
+      "platformVersion": "6.0.1",
+      "appPackage": "com.tencent.mm",
+      "appActivity": "com.tencent.mm.plugin.webview.ui.tools.WebViewUI",
+      "noReset": true
+  }
+  #+END_SRC
+
+  appPackage和appActivity 获取方式
+
+  #+BEGIN_SRC 
+
+  ~ » adb shell
+  root@x86:/ # dumpsys activity | grep mFocusedActivity
+
+  mFocusedActivity: ActivityRecord{7be7a49 u0 com.tencent.mm/.plugin.webview.ui.tools.WebViewUI t9}
+
+  #+END_SRC
+
+  uiautomatorviewer ：用来分析UI控件的图形界面工具，位于SDK目录下的tools文件夹中
+  第二个按纽 Device Screenshot 无法获取 adb设备的时候，可以 =adb kill-server= 然后 =adb devices= 重新获取
+  
+  
+  
+  #+END_QUOTE
+  
+** TODO [2019-03-17 Sun] Genymotion install for mac 
+  #+BEGIN_QUOTE
+
+  https://blog.csdn.net/stupid56862/article/details/79379574 
+
+
+  https://blog.csdn.net/weixin_39847926/article/details/82386412
+
+
+  SCHEDULED:<2019-03-17 Sun 02:48>
+  
+  修改ADB环境后，拖拽APK到系统内,出现了下面这个问题
+  #+BEGIN_EXAMPLE
+  An error occured while deploying the file. Please refer to Genymotion logs for more information.
+  #+END_EXAMPLE
+
+  解决办法： =adb kill-server=  =adb devices= 重新获取设备即可
+
+  
+  https://www.jianshu.com/p/310d930dd62f
+  
+  抓包Xposed+JustTrustMe关闭SSL证书验证
+  安装位置模拟器模块
+  
+  https://blog.csdn.net/ghy2016/article/details/83422620
+  Genymotion-ARM-Translation.zip各安卓版本合集
+  这里ARM-Translation 版本一定要与android一致,否则各种app安装异常报错
+
+| 安卓版本    | 代号              | Genymotion-ARM-Translation            | GApps |
+| 8.0 – 8.1   | Oreo奥利奥        | ARM_Translation_Oreo.zip              |       |
+| 7.0 – 7.1.2 | Nougat牛轧糖      |                                       |       |
+| 6.0 – 6.0.1 | Marshmallow棉花糖 | ARM_Translation_Marshmallow.zip       |       |
+| 5.0 – 5.1.1 | Lollipop棒棒糖    | ARM_Translation_Lollipop_20160402.zip |       |
+| 5.0 – 5.1.1 | Lollipop棒棒糖    | ARM_Translation_Lollipop.zip          |       |
+| 4.4 – 4.4.4 | KitKat奇巧巧克力  | ARM-4.4-libhoudini.zip                |       |
+| 4.1 – 4.3.1 | Jelly Bean果冻豆  | Genymotion-ARM-Translation_v1.1.zip   |       |
+  
+  
+Xprivacy
+有时候微信会检测是否是模拟器登陆，导致帐号被封。根据网友的经验，使用Xprivacy禁用微信的一些请求后可以防止被封。可以自行安装xposed和xprivacy，好像xposed也很好玩。
+像imei，摄像头这种。你可以按照xprivacy推荐的配置
+https://github.com/M66B/XPrivacy/releases
+网络状态（ip地址），位置，命令行，识别码（设备识别信息），IPC等
+国际移动设备识别码（International Mobile Equipment Identity，IMEI），即通常所说的手机序列号、
+XPOSED IMEI Changer on GG play
+
+
+安装 GApps（含 Google 市场）
+
+
+怎么配置感觉都没有网易mumu模拟器好用,这里mumu注意配置wifi的代理mitmproxy的时候，需要将代理IP配置为宿主物理机器的IP
+
+ 
+
+  
+  
+  #+END_QUOTE
+
+** TODO [2019-03-17 Sun] install mitmproxy for mac
+  #+BEGIN_QUOTE
+  https://docs.mitmproxy.org/stable/overview-installation/ 
+
+  SCHEDULED:<2019-03-17 Sun 02:17>
+
+  brew install mitmproxy
+
+  可以使用 mitmproxy -h 来查看 mitmproxy 的参数及使用方法
+
+  mitmproxy -p 7777 启动端口监听流量 当前模式下？可查看帮助信息
+
+  #+BEGIN_EX AMPLE
+基本快捷键
+
+b  保存请求 / 返回头
+C  将请求内容导出到粘贴板，按 C 之后会有选择导出哪一部分
+d  删除 flow 请求
+E  将 flow 导出到文件
+w  保存所有 flow 或者该 flow
+W  保存该 flow
+L  加载保存的 Flow
+m  添加 / 取消 Mark 标记，会在请求列表该请求前添加红色圆圈
+z  清空 flow list 和 eventlog
+/  在详情界面，可以使用 / 来搜索，大小写敏感
+i  开启 interception pattern 拦截请求
+
+移动
+
+j, k       上下
+h, l        左右
+g, G   go to beginning, end
+space    下一页
+pg up/down   上一页 / 下一页
+ctrl+b/ctrl+f    上一页 / 下一页
+arrows 箭头     上下左右
+
+
+全局快捷键
+q   退出，或者后退
+Q  不提示直接退出
+  #+END_EXAMPLE
+
+
+
+  
+  
+  #+END_QUOTE
+
+** DONE [2019-03-17 Sun] install fiddler for mac
+   CLOSED: [2019-03-18 Mon 17:39]
+   - State "DONE"       from "TODO"       [2019-03-18 Mon 17:39]
+  #+BEGIN_QUOTE
+  https://www.mono-project.com/download/stable/ 
+
+  1. install mono
+
+     不好意思打扰了 ！ 完全不支持自定义rule 弱爆了 
+     
+  SCHEDULED:<2019-03-17 Sun 01:27>
+  
+  #+END_QUOTE
+
+** DONE [2019-03-16 Sat] selenium 使用
+   CLOSED: [2019-03-18 Mon 17:40]
+   - State "DONE"       from "TODO"       [2019-03-18 Mon 17:40]
+  #+BEGIN_QUOTE
+
+  https://blog.csdn.net/weixin_36279318/article/details/79475388 
+
+  selenium之 辨识alert、window以及操作
+
+  https://blog.csdn.net/huilan_same/article/details/52298460
+
+  
+  SCHEDULED:<2019-03-16 Sat 02:24>
+  
+  #+END_QUOTE
+
+** TODO [2019-03-15 Fri] bt之家
+  #+BEGIN_QUOTE
+  http://www.btbtt.co/ 
+
+  SCHEDULED:<2019-03-15 Fri 18:55>
+  
+  #+END_QUOTE
+
+** TODO [2019-03-15 Fri] 投资者互动平台 调研
+  #+BEGIN_QUOTE
+  http://www.csrc.gov.cn/pub/newsite/tzzbh1/tbtzzjy/tbtzzhdpt/201311/t20131119_238498.html 
+
+  SCHEDULED:<2019-03-15 Fri 17:01>
+  
+  #+END_QUOTE
+
+** TODO [2019-03-15 Fri] 互易动
+  #+BEGIN_QUOTE
+  http://irm.cninfo.com.cn/szse/index.html 
+
+  SCHEDULED:<2019-03-15 Fri 14:38>
+  
+  #+END_QUOTE
+
+** TODO [2019-03-15 Fri] 全景路演天下 资讯
+  #+BEGIN_QUOTE
+  http://rs.p5w.net/html/89956.shtml 
+
+  SCHEDULED:<2019-03-15 Fri 14:29>
+  
+  #+END_QUOTE
+
+** TODO [2019-03-14 Thu] 工业和信息化部
+  #+BEGIN_QUOTE
+  http://www.miit.gov.cn/n1146295/n1652858/n1653100/index.html 
+
+  SCHEDULED:<2019-03-14 Thu 14:05>
+  
+  #+END_QUOTE
+
+** TODO [2019-03-04 Mon] 资源共享 ed2000
+  #+BEGIN_QUOTE
+  http://www.ed2000.com/Type/%E7%94%B5%E5%BD%B1 
+
+  SCHEDULED:<2019-03-04 Mon 19:15>
+  
+  #+END_QUOTE
+
+** TODO [2019-03-04 Mon] 巨潮资讯网站（中国证监会指定信息披露网站）信息分类
+  #+BEGIN_QUOTE
+  http://www.cninfo.com.cn/information/companyinfo_n.html?brief?szmb000998 
+
+  SCHEDULED:<2019-03-04 Mon 11:22>
+  
+  #+END_QUOTE
+
+** TODO [2019-03-02 Sat] 虎嗅24小时资讯爬虫
+  #+BEGIN_QUOTE
+  https://www.huxiu.com/moment 
+
+  SCHEDULED:<2019-03-02 Sat 20:57>
+  
+  #+END_QUOTE
+
+** TODO [2019-02-27 Wed] Go语言高级编程(Advanced Go Programming)
+  #+BEGIN_QUOTE
+  https://chai2010.cn/advanced-go-programming-book/ 
+
+  SCHEDULED:<2019-02-27 Wed 11:35>
+  
+  #+END_QUOTE
+
+** TODO [2019-02-24 Sun] sm.ms 免费图床
+  #+BEGIN_QUOTE
+  https://sm.ms/ 
+
+  SCHEDULED:<2019-02-24 Sun 19:52>
+  
+  #+END_QUOTE
+
+** TODO [2019-02-24 Sun] 豆瓣api
+  #+BEGIN_QUOTE
+  https://www.jianshu.com/p/a7e51129b042 
+
+  SCHEDULED:<2019-02-24 Sun 19:21>
+  
+  #+END_QUOTE
+
+** TODO [2019-02-24 Sun] 豆瓣热映榜单
+  #+BEGIN_QUOTE
+  https://api.douban.com/v2/movie/in_theaters?city=%E5%8C%97%E4%BA%AC&start=0&count=21 
+
+  SCHEDULED:<2019-02-24 Sun 19:20>
+  
+  #+END_QUOTE
+
+** DONE [2019-02-24 Sun] 胖鸟电影利用api爬资源
+   CLOSED: [2019-02-26 Tue 18:10]
+   - State "DONE"       from "TODO"       [2019-02-26 Tue 18:10]
+  #+BEGIN_QUOTE
+  http://www.pniao.com/API/dbApi/dbPlugin/27077068 
+
+  SCHEDULED:<2019-02-24 Sun 02:13>
+   "
+  #+END_QUOTE
+  
+** TODO [2019-02-23 Sat] telegram bot flask 框架部署
+  #+BEGIN_QUOTE
+  https://medium.com/@zaoldyeck9970/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%80%8E%E9%BA%BC%E6%89%93%E9%80%A0-telegram-bot-a7b539c3402a 
+
+  SCHEDULED:<2019-02-23 Sat 14:18>
+  
+ - *取得使用者訊息的兩種方法－Long Polling vs Webhook*
+  
+   1. Long Polling 
+
+     是指程式間隔一定時間透過 getUpdates（上面所使用的方法）取得訊息，
+     缺點是浪費資源、不夠即時，所以適合在程式還沒有 deploy，在 develop 和 test 階段時使用。
+
+   2. Webhook 
+
+      是指向 Telegram 設定一組 callback url，
+      只要當使用者傳送訊息給 Chatbot，Telegram 就會把用息連同metada透過url傳給 web server。
+      適合在程式已經 deploy，有固定 url 的 production 環境使用。
+
+ - *Prepare development environment*
+
+ - *ngrok 服務*
+
+   https://dashboard.ngrok.com/get-started
+
+   转发本地端口地址到外网访问
+
+
+ - pyrogram
+   
+   #+BEGIN_EXAMPLE
+   
+    HTTP        HTTP/MTProto    MTProto
+    [You] <---> [Bot API] <---> [Telegram]
+
+    MTProto          MTProto
+    [Pyrogram] <---> [Telegram]
+
+   #+END_EXAMPLE
+
+ - Telethon
+
+
+  #+END_QUOTE
+
+** TODO [2019-02-22 Fri] go语言圣经
+  #+BEGIN_QUOTE
+  https://yar999.gitbooks.io/gopl-zh/content/ 
+
+  SCHEDULED:<2019-02-22 Fri 12:52>
+  
+  #+END_QUOTE
+
+** TODO [2019-02-22 Fri]  Setting up Emacs for Java Development
+  #+BEGIN_QUOTE
+  http://www.goldsborough.me/emacs,/java/2016/02/24/22-54-16-setting_up_emacs_for_java_development/ 
+
+  SCHEDULED:<2019-02-22 Fri 11:16>
+
+  
+  #+END_QUOTE
+
+  #+BEGIN_SRC java :classname Test
+  class Test {
+      public static void main(String[] args) {
+          System.out.println("Hello world!");
+      }
+  }
+   #+END_SRC
+
+   #+RESULTS:
+   : Hello world!
+  
+** TODO [2019-02-20 Wed] twitter 财经真相更新内容 
+  #+BEGIN_QUOTE
+  https://twitter.com/caijingxiang 
+
+  https://tweettunnel.com/caijingxiang
+
+  SCHEDULED:<2019-02-20 Wed 20:32>
+  
+  #+END_QUOTE
+
 ** TODO [2019-02-18 Mon] build-web-application-with-golang
   #+BEGIN_QUOTE
   https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/preface.md 
 
   SCHEDULED:<2019-02-18 Mon 18:12>
-  
-  #+END_QUOTE
-
-** DONE [2019-02-17 Sun] 短信发送平台查找便宜运营商
-   CLOSED: [2019-02-18 Mon 18:25]
-   - State "DONE"       from "TODO"       [2019-02-18 Mon 18:25]
-  #+BEGIN_QUOTE
-  https://dayu.aliyun.com/product/sms?spm=a3142.7791109.0.0.dace1fd2nLPZQZ 
-
-  SCHEDULED:<2019-02-17 Sun 02:00>
-  有点坑、阿里大于注册首冲后才发现个人用户没有企业资质的无法使用、
-  
-  #+END_QUOTE
-
-** TODO [2019-02-14 Thu] install mysql for mac
-
-  #+BEGIN_QUOTE
-  https://gist.github.com/nrollr/3f57fc15ded7dddddcc4e82fe137b58e 
-
-  SCHEDULED:<2019-02-14 Thu 15:41>
   
   #+END_QUOTE
 
@@ -286,15 +701,16 @@
   #+END_QUOTE
 
 ** TODO [2019-01-27 Sun] 小森林导航 部分资源可以爬
-   SCHEDULED: <2019-02-02 Sat>
+   SCHEDULED: <2019-03-21 Thu>
+
   #+BEGIN_QUOTE
   http://hao.xsldh.com/ 
 
   
   #+END_QUOTE
 
-** TODO [#B] [2019-01-26 Sat] 华尔街见闻
-   SCHEDULED: <2019-01-31 Thu>
+** TODO [2019-01-26 Sat] 华尔街见闻
+   SCHEDULED: <2019-03-17 Sun>
   #+BEGIN_QUOTE
   https://wallstreetcn.com/live/global 
 
@@ -469,7 +885,7 @@
   #+END_QUOTE
 
 ** TODO [2019-01-18 Fri] common lisp 简体中文
-   SCHEDULED: <2019-01-30 Wed>
+   SCHEDULED: <2019-04-30 Tue>
 
   #+BEGIN_QUOTE
   https://acl.readthedocs.io/en/latest/zhCN/index.html 
@@ -738,14 +1154,6 @@
   M-DEL 或 M-BACKSPACE	删除最后一个拼音
   #+END_VERSE
 
-  #+END_QUOTE
-
-** TODO  尾递归 DECORATOR 
-   SCHEDULED: <2019-01-24 Thu>
-  #+BEGIN_QUOTE
-  http://code.activestate.com/recipes/474088-tail-call-optimization-decorator/ 
-
-  
   #+END_QUOTE
 
 ** TODO emacs video playlist
