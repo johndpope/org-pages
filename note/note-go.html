@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-02-21 Thu 14:56 -->
+<!-- 2019-04-28 Sun 22:16 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Go for web</title>
+<title>Go  Learning</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="manue1" />
 <style type="text/css">
@@ -248,29 +248,288 @@ for the JavaScript code in this tag.
 </div>
 </div>
 <div id="content">
-<h1 class="title">Go for web</h1>
+<h1 class="title">Go  Learning</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org70d04d0">1. 环境配置</a></li>
-<li><a href="#org02cb686">2. go 命令</a></li>
-<li><a href="#org1f2d61e">3. go 基础</a></li>
-<li><a href="#orgee63808">4. 流程和函数</a></li>
-<li><a href="#org85953b1">5. struct类型</a></li>
-<li><a href="#org5e541bb">6. 面向对象</a></li>
-<li><a href="#org78f3451">7. interface</a></li>
-<li><a href="#org3d6a8bc">8. 并发</a></li>
+<li><a href="#orge20d2c4">1. 测试</a>
+<ul>
+<li><a href="#org31b8501">1.1. 字符串数组</a></li>
+<li><a href="#org54f328a">1.2. if 测试</a></li>
+<li><a href="#orgdc14791">1.3. go map</a></li>
+<li><a href="#orgce59ad3">1.4. string</a></li>
+<li><a href="#org31fd099">1.5. slice test</a></li>
+<li><a href="#org47ff6bc">1.6. page size</a></li>
+</ul>
+</li>
+<li><a href="#org43f0be9">2. 环境配置</a></li>
+<li><a href="#org44307d2">3. go 命令</a></li>
+<li><a href="#orgf40e1f5">4. go 基础</a></li>
+<li><a href="#orgee89aa5">5. 流程和函数</a></li>
+<li><a href="#orgf36823b">6. struct类型</a></li>
+<li><a href="#org10d5d6f">7. 面向对象</a></li>
+<li><a href="#org78fafff">8. interface</a></li>
+<li><a href="#orgb82a7d7">9. 并发</a></li>
+<li><a href="#org9e57089">10. 排序和查找</a>
+<ul>
+<li><a href="#orga250ab5">10.1. 排序</a>
+<ul>
+<li><a href="#orgbcc386f">10.1.1. 冒泡排序：</a></li>
+<li><a href="#org4c990da">10.1.2. 快速排序</a></li>
+<li><a href="#org220d4d0">10.1.3. 选择排序</a></li>
+</ul>
+</li>
+<li><a href="#org99346f4">10.2. 查找</a>
+<ul>
+<li><a href="#org121edc0">10.2.1. 二分查找</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgc16ee24">11. 稀疏数组</a></li>
+<li><a href="#org2bf5b63">12. 数组模拟队列</a></li>
+<li><a href="#orga94ef90">13. 链表</a></li>
+<li><a href="#org0f46160">14. protocol buffers</a></li>
+<li><a href="#org1a0e4b5">15. grpc</a>
+<ul>
+<li><a href="#org153a7db">15.1. 定义服务</a></li>
+</ul>
+</li>
+<li><a href="#org35f2b72">16. 文件操作</a></li>
+<li><a href="#org581389f">17. json操作</a></li>
+<li><a href="#orgb89fc0d">18. regexp</a></li>
+<li><a href="#org4e60217">19. go net</a></li>
+<li><a href="#orgd61517c">20. GoLang中 json、map、struct 之间的相互转化</a></li>
+<li><a href="#orgdbcbde4">21. go mod</a></li>
+<li><a href="#orgb78556d">22. goini</a></li>
+<li><a href="#orgeb2a198">23. go time</a></li>
+<li><a href="#org7246227">24. go mongo</a></li>
+<li><a href="#orgeba2491">25. go log</a></li>
+<li><a href="#orgc3a2db6">26. go test</a></li>
+<li><a href="#org397a86f">27. go sync</a></li>
+<li><a href="#org69e567a">28. go init和main</a></li>
+<li><a href="#orgb7ef429">29. go fieldmask-utils</a></li>
+<li><a href="#org824c24b">30. go uuid</a></li>
+<li><a href="#orgf46d3ae">31. go elasticsearch</a>
+<ul>
+<li><a href="#orgbe7f7e7">31.1. update</a></li>
+<li><a href="#orge7061dd">31.2. query</a></li>
+</ul>
+</li>
+<li><a href="#orgc4d4b96">32. go fasthttp</a></li>
+<li><a href="#org03076f2">33. go strconv</a></li>
 </ul>
 </div>
 </div>
-<p>
-<a href="https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/preface.md">https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/preface.md</a>
-</p>
-
-<div id="outline-container-org70d04d0" class="outline-2">
-<h2 id="org70d04d0"><span class="section-number-2">1</span> 环境配置</h2>
+<div id="outline-container-orge20d2c4" class="outline-2">
+<h2 id="orge20d2c4"><span class="section-number-2">1</span> 测试</h2>
 <div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org31b8501" class="outline-3">
+<h3 id="org31b8501"><span class="section-number-3">1.1</span> 字符串数组</h3>
+<div class="outline-text-3" id="text-1-1">
+<div class="org-src-container">
+<pre class="src src-go"><span style="color: #9d0006;">package</span> main
+
+<span style="color: #9d0006;">import</span> (
+    <span style="color: #79740e;">"fmt"</span>
+)
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">RemoveSliceNil</span>(arg_slice []<span style="color: #8f3f71;">string</span>) []<span style="color: #8f3f71;">string</span> {
+    flag := <span style="color: #8f3f71;">false</span>
+    <span style="color: #9d0006;">var</span> new_slice []<span style="color: #8f3f71;">string</span>
+    <span style="color: #9d0006;">for</span> index, value := <span style="color: #9d0006;">range</span> arg_slice {
+        <span style="color: #9d0006;">if</span> value == <span style="color: #79740e;">""</span> {
+            flag = <span style="color: #8f3f71;">true</span>
+            new_slice = <span style="color: #af3a03;">append</span>(arg_slice[:index],arg_slice[index+1:] ...)
+        }
+    }
+    <span style="color: #9d0006;">if</span> flag == <span style="color: #8f3f71;">true</span> {
+        <span style="color: #9d0006;">return</span> new_slice
+    } <span style="color: #9d0006;">else</span> {
+        <span style="color: #9d0006;">return</span> arg_slice
+    }
+}
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">main</span>() {
+    ipRegexp := [...]<span style="color: #8f3f71;">string</span>{<span style="color: #79740e;">"network.udp[*].dst"</span>, <span style="color: #79740e;">"network.hosts[*]"</span>,
+        <span style="color: #79740e;">"network.dns[*].answers[?(@.type=='A')].data"</span>, <span style="color: #79740e;">"network.domains[*].ip"</span>,
+        <span style="color: #79740e;">"network.http_ex[*].dst"</span>, <span style="color: #79740e;">"network.tcp[*].dst"</span>,
+        <span style="color: #79740e;">"behavior.generic[*].summary.connects_ip[*]"</span>,
+    }
+    <span style="color: #9d0006;">for</span> _, s := <span style="color: #9d0006;">range</span> ipRegexp {
+        fmt.<span style="color: #b57614;">Println</span>(s)
+    }
+    s := []<span style="color: #8f3f71;">string</span>{<span style="color: #79740e;">"1"</span>, <span style="color: #79740e;">"2"</span>}
+    res := <span style="color: #b57614;">RemoveSliceNil</span>(s)
+    fmt.<span style="color: #b57614;">Println</span>(<span style="color: #79740e;">"&#21024;&#38500;&#31354;&#23383;&#31526;&#21518;&#32467;&#26524;&#65306;%+v"</span>,res)
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org54f328a" class="outline-3">
+<h3 id="org54f328a"><span class="section-number-3">1.2</span> if 测试</h3>
+<div class="outline-text-3" id="text-1-2">
+<div class="org-src-container">
+<pre class="src src-go"><span style="color: #9d0006;">package</span> main
+
+<span style="color: #9d0006;">import</span> (<span style="color: #79740e;">"fmt"</span>)
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">main</span>() {
+    name := <span style="color: #79740e;">""</span>
+    <span style="color: #9d0006;">if</span> name != <span style="color: #79740e;">""</span> {
+        fmt.<span style="color: #b57614;">Println</span>(name)
+    }
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdc14791" class="outline-3">
+<h3 id="orgdc14791"><span class="section-number-3">1.3</span> go map</h3>
+<div class="outline-text-3" id="text-1-3">
+<div class="org-src-container">
+<pre class="src src-go"><span style="color: #9d0006;">package</span> main
+
+<span style="color: #9d0006;">import</span>(<span style="color: #79740e;">"fmt"</span>)
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">main</span>() {
+
+    fgSrc := <span style="color: #af3a03;">make</span>(<span style="color: #9d0006;">map</span>[<span style="color: #8f3f71;">string</span>]<span style="color: #8f3f71;">string</span>)
+
+    fgSrc[<span style="color: #79740e;">"name"</span>] = <span style="color: #79740e;">"xxxxx"</span>
+
+    fmt.<span style="color: #b57614;">Print</span>(fgSrc)
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgce59ad3" class="outline-3">
+<h3 id="orgce59ad3"><span class="section-number-3">1.4</span> string</h3>
+<div class="outline-text-3" id="text-1-4">
+<div class="org-src-container">
+<pre class="src src-go"><span style="color: #9d0006;">package</span> main
+
+<span style="color: #9d0006;">import</span> (
+    <span style="color: #79740e;">"fmt"</span>
+    <span style="color: #79740e;">"strings"</span>
+)
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">main</span>() {
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">reg := []string{"a", "b", "c"}</span>
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">fmt.Println(strings.Join(reg, ","))</span>
+
+    fmt.<span style="color: #b57614;">Println</span>(strings.<span style="color: #b57614;">Contains</span>(<span style="color: #79740e;">"www.baidu.com"</span>, <span style="color: #79740e;">"."</span>))
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org31fd099" class="outline-3">
+<h3 id="org31fd099"><span class="section-number-3">1.5</span> slice test</h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+<a href="https://blog.csdn.net/youngwhz1/article/details/83026263">https://blog.csdn.net/youngwhz1/article/details/83026263</a>
+</p>
+<div class="org-src-container">
+<pre class="src src-go"><span style="color: #9d0006;">package</span> main
+
+<span style="color: #9d0006;">import</span> (
+    <span style="color: #79740e;">"fmt"</span>
+)
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">SliceRemove</span>(s []<span style="color: #9d0006;">interface</span>{}, index <span style="color: #8f3f71;">int</span>) []<span style="color: #9d0006;">interface</span>{} {
+    <span style="color: #9d0006;">return</span> <span style="color: #af3a03;">append</span>(s[:index], s[index+1:]...)
+}
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">SliceRemove2</span>(s *[]<span style="color: #9d0006;">interface</span>{}, index <span style="color: #8f3f71;">int</span>) {
+    *s = <span style="color: #af3a03;">append</span>((*s)[:index], (*s)[index+1:]...)
+}
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">main</span>() {
+    <span style="color: #9d0006;">var</span> ss []<span style="color: #8f3f71;">string</span>
+    <span style="color: #af3a03;">print</span>(<span style="color: #79740e;">"func print"</span>, ss)
+    <span style="color: #a89984;">//</span><span style="color: #a89984;">&#20999;&#29255;&#23614;&#37096;&#36861;&#21152;&#20803;&#32032;append elemnt</span>
+    <span style="color: #9d0006;">for</span> i := 0; i &lt; 10; i++ {
+        ss = <span style="color: #af3a03;">append</span>(ss, fmt.<span style="color: #b57614;">Sprintf</span>(<span style="color: #79740e;">"s%d"</span>, i))
+    }
+
+    fmt.<span style="color: #b57614;">Println</span>(<span style="color: #79740e;">"&#20999;&#29255;&#21407;&#22987;&#25968;&#25454;: %+v"</span>, ss)
+
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">res := append(ss[:2],ss[3:] ...)</span>
+
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">fmt.Println("&#21024;&#38500;&#31532;&#20108;&#20010;&#21407;&#32032;: %+v", res)</span>
+
+    index := <span style="color: #af3a03;">len</span>(ss) - 1
+    last_res := <span style="color: #af3a03;">append</span>(ss[:index], ss[index+1:]...)
+    fmt.<span style="color: #b57614;">Println</span>(<span style="color: #79740e;">"&#21024;&#38500;&#26368;&#21518;&#19968;&#20010;&#21407;&#32032;: %+v"</span>, last_res)
+
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org47ff6bc" class="outline-3">
+<h3 id="org47ff6bc"><span class="section-number-3">1.6</span> page size</h3>
+<div class="outline-text-3" id="text-1-6">
+<div class="org-src-container">
+<pre class="src src-go"><span style="color: #9d0006;">package</span> main
+
+<span style="color: #9d0006;">import</span> (
+    <span style="color: #79740e;">"fmt"</span>
+)
+
+<span style="color: #a89984;">// </span><span style="color: #a89984;">Page ...</span>
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">Page</span>(s []<span style="color: #8f3f71;">string</span>, pageSize, pageNum <span style="color: #8f3f71;">int32</span>, target <span style="color: #8f3f71;">string</span>) []<span style="color: #8f3f71;">string</span> {
+    new_s := []<span style="color: #8f3f71;">string</span>{}
+    new_s = <span style="color: #af3a03;">append</span>(new_s, target)
+
+    start := (pageNum - 1) * pageSize
+
+    end := start + pageSize
+
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">&#25552;&#21462;taget&#21040;&#31532;&#19968;&#20010;&#20803;&#32032;</span>
+    <span style="color: #9d0006;">for</span> index, value := <span style="color: #9d0006;">range</span> s {
+        <span style="color: #9d0006;">if</span> value == target {
+            new_s = <span style="color: #af3a03;">append</span>(new_s, s[:index]...)
+            new_s = <span style="color: #af3a03;">append</span>(new_s, s[index+1:]...)
+            <span style="color: #9d0006;">break</span>
+        }
+    }
+
+    <span style="color: #9d0006;">return</span> new_s[start:end]
+}
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">main</span>() {
+    <span style="color: #9d0006;">var</span> ss []<span style="color: #8f3f71;">string</span>
+    <span style="color: #a89984;">//</span><span style="color: #a89984;">&#20999;&#29255;&#23614;&#37096;&#36861;&#21152;&#20803;&#32032;append elemnt</span>
+    <span style="color: #9d0006;">for</span> i := 0; i &lt; 10; i++ {
+        ss = <span style="color: #af3a03;">append</span>(ss, fmt.<span style="color: #b57614;">Sprintf</span>(<span style="color: #79740e;">"s%d"</span>, i))
+    }
+
+    fmt.<span style="color: #b57614;">Println</span>(<span style="color: #79740e;">"&#20999;&#29255;&#21407;&#22987;&#25968;&#25454;: %+v"</span>, ss)
+
+    s := <span style="color: #b57614;">Page</span>(ss, 3, 2, <span style="color: #79740e;">"s4"</span>)
+
+    fmt.<span style="color: #b57614;">Println</span>(<span style="color: #79740e;">"&#20998;&#39029;&#25968;&#25454;&#20026; : %+v"</span>, s)
+
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org43f0be9" class="outline-2">
+<h2 id="org43f0be9"><span class="section-number-2">2</span> 环境配置</h2>
+<div class="outline-text-2" id="text-2">
 <blockquote>
 <p>
 mac install
@@ -300,9 +559,9 @@ GOPATH <code>$GOPATH/go</code> 与工作空间
 </div>
 </div>
 
-<div id="outline-container-org02cb686" class="outline-2">
-<h2 id="org02cb686"><span class="section-number-2">2</span> go 命令</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-org44307d2" class="outline-2">
+<h2 id="org44307d2"><span class="section-number-2">3</span> go 命令</h2>
+<div class="outline-text-2" id="text-3">
 <blockquote>
 <p>
 <a href="https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/01.3.md">https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/01.3.md</a>
@@ -385,9 +644,9 @@ go run
 </div>
 </div>
 
-<div id="outline-container-org1f2d61e" class="outline-2">
-<h2 id="org1f2d61e"><span class="section-number-2">3</span> go 基础</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-orgf40e1f5" class="outline-2">
+<h2 id="orgf40e1f5"><span class="section-number-2">4</span> go 基础</h2>
+<div class="outline-text-2" id="text-4">
 <blockquote>
 <p>
 package &lt;pkgName&gt;（在我们的例子中是package main）这一行告诉我们当前文件属于哪个包
@@ -695,11 +954,9 @@ new返回指针
 </div>
 </div>
 
-
-
-<div id="outline-container-orgee63808" class="outline-2">
-<h2 id="orgee63808"><span class="section-number-2">4</span> 流程和函数</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-orgee89aa5" class="outline-2">
+<h2 id="orgee89aa5"><span class="section-number-2">5</span> 流程和函数</h2>
+<div class="outline-text-2" id="text-5">
 <blockquote>
 <p>
 Go中流程控制分三大类：条件判断，循环控制和无条件跳转
@@ -1125,10 +1382,9 @@ _操作其实是引入该包，而不直接使用包里面的函数，而是调�
 </div>
 </div>
 
-
-<div id="outline-container-org85953b1" class="outline-2">
-<h2 id="org85953b1"><span class="section-number-2">5</span> struct类型</h2>
-<div class="outline-text-2" id="text-5">
+<div id="outline-container-orgf36823b" class="outline-2">
+<h2 id="orgf36823b"><span class="section-number-2">6</span> struct类型</h2>
+<div class="outline-text-2" id="text-6">
 <blockquote>
 <p>
 自定义类型person代表一个人的实体。这个实体拥有属性：姓名和年龄。这样的类型我们称之struct
@@ -1210,9 +1466,9 @@ struct的匿名字段
 </div>
 </div>
 
-<div id="outline-container-org5e541bb" class="outline-2">
-<h2 id="org5e541bb"><span class="section-number-2">6</span> 面向对象</h2>
-<div class="outline-text-2" id="text-6">
+<div id="outline-container-org10d5d6f" class="outline-2">
+<h2 id="org10d5d6f"><span class="section-number-2">7</span> 面向对象</h2>
+<div class="outline-text-2" id="text-7">
 <blockquote>
 <ul class="org-ul">
 <li><p>
@@ -1395,9 +1651,9 @@ method重写
 </div>
 </div>
 
-<div id="outline-container-org78f3451" class="outline-2">
-<h2 id="org78f3451"><span class="section-number-2">7</span> interface</h2>
-<div class="outline-text-2" id="text-7">
+<div id="outline-container-org78fafff" class="outline-2">
+<h2 id="org78fafff"><span class="section-number-2">8</span> interface</h2>
+<div class="outline-text-2" id="text-8">
 <blockquote>
 <ul class="org-ul">
 <li><p>
@@ -1936,9 +2192,9 @@ v.<span style="color: #b57614;">SetFloat</span>(7.1)
 </div>
 </div>
 
-<div id="outline-container-org3d6a8bc" class="outline-2">
-<h2 id="org3d6a8bc"><span class="section-number-2">8</span> 并发</h2>
-<div class="outline-text-2" id="text-8">
+<div id="outline-container-orgb82a7d7" class="outline-2">
+<h2 id="orgb82a7d7"><span class="section-number-2">9</span> 并发</h2>
+<div class="outline-text-2" id="text-9">
 <blockquote>
 <ul class="org-ul">
 <li><p>
@@ -2290,6 +2546,2083 @@ GOMAXPROCS
 </ul></li>
 </ul>
 </blockquote>
+</div>
+</div>
+
+<div id="outline-container-org9e57089" class="outline-2">
+<h2 id="org9e57089"><span class="section-number-2">10</span> 排序和查找</h2>
+<div class="outline-text-2" id="text-10">
+<blockquote>
+<p>
+随机生成无序slice 
+</p>
+
+<div class="org-src-container">
+<pre class="src src-go" id="org85fabfb"><span style="color: #9d0006;">func</span> <span style="color: #b57614;">generateRangeNums</span>(min, max, count <span style="color: #8f3f71;">int</span>) []<span style="color: #8f3f71;">int</span> {
+    <span style="color: #a89984;">//</span><span style="color: #a89984;">&#23384;&#25918;&#32467;&#26524;&#30340;slice</span>
+    <span style="color: #a89984;">//</span><span style="color: #a89984;">&#33539;&#22260;&#26816;&#26597;</span>
+    <span style="color: #9d0006;">if</span> max &lt; min || (max-min) &lt; count {
+        <span style="color: #9d0006;">return</span> <span style="color: #8f3f71;">nil</span>
+    }
+
+    nums := <span style="color: #af3a03;">make</span>([]<span style="color: #8f3f71;">int</span>, 0)
+    <span style="color: #9d0006;">for</span> <span style="color: #af3a03;">len</span>(nums) &lt; count {
+        rand.<span style="color: #b57614;">New</span>(rand.<span style="color: #b57614;">NewSource</span>(time.<span style="color: #b57614;">Now</span>().<span style="color: #b57614;">UnixNano</span>()))
+        randNum := rand.<span style="color: #b57614;">Intn</span>(max-min) + min
+        <span style="color: #a89984;">//</span><span style="color: #a89984;">&#26597;&#37325;</span>
+        exist := <span style="color: #8f3f71;">false</span>
+        <span style="color: #9d0006;">for</span> _, v := <span style="color: #9d0006;">range</span> nums {
+            <span style="color: #9d0006;">if</span> v == randNum {
+                exist = <span style="color: #8f3f71;">true</span>
+                <span style="color: #9d0006;">break</span>
+            }
+        }
+
+        <span style="color: #9d0006;">if</span> !exist {
+            nums = <span style="color: #af3a03;">append</span>(nums, randNum)
+        }
+    }
+    <span style="color: #9d0006;">return</span> nums
+}
+
+</pre>
+</div>
+</blockquote>
+</div>
+
+
+
+<div id="outline-container-orga250ab5" class="outline-3">
+<h3 id="orga250ab5"><span class="section-number-3">10.1</span> 排序</h3>
+<div class="outline-text-3" id="text-10-1">
+<p>
+内部排序: 一次性加载到内存 ，选择排序、插入排序,交换排序(冒泡排序、快速排序)
+</p>
+
+<p>
+外部排序: 合并排序
+</p>
+</div>
+
+
+<div id="outline-container-orgbcc386f" class="outline-4">
+<h4 id="orgbcc386f"><span class="section-number-4">10.1.1</span> 冒泡排序：</h4>
+<div class="outline-text-4" id="text-10-1-1">
+<p>
+Boubble  Sorting 是一种从后往前，依次比较相邻元素，如果逆序就交换
+</p>
+
+<p>
+arr.length -1 轮次比较，每次都确定一个数的位置
+</p>
+
+<div class="org-src-container">
+<pre class="src src-go" id="orgc0675b5">
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">bubbleSort</span>(nums []<span style="color: #8f3f71;">int</span>) {
+    flag := <span style="color: #8f3f71;">false</span>
+    <span style="color: #9d0006;">for</span> i := 0; i &lt; <span style="color: #af3a03;">len</span>(nums); i++ {
+        <span style="color: #9d0006;">for</span> j := 1; j &lt; <span style="color: #af3a03;">len</span>(nums)-i; j++ {
+            <span style="color: #9d0006;">if</span> (nums)[j] &lt; (nums)[j-1] {
+                <span style="color: #a89984;">//</span><span style="color: #a89984;">&#20132;&#25442;</span>
+                nums[j], nums[j-1] = nums[j-1], nums[j]
+                <span style="color: #9d0006;">if</span> flag != <span style="color: #8f3f71;">true</span> {
+                    flag = <span style="color: #8f3f71;">true</span>
+                }
+
+            }
+        }
+        <span style="color: #9d0006;">if</span> flag == <span style="color: #8f3f71;">false</span> {
+            <span style="color: #9d0006;">break</span>
+        }
+    }
+}
+
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-go" id="org6541e91"><span style="color: #9d0006;">package</span> main
+
+<span style="color: #9d0006;">import</span> (
+    <span style="color: #79740e;">"fmt"</span>
+    <span style="color: #79740e;">"math/rand"</span>
+    <span style="color: #79740e;">"time"</span>
+)
+
+
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">main</span>() {
+      <span style="color: #a89984;">// </span><span style="color: #a89984;">[]int slice &#20316;&#20026;&#22320;&#22336;&#30452;&#25509;&#20256;&#20837;&#20570;&#21442;&#25968; [8]int&#12289;array&#20316;&#20026;&#20540;&#20256;&#20837;&#20570;&#21442;&#25968;</span>
+      <span style="color: #a89984;">// </span><span style="color: #a89984;">nums := [8]int{5, 1, 7, 6, 9, 6, 8, 4}</span>
+      nums := <span style="color: #b57614;">generateRangeNums</span>(min,max,count)
+      start := time.<span style="color: #b57614;">Now</span>().<span style="color: #b57614;">UnixNano</span>() / <span style="color: #b57614;">int64</span>(time.Millisecond)
+      <span style="color: #b57614;">bubbleSort</span>(nums)
+      end := time.<span style="color: #b57614;">Now</span>().<span style="color: #b57614;">UnixNano</span>() / <span style="color: #b57614;">int64</span>(time.Millisecond)
+      fmt.<span style="color: #b57614;">Printf</span>(<span style="color: #79740e;">"&#33457;&#36153;&#26102;&#38388;:%d \n"</span>, end-start)
+  }
+</pre>
+</div>
+<pre class="example">
+花费时间:101
+
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-org4c990da" class="outline-4">
+<h4 id="org4c990da"><span class="section-number-4">10.1.2</span> 快速排序</h4>
+<div class="outline-text-4" id="text-10-1-2">
+<p>
+快速排序的原理是，首先找到一个数pivot把数组‘平均’分成两组，使其中一组的所有数字均大于另一组中的数字，
+此时pivot在数组中的位置就是它正确的位置。然后，对这两组数组再次进行这种操作。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org220d4d0" class="outline-4">
+<h4 id="org220d4d0"><span class="section-number-4">10.1.3</span> 选择排序</h4>
+<div class="outline-text-4" id="text-10-1-3">
+<p>
+选择排序的原理是，对给定的数组进行多次遍历，每次均找出最大的一个值的索引。
+</p>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+<div id="outline-container-org99346f4" class="outline-3">
+<h3 id="org99346f4"><span class="section-number-3">10.2</span> 查找</h3>
+<div class="outline-text-3" id="text-10-2">
+</div>
+<div id="outline-container-org121edc0" class="outline-4">
+<h4 id="org121edc0"><span class="section-number-4">10.2.1</span> 二分查找</h4>
+<div class="outline-text-4" id="text-10-2-1">
+<p>
+从有序数组查找数
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-go" id="orgab08280">
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">binary</span>(nums []<span style="color: #8f3f71;">int</span>, fv <span style="color: #8f3f71;">int</span>) <span style="color: #8f3f71;">int</span> {
+    index_low := 0
+    index_high := <span style="color: #af3a03;">len</span>(nums) - 1
+    <span style="color: #9d0006;">for</span> index_low &lt;= index_high {
+        index_mid := index_low + (index_high-index_low)/2
+        mid_value := nums[index_mid]
+        <span style="color: #9d0006;">if</span> mid_value == fv {
+            <span style="color: #9d0006;">return</span> index_mid
+        } <span style="color: #9d0006;">else</span> <span style="color: #9d0006;">if</span> mid_value &gt; fv {
+            index_high = index_mid-1
+
+        } <span style="color: #9d0006;">else</span> {
+            index_low = index_mid +1
+        }
+
+    }
+    <span style="color: #9d0006;">return</span> -1
+}
+
+</pre>
+</div>
+
+
+<div class="org-src-container">
+<pre class="src src-go" id="orgc24587a"><span style="color: #9d0006;">package</span> main
+
+<span style="color: #9d0006;">import</span> (
+    <span style="color: #79740e;">"fmt"</span>
+    <span style="color: #79740e;">"math/rand"</span>
+    <span style="color: #79740e;">"time"</span>
+)
+
+
+
+
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">main</span>() {
+    nums := <span style="color: #b57614;">generateRangeNums</span>(min, max, count)
+    <span style="color: #b57614;">bubbleSort</span>(nums)
+    fmt.<span style="color: #b57614;">Printf</span>(<span style="color: #79740e;">"&#25968;&#32452;:%d \n"</span>, nums)
+    index_fv := <span style="color: #b57614;">binary</span>(nums, fv)
+    fmt.<span style="color: #b57614;">Println</span>(index_fv)
+}
+</pre>
+</div>
+<pre class="example">
+数组:[-10 -9 -8 -7 -6 -5 -4 -3 -2 -1 0 1 3 4 5 6 7 8 9] 
+18
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc16ee24" class="outline-2">
+<h2 id="orgc16ee24"><span class="section-number-2">11</span> 稀疏数组</h2>
+<div class="outline-text-2" id="text-11">
+<div class="org-src-container">
+<pre class="src src-go"><span style="color: #9d0006;">package</span> main
+
+<span style="color: #9d0006;">import</span> <span style="color: #79740e;">"fmt"</span>
+
+<span style="color: #a89984;">//</span><span style="color: #a89984;">&#29983;&#25104;&#19968;&#20010;&#21547;&#26377;&#22823;&#37327;&#37325;&#22797;&#20803;&#32032;&#30340;&#25968;&#32452;</span>
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">printRawChess</span>() [10][10]<span style="color: #8f3f71;">int</span> {
+    <span style="color: #9d0006;">var</span> rawChess [10][10]<span style="color: #8f3f71;">int</span>
+    rawChess[2][3] = 1
+    rawChess[5][6] = 2
+
+    <span style="color: #9d0006;">for</span> _, row := <span style="color: #9d0006;">range</span> rawChess {
+        <span style="color: #9d0006;">for</span> _, value := <span style="color: #9d0006;">range</span> row {
+            fmt.<span style="color: #b57614;">Printf</span>(<span style="color: #79740e;">"%d\t"</span>, value)
+        }
+        fmt.<span style="color: #b57614;">Println</span>()
+    }
+    <span style="color: #9d0006;">return</span> rawChess
+}
+
+<span style="color: #9d0006;">type</span> <span style="color: #8f3f71;">valNode</span> <span style="color: #9d0006;">struct</span> {
+    row int
+    col int
+    val int
+}
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">createSparseArr</span>(rawChess [10][10]<span style="color: #8f3f71;">int</span>) []<span style="color: #8f3f71;">valNode</span> {
+    <span style="color: #9d0006;">var</span> sparseArr []<span style="color: #8f3f71;">valNode</span>
+    rawNode := <span style="color: #8f3f71;">valNode</span>{row: 10, col: 10, val: 0}
+    sparseArr = <span style="color: #af3a03;">append</span>(sparseArr, rawNode)
+    <span style="color: #9d0006;">for</span> i, row := <span style="color: #9d0006;">range</span> rawChess {
+        <span style="color: #9d0006;">for</span> j, value := <span style="color: #9d0006;">range</span> row {
+            <span style="color: #9d0006;">if</span> value != <span style="color: #8f3f71;">0</span>{
+            node := <span style="color: #8f3f71;">valNode</span>{row: i, col: j, val: value}
+            sparseArr = <span style="color: #af3a03;">append</span>(sparseArr, node)
+            }
+        }
+    }
+
+    <span style="color: #9d0006;">return</span> sparseArr
+}
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">writeSparseArr</span>(spareArr []<span style="color: #8f3f71;">valNode</span>) {
+    <span style="color: #9d0006;">for</span> _,node := <span style="color: #9d0006;">range</span> spareArr {
+        fmt.<span style="color: #b57614;">Printf</span>(<span style="color: #79740e;">"%d\t %d\t %d\t \n"</span>,node.row,node.col,node.val)
+    }
+}
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">main</span>() {
+    rawChess := <span style="color: #b57614;">printRawChess</span>()
+    spareArr := <span style="color: #b57614;">createSparseArr</span>(rawChess)
+    <span style="color: #b57614;">writeSparseArr</span>(spareArr)
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org2bf5b63" class="outline-2">
+<h2 id="org2bf5b63"><span class="section-number-2">12</span> 数组模拟队列</h2>
+<div class="outline-text-2" id="text-12">
+<p>
+队列本身是有序的序列，可以用数组实现，也可以用链表失陷
+</p>
+
+<p>
+环形队列的实现
+</p>
+
+<ol class="org-ol">
+<li>(tail+1) % max<sub>size</sub> = head 满队列</li>
+
+<li>tail = head 空队列</li>
+
+<li>tail head 初始值 0</li>
+
+<li>(tail + max<sub>size</sub> - head) % max<sub>size</sub></li>
+</ol>
+
+<div class="org-src-container">
+<pre class="src src-go" id="orgd73a1b2"><span style="color: #9d0006;">package</span> main
+
+<span style="color: #9d0006;">import</span> (
+    <span style="color: #79740e;">"fmt"</span>
+    <span style="color: #79740e;">"os"</span>
+)
+
+<span style="color: #9d0006;">type</span> <span style="color: #8f3f71;">LoopQueue</span> <span style="color: #9d0006;">struct</span> {
+    Items []<span style="color: #8f3f71;">string</span>
+    Head  int
+    Tail  int
+    Len   int
+}
+
+<span style="color: #a89984;">// </span><span style="color: #a89984;">&#38431;&#21015;&#21021;&#22987;&#21270; &#23558;&#24213;&#23618;&#25968;&#32452;&#21021;&#22987;&#21270;</span>
+<span style="color: #a89984;">// </span><span style="color: #a89984;">&#25968;&#32452;&#30340;&#26368;&#21518;&#19968;&#20301;&#26080;&#27861;&#20351;&#29992;&#65292;&#21021;&#22987;&#21270;&#26102;&#38656;&#35201;&#28155;&#21152;&#19968;&#20301;&#31354;&#38388;(?)</span>
+<span style="color: #9d0006;">func</span> (this *<span style="color: #8f3f71;">LoopQueue</span>) <span style="color: #b57614;">Init</span>() {
+    <span style="color: #9d0006;">for</span> i := 0; i &lt;= this.Len; i++ {
+        this.Items = <span style="color: #af3a03;">append</span>(this.Items, <span style="color: #79740e;">""</span>)
+    }
+}
+
+<span style="color: #a89984;">//</span><span style="color: #a89984;">&#20837;&#38431;</span>
+<span style="color: #9d0006;">func</span> (this *<span style="color: #8f3f71;">LoopQueue</span>) <span style="color: #b57614;">Enqueue</span>(v <span style="color: #9d0006;">interface</span>{}) {
+    <span style="color: #9d0006;">if</span> (this.Tail+1)%this.Len == this.Head {
+        fmt.<span style="color: #b57614;">Println</span>(<span style="color: #79740e;">"the queue is full !"</span>)
+        <span style="color: #9d0006;">return</span>
+    }
+    this.Items[this.Tail] = v.(<span style="color: #8f3f71;">string</span>)
+    this.Tail = (this.Tail + 1) % this.Len
+    fmt.<span style="color: #b57614;">Printf</span>(<span style="color: #79740e;">"%s enqueue, now tail: %s \n"</span>, v, this.Tail)
+}
+
+<span style="color: #a89984;">//</span><span style="color: #a89984;">&#20986;&#38431;</span>
+<span style="color: #9d0006;">func</span> (this *<span style="color: #8f3f71;">LoopQueue</span>) <span style="color: #b57614;">Dequeue</span>() <span style="color: #9d0006;">interface</span>{} {
+    <span style="color: #9d0006;">if</span> this.Tail == this.Head {
+        fmt.<span style="color: #b57614;">Println</span>(<span style="color: #79740e;">"the queue is empty !"</span>)
+        <span style="color: #9d0006;">return</span> <span style="color: #8f3f71;">nil</span>
+    }
+    ret := this.Items[this.Head]
+    this.Head = (this.Head + 1) % this.Len
+    fmt.<span style="color: #b57614;">Printf</span>(<span style="color: #79740e;">"%s dequeue, now head:%s \n"</span>, ret, this.Head)
+    <span style="color: #9d0006;">return</span> ret
+}
+
+<span style="color: #a89984;">// </span><span style="color: #a89984;">&#25171;&#21360;&#38431;&#21015;&#20869;&#23481;</span>
+<span style="color: #9d0006;">func</span> (this *<span style="color: #8f3f71;">LoopQueue</span>) <span style="color: #b57614;">ShowQueue</span>() {
+    size := (this.Tail + this.Len - this.Head) % this.Len
+    fmt.<span style="color: #b57614;">Printf</span>(<span style="color: #79740e;">"&#38431;&#21015;&#20869;&#21253;&#21547; %d &#20010;&#23383;&#31526; \n"</span>, size)
+    <span style="color: #9d0006;">for</span> i := 0; i &lt; size; i++ {
+        fmt.<span style="color: #b57614;">Printf</span>(<span style="color: #79740e;">"%d \t"</span>, this.Items[(this.Head+i)%this.Len])
+    }
+}
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">main</span>() {
+    Q := &amp;<span style="color: #8f3f71;">LoopQueue</span>{Len: 5}
+    Q.<span style="color: #b57614;">Init</span>()
+    <span style="color: #9d0006;">var</span> (
+        key   string
+        value string
+    )
+    <span style="color: #9d0006;">for</span> {
+
+        fmt.<span style="color: #b57614;">Println</span>(<span style="color: #79740e;">"push: for push value into array"</span>)
+        fmt.<span style="color: #b57614;">Println</span>(<span style="color: #79740e;">"pop: for pop value into array"</span>)
+        fmt.<span style="color: #b57614;">Println</span>(<span style="color: #79740e;">"list: for show value into array"</span>)
+        fmt.<span style="color: #b57614;">Println</span>(<span style="color: #79740e;">"exit:"</span>)
+        fmt.<span style="color: #b57614;">Println</span>(<span style="color: #79740e;">"Please Give me Your KeyWord."</span>)
+        fmt.<span style="color: #b57614;">Scanln</span>(&amp;key)
+        <span style="color: #9d0006;">switch</span> key {
+        <span style="color: #9d0006;">case</span> <span style="color: #79740e;">"push"</span>:
+            fmt.<span style="color: #b57614;">Println</span>(<span style="color: #79740e;">"Please Give me you value"</span>)
+            fmt.<span style="color: #b57614;">Scanln</span>(&amp;value)
+            Q.<span style="color: #b57614;">Enqueue</span>(value)
+        <span style="color: #9d0006;">case</span> <span style="color: #79740e;">"pop"</span>:
+            Q.<span style="color: #b57614;">Dequeue</span>()
+        <span style="color: #9d0006;">case</span> <span style="color: #79740e;">"list"</span>:
+            Q.<span style="color: #b57614;">ShowQueue</span>()
+        <span style="color: #9d0006;">case</span> <span style="color: #79740e;">"exit"</span>:
+            os.<span style="color: #b57614;">Exit</span>(0)
+        }
+    }
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga94ef90" class="outline-2">
+<h2 id="orga94ef90"><span class="section-number-2">13</span> 链表</h2>
+<div class="outline-text-2" id="text-13">
+<p>
+链表本身有序的序列，非连续地址空间
+</p>
+
+<p>
+head节点不存放数据
+</p>
+
+<p>
+单向链表 双向链表
+</p>
+
+<p>
+环形链表
+</p>
+</div>
+</div>
+<div id="outline-container-org0f46160" class="outline-2">
+<h2 id="org0f46160"><span class="section-number-2">14</span> protocol buffers</h2>
+<div class="outline-text-2" id="text-14">
+<p>
+<a href="https://colobu.com/2015/01/07/Protobuf-language-guide/#%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AA%E6%B6%88%E6%81%AF%E7%B1%BB%E5%9E%8B">https://colobu.com/2015/01/07/Protobuf-language-guide/#定义一个消息类型</a>
+</p>
+
+<p>
+<a href="https://segmentfault.com/a/1190000013560739">https://segmentfault.com/a/1190000013560739</a>
+</p>
+
+<p>
+protobuffer、gRPC、restful gRPC的相互转化
+</p>
+
+
+<p>
+grpc-gateway
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1a0e4b5" class="outline-2">
+<h2 id="org1a0e4b5"><span class="section-number-2">15</span> grpc</h2>
+<div class="outline-text-2" id="text-15">
+<p>
+gRPC 一开始由 google 开发，是一款语言中立、平台中立、开源的远程过程调用(RPC)系统
+</p>
+
+<p>
+gRPC 里客户端应用可以像调用本地对象一样直接调用另一台不同的机器上服务端应用的方法
+</p>
+
+<p>
+与许多 RPC 系统类似，gRPC 也是基于以下理念：定义一个服务，指定其能够被远程调用的方法（包含参数和返回类型）。
+</p>
+
+<p>
+在服务端实现这个接口，并运行一个 gRPC 服务器来处理客户端调用。在客户端拥有一个存根能够像服务端一样的方法。
+</p>
+
+<p>
+gRPC 默认使用 <code>protocol buffers</code> ，这是 Google 开源的一套成熟的结构数据序列化机制
+</p>
+
+<p>
+支持双工的流式保序消息，性能比较好，同时也很轻
+</p>
+
+
+<p>
+gRPC中的标题被称为“元数据”。客户只能发送“标题”。服务器可以发送“标题”和“预告片”。
+</p>
+
+<p>
+您想使用google.golang.org/grpc/metadata包和metadata.NewContext()在客户端发送元数据。使用grpc.SendHeader()和grpc.SetTrailer()在服务器端发送元数据。使用grpc.Header()和grpc.Trailer()CallOptions在客户端接收Metadata。使用metadata.FromContext()在服务器端接收元数据。
+</p>
+
+
+
+
+<pre class="example">
+
+1. 在一个 .proto 文件内定义服务。
+2. 用 protocol buffer 编译器生成服务器和客户端代码。
+3. 使用 gRPC 的 Go API 为你的服务实现一个简单的客户端和服务器。
+
+</pre>
+</div>
+
+<div id="outline-container-org153a7db" class="outline-3">
+<h3 id="org153a7db"><span class="section-number-3">15.1</span> 定义服务</h3>
+<div class="outline-text-3" id="text-15-1">
+<p>
+使用 protocol buffers去定义 gRPC service 和方法request 以及 response 的类型
+</p>
+
+<p>
+使用gogo/protobuff 第三方包生成 grpc client使用的xx.go
+</p>
+
+<p>
+<a href="https://github.com/gogo/protobuf">https://github.com/gogo/protobuf</a>
+</p>
+
+<p>
+protoc &#x2013;gofast<sub>out</sub>=. myproto.proto
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org35f2b72" class="outline-2">
+<h2 id="org35f2b72"><span class="section-number-2">16</span> 文件操作</h2>
+<div class="outline-text-2" id="text-16">
+<div class="org-src-container">
+<pre class="src src-go"><span style="color: #9d0006;">package</span> main
+
+<span style="color: #9d0006;">import</span> (
+    <span style="color: #79740e;">"io/ioutil"</span>
+    <span style="color: #79740e;">"fmt"</span>
+)
+
+<span style="color: #a89984;">// </span><span style="color: #a89984;">&#35835;&#21462;&#25991;&#20214;&#30340;&#20989;&#25968;&#35843;&#29992;&#22823;&#22810;&#25968;&#37117;&#38656;&#35201;&#26816;&#26597;&#38169;&#35823;&#65292;</span>
+<span style="color: #a89984;">// </span><span style="color: #a89984;">&#20351;&#29992;&#19979;&#38754;&#36825;&#20010;&#38169;&#35823;&#26816;&#26597;&#26041;&#27861;&#21487;&#20197;&#26041;&#20415;&#19968;&#28857;</span>
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">check</span>(e <span style="color: #8f3f71;">error</span>) {
+    <span style="color: #9d0006;">if</span> e != <span style="color: #8f3f71;">nil</span> {
+        <span style="color: #af3a03;">panic</span>(e)
+    }
+}
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">main</span>() {
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">&#26368;&#22522;&#26412;&#30340;&#25991;&#20214;&#35835;&#20889;&#20219;&#21153;&#23601;&#26159;&#25226;&#25972;&#20010;&#25991;&#20214;&#30340;&#20869;&#23481;&#35835;&#21462;&#21040;&#20869;&#23384;</span>
+    dat, err := ioutil.<span style="color: #b57614;">ReadFile</span>(<span style="color: #79740e;">"/Users/manue1/Desktop/report.json"</span>)
+    <span style="color: #b57614;">check</span>(err)
+    fmt.<span style="color: #b57614;">Print</span>(<span style="color: #b57614;">string</span>(dat))
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org581389f" class="outline-2">
+<h2 id="org581389f"><span class="section-number-2">17</span> json操作</h2>
+<div class="outline-text-2" id="text-17">
+<p>
+<a href="https://mholt.github.io/json-to-go/">https://mholt.github.io/json-to-go/</a>
+自动将json解析成json的结构体
+</p>
+
+<p>
+<a href="https://www.jianshu.com/p/31757e530144">https://www.jianshu.com/p/31757e530144</a>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-go"><span style="color: #9d0006;">package</span> main
+
+<span style="color: #9d0006;">import</span> (
+    <span style="color: #79740e;">"encoding/json"</span>
+    <span style="color: #79740e;">"fmt"</span>
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">"structs"</span>
+)
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">main</span>() {
+
+    tip_filereputation_apikey := <span style="color: #79740e;">"1L8lxHj1oBChvJTEC16ptXLbUO9cK9gyVW6y5SHW"</span>
+
+    file_param := <span style="color: #79740e;">"0000000bf945b3080126f9e64acad9bf"</span>
+
+    <span style="color: #9d0006;">type</span> <span style="color: #8f3f71;">Body</span> <span style="color: #9d0006;">struct</span> {
+        Apikey string
+        Param  string
+    }
+
+    body := &amp;<span style="color: #8f3f71;">Body</span>{Apikey: tip_filereputation_apikey, Param: file_param}
+
+    fmt.<span style="color: #b57614;">Printf</span>(<span style="color: #79740e;">"body:"</span>, body)
+
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">fmt.Printf("body map", structs.Map(body))</span>
+
+    b, err := json.<span style="color: #b57614;">Marshal</span>(body)
+    <span style="color: #9d0006;">if</span> err != <span style="color: #8f3f71;">nil</span> {
+        fmt.<span style="color: #b57614;">Println</span>(<span style="color: #79740e;">"json err:"</span>, err)
+    }
+
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">body := bytes.NewBuffer([]byte(b))</span>
+
+    fmt.<span style="color: #b57614;">Println</span>(b)
+
+}
+</pre>
+</div>
+
+<p>
+gjson
+</p>
+
+<div class="org-src-container">
+<pre class="src src-go"><span style="color: #9d0006;">package</span> main
+
+<span style="color: #9d0006;">import</span> (
+   <span style="color: #79740e;">"github.com/tidwall/gjson"</span>
+   <span style="color: #79740e;">"io/ioutil"</span>
+   <span style="color: #79740e;">"fmt"</span>
+)
+
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">main</span>() {
+    dat, _ := ioutil.<span style="color: #b57614;">ReadFile</span>(<span style="color: #79740e;">"/Users/manue1/Desktop/report.json"</span>)
+    s := <span style="color: #b57614;">string</span>(dat)
+    value := gjson.<span style="color: #b57614;">Get</span>(s, <span style="color: #79740e;">"network.http"</span>)
+    fmt.<span style="color: #b57614;">Println</span>(value)
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb89fc0d" class="outline-2">
+<h2 id="orgb89fc0d"><span class="section-number-2">18</span> regexp</h2>
+<div class="outline-text-2" id="text-18">
+<p>
+go语言正则表达式测试
+</p>
+
+<p>
+<code>FindAllString</code> 方法返回所有正则匹配的字符串
+</p>
+
+<div class="org-src-container">
+<pre class="src src-go"><span style="color: #9d0006;">package</span> main
+
+<span style="color: #9d0006;">import</span> <span style="color: #79740e;">"fmt"</span>
+<span style="color: #9d0006;">import</span> <span style="color: #79740e;">"regexp"</span>
+<span style="color: #9d0006;">import</span> <span style="color: #79740e;">"io/ioutil"</span>
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">IsIP</span>(ip <span style="color: #8f3f71;">string</span>) (b <span style="color: #8f3f71;">bool</span>) {
+    <span style="color: #9d0006;">if</span> m, _ := regexp.<span style="color: #b57614;">MatchString</span>(<span style="color: #79740e;">"^[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}$"</span>, ip); !m {
+        <span style="color: #9d0006;">return</span> <span style="color: #8f3f71;">false</span>
+    }
+    <span style="color: #9d0006;">return</span> <span style="color: #8f3f71;">true</span>
+}
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">main</span>() {
+
+    dat, _ := ioutil.<span style="color: #b57614;">ReadFile</span>(<span style="color: #79740e;">"/Users/manue1/Desktop/report.json"</span>)
+
+    s := <span style="color: #b57614;">string</span>(dat)
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">&#27979;&#35797;&#27169;&#24335;&#26159;&#21542;&#21305;&#37197;&#23383;&#31526;&#20018;&#65292;&#25324;&#21495;&#37324;&#38754;&#30340;&#24847;&#24605;&#26159;</span>
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">&#33267;&#23569;&#26377;&#19968;&#20010;a&#65293;z&#20043;&#38388;&#30340;&#23383;&#31526;&#23384;&#22312;</span>
+    match, _ := regexp.<span style="color: #b57614;">MatchString</span>(<span style="color: #79740e;">"p([a-z]+)ch"</span>, <span style="color: #79740e;">"peach"</span>)
+    fmt.<span style="color: #b57614;">Println</span>(match)
+
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">`Compile`&#26469;&#20351;&#29992;&#19968;&#20010;&#20248;&#21270;&#36807;&#30340;&#27491;&#21017;&#23545;&#35937;</span>
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">&#21462;&#25152;&#26377;IP&#27491;&#21017;&#34920;&#36798;&#24335;</span>
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">r, _ := regexp.Compile("(2(5[0-5]{1}|[0-4]\\d{1})|[0-1]?\\d{1,2})(\\.(2(5[0-5]{1}|[0-4]\\d{1})|[0-1]?\\d{1,2})){3}")</span>
+
+    r, _ := regexp.<span style="color: #b57614;">Compile</span>(<span style="color: #79740e;">"^(?=^.{3,255}$)[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(\\.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+$"</span>)
+
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">&#36825;&#20010;&#26041;&#27861;&#36820;&#22238;&#25152;&#26377;&#27491;&#21017;&#21305;&#37197;&#30340;&#23383;&#31526;&#65292;&#19981;&#20165;&#20165;&#26159;&#31532;&#19968;&#20010;</span>
+    fmt.<span style="color: #b57614;">Println</span>(r.<span style="color: #b57614;">FindAllString</span>(s, -1))
+
+
+
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4e60217" class="outline-2">
+<h2 id="org4e60217"><span class="section-number-2">19</span> go net</h2>
+<div class="outline-text-2" id="text-19">
+<p>
+post tip ioc 
+</p>
+
+<div class="org-src-container">
+<pre class="src src-go"><span style="color: #9d0006;">package</span> main
+
+<span style="color: #9d0006;">import</span> (
+    <span style="color: #79740e;">"bytes"</span>
+    <span style="color: #79740e;">"crypto/tls"</span>
+    <span style="color: #79740e;">"fmt"</span>
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">"github.com/tidwall/gjson"</span>
+    <span style="color: #79740e;">"encoding/json"</span>
+    <span style="color: #79740e;">"io/ioutil"</span>
+    <span style="color: #79740e;">"net/http"</span>
+)
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">GetTipIoc</span>(iocs <span style="color: #8f3f71;">string</span>) (<span style="color: #8f3f71;">string</span>, <span style="color: #8f3f71;">error</span>) {
+
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">TODO config</span>
+    url := <span style="color: #79740e;">"https://10.95.55.220/api/v2/compromise/query"</span>
+    apikey := <span style="color: #79740e;">"1L8lxHj1oBChvJTEC16ptXLbUO9cK9gyVW6y5SHW"</span>
+
+    body_s := <span style="color: #79740e;">`{"apikey":"`</span> + apikey + <span style="color: #79740e;">`",`</span> + <span style="color: #79740e;">`"param":"`</span> + iocs + <span style="color: #79740e;">`"}`</span>
+    req, err := http.<span style="color: #b57614;">NewRequest</span>(<span style="color: #79740e;">"POST"</span>, url, bytes.<span style="color: #b57614;">NewBuffer</span>([]<span style="color: #b57614;">byte</span>(body_s)))
+    req.Header.<span style="color: #b57614;">Set</span>(<span style="color: #79740e;">"Content-Type"</span>, <span style="color: #79740e;">"application/json"</span>)
+    req.Header.<span style="color: #b57614;">Set</span>(<span style="color: #79740e;">"cache-control"</span>, <span style="color: #79740e;">"no-cache"</span>)
+    req.Header.<span style="color: #b57614;">Set</span>(<span style="color: #79740e;">"Postman-Token"</span>, <span style="color: #79740e;">"d1ac6e64-c5f6-4fbf-bbfd-062439950ebf"</span>)
+    http.DefaultTransport.(*<span style="color: #8f3f71;">http.Transport</span>).TLSClientConfig = &amp;tls.<span style="color: #8f3f71;">Config</span>{InsecureSkipVerify: <span style="color: #8f3f71;">true</span>}
+    client := &amp;http.<span style="color: #8f3f71;">Client</span>{}
+    resp, err := client.<span style="color: #b57614;">Do</span>(req)
+    <span style="color: #9d0006;">if</span> err != <span style="color: #8f3f71;">nil</span> {
+        <span style="color: #9d0006;">return</span> <span style="color: #79740e;">""</span>, err
+    }
+    <span style="color: #9d0006;">defer</span> resp.Body.<span style="color: #b57614;">Close</span>()
+
+    body, _ := ioutil.<span style="color: #b57614;">ReadAll</span>(resp.Body)
+
+    <span style="color: #9d0006;">return</span> <span style="color: #b57614;">string</span>(body), <span style="color: #8f3f71;">nil</span>
+}
+
+<span style="color: #9d0006;">type</span> <span style="color: #8f3f71;">RespStruct</span> <span style="color: #9d0006;">struct</span> {
+    Data []<span style="color: #9d0006;">map</span>[<span style="color: #8f3f71;">string</span>]<span style="color: #8f3f71;">Ioc</span> <span style="color: #79740e;">`json:"data"`</span>
+}
+
+<span style="color: #9d0006;">type</span> <span style="color: #8f3f71;">Ioc</span> []<span style="color: #9d0006;">struct</span> {
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">AlertName     string `json:"alert_name"`</span>
+    Campaign string <span style="color: #79740e;">`json:"campaign"`</span>
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">Confidence    string `json:"confidence"`</span>
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">CurrentStatus string `json:"current_status"`</span>
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">Etime           time.Time `json:"etime"`</span>
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">ID              string   `json:"id"`</span>
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">Ioc             []string `json:"ioc"`</span>
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">IocCategory     string   `json:"ioc_category"`</span>
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">KillChain       string   `json:"kill_chain"`</span>
+    MaliciousFamily []<span style="color: #8f3f71;">string</span> <span style="color: #79740e;">`json:"malicious_family"`</span>
+    MaliciousType   string   <span style="color: #79740e;">`json:"malicious_type"`</span>
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">Platform        string   `json:"platform"`</span>
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">Risk            string   `json:"risk"`</span>
+    Tag      []<span style="color: #8f3f71;">string</span> <span style="color: #79740e;">`json:"tag"`</span>
+    Targeted bool     <span style="color: #79740e;">`json:"targeted"`</span>
+}
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">ParseJsonResp</span>(jsonResp <span style="color: #8f3f71;">string</span>) (<span style="color: #8f3f71;">string</span>, <span style="color: #8f3f71;">error</span>) {
+
+    repObj := <span style="color: #8f3f71;">RespStruct</span>{}
+
+    err := json.<span style="color: #b57614;">Unmarshal</span>([]<span style="color: #b57614;">byte</span>(jsonResp), &amp;repObj)
+    <span style="color: #9d0006;">if</span> err != <span style="color: #8f3f71;">nil</span> {
+        fmt.<span style="color: #b57614;">Printf</span>(<span style="color: #79740e;">""</span>, err)
+    }
+
+    fmt.<span style="color: #b57614;">Printf</span>(<span style="color: #79740e;">"%s\n"</span>, repObj.Data)
+    <span style="color: #9d0006;">for</span> _, data_value := <span style="color: #9d0006;">range</span> repObj.Data {
+        <span style="color: #a89984;">// </span><span style="color: #a89984;">data []</span>
+        <span style="color: #9d0006;">for</span> key, ioc_structs := <span style="color: #9d0006;">range</span> data_value {
+
+            ioc := key
+            fmt.<span style="color: #b57614;">Printf</span>(<span style="color: #79740e;">"%s\n"</span>, ioc)
+
+            <span style="color: #9d0006;">var</span> intelligence_type []<span style="color: #8f3f71;">string</span>
+            <span style="color: #9d0006;">var</span> malice_type []<span style="color: #8f3f71;">string</span>
+            <span style="color: #9d0006;">var</span> malice_family []<span style="color: #8f3f71;">string</span>
+            <span style="color: #9d0006;">var</span> campaign []<span style="color: #8f3f71;">string</span>
+
+            <span style="color: #9d0006;">for</span> _, value := <span style="color: #9d0006;">range</span> ioc_structs {
+                intelligence_type = <span style="color: #af3a03;">append</span>(intelligence_type, value.Tag...)
+                malice_type = <span style="color: #af3a03;">append</span>(malice_type, value.MaliciousType)
+                malice_family = <span style="color: #af3a03;">append</span>(malice_family, value.MaliciousFamily...)
+                campaign = <span style="color: #af3a03;">append</span>(campaign, value.Campaign)
+            }
+
+            fmt.<span style="color: #b57614;">Printf</span>(<span style="color: #79740e;">"%s\t %s\t %s\t %s\t\n"</span>, <span style="color: #b57614;">removeDuplicateElement</span>(intelligence_type), <span style="color: #b57614;">removeDuplicateElement</span>(malice_type), malice_family, campaign)
+        }
+    }
+
+    <span style="color: #9d0006;">return</span> <span style="color: #79740e;">"hello"</span>, <span style="color: #8f3f71;">nil</span>
+}
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">removeDuplicateElement</span>(addrs []<span style="color: #8f3f71;">string</span>) []<span style="color: #8f3f71;">string</span> {
+    result := <span style="color: #af3a03;">make</span>([]<span style="color: #8f3f71;">string</span>, 0, <span style="color: #af3a03;">len</span>(addrs))
+    temp := <span style="color: #9d0006;">map</span>[<span style="color: #8f3f71;">string</span>]<span style="color: #9d0006;">struct</span>{}{}
+    <span style="color: #9d0006;">for</span> _, item := <span style="color: #9d0006;">range</span> addrs {
+        <span style="color: #9d0006;">if</span> _, ok := temp[item]; !ok {
+            temp[item] = <span style="color: #9d0006;">struct</span>{}{}
+            result = <span style="color: #af3a03;">append</span>(result, item)
+        }
+    }
+    <span style="color: #9d0006;">return</span> result
+}
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">main</span>() {
+    iocs := <span style="color: #79740e;">"http://bit.ly/2IqEzrh,bit.ly,manue1.site"</span>
+    jsonResp, _ := <span style="color: #b57614;">GetTipIoc</span>(iocs)
+    data, _ := <span style="color: #b57614;">ParseJsonResp</span>(jsonResp)
+    fmt.<span style="color: #b57614;">Println</span>(data)
+}
+</pre>
+</div>
+
+
+
+
+<p>
+post tic ioc
+</p>
+<div class="org-src-container">
+<pre class="src src-go"><span style="color: #9d0006;">package</span> main
+
+<span style="color: #9d0006;">import</span> (
+    <span style="color: #79740e;">"bytes"</span>
+    <span style="color: #79740e;">"fmt"</span>
+    <span style="color: #79740e;">"io/ioutil"</span>
+    <span style="color: #79740e;">"net/http"</span>
+    <span style="color: #79740e;">"encoding/json"</span>
+)
+
+<span style="color: #9d0006;">type</span> <span style="color: #8f3f71;">TicCompromiseResp</span> <span style="color: #9d0006;">struct</span> {
+    ignore_top  bool
+    ignore_url  bool
+    ignore_port bool
+    apikey      string
+    params      slice
+}
+
+
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">main</span>() {
+    url := <span style="color: #79740e;">"http://10.253.69.22:8989/api/v2/compromises"</span>
+    fmt.<span style="color: #b57614;">Println</span>(<span style="color: #79740e;">"URL:&gt;"</span>, url)
+
+
+    ticCompromiseResp := <span style="color: #8f3f71;">TicCompromiseResp</span>{
+        <span style="color: #8f3f71;">ignore_top</span>:  <span style="color: #8f3f71;">true</span>,
+        <span style="color: #8f3f71;">ignore_url</span>:  <span style="color: #8f3f71;">true</span>,
+        <span style="color: #8f3f71;">ignore_port</span>: <span style="color: #8f3f71;">true</span>,
+        <span style="color: #8f3f71;">apikey</span>:      <span style="color: #79740e;">"rmYR7mY5HnHOmQ8NinuH5quhclRi3lN4"</span>,
+        <span style="color: #8f3f71;">params</span>:      []<span style="color: #8f3f71;">string</span>{<span style="color: #79740e;">"google.com"</span>, <span style="color: #79740e;">"doc-japan.com"</span>},
+    }
+    fmt.<span style="color: #b57614;">Printf</span>(<span style="color: #79740e;">"&#32467;&#26500;&#20307;&#25171;&#21360;&#32467;&#26524;:%v"</span>, ticCompromiseResp)
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">&#32467;&#26500;&#20307;&#36716;&#25442;&#20026;&#23545;&#24212;&#30340; Json</span>
+     jsonBytes, err := json.<span style="color: #b57614;">Marshal</span>(ticCompromiseResp)
+     <span style="color: #9d0006;">if</span> err != <span style="color: #8f3f71;">nil</span> {
+         fmt.<span style="color: #b57614;">Println</span>(err)
+     }
+     fmt.<span style="color: #b57614;">Printf</span>(<span style="color: #79740e;">"&#36716;&#25442;&#20026; json &#20018;&#25171;&#21360;&#32467;&#26524;:%s"</span>, <span style="color: #b57614;">string</span>(jsonBytes))
+
+    <span style="color: #9d0006;">var</span> jsonStr = []<span style="color: #b57614;">byte</span>(<span style="color: #79740e;">`{</span>
+<span style="color: #79740e;">           "apikey":"rmYR7mY5HnHOmQ8NinuH5quhclRi3lN4",</span>
+<span style="color: #79740e;">           "params":["google.com","doc-japan.com"]}`</span>)
+    req, err := http.<span style="color: #b57614;">NewRequest</span>(<span style="color: #79740e;">"POST"</span>, url, bytes.<span style="color: #b57614;">NewBuffer</span>(jsonStr))
+    req.Header.<span style="color: #b57614;">Set</span>(<span style="color: #79740e;">"Content-Type"</span>, <span style="color: #79740e;">"application/json"</span>)
+
+    client := &amp;http.<span style="color: #8f3f71;">Client</span>{}
+    resp, err := client.<span style="color: #b57614;">Do</span>(req)
+    <span style="color: #9d0006;">if</span> err != <span style="color: #8f3f71;">nil</span> {
+        <span style="color: #af3a03;">panic</span>(err)
+    }
+    <span style="color: #9d0006;">defer</span> resp.Body.<span style="color: #b57614;">Close</span>()
+
+    fmt.<span style="color: #b57614;">Println</span>(<span style="color: #79740e;">"response Status:"</span>, resp.Status)
+    fmt.<span style="color: #b57614;">Println</span>(<span style="color: #79740e;">"response Headers:"</span>, resp.Header)
+    body, _ := ioutil.<span style="color: #b57614;">ReadAll</span>(resp.Body)
+    fmt.<span style="color: #b57614;">Println</span>(<span style="color: #79740e;">"response Body:"</span>, <span style="color: #b57614;">string</span>(body))
+}
+</pre>
+</div>
+
+
+<p>
+post tip 测试
+</p>
+<div class="org-src-container">
+<pre class="src src-go"><span style="color: #9d0006;">package</span> main
+
+<span style="color: #9d0006;">import</span> (
+    <span style="color: #79740e;">"bytes"</span>
+    <span style="color: #79740e;">"fmt"</span>
+    <span style="color: #79740e;">"io/ioutil"</span>
+    <span style="color: #79740e;">"net/http"</span>
+    <span style="color: #79740e;">"encoding/json"</span>
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">"strings"</span>
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">"net/url"</span>
+)
+
+<span style="color: #a89984;">// </span><span style="color: #a89984;">tip_filereputation_url = https://10.95.55.220/api/v2/filereputation/query</span>
+<span style="color: #a89984;">// </span><span style="color: #a89984;">tip_filereputation_apikey = 1L8lxHj1oBChvJTEC16ptXLbUO9cK9gyVW6y5SHW</span>
+
+<span style="color: #a89984;">// </span><span style="color: #a89984;">TipFileReputationSearch ...</span>
+<span style="color: #a89984;">// </span><span style="color: #a89984;">func main() {</span>
+
+<span style="color: #a89984;">//     </span><span style="color: #a89984;">tip_filereputation_url := "https://10.95.55.220/api/v2/filereputation/query"</span>
+
+<span style="color: #a89984;">//     </span><span style="color: #a89984;">v := url.Values{}</span>
+<span style="color: #a89984;">//     </span><span style="color: #a89984;">v.Set("apikey", "1L8lxHj1oBChvJTEC16ptXLbUO9cK9gyVW6y5SHW")</span>
+<span style="color: #a89984;">//     </span><span style="color: #a89984;">v.Set("param", "0000000bf945b3080126f9e64acad9bf")</span>
+
+<span style="color: #a89984;">//     </span><span style="color: #a89984;">body := ioutil.NopCloser(strings.NewReader(v.Encode())) //&#25226;form&#25968;&#25454;&#32534;&#19979;&#30721;</span>
+
+<span style="color: #a89984;">//     </span><span style="color: #a89984;">client := &amp;http.Client{}</span>
+<span style="color: #a89984;">//     </span><span style="color: #a89984;">reqest, err := http.NewRequest("POST", tip_filereputation_url, body)</span>
+<span style="color: #a89984;">//     </span><span style="color: #a89984;">if err != nil {</span>
+<span style="color: #a89984;">//         </span><span style="color: #a89984;">fmt.Println("Fatal error ", err.Error())</span>
+<span style="color: #a89984;">//     </span><span style="color: #a89984;">}</span>
+<span style="color: #a89984;">//     </span><span style="color: #a89984;">reqest.Header.Set("Content-Type", "application/json")</span>
+<span style="color: #a89984;">//     </span><span style="color: #a89984;">reqest.Header.Set("cache-control", "no-cache")</span>
+<span style="color: #a89984;">//     </span><span style="color: #a89984;">reqest.Header.Set("Postman-Token","d1ac6e64-c5f6-4fbf-bbfd-062439950ebf")</span>
+
+<span style="color: #a89984;">//     </span><span style="color: #a89984;">resp, err := client.Do(reqest) //&#21457;&#36865;&#35831;&#27714;</span>
+<span style="color: #a89984;">//     </span><span style="color: #a89984;">defer resp.Body.Close()        //&#19968;&#23450;&#35201;&#20851;&#38381;resp.Body</span>
+<span style="color: #a89984;">//     </span><span style="color: #a89984;">content, err := ioutil.ReadAll(resp.Body)</span>
+<span style="color: #a89984;">//     </span><span style="color: #a89984;">if err != nil {</span>
+<span style="color: #a89984;">//         </span><span style="color: #a89984;">fmt.Println("Fatal error ", err.Error())</span>
+<span style="color: #a89984;">//     </span><span style="color: #a89984;">}</span>
+
+<span style="color: #a89984;">//     </span><span style="color: #a89984;">fmt.Println(string(content))</span>
+<span style="color: #a89984;">// </span><span style="color: #a89984;">}</span>
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">main</span>() {
+    tip_filereputation_url := <span style="color: #79740e;">"https://10.95.55.220/api/v2/filereputation/query"</span>
+
+    tip_filereputation_apikey := <span style="color: #79740e;">"1L8lxHj1oBChvJTEC16ptXLbUO9cK9gyVW6y5SHW"</span>
+
+    param := <span style="color: #79740e;">"0000000bf945b3080126f9e64acad9bf"</span>
+
+    <span style="color: #9d0006;">type</span> <span style="color: #8f3f71;">Body</span> <span style="color: #9d0006;">struct</span> {
+        apikey string
+        param string
+    }
+
+    body:= <span style="color: #8f3f71;">Body</span>{apikey:}
+
+
+    fmt.<span style="color: #b57614;">Println</span>(<span style="color: #79740e;">"new_str"</span>, bytes.<span style="color: #b57614;">NewBuffer</span>(jsonStr))
+    client := &amp;http.<span style="color: #8f3f71;">Client</span>{}
+    reqest, err := http.<span style="color: #b57614;">NewRequest</span>(<span style="color: #79740e;">"POST"</span>, tip_filereputation_url, bytes.<span style="color: #b57614;">NewBuffer</span>(jsonStr))
+    <span style="color: #9d0006;">if</span> err != <span style="color: #8f3f71;">nil</span> {
+        fmt.<span style="color: #b57614;">Println</span>(<span style="color: #79740e;">"Fatal error "</span>, err.<span style="color: #b57614;">Error</span>())
+    }
+    reqest.Header.<span style="color: #b57614;">Set</span>(<span style="color: #79740e;">"Content-Type"</span>, <span style="color: #79740e;">"application/json"</span>)
+    reqest.Header.<span style="color: #b57614;">Set</span>(<span style="color: #79740e;">"cache-control"</span>, <span style="color: #79740e;">"no-cache"</span>)
+    reqest.Header.<span style="color: #b57614;">Set</span>(<span style="color: #79740e;">"Postman-Token"</span>, <span style="color: #79740e;">"d1ac6e64-c5f6-4fbf-bbfd-062439950ebf"</span>)
+
+    resp, err := client.<span style="color: #b57614;">Do</span>(reqest) <span style="color: #a89984;">//</span><span style="color: #a89984;">&#21457;&#36865;&#35831;&#27714;</span>
+    <span style="color: #9d0006;">defer</span> resp.Body.<span style="color: #b57614;">Close</span>()        <span style="color: #a89984;">//</span><span style="color: #a89984;">&#19968;&#23450;&#35201;&#20851;&#38381;resp.Body</span>
+    content, err := ioutil.<span style="color: #b57614;">ReadAll</span>(resp.Body)
+    <span style="color: #9d0006;">if</span> err != <span style="color: #8f3f71;">nil</span> {
+        fmt.<span style="color: #b57614;">Println</span>(<span style="color: #79740e;">"Fatal error "</span>, err.<span style="color: #b57614;">Error</span>())
+    }
+
+    fmt.<span style="color: #b57614;">Println</span>(<span style="color: #b57614;">string</span>(content))
+}
+</pre>
+</div>
+
+
+<p>
+post 测试 tip file
+</p>
+
+<div class="org-src-container">
+<pre class="src src-go"><span style="color: #9d0006;">package</span> main
+
+<span style="color: #9d0006;">import</span> (
+    <span style="color: #79740e;">"bytes"</span>
+    <span style="color: #79740e;">"fmt"</span>
+    <span style="color: #79740e;">"io/ioutil"</span>
+    <span style="color: #79740e;">"net/http"</span>
+)
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">main</span>() {
+    url := <span style="color: #79740e;">"https://10.95.55.220/api/v2/filereputation/query"</span>
+    fmt.<span style="color: #b57614;">Println</span>(<span style="color: #79740e;">"URL:&gt;"</span>, url)
+
+    <span style="color: #9d0006;">var</span> jsonStr = []<span style="color: #b57614;">byte</span>(<span style="color: #79740e;">`{</span>
+<span style="color: #79740e;">        "apikey":"1L8lxHj1oBChvJTEC16ptXLbUO9cK9gyVW6y5SHW",</span>
+<span style="color: #79740e;">        "param":"0000000bf945b3080126f9e64acad9bf"}`</span>)
+    req, err := http.<span style="color: #b57614;">NewRequest</span>(<span style="color: #79740e;">"POST"</span>, url, bytes.<span style="color: #b57614;">NewBuffer</span>(jsonStr))
+    req.Header.<span style="color: #b57614;">Set</span>(<span style="color: #79740e;">"Content-Type"</span>, <span style="color: #79740e;">"application/json"</span>)
+    req.Header.<span style="color: #b57614;">Set</span>(<span style="color: #79740e;">"cache-control"</span>, <span style="color: #79740e;">"no-cache"</span>)
+    req.Header.<span style="color: #b57614;">Set</span>(<span style="color: #79740e;">"Postman-Token"</span>, <span style="color: #79740e;">"d1ac6e64-c5f6-4fbf-bbfd-062439950ebf"</span>)
+
+    client := &amp;http.<span style="color: #8f3f71;">Client</span>{}
+    resp, err := client.<span style="color: #b57614;">Do</span>(req)
+    <span style="color: #9d0006;">if</span> err != <span style="color: #8f3f71;">nil</span> {
+        <span style="color: #af3a03;">panic</span>(err)
+    }
+    <span style="color: #9d0006;">defer</span> resp.Body.<span style="color: #b57614;">Close</span>()
+
+    fmt.<span style="color: #b57614;">Println</span>(<span style="color: #79740e;">"response Status:"</span>, resp.Status)
+    fmt.<span style="color: #b57614;">Println</span>(<span style="color: #79740e;">"response Headers:"</span>, resp.Header)
+    body, _ := ioutil.<span style="color: #b57614;">ReadAll</span>(resp.Body)
+    fmt.<span style="color: #b57614;">Println</span>(<span style="color: #79740e;">"response Body:"</span>, <span style="color: #b57614;">string</span>(body))
+}
+</pre>
+</div>
+
+<p>
+Get 请求
+</p>
+<div class="org-src-container">
+<pre class="src src-go"><span style="color: #9d0006;">package</span> main
+<span style="color: #9d0006;">import</span> (
+    <span style="color: #79740e;">"fmt"</span>
+    <span style="color: #79740e;">"io/ioutil"</span>
+    <span style="color: #79740e;">"net/http"</span>
+)
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">main</span>() {
+    response, err := http.<span style="color: #b57614;">Get</span>(<span style="color: #79740e;">"http://www.baidu.com"</span>)
+    <span style="color: #9d0006;">if</span> err != <span style="color: #8f3f71;">nil</span> {
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">handle error</span>
+    }
+    <span style="color: #a89984;">//</span><span style="color: #a89984;">&#31243;&#24207;&#22312;&#20351;&#29992;&#23436;&#22238;&#22797;&#21518;&#24517;&#39035;&#20851;&#38381;&#22238;&#22797;&#30340;&#20027;&#20307;&#12290;</span>
+    <span style="color: #9d0006;">defer</span> response.Body.<span style="color: #b57614;">Close</span>()
+
+    body, _ := ioutil.<span style="color: #b57614;">ReadAll</span>(response.Body)
+    fmt.<span style="color: #b57614;">Println</span>(<span style="color: #b57614;">string</span>(body))
+}
+
+</pre>
+</div>
+
+
+<p>
+Post 请求
+</p>
+<div class="org-src-container">
+<pre class="src src-go"><span style="color: #9d0006;">package</span> main
+
+<span style="color: #9d0006;">import</span>(
+    <span style="color: #79740e;">"fmt"</span>
+    <span style="color: #79740e;">"strings"</span>
+    <span style="color: #79740e;">"net/http"</span>
+    <span style="color: #79740e;">"io/ioutil"</span>
+)
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">main</span>() {
+    resp, err := http.<span style="color: #b57614;">Post</span>(<span style="color: #79740e;">"http://www.01happy.com/demo/accept.php"</span>,
+        <span style="color: #79740e;">"application/x-www-form-urlencoded"</span>,
+        strings.<span style="color: #b57614;">NewReader</span>(<span style="color: #79740e;">"name=cjb"</span>))
+    <span style="color: #9d0006;">if</span> err != <span style="color: #8f3f71;">nil</span> {
+        fmt.<span style="color: #b57614;">Println</span>(err)
+    }
+    <span style="color: #9d0006;">defer</span> resp.Body.<span style="color: #b57614;">Close</span>()
+    body, err := ioutil.<span style="color: #b57614;">ReadAll</span>(resp.Body)
+    <span style="color: #9d0006;">if</span> err != <span style="color: #8f3f71;">nil</span> {
+        <span style="color: #a89984;">// </span><span style="color: #a89984;">handle error</span>
+    }
+    fmt.<span style="color: #b57614;">Println</span>(<span style="color: #b57614;">string</span>(body))
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd61517c" class="outline-2">
+<h2 id="orgd61517c"><span class="section-number-2">20</span> GoLang中 json、map、struct 之间的相互转化</h2>
+<div class="outline-text-2" id="text-20">
+<p>
+<a href="https://www.cnblogs.com/liang1101/p/6741262.html">https://www.cnblogs.com/liang1101/p/6741262.html</a>
+</p>
+</div>
+</div>
+<div id="outline-container-orgdbcbde4" class="outline-2">
+<h2 id="orgdbcbde4"><span class="section-number-2">21</span> go mod</h2>
+<div class="outline-text-2" id="text-21">
+<p>
+<a href="https://zhezh09.github.io/post/tech/code/golang/20180828-feature-go-modules-01/">https://zhezh09.github.io/post/tech/code/golang/20180828-feature-go-modules-01/</a>
+</p>
+</div>
+</div>
+<div id="outline-container-orgb78556d" class="outline-2">
+<h2 id="orgb78556d"><span class="section-number-2">22</span> goini</h2>
+<div class="outline-text-2" id="text-22">
+<p>
+go get  gopkg.in/ini.v1
+</p>
+
+<p>
+<a href="https://www.ctolib.com/ini.html">https://www.ctolib.com/ini.html</a>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-go"><span style="color: #9d0006;">package</span> main
+
+<span style="color: #9d0006;">import</span> (
+
+  <span style="color: #79740e;">"fmt"</span>
+  <span style="color: #79740e;">"gopkg.in/ini.v1"</span>
+)
+
+
+
+<span style="color: #9d0006;">type</span> <span style="color: #8f3f71;">IniParser</span> <span style="color: #9d0006;">struct</span> {
+    conf_reader *ini.File <span style="color: #a89984;">// </span><span style="color: #a89984;">config reader</span>
+}
+
+<span style="color: #9d0006;">type</span> <span style="color: #8f3f71;">IniParserError</span> <span style="color: #9d0006;">struct</span> {
+    error_info string
+}
+
+<span style="color: #9d0006;">func</span> (e *<span style="color: #8f3f71;">IniParserError</span>) <span style="color: #b57614;">Error</span>() <span style="color: #8f3f71;">string</span> { <span style="color: #9d0006;">return</span> e.error_info }
+
+<span style="color: #9d0006;">func</span> (this *<span style="color: #8f3f71;">IniParser</span>) <span style="color: #b57614;">Load</span>(config_file_name <span style="color: #8f3f71;">string</span>) <span style="color: #8f3f71;">error</span> {
+    conf, err := ini.<span style="color: #b57614;">Load</span>(config_file_name)
+    <span style="color: #9d0006;">if</span> err != <span style="color: #8f3f71;">nil</span> {
+        this.conf_reader = <span style="color: #8f3f71;">nil</span>
+        <span style="color: #9d0006;">return</span> err
+    }
+    this.conf_reader = conf
+    <span style="color: #9d0006;">return</span> <span style="color: #8f3f71;">nil</span>
+}
+
+<span style="color: #9d0006;">func</span> (this *<span style="color: #8f3f71;">IniParser</span>) <span style="color: #b57614;">GetString</span>(section <span style="color: #8f3f71;">string</span>, key <span style="color: #8f3f71;">string</span>) <span style="color: #8f3f71;">string</span> {
+    <span style="color: #9d0006;">if</span> this.conf_reader == <span style="color: #8f3f71;">nil</span> {
+        <span style="color: #9d0006;">return</span> <span style="color: #79740e;">""</span>
+    }
+
+    s := this.conf_reader.<span style="color: #b57614;">Section</span>(section)
+    <span style="color: #9d0006;">if</span> s == <span style="color: #8f3f71;">nil</span> {
+        <span style="color: #9d0006;">return</span> <span style="color: #79740e;">""</span>
+    }
+
+    <span style="color: #9d0006;">return</span> s.<span style="color: #b57614;">Key</span>(key).<span style="color: #b57614;">String</span>()
+}
+
+
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">main</span>() {
+    ini_parser := <span style="color: #8f3f71;">IniParser</span>{}
+
+<span style="color: #a89984;">// </span><span style="color: #a89984;">[ioc_mongo]</span>
+<span style="color: #a89984;">// </span><span style="color: #a89984;">host =  10.249.171.150</span>
+<span style="color: #a89984;">// </span><span style="color: #a89984;">username = ti7200</span>
+<span style="color: #a89984;">// </span><span style="color: #a89984;">password = czy2TTa69pbsptyoWN</span>
+<span style="color: #a89984;">// </span><span style="color: #a89984;">port = 27017</span>
+
+
+    <span style="color: #9d0006;">var</span> filepath = <span style="color: #79740e;">"/Users/manue1/go/src/grpc-test/config.ini"</span>
+    <span style="color: #9d0006;">if</span> err := ini_parser.<span style="color: #b57614;">Load</span>(filepath); err != <span style="color: #8f3f71;">nil</span> {
+        fmt.<span style="color: #b57614;">Printf</span>(<span style="color: #79740e;">"try load config file[%s] error[%s]\n"</span>, filepath, err.<span style="color: #b57614;">Error</span>())
+        <span style="color: #9d0006;">return</span>
+    }
+
+    host := ini_parser.<span style="color: #b57614;">GetString</span>(<span style="color: #79740e;">"ioc_mongo"</span>, <span style="color: #79740e;">"host"</span>)
+    fmt.<span style="color: #b57614;">Printf</span>(<span style="color: #79740e;">"host: %s \n"</span>,host)
+
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgeb2a198" class="outline-2">
+<h2 id="orgeb2a198"><span class="section-number-2">23</span> go time</h2>
+<div class="outline-text-2" id="text-23">
+<div class="org-src-container">
+<pre class="src src-go"><span style="color: #9d0006;">package</span> main
+
+<span style="color: #9d0006;">import</span> (
+    <span style="color: #79740e;">"fmt"</span>
+    <span style="color: #79740e;">"strconv"</span>
+    <span style="color: #79740e;">"time"</span>
+)
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">main</span>() {
+
+    timestamp := time.<span style="color: #b57614;">Now</span>().<span style="color: #b57614;">Unix</span>()
+
+    fmt.<span style="color: #b57614;">Println</span>(<span style="color: #79740e;">"&#26102;&#38388;&#25139;&#31867;&#22411;: %+v"</span>, timestamp)
+
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">to string</span>
+    fmt.<span style="color: #b57614;">Println</span>(strconv.<span style="color: #b57614;">FormatInt</span>(timestamp, 10))
+
+    str := <span style="color: #79740e;">"&#27979;&#35797;&#65306;"</span> + timestamp
+
+    fmt.<span style="color: #b57614;">Println</span>(str)
+
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7246227" class="outline-2">
+<h2 id="org7246227"><span class="section-number-2">24</span> go mongo</h2>
+<div class="outline-text-2" id="text-24">
+<p>
+文档
+</p>
+
+<p>
+<a href="https://godoc.org/gopkg.in/mgo.v2#Query.Sort">https://godoc.org/gopkg.in/mgo.v2#Query.Sort</a>
+</p>
+
+<p>
+gopkg.in/mgo.v2
+</p>
+
+<p>
+<a href="http://labix.org/mgo">http://labix.org/mgo</a>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-go"><span style="color: #9d0006;">package</span> main
+
+<span style="color: #9d0006;">import</span> (
+    <span style="color: #79740e;">"errors"</span>
+    <span style="color: #79740e;">"fmt"</span>
+    mgo <span style="color: #79740e;">"gopkg.in/mgo.v2"</span>
+    <span style="color: #79740e;">"gopkg.in/mgo.v2/bson"</span>
+    <span style="color: #79740e;">"sync"</span>
+    <span style="color: #79740e;">"time"</span>
+)
+
+<span style="color: #9d0006;">type</span> <span style="color: #8f3f71;">MongoDrive</span> <span style="color: #9d0006;">struct</span> {
+    mgoSession *mgo.Session
+    mgoSet     *mgo.Collection
+}
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">NewMongoDrive</span>(addr, user, password, db, authDb, collect <span style="color: #8f3f71;">string</span>, retryStep <span style="color: #8f3f71;">int32</span>) (*<span style="color: #8f3f71;">MongoDrive</span>, <span style="color: #8f3f71;">error</span>) {
+    url := user + <span style="color: #79740e;">":"</span> + password + <span style="color: #79740e;">"@"</span> + addr + <span style="color: #79740e;">"/"</span> + db + <span style="color: #79740e;">"?authSource="</span> + authDb
+
+    mgoSession, err := mgo.<span style="color: #b57614;">Dial</span>(url)
+    <span style="color: #9d0006;">if</span> err != <span style="color: #8f3f71;">nil</span> {
+        <span style="color: #9d0006;">return</span> <span style="color: #8f3f71;">nil</span>, errors.<span style="color: #b57614;">New</span>(<span style="color: #79740e;">"connect mongo error:"</span> + err.<span style="color: #b57614;">Error</span>() + <span style="color: #79740e;">", url:"</span> + url)
+    }
+    mongoDrive := <span style="color: #af3a03;">new</span>(<span style="color: #8f3f71;">MongoDrive</span>)
+    mongoDrive.mgoSession = mgoSession
+    mongoDrive.mgoSet = mongoDrive.mgoSession.<span style="color: #b57614;">DB</span>(db).<span style="color: #b57614;">C</span>(collect)
+    <span style="color: #a89984;">//</span><span style="color: #a89984;">create index</span>
+    mongoDrive.<span style="color: #b57614;">bindIndex</span>()
+
+    <span style="color: #9d0006;">return</span> mongoDrive, <span style="color: #8f3f71;">nil</span>
+}
+
+<span style="color: #9d0006;">func</span> (s *<span style="color: #8f3f71;">MongoDrive</span>) <span style="color: #b57614;">bindIndex</span>() <span style="color: #8f3f71;">error</span> {
+    index := mgo.<span style="color: #8f3f71;">Index</span>{
+        <span style="color: #8f3f71;">Key</span>:        []<span style="color: #8f3f71;">string</span>{<span style="color: #79740e;">"name"</span>}, <span style="color: #a89984;">// </span><span style="color: #a89984;">&#32034;&#24341;&#23383;&#27573;&#65292; &#40664;&#35748;&#21319;&#24207;,&#33509;&#38656;&#38477;&#24207;&#22312;&#23383;&#27573;&#21069;&#21152;-</span>
+        <span style="color: #8f3f71;">Unique</span>:     <span style="color: #8f3f71;">true</span>,             <span style="color: #a89984;">// </span><span style="color: #a89984;">&#21807;&#19968;&#32034;&#24341; &#21516;mysql&#21807;&#19968;&#32034;&#24341;</span>
+        <span style="color: #8f3f71;">DropDups</span>:   <span style="color: #8f3f71;">true</span>,             <span style="color: #a89984;">// </span><span style="color: #a89984;">&#32034;&#24341;&#37325;&#22797;&#26367;&#25442;&#26087;&#25991;&#26723;,Unique&#20026;true&#26102;&#22833;&#25928;</span>
+        <span style="color: #8f3f71;">Background</span>: <span style="color: #8f3f71;">true</span>,             <span style="color: #a89984;">// </span><span style="color: #a89984;">&#21518;&#21488;&#21019;&#24314;&#32034;&#24341;</span>
+    }
+    err := s.mgoSet.<span style="color: #b57614;">EnsureIndex</span>(index) <span style="color: #a89984;">// </span><span style="color: #a89984;">&#21019;&#24314;&#32034;&#24341;</span>
+
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">index = mgo.Index{</span>
+    <span style="color: #a89984;">//  </span><span style="color: #a89984;">Key:        []string{"aggregator"},</span>
+    <span style="color: #a89984;">//  </span><span style="color: #a89984;">Unique:     false,</span>
+    <span style="color: #a89984;">//  </span><span style="color: #a89984;">DropDups:   true,</span>
+    <span style="color: #a89984;">//  </span><span style="color: #a89984;">Background: true,</span>
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">}</span>
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">err = s.fileSet.EnsureIndexKey(index) // &#21019;&#24314;&#19968;&#20010;&#33539;&#22260;&#32034;&#24341;</span>
+    <span style="color: #9d0006;">return</span> err
+}
+
+
+<span style="color: #9d0006;">type</span> <span style="color: #8f3f71;">mgoStruct</span> <span style="color: #9d0006;">struct</span> {
+    mgoVal <span style="color: #9d0006;">map</span>[<span style="color: #8f3f71;">string</span>]*<span style="color: #8f3f71;">MongoDrive</span>
+    rwLock sync.RWMutex
+}
+
+<span style="color: #9d0006;">var</span> mgoMap *mgoStruct
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">init</span>() {
+    mgoMap = <span style="color: #af3a03;">new</span>(<span style="color: #8f3f71;">mgoStruct</span>)
+    mgoMap.mgoVal = <span style="color: #af3a03;">make</span>(<span style="color: #9d0006;">map</span>[<span style="color: #8f3f71;">string</span>]*<span style="color: #8f3f71;">MongoDrive</span>)
+}
+
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">FetchMongoDrive</span>(uname <span style="color: #8f3f71;">string</span>) *<span style="color: #8f3f71;">MongoDrive</span> {
+    mgoMap.rwLock.<span style="color: #b57614;">RLock</span>()
+    <span style="color: #9d0006;">if</span> val, ok := mgoMap.mgoVal[uname]; ok {
+        mgoMap.rwLock.<span style="color: #b57614;">RUnlock</span>()
+        <span style="color: #9d0006;">return</span> val
+    }
+
+    mgoMap.rwLock.<span style="color: #b57614;">RUnlock</span>()
+    mgoMap.rwLock.<span style="color: #b57614;">Lock</span>()
+    <span style="color: #a89984;">//</span><span style="color: #a89984;">recheck</span>
+    <span style="color: #9d0006;">if</span> val, ok := mgoMap.mgoVal[uname]; ok {
+        mgoMap.rwLock.<span style="color: #b57614;">Unlock</span>()
+        <span style="color: #9d0006;">return</span> val
+    }
+    val := <span style="color: #b57614;">createMongoDrive</span>(uname)
+    mgoMap.mgoVal[uname] = val
+    mgoMap.rwLock.<span style="color: #b57614;">Unlock</span>()
+    <span style="color: #9d0006;">return</span> val
+}
+
+<span style="color: #a89984;">// </span><span style="color: #a89984;">&#36890;&#36807;uname session &#23383;&#27573;&#21028;&#26029;&#35835;&#21462;&#21738;&#20010;mongo collect &#21019;&#24314;drv</span>
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">createMongoDrive</span>(uname <span style="color: #8f3f71;">string</span>) *<span style="color: #8f3f71;">MongoDrive</span> {
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">TODO &#35835;&#21462;config.ini</span>
+    mongoAddr := <span style="color: #79740e;">"10.249.171.193"</span>
+    mongoAuthDb := <span style="color: #79740e;">"admin"</span>
+    mongoUser := <span style="color: #79740e;">"ti-dev"</span>
+    mongoPasswd := <span style="color: #79740e;">"ti-dev"</span>
+    mongoDb := <span style="color: #79740e;">"ti"</span>
+    collect := uname
+    mongoRetryStep := 3
+
+    fmt.<span style="color: #b57614;">Println</span>(mongoAddr, mongoUser, mongoPasswd, mongoDb, mongoAuthDb, <span style="color: #b57614;">int32</span>(mongoRetryStep))
+
+    mongoDrive, err := <span style="color: #b57614;">NewMongoDrive</span>(
+        mongoAddr,
+        mongoUser,
+        mongoPasswd,
+        mongoDb,
+        mongoAuthDb,
+        collect,
+        <span style="color: #b57614;">int32</span>(mongoRetryStep))
+    <span style="color: #9d0006;">if</span> err != <span style="color: #8f3f71;">nil</span> {
+        fmt.<span style="color: #b57614;">Println</span>(<span style="color: #79740e;">"create mongo error,"</span>, err)
+        <span style="color: #a89984;">// </span><span style="color: #a89984;">log.Errorf("mongo connect error,please check mongo config: %v", err)</span>
+        <span style="color: #9d0006;">return</span> <span style="color: #8f3f71;">nil</span>
+    }
+    <span style="color: #9d0006;">return</span> mongoDrive
+}
+
+<span style="color: #9d0006;">type</span> <span style="color: #8f3f71;">MFileGroup</span> <span style="color: #9d0006;">struct</span> {
+    Id         bson.ObjectId <span style="color: #79740e;">`bson:"_id"`</span>
+    Name       string        <span style="color: #79740e;">`bson:"name"`</span>
+    AliasName  string        <span style="color: #79740e;">`bson:"alias_name"`</span>
+    Mark       string        <span style="color: #79740e;">`bson:"mark"`</span>
+    Number     int           <span style="color: #79740e;">`bson:"number"`</span>
+    State      int           <span style="color: #79740e;">`bson:"state"`</span>
+    CreateTime int64         <span style="color: #79740e;">`bson:"create_time"`</span>
+    UploadTime int64         <span style="color: #79740e;">`bson:"upload_time"`</span>
+}
+
+<span style="color: #a89984;">// </span><span style="color: #a89984;">InsertFileGroup ...</span>
+<span style="color: #9d0006;">func</span> (s *<span style="color: #8f3f71;">MongoDrive</span>) <span style="color: #b57614;">InsertFileGroup</span>(name, alias_name, mark <span style="color: #8f3f71;">string</span>, number <span style="color: #8f3f71;">int</span>) (*<span style="color: #8f3f71;">MFileGroup</span>, <span style="color: #8f3f71;">error</span>) {
+    timestamp := time.<span style="color: #b57614;">Now</span>().<span style="color: #b57614;">Unix</span>()
+    fileObj := &amp;<span style="color: #8f3f71;">MFileGroup</span>{
+        <span style="color: #8f3f71;">Id</span>:         bson.<span style="color: #b57614;">NewObjectId</span>(),
+        <span style="color: #8f3f71;">Name</span>:       name,
+        <span style="color: #8f3f71;">AliasName</span>:  alias_name,
+        <span style="color: #8f3f71;">Mark</span>:       mark,
+        <span style="color: #8f3f71;">Number</span>:     number,
+        <span style="color: #8f3f71;">State</span>:      0,
+        <span style="color: #8f3f71;">CreateTime</span>: timestamp,
+        <span style="color: #8f3f71;">UploadTime</span>: 0,
+    }
+    err := s.mgoSet.<span style="color: #b57614;">Insert</span>(fileObj)
+    <span style="color: #9d0006;">return</span> fileObj, err
+}
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">main</span>() {
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">var once sync.Once</span>
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">var mongoDrv *MongoDrive</span>
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">once.Do(func() {</span>
+    <span style="color: #a89984;">//     </span><span style="color: #a89984;">var err error</span>
+    <span style="color: #a89984;">//     </span><span style="color: #a89984;">mongoDrv, err  NewMongoDrive("10.249.171.193", "ti-dev", "ti-dev", "ti", "admin", "file_group", 3)</span>
+    <span style="color: #a89984;">//     </span><span style="color: #a89984;">if err != nil {</span>
+    <span style="color: #a89984;">//         </span><span style="color: #a89984;">fmt.Println(err)</span>
+    <span style="color: #a89984;">//     </span><span style="color: #a89984;">}</span>
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">})</span>
+
+    mongoDrv := <span style="color: #b57614;">FetchMongoDrive</span>(<span style="color: #79740e;">"file_group"</span>)
+    c, err := mongoDrv.<span style="color: #b57614;">InsertFileGroup</span>(<span style="color: #79740e;">"&#21271;&#20140;402&#26696;&#20214;&#32452;"</span>, <span style="color: #79740e;">"&#26397;&#38451;&#21306;&#32593;&#32476;&#35784;&#39575;"</span>, <span style="color: #79740e;">"&#26397;&#38451;&#32676;&#20247;&#20030;&#25253;"</span>, 1)
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">c, err := mongoDrv.InsertFileGroup("&#21271;&#20140;401&#26696;&#20214;&#32452;", "&#28023;&#28096;&#21306;&#32593;&#32476;&#35784;&#39575;", "&#27450;&#36127;&#24369;&#23567;", 1)</span>
+    <span style="color: #9d0006;">if</span> err != <span style="color: #8f3f71;">nil</span> {
+        fmt.<span style="color: #b57614;">Println</span>(err)
+    }
+    fmt.<span style="color: #b57614;">Println</span>(c)
+
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgeba2491" class="outline-2">
+<h2 id="orgeba2491"><span class="section-number-2">25</span> go log</h2>
+<div class="outline-text-2" id="text-25">
+<p>
+Golang's log模块主要提供了3类接口。分别是 “Print 、Panic 、Fatal ”。当然是用log包。
+</p>
+</div>
+</div>
+<div id="outline-container-orgc3a2db6" class="outline-2">
+<h2 id="orgc3a2db6"><span class="section-number-2">26</span> go test</h2>
+<div class="outline-text-2" id="text-26">
+<p>
+func TestXxx (t *testing.T)
+</p>
+
+<p>
+压力测试
+</p>
+
+
+<p>
+func BenchmarkXXX(b *testing.B) { &#x2026; }
+</p>
+
+<p>
+函数中通过调用testing.T的Error, Errorf, FailNow, Fatal, FatalIf方法，说明测试不通过，
+</p>
+
+<p>
+调用Log方法用来记录测试的信息
+</p>
+
+
+<p>
+测试所有的文件 go test
+</p>
+
+<p>
+测试某个文件使用”-file”参数。go test –file *.go 
+</p>
+
+<p>
+测试某个方法 go test -run='Test<sub>xxx</sub>'
+</p>
+</div>
+</div>
+<div id="outline-container-org397a86f" class="outline-2">
+<h2 id="org397a86f"><span class="section-number-2">27</span> go sync</h2>
+<div class="outline-text-2" id="text-27">
+<p>
+sync.once可以控制函数只能被调用一次。不能多次重复调
+</p>
+
+<p>
+golang中sync包实现了两种锁Mutex （互斥锁）和RWMutex（读写锁），其中RWMutex是基于Mutex实现的，
+</p>
+</div>
+</div>
+<div id="outline-container-org69e567a" class="outline-2">
+<h2 id="org69e567a"><span class="section-number-2">28</span> go init和main</h2>
+<div class="outline-text-2" id="text-28">
+<p>
+Go里面有两个保留的函数：init函数和main函数
+</p>
+
+<p>
+相同点：两个函数在定义时不能有任何的参数和返回值，且Go程序自动调用。
+</p>
+
+<p>
+不同点：init可以应用于任意包中，且可以重复定义多个。main函数只能用于main包中，且只能定义一个。
+</p>
+
+<p>
+下边说一下两个函数的执行顺序：
+</p>
+
+<p>
+对同一个go文件的init()调用顺序是从上到下的
+</p>
+
+<p>
+对同一个package中不同文件是按文件名字符串比较“从小到大”顺序调用各文件中的init()函数,对于
+</p>
+
+<p>
+对不同的package，如果不相互依赖的话，按照main包中"先import的后调用"的顺序调用其包中的init()
+</p>
+
+<p>
+如果package存在依赖，则先调用最早被依赖的package中的init()
+</p>
+
+<p>
+最后调用main函数
+</p>
+</div>
+</div>
+<div id="outline-container-orgb7ef429" class="outline-2">
+<h2 id="orgb7ef429"><span class="section-number-2">29</span> go fieldmask-utils</h2>
+<div class="outline-text-2" id="text-29">
+<p>
+FieldMask
+</p>
+</div>
+</div>
+<div id="outline-container-org824c24b" class="outline-2">
+<h2 id="org824c24b"><span class="section-number-2">30</span> go uuid</h2>
+<div class="outline-text-2" id="text-30">
+<div class="org-src-container">
+<pre class="src src-go"><span style="color: #9d0006;">package</span> main
+
+<span style="color: #9d0006;">import</span>(
+    <span style="color: #79740e;">"github.com/gofrs/uuid"</span>
+    <span style="color: #79740e;">"fmt"</span>
+)
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">CreateUniqueName</span>() (<span style="color: #8f3f71;">string</span>, <span style="color: #8f3f71;">error</span>) {
+    uuidV4, err := uuid.<span style="color: #b57614;">NewV4</span>()
+    <span style="color: #9d0006;">if</span> err != <span style="color: #8f3f71;">nil</span> {
+        <span style="color: #9d0006;">return</span> <span style="color: #79740e;">""</span>, err
+    } <span style="color: #9d0006;">else</span> {
+        <span style="color: #9d0006;">return</span> uuidV4.<span style="color: #b57614;">String</span>(), err
+    }
+}
+
+
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">main</span>() {
+    u,err := <span style="color: #b57614;">CreateUniqueName</span>()
+
+    <span style="color: #9d0006;">if</span> err != <span style="color: #8f3f71;">nil</span> {
+        fmt.<span style="color: #b57614;">Printf</span>(err.<span style="color: #b57614;">Error</span>())
+    }
+    fmt.<span style="color: #b57614;">Println</span>(u)
+
+}
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf46d3ae" class="outline-2">
+<h2 id="orgf46d3ae"><span class="section-number-2">31</span> go elasticsearch</h2>
+<div class="outline-text-2" id="text-31">
+<p>
+<a href="https://juejin.im/post/5c03ba94f265da6166243717">https://juejin.im/post/5c03ba94f265da6166243717</a>
+</p>
+
+<p>
+<a href="http://github.com/olivere/elastic">http://github.com/olivere/elastic</a> 第三方开发，各个版本都有对应的sdk，文档也丰富
+</p>
+
+<p>
+测试代码
+</p>
+
+<div class="org-src-container">
+<pre class="src src-go"><span style="color: #9d0006;">package</span> main
+
+<span style="color: #9d0006;">import</span> (
+    <span style="color: #79740e;">"gopkg.in/olivere/elastic.v5"</span>
+    <span style="color: #79740e;">"context"</span>
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">"encoding/json"</span>
+    <span style="color: #79740e;">"fmt"</span>
+    <span style="color: #79740e;">"log"</span>
+    <span style="color: #79740e;">"os"</span>
+    <span style="color: #79740e;">"reflect"</span>
+)
+
+<span style="color: #9d0006;">var</span> client *elastic.Client
+
+<span style="color: #9d0006;">var</span> host = <span style="color: #79740e;">"http://10.95.22.37:9200/"</span>
+
+<span style="color: #9d0006;">type</span> <span style="color: #8f3f71;">Employee</span> <span style="color: #9d0006;">struct</span> {
+    FirstName string   <span style="color: #79740e;">`json:"first_name"`</span>
+    LastName  string   <span style="color: #79740e;">`json:"last_name"`</span>
+    Age       int      <span style="color: #79740e;">`json:"age"`</span>
+    About     string   <span style="color: #79740e;">`json:"about"`</span>
+    Interests []<span style="color: #8f3f71;">string</span> <span style="color: #79740e;">`json:"interests"`</span>
+}
+
+<span style="color: #a89984;">//</span><span style="color: #a89984;">&#21021;&#22987;&#21270;</span>
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">init</span>() {
+    errorlog := log.<span style="color: #b57614;">New</span>(os.Stdout, <span style="color: #79740e;">"APP"</span>, log.LstdFlags)
+    <span style="color: #9d0006;">var</span> err error
+    client, err = elastic.<span style="color: #b57614;">NewClient</span>(elastic.<span style="color: #b57614;">SetErrorLog</span>(errorlog), elastic.<span style="color: #b57614;">SetURL</span>(host))
+    <span style="color: #9d0006;">if</span> err != <span style="color: #8f3f71;">nil</span> {
+        <span style="color: #af3a03;">panic</span>(err)
+    }
+    info, code, err := client.<span style="color: #b57614;">Ping</span>(host).<span style="color: #b57614;">Do</span>(context.<span style="color: #b57614;">Background</span>())
+    <span style="color: #9d0006;">if</span> err != <span style="color: #8f3f71;">nil</span> {
+        <span style="color: #af3a03;">panic</span>(err)
+    }
+    fmt.<span style="color: #b57614;">Printf</span>(<span style="color: #79740e;">"Elasticsearch returned with code %d and version %s\n"</span>, code, info.Version.Number)
+
+    esversion, err := client.<span style="color: #b57614;">ElasticsearchVersion</span>(host)
+    <span style="color: #9d0006;">if</span> err != <span style="color: #8f3f71;">nil</span> {
+        <span style="color: #af3a03;">panic</span>(err)
+    }
+    fmt.<span style="color: #b57614;">Printf</span>(<span style="color: #79740e;">"Elasticsearch version %s\n"</span>, esversion)
+
+}
+
+<span style="color: #a89984;">//</span><span style="color: #a89984;">*&#19979;&#38754;&#26159;&#31616;&#21333;&#30340;CURD*/</span>
+
+<span style="color: #a89984;">//</span><span style="color: #a89984;">&#21019;&#24314;</span>
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">create</span>() {
+
+    <span style="color: #a89984;">//</span><span style="color: #a89984;">&#20351;&#29992;&#32467;&#26500;&#20307;</span>
+    e1 := <span style="color: #8f3f71;">Employee</span>{<span style="color: #79740e;">"Jane"</span>, <span style="color: #79740e;">"Smith"</span>, 32, <span style="color: #79740e;">"I like to collect rock albums"</span>, []<span style="color: #8f3f71;">string</span>{<span style="color: #79740e;">"music"</span>}}
+    put1, err := client.<span style="color: #b57614;">Index</span>().
+        <span style="color: #b57614;">Index</span>(<span style="color: #79740e;">"megacorp"</span>).
+        <span style="color: #b57614;">Type</span>(<span style="color: #79740e;">"employee"</span>).
+        <span style="color: #b57614;">Id</span>(<span style="color: #79740e;">"1"</span>).
+        <span style="color: #b57614;">BodyJson</span>(e1).
+        <span style="color: #b57614;">Do</span>(context.<span style="color: #b57614;">Background</span>())
+    <span style="color: #9d0006;">if</span> err != <span style="color: #8f3f71;">nil</span> {
+        <span style="color: #af3a03;">panic</span>(err)
+    }
+    fmt.<span style="color: #b57614;">Printf</span>(<span style="color: #79740e;">"Indexed tweet %s to index s%s, type %s\n"</span>, put1.Id, put1.Index, put1.Type)
+
+    <span style="color: #a89984;">//</span><span style="color: #a89984;">&#20351;&#29992;&#23383;&#31526;&#20018;</span>
+    e2 := <span style="color: #79740e;">`{"first_name":"John","last_name":"Smith","age":25,"about":"I love to go rock climbing","interests":["sports","music"]}`</span>
+    put2, err := client.<span style="color: #b57614;">Index</span>().
+        <span style="color: #b57614;">Index</span>(<span style="color: #79740e;">"megacorp"</span>).
+        <span style="color: #b57614;">Type</span>(<span style="color: #79740e;">"employee"</span>).
+        <span style="color: #b57614;">Id</span>(<span style="color: #79740e;">"2"</span>).
+        <span style="color: #b57614;">BodyJson</span>(e2).
+        <span style="color: #b57614;">Do</span>(context.<span style="color: #b57614;">Background</span>())
+    <span style="color: #9d0006;">if</span> err != <span style="color: #8f3f71;">nil</span> {
+        <span style="color: #af3a03;">panic</span>(err)
+    }
+    fmt.<span style="color: #b57614;">Printf</span>(<span style="color: #79740e;">"Indexed tweet %s to index s%s, type %s\n"</span>, put2.Id, put2.Index, put2.Type)
+
+    e3 := <span style="color: #79740e;">`{"first_name":"Douglas","last_name":"Fir","age":35,"about":"I like to build cabinets","interests":["forestry"]}`</span>
+    put3, err := client.<span style="color: #b57614;">Index</span>().
+        <span style="color: #b57614;">Index</span>(<span style="color: #79740e;">"megacorp"</span>).
+        <span style="color: #b57614;">Type</span>(<span style="color: #79740e;">"employee"</span>).
+        <span style="color: #b57614;">Id</span>(<span style="color: #79740e;">"3"</span>).
+        <span style="color: #b57614;">BodyJson</span>(e3).
+        <span style="color: #b57614;">Do</span>(context.<span style="color: #b57614;">Background</span>())
+    <span style="color: #9d0006;">if</span> err != <span style="color: #8f3f71;">nil</span> {
+        <span style="color: #af3a03;">panic</span>(err)
+    }
+    fmt.<span style="color: #b57614;">Printf</span>(<span style="color: #79740e;">"Indexed tweet %s to index s%s, type %s\n"</span>, put3.Id, put3.Index, put3.Type)
+
+}
+
+<span style="color: #a89984;">//</span><span style="color: #a89984;">&#21024;&#38500;</span>
+<span style="color: #9d0006;">func</span> <span style="color: #af3a03;">delete</span>() {
+
+    res, err := client.<span style="color: #b57614;">Delete</span>().<span style="color: #b57614;">Index</span>(<span style="color: #79740e;">"megacorp"</span>).
+        <span style="color: #b57614;">Type</span>(<span style="color: #79740e;">"employee"</span>).
+        <span style="color: #b57614;">Id</span>(<span style="color: #79740e;">"1"</span>).
+        <span style="color: #b57614;">Do</span>(context.<span style="color: #b57614;">Background</span>())
+    <span style="color: #9d0006;">if</span> err != <span style="color: #8f3f71;">nil</span> {
+        <span style="color: #af3a03;">println</span>(err.<span style="color: #b57614;">Error</span>())
+        <span style="color: #9d0006;">return</span>
+    }
+    fmt.<span style="color: #b57614;">Printf</span>(<span style="color: #79740e;">"delete result %s\n"</span>, res.Result)
+}
+
+<span style="color: #a89984;">//</span><span style="color: #a89984;">&#20462;&#25913;</span>
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">update</span>() {
+    res, err := client.<span style="color: #b57614;">Update</span>().
+        <span style="color: #b57614;">Index</span>(<span style="color: #79740e;">"megacorp"</span>).
+        <span style="color: #b57614;">Type</span>(<span style="color: #79740e;">"employee"</span>).
+        <span style="color: #b57614;">Id</span>(<span style="color: #79740e;">"2"</span>).
+        <span style="color: #b57614;">Doc</span>(<span style="color: #9d0006;">map</span>[<span style="color: #8f3f71;">string</span>]<span style="color: #9d0006;">interface</span>{}{<span style="color: #79740e;">"age"</span>: 88}).
+        <span style="color: #b57614;">Do</span>(context.<span style="color: #b57614;">Background</span>())
+    <span style="color: #9d0006;">if</span> err != <span style="color: #8f3f71;">nil</span> {
+        <span style="color: #af3a03;">println</span>(err.<span style="color: #b57614;">Error</span>())
+    }
+    fmt.<span style="color: #b57614;">Printf</span>(<span style="color: #79740e;">"update age %s\n"</span>, res.Result)
+
+}
+
+<span style="color: #a89984;">//</span><span style="color: #a89984;">&#26597;&#25214;</span>
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">gets</span>() {
+    <span style="color: #a89984;">//</span><span style="color: #a89984;">&#36890;&#36807;id&#26597;&#25214;</span>
+    get1, err := client.<span style="color: #b57614;">Get</span>().<span style="color: #b57614;">Index</span>(<span style="color: #79740e;">"megacorp"</span>).<span style="color: #b57614;">Type</span>(<span style="color: #79740e;">"employee"</span>).<span style="color: #b57614;">Id</span>(<span style="color: #79740e;">"2"</span>).<span style="color: #b57614;">Do</span>(context.<span style="color: #b57614;">Background</span>())
+    <span style="color: #9d0006;">if</span> err != <span style="color: #8f3f71;">nil</span> {
+        <span style="color: #af3a03;">panic</span>(err)
+    }
+    <span style="color: #9d0006;">if</span> get1.Found {
+        fmt.<span style="color: #b57614;">Printf</span>(<span style="color: #79740e;">"Got document %s in version %d from index %s, type %s\n"</span>, get1.Id, get1.Version, get1.Index, get1.Type)
+    }
+}
+
+<span style="color: #a89984;">//</span><span style="color: #a89984;">&#25628;&#32034;</span>
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">query</span>() {
+    <span style="color: #9d0006;">var</span> res *elastic.SearchResult
+    <span style="color: #9d0006;">var</span> err error
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">//&#21462;&#25152;&#26377;</span>
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">res, err = client.Search("megacorp").Type("employee").Do(context.Background())</span>
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">printEmployee(res, err)</span>
+
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">//&#23383;&#27573;&#30456;&#31561;</span>
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">q := elastic.NewQueryStringQuery("last_name:Smith")</span>
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">res, err = client.Search("megacorp").Type("employee").Query(q).Do(context.Background())</span>
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">if err != nil {</span>
+    <span style="color: #a89984;">//  </span><span style="color: #a89984;">println(err.Error())</span>
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">}</span>
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">printEmployee(res, err)</span>
+
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">if res.Hits.TotalHits &gt; 0 {</span>
+    <span style="color: #a89984;">//  </span><span style="color: #a89984;">fmt.Printf("Found a total of %d Employee \n", res.Hits.TotalHits)</span>
+
+    <span style="color: #a89984;">//  </span><span style="color: #a89984;">for _, hit := range res.Hits.Hits {</span>
+
+    <span style="color: #a89984;">//      </span><span style="color: #a89984;">var t Employee</span>
+    <span style="color: #a89984;">//      </span><span style="color: #a89984;">err := json.Unmarshal(*hit.Source, &amp;t) //&#21478;&#22806;&#19968;&#31181;&#21462;&#25968;&#25454;&#30340;&#26041;&#27861;</span>
+    <span style="color: #a89984;">//      </span><span style="color: #a89984;">if err != nil {</span>
+    <span style="color: #a89984;">//          </span><span style="color: #a89984;">fmt.Println("Deserialization failed")</span>
+    <span style="color: #a89984;">//      </span><span style="color: #a89984;">}</span>
+
+    <span style="color: #a89984;">//      </span><span style="color: #a89984;">fmt.Printf("Employee name %s : %s\n", t.FirstName, t.LastName)</span>
+    <span style="color: #a89984;">//  </span><span style="color: #a89984;">}</span>
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">} else {</span>
+    <span style="color: #a89984;">//  </span><span style="color: #a89984;">fmt.Printf("Found no Employee \n")</span>
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">}</span>
+
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">//&#26465;&#20214;&#26597;&#35810;</span>
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">//&#24180;&#40836;&#22823;&#20110;30&#23681;&#30340;</span>
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">boolQ := elastic.NewBoolQuery()</span>
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">boolQ.Must(elastic.NewMatchQuery("last_name", "smith"))</span>
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">boolQ.Filter(elastic.NewRangeQuery("age").Gt(30))</span>
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">res, err = client.Search("megacorp").Type("employee").Query(q).Do(context.Background())</span>
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">printEmployee(res, err)</span>
+
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">//&#30701;&#35821;&#25628;&#32034; &#25628;&#32034;about&#23383;&#27573;&#20013;&#26377; rock climbing</span>
+    matchPhraseQuery := elastic.<span style="color: #b57614;">NewMatchPhraseQuery</span>(<span style="color: #79740e;">"about"</span>, <span style="color: #79740e;">"rock climbing"</span>)
+    res, err = client.<span style="color: #b57614;">Search</span>(<span style="color: #79740e;">"megacorp"</span>).<span style="color: #b57614;">Type</span>(<span style="color: #79740e;">"employee"</span>).<span style="color: #b57614;">Query</span>(matchPhraseQuery).<span style="color: #b57614;">Do</span>(context.<span style="color: #b57614;">Background</span>())
+    <span style="color: #b57614;">printEmployee</span>(res, err)
+
+
+    <span style="color: #a89984;">//</span><span style="color: #a89984;">&#20998;&#26512; interests</span>
+    aggs := elastic.<span style="color: #b57614;">NewTermsAggregation</span>().<span style="color: #b57614;">Field</span>(<span style="color: #79740e;">"interests"</span>)
+    res, err = client.<span style="color: #b57614;">Search</span>(<span style="color: #79740e;">"megacorp"</span>).<span style="color: #b57614;">Type</span>(<span style="color: #79740e;">"employee"</span>).<span style="color: #b57614;">Aggregation</span>(<span style="color: #79740e;">"all_interests"</span>, aggs).<span style="color: #b57614;">Do</span>(context.<span style="color: #b57614;">Background</span>())
+    <span style="color: #b57614;">printEmployee</span>(res, err)
+
+}
+
+<span style="color: #a89984;">//</span><span style="color: #a89984;">&#31616;&#21333;&#20998;&#39029;</span>
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">list</span>(size, page <span style="color: #8f3f71;">int</span>) {
+    <span style="color: #9d0006;">if</span> size &lt; 0 || page &lt; 1 {
+        fmt.<span style="color: #b57614;">Printf</span>(<span style="color: #79740e;">"param error"</span>)
+        <span style="color: #9d0006;">return</span>
+    }
+    res, err := client.<span style="color: #b57614;">Search</span>(<span style="color: #79740e;">"megacorp"</span>).
+        <span style="color: #b57614;">Type</span>(<span style="color: #79740e;">"employee"</span>).
+        <span style="color: #b57614;">Size</span>(size).
+        <span style="color: #b57614;">From</span>((page - 1) * size).
+        <span style="color: #b57614;">Do</span>(context.<span style="color: #b57614;">Background</span>())
+    <span style="color: #b57614;">printEmployee</span>(res, err)
+
+}
+
+<span style="color: #a89984;">//</span><span style="color: #a89984;">&#25171;&#21360;&#26597;&#35810;&#21040;&#30340;Employee</span>
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">printEmployee</span>(res *<span style="color: #8f3f71;">elastic.SearchResult</span>, err <span style="color: #8f3f71;">error</span>) {
+    <span style="color: #9d0006;">if</span> err != <span style="color: #8f3f71;">nil</span> {
+        <span style="color: #af3a03;">print</span>(err.<span style="color: #b57614;">Error</span>())
+        <span style="color: #9d0006;">return</span>
+    }
+    <span style="color: #9d0006;">var</span> typ Employee
+    <span style="color: #9d0006;">for</span> _, item := <span style="color: #9d0006;">range</span> res.<span style="color: #b57614;">Each</span>(reflect.<span style="color: #b57614;">TypeOf</span>(typ)) { <span style="color: #a89984;">//</span><span style="color: #a89984;">&#20174;&#25628;&#32034;&#32467;&#26524;&#20013;&#21462;&#25968;&#25454;&#30340;&#26041;&#27861;</span>
+        t := item.(<span style="color: #8f3f71;">Employee</span>)
+        fmt.<span style="color: #b57614;">Printf</span>(<span style="color: #79740e;">"%#v\n"</span>, t)
+    }
+}
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">main</span>() {
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">create()</span>
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">delete()</span>
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">update()</span>
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">gets()</span>
+    <span style="color: #b57614;">query</span>()
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">list()</span>
+}
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgbe7f7e7" class="outline-3">
+<h3 id="orgbe7f7e7"><span class="section-number-3">31.1</span> update</h3>
+<div class="outline-text-3" id="text-31-1">
+<p>
+<a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/partial-updates.html">https://www.elastic.co/guide/cn/elasticsearch/guide/current/partial-updates.html</a>
+</p>
+
+<p>
+测试es upsert 更新部分字段
+</p>
+
+<p>
+es文档是不可改变的，不能修改它们,全部更新删除替换
+</p>
+
+<p>
+局部更新：
+</p>
+<ol class="org-ol">
+<li>从旧文档构建 JSON</li>
+<li>更改该 JSON</li>
+<li>删除旧文档</li>
+<li>索引一个新文档</li>
+</ol>
+
+<p>
+update API 我们还可以部分更新文档
+</p>
+
+<p>
+对于那些 API 不能满足需求的情况，Elasticsearch 允许你使用脚本编写自定义的逻辑。
+</p>
+
+<p>
+许多API都支持脚本的使用，包括搜索、排序、聚合和文档更新。 
+</p>
+
+<p>
+脚本可以作为请求的一部分被传递，从特殊的 .scripts 索引中检索，或者从磁盘加载脚本。
+</p>
+
+<p>
+默认的脚本语言 是 <code>Groovy</code>
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-go"><span style="color: #9d0006;">package</span> main
+
+<span style="color: #9d0006;">import</span> (
+    <span style="color: #79740e;">"context"</span>
+    <span style="color: #79740e;">"encoding/json"</span>
+    <span style="color: #79740e;">"fmt"</span>
+    <span style="color: #79740e;">"gopkg.in/olivere/elastic.v5"</span>
+    <span style="color: #79740e;">"log"</span>
+    <span style="color: #79740e;">"os"</span>
+)
+
+<span style="color: #9d0006;">var</span> client *elastic.Client
+
+<span style="color: #9d0006;">var</span> host = <span style="color: #79740e;">"http://10.95.22.37:9200/"</span>
+
+<span style="color: #9d0006;">type</span> <span style="color: #8f3f71;">EsFileInfo</span> <span style="color: #9d0006;">struct</span> {
+    Md5             string <span style="color: #79740e;">`json:"md5,omitempty"`</span>
+    Sha1            string <span style="color: #79740e;">`json:"sha1,omitempty"`</span>
+    Sha256          string <span style="color: #79740e;">`json:"sha256,omitempty"`</span>
+    FileName        string <span style="color: #79740e;">`json:"file_name,omitempty"`</span>
+    FileType        string <span style="color: #79740e;">`json:"file_type,omitempty"`</span>
+    FileGroupName   string <span style="color: #79740e;">`json:"file_group_name,omitempty"`</span>
+    Platform        string <span style="color: #79740e;">`json:"platform,omitempty"`</span>
+    State           string <span style="color: #79740e;">`json:"state,omitempty"`</span>
+    MaliciousType   string <span style="color: #79740e;">`json:"malicious_type,omitempty"`</span>
+    MaliciousFamily string <span style="color: #79740e;">`json:"malicious_family,omitempty"`</span>
+    Malicious       string <span style="color: #79740e;">`json:"malicious,omitempty"`</span>
+    Campagin        string <span style="color: #79740e;">`json:"campagin,omitempty"`</span>
+    Ips             string <span style="color: #79740e;">`json:"ips,omitempty"`</span>
+    Domains         string <span style="color: #79740e;">`json:"domains,omitempty"`</span>
+    Urls            string <span style="color: #79740e;">`json:"urls,omitempty"`</span>
+    CreateTime      int64  <span style="color: #79740e;">`json:"create_time,omitempty"`</span>
+    UpdateTime      int64  <span style="color: #79740e;">`json:"update_time,omitempty"`</span>
+    UserIds         string <span style="color: #79740e;">`json:"user_ids,omitempty"`</span>
+}
+
+<span style="color: #a89984;">//</span><span style="color: #a89984;">&#21021;&#22987;&#21270;</span>
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">init</span>() {
+    errorlog := log.<span style="color: #b57614;">New</span>(os.Stdout, <span style="color: #79740e;">"APP"</span>, log.LstdFlags)
+    <span style="color: #9d0006;">var</span> err error
+    client, err = elastic.<span style="color: #b57614;">NewClient</span>(elastic.<span style="color: #b57614;">SetErrorLog</span>(errorlog), elastic.<span style="color: #b57614;">SetURL</span>(host))
+    <span style="color: #9d0006;">if</span> err != <span style="color: #8f3f71;">nil</span> {
+        <span style="color: #af3a03;">panic</span>(err)
+    }
+    info, code, err := client.<span style="color: #b57614;">Ping</span>(host).<span style="color: #b57614;">Do</span>(context.<span style="color: #b57614;">Background</span>())
+    <span style="color: #9d0006;">if</span> err != <span style="color: #8f3f71;">nil</span> {
+        <span style="color: #af3a03;">panic</span>(err)
+    }
+    fmt.<span style="color: #b57614;">Printf</span>(<span style="color: #79740e;">"Elasticsearch returned with code %d and version %s\n"</span>, code, info.Version.Number)
+
+    esversion, err := client.<span style="color: #b57614;">ElasticsearchVersion</span>(host)
+    <span style="color: #9d0006;">if</span> err != <span style="color: #8f3f71;">nil</span> {
+        <span style="color: #af3a03;">panic</span>(err)
+    }
+    fmt.<span style="color: #b57614;">Printf</span>(<span style="color: #79740e;">"Elasticsearch version %s\n"</span>, esversion)
+
+}
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">main</span>() {
+    data1 := <span style="color: #8f3f71;">EsFileInfo</span>{
+        <span style="color: #8f3f71;">Md5</span>:             <span style="color: #79740e;">"md5"</span>,
+        <span style="color: #8f3f71;">Sha1</span>:            <span style="color: #79740e;">"123"</span>,
+        <span style="color: #8f3f71;">Sha256</span>:          <span style="color: #79740e;">"123"</span>,
+        <span style="color: #8f3f71;">FileName</span>:        <span style="color: #79740e;">"md5_xxx,xxx"</span>,
+        <span style="color: #8f3f71;">FileType</span>:        <span style="color: #79740e;">"123"</span>,
+        <span style="color: #8f3f71;">FileGroupName</span>:   <span style="color: #79740e;">"hello"</span>,
+        <span style="color: #8f3f71;">Platform</span>:        <span style="color: #79740e;">"123"</span>,
+        <span style="color: #8f3f71;">State</span>:           <span style="color: #79740e;">"123"</span>,
+        <span style="color: #8f3f71;">MaliciousType</span>:   <span style="color: #79740e;">"123"</span>,
+        <span style="color: #8f3f71;">MaliciousFamily</span>: <span style="color: #79740e;">"123"</span>,
+        <span style="color: #8f3f71;">Malicious</span>:       <span style="color: #79740e;">"123"</span>,
+        <span style="color: #8f3f71;">Campagin</span>:        <span style="color: #79740e;">"123"</span>,
+        <span style="color: #8f3f71;">Ips</span>:             <span style="color: #79740e;">"123"</span>,
+        <span style="color: #8f3f71;">Domains</span>:         <span style="color: #79740e;">"123"</span>,
+        <span style="color: #8f3f71;">Urls</span>:            <span style="color: #79740e;">"123"</span>,
+        <span style="color: #8f3f71;">CreateTime</span>:      123,
+        <span style="color: #8f3f71;">UpdateTime</span>:      123,
+        <span style="color: #8f3f71;">UserIds</span>:         <span style="color: #79740e;">"123"</span>,
+    }
+    m := <span style="color: #af3a03;">make</span>(<span style="color: #9d0006;">map</span>[<span style="color: #8f3f71;">string</span>]<span style="color: #9d0006;">interface</span>{})
+    j, _ := json.<span style="color: #b57614;">Marshal</span>(data1)
+    json.<span style="color: #b57614;">Unmarshal</span>(j, &amp;m)
+
+    <span style="color: #9d0006;">const</span> (
+        indexName = <span style="color: #79740e;">"sandbox_file"</span>
+        typeName  = <span style="color: #79740e;">"file"</span>
+    )
+
+    scriptStr := <span style="color: #79740e;">`if (ctx._source.create_time &gt;0) {</span>
+<span style="color: #79740e;">                         if (ctx._source.file_name.indexOf(params.file_name) == -1){</span>
+<span style="color: #79740e;">                            ctx._source.file_name += ","+ params.file_name</span>
+<span style="color: #79740e;">                         }</span>
+<span style="color: #79740e;">                         ctx._source.file_type= params.file_type;</span>
+<span style="color: #79740e;">                         ctx._source.state= params.state;</span>
+<span style="color: #79740e;">                         ctx._source.malicious_type= params.malicious_type;</span>
+<span style="color: #79740e;">                         ctx._source.malicious_family= params.malicious_family;</span>
+<span style="color: #79740e;">                         ctx._source.malicious= params.malicious;</span>
+<span style="color: #79740e;">                         ctx._source.campagin= params.campagin;</span>
+<span style="color: #79740e;">                         ctx._source.ips= params.ips;</span>
+<span style="color: #79740e;">                         ctx._source.domains= params.domains;</span>
+<span style="color: #79740e;">                         ctx._source.urls= params.urls;</span>
+<span style="color: #79740e;">                         ctx._source.update_time= params.update_time;</span>
+<span style="color: #79740e;">                          }`</span>
+
+    <span style="color: #a89984;">//</span><span style="color: #a89984;">create data</span>
+    esResp, err := client.<span style="color: #b57614;">Update</span>().<span style="color: #b57614;">Index</span>(indexName).<span style="color: #b57614;">Type</span>(typeName).<span style="color: #b57614;">Id</span>(<span style="color: #79740e;">"m1"</span>).
+        <span style="color: #b57614;">Script</span>(elastic.<span style="color: #b57614;">NewScriptInline</span>(scriptStr).<span style="color: #b57614;">Params</span>(m)).
+        <span style="color: #b57614;">Upsert</span>(m).
+        <span style="color: #b57614;">ScriptedUpsert</span>(<span style="color: #8f3f71;">true</span>).
+        <span style="color: #b57614;">RetryOnConflict</span>(3).
+        <span style="color: #b57614;">Refresh</span>(<span style="color: #79740e;">"true"</span>).
+        <span style="color: #b57614;">Do</span>(context.<span style="color: #b57614;">Background</span>())
+    <span style="color: #9d0006;">if</span> err != <span style="color: #8f3f71;">nil</span> {
+        fmt.<span style="color: #b57614;">Println</span>(<span style="color: #79740e;">"upsert to %s : %+v err: %s"</span>, indexName, data1, err.<span style="color: #b57614;">Error</span>())
+    } <span style="color: #9d0006;">else</span> {
+        fmt.<span style="color: #b57614;">Println</span>(<span style="color: #79740e;">"upsert to %s success. Id : %s"</span>, indexName, esResp.Id)
+    }
+
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge7061dd" class="outline-3">
+<h3 id="orge7061dd"><span class="section-number-3">31.2</span> query</h3>
+<div class="outline-text-3" id="text-31-2">
+<div class="org-src-container">
+<pre class="src src-go"><span style="color: #9d0006;">package</span> main
+
+<span style="color: #9d0006;">import</span> (
+    <span style="color: #79740e;">"context"</span>
+    <span style="color: #79740e;">"fmt"</span>
+    <span style="color: #79740e;">"gopkg.in/olivere/elastic.v5"</span>
+    <span style="color: #79740e;">"log"</span>
+    <span style="color: #79740e;">"os"</span>
+)
+
+<span style="color: #9d0006;">var</span> client *elastic.Client
+
+<span style="color: #9d0006;">var</span> host = <span style="color: #79740e;">"http://10.95.22.37:9200/"</span>
+
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">init</span>() {
+    errorlog := log.<span style="color: #b57614;">New</span>(os.Stdout, <span style="color: #79740e;">"APP"</span>, log.LstdFlags)
+    <span style="color: #9d0006;">var</span> err error
+    client, err = elastic.<span style="color: #b57614;">NewClient</span>(elastic.<span style="color: #b57614;">SetErrorLog</span>(errorlog), elastic.<span style="color: #b57614;">SetURL</span>(host))
+    <span style="color: #9d0006;">if</span> err != <span style="color: #8f3f71;">nil</span> {
+        <span style="color: #af3a03;">panic</span>(err)
+    }
+    info, code, err := client.<span style="color: #b57614;">Ping</span>(host).<span style="color: #b57614;">Do</span>(context.<span style="color: #b57614;">Background</span>())
+    <span style="color: #9d0006;">if</span> err != <span style="color: #8f3f71;">nil</span> {
+        <span style="color: #af3a03;">panic</span>(err)
+    }
+    fmt.<span style="color: #b57614;">Printf</span>(<span style="color: #79740e;">"Elasticsearch returned with code %d and version %s\n"</span>, code, info.Version.Number)
+
+    esversion, err := client.<span style="color: #b57614;">ElasticsearchVersion</span>(host)
+    <span style="color: #9d0006;">if</span> err != <span style="color: #8f3f71;">nil</span> {
+        <span style="color: #af3a03;">panic</span>(err)
+    }
+    fmt.<span style="color: #b57614;">Printf</span>(<span style="color: #79740e;">"Elasticsearch version %s\n"</span>, esversion)
+
+}
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">main</span>() {
+
+    <span style="color: #9d0006;">var</span> queryStr string
+    <span style="color: #9d0006;">var</span> q elastic.Query
+
+    kw := <span style="color: #79740e;">"5cff41de63edc3093c8811ff97476f784e8eb552"</span>
+
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">queryStr = `{"query":{"query_string":{"query":"` + kw + `"}}}`</span>
+
+    q = elastic.<span style="color: #b57614;">NewQueryStringQuery</span>(kw)
+
+    <span style="color: #9d0006;">const</span> (
+        indexName = <span style="color: #79740e;">"sandbox_file"</span>
+        typeName  = <span style="color: #79740e;">"file"</span>
+    )
+
+    searchResult, err := client.<span style="color: #b57614;">Search</span>().
+        <span style="color: #b57614;">Index</span>(indexName).
+        <span style="color: #b57614;">Type</span>(typeName).
+        <span style="color: #b57614;">Query</span>(q).
+        <span style="color: #b57614;">SortBy</span>(&amp;elastic.<span style="color: #8f3f71;">SortInfo</span>{Field: <span style="color: #79740e;">"_score"</span>, Ascending: <span style="color: #8f3f71;">false</span>}, &amp;elastic.<span style="color: #8f3f71;">SortInfo</span>{Field: <span style="color: #79740e;">"update_time"</span>, Ascending: <span style="color: #8f3f71;">false</span>}).
+        <span style="color: #b57614;">From</span>(<span style="color: #b57614;">int</span>(1)).<span style="color: #b57614;">Size</span>(<span style="color: #b57614;">int</span>(5)).
+        <span style="color: #b57614;">Pretty</span>(<span style="color: #8f3f71;">true</span>).
+        <span style="color: #b57614;">Do</span>(context.<span style="color: #b57614;">Background</span>())
+
+    <span style="color: #9d0006;">if</span> err != <span style="color: #8f3f71;">nil</span> {
+        fmt.<span style="color: #b57614;">Println</span>(<span style="color: #79740e;">"search err: %+v"</span>,err)
+    }
+
+    fmt.<span style="color: #b57614;">Println</span>(<span style="color: #79740e;">"search result : %+v"</span> , searchResult)
+    <span style="color: #9d0006;">if</span> searchResult.Hits == <span style="color: #8f3f71;">nil</span> {
+        fmt.<span style="color: #b57614;">Println</span>(<span style="color: #79740e;">"expected SearchResult.Hits != nil; got nil"</span>)
+    }
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc4d4b96" class="outline-2">
+<h2 id="orgc4d4b96"><span class="section-number-2">32</span> go fasthttp</h2>
+<div class="outline-text-2" id="text-32">
+<p>
+<a href="http://fuxiaohei.me/2016/9/24/go-and-fasthttp-server.html">http://fuxiaohei.me/2016/9/24/go-and-fasthttp-server.html</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org03076f2" class="outline-2">
+<h2 id="org03076f2"><span class="section-number-2">33</span> go strconv</h2>
+<div class="outline-text-2" id="text-33">
+<p>
+strconv.ParseInt(
+</p>
+
+<p>
+参数1 数字的字符串形式
+</p>
+
+<p>
+参数2 数字字符串的进制 比如二进制 八进制 十进制 十六进制
+</p>
+
+<p>
+参数3 返回结果的bit大小 也就是int8 int16 int32 int64
+</p>
+
+<div class="org-src-container">
+<pre class="src src-go"><span style="color: #9d0006;">package</span> main
+
+<span style="color: #9d0006;">import</span> (
+    <span style="color: #79740e;">"fmt"</span>
+    <span style="color: #79740e;">"strconv"</span>
+)
+
+<span style="color: #9d0006;">func</span> <span style="color: #b57614;">main</span>() {
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">v := "2019-04-10T02:30:48Z"</span>
+    <span style="color: #a89984;">// </span><span style="color: #a89984;">v := "20190410"</span>
+    v := <span style="color: #79740e;">""</span>
+    vint64, err := strconv.<span style="color: #b57614;">ParseInt</span>(v, 10, 64)
+    <span style="color: #9d0006;">if</span> err != <span style="color: #8f3f71;">nil</span> {
+        fmt.<span style="color: #b57614;">Println</span>(<span style="color: #79740e;">"query time param is error"</span>)
+    }
+    fmt.<span style="color: #b57614;">Println</span>(vint64)
+}
+</pre>
+</div>
+
+
+<div class="org-src-container">
+<pre class="src src-go">{
+    <span style="color: #79740e;">"updateMask"</span>: {
+        <span style="color: #79740e;">"paths"</span>: [
+            <span style="color: #79740e;">"sha256"</span>, <span style="color: #79740e;">"sha1"</span>, <span style="color: #79740e;">"md5"</span>, <span style="color: #79740e;">"file_type"</span>, <span style="color: #79740e;">"malicious_type"</span>,
+            <span style="color: #79740e;">"malicious_family"</span>, <span style="color: #79740e;">"campagin"</span>, <span style="color: #79740e;">"ips"</span>, <span style="color: #79740e;">"domains"</span>, <span style="color: #79740e;">"state"</span>,
+            <span style="color: #79740e;">"platform"</span>, <span style="color: #79740e;">"create_time"</span>, <span style="color: #79740e;">"file_name"</span>, <span style="color: #79740e;">"file_group_name"</span>
+        ]
+    },
+    <span style="color: #79740e;">"name"</span>: <span style="color: #79740e;">"5cff41de63edc3093c8811ff97476f784e8eb552win8"</span>,
+    <span style="color: #79740e;">"fileIndex"</span>: {
+        <span style="color: #79740e;">"sha1"</span>:<span style="color: #79740e;">"5cff41de63edc3093c8811ff97476f784e8eb552"</span>,
+        <span style="color: #79740e;">"name"</span>:<span style="color: #79740e;">"5cff41de63edc3093c8811ff97476f784e8eb552xxx"</span>,
+        <span style="color: #79740e;">"campagin"</span>:<span style="color: #79740e;">""</span>,
+        <span style="color: #79740e;">"platform"</span>:<span style="color: #79740e;">"win7"</span>,
+        <span style="color: #79740e;">"fileType"</span>:
+        <span style="color: #79740e;">"PE32 executable (GUI) Intel 80386, for MS Windows"</span>,
+        <span style="color: #79740e;">"fileName"</span>: [<span style="color: #79740e;">"&#31532;&#19977;&#20010;"</span>],
+        <span style="color: #79740e;">"file_group_name"</span>: [<span style="color: #79740e;">"name1file_group"</span>, <span style="color: #79740e;">"&#31532;&#19977;&#20010;"</span>],
+        <span style="color: #79740e;">"ips"</span>: [<span style="color: #79740e;">"153.92.4.49"</span>],
+        <span style="color: #79740e;">"state"</span>:
+        <span style="color: #79740e;">"2"</span>,
+        <span style="color: #79740e;">"maliciousType"</span>:
+        <span style="color: #79740e;">"\\u8fdc\\u63a7\\u6728\\u9a6c"</span>,
+        <span style="color: #79740e;">"domains"</span>: [<span style="color: #79740e;">"pp.abbny.com"</span>],
+        <span style="color: #79740e;">"maliciousFamily"</span>:
+        <span style="color: #79740e;">"Generic Trojan"</span>,
+        <span style="color: #79740e;">"sha256"</span>:
+        <span style="color: #79740e;">"9e3036af7bc548fff2a037dbcd9c49bf5ac8b7533433d95efc9c112bf8c3f881"</span>,
+        <span style="color: #79740e;">"md5"</span>:
+        <span style="color: #79740e;">"553ad5591d4e7166888bd9e6139d78a2"</span>,
+        <span style="color: #79740e;">"createTime"</span>:
+        <span style="color: #79740e;">"2019-04-15T05:30:48Z"</span>,
+        <span style="color: #79740e;">"updateTime"</span>:
+        <span style="color: #79740e;">"2019-04-15T02:30:48Z"</span>
+    }
+}
+</pre>
+</div>
 </div>
 </div>
 </div>

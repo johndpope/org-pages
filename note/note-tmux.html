@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-02-21 Thu 14:56 -->
+<!-- 2019-04-28 Sun 22:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>tmux + ssh 管理远程会话</title>
@@ -253,19 +253,19 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org41cceed">1. tmux use</a>
+<li><a href="#org2562c0e">1. tmux use</a>
 <ul>
-<li><a href="#org7df9eb3">1.1. install</a></li>
-<li><a href="#org4146dcb">1.2. <span class="todo TODO">TODO</span> embellish terminal</a></li>
-<li><a href="#org65af19a">1.3. use tmux</a></li>
+<li><a href="#org9a31de9">1.1. install</a></li>
+<li><a href="#orgdce6dcf">1.2. <span class="todo TODO">TODO</span> embellish terminal</a></li>
+<li><a href="#org13d003c">1.3. use tmux</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org41cceed" class="outline-2">
-<h2 id="org41cceed"><span class="section-number-2">1</span> tmux use</h2>
+<div id="outline-container-org2562c0e" class="outline-2">
+<h2 id="org2562c0e"><span class="section-number-2">1</span> tmux use</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>Server 服务器 tmux开启一个服务器,用来管理多个会话</li>
@@ -277,8 +277,8 @@ for the JavaScript code in this tag.
 <li>Pane 被划分成小块的窗格</li>
 </ul>
 </div>
-<div id="outline-container-org7df9eb3" class="outline-3">
-<h3 id="org7df9eb3"><span class="section-number-3">1.1</span> install</h3>
+<div id="outline-container-org9a31de9" class="outline-3">
+<h3 id="org9a31de9"><span class="section-number-3">1.1</span> install</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 sudo apt-get install tmux
@@ -286,8 +286,8 @@ sudo apt-get install tmux
 </div>
 </div>
 
-<div id="outline-container-org4146dcb" class="outline-3">
-<h3 id="org4146dcb"><span class="section-number-3">1.2</span> <span class="todo TODO">TODO</span> embellish terminal</h3>
+<div id="outline-container-orgdce6dcf" class="outline-3">
+<h3 id="orgdce6dcf"><span class="section-number-3">1.2</span> <span class="todo TODO">TODO</span> embellish terminal</h3>
 <div class="outline-text-3" id="text-1-2">
 <ul class="org-ul">
 <li>State "TODO"       from ""           <span class="timestamp-wrapper"><span class="timestamp">[2017-10-10 Tue 13:37]</span></span></li>
@@ -298,8 +298,8 @@ sudo apt-get install tmux
 </div>
 </div>
 
-<div id="outline-container-org65af19a" class="outline-3">
-<h3 id="org65af19a"><span class="section-number-3">1.3</span> use tmux</h3>
+<div id="outline-container-org13d003c" class="outline-3">
+<h3 id="org13d003c"><span class="section-number-3">1.3</span> use tmux</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 [[<a href="http://kuanghy.github.io/2016/09/29/tmux">http://kuanghy.github.io/2016/09/29/tmux</a>][how to use tmux]
@@ -333,6 +333,9 @@ Window相关操作
 切换到上一个活动的窗口prefix space
 关闭一个窗口prefix &amp;
 使用窗口号切换prefix 窗口号
+Ctrl + b ,   Rename current window
+Ctrl + b &amp;   Close current window
+Ctrl + b 0-9
 </p>
 
 <p>
@@ -345,6 +348,7 @@ Pane 相关操作
 垂直拆分出一个新窗格prefix “
 水平拆分出一个新窗格prefix %
 暂时把一个窗体放到最大prefix z
+Close current pane prefix x
 </p>
 </div>
 </div>

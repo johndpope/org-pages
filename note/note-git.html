@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-02-21 Thu 14:56 -->
+<!-- 2019-04-28 Sun 22:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>git note</title>
@@ -253,32 +253,35 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org02927c0">1. git 独奏</a>
+<li><a href="#orgacd8d2c">1. git 独奏</a>
 <ul>
-<li><a href="#org7bbb373">1.1. git 初始化</a></li>
-<li><a href="#orge37f228">1.2. git 暂存区</a></li>
-<li><a href="#orgc680680">1.3. git reset 重置</a></li>
-<li><a href="#org35cb1a0">1.4. git 检出</a></li>
-<li><a href="#orgd212310">1.5. git 恢复进度</a></li>
-<li><a href="#orgbb775e5">1.6. git 基础操作</a></li>
-<li><a href="#orgfbca0ef">1.7. git tools</a></li>
-<li><a href="#org6a06188">1.8. 改变历史</a></li>
-<li><a href="#orgfd21c46">1.9. git克隆</a></li>
+<li><a href="#org1faf29e">1.1. git 初始化</a></li>
+<li><a href="#org4c281f7">1.2. git 暂存区</a></li>
+<li><a href="#org58fbbc4">1.3. git reset 重置</a></li>
+<li><a href="#org77b8cf7">1.4. git 检出</a></li>
+<li><a href="#orgf8ceb31">1.5. git 恢复进度</a></li>
+<li><a href="#org187953c">1.6. git 基础操作</a></li>
+<li><a href="#orgbfcba7e">1.7. git tools</a></li>
+<li><a href="#org4461b90">1.8. 改变历史</a></li>
+<li><a href="#orgb8ccdc0">1.9. git克隆</a></li>
 </ul>
 </li>
-<li><a href="#org2b71ef2">2. git 和声</a>
+<li><a href="#orgc9d4d5c">2. git 和声</a>
 <ul>
-<li><a href="#orgb5dd099">2.1. git 工作协调</a></li>
-<li><a href="#org92dd17a">2.2. git 冲突解决</a></li>
+<li><a href="#org45813bd">2.1. git 工作协调</a></li>
+<li><a href="#org7c709ed">2.2. git 冲突解决</a></li>
 </ul>
 </li>
-<li><a href="#org930d763">3. common questions</a>
+<li><a href="#org18ae7a4">3. common questions</a>
 <ul>
-<li><a href="#org2c3cde7">3.1. git ls-files 乱码问题</a></li>
-<li><a href="#org07fb93f">3.2. change git push user</a></li>
-<li><a href="#org70e318a">3.3. create branch</a></li>
-<li><a href="#org4e8d33e">3.4. merge branch</a></li>
-<li><a href="#org654376c">3.5. git add tag</a></li>
+<li><a href="#org12b9048">3.1. git ls-files 乱码问题</a></li>
+<li><a href="#org90b7a54">3.2. change git push user</a></li>
+<li><a href="#org97aa5dc">3.3. create branch</a></li>
+<li><a href="#org62c95cb">3.4. merge branch</a></li>
+<li><a href="#org7f4d306">3.5. git add tag</a></li>
+<li><a href="#org013fcac">3.6. git 回退上个版本</a></li>
+<li><a href="#orgd1ceffd">3.7. git 删除分支</a></li>
+<li><a href="#orge877d6c">3.8. git 使用tag创建分支</a></li>
 </ul>
 </li>
 </ul>
@@ -287,12 +290,12 @@ for the JavaScript code in this tag.
 <p>
 蒋鑫. Git权威指南 机械工业出版社. Kindle 版本. 
 </p>
-<div id="outline-container-org02927c0" class="outline-2">
-<h2 id="org02927c0"><span class="section-number-2">1</span> git 独奏</h2>
+<div id="outline-container-orgacd8d2c" class="outline-2">
+<h2 id="orgacd8d2c"><span class="section-number-2">1</span> git 独奏</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org7bbb373" class="outline-3">
-<h3 id="org7bbb373"><span class="section-number-3">1.1</span> git 初始化</h3>
+<div id="outline-container-org1faf29e" class="outline-3">
+<h3 id="org1faf29e"><span class="section-number-3">1.1</span> git 初始化</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li><p>
@@ -349,8 +352,8 @@ git config &lt;session&gt;.&lt;key&gt;
 </ul>
 </div>
 </div>
-<div id="outline-container-orge37f228" class="outline-3">
-<h3 id="orge37f228"><span class="section-number-3">1.2</span> git 暂存区</h3>
+<div id="outline-container-org4c281f7" class="outline-3">
+<h3 id="org4c281f7"><span class="section-number-3">1.2</span> git 暂存区</h3>
 <div class="outline-text-3" id="text-1-2">
 
 <div class="figure">
@@ -421,8 +424,8 @@ git stash
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc680680" class="outline-3">
-<h3 id="orgc680680"><span class="section-number-3">1.3</span> git reset 重置</h3>
+<div id="outline-container-org58fbbc4" class="outline-3">
+<h3 id="org58fbbc4"><span class="section-number-3">1.3</span> git reset 重置</h3>
 <div class="outline-text-3" id="text-1-3">
 <ol class="org-ol">
 <li>git reset HEAD&lt;path&gt;  相当于取消 git add &lt;paths&gt; 操作</li>
@@ -445,8 +448,8 @@ git reset &#x2013;hard master@{2}  重置master所有位置为两次改变之前
 </div>
 </div>
 
-<div id="outline-container-org35cb1a0" class="outline-3">
-<h3 id="org35cb1a0"><span class="section-number-3">1.4</span> git 检出</h3>
+<div id="outline-container-org77b8cf7" class="outline-3">
+<h3 id="org77b8cf7"><span class="section-number-3">1.4</span> git 检出</h3>
 <div class="outline-text-3" id="text-1-4">
 <ul class="org-ul">
 <li><p>
@@ -460,8 +463,8 @@ git branch -v
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd212310" class="outline-3">
-<h3 id="orgd212310"><span class="section-number-3">1.5</span> git 恢复进度</h3>
+<div id="outline-container-orgf8ceb31" class="outline-3">
+<h3 id="orgf8ceb31"><span class="section-number-3">1.5</span> git 恢复进度</h3>
 <div class="outline-text-3" id="text-1-5">
 <ul class="org-ul">
 <li><p>
@@ -491,8 +494,8 @@ git stash branch &lt;branchname&gt;  基于进度创建分支
 </div>
 </div>
 
-<div id="outline-container-orgbb775e5" class="outline-3">
-<h3 id="orgbb775e5"><span class="section-number-3">1.6</span> git 基础操作</h3>
+<div id="outline-container-org187953c" class="outline-3">
+<h3 id="org187953c"><span class="section-number-3">1.6</span> git 基础操作</h3>
 <div class="outline-text-3" id="text-1-6">
 <ul class="org-ul">
 <li><p>
@@ -577,8 +580,8 @@ git archive -o partial.tar HEAD src doc  只归档两个文件夹
 </div>
 </div>
 
-<div id="outline-container-orgfbca0ef" class="outline-3">
-<h3 id="orgfbca0ef"><span class="section-number-3">1.7</span> git tools</h3>
+<div id="outline-container-orgbfcba7e" class="outline-3">
+<h3 id="orgbfcba7e"><span class="section-number-3">1.7</span> git tools</h3>
 <div class="outline-text-3" id="text-1-7">
 <p>
 版本库浏览器能更好看提交关系图
@@ -619,8 +622,8 @@ git bisect start
 </div>
 </div>
 
-<div id="outline-container-org6a06188" class="outline-3">
-<h3 id="org6a06188"><span class="section-number-3">1.8</span> 改变历史</h3>
+<div id="outline-container-org4461b90" class="outline-3">
+<h3 id="org4461b90"><span class="section-number-3">1.8</span> 改变历史</h3>
 <div class="outline-text-3" id="text-1-8">
 <ul class="org-ul">
 <li><p>
@@ -646,8 +649,8 @@ git commit -m "new reason "
 </div>
 </div>
 
-<div id="outline-container-orgfd21c46" class="outline-3">
-<h3 id="orgfd21c46"><span class="section-number-3">1.9</span> git克隆</h3>
+<div id="outline-container-orgb8ccdc0" class="outline-3">
+<h3 id="orgb8ccdc0"><span class="section-number-3">1.9</span> git克隆</h3>
 <div class="outline-text-3" id="text-1-9">
 <ul class="org-ul">
 <li><p>
@@ -672,12 +675,12 @@ git clone &#x2013;mirror &lt;rep&gt; dir
 </div>
 </div>
 
-<div id="outline-container-org2b71ef2" class="outline-2">
-<h2 id="org2b71ef2"><span class="section-number-2">2</span> git 和声</h2>
+<div id="outline-container-orgc9d4d5c" class="outline-2">
+<h2 id="orgc9d4d5c"><span class="section-number-2">2</span> git 和声</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-orgb5dd099" class="outline-3">
-<h3 id="orgb5dd099"><span class="section-number-3">2.1</span> git 工作协调</h3>
+<div id="outline-container-org45813bd" class="outline-3">
+<h3 id="org45813bd"><span class="section-number-3">2.1</span> git 工作协调</h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li>支持的协议
@@ -718,8 +721,8 @@ git push
 </div>
 
 
-<div id="outline-container-org92dd17a" class="outline-3">
-<h3 id="org92dd17a"><span class="section-number-3">2.2</span> git 冲突解决</h3>
+<div id="outline-container-org7c709ed" class="outline-3">
+<h3 id="org7c709ed"><span class="section-number-3">2.2</span> git 冲突解决</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 git merge
@@ -784,12 +787,12 @@ git add / git reset
 </div>
 </div>
 
-<div id="outline-container-org930d763" class="outline-2">
-<h2 id="org930d763"><span class="section-number-2">3</span> <a href="http://mazhuang.org/wiki/git/">common questions</a></h2>
+<div id="outline-container-org18ae7a4" class="outline-2">
+<h2 id="org18ae7a4"><span class="section-number-2">3</span> <a href="http://mazhuang.org/wiki/git/">common questions</a></h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org2c3cde7" class="outline-3">
-<h3 id="org2c3cde7"><span class="section-number-3">3.1</span> git ls-files 乱码问题</h3>
+<div id="outline-container-org12b9048" class="outline-3">
+<h3 id="org12b9048"><span class="section-number-3">3.1</span> git ls-files 乱码问题</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 在 <code>~/.gitconfig</code> 中添加如下内容
@@ -807,8 +810,8 @@ git add / git reset
 </div>
 </div>
 
-<div id="outline-container-org07fb93f" class="outline-3">
-<h3 id="org07fb93f"><span class="section-number-3">3.2</span> change git push user</h3>
+<div id="outline-container-org90b7a54" class="outline-3">
+<h3 id="org90b7a54"><span class="section-number-3">3.2</span> change git push user</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 git config user.name 'xxx'
@@ -819,8 +822,8 @@ git config user.email 'xxx'
 </p>
 </div>
 </div>
-<div id="outline-container-org70e318a" class="outline-3">
-<h3 id="org70e318a"><span class="section-number-3">3.3</span> create branch</h3>
+<div id="outline-container-org97aa5dc" class="outline-3">
+<h3 id="org97aa5dc"><span class="section-number-3">3.3</span> create branch</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 查看本地分支   <code>git branch</code>
@@ -840,8 +843,8 @@ git config user.email 'xxx'
 </div>
 </div>
 
-<div id="outline-container-org4e8d33e" class="outline-3">
-<h3 id="org4e8d33e"><span class="section-number-3">3.4</span> merge branch</h3>
+<div id="outline-container-org62c95cb" class="outline-3">
+<h3 id="org62c95cb"><span class="section-number-3">3.4</span> merge branch</h3>
 <div class="outline-text-3" id="text-3-4">
 <p>
 合并manue1分支到dev <code>git merge manue1</code>
@@ -849,9 +852,8 @@ git config user.email 'xxx'
 </div>
 </div>
 
-
-<div id="outline-container-org654376c" class="outline-3">
-<h3 id="org654376c"><span class="section-number-3">3.5</span> git add tag</h3>
+<div id="outline-container-org7f4d306" class="outline-3">
+<h3 id="org7f4d306"><span class="section-number-3">3.5</span> git add tag</h3>
 <div class="outline-text-3" id="text-3-5">
 <p>
 <a href="https://git-scm.com/book/zh/v1/Git-%E5%9F%BA%E7%A1%80-%E6%89%93%E6%A0%87%E7%AD%BE">https://git-scm.com/book/zh/v1/Git-基础-打标签</a>
@@ -862,7 +864,44 @@ git tag -a v1.4 -m 'my version 1.4'
 </p>
 
 <p>
-git push origin &#x2013;tags #一次推送所有本地新增的标签上去</p>
+git push origin &#x2013;tags #一次推送所有本地新增的标签上去
+</p>
+</div>
+</div>
+<div id="outline-container-org013fcac" class="outline-3">
+<h3 id="org013fcac"><span class="section-number-3">3.6</span> git 回退上个版本</h3>
+<div class="outline-text-3" id="text-3-6">
+<p>
+<code>git reset --hard HEAD^</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd1ceffd" class="outline-3">
+<h3 id="orgd1ceffd"><span class="section-number-3">3.7</span> git 删除分支</h3>
+<div class="outline-text-3" id="text-3-7">
+<p>
+git branch -d xx
+</p>
+
+<p>
+git push origin &#x2013;delete xx  删除远端分支
+</p>
+</div>
+</div>
+<div id="outline-container-orge877d6c" class="outline-3">
+<h3 id="orge877d6c"><span class="section-number-3">3.8</span> git 使用tag创建分支</h3>
+<div class="outline-text-3" id="text-3-8">
+<p>
+git branch &lt;new-branch-name&gt; &lt;tag-name&gt; 会根据tag创建新的分支
+</p>
+
+<p>
+git checkout newbranch
+</p>
+
+<p>
+git push origin newbranch</p>
 </div>
 </div>
 </div>

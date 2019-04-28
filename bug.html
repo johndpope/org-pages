@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-02-21 Thu 14:57 -->
+<!-- 2019-04-28 Sun 22:18 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Bug List</title>
@@ -253,26 +253,45 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgc8bacc4">1. Bug List</a>
+<li><a href="#orgb8589ef">1. Bug List</a>
 <ul>
-<li><a href="#org2fb9076">1.1. <span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-01-31 Thu] </span></span> ascii error</a></li>
-<li><a href="#org430019e">1.2. <span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-01-28 Mon] </span></span> redis服务器无密码被黑客利用</a></li>
-<li><a href="#orgc734469">1.3. <span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-01-28 Mon] </span></span> movies<sub>share</sub> 存在云盘链接无法抓取问题</a></li>
-<li><a href="#org70c1715">1.4. <span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-01-28 Mon] </span></span> movies<sub>share</sub> 部分资源无法爬取</a></li>
-<li><a href="#orgfa9aeaa">1.5. <span class="done DONE">DONE</span> mac install Mysql-python</a></li>
+<li><a href="#org37e2dfc">1.1. <span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-04-08 Mon]  </span></span>  undefined: proto.ProtoPackageIsVersion3</a></li>
+<li><a href="#orga5ef289">1.2. <span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-01-31 Thu] </span></span> ascii error</a></li>
+<li><a href="#orga2b43e7">1.3. <span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-01-28 Mon] </span></span> redis服务器无密码被黑客利用</a></li>
+<li><a href="#org554674c">1.4. <span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-01-28 Mon] </span></span> movies<sub>share</sub> 存在云盘链接无法抓取问题</a></li>
+<li><a href="#org6303c56">1.5. <span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-01-28 Mon] </span></span> movies<sub>share</sub> 部分资源无法爬取</a></li>
+<li><a href="#org913b18b">1.6. <span class="done DONE">DONE</span> mac install Mysql-python</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgc8bacc4" class="outline-2">
-<h2 id="orgc8bacc4"><span class="section-number-2">1</span> Bug List</h2>
+<div id="outline-container-orgb8589ef" class="outline-2">
+<h2 id="orgb8589ef"><span class="section-number-2">1</span> Bug List</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org2fb9076" class="outline-3">
-<h3 id="org2fb9076"><span class="section-number-3">1.1</span> <span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-01-31 Thu] </span></span> ascii error</h3>
+<div id="outline-container-org37e2dfc" class="outline-3">
+<h3 id="org37e2dfc"><span class="section-number-3">1.1</span> <span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-04-08 Mon]  </span></span>  undefined: proto.ProtoPackageIsVersion3</h3>
 <div class="outline-text-3" id="text-1-1">
+<blockquote>
+<p>
+SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-04-08 Mon 22:07&gt;</span></span>
+</p>
+
+<p>
+golang build 报错 protoc-gen-go 调用了1.2.0 升级1.3.1即可 
+</p>
+
+<p>
+go get -u github.com/golang/protobuf/protoc-gen-go
+</p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-orga5ef289" class="outline-3">
+<h3 id="orga5ef289"><span class="section-number-3">1.2</span> <span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-01-31 Thu] </span></span> ascii error</h3>
+<div class="outline-text-3" id="text-1-2">
 <ul class="org-ul">
 <li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-01-31 Thu 18:56]</span></span></li>
 </ul>
@@ -309,9 +328,9 @@ sys.setdefaultencoding(<span style="color: #79740e;">"utf-8"</span>)
 </blockquote>
 </div>
 </div>
-<div id="outline-container-org430019e" class="outline-3">
-<h3 id="org430019e"><span class="section-number-3">1.2</span> <span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-01-28 Mon] </span></span> redis服务器无密码被黑客利用</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-orga2b43e7" class="outline-3">
+<h3 id="orga2b43e7"><span class="section-number-3">1.3</span> <span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-01-28 Mon] </span></span> redis服务器无密码被黑客利用</h3>
+<div class="outline-text-3" id="text-1-3">
 <ul class="org-ul">
 <li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-01-28 Mon 18:20]</span></span></li>
 </ul>
@@ -332,9 +351,9 @@ SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-01-2
 </blockquote>
 </div>
 </div>
-<div id="outline-container-orgc734469" class="outline-3">
-<h3 id="orgc734469"><span class="section-number-3">1.3</span> <span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-01-28 Mon] </span></span> movies<sub>share</sub> 存在云盘链接无法抓取问题</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-org554674c" class="outline-3">
+<h3 id="org554674c"><span class="section-number-3">1.4</span> <span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-01-28 Mon] </span></span> movies<sub>share</sub> 存在云盘链接无法抓取问题</h3>
+<div class="outline-text-3" id="text-1-4">
 <ul class="org-ul">
 <li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-01-28 Mon 21:00]</span></span></li>
 </ul>
@@ -353,9 +372,9 @@ SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-01-2
 </blockquote>
 </div>
 </div>
-<div id="outline-container-org70c1715" class="outline-3">
-<h3 id="org70c1715"><span class="section-number-3">1.4</span> <span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-01-28 Mon] </span></span> movies<sub>share</sub> 部分资源无法爬取</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-org6303c56" class="outline-3">
+<h3 id="org6303c56"><span class="section-number-3">1.5</span> <span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-01-28 Mon] </span></span> movies<sub>share</sub> 部分资源无法爬取</h3>
+<div class="outline-text-3" id="text-1-5">
 <ul class="org-ul">
 <li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-01-28 Mon 16:19]</span></span></li>
 </ul>
@@ -398,9 +417,9 @@ urllib2.quote(html) fixed
 </blockquote>
 </div>
 </div>
-<div id="outline-container-orgfa9aeaa" class="outline-3">
-<h3 id="orgfa9aeaa"><span class="section-number-3">1.5</span> <span class="done DONE">DONE</span> mac install Mysql-python</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-org913b18b" class="outline-3">
+<h3 id="org913b18b"><span class="section-number-3">1.6</span> <span class="done DONE">DONE</span> mac install Mysql-python</h3>
+<div class="outline-text-3" id="text-1-6">
 <ul class="org-ul">
 <li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-12-28 Fri 19:00]</span></span></li>
 </ul>

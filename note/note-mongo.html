@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-02-21 Thu 14:56 -->
+<!-- 2019-04-28 Sun 22:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>mongo 使用笔记</title>
@@ -253,24 +253,24 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgede7037">1. Mongo 使用笔记</a>
+<li><a href="#org7b2c2ce">1. Mongo 使用笔记</a>
 <ul>
-<li><a href="#org49c8457">1.1. Mongo集群安装</a></li>
-<li><a href="#orgbf8a961">1.2. 常用命令</a></li>
+<li><a href="#orga3483ea">1.1. Mongo集群安装</a></li>
+<li><a href="#org698adec">1.2. 常用命令</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgede7037" class="outline-2">
-<h2 id="orgede7037"><span class="section-number-2">1</span> Mongo 使用笔记</h2>
+<div id="outline-container-org7b2c2ce" class="outline-2">
+<h2 id="org7b2c2ce"><span class="section-number-2">1</span> Mongo 使用笔记</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org49c8457" class="outline-3">
-<h3 id="org49c8457"><span class="section-number-3">1.1</span> Mongo集群安装</h3>
+<div id="outline-container-orga3483ea" class="outline-3">
+<h3 id="orga3483ea"><span class="section-number-3">1.1</span> Mongo集群安装</h3>
 </div>
-<div id="outline-container-orgbf8a961" class="outline-3">
-<h3 id="orgbf8a961"><span class="section-number-3">1.2</span> 常用命令</h3>
+<div id="outline-container-org698adec" class="outline-3">
+<h3 id="org698adec"><span class="section-number-3">1.2</span> 常用命令</h3>
 <div class="outline-text-3" id="text-1-2">
 <ol class="org-ol">
 <li><p>
@@ -280,10 +280,9 @@ for the JavaScript code in this tag.
 <p>
 db.smrt.ensureIndex({"ip":1})
 </p></li>
-</ol>
 
-<p>
-2.聚合出字段种类
+<li><p>
+聚合出字段种类
 </p>
 
 <p>
@@ -292,18 +291,22 @@ db.smrt.distinct("tags")
 
 <p>
 db.all<sub>iocs.find</sub>({"malicious<sub>family</sub>":{$size:3}})
-</p>
-<ol class="org-ol">
-<li>db.ip<sub>history</sub><sub>v1.find</sub>({"insert<sub>time</sub>":{"$gte":1496357774,"$lte":1496357775}})
-db.ip<sub>history</sub><sub>v1.find</sub>({"insert<sub>time</sub>":{"$gte":1498037117,"$lte":1498037119}})
-db.ip<sub>history</sub><sub>v1.find</sub>({"history":{"$elemMatch":{"source":"emergingthreats.net"}}})
-db.ip<sub>history</sub><sub>v1.remove</sub>({"history":{"$elemMatch":{"attack<sub>time</sub>":{'$gte':'2016-05-11T15:29:21','$lte':'2017-07-11T15:29:21'}}}})</li>
+ db.ip<sub>history</sub><sub>v1.find</sub>({"insert<sub>time</sub>":{"$gte":1496357774,"$lte":1496357775}})
+ db.ip<sub>history</sub><sub>v1.find</sub>({"insert<sub>time</sub>":{"$gte":1498037117,"$lte":1498037119}})
+ db.ip<sub>history</sub><sub>v1.find</sub>({"history":{"$elemMatch":{"source":"emergingthreats.net"}}})
+ db.ip<sub>history</sub><sub>v1.remove</sub>({"history":{"$elemMatch":{"attack<sub>time</sub>":{'$gte':'2016-05-11T15:29:21','$lte':'2017-07-11T15:29:21'}}}})
+</p></li>
 </ol>
 
 
 <p>
 db.ip<sub>history</sub><sub>v1.find</sub>({"history":{"$elemMatch":{"insertime":{"$gte":"1509840000","$lte":"1509926400"}}}})
 </p>
+
+
+<ol class="org-ol">
+<li>创建用户名密码</li>
+</ol>
 </div>
 </div>
 </div>

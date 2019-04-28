@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-02-21 Thu 14:56 -->
+<!-- 2019-04-28 Sun 22:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>spark 学习</title>
@@ -253,33 +253,33 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgb1b053a">1. what is spark</a></li>
-<li><a href="#orga66d14e">2. RDD</a>
+<li><a href="#orge1d54bf">1. what is spark</a></li>
+<li><a href="#org5fdb980">2. RDD</a>
 <ul>
-<li><a href="#orgdb4fad4">2.1. RDD基础</a></li>
+<li><a href="#org3c02fbe">2.1. RDD基础</a></li>
 </ul>
 </li>
-<li><a href="#org11d2329">3. spark use</a>
+<li><a href="#org6ad69d9">3. spark use</a>
 <ul>
-<li><a href="#org5ea40cb">3.1. spark base</a></li>
-<li><a href="#org37a3e8b">3.2. spark install</a></li>
-<li><a href="#org4300867">3.3. spark shell</a></li>
-<li><a href="#org6fd3c77">3.4. idea spark scala</a></li>
-<li><a href="#org8bbe5e1">3.5. idea spark java</a></li>
-<li><a href="#org0c81435">3.6. rdd &amp; dataframe</a></li>
+<li><a href="#org91c9eb3">3.1. spark base</a></li>
+<li><a href="#org7ed6641">3.2. spark install</a></li>
+<li><a href="#orgb2b282f">3.3. spark shell</a></li>
+<li><a href="#orgc3dfa81">3.4. idea spark scala</a></li>
+<li><a href="#orgf2f80c7">3.5. idea spark java</a></li>
+<li><a href="#orgcb38dca">3.6. rdd &amp; dataframe</a></li>
 </ul>
 </li>
-<li><a href="#org624c1d9">4. <span class="todo TODO">TODO</span> 如何转表格</a></li>
-<li><a href="#orgbb9559b">5. Spark Executor在YARN上的内存分配</a></li>
-<li><a href="#orgad4ed47">6. 如何对spark任务调优?</a></li>
+<li><a href="#org3a6ced2">4. <span class="todo TODO">TODO</span> 如何转表格</a></li>
+<li><a href="#orgd25bc54">5. Spark Executor在YARN上的内存分配</a></li>
+<li><a href="#orgb52eeda">6. 如何对spark任务调优?</a></li>
 </ul>
 </div>
 </div>
 <p>
 Spark快速大数据分析[美] 卡劳（Holden Karau）
 </p>
-<div id="outline-container-orgb1b053a" class="outline-2">
-<h2 id="orgb1b053a"><span class="section-number-2">1</span> what is spark</h2>
+<div id="outline-container-orge1d54bf" class="outline-2">
+<h2 id="orge1d54bf"><span class="section-number-2">1</span> what is spark</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 spark 是一个用来实现快速而通用的集群计算的平台
@@ -309,15 +309,15 @@ python shell / scala shell</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orga66d14e" class="outline-2">
-<h2 id="orga66d14e"><span class="section-number-2">2</span> RDD</h2>
+<div id="outline-container-org5fdb980" class="outline-2">
+<h2 id="org5fdb980"><span class="section-number-2">2</span> RDD</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 RDD(resilient distributed dataset)
 </p>
 </div>
-<div id="outline-container-orgdb4fad4" class="outline-3">
-<h3 id="orgdb4fad4"><span class="section-number-3">2.1</span> RDD基础</h3>
+<div id="outline-container-org3c02fbe" class="outline-3">
+<h3 id="org3c02fbe"><span class="section-number-3">2.1</span> RDD基础</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 Spark中的RDD是一个不可变的分布式对象集合
@@ -326,20 +326,20 @@ Spark中的RDD是一个不可变的分布式对象集合
 </div>
 </div>
 
-<div id="outline-container-org11d2329" class="outline-2">
-<h2 id="org11d2329"><span class="section-number-2">3</span> spark use</h2>
+<div id="outline-container-org6ad69d9" class="outline-2">
+<h2 id="org6ad69d9"><span class="section-number-2">3</span> spark use</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org5ea40cb" class="outline-3">
-<h3 id="org5ea40cb"><span class="section-number-3">3.1</span> spark base</h3>
+<div id="outline-container-org91c9eb3" class="outline-3">
+<h3 id="org91c9eb3"><span class="section-number-3">3.1</span> spark base</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 rdd(resilient distributed dataset)
 </p>
 </div>
 </div>
-<div id="outline-container-org37a3e8b" class="outline-3">
-<h3 id="org37a3e8b"><span class="section-number-3">3.2</span> spark install</h3>
+<div id="outline-container-org7ed6641" class="outline-3">
+<h3 id="org7ed6641"><span class="section-number-3">3.2</span> spark install</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 函数式编程
@@ -347,8 +347,8 @@ shell下执行:paste
 </p>
 </div>
 </div>
-<div id="outline-container-org4300867" class="outline-3">
-<h3 id="org4300867"><span class="section-number-3">3.3</span> spark shell</h3>
+<div id="outline-container-orgb2b282f" class="outline-3">
+<h3 id="orgb2b282f"><span class="section-number-3">3.3</span> spark shell</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 bin/spark-shell
@@ -369,8 +369,8 @@ filter()</li>
 </div>
 </div>
 
-<div id="outline-container-org6fd3c77" class="outline-3">
-<h3 id="org6fd3c77"><span class="section-number-3">3.4</span> idea spark scala</h3>
+<div id="outline-container-orgc3dfa81" class="outline-3">
+<h3 id="orgc3dfa81"><span class="section-number-3">3.4</span> idea spark scala</h3>
 <div class="outline-text-3" id="text-3-4">
 <p>
 scala 项目手动打包
@@ -387,20 +387,20 @@ sbt 构建项目 需要等待sbt版本下载好才会生成src目录
 </div>
 </div>
 
-<div id="outline-container-org8bbe5e1" class="outline-3">
-<h3 id="org8bbe5e1"><span class="section-number-3">3.5</span> idea spark java</h3>
+<div id="outline-container-orgf2f80c7" class="outline-3">
+<h3 id="orgf2f80c7"><span class="section-number-3">3.5</span> idea spark java</h3>
 <div class="outline-text-3" id="text-3-5">
 <ol class="org-ol">
 <li>jre 1.5 换成1.8</li>
 </ol>
 </div>
 </div>
-<div id="outline-container-org0c81435" class="outline-3">
-<h3 id="org0c81435"><span class="section-number-3">3.6</span> rdd &amp; dataframe</h3>
+<div id="outline-container-orgcb38dca" class="outline-3">
+<h3 id="orgcb38dca"><span class="section-number-3">3.6</span> rdd &amp; dataframe</h3>
 </div>
 </div>
-<div id="outline-container-org624c1d9" class="outline-2">
-<h2 id="org624c1d9"><span class="section-number-2">4</span> <span class="todo TODO">TODO</span> 如何转表格</h2>
+<div id="outline-container-org3a6ced2" class="outline-2">
+<h2 id="org3a6ced2"><span class="section-number-2">4</span> <span class="todo TODO">TODO</span> 如何转表格</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 格式	可分割	平均压缩速度	文本文件压缩效率	Hadoop压缩编解码器	纯Java实现	原生	备注
@@ -412,8 +412,8 @@ Snappy	否	非常快	低	org.apache.hadoop.io.compress.SnappyCodec	否	是	Snapp
 </p>
 </div>
 </div>
-<div id="outline-container-orgbb9559b" class="outline-2">
-<h2 id="orgbb9559b"><span class="section-number-2">5</span> Spark Executor在YARN上的内存分配</h2>
+<div id="outline-container-orgd25bc54" class="outline-2">
+<h2 id="orgd25bc54"><span class="section-number-2">5</span> Spark Executor在YARN上的内存分配</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 从Spark的角度看，Executor占用的内存分为两部分：ExecutorMemory和MemoryOverhead
@@ -460,8 +460,8 @@ MemoryOverhead是JVM进程中除Java堆以外占用的空间大小，包括方�
 </p>
 </div>
 </div>
-<div id="outline-container-orgad4ed47" class="outline-2">
-<h2 id="orgad4ed47"><span class="section-number-2">6</span> 如何对spark任务调优?</h2>
+<div id="outline-container-orgb52eeda" class="outline-2">
+<h2 id="orgb52eeda"><span class="section-number-2">6</span> 如何对spark任务调优?</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 <a href="http://www.cnblogs.com/xing901022/p/6445254.html">http://www.cnblogs.com/xing901022/p/6445254.html</a>

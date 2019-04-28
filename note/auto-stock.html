@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-03-11 Mon 01:44 -->
+<!-- 2019-04-28 Sun 22:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>中国股市行情分析笔记</title>
@@ -253,22 +253,33 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org899147f">1. stock source</a>
+<li><a href="#org734743a">1. stock source</a>
 <ul>
-<li><a href="#orgabbe270">1.1. 雪球接口</a></li>
-<li><a href="#orge1be3f7">1.2. 东方财富网接口</a></li>
-<li><a href="#org3e54d48">1.3. get</a></li>
+<li><a href="#org531a7be">1.1. 雪球接口</a></li>
+<li><a href="#org19c7ec5">1.2. 东方财富网接口</a></li>
+<li><a href="#org360a20e">1.3. 腾讯微证券</a>
+<ul>
+<li><a href="#org8878523">1.3.1. stock info</a>
+<ul>
+<li><a href="#org863228b">1.3.1.1. 1</a></li>
+<li><a href="#orga05b18c">1.3.1.2. 2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgf40bc24">1.4. 深交所</a></li>
+<li><a href="#org50ce057">1.5. 策略</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org899147f" class="outline-2">
-<h2 id="org899147f"><span class="section-number-2">1</span> stock source</h2>
+<div id="outline-container-org734743a" class="outline-2">
+<h2 id="org734743a"><span class="section-number-2">1</span> stock source</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-orgabbe270" class="outline-3">
-<h3 id="orgabbe270"><span class="section-number-3">1.1</span> 雪球接口</h3>
+<div id="outline-container-org531a7be" class="outline-3">
+<h3 id="org531a7be"><span class="section-number-3">1.1</span> 雪球接口</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li><p>
@@ -604,8 +615,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-orge1be3f7" class="outline-3">
-<h3 id="orge1be3f7"><span class="section-number-3">1.2</span> 东方财富网接口</h3>
+<div id="outline-container-org19c7ec5" class="outline-3">
+<h3 id="org19c7ec5"><span class="section-number-3">1.2</span> 东方财富网接口</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 <a href="http://nufm.dfcfw.com/EM_Finance2014NumericApplication/JS.aspx?type=CT&amp;cmd=3001012&amp;sty=CTBF&amp;st=z&amp;sr=&amp;p=&amp;ps=&amp;cb=var%20pie_data=&amp;js=(x)&amp;token=28758b27a75f62dc3065b81f7facb365&amp;_=1497258906443">获取主力买入排行的接口</a>
@@ -928,9 +939,733 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org3e54d48" class="outline-3">
-<h3 id="org3e54d48"><span class="section-number-3">1.3</span> get</h3>
+<div id="outline-container-org360a20e" class="outline-3">
+<h3 id="org360a20e"><span class="section-number-3">1.3</span> 腾讯微证券</h3>
 <div class="outline-text-3" id="text-1-3">
+</div>
+<div id="outline-container-org8878523" class="outline-4">
+<h4 id="org8878523"><span class="section-number-4">1.3.1</span> stock info</h4>
+<div class="outline-text-4" id="text-1-3-1">
+</div>
+<div id="outline-container-org863228b" class="outline-5">
+<h5 id="org863228b"><span class="section-number-5">1.3.1.1</span> 1</h5>
+<div class="outline-text-5" id="text-1-3-1-1">
+<p>
+POST请求
+</p>
+
+<p>
+<a href="https://wzq.tenpay.com/cgi-bin/stockinfo.fcgi?_=1553089507107">https://wzq.tenpay.com/cgi-bin/stockinfo.fcgi?_=1553089507107</a>
+</p>
+
+
+<p>
+form 
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #076678;">form</span> = {
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"scode"</span>: <span style="color: #79740e;">"300337"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"markets"</span>: <span style="color: #79740e;">"0"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"needfive"</span>: <span style="color: #79740e;">"1"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"needquote"</span>: <span style="color: #79740e;">"1"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"needfollow"</span>: <span style="color: #79740e;">"1"</span>
+}
+
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-python">{
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"retcode"</span>: <span style="color: #79740e;">"0"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"retmsg"</span>: <span style="color: #79740e;">"OK"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"has_follow"</span>: <span style="color: #79740e;">"1"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"market_state"</span>: <span style="color: #79740e;">"6"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"servertime"</span>: <span style="color: #79740e;">"1553089506"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"five_trans"</span>: {
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"code"</span>: <span style="color: #79740e;">"300741"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"market"</span>: <span style="color: #79740e;">"0"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"mcbl"</span>: <span style="color: #79740e;">"0.50"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"mcjg1"</span>: <span style="color: #79740e;">"41.61"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"mcjg2"</span>: <span style="color: #79740e;">"41.62"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"mcjg3"</span>: <span style="color: #79740e;">"41.63"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"mcjg4"</span>: <span style="color: #79740e;">"41.64"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"mcjg5"</span>: <span style="color: #79740e;">"41.65"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"mcsl1"</span>: <span style="color: #79740e;">"2"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"mcsl2"</span>: <span style="color: #79740e;">"75"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"mcsl3"</span>: <span style="color: #79740e;">"33"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"mcsl4"</span>: <span style="color: #79740e;">"159"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"mcsl5"</span>: <span style="color: #79740e;">"239"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"mrbl"</span>: <span style="color: #79740e;">"0.50"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"mrjg1"</span>: <span style="color: #79740e;">"41.60"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"mrjg2"</span>: <span style="color: #79740e;">"41.59"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"mrjg3"</span>: <span style="color: #79740e;">"41.58"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"mrjg4"</span>: <span style="color: #79740e;">"41.57"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"mrjg5"</span>: <span style="color: #79740e;">"41.56"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"mrsl1"</span>: <span style="color: #79740e;">"116"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"mrsl2"</span>: <span style="color: #79740e;">"86"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"mrsl3"</span>: <span style="color: #79740e;">"42"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"mrsl4"</span>: <span style="color: #79740e;">"5"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"mrsl5"</span>: <span style="color: #79740e;">"60"</span>
+<span style="background-color: #ebdbb2;"> </span>   },
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"secu_info"</span>: {
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"market"</span>: <span style="color: #79740e;">"0"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"price_ceiling"</span>: <span style="color: #79740e;">"46.19"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"price_floor"</span>: <span style="color: #79740e;">"37.79"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"secu_cls"</span>: <span style="color: #79740e;">"4"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"secu_code"</span>: <span style="color: #79740e;">"300741"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"secu_name"</span>: <span style="color: #79740e;">"&#21326;&#23453;&#32929;&#20221;"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"spread"</span>: <span style="color: #79740e;">"0.01"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"status"</span>: <span style="color: #79740e;">"0"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"stk_name"</span>: <span style="color: #79740e;">"&#21326;&#23453;&#32929;&#20221;"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"susp_flag"</span>: <span style="color: #79740e;">"0"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"symbol"</span>: <span style="color: #79740e;">"sz300741"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"trd_ceiling"</span>: <span style="color: #79740e;">"99999999"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"trd_floor"</span>: <span style="color: #79740e;">"1"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"trd_unit"</span>: <span style="color: #79740e;">"100"</span>
+<span style="background-color: #ebdbb2;"> </span>   },
+<span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"secu_quote"</span>: {
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"amplitude"</span>: <span style="color: #79740e;">"3.81"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"avg_price"</span>: <span style="color: #79740e;">"41.45"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"cje"</span>: <span style="color: #79740e;">"197120000"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"cjj_price"</span>: <span style="color: #79740e;">""</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"cjl"</span>: <span style="color: #79740e;">"4755200"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"code"</span>: <span style="color: #79740e;">"300741"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"dqj"</span>: <span style="color: #79740e;">"41.60"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"fall_num"</span>: <span style="color: #79740e;">"-"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"gxl"</span>: <span style="color: #79740e;">""</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"hold_num"</span>: <span style="color: #79740e;">"-"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"hsl"</span>: <span style="color: #79740e;">"7.72"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"jj_jz"</span>: <span style="color: #79740e;">"-"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"jkj"</span>: <span style="color: #79740e;">"42.01"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"lsacle"</span>: <span style="color: #79740e;">"0.58"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"ltz"</span>: <span style="color: #79740e;">"25.62"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"lyr_ratio"</span>: <span style="color: #79740e;">"21.79"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"market"</span>: <span style="color: #79740e;">"0"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"mgsy"</span>: <span style="color: #79740e;">""</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"npl"</span>: <span style="color: #79740e;">"27264"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"pbratio"</span>: <span style="color: #79740e;">"2.85"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"raise_num"</span>: <span style="color: #79740e;">"-"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"sjl"</span>: <span style="color: #79740e;">"2.85"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"syl"</span>: <span style="color: #79740e;">"21.79"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"ttm_ratio"</span>: <span style="color: #79740e;">"21.79"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"utime"</span>: <span style="color: #79740e;">"1553067004"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"wccale"</span>: <span style="color: #79740e;">"-199"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"week52zdj"</span>: <span style="color: #79740e;">""</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"week52zgj"</span>: <span style="color: #79740e;">""</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"weekratio"</span>: <span style="color: #79740e;">""</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"wpl"</span>: <span style="color: #79740e;">"20225"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"zde"</span>: <span style="color: #79740e;">"-0.39"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"zdf"</span>: <span style="color: #79740e;">"-0.93"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"zdj"</span>: <span style="color: #79740e;">"40.68"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"zf"</span>: <span style="color: #79740e;">"3.81"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"zgj"</span>: <span style="color: #79740e;">"42.28"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"zsj"</span>: <span style="color: #79740e;">"41.99"</span>,
+<span style="background-color: #ebdbb2;"> </span>   <span style="background-color: #ebdbb2;"> </span>   <span style="color: #79740e;">"zsz"</span>: <span style="color: #79740e;">"256.21"</span>
+<span style="background-color: #ebdbb2;"> </span>   }
+}
+</pre>
+</div>
+
+
+
+
+
+
+<ul class="org-ul">
+<li><p>
+five<sub>trans</sub>
+</p>
+
+<p>
+最近五个交易价格
+</p></li>
+</ul>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">字段</th>
+<th scope="col" class="org-right">内容</th>
+<th scope="col" class="org-left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">code</td>
+<td class="org-right">300741</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">market</td>
+<td class="org-right">0</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">mcbl</td>
+<td class="org-right">0.50</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">mcjg1</td>
+<td class="org-right">41.61</td>
+<td class="org-left">卖1</td>
+</tr>
+
+<tr>
+<td class="org-left">mcjg2</td>
+<td class="org-right">41.62</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">mcjg3</td>
+<td class="org-right">41.63</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">mcjg4</td>
+<td class="org-right">41.64</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">mcjg5</td>
+<td class="org-right">41.65</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">mcsl1</td>
+<td class="org-right">2</td>
+<td class="org-left">卖1挂单</td>
+</tr>
+
+<tr>
+<td class="org-left">mcsl2</td>
+<td class="org-right">75</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">mcsl3</td>
+<td class="org-right">33</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">mcsl4</td>
+<td class="org-right">159</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">mcsl5</td>
+<td class="org-right">239</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">mrbl</td>
+<td class="org-right">0.50</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">mrjg1</td>
+<td class="org-right">41.60</td>
+<td class="org-left">买1</td>
+</tr>
+
+<tr>
+<td class="org-left">mrjg2</td>
+<td class="org-right">41.59</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">mrjg3</td>
+<td class="org-right">41.58</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">mrjg4</td>
+<td class="org-right">41.57</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">mrjg5</td>
+<td class="org-right">41.56</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">mrsl1</td>
+<td class="org-right">116</td>
+<td class="org-left">买1挂单</td>
+</tr>
+
+<tr>
+<td class="org-left">mrsl2</td>
+<td class="org-right">86</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">mrsl3</td>
+<td class="org-right">42</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">mrsl4</td>
+<td class="org-right">5</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">mrsl5</td>
+<td class="org-right">60</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+secu<sub>info</sub>
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">字段</th>
+<th scope="col" class="org-right">内容</th>
+<th scope="col" class="org-left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">market</td>
+<td class="org-right">0</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">price<sub>ceiling</sub></td>
+<td class="org-right">46.19</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">price<sub>floor</sub></td>
+<td class="org-right">37.79</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">secu<sub>cls</sub></td>
+<td class="org-right">4</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">secu<sub>code</sub></td>
+<td class="org-right">300741</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">secu<sub>name</sub></td>
+<td class="org-right">华宝股份</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">spread</td>
+<td class="org-right">0.01</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">status</td>
+<td class="org-right">0</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">stk<sub>name</sub></td>
+<td class="org-right">华宝股份</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">susp<sub>flag</sub></td>
+<td class="org-right">0</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">symbol</td>
+<td class="org-right">sz300741</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">trd<sub>ceiling</sub></td>
+<td class="org-right">99999999</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">trd<sub>floor</sub></td>
+<td class="org-right">1</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">trd<sub>unit</sub></td>
+<td class="org-right">100</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+secu<sub>quote</sub>
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">字段</th>
+<th scope="col" class="org-right">内容</th>
+<th scope="col" class="org-left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">amplitude</td>
+<td class="org-right">3.81</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">avg<sub>price</sub></td>
+<td class="org-right">41.45</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">cje</td>
+<td class="org-right">197120000</td>
+<td class="org-left">成交额</td>
+</tr>
+
+<tr>
+<td class="org-left">cjj<sub>price</sub></td>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">cjl</td>
+<td class="org-right">4755200</td>
+<td class="org-left">成交量</td>
+</tr>
+
+<tr>
+<td class="org-left">code</td>
+<td class="org-right">300741</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">dqj</td>
+<td class="org-right">41.60</td>
+<td class="org-left">当前价格</td>
+</tr>
+
+<tr>
+<td class="org-left">fall<sub>num</sub></td>
+<td class="org-right">-</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">gxl</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">hold<sub>num</sub></td>
+<td class="org-right">-</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">hsl</td>
+<td class="org-right">7.72</td>
+<td class="org-left">换手率</td>
+</tr>
+
+<tr>
+<td class="org-left">jj<sub>jz</sub></td>
+<td class="org-right">-</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">jkj</td>
+<td class="org-right">42.01</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">lsacle</td>
+<td class="org-right">0.58</td>
+<td class="org-left">量比</td>
+</tr>
+
+<tr>
+<td class="org-left">ltz</td>
+<td class="org-right">25.62</td>
+<td class="org-left">流通值  亿</td>
+</tr>
+
+<tr>
+<td class="org-left">lyr<sub>ratio</sub></td>
+<td class="org-right">21.79</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">market</td>
+<td class="org-right">0</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">mgsy</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">npl</td>
+<td class="org-right">27264</td>
+<td class="org-left">内盘2.73万</td>
+</tr>
+
+<tr>
+<td class="org-left">pbratio</td>
+<td class="org-right">2.85</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">raise<sub>num</sub></td>
+<td class="org-right">-</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">sjl</td>
+<td class="org-right">2.85</td>
+<td class="org-left">市净率</td>
+</tr>
+
+<tr>
+<td class="org-left">syl</td>
+<td class="org-right">21.79</td>
+<td class="org-left">市盈率</td>
+</tr>
+
+<tr>
+<td class="org-left">ttm<sub>ratio</sub></td>
+<td class="org-right">21.79</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">utime</td>
+<td class="org-right">1553067004</td>
+<td class="org-left">当前时间</td>
+</tr>
+
+<tr>
+<td class="org-left">wccale</td>
+<td class="org-right">-199</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">week52zdj</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">week52zgj</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">weekratio</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">wpl</td>
+<td class="org-right">20225</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">zde</td>
+<td class="org-right">-0.39</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">zdf</td>
+<td class="org-right">-0.93</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">zdj</td>
+<td class="org-right">40.68</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">zf</td>
+<td class="org-right">3.81</td>
+<td class="org-left">振幅 %</td>
+</tr>
+
+<tr>
+<td class="org-left">zgj</td>
+<td class="org-right">42.28</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">zsj</td>
+<td class="org-right">41.99</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">zsz</td>
+<td class="org-right">256.21</td>
+<td class="org-left">总市值</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orga05b18c" class="outline-5">
+<h5 id="orga05b18c"><span class="section-number-5">1.3.1.2</span> 2</h5>
+<div class="outline-text-5" id="text-1-3-1-2">
+<p>
+<a href="https://wzq.tenpay.com/cgi-bin/stockinfo.fcgi?_=1553093241896">https://wzq.tenpay.com/cgi-bin/stockinfo.fcgi?_=1553093241896</a>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #af3a03;">type</span>                    12 
+scode                   300741
+markets                 0
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-python">
+
+</pre>
+</div>
+
+<p>
+"data": -&gt; quotations
+</p>
+
+<p>
+"avg<sub>deal</sub><sub>price</sub>": 41.45,
+"date": "2019-03-20",
+"ma10": -11782393.3,
+"ma20": -7211902.05,
+"ma5": -20423293.2,
+"main<sub>inflow</sub>": -12338301.0,
+"net<sub>capital</sub><sub>inflow</sub>": -28532798.0,
+"plate<sub>net</sub><sub>capital</sub><sub>inflow</sub>": -1973596.551493,
+"price": 41.6,
+"retail<sub>inflow</sub>": -16194497.0,
+"turnover<sub>money</sub>": 197120000.0
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf40bc24" class="outline-3">
+<h3 id="orgf40bc24"><span class="section-number-3">1.4</span> 深交所</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+股票列表
+<a href="http://www.szse.cn/api/report/ShowReport?SHOWTYPE=xlsx&amp;CATALOGID=1110&amp;TABKEY=tab1&amp;random=0.1086889598609524">http://www.szse.cn/api/report/ShowReport?SHOWTYPE=xlsx&amp;CATALOGID=1110&amp;TABKEY=tab1&amp;random=0.1086889598609524</a>
+</p>
+
+<p>
+股权登记日信息爬取
+</p>
+
+<p>
+<a href="http://irm.cninfo.com.cn/ssessgs/S000418/index.html">http://irm.cninfo.com.cn/ssessgs/S000418/index.html</a>
+</p>
+
+<p>
+<code>//table[@style="background:#A2D7FD; width:190px; margin:5px auto;"]/tbody/tr</code>
+</p>
+</div>
+</div>
+<div id="outline-container-org50ce057" class="outline-3">
+<h3 id="org50ce057"><span class="section-number-3">1.5</span> 策略</h3>
+<div class="outline-text-3" id="text-1-5">
 <p>
 实时数据获取
 </p>

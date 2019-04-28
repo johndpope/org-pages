@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-03-11 Mon 01:44 -->
+<!-- 2019-04-28 Sun 22:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Python Promodoro</title>
@@ -253,24 +253,53 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org671731c">1. Python Promodoro</a>
+<li><a href="#orgd69f368">1. Python Promodoro</a>
 <ul>
-<li><a href="#org0f46cb8">1.1. <span class="timestamp-wrapper"><span class="timestamp">[2018-12-30 Sun 14:36] </span></span> python Context managers</a></li>
-<li><a href="#orga4a8699">1.2. <span class="timestamp-wrapper"><span class="timestamp">[2018-12-29 Sat 12:14] </span></span> Python是怎样管理内存的?</a></li>
-<li><a href="#orga2f5b37">1.3. <span class="timestamp-wrapper"><span class="timestamp">[2018-12-28 Fri 12:03] </span></span> pickle module</a></li>
+<li><a href="#org4bea018">1.1. <span class="timestamp-wrapper"><span class="timestamp">[2019-04-26 Fri] </span></span> pip离线下载安装python包</a></li>
+<li><a href="#orgf7374bb">1.2. <span class="timestamp-wrapper"><span class="timestamp">[2018-12-30 Sun 14:36] </span></span> python Context managers</a></li>
+<li><a href="#org19a748b">1.3. <span class="timestamp-wrapper"><span class="timestamp">[2018-12-29 Sat 12:14] </span></span> Python是怎样管理内存的?</a></li>
+<li><a href="#org295f332">1.4. <span class="timestamp-wrapper"><span class="timestamp">[2018-12-28 Fri 12:03] </span></span> pickle module</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org671731c" class="outline-2">
-<h2 id="org671731c"><span class="section-number-2">1</span> Python Promodoro</h2>
+<div id="outline-container-orgd69f368" class="outline-2">
+<h2 id="orgd69f368"><span class="section-number-2">1</span> Python Promodoro</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org0f46cb8" class="outline-3">
-<h3 id="org0f46cb8"><span class="section-number-3">1.1</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-12-30 Sun 14:36] </span></span> python Context managers</h3>
+<div id="outline-container-org4bea018" class="outline-3">
+<h3 id="org4bea018"><span class="section-number-3">1.1</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-04-26 Fri] </span></span> pip离线下载安装python包</h3>
 <div class="outline-text-3" id="text-1-1">
+<blockquote>
+<ol class="org-ol">
+<li><p>
+有网环境下载离线文件
+</p>
+
+<p>
+pip  download  Pillow   -d . &#x2013;trusted-host pypi.douban.com -i <a href="http://pypi.douban.com/simple">http://pypi.douban.com/simple</a>
+</p></li>
+
+<li>无网环境使用离线文件安装包</li>
+</ol>
+
+
+<p>
+$ pip install &#x2013;no-index &#x2013;find-links="/tmp/tranferred<sub>packages</sub>" &lt;package&gt;
+</p>
+
+
+<p>
+$ pip install &#x2013;no-index &#x2013;find-links="/tmp/tranferred<sub>packages</sub>" -r requirements.txt
+</p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-orgf7374bb" class="outline-3">
+<h3 id="orgf7374bb"><span class="section-number-3">1.2</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-12-30 Sun 14:36] </span></span> python Context managers</h3>
+<div class="outline-text-3" id="text-1-2">
 <blockquote>
 <p>
 
@@ -356,9 +385,9 @@ threading
 </blockquote>
 </div>
 </div>
-<div id="outline-container-orga4a8699" class="outline-3">
-<h3 id="orga4a8699"><span class="section-number-3">1.2</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-12-29 Sat 12:14] </span></span> Python是怎样管理内存的?</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-org19a748b" class="outline-3">
+<h3 id="org19a748b"><span class="section-number-3">1.3</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-12-29 Sat 12:14] </span></span> Python是怎样管理内存的?</h3>
+<div class="outline-text-3" id="text-1-3">
 <blockquote>
 <p>
 
@@ -542,9 +571,9 @@ gc<sub>ref不为0的对象</sub>，和这些对象引用的对象，以及继续
 </blockquote>
 </div>
 </div>
-<div id="outline-container-orga2f5b37" class="outline-3">
-<h3 id="orga2f5b37"><span class="section-number-3">1.3</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-12-28 Fri 12:03] </span></span> pickle module</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-org295f332" class="outline-3">
+<h3 id="org295f332"><span class="section-number-3">1.4</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-12-28 Fri 12:03] </span></span> pickle module</h3>
+<div class="outline-text-3" id="text-1-4">
 <blockquote>
 <p>
 

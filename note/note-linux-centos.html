@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-02-21 Thu 14:56 -->
+<!-- 2019-04-28 Sun 22:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>note-linux-centos</title>
@@ -275,73 +275,73 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org1b355f0">1. VboxManage</a></li>
-<li><a href="#orgd82137a">2. centos7 basic environment</a>
+<li><a href="#org92f11b4">1. VboxManage</a></li>
+<li><a href="#org47fc522">2. centos7 basic environment</a>
 <ul>
-<li><a href="#org3eb82b5">2.1. lvm</a></li>
-<li><a href="#org933a212">2.2. ip</a></li>
-<li><a href="#org45cccd3">2.3. sshd</a></li>
-<li><a href="#orgcd04094">2.4. hostname</a></li>
-<li><a href="#orgfab6893">2.5. yum source</a></li>
-<li><a href="#org1b2efe7">2.6. ntp</a></li>
-<li><a href="#org751a8c4">2.7. firewallds</a></li>
-<li><a href="#org6660c4e">2.8. disable selinux</a></li>
-<li><a href="#org4fe00c6">2.9. java  &amp; scala</a></li>
+<li><a href="#org4a045fc">2.1. lvm</a></li>
+<li><a href="#org72391ed">2.2. ip</a></li>
+<li><a href="#orge0202fa">2.3. sshd</a></li>
+<li><a href="#org19d1d65">2.4. hostname</a></li>
+<li><a href="#orgbc6ecbc">2.5. yum source</a></li>
+<li><a href="#org4d5d616">2.6. ntp</a></li>
+<li><a href="#org06b3b09">2.7. firewallds</a></li>
+<li><a href="#org3850d96">2.8. disable selinux</a></li>
+<li><a href="#orgfdc63df">2.9. java  &amp; scala</a></li>
 </ul>
 </li>
-<li><a href="#org66d76aa">3. hadoop 集群配置</a>
+<li><a href="#orgfbcc452">3. hadoop 集群配置</a>
 <ul>
-<li><a href="#org73b0445">3.1. hadoop hbase spark 版本选择</a></li>
-<li><a href="#org62e896b">3.2. 环境准备</a></li>
-<li><a href="#orgf603b52">3.3. 配置hadoop cluster</a></li>
-<li><a href="#org5f89661">3.4. 启动hadoop</a></li>
+<li><a href="#orga4e2e7c">3.1. hadoop hbase spark 版本选择</a></li>
+<li><a href="#orgfc297a0">3.2. 环境准备</a></li>
+<li><a href="#orgf1b948e">3.3. 配置hadoop cluster</a></li>
+<li><a href="#org77c5869">3.4. 启动hadoop</a></li>
 </ul>
 </li>
-<li><a href="#org90d6e0c">4. elasticstk 集群</a>
+<li><a href="#orge474252">4. elasticstk 集群</a>
 <ul>
-<li><a href="#orgf12c144">4.1. elasticsearch-611</a></li>
-<li><a href="#org7b44187">4.2. kibana</a></li>
-<li><a href="#org30c8402">4.3. logstash</a></li>
-<li><a href="#orgcd2e569">4.4. beats</a>
+<li><a href="#orgbd5461f">4.1. elasticsearch-611</a></li>
+<li><a href="#org799a373">4.2. kibana</a></li>
+<li><a href="#org55fc002">4.3. logstash</a></li>
+<li><a href="#orgc565235">4.4. beats</a>
 <ul>
-<li><a href="#org8b05488">4.4.1. topbeat</a></li>
-<li><a href="#orgcd3bede">4.4.2. filebeat</a></li>
-<li><a href="#org5e79d6b">4.4.3. metricbeat</a></li>
-<li><a href="#org8556de3">4.4.4. packetbeat</a></li>
+<li><a href="#org5cbe105">4.4.1. topbeat</a></li>
+<li><a href="#org36a026a">4.4.2. filebeat</a></li>
+<li><a href="#orge2cc22d">4.4.3. metricbeat</a></li>
+<li><a href="#orgb085fb5">4.4.4. packetbeat</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgf1fd91c">5. hive</a>
+<li><a href="#org65c0415">5. hive</a>
 <ul>
-<li><a href="#orge0094fb">5.1. install mariadb</a></li>
-<li><a href="#orgceb96c7">5.2. config hive</a></li>
-<li><a href="#orgd586b3a">5.3. start hive</a></li>
+<li><a href="#org53512a8">5.1. install mariadb</a></li>
+<li><a href="#org1b55236">5.2. config hive</a></li>
+<li><a href="#orgbeaffa3">5.3. start hive</a></li>
 </ul>
 </li>
-<li><a href="#orga94a5ad">6. sqoop</a></li>
-<li><a href="#orge09a19f">7. zookeeper</a>
+<li><a href="#org249724d">6. sqoop</a></li>
+<li><a href="#org44fddfa">7. zookeeper</a>
 <ul>
-<li><a href="#org68aa4ac">7.1. Replicated ZooKeeper configural</a></li>
+<li><a href="#org8c44771">7.1. Replicated ZooKeeper configural</a></li>
 </ul>
 </li>
-<li><a href="#org4842b45">8. hbase</a>
+<li><a href="#org71c1bca">8. hbase</a>
 <ul>
-<li><a href="#org332ca2f">8.1. hbase configural</a></li>
-<li><a href="#org6fbdd77">8.2. hbase start</a></li>
+<li><a href="#org6975856">8.1. hbase configural</a></li>
+<li><a href="#org6c261b0">8.2. hbase start</a></li>
 </ul>
 </li>
-<li><a href="#org15d6fad">9. kafka</a>
+<li><a href="#orga126860">9. kafka</a>
 <ul>
-<li><a href="#org2c8819c">9.1. kafka configural</a></li>
-<li><a href="#org5229c99">9.2. kafka start service</a></li>
-<li><a href="#org65fbed0">9.3. use kafka</a></li>
+<li><a href="#org670fff7">9.1. kafka configural</a></li>
+<li><a href="#org6308f03">9.2. kafka start service</a></li>
+<li><a href="#orgab36927">9.3. use kafka</a></li>
 </ul>
 </li>
-<li><a href="#org2356ffc">10. spark</a>
+<li><a href="#org77dfb7e">10. spark</a>
 <ul>
-<li><a href="#org7ef4f11">10.1. spark configural</a></li>
-<li><a href="#orge43e0dc">10.2. spark start</a></li>
+<li><a href="#org68cfc67">10.1. spark configural</a></li>
+<li><a href="#org1ffaf64">10.2. spark start</a></li>
 </ul>
 </li>
 </ul>
@@ -351,8 +351,8 @@ for the JavaScript code in this tag.
 vbox自建centos集群环境，方便本地开发测试,
 </p>
 
-<div id="outline-container-org1b355f0" class="outline-2">
-<h2 id="org1b355f0"><span class="section-number-2">1</span> VboxManage</h2>
+<div id="outline-container-org92f11b4" class="outline-2">
+<h2 id="org92f11b4"><span class="section-number-2">1</span> VboxManage</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li><p>
@@ -441,16 +441,16 @@ VBoxManage clonevm  Centos701 &#x2013;snapshot  centos7<sub>basic</sub>  &#x2013
 </div>
 </div>
 
-<div id="outline-container-orgd82137a" class="outline-2">
-<h2 id="orgd82137a"><span class="section-number-2">2</span> centos7 basic environment</h2>
+<div id="outline-container-org47fc522" class="outline-2">
+<h2 id="org47fc522"><span class="section-number-2">2</span> centos7 basic environment</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 centos7 镜像<a href="http://isoredirect.centos.org/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1708.iso">下载</a>
 </p>
 </div>
 
-<div id="outline-container-org3eb82b5" class="outline-3">
-<h3 id="org3eb82b5"><span class="section-number-3">2.1</span> lvm</h3>
+<div id="outline-container-org4a045fc" class="outline-3">
+<h3 id="org4a045fc"><span class="section-number-3">2.1</span> lvm</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 在文件中添加要挂载的分区和文件目录可以修改文件
@@ -527,8 +527,8 @@ xfs_growfs /dev/centos/root
 </ol>
 </div>
 </div>
-<div id="outline-container-org933a212" class="outline-3">
-<h3 id="org933a212"><span class="section-number-3">2.2</span> ip</h3>
+<div id="outline-container-org72391ed" class="outline-3">
+<h3 id="org72391ed"><span class="section-number-3">2.2</span> ip</h3>
 <div class="outline-text-3" id="text-2-2">
 <ul class="org-ul">
 <li><p>
@@ -570,8 +570,8 @@ sudo service network restart
 </div>
 </div>
 
-<div id="outline-container-org45cccd3" class="outline-3">
-<h3 id="org45cccd3"><span class="section-number-3">2.3</span> sshd</h3>
+<div id="outline-container-orge0202fa" class="outline-3">
+<h3 id="orge0202fa"><span class="section-number-3">2.3</span> sshd</h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
 ssh 连接异常慢
@@ -588,8 +588,8 @@ UseDNS no
 </div>
 </div>
 
-<div id="outline-container-orgcd04094" class="outline-3">
-<h3 id="orgcd04094"><span class="section-number-3">2.4</span> hostname</h3>
+<div id="outline-container-org19d1d65" class="outline-3">
+<h3 id="org19d1d65"><span class="section-number-3">2.4</span> hostname</h3>
 <div class="outline-text-3" id="text-2-4">
 <p>
 永久修改主机名字
@@ -614,8 +614,8 @@ sudo vi /etc/hosts
 </div>
 
 
-<div id="outline-container-orgfab6893" class="outline-3">
-<h3 id="orgfab6893"><span class="section-number-3">2.5</span> yum source</h3>
+<div id="outline-container-orgbc6ecbc" class="outline-3">
+<h3 id="orgbc6ecbc"><span class="section-number-3">2.5</span> yum source</h3>
 <div class="outline-text-3" id="text-2-5">
 <p>
 sudo yum -y install wget
@@ -665,8 +665,8 @@ sudo yum makecache
 </div>
 </div>
 
-<div id="outline-container-org1b2efe7" class="outline-3">
-<h3 id="org1b2efe7"><span class="section-number-3">2.6</span> ntp</h3>
+<div id="outline-container-org4d5d616" class="outline-3">
+<h3 id="org4d5d616"><span class="section-number-3">2.6</span> ntp</h3>
 <div class="outline-text-3" id="text-2-6">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -767,8 +767,8 @@ netstat -anp | grep 123
 </div>
 </div>
 
-<div id="outline-container-org751a8c4" class="outline-3">
-<h3 id="org751a8c4"><span class="section-number-3">2.7</span> firewallds</h3>
+<div id="outline-container-org06b3b09" class="outline-3">
+<h3 id="org06b3b09"><span class="section-number-3">2.7</span> firewallds</h3>
 <div class="outline-text-3" id="text-2-7">
 <dl class="org-dl">
 <dt>查看状态</dt><dd>systemctl status firewalld</dd>
@@ -777,8 +777,8 @@ netstat -anp | grep 123
 </dl>
 </div>
 </div>
-<div id="outline-container-org6660c4e" class="outline-3">
-<h3 id="org6660c4e"><span class="section-number-3">2.8</span> disable selinux</h3>
+<div id="outline-container-org3850d96" class="outline-3">
+<h3 id="org3850d96"><span class="section-number-3">2.8</span> disable selinux</h3>
 <div class="outline-text-3" id="text-2-8">
 <p>
 一款为了提高系统安全性的软件：对系统服务，文件权限，网络端口访问有极其严格的限制，
@@ -794,8 +794,8 @@ selinux = disable
 </pre>
 </div>
 </div>
-<div id="outline-container-org4fe00c6" class="outline-3">
-<h3 id="org4fe00c6"><span class="section-number-3">2.9</span> java  &amp; scala</h3>
+<div id="outline-container-orgfdc63df" class="outline-3">
+<h3 id="orgfdc63df"><span class="section-number-3">2.9</span> java  &amp; scala</h3>
 <div class="outline-text-3" id="text-2-9">
 <p>
 基础环境用root 配置在/etc/profile 自启动环境文件内
@@ -870,12 +870,12 @@ export SCALA_HOME PATH
 </div>
 </div>
 
-<div id="outline-container-org66d76aa" class="outline-2">
-<h2 id="org66d76aa"><span class="section-number-2">3</span> hadoop 集群配置</h2>
+<div id="outline-container-orgfbcc452" class="outline-2">
+<h2 id="orgfbcc452"><span class="section-number-2">3</span> hadoop 集群配置</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org73b0445" class="outline-3">
-<h3 id="org73b0445"><span class="section-number-3">3.1</span> hadoop hbase spark 版本选择</h3>
+<div id="outline-container-orga4e2e7c" class="outline-3">
+<h3 id="orga4e2e7c"><span class="section-number-3">3.1</span> hadoop hbase spark 版本选择</h3>
 <div class="outline-text-3" id="text-3-1">
 <ul class="org-ul">
 <li><p>
@@ -949,8 +949,8 @@ zookeeper
 </div>
 </div>
 
-<div id="outline-container-org62e896b" class="outline-3">
-<h3 id="org62e896b"><span class="section-number-3">3.2</span> 环境准备</h3>
+<div id="outline-container-orgfc297a0" class="outline-3">
+<h3 id="orgfc297a0"><span class="section-number-3">3.2</span> 环境准备</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 三台vbox 虚拟centos7 配置 java scala 环境 关闭防火墙和selinux
@@ -1062,8 +1062,8 @@ tar -zxvf hadoop-2.7.5.tar.gz</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf603b52" class="outline-3">
-<h3 id="orgf603b52"><span class="section-number-3">3.3</span> 配置hadoop cluster</h3>
+<div id="outline-container-orgf1b948e" class="outline-3">
+<h3 id="orgf1b948e"><span class="section-number-3">3.3</span> 配置hadoop cluster</h3>
 <div class="outline-text-3" id="text-3-3">
 <ul class="org-ul">
 <li><p>
@@ -1252,8 +1252,8 @@ scp hadoop-2.7.5_conf_finshed.tar.gz manue1@slave02:/home/manue1/opt/
 </div>
 </div>
 
-<div id="outline-container-org5f89661" class="outline-3">
-<h3 id="org5f89661"><span class="section-number-3">3.4</span> 启动hadoop</h3>
+<div id="outline-container-org77c5869" class="outline-3">
+<h3 id="org77c5869"><span class="section-number-3">3.4</span> 启动hadoop</h3>
 <div class="outline-text-3" id="text-3-4">
 <p>
 第一次启动要执行格式化，之后启动不用执行这条
@@ -1333,12 +1333,12 @@ http://master:8088
 </div>
 </div>
 
-<div id="outline-container-org90d6e0c" class="outline-2">
-<h2 id="org90d6e0c"><span class="section-number-2">4</span> elasticstk 集群</h2>
+<div id="outline-container-orge474252" class="outline-2">
+<h2 id="orge474252"><span class="section-number-2">4</span> elasticstk 集群</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-orgf12c144" class="outline-3">
-<h3 id="orgf12c144"><span class="section-number-3">4.1</span> elasticsearch-611</h3>
+<div id="outline-container-orgbd5461f" class="outline-3">
+<h3 id="orgbd5461f"><span class="section-number-3">4.1</span> elasticsearch-611</h3>
 <div class="outline-text-3" id="text-4-1">
 <blockquote>
 <ol class="org-ol">
@@ -1554,8 +1554,8 @@ refer
 </div>
 </div>
 
-<div id="outline-container-org7b44187" class="outline-3">
-<h3 id="org7b44187"><span class="section-number-3">4.2</span> kibana</h3>
+<div id="outline-container-org799a373" class="outline-3">
+<h3 id="org799a373"><span class="section-number-3">4.2</span> kibana</h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 配置在es的非数据节点上: 192.168.56.10
@@ -1583,8 +1583,8 @@ ss -lnp | grep 5601
 </div>
 </div>
 
-<div id="outline-container-org30c8402" class="outline-3">
-<h3 id="org30c8402"><span class="section-number-3">4.3</span> logstash</h3>
+<div id="outline-container-org55fc002" class="outline-3">
+<h3 id="org55fc002"><span class="section-number-3">4.3</span> logstash</h3>
 <div class="outline-text-3" id="text-4-3">
 <ol class="org-ol">
 <li>download
@@ -1647,12 +1647,12 @@ sudo netstat -anp | grep 5044
 </ol>
 </div>
 </div>
-<div id="outline-container-orgcd2e569" class="outline-3">
-<h3 id="orgcd2e569"><span class="section-number-3">4.4</span> beats</h3>
+<div id="outline-container-orgc565235" class="outline-3">
+<h3 id="orgc565235"><span class="section-number-3">4.4</span> beats</h3>
 <div class="outline-text-3" id="text-4-4">
 </div>
-<div id="outline-container-org8b05488" class="outline-4">
-<h4 id="org8b05488"><span class="section-number-4">4.4.1</span> topbeat</h4>
+<div id="outline-container-org5cbe105" class="outline-4">
+<h4 id="org5cbe105"><span class="section-number-4">4.4.1</span> topbeat</h4>
 <div class="outline-text-4" id="text-4-4-1">
 <p>
 5.x版本后弃用了
@@ -1723,8 +1723,8 @@ sudo ./topbeat -e -c topbeat.yml -d "publish"
 </ol>
 </div>
 </div>
-<div id="outline-container-orgcd3bede" class="outline-4">
-<h4 id="orgcd3bede"><span class="section-number-4">4.4.2</span> filebeat</h4>
+<div id="outline-container-org36a026a" class="outline-4">
+<h4 id="org36a026a"><span class="section-number-4">4.4.2</span> filebeat</h4>
 <div class="outline-text-4" id="text-4-4-2">
 <ol class="org-ol">
 <li><p>
@@ -1864,8 +1864,8 @@ ps aux |grep beat
 </div>
 </div>
 
-<div id="outline-container-org5e79d6b" class="outline-4">
-<h4 id="org5e79d6b"><span class="section-number-4">4.4.3</span> metricbeat</h4>
+<div id="outline-container-orge2cc22d" class="outline-4">
+<h4 id="orge2cc22d"><span class="section-number-4">4.4.3</span> metricbeat</h4>
 <div class="outline-text-4" id="text-4-4-3">
 <ol class="org-ol">
 <li><p>
@@ -1948,8 +1948,8 @@ ps aux |grep metricbeat
 </p>
 </div>
 </div>
-<div id="outline-container-org8556de3" class="outline-4">
-<h4 id="org8556de3"><span class="section-number-4">4.4.4</span> packetbeat</h4>
+<div id="outline-container-orgb085fb5" class="outline-4">
+<h4 id="orgb085fb5"><span class="section-number-4">4.4.4</span> packetbeat</h4>
 <div class="outline-text-4" id="text-4-4-4">
 <ol class="org-ol">
 <li><p>
@@ -2005,16 +2005,16 @@ nohup /home/manue1/opt/packetbeat-6.1.1-linux-x86<sub>64</sub>/packetbeat -e -c 
 </div>
 </div>
 
-<div id="outline-container-orgf1fd91c" class="outline-2">
-<h2 id="orgf1fd91c"><span class="section-number-2">5</span> hive</h2>
+<div id="outline-container-org65c0415" class="outline-2">
+<h2 id="org65c0415"><span class="section-number-2">5</span> hive</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 hive只需要安装在集群任意一个节点上即可,这里安装在slave01上
 </p>
 </div>
 
-<div id="outline-container-orge0094fb" class="outline-3">
-<h3 id="orge0094fb"><span class="section-number-3">5.1</span> install mariadb</h3>
+<div id="outline-container-org53512a8" class="outline-3">
+<h3 id="org53512a8"><span class="section-number-3">5.1</span> install mariadb</h3>
 <div class="outline-text-3" id="text-5-1">
 <p>
 安装hive前，需要mysql作为外置存储引擎，存放hive元数据(metastore)
@@ -2063,8 +2063,8 @@ default-character-set=utf8  # NO SPACE
 </div>
 </div>
 
-<div id="outline-container-orgceb96c7" class="outline-3">
-<h3 id="orgceb96c7"><span class="section-number-3">5.2</span> config hive</h3>
+<div id="outline-container-org1b55236" class="outline-3">
+<h3 id="org1b55236"><span class="section-number-3">5.2</span> config hive</h3>
 <div class="outline-text-3" id="text-5-2">
 <p>
 配置安装<a href="http://mirrors.shuosc.org/apache/hive/stable-2/">hive</a> 参考： <a href="https://cwiki.apache.org/confluence/display/Hive/GettingStarted">1</a>  <a href="http://blog.csdn.net/jssg_tzw/article/details/72354470">2</a>
@@ -2226,8 +2226,8 @@ schematool -initSchema -dbType mysql
 </div>
 </div>
 
-<div id="outline-container-orgd586b3a" class="outline-3">
-<h3 id="orgd586b3a"><span class="section-number-3">5.3</span> start hive</h3>
+<div id="outline-container-orgbeaffa3" class="outline-3">
+<h3 id="orgbeaffa3"><span class="section-number-3">5.3</span> start hive</h3>
 <div class="outline-text-3" id="text-5-3">
 <p>
 Hive的三种启动方式
@@ -2322,8 +2322,8 @@ flush privileges;
 </div>
 </div>
 </div>
-<div id="outline-container-orga94a5ad" class="outline-2">
-<h2 id="orga94a5ad"><span class="section-number-2">6</span> sqoop</h2>
+<div id="outline-container-org249724d" class="outline-2">
+<h2 id="org249724d"><span class="section-number-2">6</span> sqoop</h2>
 <div class="outline-text-2" id="text-6">
 <ol class="org-ol">
 <li><p>
@@ -2363,12 +2363,12 @@ sqoop list-databases --connect jdbc:mysql://slave01:3306/hive --username root --
 </ol>
 </div>
 </div>
-<div id="outline-container-orge09a19f" class="outline-2">
-<h2 id="orge09a19f"><span class="section-number-2">7</span> zookeeper</h2>
+<div id="outline-container-org44fddfa" class="outline-2">
+<h2 id="org44fddfa"><span class="section-number-2">7</span> zookeeper</h2>
 <div class="outline-text-2" id="text-7">
 </div>
-<div id="outline-container-org68aa4ac" class="outline-3">
-<h3 id="org68aa4ac"><span class="section-number-3">7.1</span> Replicated ZooKeeper configural</h3>
+<div id="outline-container-org8c44771" class="outline-3">
+<h3 id="org8c44771"><span class="section-number-3">7.1</span> Replicated ZooKeeper configural</h3>
 <div class="outline-text-3" id="text-7-1">
 <pre class="example">
 note
@@ -2431,15 +2431,15 @@ echo state | nc localhost 2181
 </div>
 </div>
 </div>
-<div id="outline-container-org4842b45" class="outline-2">
-<h2 id="org4842b45"><span class="section-number-2">8</span> hbase</h2>
+<div id="outline-container-org71c1bca" class="outline-2">
+<h2 id="org71c1bca"><span class="section-number-2">8</span> hbase</h2>
 <div class="outline-text-2" id="text-8">
 <p>
 start hadoop &amp; zookeeper
 </p>
 </div>
-<div id="outline-container-org332ca2f" class="outline-3">
-<h3 id="org332ca2f"><span class="section-number-3">8.1</span> hbase configural</h3>
+<div id="outline-container-org6975856" class="outline-3">
+<h3 id="org6975856"><span class="section-number-3">8.1</span> hbase configural</h3>
 <div class="outline-text-3" id="text-8-1">
 <ul class="org-ul">
 <li><p>
@@ -2479,8 +2479,8 @@ slave02
 </div>
 
 
-<div id="outline-container-org6fbdd77" class="outline-3">
-<h3 id="org6fbdd77"><span class="section-number-3">8.2</span> hbase start</h3>
+<div id="outline-container-org6c261b0" class="outline-3">
+<h3 id="org6c261b0"><span class="section-number-3">8.2</span> hbase start</h3>
 <div class="outline-text-3" id="text-8-2">
 <p>
 nohup /home/manue1/opt/hbase-1.2.6/bin/start-hbase.sh &amp;
@@ -2497,12 +2497,12 @@ nohup /home/manue1/opt/hbase-1.2.6/bin/stop-hbase.sh &amp;
 </div>
 </div>
 </div>
-<div id="outline-container-org15d6fad" class="outline-2">
-<h2 id="org15d6fad"><span class="section-number-2">9</span> kafka</h2>
+<div id="outline-container-orga126860" class="outline-2">
+<h2 id="orga126860"><span class="section-number-2">9</span> kafka</h2>
 <div class="outline-text-2" id="text-9">
 </div>
-<div id="outline-container-org2c8819c" class="outline-3">
-<h3 id="org2c8819c"><span class="section-number-3">9.1</span> kafka configural</h3>
+<div id="outline-container-org670fff7" class="outline-3">
+<h3 id="org670fff7"><span class="section-number-3">9.1</span> kafka configural</h3>
 <div class="outline-text-3" id="text-9-1">
 <ul class="org-ul">
 <li><p>
@@ -2535,8 +2535,8 @@ scp -r kafka<sub>2.11</sub>-1.0.0/ manue1@slave02:/home/manue1/opt
 </div>
 </div>
 
-<div id="outline-container-org5229c99" class="outline-3">
-<h3 id="org5229c99"><span class="section-number-3">9.2</span> kafka start service</h3>
+<div id="outline-container-org6308f03" class="outline-3">
+<h3 id="org6308f03"><span class="section-number-3">9.2</span> kafka start service</h3>
 <div class="outline-text-3" id="text-9-2">
 <ul class="org-ul">
 <li><p>
@@ -2576,8 +2576,8 @@ sudo netstat -anp | grep 9092
 </p>
 </div>
 </div>
-<div id="outline-container-org65fbed0" class="outline-3">
-<h3 id="org65fbed0"><span class="section-number-3">9.3</span> use kafka</h3>
+<div id="outline-container-orgab36927" class="outline-3">
+<h3 id="orgab36927"><span class="section-number-3">9.3</span> use kafka</h3>
 <div class="outline-text-3" id="text-9-3">
 <p>
 <a href="http://blog.csdn.net/u010297957/article/details/72758765">http://blog.csdn.net/u010297957/article/details/72758765</a>
@@ -2612,12 +2612,12 @@ i love zbr
 </div>
 </div>
 </div>
-<div id="outline-container-org2356ffc" class="outline-2">
-<h2 id="org2356ffc"><span class="section-number-2">10</span> spark</h2>
+<div id="outline-container-org77dfb7e" class="outline-2">
+<h2 id="org77dfb7e"><span class="section-number-2">10</span> spark</h2>
 <div class="outline-text-2" id="text-10">
 </div>
-<div id="outline-container-org7ef4f11" class="outline-3">
-<h3 id="org7ef4f11"><span class="section-number-3">10.1</span> spark configural</h3>
+<div id="outline-container-org68cfc67" class="outline-3">
+<h3 id="org68cfc67"><span class="section-number-3">10.1</span> spark configural</h3>
 <div class="outline-text-3" id="text-10-1">
 <p>
 <a href="https://data-flair.training/blogs/install-apache-spark-multi-node-cluster/">https://data-flair.training/blogs/install-apache-spark-multi-node-cluster/</a>
@@ -2691,8 +2691,8 @@ scp -r spark-2.2.1-bin-hadoop2.7/ manue1@192.168.1.109:/home/manue1/opt
 </p>
 </div>
 </div>
-<div id="outline-container-orge43e0dc" class="outline-3">
-<h3 id="orge43e0dc"><span class="section-number-3">10.2</span> spark start</h3>
+<div id="outline-container-org1ffaf64" class="outline-3">
+<h3 id="org1ffaf64"><span class="section-number-3">10.2</span> spark start</h3>
 <div class="outline-text-3" id="text-10-2">
 <p>
 nohup sh /home/manue1/opt/hadoop-2.7.5/sbin/start-all.sh &amp;  #启动hdfs即可
