@@ -1306,14 +1306,24 @@ Q  不提示直接退出
    - State "DONE"       from "TODO"       [2018-12-31 Mon 14:05]
   #+BEGIN_QUOTE
 
-  
-  https://blog.jazinbaz.in/en/2018/06/creating-your-own-official-mtproto-proxy-with-channel-promotion-very-easy-way.html 
+  docker搭建mtpro代理
 
-  https://github.com/p1ratrulezzz/MTProxy-1
+  : docker run -d -p5656:443 --name=mtproto-proxy --restart=always -v proxy-config:/data telegrammessenger/proxy:latest
 
-  https://hub.docker.com/r/telegrammessenger/proxy/
-  
-  作者配置mtpro代理思路不错
+  #+BEGIN_SRC bash
+  [+] No secret passed. Will generate 1 random ones.
+  [*] Final configuration:
+  [*]   Secret 1: e29c65cbd11d8ea328233b3fe96f988b
+  [*]   tg:// link for secret 1 auto configuration: tg://proxy?server=103.1.153.220&port=443&secret=e29c65cbd11d8ea328233b3fe96f988b
+  [*]   t.me link for secret 1: https://t.me/proxy?server=103.1.153.220&port=443&secret=e29c65cbd11d8ea328233b3fe96f988b
+  [*]   Tag: no tag
+  [*]   External IP: 103.1.153.220
+  [*]   Make sure to fix the links in case you run the proxy on a different port.
+
+
+  #+END_SRC
+
+  设置主机文件句柄
 
   : echo "ulimit -SHn 1048576" >> /etc/rc.local
 
@@ -1323,6 +1333,11 @@ Q  不提示直接退出
   
   
   利用Telegram bot @MTProxybot,按照提示说明一步一步配置,等待一小时即可
+
+  tag : 696851624691c7e4dfcd4e5778c579d7
+
+  docker run -d -p 4444:443 --name=mtproto-proxy --restart=always -v proxy-config:/data -e SECRET=9f8a0c0700c1b534a3f67b675a89e73a -e TAG=696851624691c7e4dfcd4e5778c579d7   telegrammessenger/proxy:latest
+
   
   =newproxy=
 

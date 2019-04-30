@@ -10,6 +10,7 @@ let's encrypt优点:
 1. 免费提供90天的电子证书
 2. 提供certbot工具自动更新证书系统
 
+官网文档说明: https://certbot.eff.org/lets-encrypt/centosrhel7-nginx
 
 
 * 证书配置安装

@@ -25,7 +25,7 @@ Telegram: manue1sec
 
 #+BEGIN_QUOTE
 
-telegram channel:  [[https://t.me/chinasec][@chinasec]] (if you need proxy -> [[https://t.me/proxy?server=139.180.192.255&port=443&secret=62b1466f8b1860fd9d2c80f5585971c6][mtproxy sponsor]])
+telegram channel:  [[https://t.me/chinasec][@chinasec]] (if you need proxy -> [[https://t.me/proxy?server=35.220.234.116&port=5656&secret=b48369e4660e276f53a5a994b79545f3][mtproxy sponsor]])
 
 #+END_QUOTE
 
